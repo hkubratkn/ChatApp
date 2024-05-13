@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "884226216515",
+    "project_id": "social-d6057",
+    "storage_bucket": "social-d6057.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884226216515:android:6e539c12f551259e98baf6",
+        "android_client_info": {
+          "package_name": "com.zepi.social_chat_food"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvWa3WEmpfvU00tNnzSSP_9DYunyR2VIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
