@@ -1,0 +1,88 @@
+/*
+ * Copyright (C) 2024 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.zepi.social_chat_food.soci.di
+
+import android.content.Context
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.zepi.social_chat_food.soci.data.AppDatabase
+import com.zepi.social_chat_food.soci.data.ChatDao
+import com.zepi.social_chat_food.soci.data.ContactDao
+import com.zepi.social_chat_food.soci.data.DatabaseManager
+import com.zepi.social_chat_food.soci.data.MessageDao
+import com.zepi.social_chat_food.soci.data.RoomDatabaseManager
+import com.zepi.social_chat_food.soci.data.populateInitialData
+import com.zepi.social_chat_food.soci.widget.model.WidgetModelDao
+import dagger.Binds
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
+import java.util.concurrent.Executors
+import javax.inject.Qualifier
+import javax.inject.Singleton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.asCoroutineDispatcher
+
+@Qualifier
+annotation class AppCoroutineScope
+
+@Module
+@InstallIn(SingletonComponent::class)
+object DatabaseModule {
+    @Provides
+    @Singleton
+    fun providesAppDatabase(@ApplicationContext context: Context): AppDatabase =
+        Room.databaseBuilder(context, AppDatabase::class.java, "app.db")
+            .addCallback(
+                object : RoomDatabase.Callback() {
+                    override fun onCreate(db: SupportSQLiteDatabase) {
+                        super.onCreate(db)
+                        db.populateInitialData()
+                    }
+                },
+            ).build()
+
+    @Provides
+    fun providesChatDao(database: AppDatabase): ChatDao = database.chatDao()
+
+    @Provides
+    fun providesMessageDao(database: AppDatabase): MessageDao = database.messageDao()
+
+    @Provides
+    fun providesContactDao(database: AppDatabase): ContactDao = database.contactDao()
+
+    @Provides
+    fun providesWidgetModelDao(database: AppDatabase): WidgetModelDao = database.widgetDao()
+
+    @Provides
+    @Singleton
+    @AppCoroutineScope
+    fun providesApplicationCoroutineScope(): CoroutineScope = CoroutineScope(
+        Executors.newSingleThreadExecutor().asCoroutineDispatcher(),
+    )
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+interface DatabaseBindingModule {
+
+    @Binds
+    fun bindDatabaseManager(manager: RoomDatabaseManager): DatabaseManager
+}

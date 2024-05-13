@@ -1,19 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (C) 2023 The Android Open Source Project
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~      http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
--->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -28,8 +13,12 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+
     <application
-        android:name=".SocialApp"
+        android:name="com.zepi.social_chat_food.ZepiApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -41,8 +30,17 @@
         android:theme="@style/Theme.Social"
         tools:targetApi="34">
 
+
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3006196735467220~8121322233" />
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
+
         <receiver
-            android:name=".widget.SociaLiteAppWidgetReceiver"
+            android:name="com.zepi.social_chat_food.soci.widget.SociaLiteAppWidgetReceiver"
             android:exported="true"
             android:label="@string/favorite_contact_widget_name">
 
@@ -58,7 +56,7 @@
         </receiver>
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.zepi.social_chat_food.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Social.SplashScreen"
             android:windowSoftInputMode="adjustResize"
@@ -111,7 +109,7 @@
                                            multiple instances of this Activity.
         -->
         <activity
-            android:name=".BubbleActivity"
+            android:name="com.zepi.social_chat_food.soci.BubbleActivity"
             android:allowEmbedded="true"
             android:documentLaunchMode="always"
             android:exported="true"
@@ -130,7 +128,7 @@
         </activity>
 
 
-        <activity android:name=".widget.SociaLiteAppWidgetConfigActivity"
+        <activity android:name="com.zepi.social_chat_food.soci.widget.SociaLiteAppWidgetConfigActivity"
             android:taskAffinity=""
             android:exported="true">
             <intent-filter>
@@ -140,12 +138,12 @@
 
 
         <provider
-            android:name="com.google.android.samples.socialite.AssetFileProvider"
+            android:name="com.zepi.social_chat_food.soci.AssetFileProvider"
             android:authorities="com.google.android.samples.socialite"
             android:exported="true"
             tools:ignore="ExportedContentProvider" />
 
-        <receiver android:name="com.google.android.samples.socialite.ReplyReceiver" />
+        <receiver android:name="com.zepi.social_chat_food.soci.ReplyReceiver" />
 
         <!-- Trigger Google Play services to install the backported photo picker module.
          Refer https://developer.android.com/training/data-storage/shared/photopicker#device-availability -->
@@ -165,3 +163,20 @@
     </application>
 
 </manifest>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/-->

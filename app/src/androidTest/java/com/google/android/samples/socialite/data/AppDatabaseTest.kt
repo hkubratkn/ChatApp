@@ -17,8 +17,9 @@
 package com.google.android.samples.socialite.data
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.google.android.samples.socialite.model.Contact
+import com.zepi.social_chat_food.soci.model.Contact
 import com.google.common.truth.Truth.assertThat
+import com.zepi.social_chat_food.soci.data.AppDatabase
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test

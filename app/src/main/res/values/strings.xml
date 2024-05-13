@@ -1,20 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (C) 2023 The Android Open Source Project
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~      http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
--->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SociaLite</string>
+    <string name="app_name">Zepi</string>
 
     <string name="timeline">Timeline</string>
     <string name="chats">Chats</string>
@@ -66,4 +52,124 @@
     <string name="rw_title">Rewind</string>
     <string name="favorite_contact_widget_name">Favorite Contact</string>
 
+
+
+
+
+    <!-- App -->
+    <string name="not_connected">⚠️You aren’t connected to the internet</string>
+    <string name="generic_error">Something wrong happened. Please try again.</string>
+    <string name="try_again">Try again</string>
+
+    <!-- login register screen -->
+    <string name="email">E-mail</string>
+    <string name="email_error">Please insert a valid email.</string>
+    <string name="empty_password_error">Password cannot be empty.</string>
+    <string name="password">Password</string>
+    <string name="password_error">Your password should have at least six digits and include one digit, one lower case letter and one upper case letter.</string>
+    <string name="password_match_error">Passwords do not match.</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="log_in">Log In</string>
+    <string name="register">Register</string>
+    <string name="recovery_email_sent">Check your inbox for the recovery email.</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="forgotten_password">Forgot password? Click to get recovery email</string>
+    <string name="already_have_an_account">Already have an account</string>
+    <string name="create_new_account">Create New Account</string>
+
+    <!-- Edit Screen -->
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="next">Next</string>
+    <string name="done">Done</string>
+    <string name="previous">Previous</string>
+    <string name="question_count">\u00A0of %d</string>
+    <string name="tell_us_about_you">Tell us something about yourself</string>
+    <string name="description">Description</string>
+    <string name="selfie_skills">Show off your selfie skills!</string>
+    <string name="feedback_description">We are constantly improving our product by listening to your feedback.</string>
+    <string name="in_my_free_time">In my free time I like to …</string>
+    <string name="select_all">Select all that apply.</string>
+    <string name="select_date">Select date.</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="add_photo">ADD PHOTO</string>
+    <string name="retake_photo">RETAKE PHOTO</string>
+    <string name="delete_my_account">Delete my account</string>
+    <string name="delete_account_title">Delete account?</string>
+    <string name="delete_account_description">You will lose all your data and your account will be deleted. This action is irreversible.</string>
+    <string name="why_delete_account">why are you deleting your account</string>
+
+    <!-- User Profile Screen -->
+    <string name="online">Online</string>
+    <string name="join">Join</string>
+
+    <!-- Search Screen -->
+    <string name="search">Search</string>
+    <string name="search_count">%1d users</string>
+    <string name="search_no_matches">No matches for “%1s”</string>
+    <string name="search_no_matches_retry">Try broadening your search</string>
+    <string name="recent_searches">Recent searches</string>
+
+    <!-- Chat Screen -->
+    <string name="hello_hint">Hello</string>
+    <string name="block">Block</string>
+    <string name="block_user">Do you want to block a user?</string>
+    <string name="report">Report</string>
+    <string name="report_user">Do you want to report and block a user?</string>
+    <string name="jump_bottom">Jump to bottom</string>
+    <string name="no_messages_all">You have no messages!</string>
+
+
+    <!-- Home Screen -->
+    <string name="home_title">Home</string>
+    <string name="no_users_all">You have no users!</string>
+    <string name="loading_users_error">Error while loading users</string>
+    <string name="jump_top">Jump to top</string>
+    <string name="filters_title">Filters</string>
+
+    <!-- Chats Screen -->
+    <string name="chats_title">Chats</string>
+    <string name="no_chats_all">You have no chats!</string>
+    <string name="start_new_conversation">Life is an adventure worth exploring; gather your courage and embrace new experiences!</string>
+    <string name="loading_chats_error">Error while loading chats</string>
+    <string name="archive">Archive</string>
+
+    <!-- Archive Screen -->
+    <string name="no_archives_all">You have no archives!</string>
+    <string name="loading_archives_error">Error while loading archives</string>
+    <string name="unarchive">Unarchive</string>
+
+    <!-- Subscriptions Screen -->
+    <string name="subscriptions_title">Subscriptions</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">Profile</string>
+    <string name="profile_not_found">Profile not found</string>
+    <string name="loading_profile_error">Error while loading profile</string>
+    <string name="gender">Gender</string>
+    <string name="name_and_surname">Name And Surname</string>
+    <string name="display_name">Display name</string>
+    <string name="birthday">Birthday</string>
+    <string name="user_photos_not_found">Photos not found</string>
+    <string name="loading_user_photos_error">Error while loading photos</string>
+
+
+    <!-- Interests Screen -->
+    <string name="interests_title">Interests</string>
+    <string name="interests_section_favorites">Favorites</string>
+    <string name="interests_section_assets">Assets</string>
+
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Settings</string>
+    <string name="share">Share</string>
+    <string name="rate">Rate</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="feedback">Feedback</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="sign_out">Sign out</string>
+    <string name="sign_out_title">Sign out?</string>
+    <string name="sign_out_description">You will have to sign in again to see your tasks.</string>
+    <string name="cancel">Cancel</string>
 </resources>

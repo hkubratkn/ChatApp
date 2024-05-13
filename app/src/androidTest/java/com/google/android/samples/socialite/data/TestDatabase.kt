@@ -20,6 +20,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.test.platform.app.InstrumentationRegistry
+import com.zepi.social_chat_food.soci.data.AppDatabase
+import com.zepi.social_chat_food.soci.data.populateInitialData
 
 fun createTestDatabase(): AppDatabase {
     val context = InstrumentationRegistry.getInstrumentation().targetContext
