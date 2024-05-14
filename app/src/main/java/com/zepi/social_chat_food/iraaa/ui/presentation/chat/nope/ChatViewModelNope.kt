@@ -1,16 +1,16 @@
 package com.zepi.social_chat_food.iraaa.ui.presentation.chat.nope
-
+/**
 import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.Timestamp
 import com.zepi.social_chat_food.iraaa.core.room.profile.Profile
 import com.zepi.social_chat_food.iraaa.core.room.profile.ProfileDao
-import com.zepi.social_chat_food.iraaa.model.Chat
-import com.zepi.social_chat_food.iraaa.model.ChatRow
-import com.zepi.social_chat_food.iraaa.model.User
-import com.zepi.social_chat_food.iraaa.model.service.AccountService
-import com.zepi.social_chat_food.iraaa.model.service.FirestoreService
-import com.zepi.social_chat_food.iraaa.model.service.LogService
-import com.zepi.social_chat_food.iraaa.ui.presentation.QChatViewModel
+import com.zepi.social_chat_food.model.Chat
+import com.zepi.social_chat_food.model.ChatRow
+import com.zepi.social_chat_food.model.User
+import com.zepi.social_chat_food.model.service.AccountService
+import com.zepi.social_chat_food.model.service.FirestoreService
+import com.zepi.social_chat_food.model.service.LogService
+import com.zepi.social_chat_food.ui.presentation.QChatViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,8 +33,8 @@ class ChatViewModelNope @Inject constructor(
     val text: String?
         get() = _text.value
 
-    private val _user = MutableStateFlow<User>(User())
-    var user: StateFlow<User> = _user
+    private val _user = MutableStateFlow<com.zepi.social_chat_food.model.User>(com.zepi.social_chat_food.model.User())
+    var user: StateFlow<com.zepi.social_chat_food.model.User> = _user
 
     fun onTextChange(newValue: String) {
         _text.value = newValue
@@ -57,14 +57,14 @@ class ChatViewModelNope @Inject constructor(
     ){
         launchCatching {
             firestoreService.saveChatRow(chatId = chatId,
-                ChatRow(
+                com.zepi.social_chat_food.model.ChatRow(
                     text = _text.value ?: "hello",
                     who = who,
                     date = date
                 )
             )
             firestoreService.saveUserChat(uid = uid, chatId = chatId,
-                Chat(
+                com.zepi.social_chat_food.model.Chat(
                     chatId = chatId,
                     partnerName = partnerName,
                     partnerSurname = partnerSurname,
@@ -74,7 +74,7 @@ class ChatViewModelNope @Inject constructor(
                 )
             )
             firestoreService.saveUserChat(uid = partnerUid, chatId = chatId,
-                Chat(
+                com.zepi.social_chat_food.model.Chat(
                     chatId = chatId,
                     partnerName = profileName,
                     partnerSurname = profileSurname,
@@ -87,3 +87,4 @@ class ChatViewModelNope @Inject constructor(
         }
     }
 }
+*/

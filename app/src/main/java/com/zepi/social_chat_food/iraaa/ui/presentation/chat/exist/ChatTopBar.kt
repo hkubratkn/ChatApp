@@ -21,12 +21,12 @@ import com.zepi.social_chat_food.R.string as AppText
 import com.zepi.social_chat_food.iraaa.common.composable.DropdownContextMenu
 import com.zepi.social_chat_food.iraaa.common.ext.contextMenu
 import com.zepi.social_chat_food.iraaa.common.ext.timeCustomFormat
-import com.zepi.social_chat_food.iraaa.model.User
+import com.zepi.social_chat_food.model.User
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChannelNameBar(
-    user: User,
+    user: com.zepi.social_chat_food.model.User,
     title: String,
     options: List<String>,
     startAction: () -> Unit,

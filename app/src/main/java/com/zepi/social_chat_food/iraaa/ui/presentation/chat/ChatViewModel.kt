@@ -1,5 +1,5 @@
 package com.zepi.social_chat_food.iraaa.ui.presentation.chat
-
+/**
 import android.os.Build
 import androidx.annotation.RequiresExtension
 import androidx.compose.runtime.mutableStateOf
@@ -11,15 +11,15 @@ import javax.inject.Inject
 import com.google.firebase.Timestamp
 import com.zepi.social_chat_food.iraaa.core.room.profile.Profile
 import com.zepi.social_chat_food.iraaa.core.room.profile.ProfileDao
-import com.zepi.social_chat_food.iraaa.model.Block
-import com.zepi.social_chat_food.iraaa.model.ChatRow
-import com.zepi.social_chat_food.iraaa.model.Report
-import com.zepi.social_chat_food.iraaa.model.User
-import com.zepi.social_chat_food.iraaa.model.service.AccountService
-import com.zepi.social_chat_food.iraaa.model.service.ConfigurationService
-import com.zepi.social_chat_food.iraaa.model.service.FirestoreService
-import com.zepi.social_chat_food.iraaa.model.service.LogService
-import com.zepi.social_chat_food.iraaa.ui.presentation.QChatViewModel
+import com.zepi.social_chat_food.model.Block
+import com.zepi.social_chat_food.model.ChatRow
+import com.zepi.social_chat_food.model.Report
+import com.zepi.social_chat_food.model.User
+import com.zepi.social_chat_food.model.service.AccountService
+import com.zepi.social_chat_food.model.service.ConfigurationService
+import com.zepi.social_chat_food.model.service.FirestoreService
+import com.zepi.social_chat_food.model.service.LogService
+import com.zepi.social_chat_food.ui.presentation.QChatViewModel
 
 @HiltViewModel
 class ChatViewModel @Inject constructor(
@@ -36,10 +36,10 @@ class ChatViewModel @Inject constructor(
     val profile: Flow<Profile> = profileDao.getProfile()
 
     private val _chatRow = MutableStateFlow<List<ChatRow>>(emptyList())
-    var chatRow: StateFlow<List<ChatRow>> = _chatRow
+    var chatRow: StateFlow<List<com.zepi.social_chat_food.model.ChatRow>> = _chatRow
 
-    private val _user = MutableStateFlow<User>(User())
-    var user: StateFlow<User> = _user
+    private val _user = MutableStateFlow<User>(com.zepi.social_chat_food.model.User())
+    var user: StateFlow<com.zepi.social_chat_food.model.User> = _user
 
     private val _unread = MutableStateFlow<Int>(0)
     var unread: StateFlow<Int> = _unread
@@ -83,7 +83,7 @@ class ChatViewModel @Inject constructor(
         launchCatching {
             firestoreService.saveChatRow(
                 chatId = chatId,
-                ChatRow(text = text, who = uid, date = date)
+                com.zepi.social_chat_food.model.ChatRow(text = text, who = uid, date = date)
             )
 /**            firestoreService.updateUserChatUnreadIncrease(
                 uid = partnerUid,
@@ -136,7 +136,7 @@ class ChatViewModel @Inject constructor(
             firestoreService.block(
                 uid = uid,
                 partnerUid = partnerUid,
-                block = Block(
+                block = com.zepi.social_chat_food.model.Block(
                     uid = partnerUid,
                     name = partnerName,
                     surname = partnerSurname,
@@ -147,7 +147,7 @@ class ChatViewModel @Inject constructor(
             firestoreService.block(
                 uid = partnerUid,
                 partnerUid = uid,
-                block = Block(
+                block = com.zepi.social_chat_food.model.Block(
                     uid = uid,
                     name = name,
                     surname = surname,
@@ -171,7 +171,7 @@ class ChatViewModel @Inject constructor(
             firestoreService.report(
                 uid = uid,
                 partnerUid = partnerUid,
-                report = Report(
+                report = com.zepi.social_chat_food.model.Report(
                     uid = uid,
                     name = name,
                     surname = surname,
@@ -205,3 +205,4 @@ class ChatViewModel @Inject constructor(
         options.value = ChatActionOption.getOptions(hasEditOption)
     }
 }
+*/
