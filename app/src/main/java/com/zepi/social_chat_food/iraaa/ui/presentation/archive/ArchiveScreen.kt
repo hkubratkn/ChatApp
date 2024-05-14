@@ -36,7 +36,7 @@ import com.zepi.social_chat_food.iraaa.common.composable.JumpToButton
 import com.zepi.social_chat_food.iraaa.common.composable.LoadingContent
 import com.zepi.social_chat_food.iraaa.core.constants.ConsAds.ADS_ARCHIVE_BANNER_ID
 import com.zepi.social_chat_food.iraaa.core.viewmodel.IncludeChatViewModel
-import com.zepi.social_chat_food.iraaa.model.Chat
+import com.zepi.social_chat_food.model.Chat
 import com.zepi.social_chat_food.iraaa.ui.presentation.chats.ChatItem
 
 @Composable
@@ -101,10 +101,10 @@ fun ArchiveScreen(
 @Composable
 private fun ArchivesContent(
     loading: Boolean,
-    archives: List<Chat>,
+    archives: List<com.zepi.social_chat_food.model.Chat>,
     onRefresh: () -> Unit,
-    onArchive: (Chat) -> Unit,
-    onChatsClick: (Chat) -> Unit,
+    onArchive: (com.zepi.social_chat_food.model.Chat) -> Unit,
+    onChatsClick: (com.zepi.social_chat_food.model.Chat) -> Unit,
     modifier: Modifier = Modifier,
     scrollState: LazyListState
 ) {
