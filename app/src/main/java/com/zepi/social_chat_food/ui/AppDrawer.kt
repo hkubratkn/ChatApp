@@ -1,4 +1,4 @@
-package com.zepi.social_chat_food.iraaa.ui
+package com.zepi.social_chat_food.ui
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -7,10 +7,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ChatBubble
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.ListAlt
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Subscriptions
 import androidx.compose.material3.Icon
@@ -45,35 +43,35 @@ fun AppDrawer(
         NavigationDrawerItem(
             label = { Text(stringResource(id = AppText.home_title)) },
             icon = { Icon(Icons.Filled.Home, null) },
-            selected = currentRoute == QChatDestinations.HOME_ROUTE,
+            selected = currentRoute == ZepiDestinations.HOME_ROUTE,
             onClick = { navigateToHome(); closeDrawer() },
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
         )
         NavigationDrawerItem(
             label = { Text(stringResource(id = AppText.chats_title)) },
             icon = { Icon(Icons.Default.ChatBubble, null)},
-            selected = currentRoute == QChatDestinations.CHATS_ROUTE,
+            selected = currentRoute == ZepiDestinations.CHATS_ROUTE,
             onClick = { navigateToChats(); closeDrawer() },
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
         )
         NavigationDrawerItem(
             label = { Text(stringResource(id = AppText.profile_title)) },
             icon = { Icon(Icons.Default.AccountCircle, null)},
-            selected = currentRoute == QChatDestinations.PROFILE_ROUTE,
+            selected = currentRoute == ZepiDestinations.PROFILE_ROUTE,
             onClick = { navigateToProfile(); closeDrawer() },
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
         )
         NavigationDrawerItem(
             label = { Text(stringResource(id = AppText.settings_title)) },
             icon = { Icon(Icons.Default.Settings, null)},
-            selected = currentRoute == QChatDestinations.SETTINGS_ROUTE,
+            selected = currentRoute == ZepiDestinations.SETTINGS_ROUTE,
             onClick = { navigateToSettings(); closeDrawer() },
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
         )
         NavigationDrawerItem(
             label = { Text(stringResource(id = AppText.subscriptions_title)) },
             icon = { Icon(Icons.Default.Subscriptions, null)},
-            selected = currentRoute == QChatDestinations.SUBSCRIPTIONS_ROUTE,
+            selected = currentRoute == ZepiDestinations.SUBSCRIPTIONS_ROUTE,
             onClick = { navigateToSubscriptions(); closeDrawer() },
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
         )

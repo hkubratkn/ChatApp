@@ -17,7 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.zepi.social_chat_food.R.drawable as AppIcon
 import com.zepi.social_chat_food.R.string as AppText
-import com.zepi.social_chat_food.iraaa.ui.QChatDestinations
+import com.zepi.social_chat_food.ui.ZepiDestinations
 
 @Composable
 fun AppNavRail(
@@ -39,14 +39,14 @@ fun AppNavRail(
     ) {
         Spacer(Modifier.weight(1f))
         NavigationRailItem(
-            selected = currentRoute == QChatDestinations.HOME_ROUTE,
+            selected = currentRoute == ZepiDestinations.HOME_ROUTE,
             onClick = navigateToHome,
             icon = { Icon(Icons.Filled.Home, stringResource(AppText.home_title)) },
             label = { Text(stringResource(AppText.home_title)) },
             alwaysShowLabel = false
         )
         NavigationRailItem(
-            selected = currentRoute == QChatDestinations.SETTINGS_ROUTE,
+            selected = currentRoute == ZepiDestinations.SETTINGS_ROUTE,
             onClick = navigateToSettings,
             icon = { Icon(Icons.Filled.ListAlt, stringResource(AppText.settings_title)) },
             label = { Text(stringResource(AppText.settings_title)) },
