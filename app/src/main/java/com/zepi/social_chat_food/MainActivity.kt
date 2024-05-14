@@ -1,5 +1,5 @@
 package com.zepi.social_chat_food
-
+/**
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
@@ -12,7 +12,7 @@ import androidx.compose.runtime.getValue
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.zepi.social_chat_food.iraaa.MainViewModel
+import com.zepi.social_chat_food.MainViewModel
 import com.zepi.social_chat_food.iraaa.QChatApp
 import com.zepi.social_chat_food.iraaa.core.data.NetworkMonitor
 import com.zepi.social_chat_food.iraaa.model.Theme
@@ -22,35 +22,32 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private var mInterstitialAd: InterstitialAd? = null
-    private val viewModel: MainViewModel by viewModels()
 
-    @Inject
-    lateinit var networkMonitor: NetworkMonitor
 
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
-            val theme by viewModel.theme
+val theme by viewModel.theme
 
-            val isDarkTheme = when (theme) {
-                Theme.Dark -> true
-                Theme.Light -> false
-            }
+val isDarkTheme = when (theme) {
+Theme.Dark -> true
+Theme.Light -> false
+}
 
-            val widthSizeClass = calculateWindowSizeClass(this).widthSizeClass
-            QChatApp(
-                widthSizeClass = widthSizeClass,
-                networkMonitor = networkMonitor,
-                isDarkTheme = isDarkTheme,
-                showInterstitialAds = { }//showInterstitialAd() }
-            )
+val widthSizeClass = calculateWindowSizeClass(this).widthSizeClass
+QChatApp(
+widthSizeClass = widthSizeClass,
+networkMonitor = networkMonitor,
+isDarkTheme = isDarkTheme,
+showInterstitialAds = { }//showInterstitialAd() }
+)
            // inAppReview(this)
         }
     }
 }
-/**
+
     private fun showInterstitialAd() {
         if (mInterstitialAd != null) {
             mInterstitialAd?.show(this)
@@ -204,28 +201,37 @@ flow.addOnCompleteListener { _ -> }
 }
 }*/
 
-
-
-
-
-/**
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+import androidx.compose.runtime.getValue
 import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.glance.appwidget.updateAll
-import com.zepi.social_chat_food.ui.Main
+import com.zepi.social_chat_food.core.data.NetworkMonitor
 import com.zepi.social_chat_food.ui.ShortcutParams
+import com.zepi.social_chat_food.model.Theme
 import com.zepi.social_chat_food.soci.widget.SociaLiteAppWidget
+import com.zepi.social_chat_food.ui.ZepiApp
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val viewModel: MainViewModel by viewModels()
+
+    @Inject
+    lateinit var networkMonitor: NetworkMonitor
+
+
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         enableEdgeToEdge()
@@ -235,9 +241,23 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         runBlocking { SociaLiteAppWidget().updateAll(this@MainActivity) }
         setContent {
-            Main(
+
+            val theme by viewModel.theme
+
+            val isDarkTheme = when (theme) {
+                Theme.Dark -> true
+                Theme.Light -> false
+            }
+
+            val widthSizeClass = calculateWindowSizeClass(this).widthSizeClass
+            ZepiApp(
                 shortcutParams = extractShortcutParams(intent),
+                widthSizeClass = widthSizeClass,
+                networkMonitor = networkMonitor,
+                isDarkTheme = isDarkTheme,
+                showInterstitialAds = { }//showInterstitialAd() }
             )
+
         }
     }
 
@@ -250,4 +270,4 @@ class MainActivity : ComponentActivity() {
         return ShortcutParams(shortcutId, text)
     }
 }
-*/
+

@@ -12,14 +12,14 @@ import androidx.compose.material.icons.filled.SportsMartialArts
 import androidx.compose.material.icons.filled.VideogameAsset
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.zepi.social_chat_food.R.string as AppText
-import com.zepi.social_chat_food.iraaa.core.constants.ConsGender.FEMALE
-import com.zepi.social_chat_food.iraaa.core.constants.ConsGender.MALE
-import com.zepi.social_chat_food.iraaa.core.constants.Hobby.DANCE
-import com.zepi.social_chat_food.iraaa.core.constants.Hobby.DRAW
-import com.zepi.social_chat_food.iraaa.core.constants.Hobby.PLAY_GAMES
-import com.zepi.social_chat_food.iraaa.core.constants.Hobby.READ
-import com.zepi.social_chat_food.iraaa.core.constants.Hobby.WATCH_MOVIES
-import com.zepi.social_chat_food.iraaa.core.constants.Hobby.WORK_OUT
+import com.zepi.social_chat_food.core.constants.ConsGender.FEMALE
+import com.zepi.social_chat_food.core.constants.ConsGender.MALE
+import com.zepi.social_chat_food.core.constants.Hobby.DANCE
+import com.zepi.social_chat_food.core.constants.Hobby.DRAW
+import com.zepi.social_chat_food.core.constants.Hobby.PLAY_GAMES
+import com.zepi.social_chat_food.core.constants.Hobby.READ
+import com.zepi.social_chat_food.core.constants.Hobby.WATCH_MOVIES
+import com.zepi.social_chat_food.core.constants.Hobby.WORK_OUT
 
 fun hobbyIcon(text: String): ImageVector {
     return when(text){

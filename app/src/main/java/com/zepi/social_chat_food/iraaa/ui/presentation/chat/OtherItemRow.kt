@@ -14,10 +14,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.zepi.social_chat_food.iraaa.common.ext.getTimeFromTimestamp
-import com.zepi.social_chat_food.iraaa.model.ChatRow
+import com.zepi.social_chat_food.model.ChatRow
 
 @Composable
-fun OtherItemRow(chatRow: ChatRow){
+fun OtherItemRow(chatRow: com.zepi.social_chat_food.model.ChatRow){
     val ChatBubbleShape = RoundedCornerShape(4.dp, 20.dp, 20.dp, 20.dp)
 
     Card(

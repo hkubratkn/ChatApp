@@ -3,11 +3,11 @@ package com.zepi.social_chat_food.iraaa.ui.presentation.splash
 import androidx.compose.runtime.mutableStateOf
 import javax.inject.Inject
 import com.google.firebase.auth.FirebaseAuthException
-import com.zepi.social_chat_food.iraaa.core.datastore.OnBoardingRepository
-import com.zepi.social_chat_food.iraaa.model.service.ConfigurationService
-import com.zepi.social_chat_food.iraaa.model.service.LogService
-import com.zepi.social_chat_food.iraaa.ui.QChatDestinations
-import com.zepi.social_chat_food.iraaa.ui.presentation.QChatViewModel
+import com.zepi.social_chat_food.core.datastore.OnBoardingRepository
+import com.zepi.social_chat_food.ui.ZepiDestinations
+import com.zepi.social_chat_food.model.service.ConfigurationService
+import com.zepi.social_chat_food.model.service.LogService
+import com.zepi.social_chat_food.ui.presentation.QChatViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 @HiltViewModel
@@ -31,7 +31,7 @@ class SplashViewModel @Inject constructor(
         launchCatching(snackbar = false) {
             try {
                 onBoardingRepository.readOnBoardingState().collect { completed ->
-                    openAndPopUp(QChatDestinations.HOME_ROUTE, QChatDestinations.SPLASH_ROUTE)
+                    openAndPopUp(ZepiDestinations.HOME_ROUTE, ZepiDestinations.SPLASH_ROUTE)
 
                     /** if (completed) {
                         openAndPopUp(QChatDestinations.HOME_ROUTE, QChatDestinations.SPLASH_ROUTE)
