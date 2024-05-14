@@ -1,4 +1,4 @@
-package com.zepi.social_chat_food.iraaa.core.constants
+package com.zepi.social_chat_food.core.constants
 
 object Cons {
     const val SHARE_CODE = "https://play.google.com/store/apps/details?id=com.kapirti.ira"

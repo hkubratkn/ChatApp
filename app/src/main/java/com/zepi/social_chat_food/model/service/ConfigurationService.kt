@@ -1,4 +1,4 @@
-package com.zepi.social_chat_food.iraaa.model.service
+package com.zepi.social_chat_food.model.service
 
 interface ConfigurationService {
     suspend fun fetchConfiguration(): Boolean

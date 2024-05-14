@@ -1,4 +1,20 @@
-package com.zepi.social_chat_food.iraaa.model.service.impl
+/*
+ * Copyright (C) 2024 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.zepi.social_chat_food.model.service.impl
 
 import com.zepi.social_chat_food.BuildConfig
 import com.zepi.social_chat_food.R.xml as AppConfig
@@ -6,8 +22,8 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.get
 import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
-import com.zepi.social_chat_food.iraaa.model.service.ConfigurationService
-import com.zepi.social_chat_food.iraaa.model.service.trace
+import com.zepi.social_chat_food.model.service.ConfigurationService
+import com.zepi.social_chat_food.model.service.trace
 import javax.inject.Inject
 import kotlinx.coroutines.tasks.await
 

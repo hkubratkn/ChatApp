@@ -1,4 +1,4 @@
-package com.zepi.social_chat_food.iraaa.core.data
+package com.zepi.social_chat_food.core.data
 
 import android.content.Context
 import android.net.ConnectivityManager
