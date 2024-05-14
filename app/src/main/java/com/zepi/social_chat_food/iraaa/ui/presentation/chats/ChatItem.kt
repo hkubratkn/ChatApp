@@ -12,12 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.zepi.social_chat_food.iraaa.common.composable.NoSurfaceImage
-import com.zepi.social_chat_food.iraaa.model.Chat
+import com.zepi.social_chat_food.model.Chat
 
 @Composable
 fun ChatItem(
-    chat: Chat,
-    onChatsClick: (Chat) -> Unit
+    chat: com.zepi.social_chat_food.model.Chat,
+    onChatsClick: (com.zepi.social_chat_food.model.Chat) -> Unit
 ) {
 
     Card(

@@ -8,12 +8,12 @@ import kotlinx.coroutines.Job
 import com.zepi.social_chat_food.R.string as AppText
 import com.zepi.social_chat_food.iraaa.core.Async
 import com.zepi.social_chat_food.iraaa.core.WhileUiSubscribed
-import com.zepi.social_chat_food.iraaa.core.datastore.ChatIdRepository
-import com.zepi.social_chat_food.iraaa.model.Chat
-import com.zepi.social_chat_food.iraaa.model.service.AccountService
-import com.zepi.social_chat_food.iraaa.model.service.FirestoreService
-import com.zepi.social_chat_food.iraaa.model.service.LogService
-import com.zepi.social_chat_food.iraaa.ui.presentation.QChatViewModel
+import com.zepi.social_chat_food.core.datastore.ChatIdRepository
+import com.zepi.social_chat_food.model.Chat
+import com.zepi.social_chat_food.model.service.AccountService
+import com.zepi.social_chat_food.model.service.FirestoreService
+import com.zepi.social_chat_food.model.service.LogService
+import com.zepi.social_chat_food.ui.presentation.QChatViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -23,7 +23,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 data class ChatsUiState(
-    val items: List<Chat> = emptyList(),
+    val items: List<com.zepi.social_chat_food.model.Chat> = emptyList(),
     val isLoading: Boolean = false,
     val userMessage: Int? = null,
 )
@@ -78,14 +78,14 @@ class ChatsViewModel @Inject constructor(
         }
     }
 
-    private fun handleTask(task: List<Chat>?): Async<List<Chat>> {
+    private fun handleTask(task: List<com.zepi.social_chat_food.model.Chat>?): Async<List<com.zepi.social_chat_food.model.Chat>> {
         if (task == null) {
             return Async.Error(AppText.no_chats_all)
         }
         return Async.Success(task)
     }
 
-    fun onArchiveSwipe(chat: Chat){
+    fun onArchiveSwipe(chat: com.zepi.social_chat_food.model.Chat){
         launchCatching{
             firestoreService.saveUserArchive(uid = accountService.currentUserId, chat = chat, chatId = chat.chatId)
             firestoreService.deleteUserChat(uid = accountService.currentUserId, chatId = chat.chatId)
@@ -97,7 +97,7 @@ class ChatsViewModel @Inject constructor(
 
     private var job: Job? = null
 
-    fun onChatsClick(chat: Chat) {
+    fun onChatsClick(chat: com.zepi.social_chat_food.model.Chat) {
         launchCatching {
             if (accountService.hasUser) {
                 job?.cancel()

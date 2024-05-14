@@ -18,7 +18,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.zepi.social_chat_food.R.string as AppText
 import com.zepi.social_chat_food.iraaa.common.composable.AdsBannerToolbar
 import com.zepi.social_chat_food.iraaa.common.composable.MenuToolbar
-import com.zepi.social_chat_food.iraaa.core.constants.ConsAds
+import com.zepi.social_chat_food.core.constants.ConsAds
 import com.zepi.social_chat_food.iraaa.core.viewmodel.IncludeChatViewModel
 
 @Composable

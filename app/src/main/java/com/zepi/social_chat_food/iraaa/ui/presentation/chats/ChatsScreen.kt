@@ -11,14 +11,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import com.zepi.social_chat_food.iraaa.common.EmptyContentChats
 import com.zepi.social_chat_food.iraaa.common.composable.LoadingContent
-import com.zepi.social_chat_food.iraaa.model.Chat
+import com.zepi.social_chat_food.model.Chat
 
 @Composable
 fun ChatsScreen(
     uiState: ChatsUiState,
     onRefresh: () -> Unit,
-    onArchiveSwipe: (Chat) -> Unit,
-    onChatsClick: (Chat) -> Unit,
+    onArchiveSwipe: (com.zepi.social_chat_food.model.Chat) -> Unit,
+    onChatsClick: (com.zepi.social_chat_food.model.Chat) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val scrollState = rememberLazyListState()
@@ -38,10 +38,10 @@ fun ChatsScreen(
 @Composable
 private fun ChatsContent(
     loading: Boolean,
-    chats: List<Chat>,
+    chats: List<com.zepi.social_chat_food.model.Chat>,
     onRefresh: () -> Unit,
-    onArchive: (Chat) -> Unit,
-    onChatsClick: (Chat) -> Unit,
+    onArchive: (com.zepi.social_chat_food.model.Chat) -> Unit,
+    onChatsClick: (com.zepi.social_chat_food.model.Chat) -> Unit,
     modifier: Modifier = Modifier,
     scrollState: LazyListState
 ) {
