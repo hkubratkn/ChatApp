@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 The Android Open Source Project
+ * Copyright (C) 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,13 @@
  * limitations under the License.
  */
 
-package com.google.android.samples.socialite
+package com.zepi.social_chat_food.core.usecase
 
-import app.cash.turbine.ReceiveTurbine
+import com.zepi.social_chat_food.core.repository.UserPreferencesRepository
+import javax.inject.Inject
 
-suspend fun <T> ReceiveTurbine<List<T>>.awaitNotEmpty(): List<T> {
-    var list: List<T>
-    do {
-        list = awaitItem()
-    } while (list.isEmpty())
-    return list
-}
-
-suspend fun <T> ReceiveTurbine<T?>.awaitNotNull(): T {
-    var item: T?
-    do {
-        item = awaitItem()
-    } while (item == null)
-    return item
+class SaveThemePreferencesUseCase @Inject constructor(
+    private val repository: UserPreferencesRepository
+) {
+    suspend operator fun invoke(theme: String) = repository.saveThemePreferences(theme)
 }
