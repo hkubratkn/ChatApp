@@ -1,5 +1,5 @@
 package com.zepi.social_chat_food.iraaa.ui.presentation.chat.nope
-
+/**
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,10 +28,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.firebase.Timestamp
 import com.zepi.social_chat_food.iraaa.common.composable.AdsBannerToolbar
-import com.zepi.social_chat_food.iraaa.core.constants.ConsAds.ADS_CHAT_BANNER_ID
+import com.zepi.social_chat_food.core.constants.ConsAds.ADS_CHAT_BANNER_ID
 import com.zepi.social_chat_food.iraaa.core.viewmodel.IncludeChatViewModel
 import com.zepi.social_chat_food.iraaa.core.viewmodel.IncludeUserUidViewModel
-import com.zepi.social_chat_food.iraaa.model.Chat
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -86,7 +85,7 @@ fun ChatScreenNope(
                     onClick = {
                         showInterstialAd()
                         includeChatViewModel.addChat(
-                            Chat(
+                            com.zepi.social_chat_food.model.Chat(
                                 chatId = chatId,
                                 partnerName = userName,
                                 partnerSurname = userSurname,
@@ -127,3 +126,4 @@ fun ChatScreenNope(
         }
     }
 }
+*/

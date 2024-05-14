@@ -1,4 +1,4 @@
-package com.zepi.social_chat_food.iraaa.model
+package com.zepi.social_chat_food.model
 
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ServerTimestamp
