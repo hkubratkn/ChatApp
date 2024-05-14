@@ -34,9 +34,8 @@ import com.zepi.social_chat_food.iraaa.common.EmptyContent
 import com.zepi.social_chat_food.iraaa.common.composable.AdsBannerToolbar
 import com.zepi.social_chat_food.iraaa.common.composable.JumpToButton
 import com.zepi.social_chat_food.iraaa.common.composable.LoadingContent
-import com.zepi.social_chat_food.iraaa.core.constants.ConsAds.ADS_ARCHIVE_BANNER_ID
+import com.zepi.social_chat_food.core.constants.ConsAds.ADS_ARCHIVE_BANNER_ID
 import com.zepi.social_chat_food.iraaa.core.viewmodel.IncludeChatViewModel
-import com.zepi.social_chat_food.model.Chat
 import com.zepi.social_chat_food.iraaa.ui.presentation.chats.ChatItem
 
 @Composable
