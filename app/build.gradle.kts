@@ -15,15 +15,15 @@ kotlin {
 }
 
 android {
-    namespace = "com.zepi.social_chat_food"
+    namespace = "com.kapirti.video_food_delivery_shopping"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.zepi.social_chat_food"
+        applicationId = "com.kapirti.video_food_delivery_shopping"
         minSdk = 21
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 24
+        versionName = "1.0.24"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -104,7 +104,7 @@ dependencies {
     implementation(libs.room.ktx)
     androidTestImplementation(libs.room.testing)
 
-    implementation(libs.splashscreen)
+   // implementation(libs.splashscreen)
     implementation(libs.concurrent.kts)
 
     implementation(libs.camera.core)

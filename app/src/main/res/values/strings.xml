@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Zepi</string>
+    <string name="app_name">Foood</string>
 
     <string name="timeline">Timeline</string>
     <string name="chats">Chats</string>
@@ -37,6 +37,7 @@
     <!-- Settings -->
     <eat-comment />
     <string name="clear_message_history">Clear message history</string>
+    <string name="edit_profile">Edit profile</string>
 
     <!-- Video Edit Screen -->
     <string name="remove_audio">Remove audio</string>
