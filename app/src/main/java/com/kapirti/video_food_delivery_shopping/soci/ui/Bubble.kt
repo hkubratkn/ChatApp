@@ -3,7 +3,7 @@ package com.kapirti.video_food_delivery_shopping.soci.ui
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.kapirti.video_food_delivery_shopping.ui.presentation.chat.ChatScreen
+import com.kapirti.video_food_delivery_shopping.ui.presentation.chat.dontknow.ChatScreen
 import com.kapirti.video_food_delivery_shopping.ui.theme.ZepiTheme
 
 @Composable

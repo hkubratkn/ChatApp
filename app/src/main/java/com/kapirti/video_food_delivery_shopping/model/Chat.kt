@@ -5,7 +5,7 @@ import com.google.firebase.firestore.ServerTimestamp
 
 data class Chat(
     val chatId: String = "",
-    val unread: Int = 0,
+   // val unread: Int = 0,
     val partnerName: String = "",
     val partnerSurname: String = "",
     val partnerPhoto: String = "",

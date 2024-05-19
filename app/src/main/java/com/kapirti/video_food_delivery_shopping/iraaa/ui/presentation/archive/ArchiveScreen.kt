@@ -20,12 +20,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
-import com.kapirti.video_food_delivery_shopping.iraaa.core.viewmodel.IncludeChatViewModel
+import com.kapirti.video_food_delivery_shopping.core.viewmodel.IncludeUserIdViewModel
 
 @Composable
 fun ArchiveScreen(
     openChatExistScreen: () -> Unit,
-    includeChatViewModel: IncludeChatViewModel,
+   // includeChatViewModel: IncludeUserIdViewModel,
     modifier: Modifier = Modifier,
   //  viewModel: ArchiveViewModel = hiltViewModel(),
     nestedScrollInteropConnection: NestedScrollConnection = rememberNestedScrollInteropConnection()

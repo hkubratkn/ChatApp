@@ -60,9 +60,9 @@ fun ChatItem(
                 Text(text = "${chat.partnerName} ${chat.partnerSurname}", style = MaterialTheme.typography.titleSmall, color = Color.Cyan)
             }
 
-            if(chat.unread != 0){
-                Text(text = chat.unread.toString(), color = Color.Green, modifier = Modifier.padding(end = 5.dp))
-            }
+          //  if(chat.unread != 0){
+            //    Text(text = chat.unread.toString(), color = Color.Green, modifier = Modifier.padding(end = 5.dp))
+           // }
         }
     }
 }
