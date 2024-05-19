@@ -39,7 +39,7 @@
             android:name="firebase_performance_logcat_enabled"
             android:value="true" />
 
-        <receiver
+<!--        <receiver
             android:name="com.zepi.social_chat_food.soci.widget.SociaLiteAppWidgetReceiver"
             android:exported="true"
             android:label="@string/favorite_contact_widget_name">
@@ -53,12 +53,12 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/socialite_widget_info" />
-        </receiver>
+        </receiver> -->
 
         <activity
-            android:name="com.zepi.social_chat_food.MainActivity"
+            android:name="com.kapirti.video_food_delivery_shopping.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Social.SplashScreen"
+            android:theme="@style/Theme.Social"
             android:windowSoftInputMode="adjustResize"
             android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
             android:supportsPictureInPicture="true">
@@ -109,7 +109,7 @@
                                            multiple instances of this Activity.
         -->
         <activity
-            android:name="com.zepi.social_chat_food.soci.BubbleActivity"
+            android:name="com.kapirti.video_food_delivery_shopping.soci.BubbleActivity"
             android:allowEmbedded="true"
             android:documentLaunchMode="always"
             android:exported="true"
@@ -127,7 +127,7 @@
             </intent-filter>
         </activity>
 
-
+<!--
         <activity android:name="com.zepi.social_chat_food.soci.widget.SociaLiteAppWidgetConfigActivity"
             android:taskAffinity=""
             android:exported="true">
@@ -143,8 +143,8 @@
             android:exported="true"
             tools:ignore="ExportedContentProvider" />
 
-        <receiver android:name="com.zepi.social_chat_food.soci.ReplyReceiver" />
-
+        <receiver android:name="com.zepi.social_chat_food.chatext.ReplyReceiver" />
+-->
         <!-- Trigger Google Play services to install the backported photo picker module.
          Refer https://developer.android.com/training/data-storage/shared/photopicker#device-availability -->
         <service

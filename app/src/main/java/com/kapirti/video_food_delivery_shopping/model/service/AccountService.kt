@@ -1,6 +1,6 @@
-package com.zepi.social_chat_food.model.service
+package com.kapirti.video_food_delivery_shopping.model.service
 
-import com.zepi.social_chat_food.model.UserUid
+import com.kapirti.video_food_delivery_shopping.model.UserUid
 import kotlinx.coroutines.flow.Flow
 
 interface AccountService {
