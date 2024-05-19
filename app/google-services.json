@@ -1,26 +1,36 @@
 {
   "project_info": {
-    "project_number": "884226216515",
-    "project_id": "social-d6057",
-    "storage_bucket": "social-d6057.appspot.com"
+    "project_number": "997902289737",
+    "project_id": "food-56b29",
+    "storage_bucket": "food-56b29.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:884226216515:android:6e539c12f551259e98baf6",
+        "mobilesdk_app_id": "1:997902289737:android:497862392ba81eb8bea898",
         "android_client_info": {
-          "package_name": "com.zepi.social_chat_food"
+          "package_name": "com.kapirti.video_food_delivery_shopping"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "997902289737-ct4ghjjfu6mtsnuoddvijr4229klj99r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyBvWa3WEmpfvU00tNnzSSP_9DYunyR2VIg"
+          "current_key": "AIzaSyAk_xwizjqU8GxhUv1FlLeYd8mTni-Y5QA"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997902289737-ct4ghjjfu6mtsnuoddvijr4229klj99r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
