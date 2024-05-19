@@ -4,7 +4,7 @@ import android.app.RemoteInput
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.zepi.social_chat_food.chatext.repository.ChatRepository
+import com.kapirti.video_food_delivery_shopping.chatext.repository.ChatRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
@@ -46,5 +46,4 @@ class ReplyReceiver : BroadcastReceiver() {
         }
     }
 }
-
 */

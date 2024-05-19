@@ -35,13 +35,12 @@ import com.kapirti.video_food_delivery_shopping.R.string as AppText
 import com.kapirti.video_food_delivery_shopping.common.composable.AdsBannerToolbar
 import com.kapirti.video_food_delivery_shopping.common.composable.MenuToolbar
 import com.kapirti.video_food_delivery_shopping.core.constants.ConsAds
-import com.kapirti.video_food_delivery_shopping.iraaa.core.viewmodel.IncludeChatViewModel
 
 @Composable
 fun ChatsRoute(
     chatsToArchive: () -> Unit,
     chatsToChat: () -> Unit,
-    includeChatViewModel: IncludeChatViewModel,
+   // includeChatViewModel: IncludeChatViewModel,
     isExpandedScreen: Boolean,
     openDrawer: () -> Unit,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },

@@ -15,7 +15,7 @@
  */
 
 package com.kapirti.video_food_delivery_shopping.iraaa.core.viewmodel
-
+/**
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -29,4 +29,4 @@ class IncludeChatViewModel: ViewModel() {
     fun addChat(newChat: Chat) {
         chat = newChat
     }
-}
+}*/

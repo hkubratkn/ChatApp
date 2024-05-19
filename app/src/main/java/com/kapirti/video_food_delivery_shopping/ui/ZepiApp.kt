@@ -29,8 +29,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.kapirti.video_food_delivery_shopping.ZepiAppState
 import com.kapirti.video_food_delivery_shopping.common.composable.AppNavRail
 import com.kapirti.video_food_delivery_shopping.core.data.NetworkMonitor
-import com.kapirti.video_food_delivery_shopping.iraaa.core.viewmodel.IncludeChatViewModel
-import com.kapirti.video_food_delivery_shopping.iraaa.core.viewmodel.IncludeUserUidViewModel
+import com.kapirti.video_food_delivery_shopping.core.viewmodel.IncludeUserIdViewModel
 import com.kapirti.video_food_delivery_shopping.ui.theme.ZepiTheme
 import kotlinx.coroutines.CoroutineScope
 
@@ -46,8 +45,7 @@ fun ZepiApp(
         networkMonitor = networkMonitor,
     ),
 ) {
-    val includeChatViewModel: IncludeChatViewModel = viewModel()
-    val includeUserUidViewModel: IncludeUserUidViewModel = viewModel()
+    val includeUserIdViewModel: IncludeUserIdViewModel = viewModel()
 
     ZepiTheme(isDarkTheme) {
         val isOffline by appState.isOffline.collectAsStateWithLifecycle()
@@ -102,8 +100,7 @@ fun ZepiApp(
             navigateAndPopUpSearchToUserProfile = navigationActions.navigateAndPopUpSearchToUserProfile,
             navigateAndPopUpRegisterToEdit = navigationActions.navigateAndPopUpRegisterToEdit,
 
-            includeChatViewModel = includeChatViewModel,
-            includeUserUidViewModel = includeUserUidViewModel,
+            includeUserIdViewModel = includeUserIdViewModel,
 
             isExpandedScreen = isExpandedScreen,
             showInterstitialAds = showInterstitialAds,

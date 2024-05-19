@@ -18,6 +18,7 @@ package com.kapirti.video_food_delivery_shopping.model.service
 
 import com.kapirti.video_food_delivery_shopping.model.User
 import com.kapirti.video_food_delivery_shopping.model.Chat
+import com.kapirti.video_food_delivery_shopping.model.ChatMessage
 import kotlinx.coroutines.flow.Flow
 
 interface FirestoreService {
@@ -26,9 +27,11 @@ interface FirestoreService {
 
     suspend fun getUser(userId: String): User?
 
+    suspend fun saveUserChat(uid: String, chatId: String, chat: Chat)
+    suspend fun saveChatMessage(chatId: String, chatMessage: ChatMessage)
+
+
     /*
-
-
     package com.example.makeitso.model.service
 
 
@@ -57,10 +60,8 @@ interface FirestoreService {
 
 
     suspend fun saveUser(user: User)
-    suspend fun saveUserChat(uid: String, chatId: String, chat: Chat)
     suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat)
     suspend fun saveUserPhotos(userPhotos: UserPhotos)
-    suspend fun saveChatRow(chatId: String, chatRow: Message)
     suspend fun saveFeedback(feedback: Feedback)
     suspend fun saveLang(feedback: Feedback)
     suspend fun block(uid: String, partnerUid: String, block: Block)

@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.kapirti.video_food_delivery_shopping.ui.presentation.home
 
 import androidx.compose.animation.AnimatedVisibility
@@ -47,7 +31,7 @@ import com.kapirti.video_food_delivery_shopping.common.EmptyContent
 import com.kapirti.video_food_delivery_shopping.common.composable.AdsBannerToolbar
 import com.kapirti.video_food_delivery_shopping.common.composable.HomeTopAppBar
 import com.kapirti.video_food_delivery_shopping.core.constants.ConsAds.ADS_HOME_BANNER_ID
-import com.kapirti.video_food_delivery_shopping.iraaa.core.viewmodel.IncludeUserUidViewModel
+import com.kapirti.video_food_delivery_shopping.core.viewmodel.IncludeUserIdViewModel
 import com.kapirti.video_food_delivery_shopping.ui.presentation.home.filter.FilterScreen
 //import com.zepi.social_chat_food.ui.presentation.timeline.EmptyTimeline
 //import com.zepi.social_chat_food.ui.presentation.timeline.TimelineVerticalPager
@@ -58,7 +42,7 @@ fun HomeRoute(
     openDrawer: () -> Unit,
     navigateSearch: () -> Unit,
     navigateUserProfile: () -> Unit,
-    includeUserUidViewModel: IncludeUserUidViewModel,
+    includeUserIdViewModel: IncludeUserIdViewModel,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
@@ -95,7 +79,7 @@ fun HomeRoute(
                         UserItem(
                             user = userItem,
                             onUserClick = {
-                                includeUserUidViewModel.addUserUid(it.uid)
+                                includeUserIdViewModel.addPartnerId(it.uid)
                                 navigateUserProfile()
                             }
                         )

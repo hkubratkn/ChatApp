@@ -233,6 +233,8 @@ import com.kapirti.video_food_delivery_shopping.model.User
 import com.kapirti.video_food_delivery_shopping.model.service.AccountService
 import com.kapirti.video_food_delivery_shopping.model.service.FirestoreService
 import com.kapirti.video_food_delivery_shopping.model.Chat
+import com.kapirti.video_food_delivery_shopping.model.ChatMessage
+import com.kapirti.video_food_delivery_shopping.model.service.trace
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
@@ -269,11 +271,15 @@ class FirestoreServiceImpl @Inject constructor(
 
 
     override suspend fun getUser(uid: String): User? = userDocument(uid).get().await().toObject()
+    override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_CHAT_TRACE) { userChatCollection(uid).document(chatId).set(chat).await() }
 
+    override suspend fun saveChatMessage(chatId: String, chatMessage: ChatMessage): Unit = trace(SAVE_CHAT_MESSAGE_TRACE) { chatCollection(chatId = chatId).add(chatMessage).await() }
 
     private fun userCollection(): CollectionReference = firestore.collection(USER_COLLECTION)
     private fun userDocument(uid: String): DocumentReference = userCollection().document(uid)
     private fun userChatCollection(uid: String): CollectionReference = userDocument(uid).collection(CHAT_COLLECTION)
+
+    private fun chatCollection(chatId: String): CollectionReference = firestore.collection(CHAT_COLLECTION).document(chatId).collection(chatId)
 
 
 
@@ -282,6 +288,8 @@ class FirestoreServiceImpl @Inject constructor(
     companion object {
         private const val USER_COLLECTION = "User"
         private const val CHAT_COLLECTION = "Chat"
+        private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
+        private const val SAVE_CHAT_MESSAGE_TRACE = "saveChatMessage"
     }
 
 }
@@ -443,8 +451,6 @@ Copyright 2022 Google LLC
     override suspend fun saveUser(user: User): Unit =
         trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
 
-    override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit =
-        trace(SAVE_USER_CHAT_TRACE) { userChatCollection(uid).document(chatId).set(chat).await() }
 
     override suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat): Unit =
         trace(SAVE_USER_ARCHIVE_TRACE) {
@@ -456,8 +462,6 @@ Copyright 2022 Google LLC
             userPhotosCollection(auth.currentUserId).add(userPhotos).await()
         }
 
-    override suspend fun saveChatRow(chatId: String, chatRow: Message): Unit =
-        trace(SAVE_CHAT_ROW) { chatCollection(chatId = chatId).add(chatRow).await() }
 
     override suspend fun saveFeedback(feedback: Feedback): Unit =
         trace(SAVE_FEEDBACK_TRACE) { feedbackCollection().add(feedback).await() }
@@ -555,8 +559,6 @@ Copyright 2022 Google LLC
     private fun userPhotosCollection(uid: String): CollectionReference =
         userDocument(uid).collection(PHOTOS_COLLECTION)
 
-    private fun chatCollection(chatId: String): CollectionReference =
-        firestore.collection(CHAT_COLLECTION).document(chatId).collection(chatId)
 
     private fun deleteCollection(): CollectionReference = firestore.collection(DELETE_COLLECTION)
     private fun feedbackCollection(): CollectionReference =
@@ -599,7 +601,6 @@ Copyright 2022 Google LLC
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
         private const val SAVE_USER_ARCHIVE_TRACE = "saveUserArchive"
         private const val SAVE_USER_PHOTOS_TRACE = "saveUserPhotos"
-        private const val SAVE_CHAT_ROW = "saveChatRow"
         private const val SAVE_FEEDBACK_TRACE = "saveFeedback"
         private const val SAVE_LANG_TRACE = "saveLang"
         private const val SAVE_BLOCK_USER = "saveBlockUser"

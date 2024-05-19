@@ -1,5 +1,21 @@
-package com.kapirti.video_food_delivery_shopping.ui.presentation.chat
+/*
+ * Copyright (C) 2024 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
+package com.kapirti.video_food_delivery_shopping.ui.presentation.chat.dontknow
+/**
 import com.kapirti.video_food_delivery_shopping.model.service.LogService
 import com.kapirti.video_food_delivery_shopping.ui.presentation.ZepiViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -8,13 +24,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ChatViewModel @Inject constructor(
-   // private val repository: ChatRepository,
-    logService: LogService
+// private val repository: ChatRepository,
+logService: LogService
 ) : ZepiViewModel(logService) {
 
 }
 
-
+ */
 
 
 /**
@@ -41,73 +57,73 @@ class ChatViewModel @Inject constructor(
 private val repository: ChatRepository,
 logService: LogService
 ) : ZepiViewModel(logService) {
-    private val chatId = MutableStateFlow("0L")
+private val chatId = MutableStateFlow("0L")
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    private val _messages = chatId.flatMapLatest { id -> repository.findMessages(id) }
+@OptIn(ExperimentalCoroutinesApi::class)
+private val _messages = chatId.flatMapLatest { id -> repository.findMessages(id) }
 
-    private val attendees = _chat.map { c -> (c?.attendees ?: emptyList()).associateBy { it.id } }
+private val attendees = _chat.map { c -> (c?.attendees ?: emptyList()).associateBy { it.id } }
 
-   // val messages = combine(_messages, attendees) { messages, attendees ->
-    val messages = combine(_messages){ messages ->
+// val messages = combine(_messages, attendees) { messages, attendees ->
+val messages = combine(_messages){ messages ->
 // Build a list of `ChatMessage` from this list of `Message`.
-        buildList {
-            for (i in messages.indices) {
-                val message = messages[i]
+buildList {
+for (i in messages.indices) {
+val message = messages[i]
 // Show the contact icon only at the first message if the same sender has multiple
 // messages in a row.
-                val showIcon = i + 1 >= messages.size ||
-                    messages[i + 1].senderId != message.senderId
-                val iconUri = if (showIcon) attendees[message.senderId]?.iconUri else null
-                add(
-                    ChatMessage(
-                        text = message.text,
-                        mediaUri = message.mediaUri,
-                        mediaMimeType = message.mediaMimeType,
-                        timestamp = message.timestamp,
-                        isIncoming = message.isIncoming,
-                        senderIconUri = iconUri,
-                    ),
-                )
-            }
-        }
-    }.stateInUi(emptyList())
+val showIcon = i + 1 >= messages.size ||
+messages[i + 1].senderId != message.senderId
+val iconUri = if (showIcon) attendees[message.senderId]?.iconUri else null
+add(
+ChatMessage(
+text = message.text,
+mediaUri = message.mediaUri,
+mediaMimeType = message.mediaMimeType,
+timestamp = message.timestamp,
+isIncoming = message.isIncoming,
+senderIconUri = iconUri,
+),
+)
+}
+}
+}.stateInUi(emptyList())
 
 
-    private val _input = MutableStateFlow("")
-    val input: StateFlow<String> = _input
-    private var inputPrefilled = false
+private val _input = MutableStateFlow("")
+val input: StateFlow<String> = _input
+private var inputPrefilled = false
 
-    val sendEnabled = _input.map(::isInputValid).stateInUi(false)
+val sendEnabled = _input.map(::isInputValid).stateInUi(false)
 
 
-    fun setChatId(chatId: String) {
-        this.chatId.value = chatId
-    }
-    fun prefillInput(input: String) {
-        if (inputPrefilled) return
-        inputPrefilled = true
-        updateInput(input)
-    }
-    fun updateInput(input: String) {
-        _input.value = input
-    }
+fun setChatId(chatId: String) {
+this.chatId.value = chatId
+}
+fun prefillInput(input: String) {
+if (inputPrefilled) return
+inputPrefilled = true
+updateInput(input)
+}
+fun updateInput(input: String) {
+_input.value = input
+}
 }
 
 private fun isInputValid(input: String): Boolean = input.isNotBlank()
 /**
-    private val userId = MutableStateFlow("id")
+private val userId = MutableStateFlow("id")
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    private val _chat = chatId.flatMapLatest { id -> repository.findChat(id) }
-
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    private val _user = userId.flatMapLatest { id -> repository.findUser(id) }
+@OptIn(ExperimentalCoroutinesApi::class)
+private val _chat = chatId.flatMapLatest { id -> repository.findChat(id) }
 
 
-    val chat = _chat.stateInUi(null)
-    val user = _user.stateInUi(null)
+@OptIn(ExperimentalCoroutinesApi::class)
+private val _user = userId.flatMapLatest { id -> repository.findUser(id) }
+
+
+val chat = _chat.stateInUi(null)
+val user = _user.stateInUi(null)
 */
 
 /**
@@ -143,37 +159,37 @@ _userPhotos.value = up
 
 
 
-    /**
-     * We want to update the notification when the corresponding chat screen is open. Setting this
-     * to `true` updates the current notification, removing the unread message(s) badge icon and
-     * suppressing further notifications.
-     */
-    fun setForeground(foreground: Boolean) {
-        val chatId = chatId.value
-        if (chatId != 0L) {
-            if (foreground) {
-                repository.activateChat(chatId)
-            } else {
-                repository.deactivateChat(chatId)
-            }
-        }
-    }
+/**
+ * We want to update the notification when the corresponding chat screen is open. Setting this
+ * to `true` updates the current notification, removing the unread message(s) badge icon and
+ * suppressing further notifications.
+*/
+fun setForeground(foreground: Boolean) {
+val chatId = chatId.value
+if (chatId != 0L) {
+if (foreground) {
+repository.activateChat(chatId)
+} else {
+repository.deactivateChat(chatId)
+}
+}
+}
 
 
 
 
 
 
-    fun send() {
-        val chatId = chatId.value
-        if (chatId <= 0) return
-        val input = _input.value
-        if (!isInputValid(input)) return
-        viewModelScope.launch {
-            repository.sendMessage(chatId, input, null, null)
-            _input.value = ""
-        }
-    }
+fun send() {
+val chatId = chatId.value
+if (chatId <= 0) return
+val input = _input.value
+if (!isInputValid(input)) return
+viewModelScope.launch {
+repository.sendMessage(chatId, input, null, null)
+_input.value = ""
+}
+}
 }
 
 */
@@ -287,5 +303,5 @@ _input.value = ""
 }
 
 private fun isInputValid(input: String): Boolean = input.isNotBlank()
- */
 */
+ */

@@ -4,10 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.DrawerState
@@ -25,8 +21,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.navigation.navDeepLink
 import com.kapirti.video_food_delivery_shopping.common.composable.AppNavRail
-import com.kapirti.video_food_delivery_shopping.iraaa.core.viewmodel.IncludeChatViewModel
-import com.kapirti.video_food_delivery_shopping.iraaa.core.viewmodel.IncludeUserUidViewModel
+import com.kapirti.video_food_delivery_shopping.core.viewmodel.IncludeUserIdViewModel
 import com.kapirti.video_food_delivery_shopping.ui.presentation.edit.EditRoute
 import com.kapirti.video_food_delivery_shopping.ui.presentation.userprofile.UserProfileRoute
 import com.kapirti.video_food_delivery_shopping.ui.presentation.profile.ProfileRoute
@@ -41,8 +36,8 @@ import com.kapirti.video_food_delivery_shopping.soci.ui.camera.MediaType
 //import com.zepi.social_chat_food.soci.ui.photopicker.navigation.photoPickerScreen
 import com.kapirti.video_food_delivery_shopping.soci.ui.player.VideoPlayerScreen
 import com.kapirti.video_food_delivery_shopping.soci.ui.videoedit.VideoEditScreen
-import com.kapirti.video_food_delivery_shopping.ui.presentation.chat.ChatScreen
-import com.kapirti.video_food_delivery_shopping.ui.presentation.chatnope.ChatNopeScreen
+import com.kapirti.video_food_delivery_shopping.ui.presentation.chat.dontknow.ChatScreen
+import com.kapirti.video_food_delivery_shopping.ui.presentation.chat.chatnope.ChatNopeScreen
 import com.kapirti.video_food_delivery_shopping.ui.presentation.chats.ChatsRoute
 import com.kapirti.video_food_delivery_shopping.ui.presentation.home.HomeRoute
 import com.kapirti.video_food_delivery_shopping.ui.presentation.login.LogInScreen
@@ -75,8 +70,7 @@ fun ZepiNavGraph(
     navigateAndPopUpSearchToUserProfile: () -> Unit,
     navigateAndPopUpRegisterToEdit: () -> Unit,
 
-    includeChatViewModel: IncludeChatViewModel,
-    includeUserUidViewModel: IncludeUserUidViewModel,
+    includeUserIdViewModel: IncludeUserIdViewModel,
 
 
     onShowSnackbar: suspend (String, String?) -> Boolean,
@@ -156,7 +150,7 @@ fun ZepiNavGraph(
                         openDrawer = openDrawer,
                         navigateSearch = navigateSearch,
                         navigateUserProfile = navigateUserProfile,
-                        includeUserUidViewModel = includeUserUidViewModel,
+                        includeUserIdViewModel = includeUserIdViewModel,
                     )
                 }
                 composable(
@@ -409,7 +403,7 @@ fun ZepiNavGraph(
                 composable(ZepiDestinations.SEARCH_ROUTE) {
                     SearchScreen(
                         navigateAndPopUpSearchToUserProfile = navigateAndPopUpSearchToUserProfile,
-                        includeUserUidViewModel = includeUserUidViewModel
+                        includeUserIdViewModel = includeUserIdViewModel
                     )
                 }
                 composable(ZepiDestinations.USER_PROFILE_ROUTE) {
@@ -419,16 +413,22 @@ fun ZepiNavGraph(
                         onChatExistClick = {}, //userProfileToChatExist,
                         onChatNopeClick = userProfileToChatNope,
                         showInterstitialAds = showInterstitialAds,
-                        includeUserUidViewModel = includeUserUidViewModel
+                        includeUserIdViewModel = includeUserIdViewModel
                     )
                 }
                 composable(ZepiDestinations.CHATNOPE_ROUTE) {
                     ChatNopeScreen(
                         popUp = popUpScreen,
                         openAndPopUpChatNopeToExist = {},//openAndPopUpChatNopeToExist,
-                        includeUserUidViewModel = includeUserUidViewModel,
-                        includeChatViewModel = includeChatViewModel,
-                        showInterstialAd = showInterstitialAds
+                        includeUserIdViewModel = includeUserIdViewModel,
+                        showInterstialAd = showInterstitialAds,
+                        //userUid = userId,
+                        foreground = true,
+                        onCameraClick = {}, //{ navController.navigate("chat/$chatId/camera") },
+                        onPhotoPickerClick = {},//{ navController.navigateToPhotoPicker(chatId) },
+                        onVideoClick = { uri -> navController.navigate("videoPlayer?uri=$uri") },
+                        prefilledText = "",
+                        modifier = Modifier.fillMaxSize(),
                     )
                 }
                 composable(

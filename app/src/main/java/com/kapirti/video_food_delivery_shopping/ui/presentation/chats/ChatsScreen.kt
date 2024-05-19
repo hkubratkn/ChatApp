@@ -20,71 +20,42 @@ import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
 import com.kapirti.video_food_delivery_shopping.R
-import com.kapirti.video_food_delivery_shopping.common.EmptyContentChats
-import com.kapirti.video_food_delivery_shopping.common.composable.LoadingContent
 import com.kapirti.video_food_delivery_shopping.model.Chat
-
-@Composable
-fun ChatsScreen(
-    uiState: ChatsUiState,
-    onRefresh: () -> Unit,
-    contentPadding: PaddingValues,
-    onChatClicked: (chatId: String) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    ChatsContent(
-        loading = uiState.isLoading,
-        chats = uiState.items,
-        onRefresh = onRefresh,
-        contentPadding = contentPadding,
-        onChatClicked = onChatClicked,
-        modifier = modifier,
-    )
-}
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-private fun ChatsContent(
-    loading: Boolean,
+fun ChatsScreen(
     chats: List<Chat>,
-    onRefresh: () -> Unit,
     contentPadding: PaddingValues,
     onChatClicked: (chatId: String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    LoadingContent(
-        loading = loading,
-        empty = chats.isEmpty() && !loading,
-        emptyContent = { EmptyContentChats(modifier = modifier) },
-        onRefresh = onRefresh
+    @SuppressLint("InlinedApi") // Granted at install time on API <33.
+    val notificationPermissionState = rememberPermissionState(
+        android.Manifest.permission.POST_NOTIFICATIONS,
+    )
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = contentPadding,
     ) {
-        @SuppressLint("InlinedApi") // Granted at install time on API <33.
-        val notificationPermissionState = rememberPermissionState(
-            android.Manifest.permission.POST_NOTIFICATIONS,
-        )
-        LazyColumn(
-            modifier = modifier,
-            contentPadding = contentPadding,
-        ) {
-            if (!notificationPermissionState.status.isGranted) {
-                item {
-                    NotificationPermissionCard(
-                        shouldShowRationale = notificationPermissionState.status.shouldShowRationale,
-                        onGrantClick = {
-                            notificationPermissionState.launchPermissionRequest()
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                    )
-                }
-            }
-            items(items = chats) { chat ->
-                ChatRow(
-                    chat = chat,
-                    onClick = { onChatClicked(chat.chatId)},//chat.chatWithLastMessage.id) },
+        if (!notificationPermissionState.status.isGranted) {
+            item {
+                NotificationPermissionCard(
+                    shouldShowRationale = notificationPermissionState.status.shouldShowRationale,
+                    onGrantClick = {
+                        notificationPermissionState.launchPermissionRequest()
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
                 )
             }
+        }
+        items(items = chats) { chat ->
+            ChatRow(
+                chat = chat,
+                onClick = { onChatClicked(chat.chatId) },//chat.chatWithLastMessage.id) },
+            )
         }
     }
 }

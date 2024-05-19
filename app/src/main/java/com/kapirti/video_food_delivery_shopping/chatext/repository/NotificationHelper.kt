@@ -20,12 +20,12 @@ import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.graphics.drawable.IconCompat
 import androidx.core.net.toUri
-import com.zepi.social_chat_food.soci.BubbleActivity
-import com.zepi.social_chat_food.MainActivity
-import com.zepi.social_chat_food.R
-import com.zepi.social_chat_food.chatext.ReplyReceiver
-import com.zepi.social_chat_food.soci.model.Contact
-import com.zepi.social_chat_food.soci.model.Message
+import com.kapirti.video_food_delivery_shopping.soci.BubbleActivity
+import com.kapirti.video_food_delivery_shopping.MainActivity
+import com.kapirti.video_food_delivery_shopping.R
+import com.kapirti.video_food_delivery_shopping.ReplyReceiver
+import com.kapirti.video_food_delivery_shopping.soci.model.Contact
+import com.kapirti.video_food_delivery_shopping.chatext.model.Message
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -281,5 +281,4 @@ class NotificationHelper @Inject constructor(@ApplicationContext context: Contex
         }
     }
 }
-
 */

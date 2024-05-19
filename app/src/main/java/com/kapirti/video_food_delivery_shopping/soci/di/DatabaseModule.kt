@@ -1,9 +1,12 @@
 package com.kapirti.video_food_delivery_shopping.soci.di
 
-/**
+import javax.inject.Qualifier
+
+
 @Qualifier
 annotation class AppCoroutineScope
-*/
+
+
 /**
 import android.content.Context
 import androidx.room.Room

@@ -62,12 +62,11 @@ import com.kapirti.video_food_delivery_shopping.common.ext.calculateBirthday
 import com.kapirti.video_food_delivery_shopping.common.ext.timeCustomFormat
 import com.kapirti.video_food_delivery_shopping.core.constants.ConsAds.ADS_USER_PROFILE_BANNER_ID
 import com.kapirti.video_food_delivery_shopping.core.constants.ConsGender.MALE
-import com.kapirti.video_food_delivery_shopping.iraaa.core.viewmodel.IncludeUserUidViewModel
 import com.kapirti.video_food_delivery_shopping.model.User
 import com.kapirti.video_food_delivery_shopping.model.UserPhotos
 import com.kapirti.video_food_delivery_shopping.common.ext.toReadableString
+import com.kapirti.video_food_delivery_shopping.core.viewmodel.IncludeUserIdViewModel
 import com.kapirti.video_food_delivery_shopping.model.Chat
-import com.kapirti.video_food_delivery_shopping.ui.presentation.chats.ChatsUiState
 import com.kapirti.video_food_delivery_shopping.ui.presentation.chats.ChatsViewModel
 
 private val BottomBarHeight = 56.dp
@@ -89,19 +88,19 @@ internal fun UserProfileRoute(
     onChatNopeClick: () -> Unit,
     onLoginClick: () -> Unit,
     showInterstitialAds: () -> Unit,
-    includeUserUidViewModel: IncludeUserUidViewModel,
+    includeUserIdViewModel: IncludeUserIdViewModel,
     viewModel: ChatsViewModel = hiltViewModel(),
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val chats by viewModel.chats.collectAsStateWithLifecycle()
+
     UserProfileScreen(
         popUpScreen = popUpScreen,
         onChatNopeClick = onChatNopeClick,
         onChatExistClick = onChatExistClick,
         onLoginClick = onLoginClick,
         showInterstitialAds = showInterstitialAds,
-        includeUserUidViewModel = includeUserUidViewModel,
-        uiState = uiState,
-        onRefresh = viewModel::refresh,
+        includeUserIdViewModel = includeUserIdViewModel,
+        chats = chats,
     )
 }
 
@@ -112,9 +111,8 @@ private fun UserProfileScreen(
     onChatNopeClick: () -> Unit,
     onLoginClick: () -> Unit,
     showInterstitialAds: () -> Unit,
-    includeUserUidViewModel: IncludeUserUidViewModel,
-    uiState: ChatsUiState,
-    onRefresh: () -> Unit,
+    includeUserIdViewModel: IncludeUserIdViewModel,
+    chats: List<Chat>,
     modifier: Modifier = Modifier,
 ) {
     UserProfileContent(
@@ -123,10 +121,8 @@ private fun UserProfileScreen(
         onChatExistClick = onChatExistClick,
         onLoginClick = onLoginClick,
         showInterstitialAds = showInterstitialAds,
-        includeUserUidViewModel = includeUserUidViewModel,
-        loading = uiState.isLoading,
-        chats = uiState.items,
-        onRefresh = onRefresh,
+        includeUserIdViewModel = includeUserIdViewModel,
+        chats = chats,
         modifier = modifier,
     )
 }
@@ -138,40 +134,20 @@ private fun UserProfileContent(
     onChatNopeClick: () -> Unit,
     onLoginClick: () -> Unit,
     showInterstitialAds: () -> Unit,
-    includeUserUidViewModel: IncludeUserUidViewModel,
-    loading: Boolean,
+    includeUserIdViewModel: IncludeUserIdViewModel,
     chats: List<Chat>,
-    onRefresh: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    LoadingContent(
-        loading = loading,
-        empty = chats.isEmpty() && !loading,
-        emptyContent = {
-            UserProfileBody(
-                popUpScreen = popUpScreen,
-                onChatNopeClick = onChatNopeClick,
-                onChatExistClick = onChatExistClick,
-                onLoginClick = onLoginClick,
-                showInterstialAd = showInterstitialAds,
-                chats = emptyList(),
-                includeUserUidViewModel = includeUserUidViewModel,
-                modifier = modifier
-            )
-        },
-        onRefresh = onRefresh
-    ) {
-        UserProfileBody(
-            popUpScreen = popUpScreen,
-            onChatNopeClick = onChatNopeClick,
-            onChatExistClick = onChatExistClick,
-            onLoginClick = onLoginClick,
-            showInterstialAd = showInterstitialAds,
-            chats = chats,
-            includeUserUidViewModel = includeUserUidViewModel,
-            modifier = modifier
-        )
-    }
+    UserProfileBody(
+        popUpScreen = popUpScreen,
+        onChatNopeClick = onChatNopeClick,
+        onChatExistClick = onChatExistClick,
+        onLoginClick = onLoginClick,
+        showInterstialAd = showInterstitialAds,
+        chats = chats,
+        includeUserIdViewModel = includeUserIdViewModel,
+        modifier = modifier
+    )
 }
 
 
@@ -181,7 +157,7 @@ private fun UserProfileBody(
     onChatExistClick: () -> Unit,
     onChatNopeClick: () -> Unit,
     onLoginClick: () -> Unit,
-    includeUserUidViewModel: IncludeUserUidViewModel,
+    includeUserIdViewModel: IncludeUserIdViewModel,
     showInterstialAd: () -> Unit,
     chats: List<Chat>,
     modifier: Modifier = Modifier,
@@ -190,7 +166,7 @@ private fun UserProfileBody(
 ) {
     LaunchedEffect(Unit) {
         viewModel.initialize(
-            userUid = includeUserUidViewModel.userUid ?: "",
+            userUid = includeUserIdViewModel.partnerId ?: "",
         )
     }
 

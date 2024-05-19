@@ -20,6 +20,7 @@ import android.net.Uri
 import androidx.core.net.toUri
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.kapirti.video_food_delivery_shopping.chatext.model.Message
 
 private val replyModels = mapOf<String, Contact.(String) -> Message.Builder>(
     "cat" to { _ -> buildReply { this.text = "Meow" } },
@@ -88,3 +89,4 @@ fun extractChatId(shortcutId: String): Long {
         0L
     }
 }
+

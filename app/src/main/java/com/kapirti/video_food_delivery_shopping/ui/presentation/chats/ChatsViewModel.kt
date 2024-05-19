@@ -13,6 +13,7 @@ import com.kapirti.video_food_delivery_shopping.model.Chat
 import com.kapirti.video_food_delivery_shopping.model.service.AccountService
 import com.kapirti.video_food_delivery_shopping.model.service.FirestoreService
 import com.kapirti.video_food_delivery_shopping.model.service.LogService
+import com.kapirti.video_food_delivery_shopping.soci.ui.stateInUi
 import com.kapirti.video_food_delivery_shopping.ui.presentation.ZepiViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,68 +23,18 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-data class ChatsUiState(
-    val items: List<Chat> = emptyList(),
-    val isLoading: Boolean = false,
-    val userMessage: Int? = null,
-)
-
 @HiltViewModel
 class ChatsViewModel @Inject constructor(
-    private val accountService: AccountService,
     private val firestoreService: FirestoreService,
     private val chatIdRepository: ChatIdRepository,
     logService: LogService,
 ): ZepiViewModel(logService) {
-    private val _userMessage: MutableStateFlow<Int?> = MutableStateFlow(null)
-    private val _isLoading = MutableStateFlow(false)
-    private val _isTaskDeleted = MutableStateFlow(false)
-    private val _taskAsync = firestoreService.userChats
-        .map { handleTask(it) }
-        .catch { emit(Async.Error(AppText.loading_chats_error)) }
 
+    val chats = firestoreService.userChats
+        .stateInUi(emptyList())
+}
 
-    val uiState: StateFlow<ChatsUiState> = combine(
-        _userMessage, _isLoading, _isTaskDeleted, _taskAsync
-    ) { userMessage, isLoading, isTaskDeleted, taskAsync ->
-        when (taskAsync) {
-            Async.Loading -> {
-                ChatsUiState(isLoading = true)
-            }
-            is Async.Error -> {
-                ChatsUiState(
-                    userMessage = taskAsync.errorMessage,
-                )
-            }
-            is Async.Success -> {
-                ChatsUiState(
-                    items = taskAsync.data,
-                    isLoading = isLoading,
-                    userMessage = userMessage,
-                )
-            }
-        }
-    }
-        .stateIn(
-            scope = viewModelScope,
-            started = WhileUiSubscribed,
-            initialValue = ChatsUiState(isLoading = true)
-        )
-
-
-    fun refresh() {
-        _isLoading.value = true
-        launchCatching {
-            _isLoading.value = false
-        }
-    }
-
-    private fun handleTask(task: List<Chat>?): Async<List<Chat>> {
-        if (task == null) {
-            return Async.Error(AppText.no_chats_all)
-        }
-        return Async.Success(task)
-    }
+    /**
 
  /**   fun onArchiveSwipe(chat: Chat){
         launchCatching{
@@ -112,3 +63,4 @@ class ChatsViewModel @Inject constructor(
         }
     }
 }
+*/
