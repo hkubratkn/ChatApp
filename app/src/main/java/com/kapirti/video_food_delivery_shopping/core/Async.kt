@@ -14,15 +14,12 @@
  * limitations under the License.
  */
 
-package com.zepi.social_chat_food.soci.data
+package com.kapirti.video_food_delivery_shopping.core
 
-import javax.inject.Inject
+sealed class Async<out T> {
+    object Loading : Async<Nothing>()
 
-interface DatabaseManager {
-    fun wipeAndReinitializeDatabase()
-}
+    data class Error(val errorMessage: Int) : Async<Nothing>()
 
-class RoomDatabaseManager @Inject constructor(private val appDatabase: AppDatabase) :
-    DatabaseManager {
-    override fun wipeAndReinitializeDatabase() = appDatabase.wipeAndReinitializeData()
+    data class Success<out T>(val data: T) : Async<T>()
 }

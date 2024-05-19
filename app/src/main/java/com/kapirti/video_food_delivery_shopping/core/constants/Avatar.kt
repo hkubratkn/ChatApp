@@ -1,4 +1,4 @@
-package com.zepi.social_chat_food.core.constants
+package com.kapirti.video_food_delivery_shopping.core.constants
 
 object Avatar {
     const val AVATAR_1 = "https://firebasestorage.googleapis.com/v0/b/example-eeaa5.appspot.com/o/Screenshot_20230215-195845_Gallery.jpg?alt=media&token=6735809d-0e70-41c2-85e2-3dd02549f957"

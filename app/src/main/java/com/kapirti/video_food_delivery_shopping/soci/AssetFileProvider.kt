@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.zepi.social_chat_food.soci
+package com.kapirti.video_food_delivery_shopping.soci
 
 import android.content.ContentProvider
 import android.content.ContentValues
@@ -22,7 +22,7 @@ import android.content.res.AssetFileDescriptor
 import android.database.Cursor
 import android.net.Uri
 import android.webkit.MimeTypeMap
-import com.zepi.social_chat_food.soci.model.Contact
+import com.kapirti.video_food_delivery_shopping.soci.model.Contact
 
 class AssetFileProvider : ContentProvider() {
 

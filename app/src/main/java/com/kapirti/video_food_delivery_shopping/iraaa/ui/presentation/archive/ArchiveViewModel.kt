@@ -1,14 +1,30 @@
-package com.zepi.social_chat_food.iraaa.ui.presentation.archive
+/*
+ * Copyright (C) 2024 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
+package com.kapirti.video_food_delivery_shopping.iraaa.ui.presentation.archive
+/**
 import androidx.lifecycle.viewModelScope
-import com.zepi.social_chat_food.R.string as AppText
-import com.zepi.social_chat_food.iraaa.core.Async
-import com.zepi.social_chat_food.iraaa.core.WhileUiSubscribed
-import com.zepi.social_chat_food.model.Chat
-import com.zepi.social_chat_food.model.service.AccountService
-import com.zepi.social_chat_food.model.service.FirestoreService
-import com.zepi.social_chat_food.model.service.LogService
-import com.zepi.social_chat_food.ui.presentation.QChatViewModel
+import com.kapirti.video_food_delivery_shopping.R.string as AppText
+import com.kapirti.video_food_delivery_shopping.core.Async
+import com.kapirti.video_food_delivery_shopping.iraaa.core.WhileUiSubscribed
+import com.kapirti.video_food_delivery_shopping.model.Chat
+import com.kapirti.video_food_delivery_shopping.model.service.AccountService
+import com.kapirti.video_food_delivery_shopping.model.service.FirestoreService
+import com.kapirti.video_food_delivery_shopping.model.service.LogService
+import com.kapirti.video_food_delivery_shopping.ui.presentation.ZepiViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,7 +46,7 @@ class ArchiveViewModel @Inject constructor(
     private val accountService: AccountService,
     private val firestoreService: FirestoreService,
     logService: LogService
-): QChatViewModel(logService) {
+): ZepiViewModel(logService) {
     private val _userMessage: MutableStateFlow<Int?> = MutableStateFlow(null)
     private val _isLoading = MutableStateFlow(false)
     private val _archiveAsync = firestoreService.archiveChats
@@ -65,14 +81,14 @@ class ArchiveViewModel @Inject constructor(
         )
 
 
-    private fun handleArchive(archive: List<com.zepi.social_chat_food.model.Chat>): Async<List<com.zepi.social_chat_food.model.Chat>> {
+    private fun handleArchive(archive: List<Chat>): Async<List<Chat>> {
         if (archive == null) {
             return Async.Error(AppText.no_archives_all)
         }
         return Async.Success(archive)
     }
 
-    fun onChatSwipe(chat: com.zepi.social_chat_food.model.Chat){
+    fun onChatSwipe(chat: Chat){
         launchCatching {
             firestoreService.saveUserChat(uid = accountService.currentUserId, chat = chat, chatId = chat.chatId)
             firestoreService.deleteUserArchive(uid = accountService.currentUserId, chatId = chat.chatId)
@@ -86,3 +102,4 @@ class ArchiveViewModel @Inject constructor(
         }
     }
 }
+*/
