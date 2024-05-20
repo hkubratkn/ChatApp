@@ -167,9 +167,9 @@ private fun VideoPlayer(
                 builder.setAspectRatio(aspectRatio)
             }
 
-            builder.setActions(
+/**            builder.setActions(
                 listOfRemoteActions(shouldEnterPipMode, context),
-            )
+            )*/
 
             // Add autoEnterEnabled for versions S and up
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {

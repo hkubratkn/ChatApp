@@ -40,7 +40,6 @@ import androidx.compose.ui.unit.dp
 import com.kapirti.video_food_delivery_shopping.R.string as AppText
 import com.kapirti.video_food_delivery_shopping.R.drawable as AppIcon
 import com.kapirti.video_food_delivery_shopping.model.User
-import com.kapirti.video_food_delivery_shopping.ui.presentation.profile.ext.InterestsTabRow
 import com.kapirti.video_food_delivery_shopping.ui.presentation.profile.ext.ProfileCard
 import com.kapirti.video_food_delivery_shopping.ui.presentation.profile.ext.SelectTopicButton
 
