@@ -15,7 +15,7 @@
  */
 
 package com.kapirti.video_food_delivery_shopping.soci.ui.camera
-
+/**
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -110,3 +110,4 @@ fun CameraAndRecordAudioPermission(
         }
     }
 }
+*/

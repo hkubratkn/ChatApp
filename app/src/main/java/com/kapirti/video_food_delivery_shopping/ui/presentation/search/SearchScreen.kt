@@ -57,8 +57,8 @@ fun SearchScreen(
     includeUserIdViewModel: IncludeUserIdViewModel,
     modifier: Modifier = Modifier,
     viewModel: SearchViewModel = hiltViewModel(),
-    //state: SearchState = rememberSearchState()
-) {}/**
+    state: SearchState = rememberSearchState()
+) {
     val users = viewModel.users.collectAsStateWithLifecycle(initialValue = emptyList())
     val recents = viewModel.recents.collectAsStateWithLifecycle(initialValue = emptyList())
 
@@ -94,7 +94,7 @@ fun SearchScreen(
                     SearchDisplay.Results -> SearchResults(
                         state.searchResults,
                         onUserClick = { itUser ->
-                            includeUserUidViewModel.addUserUid(itUser.uid)
+                            includeUserIdViewModel.addPartnerId(itUser.uid)
                             viewModel.onSearchClick(user = itUser, navigateAndPopUpSearchToUserProfile)
                         }
                     )
@@ -241,4 +241,3 @@ private fun SearchHint() {
         )
     }
 }
-*/

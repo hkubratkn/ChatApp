@@ -264,7 +264,7 @@ private fun ProfileProperty(label: String, value: String, isLink: Boolean = fals
         }
     }
 }*/
-
+/**
 enum class Sections(@StringRes val titleResId: Int) {
     Favorites(AppText.interests_section_favorites),
     Assets(AppText.interests_section_assets),
@@ -272,14 +272,14 @@ enum class Sections(@StringRes val titleResId: Int) {
 
 
 class TabContent(val section: Sections, val content: @Composable () -> Unit)
-
+*/
 @Composable
 fun ProfileScreen(
     profile: com.kapirti.video_food_delivery_shopping.model.User,
-    tabContent: List<TabContent>,
-    currentSection: Sections,
+   // tabContent: List<TabContent>,
+   // currentSection: Sections,
     isExpandedScreen: Boolean,
-    onTabChange: (Sections) -> Unit,
+   // onTabChange: (Sections) -> Unit,
     modifier: Modifier = Modifier,
 ) {}
   /**  InterestScreenContent(

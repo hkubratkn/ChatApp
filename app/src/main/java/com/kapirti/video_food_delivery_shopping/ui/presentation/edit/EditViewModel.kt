@@ -1,21 +1,5 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.kapirti.video_food_delivery_shopping.ui.presentation.edit
-/**
+
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
@@ -27,13 +11,8 @@ import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.Timestamp
 import com.kapirti.video_food_delivery_shopping.core.constants.Cons.DEFAULT_LANGUAGE_CODE
 import com.kapirti.video_food_delivery_shopping.core.constants.EditType.DELETE
-import com.kapirti.video_food_delivery_shopping.core.constants.EditType.DESCRIPTION
-import com.kapirti.video_food_delivery_shopping.core.constants.EditType.DISPLAY_NAME
 import com.kapirti.video_food_delivery_shopping.core.constants.EditType.FEEDBACK
-import com.kapirti.video_food_delivery_shopping.core.constants.EditType.GENDER
 import com.kapirti.video_food_delivery_shopping.core.constants.EditType.LANG
-import com.kapirti.video_food_delivery_shopping.core.constants.EditType.NAME_SURNAME
-import com.kapirti.video_food_delivery_shopping.core.constants.EditType.PHOTO
 import com.kapirti.video_food_delivery_shopping.core.constants.EditType.PROFILE
 import com.kapirti.video_food_delivery_shopping.core.datastore.EditTypeRepository
 import com.kapirti.video_food_delivery_shopping.core.datastore.LangRepository
@@ -66,33 +45,33 @@ class EditViewModel @Inject constructor(
     val editType: String?
         get() = _editType.value
 
-private val _lang = mutableStateOf<String?>(null)
-val lang: String?
-get() = _lang.value
+    private val _lang = mutableStateOf<String?>(null)
+    val lang: String?
+        get() = _lang.value
 
-var uiState = mutableStateOf(SettingsUiState())
-private set
+    var uiState = mutableStateOf(SettingsUiState())
+        private set
 
-private val password
-get() = uiState.value.password
+    private val password
+        get() = uiState.value.password
 
-fun onPasswordChange(newValue: String) {
-uiState.value = uiState.value.copy(password = newValue)
-}
+    fun onPasswordChange(newValue: String) {
+        uiState.value = uiState.value.copy(password = newValue)
+    }
 
-init {
-launchCatching {
-editTypeRepository.readEditTypeState().collect {
-_editType.value = it
-langRepository.readLangState().collect{ itLang ->
-_lang.value = itLang
-}
-}
-}
-}
+    init {
+        launchCatching {
+            editTypeRepository.readEditTypeState().collect {
+                _editType.value = it
+                langRepository.readLangState().collect { itLang ->
+                    _lang.value = itLang
+                }
+            }
+        }
+    }
 
 
-    private val questionOrder: List<SurveyQuestion> = when (_editType.value){
+    private val questionOrder: List<SurveyQuestion> = when (_editType.value) {
         PROFILE -> listOf(
             SurveyQuestion.DISPLAY_NAME,
             SurveyQuestion.NAME_SURNAME,
@@ -101,11 +80,12 @@ _lang.value = itLang
             SurveyQuestion.FREE_TIME,
             SurveyQuestion.DESCRIPTION,
         )
-        DISPLAY_NAME -> listOf(SurveyQuestion.DISPLAY_NAME)
+
+     /**   DISPLAY_NAME -> listOf(SurveyQuestion.DISPLAY_NAME)
         NAME_SURNAME -> listOf(SurveyQuestion.NAME_SURNAME)
         GENDER -> listOf(SurveyQuestion.GENDER)
         DESCRIPTION -> listOf(SurveyQuestion.DESCRIPTION)
-        PHOTO -> listOf(SurveyQuestion.TAKE_SELFIE)
+        PHOTO -> listOf(SurveyQuestion.TAKE_SELFIE)*/
         DELETE -> listOf(SurveyQuestion.DELETE)
         FEEDBACK -> listOf(SurveyQuestion.FEEDBACK)
         LANG -> listOf(SurveyQuestion.LANG)
@@ -203,20 +183,46 @@ _lang.value = itLang
         restartApp: () -> Unit,
         onShowSnackbar: suspend (String, String?) -> Boolean,
     ) {
-        when (_editType.value){
-            PROFILE -> { saveAll(restartApp = restartApp) }
-            DISPLAY_NAME -> { saveDisplayName(restartApp = restartApp) }
-            NAME_SURNAME -> { saveNameSurname(restartApp = restartApp) }
-            GENDER -> { saveGender(restartApp = restartApp) }
-            DESCRIPTION -> { saveDescription(restartApp = restartApp) }
-            PHOTO -> { photoBitmapSave(context = context, restartApp = restartApp) }
-            FEEDBACK -> { feedbackSave(popUp) }
-            LANG -> { saveLang(popUp) }
-            DELETE -> { openDelete() }
+        when (_editType.value) {
+            PROFILE -> {
+                saveAll(restartApp = restartApp)
+            }
+
+      /**      DISPLAY_NAME -> {
+                saveDisplayName(restartApp = restartApp)
+            }
+
+            NAME_SURNAME -> {
+                saveNameSurname(restartApp = restartApp)
+            }
+
+            GENDER -> {
+                saveGender(restartApp = restartApp)
+            }
+
+            DESCRIPTION -> {
+                saveDescription(restartApp = restartApp)
+            }
+
+            PHOTO -> {
+                photoBitmapSave(context = context, restartApp = restartApp)
+            }*/
+
+            FEEDBACK -> {
+                feedbackSave(popUp)
+            }
+
+            LANG -> {
+                saveLang(popUp)
+            }
+
+            DELETE -> {
+                openDelete()
+            }
         }
     }
 
-    private fun saveAll(restartApp: () -> Unit){
+    private fun saveAll(restartApp: () -> Unit) {
         launchCatching {
             accountService.displayName(_displayName.value ?: "")
             firestoreService.saveUser(
@@ -238,11 +244,13 @@ _lang.value = itLang
             restartApp()
         }
     }
-    private fun photoBitmapSave(context: Context, restartApp: () -> Unit){
+
+  /**  private fun photoBitmapSave(context: Context, restartApp: () -> Unit) {
         launchCatching {
             _selfieUri?.let {
-                if (Build.VERSION.SDK_INT < 28){
-                    _bitmap.value = MediaStore.Images.Media.getBitmap(context.contentResolver, it.value)
+                if (Build.VERSION.SDK_INT < 28) {
+                    _bitmap.value =
+                        MediaStore.Images.Media.getBitmap(context.contentResolver, it.value)
                     photoSave(restartApp)
                 } else {
                     val source = ImageDecoder.createSource(context.contentResolver, it.value!!)
@@ -252,6 +260,7 @@ _lang.value = itLang
             }
         }
     }
+
     private fun photoSave(restartApp: () -> Unit) {
         launchCatching {
             _bitmap.value?.let { bitmapNew ->
@@ -272,14 +281,16 @@ _lang.value = itLang
                 restartApp()
             }
         }
-    }
-    private fun saveDisplayName(restartApp: () -> Unit) {
+    }*/
+
+/**    private fun saveDisplayName(restartApp: () -> Unit) {
         launchCatching {
             accountService.displayName(_displayName.value!!)
             firestoreService.updateUserDisplayName(newValue = _displayName.value!!)
             restartApp()
         }
     }
+
     private fun saveNameSurname(restartApp: () -> Unit) {
         launchCatching {
             firestoreService.updateUserName(newValue = _name.value!!)
@@ -287,25 +298,32 @@ _lang.value = itLang
             restartApp()
         }
     }
+
     private fun saveGender(restartApp: () -> Unit) {
         launchCatching {
             firestoreService.updateUserGender(newValue = _gender.value!!)
             restartApp()
         }
     }
+
     private fun saveDescription(restartApp: () -> Unit) {
         launchCatching {
             firestoreService.updateUserDescription(newValue = _description.value!!)
             restartApp()
         }
-    }
+    }*/
 
     private fun openDelete() {
         launchCatching {
             _showWarningDialog.value = true
         }
     }
-    fun onDeleteMyAccountClick(restartApp: () -> Unit, onShowSnackbar: suspend (String, String?) -> Boolean, empty_password_error: String) {
+
+    fun onDeleteMyAccountClick(
+        restartApp: () -> Unit,
+        onShowSnackbar: suspend (String, String?) -> Boolean,
+        empty_password_error: String
+    ) {
         if (password.isBlank()) {
             launchCatching { onShowSnackbar(empty_password_error, "") }
             return
@@ -325,7 +343,7 @@ _lang.value = itLang
         }
     }
 
-    private fun feedbackSave(popUp: () -> Unit){
+    private fun feedbackSave(popUp: () -> Unit) {
         launchCatching {
             firestoreService.saveFeedback(
                 feedback = Feedback(
@@ -337,7 +355,8 @@ _lang.value = itLang
             popUp()
         }
     }
-    private fun saveLang(popUp: () -> Unit){
+
+    private fun saveLang(popUp: () -> Unit) {
         launchCatching {
             langRepository.saveLangState(_lang.value ?: DEFAULT_LANGUAGE_CODE)
             popUp()
@@ -348,22 +367,27 @@ _lang.value = itLang
         _displayName.value = newValue
         _isNextEnabled.value = getIsNextEnabled()
     }
+
     fun onNameChange(newValue: String) {
         _name.value = newValue
         _isNextEnabled.value = getIsNextEnabled()
     }
+
     fun onSurnameChange(newValue: String) {
         _surname.value = newValue
         _isNextEnabled.value = getIsNextEnabled()
     }
+
     fun onGenderChange(newValue: String) {
         _gender.value = newValue
         _isNextEnabled.value = getIsNextEnabled()
     }
+
     fun onAvatarChange(newValue: String) {
         _avatar.value = newValue
         _isNextEnabled.value = getIsNextEnabled()
     }
+
     fun onFreeTimeResponse(selected: Boolean, answer: String) {
         if (selected) {
             _freeTimeResponse.add(answer)
@@ -377,10 +401,12 @@ _lang.value = itLang
         _selfieUri.value = uri
         _isNextEnabled.value = getIsNextEnabled()
     }
+
     fun onDescriptionChange(newValue: String) {
         _description.value = newValue
         _isNextEnabled.value = getIsNextEnabled()
     }
+
     fun onLangChange(newValue: String) {
         _lang.value = newValue
         _isNextEnabled.value = getIsNextEnabled()
@@ -453,4 +479,4 @@ private fun kucukBitmapOlustur(kullanicininSectigiBitmap: Bitmap, maximumBoyut: 
 
     return Bitmap.createScaledBitmap(kullanicininSectigiBitmap,width,height,true)
 }
-*/
+

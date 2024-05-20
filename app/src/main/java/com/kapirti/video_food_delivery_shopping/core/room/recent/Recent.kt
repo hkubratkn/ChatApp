@@ -1,4 +1,4 @@
-package com.kapirti.video_food_delivery_shopping.iraaa.core.room.recent
+package com.kapirti.video_food_delivery_shopping.core.room.recent
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

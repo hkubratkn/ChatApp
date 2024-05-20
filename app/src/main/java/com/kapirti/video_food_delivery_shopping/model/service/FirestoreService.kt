@@ -19,6 +19,8 @@ package com.kapirti.video_food_delivery_shopping.model.service
 import com.kapirti.video_food_delivery_shopping.model.User
 import com.kapirti.video_food_delivery_shopping.model.Chat
 import com.kapirti.video_food_delivery_shopping.model.ChatMessage
+import com.kapirti.video_food_delivery_shopping.model.Delete
+import com.kapirti.video_food_delivery_shopping.model.Feedback
 import kotlinx.coroutines.flow.Flow
 
 interface FirestoreService {
@@ -27,8 +29,11 @@ interface FirestoreService {
 
     suspend fun getUser(userId: String): User?
 
+    suspend fun saveUser(user: User)
     suspend fun saveUserChat(uid: String, chatId: String, chat: Chat)
     suspend fun saveChatMessage(chatId: String, chatMessage: ChatMessage)
+    suspend fun saveFeedback(feedback: Feedback)
+    suspend fun deleteAccount(delete: Delete)
 
 
     /*
@@ -48,7 +53,7 @@ interface FirestoreService {
 
 
 
-   /** val usersAll: Flow<List<User>>
+   /**
     val users: Flow<List<User>>
     val userPhotos: Flow<List<UserPhotos>>
     val chats: Flow<List<Chat>>
@@ -59,10 +64,8 @@ interface FirestoreService {
     fun getChatMessages(chatId: String): Flow<List<Message>>
 
 
-    suspend fun saveUser(user: User)
     suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat)
     suspend fun saveUserPhotos(userPhotos: UserPhotos)
-    suspend fun saveFeedback(feedback: Feedback)
     suspend fun saveLang(feedback: Feedback)
     suspend fun block(uid: String, partnerUid: String, block: Block)
     suspend fun report(uid: String, partnerUid: String, report: Report)
@@ -79,7 +82,6 @@ interface FirestoreService {
     suspend fun deleteUserChat(uid: String, chatId: String)
     suspend fun deleteUserArchive(uid: String, chatId: String)
     suspend fun deleteChat(chatId: String)
-    suspend fun deleteAccount(delete: Delete)
 */
    /**
     val userBlock: Flow<List<com.kapirti.ira.model.Block>>

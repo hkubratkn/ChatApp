@@ -1,7 +1,7 @@
 package com.kapirti.video_food_delivery_shopping.ui.presentation.search
 
-import com.kapirti.video_food_delivery_shopping.iraaa.core.room.recent.Recent
-import com.kapirti.video_food_delivery_shopping.iraaa.core.room.recent.RecentDao
+import com.kapirti.video_food_delivery_shopping.core.room.recent.Recent
+import com.kapirti.video_food_delivery_shopping.core.room.recent.RecentDao
 import com.kapirti.video_food_delivery_shopping.model.service.LogService
 import com.kapirti.video_food_delivery_shopping.model.service.FirestoreService
 import com.kapirti.video_food_delivery_shopping.ui.presentation.ZepiViewModel
@@ -14,7 +14,7 @@ class SearchViewModel @Inject constructor(
     private val recentDao: RecentDao,
     logService: LogService
 ): ZepiViewModel(logService){
- //   val users = firestoreService.usersAll
+    val users = firestoreService.users
     val recents = recentDao.recents()
 
     fun onSearchClick(user: com.kapirti.video_food_delivery_shopping.model.User, navigateAndPopUpSearchToUserProfile: () -> Unit,){

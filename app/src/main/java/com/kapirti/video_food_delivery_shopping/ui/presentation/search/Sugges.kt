@@ -43,12 +43,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.kapirti.video_food_delivery_shopping.R.string as AppText
 import com.kapirti.video_food_delivery_shopping.common.composable.NoSurfaceImage
-import com.kapirti.video_food_delivery_shopping.iraaa.core.room.recent.Recent
+import com.kapirti.video_food_delivery_shopping.core.room.recent.Recent
 
 @Composable
 fun SearchSuggestions(
-    suggestions: List<com.kapirti.video_food_delivery_shopping.iraaa.core.room.recent.Recent>,
-    onDeleteClick: (com.kapirti.video_food_delivery_shopping.iraaa.core.room.recent.Recent) -> Unit,
+    suggestions: List<Recent>,
+    onDeleteClick: (Recent) -> Unit,
     onSuggestionSelect: (String) -> Unit
 ) {
     LazyColumn {
@@ -87,8 +87,8 @@ private fun SuggestionHeader(
 
 @Composable
 private fun Suggestion(
-    recent: com.kapirti.video_food_delivery_shopping.iraaa.core.room.recent.Recent,
-    onDeleteClick: (com.kapirti.video_food_delivery_shopping.iraaa.core.room.recent.Recent) -> Unit,
+    recent: Recent,
+    onDeleteClick: (Recent) -> Unit,
     onSuggestionSelect: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {

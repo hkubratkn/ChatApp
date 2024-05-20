@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.kapirti.video_food_delivery_shopping.ui.presentation.edit
 
 import android.content.Context
@@ -50,9 +34,8 @@ fun EditRoute(
     popUp: () -> Unit,
     restartApp: () -> Unit,
     onShowSnackbar: suspend (String, String?) -> Boolean,
-//    viewModel: EditViewModel = hiltViewModel()
-) {}
-/**
+    viewModel: EditViewModel = hiltViewModel()
+) {
     val surveyScreenData = viewModel.surveyScreenData ?: return
     val uiState by viewModel.uiState
     val context = LocalContext.current
@@ -217,4 +200,3 @@ private tailrec fun Context.findActivity(): AppCompatActivity =
         is ContextWrapper -> this.baseContext.findActivity()
         else -> throw IllegalArgumentException("Could not find activity!")
     }
-*/

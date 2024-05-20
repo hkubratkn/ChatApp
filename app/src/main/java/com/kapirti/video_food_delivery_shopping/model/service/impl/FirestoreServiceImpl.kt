@@ -234,6 +234,8 @@ import com.kapirti.video_food_delivery_shopping.model.service.AccountService
 import com.kapirti.video_food_delivery_shopping.model.service.FirestoreService
 import com.kapirti.video_food_delivery_shopping.model.Chat
 import com.kapirti.video_food_delivery_shopping.model.ChatMessage
+import com.kapirti.video_food_delivery_shopping.model.Delete
+import com.kapirti.video_food_delivery_shopping.model.Feedback
 import com.kapirti.video_food_delivery_shopping.model.service.trace
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
@@ -271,15 +273,20 @@ class FirestoreServiceImpl @Inject constructor(
 
 
     override suspend fun getUser(uid: String): User? = userDocument(uid).get().await().toObject()
+    override suspend fun saveUser(user: User): Unit = trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
     override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_CHAT_TRACE) { userChatCollection(uid).document(chatId).set(chat).await() }
-
     override suspend fun saveChatMessage(chatId: String, chatMessage: ChatMessage): Unit = trace(SAVE_CHAT_MESSAGE_TRACE) { chatCollection(chatId = chatId).add(chatMessage).await() }
+    override suspend fun saveFeedback(feedback: Feedback): Unit = trace(SAVE_FEEDBACK_TRACE) { feedbackCollection().add(feedback).await() }
+    override suspend fun deleteAccount(delete: Delete): Unit = trace(DELETE_ACCOUNT_TRACE) { deleteCollection().add(delete).await() }
+
+
 
     private fun userCollection(): CollectionReference = firestore.collection(USER_COLLECTION)
     private fun userDocument(uid: String): DocumentReference = userCollection().document(uid)
     private fun userChatCollection(uid: String): CollectionReference = userDocument(uid).collection(CHAT_COLLECTION)
-
     private fun chatCollection(chatId: String): CollectionReference = firestore.collection(CHAT_COLLECTION).document(chatId).collection(chatId)
+    private fun deleteCollection(): CollectionReference = firestore.collection(DELETE_COLLECTION)
+    private fun feedbackCollection(): CollectionReference = firestore.collection(FEEDBACK_COLLECTION)
 
 
 
@@ -288,8 +295,13 @@ class FirestoreServiceImpl @Inject constructor(
     companion object {
         private const val USER_COLLECTION = "User"
         private const val CHAT_COLLECTION = "Chat"
+        private const val DELETE_COLLECTION = "Delete"
+        private const val FEEDBACK_COLLECTION = "Feedback"
+        private const val SAVE_USER_TRACE = "saveUser"
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
         private const val SAVE_CHAT_MESSAGE_TRACE = "saveChatMessage"
+        private const val SAVE_FEEDBACK_TRACE = "saveFeedback"
+        private const val DELETE_ACCOUNT_TRACE = "deleteAccount"
     }
 
 }
@@ -448,8 +460,6 @@ Copyright 2022 Google LLC
         chatCollection(chatId).orderBy(DATE_FIELD, Query.Direction.DESCENDING).snapshots()
             .map { snapshot -> snapshot.toObjects() }
 
-    override suspend fun saveUser(user: User): Unit =
-        trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
 
 
     override suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat): Unit =
@@ -463,8 +473,6 @@ Copyright 2022 Google LLC
         }
 
 
-    override suspend fun saveFeedback(feedback: Feedback): Unit =
-        trace(SAVE_FEEDBACK_TRACE) { feedbackCollection().add(feedback).await() }
 
     override suspend fun saveLang(feedback: Feedback): Unit =
         trace(SAVE_LANG_TRACE) { langDocument(feedback).set(feedback).await() }
@@ -534,8 +542,6 @@ Copyright 2022 Google LLC
         userDocument(auth.currentUserId).update(PHOTO_FIELD, photo).await()
     }
 
-    override suspend fun deleteAccount(delete: Delete): Unit =
-        trace(DELETE_ACCOUNT_TRACE) { deleteCollection().add(delete).await() }
 
     override suspend fun deleteUserChat(uid: String, chatId: String) {
         userChatCollection(uid = uid).document(chatId).delete().await()
@@ -560,9 +566,6 @@ Copyright 2022 Google LLC
         userDocument(uid).collection(PHOTOS_COLLECTION)
 
 
-    private fun deleteCollection(): CollectionReference = firestore.collection(DELETE_COLLECTION)
-    private fun feedbackCollection(): CollectionReference =
-        firestore.collection(FEEDBACK_COLLECTION)
 
     private fun langDocument(feedback: Feedback): DocumentReference =
         firestore.collection(LANG_COLLECTION).document(feedback.text)
@@ -580,8 +583,6 @@ Copyright 2022 Google LLC
     companion object {
         private const val ARCHIVE_COLLECTION = "Archive"
         private const val PHOTOS_COLLECTION = "Photos"
-        private const val DELETE_COLLECTION = "Delete"
-        private const val FEEDBACK_COLLECTION = "Feedback"
         private const val LANG_COLLECTION = "Lang"
         private const val BLOCK_COLLECTION = "Block"
         private const val REPORT_COLLECTION = "Report"
@@ -597,11 +598,9 @@ Copyright 2022 Google LLC
         private const val DESCRIPTION_FIELD = "description"
         private const val PHOTO_FIELD = "photo"
 
-        private const val SAVE_USER_TRACE = "saveUser"
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
         private const val SAVE_USER_ARCHIVE_TRACE = "saveUserArchive"
         private const val SAVE_USER_PHOTOS_TRACE = "saveUserPhotos"
-        private const val SAVE_FEEDBACK_TRACE = "saveFeedback"
         private const val SAVE_LANG_TRACE = "saveLang"
         private const val SAVE_BLOCK_USER = "saveBlockUser"
         private const val SAVE_REPORT = "saveReport"
@@ -613,7 +612,6 @@ Copyright 2022 Google LLC
         private const val UPDATE_USER_GENDER_TRACE = "updateUserGender"
         private const val UPDATE_USER_DESCRIPTION_TRACE = "updateUserDescription"
         private const val UPDATE_USER_PHOTO_TRACE = "updateUserPhoto"
-        private const val DELETE_ACCOUNT_TRACE = "deleteAccount"
     }
 }
  /**
