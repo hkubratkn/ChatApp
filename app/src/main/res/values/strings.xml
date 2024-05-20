@@ -7,11 +7,9 @@
     <string name="generic_error">Something wrong happened. Please try again.</string>
     <string name="try_again">Try again</string>
 
-
     <!-- Home Screen -->
     <string name="home_title">Home</string>
     <string name="no_users_all">You have no users!</string>
-
 
     <!-- Timeline Screen -->
     <string name="timeline_title">Timeline</string>
