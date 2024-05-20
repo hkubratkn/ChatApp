@@ -54,7 +54,7 @@ fun AppDrawer(
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
             NavigationDrawerItem(
-                label = { Text(stringResource(id = AppText.timeline)) },
+                label = { Text(stringResource(id = AppText.timeline_title)) },
                 icon = { Icon(Icons.Filled.VideoLibrary, null) },
                 selected = currentRoute == ZepiDestinations.TIMELINE_ROUTE,
                 onClick = { navigateToTimeline(); closeDrawer() },

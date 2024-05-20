@@ -67,7 +67,7 @@ fun FilterScreen(
                     },
                     title = {
                         Text(
-                            text = stringResource(AppText.filters_title),
+                            text = "stringResource(AppText.filters_title)",
                             modifier = Modifier.fillMaxWidth(),
                             textAlign = TextAlign.Center,
                             style = MaterialTheme.typography.headlineSmall
@@ -116,6 +116,7 @@ fun FilterScreen(
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun FilterChipSection(title: String, filters: List<String> /**filters: List<Filter>*/) {
     FilterTitle(text = title)

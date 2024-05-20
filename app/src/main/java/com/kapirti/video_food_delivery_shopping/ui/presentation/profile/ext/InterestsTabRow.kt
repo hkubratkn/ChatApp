@@ -15,7 +15,7 @@
  */
 
 package com.kapirti.video_food_delivery_shopping.ui.presentation.profile.ext
-
+/**
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
@@ -92,3 +92,4 @@ private fun InterestsTabRowContent(
         }
     }
 }
+*/

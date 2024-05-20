@@ -10,7 +10,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
 import androidx.annotation.StringRes
 import com.kapirti.video_food_delivery_shopping.R
-
+/**
 @RequiresApi(Build.VERSION_CODES.O)
 fun listOfRemoteActions(isPlaying: Boolean, context: Context): List<RemoteAction> {
     return listOf(
@@ -70,3 +70,4 @@ private fun buildRemoteAction(
         ),
     )
 }
+*/
