@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
-package com.kapirti.video_food_delivery_shopping.iraaa.core.viewmodel
-/**
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
-import com.kapirti.video_food_delivery_shopping.model.Chat
+package com.kapirti.video_food_delivery_shopping.model
 
-class IncludeChatViewModel: ViewModel() {
-    var chat by mutableStateOf<Chat?>(null)
-        private set
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.ServerTimestamp
 
-    fun addChat(newChat: Chat) {
-        chat = newChat
-    }
-}*/
+data class ChatMessage(
+    val text: String,
+   // val isIncoming: Boolean,
+    val senderId: String,
+    @ServerTimestamp val timestamp: Timestamp,
+    val mediaUri: String?,
+    val mediaMimeType: String?,
+)

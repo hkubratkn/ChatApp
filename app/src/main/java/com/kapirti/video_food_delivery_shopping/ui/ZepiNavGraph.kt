@@ -21,6 +21,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.navigation.navDeepLink
 import com.kapirti.video_food_delivery_shopping.common.composable.AppNavRail
+import com.kapirti.video_food_delivery_shopping.core.viewmodel.IncludeChatViewModel
 import com.kapirti.video_food_delivery_shopping.core.viewmodel.IncludeUserIdViewModel
 import com.kapirti.video_food_delivery_shopping.ui.presentation.edit.EditRoute
 import com.kapirti.video_food_delivery_shopping.ui.presentation.userprofile.UserProfileRoute
@@ -36,7 +37,8 @@ import com.kapirti.video_food_delivery_shopping.soci.ui.camera.MediaType
 //import com.zepi.social_chat_food.soci.ui.photopicker.navigation.photoPickerScreen
 import com.kapirti.video_food_delivery_shopping.soci.ui.player.VideoPlayerScreen
 import com.kapirti.video_food_delivery_shopping.soci.ui.videoedit.VideoEditScreen
-import com.kapirti.video_food_delivery_shopping.ui.presentation.chat.dontknow.ChatScreen
+import com.kapirti.video_food_delivery_shopping.ui.presentation.chat.chatexist.ChatExistScreen
+//import com.kapirti.video_food_delivery_shopping.ui.presentation.chat.chatexist.ChatScreen
 import com.kapirti.video_food_delivery_shopping.ui.presentation.chat.chatnope.ChatNopeScreen
 import com.kapirti.video_food_delivery_shopping.ui.presentation.chats.ChatsRoute
 import com.kapirti.video_food_delivery_shopping.ui.presentation.home.HomeRoute
@@ -71,7 +73,9 @@ fun ZepiNavGraph(
     navigateAndPopUpRegisterToEdit: () -> Unit,
 
     includeUserIdViewModel: IncludeUserIdViewModel,
+    includeChatViewModel: IncludeChatViewModel,
 
+    navigateChatsToChatExist: () -> Unit,
 
     onShowSnackbar: suspend (String, String?) -> Boolean,
     showInterstitialAds: () -> Unit,
@@ -167,7 +171,8 @@ fun ZepiNavGraph(
                         isExpandedScreen = isExpandedScreen,
                         openDrawer = openDrawer,
                         modifier = Modifier.fillMaxSize(),
-                        onChatClicked = { chatId -> navController.navigate("chat/$chatId") },
+                        includeChatViewModel = includeChatViewModel,
+                        navigateChatsToChatExist = navigateChatsToChatExist
                     )
                 }
                 composable(ZepiDestinations.PROFILE_ROUTE) {
@@ -432,34 +437,46 @@ fun ZepiNavGraph(
                     )
                 }
                 composable(
-                    route = "chat/{chatId}?text={text}",
-                    arguments = listOf(
-                        navArgument("chatId") { type = NavType.LongType },
-//                navArgument("userId") { type = NavType.StringType },
-                        navArgument("text") { defaultValue = "" },
-                    ),
-                    deepLinks = listOf(
-                        navDeepLink {
-                            action = Intent.ACTION_VIEW
-                            uriPattern = "https://socialite.google.com/chat/{chatId}"
-                        },
-                    ),
-                ) { backStackEntry ->
-                    val chatId = backStackEntry.arguments?.getLong("chatId") ?: 0L
-                    //  val userId = backStackEntry.arguments?.getString("userId") ?: "userid"
-                    val text = backStackEntry.arguments?.getString("text")
-                    ChatScreen(
-                        chatId = chatId,
-                        //userUid = userId,
-                        foreground = true,
-                        onBackPressed = { navController.popBackStack() },
-                        onCameraClick = { navController.navigate("chat/$chatId/camera") },
-                        onPhotoPickerClick = {},//{ navController.navigateToPhotoPicker(chatId) },
-                        onVideoClick = { uri -> navController.navigate("videoPlayer?uri=$uri") },
-                        prefilledText = text,
+                    route = ZepiDestinations.CHATEXIST_ROUTE
+                ) {
+                    ChatExistScreen(
+                        popUp = popUpScreen,
+                        includeChatViewModel = includeChatViewModel,
                         modifier = Modifier.fillMaxSize(),
                     )
                 }
+
+
+
+     /**           composable(
+     route = "chat/{chatId}?text={text}",
+     arguments = listOf(
+     navArgument("chatId") { type = NavType.LongType },
+     //                navArgument("userId") { type = NavType.StringType },
+     navArgument("text") { defaultValue = "" },
+     ),
+     deepLinks = listOf(
+     navDeepLink {
+     action = Intent.ACTION_VIEW
+     uriPattern = "https://socialite.google.com/chat/{chatId}"
+     },
+     ),
+     ) { backStackEntry ->
+     val chatId = backStackEntry.arguments?.getLong("chatId") ?: 0L
+     //  val userId = backStackEntry.arguments?.getString("userId") ?: "userid"
+     val text = backStackEntry.arguments?.getString("text")
+     ChatScreen(
+     chatId = chatId,
+     //userUid = userId,
+     foreground = true,
+     onBackPressed = { navController.popBackStack() },
+     onCameraClick = { navController.navigate("chat/$chatId/camera") },
+     onPhotoPickerClick = {},//{ navController.navigateToPhotoPicker(chatId) },
+     onVideoClick = { uri -> navController.navigate("videoPlayer?uri=$uri") },
+     prefilledText = text,
+     modifier = Modifier.fillMaxSize(),
+     )
+     }*/
             }
         }
     }
@@ -477,20 +494,6 @@ data class ShortcutParams(
 )
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
 const val POST_ID = "postId"
 
@@ -506,10 +509,6 @@ fun (
     ) {
 
         */
-
-
-
-
 
 
  /**

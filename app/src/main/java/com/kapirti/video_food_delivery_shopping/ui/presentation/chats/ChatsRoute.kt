@@ -16,12 +16,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.kapirti.video_food_delivery_shopping.R.string as AppText
 import com.kapirti.video_food_delivery_shopping.common.EmptyContentChats
+import com.kapirti.video_food_delivery_shopping.core.viewmodel.IncludeChatViewModel
 
 @Composable
 fun ChatsRoute(
-    onChatClicked: (chatId: String) -> Unit,
     isExpandedScreen: Boolean,
     openDrawer: () -> Unit,
+    includeChatViewModel: IncludeChatViewModel,
+    navigateChatsToChatExist: () -> Unit,
     modifier: Modifier = Modifier,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     viewModel: ChatsViewModel = hiltViewModel()
@@ -47,7 +49,8 @@ fun ChatsRoute(
             ChatsScreen(
                 chats = chats,
                 contentPadding = innerPadding,
-                onChatClicked = onChatClicked
+                includeChatViewModel = includeChatViewModel,
+                navigateChatsToChatExist = navigateChatsToChatExist
             )
         }
     }

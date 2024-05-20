@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.kapirti.video_food_delivery_shopping.ui.presentation.chat.dontknow
-/**
+package com.kapirti.video_food_delivery_shopping.ui.presentation.chat.chatexist
+
 import com.kapirti.video_food_delivery_shopping.model.service.LogService
 import com.kapirti.video_food_delivery_shopping.ui.presentation.ZepiViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,12 +23,23 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class ChatViewModel @Inject constructor(
+class ChatExistViewModel @Inject constructor(
 // private val repository: ChatRepository,
-logService: LogService
+    logService: LogService
 ) : ZepiViewModel(logService) {
 
 }
+
+
+
+
+/**
+import com.kapirti.video_food_delivery_shopping.model.service.LogService
+import com.kapirti.video_food_delivery_shopping.ui.presentation.ZepiViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+
+
 
  */
 

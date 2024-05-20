@@ -20,6 +20,7 @@ import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
 import com.kapirti.video_food_delivery_shopping.R
+import com.kapirti.video_food_delivery_shopping.core.viewmodel.IncludeChatViewModel
 import com.kapirti.video_food_delivery_shopping.model.Chat
 
 @OptIn(ExperimentalPermissionsApi::class)
@@ -27,7 +28,8 @@ import com.kapirti.video_food_delivery_shopping.model.Chat
 fun ChatsScreen(
     chats: List<Chat>,
     contentPadding: PaddingValues,
-    onChatClicked: (chatId: String) -> Unit,
+    includeChatViewModel: IncludeChatViewModel,
+    navigateChatsToChatExist: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     @SuppressLint("InlinedApi") // Granted at install time on API <33.
@@ -54,7 +56,10 @@ fun ChatsScreen(
         items(items = chats) { chat ->
             ChatRow(
                 chat = chat,
-                onClick = { onChatClicked(chat.chatId) },//chat.chatWithLastMessage.id) },
+                onClick = {
+                    includeChatViewModel.addChat(chat)
+                    navigateChatsToChatExist()
+                }
             )
         }
     }
