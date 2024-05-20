@@ -440,6 +440,11 @@ fun ZepiNavGraph(
                     route = ZepiDestinations.CHATEXIST_ROUTE
                 ) {
                     ChatExistScreen(
+                        foreground = true,
+                        onCameraClick = {}, //{ navController.navigate("chat/$chatId/camera") },
+                        onPhotoPickerClick = {},//{ navController.navigateToPhotoPicker(chatId) },
+                        onVideoClick = { uri -> navController.navigate("videoPlayer?uri=$uri") },
+                        prefilledText = "",
                         popUp = popUpScreen,
                         includeChatViewModel = includeChatViewModel,
                         modifier = Modifier.fillMaxSize(),

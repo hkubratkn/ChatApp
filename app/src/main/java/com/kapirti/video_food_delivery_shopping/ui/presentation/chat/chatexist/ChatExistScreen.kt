@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.kapirti.video_food_delivery_shopping.ui.presentation.chat.chatexist
 
 import android.graphics.Bitmap
@@ -99,6 +83,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.kapirti.video_food_delivery_shopping.core.viewmodel.IncludeChatViewModel
 import com.kapirti.video_food_delivery_shopping.core.viewmodel.IncludeUserIdViewModel
+import com.kapirti.video_food_delivery_shopping.model.Chat
 import com.kapirti.video_food_delivery_shopping.model.ChatMessage
 import com.kapirti.video_food_delivery_shopping.model.User
 import com.kapirti.video_food_delivery_shopping.ui.presentation.chat.ext.ChatAppBar
@@ -109,31 +94,23 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChatExistScreen(
-    popUp: () -> Unit,
-    includeChatViewModel: IncludeChatViewModel,
-    modifier: Modifier = Modifier,
-    viewModel: ChatExistViewModel = hiltViewModel(),
-){}
-
-
-
-/**
-//
     foreground: Boolean,
     onCameraClick: () -> Unit,
     onPhotoPickerClick: () -> Unit,
     onVideoClick: (uri: String) -> Unit,
     prefilledText: String? = null,
+    popUp: () -> Unit,
+    includeChatViewModel: IncludeChatViewModel,
+    modifier: Modifier = Modifier,
+    viewModel: ChatExistViewModel = hiltViewModel(),
+){
+    val uiState by viewModel.uiState
 
+    LaunchedEffect(includeChatViewModel) {
+        viewModel.initialize(includeChatViewModel.chat ?: Chat())
 
-    openAndPopUpChatNopeToExist: () -> Unit,
-    showInterstialAd: () -> Unit,
-) {
-    LaunchedEffect(Unit) {
-        viewModel.getPartnerInfo(includeUserIdViewModel.partnerId ?: "")
         if (prefilledText != null) {
             viewModel.prefillInput(prefilledText)
         }
@@ -143,7 +120,6 @@ fun ChatExistScreen(
     val me by viewModel.me.collectAsStateWithLifecycle()
     val input by viewModel.input.collectAsStateWithLifecycle()
     val sendEnabled by viewModel.sendEnabled.collectAsStateWithLifecycle()
-
 
     partner?.let { itUser ->
         me?.let { itMe ->
@@ -183,7 +159,7 @@ fun ChatExistScreen(
                     )
                     )*/
                     viewModel.send(
-                        chatId = chatId,
+                     /**   chatId = chatId,
                         partnerName = userName,
                         partnerSurname = userSurname,
                         partnerPhoto = userPhoto,
@@ -192,7 +168,7 @@ fun ChatExistScreen(
                         profileSurname = profileSurname,
                         profilePhoto = profilePhoto,
                         profileUid = profileUid,
-                        openAndPopUpChatNopeToExist = openAndPopUpChatNopeToExist
+                        openAndPopUpChatNopeToExist = openAndPopUpChatNopeToExist*/
                     )
                 },
                 onCameraClick = onCameraClick,
@@ -208,6 +184,20 @@ fun ChatExistScreen(
     )
 }
 
+
+
+/**
+//
+
+
+    openAndPopUpChatNopeToExist: () -> Unit,
+    showInterstialAd: () -> Unit,
+) {
+
+
+
+}
+*/
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -645,4 +635,3 @@ onVideoClick = {},
 }
 
 }*/
-*/
