@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">Foood</string>
 
-
     <!-- App -->
     <string name="not_connected">⚠️You aren’t connected to the internet</string>
     <string name="generic_error">Something wrong happened. Please try again.</string>
