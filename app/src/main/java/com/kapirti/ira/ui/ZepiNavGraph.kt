@@ -444,7 +444,9 @@ fun ZepiNavGraph(
                         onVideoClick = { uri -> navController.navigate("videoPlayer?uri=$uri") },
                         prefilledText = "",
                         popUp = popUpScreen,
+                        navigateUserProfile = navigateUserProfile,
                         includeChatViewModel = includeChatViewModel,
+                        includeUserIdViewModel = includeUserIdViewModel,
                         modifier = Modifier.fillMaxSize(),
                     )
                 }

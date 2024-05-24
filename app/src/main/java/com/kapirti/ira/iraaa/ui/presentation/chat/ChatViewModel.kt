@@ -26,12 +26,8 @@ class ChatViewModel @Inject constructor(
     logService: LogService,
     private val accountService: AccountService,
     private val firestoreService: FirestoreService,
-    private val configurationService: ConfigurationService,
     private val profileDao: ProfileDao,
 ): QChatViewModel(logService) {
-    var showBlockDialog = mutableStateOf(false)
-    var showReportDialog = mutableStateOf(false)
-    val options = mutableStateOf<List<String>>(listOf())
     val uid = accountService.currentUserId
     val profile: Flow<Profile> = profileDao.getProfile()
 
@@ -112,86 +108,6 @@ class ChatViewModel @Inject constructor(
         }
     }
 
-    fun onChatActionClick(action: String) {
-        when (ChatActionOption.getByTitle(action)) {
-            ChatActionOption.Block -> onBlockClick()
-            ChatActionOption.Report -> onReportClick()
-        }
-    }
-
-    private fun onBlockClick() {
-        showBlockDialog.value = true
-    }
-
-    private fun onReportClick() {
-        showReportDialog.value = true
-    }
-
-    fun onBlockButtonClick(
-        popUpScreen: () -> Unit, chatId: String, name: String, surname: String, photo: String,
-        partnerUid: String, partnerName: String, partnerSurname: String, partnerPhoto: String
-    ) {
-        val date = Timestamp.now().toDate()
-        launchCatching {
-            firestoreService.block(
-                uid = uid,
-                partnerUid = partnerUid,
-                block = com.zepi.social_chat_food.model.Block(
-                    uid = partnerUid,
-                    name = partnerName,
-                    surname = partnerSurname,
-                    photo = partnerPhoto,
-                    date = date
-                )
-            )
-            firestoreService.block(
-                uid = partnerUid,
-                partnerUid = uid,
-                block = com.zepi.social_chat_food.model.Block(
-                    uid = uid,
-                    name = name,
-                    surname = surname,
-                    photo = photo,
-                    date = date
-                )
-            )
-            firestoreService.deleteChat(chatId = chatId)
-            firestoreService.deleteUserChat(uid = uid, chatId = chatId)
-            firestoreService.deleteUserChat(uid = partnerUid, chatId = chatId)
-            popUpScreen()
-        }
-    }
-
-    fun onReportButtonClick(
-        popUpScreen: () -> Unit, chatId: String, name: String, surname: String, photo: String,
-        partnerUid: String, partnerName: String, partnerSurname: String, partnerPhoto: String
-    ) {
-        val date = Timestamp.now()
-        launchCatching {
-            firestoreService.report(
-                uid = uid,
-                partnerUid = partnerUid,
-                report = com.zepi.social_chat_food.model.Report(
-                    uid = uid,
-                    name = name,
-                    surname = surname,
-                    photo = photo,
-                    date = date.toDate()
-                )
-            )
-            onBlockButtonClick(
-                popUpScreen = popUpScreen,
-                chatId = chatId,
-                name = name,
-                surname = surname,
-                photo = photo,
-                partnerUid = partnerUid,
-                partnerName = partnerName,
-                partnerSurname = partnerSurname,
-                partnerPhoto = partnerPhoto
-            )
-        }
-    }
 
     fun refresh() {
         _isLoading.value = true
@@ -200,9 +116,6 @@ class ChatViewModel @Inject constructor(
         }
     }
 
-    fun loadChatOptions() {
-        val hasEditOption = configurationService.isShowTaskEditButtonConfig
-        options.value = ChatActionOption.getOptions(hasEditOption)
-    }
+
 }
 */

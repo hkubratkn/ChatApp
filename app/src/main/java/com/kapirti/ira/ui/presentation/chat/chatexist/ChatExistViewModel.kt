@@ -1,15 +1,20 @@
 package com.kapirti.ira.ui.presentation.chat.chatexist
 
 import androidx.compose.runtime.mutableStateOf
+import com.google.firebase.Timestamp
 import com.kapirti.ira.core.datastore.ChatIdRepository
+import com.kapirti.ira.model.Block
 import com.kapirti.ira.model.Chat
 import com.kapirti.ira.model.ChatMessage
+import com.kapirti.ira.model.Report
 import com.kapirti.ira.model.User
 import com.kapirti.ira.model.service.AccountService
+import com.kapirti.ira.model.service.ConfigurationService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
 import com.kapirti.ira.soci.ui.stateInUi
 import com.kapirti.ira.ui.presentation.ZepiViewModel
+import com.kapirti.ira.ui.presentation.chat.ext.ChatActionOption
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,9 +26,14 @@ class ChatExistViewModel @Inject constructor(
     private val accountService: AccountService,
     private val firestoreService: FirestoreService,
     private val chatIdRepository: ChatIdRepository,
+    private val configurationService: ConfigurationService,
 // private val repository: ChatRepository,
     logService: LogService
 ) : ZepiViewModel(logService) {
+    val options = mutableStateOf<List<String>>(listOf())
+    var showBlockDialog = mutableStateOf(false)
+    var showReportDialog = mutableStateOf(false)
+
     var uiState = mutableStateOf(ChatExistUiState())
         private set
 
@@ -66,7 +76,7 @@ class ChatExistViewModel @Inject constructor(
         uiState.value = uiState.value.copy(partnerUid = newValue)
     }
 
-/**
+    /**
     private val chatId = MutableStateFlow(0L)
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -143,6 +153,91 @@ class ChatExistViewModel @Inject constructor(
         launchCatching {
            // repository.sendMessage(chatId, input, null, null)
             _input.value = ""
+        }
+    }
+
+
+    //Options
+    fun loadChatOptions() {
+        val hasEditOption = configurationService.isShowTaskEditButtonConfig
+        options.value = ChatActionOption.getOptions(hasEditOption)
+    }
+    fun onChatActionClick(action: String) {
+        when (ChatActionOption.getByTitle(action)) {
+            ChatActionOption.Block -> onBlockClick()
+            ChatActionOption.Report -> onReportClick()
+        }
+    }
+    private fun onBlockClick() {
+        showBlockDialog.value = true
+    }
+
+    private fun onReportClick() {
+        showReportDialog.value = true
+    }
+
+    fun onReportButtonClick(
+        popUpScreen: () -> Unit, chatId: String, name: String, surname: String, photo: String,
+        partnerUid: String, partnerName: String, partnerSurname: String, partnerPhoto: String
+    ) {
+        val date = Timestamp.now()
+        launchCatching {
+            firestoreService.report(
+                uid = accountService.currentUserId,
+                partnerUid = partnerUid,
+                report = Report(
+                    uid = accountService.currentUserId,
+                    name = name,
+                    surname = surname,
+                    photo = photo,
+                    date = date.toDate()
+                )
+            )
+            onBlockButtonClick(
+                popUpScreen = popUpScreen,
+                chatId = chatId,
+                name = name,
+                surname = surname,
+                photo = photo,
+                partnerUid = partnerUid,
+                partnerName = partnerName,
+                partnerSurname = partnerSurname,
+                partnerPhoto = partnerPhoto
+            )
+        }
+    }
+    fun onBlockButtonClick(
+        popUpScreen: () -> Unit, chatId: String, name: String, surname: String, photo: String,
+        partnerUid: String, partnerName: String, partnerSurname: String, partnerPhoto: String
+    ) {
+        val date = Timestamp.now().toDate()
+        launchCatching {
+            firestoreService.block(
+                uid = accountService.currentUserId,
+                partnerUid = partnerUid,
+                block = Block(
+                    uid = partnerUid,
+                    name = partnerName,
+                    surname = partnerSurname,
+                    photo = partnerPhoto,
+                    date = date
+                )
+            )
+            firestoreService.block(
+                uid = partnerUid,
+                partnerUid = accountService.currentUserId,
+                block = Block(
+                    uid = accountService.currentUserId,
+                    name = name,
+                    surname = surname,
+                    photo = photo,
+                    date = date
+                )
+            )
+            firestoreService.deleteChat(chatId = chatId)
+            firestoreService.deleteUserChat(uid = accountService.currentUserId, chatId = chatId)
+            firestoreService.deleteUserChat(uid = partnerUid, chatId = chatId)
+            popUpScreen()
         }
     }
 }

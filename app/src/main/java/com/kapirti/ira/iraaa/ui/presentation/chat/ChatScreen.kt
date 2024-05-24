@@ -52,7 +52,7 @@ fun ChatScreen(
     modifier: Modifier = Modifier,
     viewModel: ChatViewModel = hiltViewModel()
 ) {
-    val options by viewModel.options
+val options by viewModel.options
     val chat = includeChatViewModel.chat
 
     LaunchedEffect(Unit) {
@@ -139,44 +139,9 @@ fun ChatScreen(
         }
     }
 
-    LaunchedEffect(viewModel) { viewModel.loadChatOptions() }
+LaunchedEffect(viewModel) { viewModel.loadChatOptions() }
 
-    if (viewModel.showBlockDialog.value) {
-        AlertDialog(
-            title = { Text(stringResource(AppText.block)) },
-            text = { Text(stringResource(AppText.block_user)) },
-            dismissButton = { DialogCancelButton(AppText.cancel) { viewModel.showBlockDialog.value = false } },
-            confirmButton = {
-                DialogConfirmButton(AppText.block) {
-                    viewModel.onBlockButtonClick(popUp, chatId = chat?.let { it.chatId } ?: "",
-                        name = name, surname = surname, photo = photo,
-                        partnerUid = partnerUid, partnerPhoto = partnerPhoto,
-                        partnerSurname = partnerSurname, partnerName = partnerName
-                    )
-                    viewModel.showBlockDialog.value = false
-                }
-            },
-            onDismissRequest = { viewModel.showBlockDialog.value = false }
-        )
-    }
-    if (viewModel.showReportDialog.value) {
-        AlertDialog(
-            title = { Text(stringResource(AppText.report)) },
-            text = { Text(stringResource(AppText.report_user)) },
-            dismissButton = { DialogCancelButton(AppText.cancel) { viewModel.showReportDialog.value = false } },
-            confirmButton = {
-                DialogConfirmButton(AppText.report) {
-                    viewModel.onReportButtonClick(popUp, chatId = chat?.let { it.chatId } ?: "",
-                        name = name, surname = surname, photo = photo,
-                        partnerUid = partnerUid, partnerPhoto = partnerPhoto,
-                        partnerSurname = partnerSurname, partnerName = partnerName
-                    )
-                    viewModel.showReportDialog.value = false
-                }
-            },
-            onDismissRequest = { viewModel.showReportDialog.value = false }
-        )
-    }
+
 }
 
 

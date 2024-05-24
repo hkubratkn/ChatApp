@@ -175,6 +175,9 @@ private fun ChatContent(
                 user = user,
                 scrollBehavior = scrollBehavior,
                 onBackPressed = onBackPressed,
+                onTopBarClick = {},
+                onActionClick = {},
+                options = emptyList(),
             )
         },
         bottomBar = {

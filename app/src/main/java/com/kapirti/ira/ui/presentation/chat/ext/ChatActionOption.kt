@@ -1,5 +1,5 @@
-package com.kapirti.ira.iraaa.ui.presentation.chat
-/**
+package com.kapirti.ira.ui.presentation.chat.ext
+
 enum class ChatActionOption(val title: String) {
     Block("Block"),
     Report("Report");
@@ -22,4 +22,3 @@ enum class ChatActionOption(val title: String) {
         }
     }
 }
-*/

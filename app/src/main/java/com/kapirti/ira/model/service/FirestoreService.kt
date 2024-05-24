@@ -16,11 +16,13 @@
 
 package com.kapirti.ira.model.service
 
+import com.kapirti.ira.model.Block
 import com.kapirti.ira.model.User
 import com.kapirti.ira.model.Chat
 import com.kapirti.ira.model.ChatMessage
 import com.kapirti.ira.model.Delete
 import com.kapirti.ira.model.Feedback
+import com.kapirti.ira.model.Report
 import kotlinx.coroutines.flow.Flow
 
 interface FirestoreService {
@@ -33,7 +35,12 @@ interface FirestoreService {
     suspend fun saveUser(user: User)
     suspend fun saveUserChat(uid: String, chatId: String, chat: Chat)
     suspend fun saveChatMessage(chatId: String, chatMessage: ChatMessage)
+    suspend fun block(uid: String, partnerUid: String, block: Block)
+    suspend fun report(uid: String, partnerUid: String, report: Report)
     suspend fun saveFeedback(feedback: Feedback)
+
+    suspend fun deleteUserChat(uid: String, chatId: String)
+    suspend fun deleteChat(chatId: String)
     suspend fun deleteAccount(delete: Delete)
 
 
@@ -67,8 +74,6 @@ interface FirestoreService {
     suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat)
     suspend fun saveUserPhotos(userPhotos: UserPhotos)
     suspend fun saveLang(feedback: Feedback)
-    suspend fun block(uid: String, partnerUid: String, block: Block)
-    suspend fun report(uid: String, partnerUid: String, report: Report)
 
     suspend fun updateUserOnline(value: Boolean)
     suspend fun updateUserLastSeen()
@@ -79,9 +84,9 @@ interface FirestoreService {
     suspend fun updateUserDescription(newValue: String)
     suspend fun updateUserPhoto(photo: String)
 
-    suspend fun deleteUserChat(uid: String, chatId: String)
+
     suspend fun deleteUserArchive(uid: String, chatId: String)
-    suspend fun deleteChat(chatId: String)
+
 */
    /**
     val userBlock: Flow<List<com.kapirti.ira.model.Block>>

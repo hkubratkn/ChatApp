@@ -226,6 +226,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.tasks.await
 import com.google.firebase.firestore.Query
+import com.kapirti.ira.model.Block
+import com.kapirti.ira.model.Report
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.tasks.asDeferred
 
 class FirestoreServiceImpl @Inject constructor(
     private val firestore: FirebaseFirestore,
@@ -272,7 +276,17 @@ class FirestoreServiceImpl @Inject constructor(
     override suspend fun saveUser(user: User): Unit = trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
     override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_CHAT_TRACE) { userChatCollection(uid).document(chatId).set(chat).await() }
     override suspend fun saveChatMessage(chatId: String, chatMessage: ChatMessage): Unit = trace(SAVE_CHAT_MESSAGE_TRACE) { chatCollection(chatId = chatId).add(chatMessage).await() }
+    override suspend fun block(uid: String, partnerUid: String, block: Block): Unit = trace(SAVE_BLOCK_USER) { userBlockDocument(uid, partnerUid).set(block).await() }
+    override suspend fun report(uid: String, partnerUid: String, report: Report): Unit = trace(SAVE_REPORT) { userReportDocument(uid = uid, partnerUid = partnerUid).set(report).await() }
     override suspend fun saveFeedback(feedback: Feedback): Unit = trace(SAVE_FEEDBACK_TRACE) { feedbackCollection().add(feedback).await() }
+    override suspend fun deleteUserChat(uid: String, chatId: String) {
+        userChatCollection(uid = uid).document(chatId).delete().await()
+    }
+    override suspend fun deleteChat(chatId: String) {
+        val matchingChats = chatCollection(chatId).get().await()
+        matchingChats.map { it.reference.delete().asDeferred() }.awaitAll()
+    }
+
     override suspend fun deleteAccount(delete: Delete): Unit = trace(DELETE_ACCOUNT_TRACE) { deleteCollection().add(delete).await() }
 
 
@@ -281,6 +295,9 @@ class FirestoreServiceImpl @Inject constructor(
     private fun userDocument(uid: String): DocumentReference = userCollection().document(uid)
     private fun userChatCollection(uid: String): CollectionReference = userDocument(uid).collection(CHAT_COLLECTION)
     private fun chatCollection(chatId: String): CollectionReference = firestore.collection(CHAT_COLLECTION).document(chatId).collection(chatId)
+    private fun userBlockCollection(uid: String): CollectionReference = userDocument(uid).collection(BLOCK_COLLECTION)
+    private fun userBlockDocument(uid: String, partnerUid: String): DocumentReference = userBlockCollection(uid).document(partnerUid)
+    private fun userReportDocument(uid: String, partnerUid: String): DocumentReference = userDocument(partnerUid).collection(REPORT_COLLECTION).document(uid)
     private fun deleteCollection(): CollectionReference = firestore.collection(DELETE_COLLECTION)
     private fun feedbackCollection(): CollectionReference = firestore.collection(FEEDBACK_COLLECTION)
 
@@ -290,14 +307,21 @@ class FirestoreServiceImpl @Inject constructor(
 
     companion object {
         private const val DATE_FIELD = "date"
+
         private const val USER_COLLECTION = "User"
         private const val CHAT_COLLECTION = "Chat"
+        private const val BLOCK_COLLECTION = "Block"
+        private const val REPORT_COLLECTION = "Report"
         private const val DELETE_COLLECTION = "Delete"
         private const val FEEDBACK_COLLECTION = "Feedback"
+
         private const val SAVE_USER_TRACE = "saveUser"
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
         private const val SAVE_CHAT_MESSAGE_TRACE = "saveChatMessage"
+        private const val SAVE_BLOCK_USER = "saveBlockUser"
+        private const val SAVE_REPORT = "saveReport"
         private const val SAVE_FEEDBACK_TRACE = "saveFeedback"
+
         private const val DELETE_ACCOUNT_TRACE = "deleteAccount"
     }
 
@@ -474,13 +498,7 @@ Copyright 2022 Google LLC
     override suspend fun saveLang(feedback: Feedback): Unit =
         trace(SAVE_LANG_TRACE) { langDocument(feedback).set(feedback).await() }
 
-    override suspend fun block(uid: String, partnerUid: String, block: Block): Unit =
-        trace(SAVE_BLOCK_USER) { userBlockDocument(uid, partnerUid).set(block).await() }
 
-    override suspend fun report(uid: String, partnerUid: String, report: Report): Unit =
-        trace(SAVE_REPORT) {
-            userReportDocument(uid = uid, partnerUid = partnerUid).set(report).await()
-        }
 
     override suspend fun updateUserOnline(value: Boolean): Unit = trace(UPDATE_USER_ONLINE_TRACE) {
         userDocument(auth.currentUserId).update(
@@ -540,17 +558,10 @@ Copyright 2022 Google LLC
     }
 
 
-    override suspend fun deleteUserChat(uid: String, chatId: String) {
-        userChatCollection(uid = uid).document(chatId).delete().await()
-    }
+
 
     override suspend fun deleteUserArchive(uid: String, chatId: String) {
         userArchiveCollection(uid).document(chatId).delete().await()
-    }
-
-    override suspend fun deleteChat(chatId: String) {
-        val matchingChats = chatCollection(chatId).get().await()
-        matchingChats.map { it.reference.delete().asDeferred() }.awaitAll()
     }
 
 
@@ -567,22 +578,12 @@ Copyright 2022 Google LLC
     private fun langDocument(feedback: Feedback): DocumentReference =
         firestore.collection(LANG_COLLECTION).document(feedback.text)
 
-    private fun userBlockCollection(uid: String): CollectionReference =
-        userDocument(uid).collection(BLOCK_COLLECTION)
-
-    private fun userBlockDocument(uid: String, partnerUid: String): DocumentReference =
-        userBlockCollection(uid).document(partnerUid)
-
-    private fun userReportDocument(uid: String, partnerUid: String): DocumentReference =
-        userDocument(partnerUid).collection(REPORT_COLLECTION).document(uid)
 
 
     companion object {
         private const val ARCHIVE_COLLECTION = "Archive"
         private const val PHOTOS_COLLECTION = "Photos"
         private const val LANG_COLLECTION = "Lang"
-        private const val BLOCK_COLLECTION = "Block"
-        private const val REPORT_COLLECTION = "Report"
 
         private const val LANGUAGE_FIELD = "language"
         private const val ONLINE_FIELD = "online"
@@ -598,8 +599,6 @@ Copyright 2022 Google LLC
         private const val SAVE_USER_ARCHIVE_TRACE = "saveUserArchive"
         private const val SAVE_USER_PHOTOS_TRACE = "saveUserPhotos"
         private const val SAVE_LANG_TRACE = "saveLang"
-        private const val SAVE_BLOCK_USER = "saveBlockUser"
-        private const val SAVE_REPORT = "saveReport"
         private const val UPDATE_USER_ONLINE_TRACE = "updateUserOnline"
         private const val UPDATE_USER_LAST_SEEN_TRACE = "updateUserLastSeen"
         private const val UPDATE_USER_DISPLAY_NAME_TRACE = "updateUSerDisplayName"
