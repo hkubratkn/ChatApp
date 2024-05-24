@@ -63,6 +63,7 @@ fun ChatExistScreen(
     val me by viewModel.me.collectAsStateWithLifecycle()
     val input by viewModel.input.collectAsStateWithLifecycle()
     val sendEnabled by viewModel.sendEnabled.collectAsStateWithLifecycle()
+    val messages by viewModel.messages.collectAsStateWithLifecycle()
 
     partner?.let { itUser ->
         me?.let { itMe ->
@@ -85,7 +86,7 @@ fun ChatExistScreen(
                 modifier = modifier
                     .clip(RoundedCornerShape(5)),
 
-                messages = emptyList(),
+                messages = messages,
                 input = input,
                 sendEnabled = sendEnabled,
                 onInputChanged = { viewModel.updateInput(it) },

@@ -1,22 +1,4 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.kapirti.ira.model.service.impl
-
-
 
 
 /**
@@ -228,6 +210,7 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.dataObjects
 import com.google.firebase.firestore.toObject
+import com.kapirti.ira.core.datastore.ChatIdRepository
 import com.kapirti.ira.core.datastore.LangRepository
 import com.kapirti.ira.model.User
 import com.kapirti.ira.model.service.AccountService
@@ -242,12 +225,13 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.tasks.await
+import com.google.firebase.firestore.Query
 
 class FirestoreServiceImpl @Inject constructor(
     private val firestore: FirebaseFirestore,
     private val auth: AccountService,
     private val langRepository: LangRepository,
-   // private val chatIdRepository: ChatIdRepository
+    private val chatIdRepository: ChatIdRepository,
 ): FirestoreService {
     @OptIn(ExperimentalCoroutinesApi::class)
     override val users: Flow<List<User>>
@@ -268,6 +252,18 @@ class FirestoreServiceImpl @Inject constructor(
 //                    .orderBy(CREATED_AT_FIELD, Query.Direction.DESCENDING)
                     .dataObjects()
             }
+
+
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override val chatMessages: Flow<List<ChatMessage>>
+        get() =
+            chatIdRepository.readChatIdState().flatMapLatest { chatId ->
+                chatCollection(chatId)
+                    .orderBy(DATE_FIELD, Query.Direction.DESCENDING)
+                    .dataObjects()
+            }
+
 
 
 
@@ -293,6 +289,7 @@ class FirestoreServiceImpl @Inject constructor(
 
 
     companion object {
+        private const val DATE_FIELD = "date"
         private const val USER_COLLECTION = "User"
         private const val CHAT_COLLECTION = "Chat"
         private const val DELETE_COLLECTION = "Delete"
@@ -587,7 +584,6 @@ Copyright 2022 Google LLC
         private const val BLOCK_COLLECTION = "Block"
         private const val REPORT_COLLECTION = "Report"
 
-        private const val DATE_FIELD = "date"
         private const val LANGUAGE_FIELD = "language"
         private const val ONLINE_FIELD = "online"
         private const val LAST_SEEN_FIELD = "lastSeen"

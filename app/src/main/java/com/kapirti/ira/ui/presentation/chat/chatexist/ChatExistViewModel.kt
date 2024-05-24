@@ -1,7 +1,9 @@
 package com.kapirti.ira.ui.presentation.chat.chatexist
 
 import androidx.compose.runtime.mutableStateOf
+import com.kapirti.ira.core.datastore.ChatIdRepository
 import com.kapirti.ira.model.Chat
+import com.kapirti.ira.model.ChatMessage
 import com.kapirti.ira.model.User
 import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.FirestoreService
@@ -18,6 +20,7 @@ import kotlinx.coroutines.flow.map
 class ChatExistViewModel @Inject constructor(
     private val accountService: AccountService,
     private val firestoreService: FirestoreService,
+    private val chatIdRepository: ChatIdRepository,
 // private val repository: ChatRepository,
     logService: LogService
 ) : ZepiViewModel(logService) {
@@ -31,8 +34,6 @@ class ChatExistViewModel @Inject constructor(
 
 
 
-
-
     private val _partner = MutableStateFlow<User?>(User())
     var partner: StateFlow<User?> = _partner
 
@@ -40,9 +41,12 @@ class ChatExistViewModel @Inject constructor(
     var me: StateFlow<User?> = _me
 
 
+    val messages = firestoreService.chatMessages.stateInUi(emptyList())
+
 
     fun initialize(chat: Chat){
         launchCatching {
+            chatIdRepository.saveChatIdState(chat.chatId)
             onChatIdChange(chat.chatId)
             onPartnerIdChange(chat.partnerUid)
             getPartnerInfo()
