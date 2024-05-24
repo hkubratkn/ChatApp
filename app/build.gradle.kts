@@ -15,15 +15,15 @@ kotlin {
 }
 
 android {
-    namespace = "com.kapirti.video_food_delivery_shopping"
+    namespace = "com.kapirti.ira"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.kapirti.video_food_delivery_shopping"
+        applicationId = "com.kapirti.ira"
         minSdk = 21
         targetSdk = 34
-        versionCode = 25
-        versionName = "1.0.25"
+        versionCode = 96
+        versionName = "1.0.84"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
