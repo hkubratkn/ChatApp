@@ -47,7 +47,7 @@ fun HomeTopAppBar(
     CenterAlignedTopAppBar(
         title = {
             Image(
-                painter = painterResource(id = AppIcon.ic_launcher_foreground),
+                painter = painterResource(id = AppIcon.unnamed),
                 contentDescription = stringResource(AppText.app_name),
                 modifier = Modifier.size(40.dp)
             )
