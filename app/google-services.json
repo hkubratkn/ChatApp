@@ -1,38 +1,39 @@
 {
   "project_info": {
-    "project_number": "997902289737",
-    "project_id": "food-56b29",
-    "storage_bucket": "food-56b29.appspot.com"
+    "project_number": "698610992240",
+    "project_id": "ira-b0daa",
+    "storage_bucket": "ira-b0daa.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:997902289737:android:497862392ba81eb8bea898",
+        "mobilesdk_app_id": "1:698610992240:android:5b731fde3b22fc827420b5",
         "android_client_info": {
-          "package_name": "com.kapirti.video_food_delivery_shopping"
+          "package_name": "com.kapirti.ira"
         }
       },
       "oauth_client": [
         {
-          "client_id": "997902289737-ct4ghjjfu6mtsnuoddvijr4229klj99r.apps.googleusercontent.com",
+          "client_id": "698610992240-9qs5qul0qcmb6q1ssnun36n5bbo4d4dc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAk_xwizjqU8GxhUv1FlLeYd8mTni-Y5QA"
+          "current_key": "AIzaSyAyi-T1aBZdZEuN-EA8f5ZkvUj6GnSOpX4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "997902289737-ct4ghjjfu6mtsnuoddvijr4229klj99r.apps.googleusercontent.com",
+              "client_id": "698610992240-9qs5qul0qcmb6q1ssnun36n5bbo4d4dc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-3006196735467220~6697995747"
     }
   ],
   "configuration_version": "1"
