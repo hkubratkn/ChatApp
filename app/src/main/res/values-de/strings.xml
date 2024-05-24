@@ -1,17 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (C) 2024 The Android Open Source Project
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~      http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--german-->
+    <string name="dark_mode">Dunkler Modus</string>
+    <string name="add_photo">FOTO HINZUFÜGEN</string>
+    <string name="already_have_an_account">Sie haben bereits ein Konto</string>
+    <string name="archive">Archiv</string>
+    <string name="avatar">Avatar</string>
+    <string name="birthday">Geburtstag</string>
+    <string name="block">Block</string>
+    <string name="block_user">Möchten Sie einen Benutzer sperren?</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="create_new_account">Neues Konto erstellen</string>
+    <string name="delete_my_account">Mein Konto löschen</string>
+    <string name="delete_account_title">Konto löschen?</string>
+    <string name="delete_account_description">Sie werden alle Ihre Daten verlieren und Ihr Konto wird gelöscht. Diese Aktion ist unumkehrbar.</string>
+    <string name="description">Beschreibung</string>
+    <string name="display_name">Name anzeigen</string>
+    <string name="done">Erledigt</string>
+    <string name="email">E-Mail</string>
+    <string name="email_error">Bitte geben Sie eine gültige E-Mail ein.</string>
+    <string name="empty_password_error">Das Passwort darf nicht leer sein.</string>
+    <string name="enjoy">Genießen Sie</string>
+    <string name="enjoy_text">Chatten Sie mit Gleichaltrigen</string>
+    <string name="feedback">Rückmeldung</string>
+    <string name="feedback_description">Wir verbessern unser Produkt ständig, indem wir auf Ihr Feedback hören.</string>
+    <string name="female">Weiblich</string>
+    <string name="finish">Oberfläche</string>
+    <string name="forgotten_password">Haben Sie Ihr Passwort vergessen? Klicken Sie, um eine Wiederherstellungs-E-Mail zu erhalten</string>
+    <string name="gender">Geschlecht</string>
+    <string name="generic_error">Es ist ein Fehler passiert. Bitte versuchen Sie es erneut.</string>
+    <string name="in_my_free_time">In meiner Freizeit mache ich gerne…</string>
+    <string name="join">Beitreten</string>
+    <string name="join_text">Registrieren oder anmelden</string>
+    <string name="jump_bottom">Nach unten springen</string>
+    <string name="jump_top">Nach oben springen</string>
+    <string name="log_in">Einloggen</string>
+    <string name="male">Männlich</string>
+    <string name="message">Nachricht</string>
+    <string name="name">Name</string>
+    <string name="name_and_surname">Name und Nachname</string>
+    <string name="next">Weiter</string>
+    <string name="not_connected">⚠️Sie sind nicht mit dem Internet verbunden</string>
+    <string name="online">Online</string>
+    <string name="password">Passwort</string>
+    <string name="password_error">Ihr Passwort sollte mindestens sechs Ziffern haben und aus einer Ziffer, einem Kleinbuchstaben und einem Großbuchstaben bestehen.</string>
+    <string name="password_match_error">Die Kennwörter stimmen nicht überein.</string>
+    <string name="previous">Vorherige</string>
+    <string name="rate">Bewerten Sie</string>
+    <string name="recent_searches">Letzte Suchen</string>
+    <string name="recovery_email_sent">Prüfen Sie Ihren Posteingang auf die Wiederherstellungs-E-Mail.</string>
+    <string name="register">Register</string>
+    <string name="repeat_password">Passwort wiederholen</string>
+    <string name="report">Bericht</string>
+    <string name="report_user">Möchten Sie einen Benutzer melden und sperren?</string>
+    <string name="retake_photo">RETAKE FOTO</string>
+    <string name="search">Suche</string>
+    <string name="search_count">%1d Benutzer</string>
+    <string name="search_no_matches">Keine Treffer für “%1s”</string>
+    <string name="search_no_matches_retry">Erweitern Sie Ihre Suche</string>
+    <string name="see_more">MEHR SEHEN</string>
+    <string name="see_less">WENIGER SEHEN</string>
+    <string name="select_all">Wählen Sie alle zutreffenden Punkte aus.</string>
+    <string name="select_date">Datum auswählen.</string>
+    <string name="select_one">Wählen Sie eine aus.</string>
+    <string name="select_your_avatar">Wählen Sie Ihren Avatar.</string>
+    <string name="selfie_skills">Zeigen Sie Ihre Selfie-Fähigkeiten!</string>
+    <string name="settings">Einstellungen</string>
+    <string name="share">Teilen Sie</string>
+    <string name="sign_out">Abmelden</string>
+    <string name="sign_out_title">Abmelden?</string>
+    <string name="sign_out_description">Sie müssen sich erneut anmelden, um Ihre Daten zu sehen.</string>
+    <string name="surname">Nachname</string>
+    <string name="tell_us_about_you">Erzählen Sie uns etwas über sich</string>
+    <string name="try_again">Erneut versuchen</string>
+    <string name="unarchive">Nicht archivieren</string>
+    <string name="welcome">Willkommen</string>
+    <string name="welcome_back">Willkommen zurück</string>
+    <string name="welcome_text">Willkommen bei der Ira-Bewerbung</string>
 
-<resources></resources>
+    <string name="loading_archives_error">Fehler beim Laden von Archiven</string>
+    <string name="loading_chats_error">Fehler beim Laden von Chats</string>
+    <string name="loading_profile_error">Fehler beim Laden des Profils</string>
+    <string name="no_archives_all">Sie haben kein Archiv!</string>
+    <string name="no_chats_all">Sie haben keine Chats!</string>
+    <string name="no_messages_all">Sie haben keine Nachrichten!</string>
+    <string name="no_users_all">Sie haben keine Benutzer!</string>
+    <string name="profile_not_found">Profil nicht gefunden</string>
+</resources>

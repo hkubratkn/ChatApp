@@ -1,17 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (C) 2024 The Android Open Source Project
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~      http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--estonian-->
+    <string name="dark_mode">Tume režiim</string>
+    <string name="add_photo">LISA FOTO</string>
+    <string name="already_have_an_account">Sul on juba konto</string>
+    <string name="archive">Arhiiv</string>
+    <string name="avatar">Avatar</string>
+    <string name="birthday">Sünnipäev</string>
+    <string name="block">Plokk</string>
+    <string name="block_user">Kas soovite kasutaja blokeerida?</string>
+    <string name="cancel">Tühista</string>
+    <string name="create_new_account">Uue konto loomine</string>
+    <string name="delete_my_account">Kustuta minu konto</string>
+    <string name="delete_account_title">Konto kustutamine?</string>
+    <string name="delete_account_description">Te kaotate kõik oma andmed ja teie konto kustutatakse. See tegevus on pöördumatu.</string>
+    <string name="description">Kirjeldus</string>
+    <string name="display_name">Kuva nimi</string>
+    <string name="done">Valmis</string>
+    <string name="email">E-post</string>
+    <string name="email_error">Palun sisestage kehtiv e-posti aadress.</string>
+    <string name="empty_password_error">Parool ei saa olla tühi.</string>
+    <string name="enjoy">Nautige</string>
+    <string name="enjoy_text">Vestle oma eakaaslastega</string>
+    <string name="feedback">Tagasiside</string>
+    <string name="feedback_description">Me täiustame oma toodet pidevalt, kuulates teie tagasisidet.</string>
+    <string name="female">Naised</string>
+    <string name="finish">Lõpeta</string>
+    <string name="forgotten_password">Unustasid salasõna? Klõpsake, et saada taastamise e-kiri</string>
+    <string name="gender">Sugu</string>
+    <string name="generic_error">Midagi juhtus valesti. Palun proovige uuesti.</string>
+    <string name="in_my_free_time">Vabal ajal meeldib mulle …</string>
+    <string name="join">Liitu</string>
+    <string name="join_text">Registreeru või logi sisse</string>
+    <string name="jump_bottom">Hüppa põhja</string>
+    <string name="jump_top">Hüppa ülespoole</string>
+    <string name="log_in">Logi sisse</string>
+    <string name="male">Mees</string>
+    <string name="message">Sõnum</string>
+    <string name="name">Nimi</string>
+    <string name="name_and_surname">Nimi ja perekonnanimi</string>
+    <string name="next">Järgmine</string>
+    <string name="not_connected">⚠️Te ei ole ühendatud internetti</string>
+    <string name="online">Online</string>
+    <string name="password">Parool</string>
+    <string name="password_error">Teie salasõna peaks olema vähemalt kuuekohaline ja sisaldama ühte numbrit, ühte väiketähte ja ühte suurtähte.</string>
+    <string name="password_match_error">Paroolid ei vasta.</string>
+    <string name="previous">Eelmine</string>
+    <string name="rate">Hinda</string>
+    <string name="recent_searches">Viimased otsingud</string>
+    <string name="recovery_email_sent">Kontrollige oma postkasti taastamise e-kirja.</string>
+    <string name="register">Registreeri</string>
+    <string name="repeat_password">Korrake salasõna</string>
+    <string name="report">Aruanne</string>
+    <string name="report_user">Kas soovite teatada ja blokeerida kasutaja?</string>
+    <string name="retake_photo">RETAKE FOTO</string>
+    <string name="search">Otsi</string>
+    <string name="search_count">%1d kasutajad</string>
+    <string name="search_no_matches">Ei ole vasteid “%1s”</string>
+    <string name="search_no_matches_retry">Proovige laiendada oma otsingut</string>
+    <string name="see_more">VAATA LÄHEMALT</string>
+    <string name="see_less">VAATA VÄHEM</string>
+    <string name="select_all">Valige kõik asjakohased.</string>
+    <string name="select_date">Valige kuupäev.</string>
+    <string name="select_one">Valige üks.</string>
+    <string name="select_your_avatar">Valige oma avatar.</string>
+    <string name="selfie_skills">Näita oma selfie-oskusi!</string>
+    <string name="settings">Seaded</string>
+    <string name="share">Jaga</string>
+    <string name="sign_out">Kirjutage välja</string>
+    <string name="sign_out_title">Allkiri välja?</string>
+    <string name="sign_out_description">Oma andmete nägemiseks peate uuesti sisse logima.</string>
+    <string name="surname">Perekonnanimi</string>
+    <string name="tell_us_about_you">Räägi meile midagi enda kohta</string>
+    <string name="try_again">Proovi uuesti</string>
+    <string name="unarchive">Unarchive</string>
+    <string name="welcome">Tere tulemast</string>
+    <string name="welcome_back">Tere tulemast tagasi</string>
+    <string name="welcome_text">Tere tulemast Ira rakendusse</string>
 
-<resources></resources>
+    <string name="loading_archives_error">Viga arhiivide laadimisel</string>
+    <string name="loading_chats_error">Viga vestluste laadimisel</string>
+    <string name="loading_profile_error">Viga profiili laadimisel</string>
+    <string name="no_archives_all">Teil ei ole arhiivi!</string>
+    <string name="no_chats_all">Teil ei ole vestlusi!</string>
+    <string name="no_messages_all">Teil ei ole sõnumeid!</string>
+    <string name="no_users_all">Teil ei ole kasutajaid!</string>
+    <string name="profile_not_found">Profiili ei leitud</string>
+</resources>
