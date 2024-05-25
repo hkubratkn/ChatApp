@@ -22,8 +22,8 @@ android {
         applicationId = "com.kapirti.ira"
         minSdk = 21
         targetSdk = 34
-        versionCode = 115
-        versionName = "1.0.103"
+        versionCode = 116
+        versionName = "1.0.104"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

@@ -1,20 +1,46 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.kapirti.ira.ui.presentation.profile
+
+import com.kapirti.ira.model.User
+import com.kapirti.ira.model.UserPhotos
+import com.kapirti.ira.model.service.AccountService
+import com.kapirti.ira.model.service.FirestoreService
+import com.kapirti.ira.model.service.LogService
+import com.kapirti.ira.ui.presentation.ZepiViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+
+
+@HiltViewModel
+class ProfileViewModel @Inject constructor(
+    private val accountService: AccountService,
+    private val firestoreService: FirestoreService,
+    logService: LogService,
+//    private val editTypeRepository: EditTypeRepository,
+): ZepiViewModel(logService){
+    val hasUser = accountService.hasUser
+
+    private val _user = MutableStateFlow<User>(User())
+    var user: StateFlow<User> = _user
+
+    private val _userPhotos = MutableStateFlow<List<UserPhotos>>(emptyList())
+    var userPhotos: StateFlow<List<UserPhotos>> = _userPhotos
+
+    fun initialize(userUid: String) {
+        launchCatching {
+            firestoreService.getUser(userUid)?.let { itUser ->
+                _user.value = itUser
+                //  firestoreService.userPhotos.collect{ up ->
+                //    _userPhotos.value = up
+                // }
+            }
+        }
+    }
+}
+
+
+
 
 /**
 data class InterestsUiState(
@@ -28,33 +54,11 @@ data class SelectedAssetUiState(
     val items: List<Asset> = emptyList(),
     val isLoading: Boolean = false,
     val userMessage: Int? = null,
-)*/
+)
 
-
-/**
-
-
-@HiltViewModel
-class ProfileViewModel @Inject constructor(
-private val accountService: AccountService,
-logService: LogService,
-//    private val editTypeRepository: EditTypeRepository,
-): QChatViewModel(logService){
 val displayName = accountService.currentUserDisplayName
 
 
-
-
-fun refresh() {
-_isLoading.value = true
-launchCatching {
-_isLoading.value = false
-}
-}
-
-
-
-/**
 fun onPhotoClick(openScreen: (String) -> Unit){
 launchCatching {
 editTypeRepository.saveEditTypeState(PHOTO)
@@ -91,12 +95,7 @@ editTypeRepository.saveEditTypeState(DESCRIPTION)
 openScreen(EDIT_SCREEN)
 }
 }
-
-fun onSettingsClick(openScreen: (String) -> Unit) = openScreen(SETTINGS_SCREEN)
-fun onLoginClick(openScreen: (String) -> Unit) = openScreen(LOG_IN_SCREEN)
-fun onRegisterClick(openScreen: (String) -> Unit) = openScreen(REGISTER_SCREEN)*/
-}*/
-
+*/
 /**
 
 data class SelectedUserPhotosUiState(
@@ -105,28 +104,10 @@ data class SelectedUserPhotosUiState(
     val userMessage: Int? = null,
 )
 
-
-@HiltViewModel
-class ProfileViewModel @Inject constructor(
-    private val accountService: AccountService,
-    private val firestoreService: FirestoreService,
     private val editTypeRepository: EditTypeRepository,
     logService: LogService
 ) : ZepiViewModel(logService) {
-    val hasUser = accountService.hasUser
     val uid = accountService.currentUserId
-
-    private val _user = MutableStateFlow<User>(User())
-    var user: StateFlow<User> = _user
-
-
-    init {
-        launchCatching {
-            firestoreService.getUser(uid)?.let {
-                _user.value = it
-            }
-        }
-    }
 
 
     private val _userMessagePhotos: MutableStateFlow<Int?> = MutableStateFlow(null)
