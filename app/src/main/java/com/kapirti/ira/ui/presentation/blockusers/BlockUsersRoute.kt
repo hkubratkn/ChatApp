@@ -12,18 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.kapirti.ira.common.EmptyContent
-import com.kapirti.ira.common.EmptyContentChats
 import com.kapirti.ira.common.composable.AdsBannerToolbar
 import com.kapirti.ira.core.constants.ConsAds.ADS_BLOCK_USERS_BANNER_ID
 import com.kapirti.ira.R.string as AppText
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.filled.Search
 import com.kapirti.ira.common.composable.MenuToolbar
-import com.kapirti.ira.ui.presentation.home.UserItem
 
 @Composable
 fun BlockUsersRoute(

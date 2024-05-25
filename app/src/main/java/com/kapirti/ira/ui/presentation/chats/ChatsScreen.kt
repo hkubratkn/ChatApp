@@ -106,6 +106,12 @@ private fun TabWithChats(
                 modifier
             )
         } else {
+            chats.forEach{ chat ->
+                ChatRow(
+                    chat = chat,
+                    {}
+                )
+            }
            /** Column(
                 modifier = modifier
                     .fillMaxSize()
@@ -138,7 +144,7 @@ private fun TabWithArchives(
         if (archives.isEmpty()) {
             EmptyContent(
                 icon = Icons.Default.Archive,
-                label = R.string.no_archives_all,
+                label = R.string.no_chats_all,
                 modifier
             )
         } else {
