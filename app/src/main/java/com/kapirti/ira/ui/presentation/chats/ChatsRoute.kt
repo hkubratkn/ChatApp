@@ -35,11 +35,12 @@ fun ChatsRoute(
 
     val tabContent = rememberTabContent(
         chats = chats,
-        archives = emptyList(),
-//        onAssetClick = {
-        //          includeAssetViewModel.addAsset(it)
-        //        navigateToAssetDetail()
-        //  },
+        archives = archives,
+        onChatClick = {
+            viewModel.saveChatId(it.chatId)
+            includeChatViewModel.addChat(it)
+            navigateChatsToChatExist()
+        },
     )
     val (currentSection, updateSection) = rememberSaveable {
         mutableStateOf(tabContent.first().section)
@@ -62,22 +63,7 @@ fun ChatsRoute(
             currentSection = currentSection,
             isExpandedScreen = isExpandedScreen,
             updateSection = updateSection,
-            modifier = Modifier.padding(innerPadding)
+            modifier = modifier.padding(innerPadding)
         )
     }
 }
-/**
-
-            ChatsScreen(
-                chats = chats,
-                contentPadding = innerPadding,
-                onChatClick = {
-                    viewModel.saveChatId(it.chatId)
-                    includeChatViewModel.addChat(it)
-                    navigateChatsToChatExist()
-                },
-            )
-        }
-    }
-}
-*/
