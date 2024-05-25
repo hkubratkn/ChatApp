@@ -1,5 +1,5 @@
 package com.kapirti.ira.ui.presentation.profile.ext
-
+/**
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -32,3 +32,4 @@ fun ProfileCard(
         Text("$name $surname")
     }
 }
+*/

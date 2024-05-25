@@ -1,4 +1,4 @@
-package com.kapirti.ira.ui.presentation.profile.ext
+package com.kapirti.ira.common.composable
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

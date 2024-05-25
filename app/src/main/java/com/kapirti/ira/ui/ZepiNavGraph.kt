@@ -170,9 +170,9 @@ fun ZepiNavGraph(
                     ChatsRoute(
                         isExpandedScreen = isExpandedScreen,
                         openDrawer = openDrawer,
-                        modifier = Modifier.fillMaxSize(),
-                        includeChatViewModel = includeChatViewModel,
-                        navigateChatsToChatExist = navigateChatsToChatExist
+                     //   modifier = Modifier.fillMaxSize(),
+                       // includeChatViewModel = includeChatViewModel,
+                       // navigateChatsToChatExist = navigateChatsToChatExist
                     )
                 }
                 composable(ZepiDestinations.PROFILE_ROUTE) {

@@ -17,6 +17,9 @@ class ChatsViewModel @Inject constructor(
     val chats = firestoreService.userChats
         .stateInUi(emptyList())
 
+    val archives = firestoreService.userArchives
+        .stateInUi(emptyList())
+
 
     fun saveChatId(chatId: String){
         launchCatching {

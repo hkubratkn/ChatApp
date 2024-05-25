@@ -257,6 +257,15 @@ class FirestoreServiceImpl @Inject constructor(
                     .dataObjects()
             }
     @OptIn(ExperimentalCoroutinesApi::class)
+    override val userArchives: Flow<List<Chat>>
+        get() =
+            auth.currentUser.flatMapLatest { user ->
+                userArchiveCollection(user.id)
+                    //                  .whereEqualTo(USER_ID_FIELD, user.id)
+//                    .orderBy(CREATED_AT_FIELD, Query.Direction.DESCENDING)
+                    .dataObjects()
+            }
+    @OptIn(ExperimentalCoroutinesApi::class)
     override val userBlockUsers: Flow<List<Block>>
         get() =
             auth.currentUser.flatMapLatest { user ->
@@ -301,6 +310,7 @@ class FirestoreServiceImpl @Inject constructor(
     private fun userCollection(): CollectionReference = firestore.collection(USER_COLLECTION)
     private fun userDocument(uid: String): DocumentReference = userCollection().document(uid)
     private fun userChatCollection(uid: String): CollectionReference = userDocument(uid).collection(CHAT_COLLECTION)
+    private fun userArchiveCollection(uid: String): CollectionReference = userDocument(uid).collection(ARCHIVE_COLLECTION)
     private fun chatCollection(chatId: String): CollectionReference = firestore.collection(CHAT_COLLECTION).document(chatId).collection(chatId)
     private fun userBlockCollection(uid: String): CollectionReference = userDocument(uid).collection(BLOCK_COLLECTION)
     private fun userBlockDocument(uid: String, partnerUid: String): DocumentReference = userBlockCollection(uid).document(partnerUid)
@@ -317,6 +327,7 @@ class FirestoreServiceImpl @Inject constructor(
 
         private const val USER_COLLECTION = "User"
         private const val CHAT_COLLECTION = "Chat"
+        private const val ARCHIVE_COLLECTION = "Archive"
         private const val BLOCK_COLLECTION = "Block"
         private const val REPORT_COLLECTION = "Report"
         private const val DELETE_COLLECTION = "Delete"
@@ -574,9 +585,6 @@ Copyright 2022 Google LLC
 
 
 
-    private fun userArchiveCollection(uid: String): CollectionReference =
-        userDocument(uid).collection(ARCHIVE_COLLECTION)
-
     private fun userPhotosCollection(uid: String): CollectionReference =
         userDocument(uid).collection(PHOTOS_COLLECTION)
 
@@ -586,9 +594,6 @@ Copyright 2022 Google LLC
         firestore.collection(LANG_COLLECTION).document(feedback.text)
 
 
-
-    companion object {
-        private const val ARCHIVE_COLLECTION = "Archive"
         private const val PHOTOS_COLLECTION = "Photos"
         private const val LANG_COLLECTION = "Lang"
 

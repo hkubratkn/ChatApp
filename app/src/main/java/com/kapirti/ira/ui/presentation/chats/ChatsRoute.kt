@@ -1,5 +1,52 @@
 package com.kapirti.ira.ui.presentation.chats
 
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+
+@Composable
+fun ChatsRoute(
+    isExpandedScreen: Boolean,
+    openDrawer: () -> Unit,
+    snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
+    viewModel: ChatsViewModel = hiltViewModel(),
+) {
+    val chats by viewModel.chats.collectAsStateWithLifecycle()
+
+    val tabContent = rememberTabContent(
+        chats = chats,
+        archives = emptyList(),
+//        onAssetClick = {
+  //          includeAssetViewModel.addAsset(it)
+    //        navigateToAssetDetail()
+      //  },
+    )
+    val (currentSection, updateSection) = rememberSaveable {
+        mutableStateOf(tabContent.first().section)
+    }
+
+    InterestsScreen(
+        tabContent = tabContent,
+        currentSection = currentSection,
+        isExpandedScreen = isExpandedScreen,
+        onTabChange = updateSection,
+    )
+}
+
+
+
+
+
+
+
+
+
+/**
 import com.kapirti.ira.common.composable.AdsBannerToolbar
 import com.kapirti.ira.common.composable.MenuToolbar
 import com.kapirti.ira.core.constants.ConsAds
@@ -58,3 +105,4 @@ fun ChatsRoute(
         }
     }
 }
+*/

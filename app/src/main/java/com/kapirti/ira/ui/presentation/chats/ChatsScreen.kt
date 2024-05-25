@@ -1,5 +1,196 @@
 package com.kapirti.ira.ui.presentation.chats
 
+import androidx.annotation.StringRes
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import com.kapirti.ira.R
+import com.kapirti.ira.common.EmptyContent
+import com.kapirti.ira.common.composable.InterestsAdaptiveContentLayout
+import com.kapirti.ira.common.composable.MenuToolbar
+import com.kapirti.ira.common.ext.tabContainerModifier
+import com.kapirti.ira.model.Chat
+import com.kapirti.ira.ui.presentation.chats.ext.ChatsTabRow
+import com.kapirti.ira.ui.presentation.home.UserItem
+
+
+enum class SectionsChats(@StringRes val titleResId: Int) {
+    ChatsList(R.string.chats_title),
+    ArchiveList(R.string.archive_title)
+}
+
+
+class TabContentChats(val section: SectionsChats, val content: @Composable () -> Unit)
+
+@Composable
+fun InterestsScreen(
+    tabContent: List<TabContentChats>,
+    currentSection: SectionsChats,
+    isExpandedScreen: Boolean,
+    onTabChange: (SectionsChats) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    InterestScreenContent(
+        currentSection, isExpandedScreen,
+        onTabChange, tabContent, modifier
+    )
+}
+
+@Composable
+fun rememberTabContent(
+    chats: List<Chat>,
+    archives: List<Chat>,
+  //  onAssetClick: (Asset) -> Unit,
+): List<TabContentChats> {
+
+    val favoritesSection = TabContentChats(SectionsChats.ChatsList) {
+        TabWithChats(
+            chats = chats,
+        )
+    }
+
+    val assetsSection = TabContentChats(SectionsChats.ArchiveList) {
+        TabWithArchives(
+            archives = archives
+        )
+    }
+
+    return listOf(favoritesSection, assetsSection)
+}
+
+@Composable
+private fun InterestScreenContent(
+    currentSection: SectionsChats,
+    isExpandedScreen: Boolean,
+    updateSection: (SectionsChats) -> Unit,
+    tabContent: List<TabContentChats>,
+    modifier: Modifier = Modifier
+) {
+    val selectedTabIndex = tabContent.indexOfFirst { it.section == currentSection }
+    Column(modifier) {
+        ChatsTabRow(selectedTabIndex, updateSection, tabContent, isExpandedScreen)
+        Divider(
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
+        )
+        Box(modifier = Modifier.weight(1f)) {
+            // display the current tab content which is a @Composable () -> Unit
+            tabContent[selectedTabIndex].content()
+        }
+    }
+}
+
+
+@Composable
+private fun TabWithChats(
+    chats: List<Chat>,
+   // onAssetClick: (Asset) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val scrollState = rememberLazyListState()
+
+    InterestsAdaptiveContentLayout(
+        topPadding = 16.dp,
+        modifier = tabContainerModifier.verticalScroll(rememberScrollState())
+    ) {
+        if (chats.isEmpty()) {
+            EmptyContent(
+                icon = Icons.Default.Person,
+                label = R.string.no_users_all,
+                modifier
+            )
+        } else {
+           /** Column(
+                modifier = modifier
+                    .fillMaxSize()
+            ) {
+                LazyColumn(state = scrollState,) {
+                    items(chats, key = { it.chatId }) { chat ->
+                        ChatRow(
+                            chat = chat,
+                            onClick = {}
+                        )
+                    }
+                }
+            }*/
+        }
+    }
+}
+
+@Composable
+private fun TabWithArchives(
+    archives: List<Chat>,
+    //    onAssetClick: (Asset) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val scrollState = rememberLazyListState()
+
+    InterestsAdaptiveContentLayout(
+        topPadding = 16.dp,
+        modifier = tabContainerModifier.verticalScroll(rememberScrollState())
+    ) {
+        if (archives.isEmpty()) {
+            EmptyContent(
+                icon = Icons.Default.Person,
+                label = R.string.no_users_all,
+                modifier
+            )
+        } else {
+          /**  Column(
+                modifier = modifier
+                    .fillMaxSize()
+            ) {
+                LazyColumn(state = scrollState,) {
+                    items(archives, key = { it.chatId }) { chat ->
+                        ChatRow(
+                            chat = chat,
+                            onClick = {}
+                        )
+                    }
+                }
+            }*/
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/**
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -94,7 +285,7 @@ private fun NotificationPermissionCard(
         }
     }
 }
-
+*/
 
 /**
 
