@@ -170,7 +170,7 @@ private fun UserProfileBody(
     }
 
     val user = viewModel.user.collectAsStateWithLifecycle()
-    val userPhotos = viewModel.userPhotos.collectAsStateWithLifecycle()
+    val userPhotos = viewModel.photos.collectAsStateWithLifecycle()
 
     val missList = arrayListOf(viewModel.uid)
     for (mek in chats) {
@@ -390,7 +390,7 @@ private fun Body(
 
                     photos?.let {
                         key(it) {
-                            PhotosContent(hobbys = photos)
+                            PhotosContent(photos = photos)
                         }
                     }
 

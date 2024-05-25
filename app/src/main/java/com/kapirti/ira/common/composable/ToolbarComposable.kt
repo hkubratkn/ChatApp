@@ -32,6 +32,8 @@ import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.kapirti.ira.R.string as AppText
 import com.kapirti.ira.R.drawable as AppIcon
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -99,6 +101,8 @@ fun MenuToolbar(
     isExpandedScreen: Boolean,
     openDrawer: () -> Unit,
 ) {
+    val context = LocalContext.current
+
     CenterAlignedTopAppBar(
         title = {
             Text(
@@ -119,7 +123,7 @@ fun MenuToolbar(
         },
         actions = {
             IconButton(
-                onClick = {}
+                onClick = { Toast.makeText(context, "Not work yet", Toast.LENGTH_LONG). show()}
             ) {
                 Icon(
                     imageVector = actionsIcon,
