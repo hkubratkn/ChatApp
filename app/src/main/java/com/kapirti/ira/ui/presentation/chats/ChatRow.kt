@@ -39,8 +39,6 @@ import androidx.compose.ui.unit.sp
 import com.kapirti.ira.common.composable.NoSurfaceImage
 import com.kapirti.ira.model.Chat
 
-//import com.zepi.social_chat_food.soci.model.ChatDetail
-
 @Composable
 fun ChatRow(
     chat: Chat,

@@ -122,7 +122,10 @@ private fun TabWithArchives(
             )
         } else {
             archives.forEach{ archive ->
-                ChatRow(chat = archive, onClick = { /*TODO*/ })
+                ChatRow(
+                    chat = archive,
+                    onClick = { /*TODO*/ }
+                )
             }
         }
     }
