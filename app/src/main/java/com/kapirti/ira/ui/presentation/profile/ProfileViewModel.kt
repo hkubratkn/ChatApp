@@ -27,9 +27,9 @@ class ProfileViewModel @Inject constructor(
     private val _userPhotos = MutableStateFlow<List<UserPhotos>>(emptyList())
     var userPhotos: StateFlow<List<UserPhotos>> = _userPhotos
 
-    fun initialize(userUid: String) {
+    init {
         launchCatching {
-            firestoreService.getUser(userUid)?.let { itUser ->
+            firestoreService.getUser(accountService.currentUserId)?.let { itUser ->
                 _user.value = itUser
                 //  firestoreService.userPhotos.collect{ up ->
                 //    _userPhotos.value = up
