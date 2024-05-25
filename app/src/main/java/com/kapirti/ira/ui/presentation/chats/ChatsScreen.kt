@@ -19,6 +19,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Archive
+import androidx.compose.material.icons.filled.ChatBubble
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Divider
@@ -52,43 +54,19 @@ enum class SectionsChats(@StringRes val titleResId: Int) {
 class TabContentChats(val section: SectionsChats, val content: @Composable () -> Unit)
 
 @Composable
-fun InterestsScreen(
-    tabContent: List<TabContentChats>,
-    currentSection: SectionsChats,
-    isExpandedScreen: Boolean,
-    onTabChange: (SectionsChats) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    InterestScreenContent(
-        currentSection, isExpandedScreen,
-        onTabChange, tabContent, modifier
-    )
-}
-
-@Composable
 fun rememberTabContent(
     chats: List<Chat>,
     archives: List<Chat>,
   //  onAssetClick: (Asset) -> Unit,
 ): List<TabContentChats> {
-
-    val favoritesSection = TabContentChats(SectionsChats.ChatsList) {
-        TabWithChats(
-            chats = chats,
-        )
-    }
-
-    val assetsSection = TabContentChats(SectionsChats.ArchiveList) {
-        TabWithArchives(
-            archives = archives
-        )
-    }
+    val favoritesSection = TabContentChats(SectionsChats.ChatsList) { TabWithChats(chats = chats,) }
+    val assetsSection = TabContentChats(SectionsChats.ArchiveList) { TabWithArchives(archives = archives) }
 
     return listOf(favoritesSection, assetsSection)
 }
 
 @Composable
-private fun InterestScreenContent(
+fun ChatsScreen(
     currentSection: SectionsChats,
     isExpandedScreen: Boolean,
     updateSection: (SectionsChats) -> Unit,
@@ -123,8 +101,8 @@ private fun TabWithChats(
     ) {
         if (chats.isEmpty()) {
             EmptyContent(
-                icon = Icons.Default.Person,
-                label = R.string.no_users_all,
+                icon = Icons.Default.ChatBubble,
+                label = R.string.no_chats_all,
                 modifier
             )
         } else {
@@ -159,8 +137,8 @@ private fun TabWithArchives(
     ) {
         if (archives.isEmpty()) {
             EmptyContent(
-                icon = Icons.Default.Person,
-                label = R.string.no_users_all,
+                icon = Icons.Default.Archive,
+                label = R.string.no_archives_all,
                 modifier
             )
         } else {
