@@ -226,8 +226,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.tasks.await
 import com.google.firebase.firestore.Query
+import com.kapirti.ira.core.datastore.UserIdRepository
 import com.kapirti.ira.model.Block
 import com.kapirti.ira.model.Report
+import com.kapirti.ira.model.UserPhotos
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.tasks.asDeferred
 
@@ -236,6 +238,7 @@ class FirestoreServiceImpl @Inject constructor(
     private val auth: AccountService,
     private val langRepository: LangRepository,
     private val chatIdRepository: ChatIdRepository,
+    private val userIdRepository: UserIdRepository,
 ): FirestoreService {
     @OptIn(ExperimentalCoroutinesApi::class)
     override val users: Flow<List<User>>
@@ -245,7 +248,15 @@ class FirestoreServiceImpl @Inject constructor(
 //                    .orderBy(CREATED_AT_FIELD, Query.Direction.DESCENDING)
                 .dataObjects()
 
-
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override val userPhotos: Flow<List<UserPhotos>>
+        get() =
+            userIdRepository.readUserIdState().flatMapLatest { userId ->
+                userChatCollection(userId)
+                    //                  .whereEqualTo(USER_ID_FIELD, user.id)
+//                    .orderBy(CREATED_AT_FIELD, Query.Direction.DESCENDING)
+                    .dataObjects()
+            }
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override val userChats: Flow<List<Chat>>
@@ -306,9 +317,9 @@ class FirestoreServiceImpl @Inject constructor(
     override suspend fun deleteAccount(delete: Delete): Unit = trace(DELETE_ACCOUNT_TRACE) { deleteCollection().add(delete).await() }
 
 
-
     private fun userCollection(): CollectionReference = firestore.collection(USER_COLLECTION)
     private fun userDocument(uid: String): DocumentReference = userCollection().document(uid)
+    private fun userPhotosCollection(uid: String): CollectionReference = userDocument(uid).collection(PHOTOS_COLLECTION)
     private fun userChatCollection(uid: String): CollectionReference = userDocument(uid).collection(CHAT_COLLECTION)
     private fun userArchiveCollection(uid: String): CollectionReference = userDocument(uid).collection(ARCHIVE_COLLECTION)
     private fun chatCollection(chatId: String): CollectionReference = firestore.collection(CHAT_COLLECTION).document(chatId).collection(chatId)
@@ -326,6 +337,7 @@ class FirestoreServiceImpl @Inject constructor(
         private const val DATE_FIELD = "date"
 
         private const val USER_COLLECTION = "User"
+        private const val PHOTOS_COLLECTION = "Photos"
         private const val CHAT_COLLECTION = "Chat"
         private const val ARCHIVE_COLLECTION = "Archive"
         private const val BLOCK_COLLECTION = "Block"
@@ -584,17 +596,9 @@ Copyright 2022 Google LLC
 
 
 
-
-    private fun userPhotosCollection(uid: String): CollectionReference =
-        userDocument(uid).collection(PHOTOS_COLLECTION)
-
-
-
     private fun langDocument(feedback: Feedback): DocumentReference =
         firestore.collection(LANG_COLLECTION).document(feedback.text)
 
-
-        private const val PHOTOS_COLLECTION = "Photos"
         private const val LANG_COLLECTION = "Lang"
 
         private const val LANGUAGE_FIELD = "language"

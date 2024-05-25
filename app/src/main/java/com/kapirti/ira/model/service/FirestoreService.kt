@@ -23,10 +23,12 @@ import com.kapirti.ira.model.ChatMessage
 import com.kapirti.ira.model.Delete
 import com.kapirti.ira.model.Feedback
 import com.kapirti.ira.model.Report
+import com.kapirti.ira.model.UserPhotos
 import kotlinx.coroutines.flow.Flow
 
 interface FirestoreService {
     val users: Flow<List<User>>
+    val userPhotos: Flow<List<UserPhotos>>
     val userChats: Flow<List<Chat>>
     val userArchives: Flow<List<Chat>>
     val userBlockUsers: Flow<List<Block>>

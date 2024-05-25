@@ -1,5 +1,6 @@
 package com.kapirti.ira.ui.presentation.profile
 
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -7,21 +8,35 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.kapirti.ira.R
+import com.kapirti.ira.common.composable.BasicDivider
 import com.kapirti.ira.common.composable.NoSurfaceImage
+import com.kapirti.ira.common.composable.QChatSurface
+import com.kapirti.ira.common.ext.toReadableString
 import com.kapirti.ira.model.User
+import com.kapirti.ira.model.UserPhotos
+import com.kapirti.ira.ui.presentation.userprofile.HobbyCollection
+import com.kapirti.ira.ui.presentation.userprofile.PhotosContent
 
 /**
 import androidx.compose.foundation.*
@@ -243,39 +258,83 @@ private fun ProfileProperty(label: String, value: String, isLink: Boolean = fals
         }
     }
 }*/
-/**
-enum class Sections(@StringRes val titleResId: Int) {
-    Favorites(AppText.interests_section_favorites),
-    Assets(AppText.interests_section_assets),
-}
 
-
-class TabContent(val section: Sections, val content: @Composable () -> Unit)
-*/
 @Composable
 fun ProfileScreen(
     user: User,
-   // tabContent: List<TabContent>,
-   // currentSection: Sections,
-    isExpandedScreen: Boolean,
-   // onTabChange: (Sections) -> Unit,
+    photos: List<UserPhotos>,
     modifier: Modifier = Modifier,
 ) {
-
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-//            .clickable { onUserClick(user) },
+    val scrollState = rememberScrollState()
+    Column(
+        modifier = modifier.statusBarsPadding().verticalScroll(scrollState),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
         NoSurfaceImage(
             imageUrl = user.photo,
             contentDescription = null,
             modifier = Modifier
-                .size(100.dp)
+                .size(300.dp)
                 .clip(CircleShape)
                 .padding(10.dp)
         )
+
+        Text(
+            text = user?.let { it.description } ?: "",
+            style = MaterialTheme.typography.bodySmall,
+            color = Color(0x99000000),
+            overflow = TextOverflow.Ellipsis,
+        )
+
+        Spacer(Modifier.height(16.dp))
+        BasicDivider()
+        Spacer(Modifier.height(40.dp))
+        Text(
+            text = stringResource(R.string.join),
+            style = MaterialTheme.typography.bodyLarge,
+            color = Color(0x99000000),
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = user?.let { itUser -> itUser.date?.let { itLast -> itLast.seconds.toReadableString() } }
+                ?: "",
+            style = MaterialTheme.typography.bodySmall,
+            color = Color(0x99000000),
+        )
+
+
+        Spacer(modifier = Modifier.height(16.dp))
+        BasicDivider()
+
+        user?.let {
+            key(it.hobby) {
+                HobbyCollection(hobbies = it.hobby)
+            }
+        }
+
+
+        Spacer(Modifier.height(16.dp))
+        BasicDivider()
+
+        photos?.let {
+            key(it) {
+                PhotosContent(hobbys = photos)
+            }
+        }
+    }
+}
+
+
+
+/**
+
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
+            .fillMaxWidth()
+//            .clickable { onUserClick(user) },
+    ) {
 
         Column(
             modifier = Modifier.weight(1f),
@@ -296,7 +355,7 @@ fun ProfileScreen(
         }
     }
 }
-
+*/
 
 
   /**  InterestScreenContent(

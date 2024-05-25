@@ -21,6 +21,7 @@ import com.kapirti.ira.core.datastore.ChatIdRepository
 import com.kapirti.ira.core.datastore.EditTypeRepository
 import com.kapirti.ira.core.datastore.LangRepository
 import com.kapirti.ira.core.datastore.OnBoardingRepository
+import com.kapirti.ira.core.datastore.UserIdRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -55,4 +56,10 @@ object DataStoreModule {
     fun provideChatIdRepository(
         @ApplicationContext context: Context
     ) = ChatIdRepository(context)
+
+    @Provides
+    @Singleton
+    fun provideUserIdRepository(
+        @ApplicationContext context: Context
+    ) = UserIdRepository(context)
 }

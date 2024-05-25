@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.kapirti.ira.ui.presentation.userprofile
 
 import androidx.compose.foundation.layout.Column
@@ -37,11 +21,12 @@ import com.kapirti.ira.R.string as AppText
 import com.kapirti.ira.common.composable.NoSurfaceImage
 import com.kapirti.ira.common.composable.QChatSurface
 import com.kapirti.ira.common.ext.getYearFromTimeStamp
+import com.kapirti.ira.model.UserPhotos
 
 
 @Composable
 fun PhotosContent(
-    hobbys: List<com.kapirti.ira.model.UserPhotos>,
+    photos: List<UserPhotos>,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier) {
@@ -53,7 +38,7 @@ fun PhotosContent(
         ) {
             Text(
                 text = stringResource(AppText.selfie_skills),
-                style = MaterialTheme.typography.headlineSmall,
+                style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.primary,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -62,13 +47,13 @@ fun PhotosContent(
                     .wrapContentWidth(Alignment.Start)
             )
         }
-        Photos(hobbys)
+        Photos(photos)
     }
 }
 
 @Composable
 private fun Photos(
-    photos: List<com.kapirti.ira.model.UserPhotos>,
+    photos: List<UserPhotos>,
     modifier: Modifier = Modifier
 ) {
     LazyRow(
@@ -83,7 +68,7 @@ private fun Photos(
 
 @Composable
 private fun PhotoItem(
-    userPhoto: com.kapirti.ira.model.UserPhotos,
+    userPhoto: UserPhotos,
     modifier: Modifier = Modifier
 ) {
     val year = userPhoto.date?.let { getYearFromTimeStamp(it.seconds) }

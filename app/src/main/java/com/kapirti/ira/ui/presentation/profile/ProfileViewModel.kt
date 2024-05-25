@@ -1,21 +1,25 @@
 package com.kapirti.ira.ui.presentation.profile
 
+import com.kapirti.ira.core.datastore.UserIdRepository
 import com.kapirti.ira.model.User
 import com.kapirti.ira.model.UserPhotos
 import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
+import com.kapirti.ira.soci.ui.stateInUi
 import com.kapirti.ira.ui.presentation.ZepiViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val accountService: AccountService,
     private val firestoreService: FirestoreService,
+    private val userIdRepository: UserIdRepository,
     logService: LogService,
 //    private val editTypeRepository: EditTypeRepository,
 ): ZepiViewModel(logService){
@@ -24,16 +28,13 @@ class ProfileViewModel @Inject constructor(
     private val _user = MutableStateFlow<User>(User())
     var user: StateFlow<User> = _user
 
-    private val _userPhotos = MutableStateFlow<List<UserPhotos>>(emptyList())
-    var userPhotos: StateFlow<List<UserPhotos>> = _userPhotos
+    val photos = firestoreService.userPhotos.stateInUi(emptyList())
 
     init {
         launchCatching {
+            userIdRepository.saveUserIdState(accountService.currentUserId)
             firestoreService.getUser(accountService.currentUserId)?.let { itUser ->
                 _user.value = itUser
-                //  firestoreService.userPhotos.collect{ up ->
-                //    _userPhotos.value = up
-                // }
             }
         }
     }

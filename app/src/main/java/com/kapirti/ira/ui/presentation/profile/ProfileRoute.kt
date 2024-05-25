@@ -11,17 +11,11 @@ import com.kapirti.ira.common.composable.AdsBannerToolbar
 import com.kapirti.ira.common.composable.MenuToolbar
 import com.kapirti.ira.core.constants.ConsAds.ADS_PROFILE_BANNER_ID
 import com.kapirti.ira.R.string as AppText
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
@@ -37,7 +31,7 @@ fun ProfileRoute(
     viewModel: ProfileViewModel = hiltViewModel(),
 ) {
     val user = viewModel.user.collectAsStateWithLifecycle()
-    val hasUser = viewModel.hasUser
+    val photos by viewModel.photos.collectAsStateWithLifecycle()
 
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
@@ -51,32 +45,17 @@ fun ProfileRoute(
             )
         },
         modifier = modifier.fillMaxSize(),
-        floatingActionButton = {
-            if (hasUser) {
-                IconButton(
-                    modifier = Modifier
-                        .clip(CircleShape)
-                        .background(Color.Red),
-                    onClick = {
-                        // viewModel.onAddClick(navigateEdit)
-                    }
-                ) {
-                    Icon(Icons.Default.Add, null)
-                }
-            }
-        }
     ) { innerPadding ->
         ProfileScreen(
             user = user.value,
-            isExpandedScreen = isExpandedScreen,
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(innerPadding),
+            photos = photos
         )
     }
 }
 
 
 /**
-    val selectedPhotos by viewModel.selectedPhotos.collectAsStateWithLifecycle()
     // val selectedAsset by viewModel.selectedAsset.collectAsStateWithLifecycle()
 
 
