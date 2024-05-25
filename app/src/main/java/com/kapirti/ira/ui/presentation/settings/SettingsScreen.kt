@@ -106,7 +106,7 @@ fun SettingsScreen(
                 "", Modifier.card()
             ) { viewModel.onEditProfileClick(navigateEdit) }
             RegularCardEditor(
-                stringResource(id = AppText.block),
+                stringResource(id = AppText.block_users_title),
                 Icons.Default.Block,
                 "", Modifier.card()
             ) { navigateBlockUser() }

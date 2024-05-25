@@ -18,6 +18,7 @@ import com.kapirti.ira.core.constants.ConsAds
 fun SettingsRoute(
     navigateEdit: () -> Unit,
     restartApp: () -> Unit,
+    navigateBlockUser: () -> Unit,
     isExpandedScreen: Boolean,
     openDrawer: () -> Unit,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
@@ -38,7 +39,8 @@ fun SettingsRoute(
         SettingsScreen(
             navigateEdit = navigateEdit,
             restartApp = restartApp,
-            modifier = modifier.padding(innerPadding)
+            modifier = modifier.padding(innerPadding),
+            navigateBlockUser = navigateBlockUser,
         )
     }
 }

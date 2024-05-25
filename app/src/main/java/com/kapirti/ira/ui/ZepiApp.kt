@@ -95,6 +95,7 @@ fun ZepiApp(
             navigateEdit = navigationActions.navigateEdit,
             navigateUserProfile = navigationActions.navigateUserProfile,
             navigateSearch = navigationActions.navigateSearch,
+            navigateBlockUser = navigationActions.navigateBlockUser,
 
             navigateAndPopUpSearchToUserProfile = navigationActions.navigateAndPopUpSearchToUserProfile,
             navigateAndPopUpRegisterToEdit = navigationActions.navigateAndPopUpRegisterToEdit,
