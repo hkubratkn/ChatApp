@@ -319,7 +319,7 @@ fun ProfileScreen(
 
         photos?.let {
             key(it) {
-                PhotosContent(hobbys = photos)
+                PhotosContent(photos = photos)
             }
         }
     }
