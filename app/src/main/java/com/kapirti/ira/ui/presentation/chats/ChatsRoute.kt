@@ -49,8 +49,11 @@ fun ChatsRoute(
             ChatsScreen(
                 chats = chats,
                 contentPadding = innerPadding,
-                includeChatViewModel = includeChatViewModel,
-                navigateChatsToChatExist = navigateChatsToChatExist
+                onChatClick = {
+                    viewModel.saveChatId(it.chatId)
+                    includeChatViewModel.addChat(it)
+                    navigateChatsToChatExist()
+                },
             )
         }
     }

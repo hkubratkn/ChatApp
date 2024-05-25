@@ -12,6 +12,7 @@ object ZepiDestinations {
     const val SEARCH_ROUTE = "search"
     const val CHATNOPE_ROUTE = "chatnope"
     const val CHATEXIST_ROUTE = "chatexist"
+    const val BLOCK_USERS_ROUTE = "blockUsers"
 
     const val HOME_ROUTE = "home"
     const val TIMELINE_ROUTE = "timeline"
@@ -106,6 +107,9 @@ class QChatNavigationActions(navController: NavHostController) {
     }
     val navigateChatExist: () -> Unit = {
         navController.navigate(ZepiDestinations.CHATEXIST_ROUTE){ launchSingleTop = true }
+    }
+    val navigateBlockUser: () -> Unit = {
+        navController.navigate(ZepiDestinations.BLOCK_USERS_ROUTE){ launchSingleTop = true }
     }
 
 

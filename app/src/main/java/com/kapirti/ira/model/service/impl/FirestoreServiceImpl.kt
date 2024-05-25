@@ -256,6 +256,14 @@ class FirestoreServiceImpl @Inject constructor(
 //                    .orderBy(CREATED_AT_FIELD, Query.Direction.DESCENDING)
                     .dataObjects()
             }
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override val userBlockUsers: Flow<List<Block>>
+        get() =
+            auth.currentUser.flatMapLatest { user ->
+                userBlockCollection(user.id)
+                    .orderBy(DATE_FIELD, Query.Direction.DESCENDING)
+                    .dataObjects()
+            }
 
 
 

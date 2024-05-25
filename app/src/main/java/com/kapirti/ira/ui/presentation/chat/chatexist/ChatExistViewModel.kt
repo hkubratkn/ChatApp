@@ -25,7 +25,6 @@ import kotlinx.coroutines.flow.map
 class ChatExistViewModel @Inject constructor(
     private val accountService: AccountService,
     private val firestoreService: FirestoreService,
-    private val chatIdRepository: ChatIdRepository,
     private val configurationService: ConfigurationService,
 // private val repository: ChatRepository,
     logService: LogService
@@ -56,7 +55,6 @@ class ChatExistViewModel @Inject constructor(
 
     fun initialize(chat: Chat){
         launchCatching {
-            chatIdRepository.saveChatIdState(chat.chatId)
             onChatIdChange(chat.chatId)
             onPartnerIdChange(chat.partnerUid)
             getPartnerInfo()
@@ -210,7 +208,7 @@ class ChatExistViewModel @Inject constructor(
         popUpScreen: () -> Unit, chatId: String, name: String, surname: String, photo: String,
         partnerUid: String, partnerName: String, partnerSurname: String, partnerPhoto: String
     ) {
-        val date = Timestamp.now().toDate()
+        val date = Timestamp.now()
         launchCatching {
             firestoreService.block(
                 uid = accountService.currentUserId,

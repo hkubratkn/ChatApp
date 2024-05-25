@@ -35,6 +35,7 @@ import com.kapirti.ira.soci.ui.camera.MediaType
 //import com.zepi.social_chat_food.soci.ui.photopicker.navigation.photoPickerScreen
 import com.kapirti.ira.soci.ui.player.VideoPlayerScreen
 import com.kapirti.ira.soci.ui.videoedit.VideoEditScreen
+import com.kapirti.ira.ui.presentation.blockusers.BlockUsersRoute
 import com.kapirti.ira.ui.presentation.chat.chatexist.ChatExistScreen
 //import com.kapirti.video_food_delivery_shopping.ui.presentation.chat.chatexist.ChatScreen
 import com.kapirti.ira.ui.presentation.chat.chatnope.ChatNopeScreen
@@ -66,6 +67,7 @@ fun ZepiNavGraph(
     navigateEdit: () -> Unit,
     navigateUserProfile: () -> Unit,
     navigateSearch: () -> Unit,
+    navigateBlockUser: () -> Unit,
 
     navigateAndPopUpSearchToUserProfile: () -> Unit,
     navigateAndPopUpRegisterToEdit: () -> Unit,
@@ -187,6 +189,7 @@ fun ZepiNavGraph(
                         openDrawer = openDrawer,
                         navigateEdit = navigateEdit,
                         restartApp = restartApp,
+                        navigateBlockUser = navigateBlockUser
                     )
                 }
                 composable(ZepiDestinations.SUBSCRIPTIONS_ROUTE) {
@@ -449,6 +452,14 @@ fun ZepiNavGraph(
                         includeUserIdViewModel = includeUserIdViewModel,
                         modifier = Modifier.fillMaxSize(),
                     )
+                }
+                composable(
+                    route = ZepiDestinations.BLOCK_USERS_ROUTE
+                ) {
+                    BlockUsersRoute(
+                        isExpandedScreen = isExpandedScreen,
+                        openDrawer = openDrawer,
+                        )
                 }
 
 

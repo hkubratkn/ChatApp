@@ -1,33 +1,22 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package com.kapirti.ira.ui.presentation.chats
+package com.kapirti.ira.ui.presentation.blockusers
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -37,29 +26,42 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kapirti.ira.common.composable.NoSurfaceImage
-import com.kapirti.ira.model.Chat
-
-//import com.zepi.social_chat_food.soci.model.ChatDetail
+import com.kapirti.ira.common.ext.toReadableString
+import com.kapirti.ira.model.Block
 
 @Composable
-fun ChatRow(
-    chat: Chat,
-    onClick: (() -> Unit)?,
+fun BlockUsersScreen(
+    blockUsers: List<Block>,
+    modifier: Modifier = Modifier,
+) {
+    val scrollState = rememberLazyListState()
+
+    Column(
+        modifier = modifier.fillMaxSize()
+    ) {
+        LazyColumn(state = scrollState,) {
+            items(blockUsers, key = { it.uid }) { blockUser ->
+                BlockUserRow(block = blockUser)
+            }
+        }
+    }
+}
+
+@Composable
+private fun BlockUserRow(
+    block: Block,
     modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .then(
-                if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier,
-            )
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         // This only supports DM for now.
         //   val contact = chat.attendees.first()
-        NoSurfaceImage(imageUrl = chat.partnerPhoto,
+        NoSurfaceImage(imageUrl = block.photo,
             contentDescription = null,
             modifier = Modifier
                 .size(48.dp)
@@ -72,12 +74,12 @@ fun ChatRow(
             horizontalAlignment = Alignment.Start,
         ) {
             Text(
-                text = "${chat.partnerName} ${chat.partnerSurname}",
+                text = "${block.name} ${block.surname}",
                 style = MaterialTheme.typography.bodyLarge,
                 fontSize = 16.sp,
             )
             Text(
-                text = "hel",//"chat.chatWithLastMessage.text",
+                text = block.date?.let { it.seconds.toReadableString() }  ?: "",
                 style = MaterialTheme.typography.bodySmall,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,

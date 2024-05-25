@@ -12,6 +12,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.Alignment
 import com.kapirti.ira.R.string as AppText
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Block
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Feedback
 import androidx.compose.material.icons.filled.Flag
@@ -40,6 +41,7 @@ import com.kapirti.ira.model.Theme
 @Composable
 fun SettingsScreen(
     navigateEdit: () -> Unit,
+    navigateBlockUser: () -> Unit,
     restartApp: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SettingsViewModel = hiltViewModel()
@@ -103,6 +105,11 @@ fun SettingsScreen(
                 Icons.Default.ManageAccounts,
                 "", Modifier.card()
             ) { viewModel.onEditProfileClick(navigateEdit) }
+            RegularCardEditor(
+                stringResource(id = AppText.block),
+                Icons.Default.Block,
+                "", Modifier.card()
+            ) { navigateBlockUser() }
             RegularCardEditor(
                 stringResource(AppText.sign_out),
                 Icons.Default.Logout,

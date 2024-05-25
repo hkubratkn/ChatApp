@@ -94,8 +94,6 @@ class ChatNopeViewModel @Inject constructor(
                     text = input.value,
                     senderId = profileUid,
                     timestamp = date,
-                    mediaUri = null,
-                    mediaMimeType = null,
                 )
             )
 

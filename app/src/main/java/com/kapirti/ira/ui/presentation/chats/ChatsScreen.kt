@@ -20,6 +20,7 @@ import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
 import com.kapirti.ira.R
+import com.kapirti.ira.core.datastore.ChatIdRepository
 import com.kapirti.ira.core.viewmodel.IncludeChatViewModel
 import com.kapirti.ira.model.Chat
 
@@ -28,8 +29,7 @@ import com.kapirti.ira.model.Chat
 fun ChatsScreen(
     chats: List<Chat>,
     contentPadding: PaddingValues,
-    includeChatViewModel: IncludeChatViewModel,
-    navigateChatsToChatExist: () -> Unit,
+    onChatClick: (Chat) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     @SuppressLint("InlinedApi") // Granted at install time on API <33.
@@ -56,10 +56,7 @@ fun ChatsScreen(
         items(items = chats) { chat ->
             ChatRow(
                 chat = chat,
-                onClick = {
-                    includeChatViewModel.addChat(chat)
-                    navigateChatsToChatExist()
-                }
+                onClick = { onChatClick(chat) }
             )
         }
     }
@@ -97,3 +94,16 @@ private fun NotificationPermissionCard(
         }
     }
 }
+
+
+/**
+
+floatingActionButton = {
+Button(onClick = chatsToArchive){
+Text(stringResource(AppText.archive))
+}
+},
+
+
+}
+ */

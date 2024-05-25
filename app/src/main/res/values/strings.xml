@@ -103,6 +103,10 @@
     <string name="block_user">Do you want to block a user?</string>
     <string name="report">Report</string>
     <string name="report_user">Do you want to report and block a user?</string>
+
+    <!-- Block Users Screen -->
+    <string name="block_users_title">Block users</string>
+    <string name="no_block_users_all">You have no block users!</string>
 </resources>
     <!--
   <string name="loading_chats_error">Error while loading chats</string>

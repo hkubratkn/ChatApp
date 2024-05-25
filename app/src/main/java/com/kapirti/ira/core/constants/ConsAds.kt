@@ -11,6 +11,7 @@ object ConsAds {
     const val ADS_CHAT_BANNER_ID = ""
     const val ADS_ARCHIVE_BANNER_ID = ""
     const val ADS_SETTINGS_BANNER_ID = ""
+    const val ADS_BLOCK_USERS_BANNER_ID = ""
 
     const val ADS_HOME_BANNER_ID = ""
     const val ADS_SEARCH_BANNER_ID = ""

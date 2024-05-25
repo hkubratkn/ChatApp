@@ -1,38 +1,27 @@
-package com.kapirti.ira.ui.presentation.chats
+package com.kapirti.ira.ui.presentation.blockusers
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import com.kapirti.ira.core.datastore.ChatIdRepository
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
 import com.kapirti.ira.soci.ui.stateInUi
 import com.kapirti.ira.ui.presentation.ZepiViewModel
 
 @HiltViewModel
-class ChatsViewModel @Inject constructor(
+class BlockUsersViewModel @Inject constructor(
     private val firestoreService: FirestoreService,
-    private val chatIdRepository: ChatIdRepository,
     logService: LogService,
 ): ZepiViewModel(logService) {
-    val chats = firestoreService.userChats
-        .stateInUi(emptyList())
-
-
-    fun saveChatId(chatId: String){
-        launchCatching {
-            chatIdRepository.saveChatIdState(chatId)
-        }
-    }
+    val blockUsers = firestoreService.userBlockUsers.stateInUi(emptyList())
 }
 
-    /**
-
- /**   fun onArchiveSwipe(chat: Chat){
+/**
+    fun onArchiveSwipe(chat: Chat){
         launchCatching{
             firestoreService.saveUserArchive(uid = accountService.currentUserId, chat = chat, chatId = chat.chatId)
             firestoreService.deleteUserChat(uid = accountService.currentUserId, chatId = chat.chatId)
         }
-    }*/
+    }
 
 
 
