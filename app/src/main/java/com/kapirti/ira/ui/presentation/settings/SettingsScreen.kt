@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.PrivacyTip
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.StarRate
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -43,6 +44,7 @@ fun SettingsScreen(
     navigateEdit: () -> Unit,
     navigateBlockUser: () -> Unit,
     restartApp: () -> Unit,
+    snackbarHostState: SnackbarHostState,
     modifier: Modifier = Modifier,
     viewModel: SettingsViewModel = hiltViewModel()
 ) {
@@ -75,7 +77,7 @@ fun SettingsScreen(
             Icons.Default.PrivacyTip,
             "",
             Modifier.card()
-        ) { viewModel.privacyPolicy() }
+        ) { viewModel.privacyPolicy(snackbarHostState) }
         RegularCardEditor(
             stringResource(AppText.feedback),
             Icons.Default.Feedback,

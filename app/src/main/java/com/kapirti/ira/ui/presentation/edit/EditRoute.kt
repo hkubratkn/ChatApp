@@ -33,7 +33,6 @@ private const val CONTENT_ANIMATION_DURATION = 300
 fun EditRoute(
     popUp: () -> Unit,
     restartApp: () -> Unit,
-    onShowSnackbar: suspend (String, String?) -> Boolean,
     viewModel: EditViewModel = hiltViewModel()
 ) {
     val surveyScreenData = viewModel.surveyScreenData ?: return
@@ -55,7 +54,6 @@ fun EditRoute(
         onDonePressed = { viewModel.onDonePressed(
             popUp = popUp,
             restartApp = restartApp,
-            onShowSnackbar = onShowSnackbar,
             context = context
         ) }
     ) { paddingValues ->
@@ -167,7 +165,7 @@ fun EditRoute(
             confirmButton = {
                 DialogConfirmButton(AppText.delete_my_account) {
                     viewModel.onDeleteMyAccountClick(
-                        restartApp = restartApp, onShowSnackbar = onShowSnackbar,
+                        restartApp = restartApp,
                         empty_password_error = empty_password_error
                     )
                 }

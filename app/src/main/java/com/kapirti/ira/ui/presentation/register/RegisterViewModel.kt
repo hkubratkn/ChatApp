@@ -16,6 +16,7 @@
 
 package com.kapirti.ira.ui.presentation.register
 
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuthException
@@ -62,7 +63,7 @@ class RegisterViewModel @Inject constructor(
 
 
     fun onRegisterClick(
-        onShowSnackbar: suspend (String, String?) -> Boolean,
+        snackbarHostState: SnackbarHostState,
         navigateAndPopUpRegisterToEdit: () -> Unit,
         email_error: String,
         password_error: String,
@@ -70,19 +71,19 @@ class RegisterViewModel @Inject constructor(
     ) {
         onButtonChange()
         if (!email.isValidEmail()) {
-            launchCatching { onShowSnackbar(email_error, "") }
+            launchCatching { snackbarHostState.showSnackbar(email_error) }
             onButtonChange()
             return
         }
 
         if (!password.isValidPassword()) {
-            launchCatching { onShowSnackbar(password_error, "") }
+            launchCatching { snackbarHostState.showSnackbar(password_error) }
             onButtonChange()
             return
         }
 
         if (!password.passwordMatches(uiState.value.repeatPassword)) {
-            launchCatching { onShowSnackbar(password_match_error, "") }
+            launchCatching { snackbarHostState.showSnackbar(password_match_error) }
             onButtonChange()
             return
         }
@@ -103,7 +104,7 @@ class RegisterViewModel @Inject constructor(
                 langRepository.saveLangState(langValue)
                 navigateAndPopUpRegisterToEdit()
             } catch (ex: FirebaseAuthException) {
-                launchCatching { onShowSnackbar(ex.localizedMessage ?: "", "") }
+                launchCatching { snackbarHostState.showSnackbar(ex.localizedMessage ?: "") }
                 onButtonChange()
                 throw ex
             }

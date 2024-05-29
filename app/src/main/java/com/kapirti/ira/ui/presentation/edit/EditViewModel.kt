@@ -175,7 +175,6 @@ class EditViewModel @Inject constructor(
     fun onDonePressed(
         context: Context, popUp: () -> Unit,
         restartApp: () -> Unit,
-        onShowSnackbar: suspend (String, String?) -> Boolean,
     ) {
         when (_editType.value) {
             PROFILE -> {
@@ -315,11 +314,10 @@ class EditViewModel @Inject constructor(
 
     fun onDeleteMyAccountClick(
         restartApp: () -> Unit,
-        onShowSnackbar: suspend (String, String?) -> Boolean,
         empty_password_error: String
     ) {
         if (password.isBlank()) {
-            launchCatching { onShowSnackbar(empty_password_error, "") }
+            //launchCatching { onShowSnackbar(empty_password_error, "") }
             return
         }
 

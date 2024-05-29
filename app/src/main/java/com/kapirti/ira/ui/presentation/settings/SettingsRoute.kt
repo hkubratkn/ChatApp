@@ -39,6 +39,7 @@ fun SettingsRoute(
         SettingsScreen(
             navigateEdit = navigateEdit,
             restartApp = restartApp,
+            snackbarHostState = snackbarHostState,
             modifier = modifier.padding(innerPadding),
             navigateBlockUser = navigateBlockUser,
         )

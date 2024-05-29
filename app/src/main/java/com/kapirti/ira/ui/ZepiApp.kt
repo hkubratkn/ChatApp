@@ -109,13 +109,13 @@ fun ZepiApp(
             showInterstitialAds = showInterstitialAds,
             navController = navController,
 
-            onShowSnackbar = { message, action ->
+/**            onShowSnackbar = { message, action ->
                 snackbarHostState.showSnackbar(
                     message = message,
                     actionLabel = action,
                     duration = Short,
                 ) == SnackbarResult.ActionPerformed
-            },
+            },*/
 
 
             openDrawer = { coroutineScope.launch { sizeAwareDrawerState.open() } },

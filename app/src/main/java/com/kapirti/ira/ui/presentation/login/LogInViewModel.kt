@@ -1,5 +1,6 @@
 package com.kapirti.ira.ui.presentation.login
 
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.ira.common.ext.isValidEmail
@@ -42,13 +43,13 @@ class LogInViewModel @Inject constructor(
     }
 
     fun onLogInClick(
-        restartApp: () -> Unit, onShowSnackbar: suspend (String, String?) -> Boolean,
+        restartApp: () -> Unit, snackbarHostState: SnackbarHostState,
         emailError: String, emptyPasswordError: String
         ) {
         onButtonChange()
         if (!email.isValidEmail()) {
             launchCatching {
-                onShowSnackbar(emailError, "")
+                snackbarHostState.showSnackbar(emailError)
                 onButtonChange()
             }
             return
@@ -56,7 +57,7 @@ class LogInViewModel @Inject constructor(
 
         if (password.isBlank()) {
             launchCatching {
-                onShowSnackbar(emptyPasswordError, "")
+                snackbarHostState.showSnackbar(emptyPasswordError)
                 onButtonChange()
             }
             return
@@ -73,7 +74,7 @@ class LogInViewModel @Inject constructor(
                 restartApp()
             } catch (ex: FirebaseAuthException) {
                 launchCatching {
-                    onShowSnackbar(ex.localizedMessage ?: "", "")
+                    snackbarHostState.showSnackbar(ex.localizedMessage ?: "")
                     onButtonChange()
                 }
                 throw ex
@@ -82,19 +83,19 @@ class LogInViewModel @Inject constructor(
     }
 
     fun onForgotPasswordClick(
-        onShowSnackbar: suspend (String, String?) -> Boolean,
+        snackbarHostState: SnackbarHostState,
         emailError: String, recoveryEmailSent: String
     ) {
         if (!email.isValidEmail()) {
             launchCatching {
-                onShowSnackbar(emailError, "")
+                snackbarHostState.showSnackbar(emailError)
             }
             return
         }
 
         launchCatching {
             accountService.sendRecoveryEmail(email)
-            onShowSnackbar(recoveryEmailSent, "")
+            snackbarHostState.showSnackbar(recoveryEmailSent)
         }
     }
 }

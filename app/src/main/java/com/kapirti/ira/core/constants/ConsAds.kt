@@ -1,6 +1,7 @@
 package com.kapirti.ira.core.constants
 
 object ConsAds {
+    /**
     const val ADS_APP_OPEN_ID = "ca-app-pub-3006196735467220/8590678219"
     const val ADS_INTERSTITIAL_ID = "ca-app-pub-3006196735467220/3990655826"
     const val ADS_WELCOME_BANNER_ID = ""
@@ -17,8 +18,8 @@ object ConsAds {
     const val ADS_CHATS_BANNER_ID = "ca-app-pub-3006196735467220/9331585257"
     const val ADS_SUBSCRIBE_BANNER_ID = "ca-app-pub-3006196735467220/1978736001"
     const val ADS_PROFILE_BANNER_ID = "ca-app-pub-3006196735467220/3372299064"
+     */
 
-/**
     const val ADS_APP_OPEN_ID = ""
     const val ADS_INTERSTITIAL_ID = ""
     const val ADS_WELCOME_BANNER_ID = ""
@@ -35,5 +36,5 @@ object ConsAds {
     const val ADS_CHATS_BANNER_ID = ""
     const val ADS_SUBSCRIBE_BANNER_ID = ""
     const val ADS_PROFILE_BANNER_ID = ""
-    */
+
 }

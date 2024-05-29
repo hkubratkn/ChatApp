@@ -77,7 +77,6 @@ fun ZepiNavGraph(
 
     navigateChatsToChatExist: () -> Unit,
 
-    onShowSnackbar: suspend (String, String?) -> Boolean,
     showInterstitialAds: () -> Unit,
     isExpandedScreen: Boolean,
 
@@ -388,7 +387,6 @@ fun ZepiNavGraph(
                         restartApp = restartApp,
                         loginToRegister = loginToRegister,
                         showInterstialAd = showInterstitialAds,
-                        onShowSnackbar = onShowSnackbar
                     )
                 }
                 composable(ZepiDestinations.REGISTER_ROUTE) {
@@ -396,14 +394,12 @@ fun ZepiNavGraph(
                         navigateAndPopUpRegisterToEdit = navigateAndPopUpRegisterToEdit,
                         registerToLogin = registerToLogin,
                         showInterstitialAds = showInterstitialAds,
-                        onShowSnackbar = onShowSnackbar,
                     )
                 }
                 composable(ZepiDestinations.EDIT_ROUTE) {
                     EditRoute(
                         popUp = popUpScreen,
                         restartApp = restartApp,
-                        onShowSnackbar = onShowSnackbar,
                     )
                 }
                 composable(ZepiDestinations.SEARCH_ROUTE) {
