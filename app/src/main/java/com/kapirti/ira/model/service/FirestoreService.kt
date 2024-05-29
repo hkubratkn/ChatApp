@@ -42,6 +42,7 @@ interface FirestoreService {
     suspend fun block(uid: String, partnerUid: String, block: Block)
     suspend fun report(uid: String, partnerUid: String, report: Report)
     suspend fun saveFeedback(feedback: Feedback)
+    suspend fun saveLang(feedback: Feedback)
 
     suspend fun deleteUserChat(uid: String, chatId: String)
     suspend fun deleteChat(chatId: String)
@@ -77,7 +78,6 @@ interface FirestoreService {
 
     suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat)
     suspend fun saveUserPhotos(userPhotos: UserPhotos)
-    suspend fun saveLang(feedback: Feedback)
 
     suspend fun updateUserOnline(value: Boolean)
     suspend fun updateUserLastSeen()

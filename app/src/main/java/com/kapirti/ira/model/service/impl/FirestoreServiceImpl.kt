@@ -306,6 +306,8 @@ class FirestoreServiceImpl @Inject constructor(
     override suspend fun block(uid: String, partnerUid: String, block: Block): Unit = trace(SAVE_BLOCK_USER) { userBlockDocument(uid, partnerUid).set(block).await() }
     override suspend fun report(uid: String, partnerUid: String, report: Report): Unit = trace(SAVE_REPORT) { userReportDocument(uid = uid, partnerUid = partnerUid).set(report).await() }
     override suspend fun saveFeedback(feedback: Feedback): Unit = trace(SAVE_FEEDBACK_TRACE) { feedbackCollection().add(feedback).await() }
+    override suspend fun saveLang(feedback: Feedback): Unit = trace(SAVE_LANG_TRACE) { langDocument(feedback).set(feedback).await() }
+
     override suspend fun deleteUserChat(uid: String, chatId: String) {
         userChatCollection(uid = uid).document(chatId).delete().await()
     }
@@ -328,8 +330,7 @@ class FirestoreServiceImpl @Inject constructor(
     private fun userReportDocument(uid: String, partnerUid: String): DocumentReference = userDocument(partnerUid).collection(REPORT_COLLECTION).document(uid)
     private fun deleteCollection(): CollectionReference = firestore.collection(DELETE_COLLECTION)
     private fun feedbackCollection(): CollectionReference = firestore.collection(FEEDBACK_COLLECTION)
-
-
+    private fun langDocument(feedback: Feedback): DocumentReference = firestore.collection(LANG_COLLECTION).document(feedback.text)
 
 
 
@@ -344,6 +345,7 @@ class FirestoreServiceImpl @Inject constructor(
         private const val REPORT_COLLECTION = "Report"
         private const val DELETE_COLLECTION = "Delete"
         private const val FEEDBACK_COLLECTION = "Feedback"
+        private const val LANG_COLLECTION = "Lang"
 
         private const val SAVE_USER_TRACE = "saveUser"
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
@@ -351,6 +353,7 @@ class FirestoreServiceImpl @Inject constructor(
         private const val SAVE_BLOCK_USER = "saveBlockUser"
         private const val SAVE_REPORT = "saveReport"
         private const val SAVE_FEEDBACK_TRACE = "saveFeedback"
+        private const val SAVE_LANG_TRACE = "saveLang"
 
         private const val DELETE_ACCOUNT_TRACE = "deleteAccount"
     }
@@ -525,9 +528,6 @@ Copyright 2022 Google LLC
 
 
 
-    override suspend fun saveLang(feedback: Feedback): Unit =
-        trace(SAVE_LANG_TRACE) { langDocument(feedback).set(feedback).await() }
-
 
 
     override suspend fun updateUserOnline(value: Boolean): Unit = trace(UPDATE_USER_ONLINE_TRACE) {
@@ -596,10 +596,7 @@ Copyright 2022 Google LLC
 
 
 
-    private fun langDocument(feedback: Feedback): DocumentReference =
-        firestore.collection(LANG_COLLECTION).document(feedback.text)
 
-        private const val LANG_COLLECTION = "Lang"
 
         private const val LANGUAGE_FIELD = "language"
         private const val ONLINE_FIELD = "online"
@@ -614,7 +611,6 @@ Copyright 2022 Google LLC
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
         private const val SAVE_USER_ARCHIVE_TRACE = "saveUserArchive"
         private const val SAVE_USER_PHOTOS_TRACE = "saveUserPhotos"
-        private const val SAVE_LANG_TRACE = "saveLang"
         private const val UPDATE_USER_ONLINE_TRACE = "updateUserOnline"
         private const val UPDATE_USER_LAST_SEEN_TRACE = "updateUserLastSeen"
         private const val UPDATE_USER_DISPLAY_NAME_TRACE = "updateUSerDisplayName"

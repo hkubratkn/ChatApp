@@ -17,17 +17,23 @@
 package com.kapirti.ira.ui.presentation.register
 
 import androidx.compose.runtime.mutableStateOf
+import com.google.firebase.Timestamp
+import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.ira.core.datastore.EditTypeRepository
 import com.kapirti.ira.core.datastore.LangRepository
 import com.kapirti.ira.common.ext.isValidEmail
 import com.kapirti.ira.common.ext.isValidPassword
 import com.kapirti.ira.common.ext.passwordMatches
+import com.kapirti.ira.core.constants.EditType.PROFILE
+import com.kapirti.ira.model.Feedback
+import com.kapirti.ira.model.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
 import com.kapirti.ira.ui.presentation.ZepiViewModel
+import java.util.Locale
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
@@ -37,6 +43,8 @@ class RegisterViewModel @Inject constructor(
     private val langRepository: LangRepository,
     private val editTypeRepository: EditTypeRepository,
 ): ZepiViewModel(logService) {
+    val langValue = Locale.getDefault().getDisplayLanguage()
+
     var uiState = mutableStateOf(RegisterUiState())
         private set
 
@@ -46,19 +54,6 @@ class RegisterViewModel @Inject constructor(
         get() = uiState.value.password
     private val button
         get() = uiState.value.button
-
-
-    private val _lang = mutableStateOf<String?>(null)
-    val lang: String?
-        get() = _lang.value
-
-    init {
-        launchCatching {
-            langRepository.readLangState().collect {
-                _lang.value = it
-            }
-        }
-    }
 
 
     fun onEmailChange(newValue: String) { uiState.value = uiState.value.copy(email = newValue) }
@@ -91,31 +86,28 @@ class RegisterViewModel @Inject constructor(
             onButtonChange()
             return
         }
-/**
+
         launchCatching {
             try {
                 accountService.linkAccount(email, password)
                 firestoreService.saveUser(
-                    com.kapirti.video_food_delivery_shopping.model.User(
-                        language = _lang.value ?: DEFAULT_LANGUAGE_CODE,
+                    User(
+                        language = langValue,
                         online = true,
                         uid = accountService.currentUserId,
                         date = Timestamp.now()
                     )
                 )
-                firestoreService.saveLang(
-                    Feedback(
-                        _lang.value ?: DEFAULT_LANGUAGE_CODE
-                    )
-                )
+                firestoreService.saveLang(Feedback(langValue))
                 editTypeRepository.saveEditTypeState(PROFILE)
+                langRepository.saveLangState(langValue)
                 navigateAndPopUpRegisterToEdit()
             } catch (ex: FirebaseAuthException) {
                 launchCatching { onShowSnackbar(ex.localizedMessage ?: "", "") }
                 onButtonChange()
                 throw ex
             }
-        }*/
+        }
     }
 
     fun onButtonChange() { uiState.value = uiState.value.copy(button = !button) }

@@ -1,35 +1,22 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.kapirti.ira.ui.presentation.login
 
 import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.ira.common.ext.isValidEmail
+import com.kapirti.ira.core.datastore.LangRepository
 import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
 import com.kapirti.ira.ui.presentation.ZepiViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
 class LogInViewModel @Inject constructor(
     private val accountService: AccountService,
     private val firestoreService: FirestoreService,
+    private val langRepository: LangRepository,
     logService: LogService,
 ): ZepiViewModel(logService) {
     var uiState = mutableStateOf(LogInUiState())
@@ -78,6 +65,11 @@ class LogInViewModel @Inject constructor(
         launchCatching {
             try {
                 accountService.authenticate(email, password)
+                val user = firestoreService.getUser(accountService.currentUserId)
+                langRepository.saveLangState(
+                    user?.let { it.language } ?:
+                    Locale.getDefault().getDisplayLanguage()
+                )
                 restartApp()
             } catch (ex: FirebaseAuthException) {
                 launchCatching {
