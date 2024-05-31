@@ -1,7 +1,9 @@
 package com.kapirti.ira.ui.presentation.chat.chatexist
 
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.kapirti.ira.core.datastore.ChatIdRepository
 import com.kapirti.ira.model.Block
 import com.kapirti.ira.model.Chat
@@ -17,9 +19,11 @@ import com.kapirti.ira.ui.presentation.ZepiViewModel
 import com.kapirti.ira.ui.presentation.chat.ext.ChatActionOption
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class ChatExistViewModel @Inject constructor(
@@ -34,7 +38,7 @@ class ChatExistViewModel @Inject constructor(
     var showReportDialog = mutableStateOf(false)
 
     private val _chatId = MutableStateFlow<String?>("")
-   // var chatId: StateFlow<String?> = _chatId
+    // var chatId: StateFlow<String?> = _chatId
 
     private val _partner = MutableStateFlow<User?>(User())
     var partner: StateFlow<User?> = _partner
@@ -46,7 +50,7 @@ class ChatExistViewModel @Inject constructor(
     val messages = firestoreService.chatMessages.stateInUi(emptyList())
 
 
-    fun initialize(chat: Chat?){
+    fun initialize(chat: Chat?) {
         launchCatching {
             chat?.let {
                 _chatId.value = it.chatId
@@ -71,27 +75,27 @@ class ChatExistViewModel @Inject constructor(
     val chat = _chat.stateInUi(null)
 
     val messages = combine(_messages, attendees) { messages, attendees ->
-// Build a list of `ChatMessage` from this list of `Message`.
-        buildList {
-            for (i in messages.indices) {
-                val message = messages[i]
-// Show the contact icon only at the first message if the same sender has multiple
-// messages in a row.
-                val showIcon = i + 1 >= messages.size ||
-                    messages[i + 1].senderId != message.senderId
-                val iconUri = if (showIcon) attendees[message.senderId]?.iconUri else null
-                add(
-                    ChatMessage(
-                        text = message.text,
-                        mediaUri = message.mediaUri,
-                        mediaMimeType = message.mediaMimeType,
-                        timestamp = message.timestamp,
-                        isIncoming = message.isIncoming,
-                        senderIconUri = iconUri,
-                    ),
-                )
-            }
-        }
+    // Build a list of `ChatMessage` from this list of `Message`.
+    buildList {
+    for (i in messages.indices) {
+    val message = messages[i]
+    // Show the contact icon only at the first message if the same sender has multiple
+    // messages in a row.
+    val showIcon = i + 1 >= messages.size ||
+    messages[i + 1].senderId != message.senderId
+    val iconUri = if (showIcon) attendees[message.senderId]?.iconUri else null
+    add(
+    ChatMessage(
+    text = message.text,
+    mediaUri = message.mediaUri,
+    mediaMimeType = message.mediaMimeType,
+    timestamp = message.timestamp,
+    isIncoming = message.isIncoming,
+    senderIconUri = iconUri,
+    ),
+    )
+    }
+    }
     }.stateInUi(emptyList())*/
 
     private val _input = MutableStateFlow("")
@@ -108,9 +112,9 @@ class ChatExistViewModel @Inject constructor(
     fun setForeground(foreground: Boolean) {
         if (_chatId.value != "") {
             if (foreground) {
-               // repository.activateChat(chatId)
+                // repository.activateChat(chatId)
             } else {
-               // repository.deactivateChat(chatId)
+                // repository.deactivateChat(chatId)
             }
         }
     }
@@ -125,22 +129,37 @@ class ChatExistViewModel @Inject constructor(
         updateInput(input)
     }
 
+
+    private var job: Job? = null
+
+
     fun send() {
         val chatId = _chatId.value
         if (chatId == "") return
         val input = _input.value
         if (!isInputValid(input)) return
-        launchCatching {
-            firestoreService.saveChatMessage(chatId = chatId ?: "", chatMessage = ChatMessage(
-                text = _input.value,
-                senderId = accountService.currentUserId,
-                timestamp = Timestamp.now()))
 
-           // repository.sendMessage(chatId, input, null, null)
-            _input.value = ""
+        job?.cancel()
+        job = launchCatching {
+            try {
+                firestoreService.saveChatMessage(
+                    chatId = chatId ?: "",
+                    chatMessage = ChatMessage(
+                        text = _input.value,
+                        senderId = accountService.currentUserId,
+                        timestamp = Timestamp.now()
+                    )
+                )
+                firestoreService.updateChatLastMessage(chatId = chatId ?: "", text = _input.value)
+                firestoreService.updateChatTimestamp(chatId = chatId ?: "")
+
+                // repository.sendMessage(chatId, input, null, null)
+                _input.value = ""
+            } catch (e: FirebaseFirestoreException) {
+                println("raheem: ${e.message}")
+            }
         }
     }
-
 
     //Options
     fun loadChatOptions() {
@@ -148,10 +167,10 @@ class ChatExistViewModel @Inject constructor(
         options.value = ChatActionOption.getOptions(hasEditOption)
     }
     fun onChatActionClick(action: String) {
-       // when (ChatActionOption.getByTitle(action)) {
-           // ChatActionOption.Block -> onBlockClick()
-           // ChatActionOption.Report -> onReportClick()
-       // }
+        when (ChatActionOption.getByTitle(action)) {
+            ChatActionOption.Block -> onBlockClick()
+            ChatActionOption.Report -> onReportClick()
+        }
     }
     private fun onBlockClick() {
         showBlockDialog.value = true

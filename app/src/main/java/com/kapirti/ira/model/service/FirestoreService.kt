@@ -49,6 +49,11 @@ interface FirestoreService {
     suspend fun deleteAccount(delete: Delete)
 
 
+    suspend fun updateUserOnline(value: Boolean)
+    suspend fun updateUserLastSeen()
+    suspend fun updateChatLastMessage(chatId: String, text: String)
+    suspend fun updateChatTimestamp(chatId: String)
+
     /*
     package com.example.makeitso.model.service
 
@@ -79,8 +84,6 @@ interface FirestoreService {
     suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat)
     suspend fun saveUserPhotos(userPhotos: UserPhotos)
 
-    suspend fun updateUserOnline(value: Boolean)
-    suspend fun updateUserLastSeen()
     suspend fun updateUserName(newValue: String)
     suspend fun updateUserSurname(newValue: String)
     suspend fun updateUserDisplayName(newValue: String)
@@ -91,8 +94,6 @@ interface FirestoreService {
 
     suspend fun deleteUserArchive(uid: String, chatId: String)
 
-*/
-   /**
     val userBlock: Flow<List<com.kapirti.ira.model.Block>>
 
 

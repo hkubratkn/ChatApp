@@ -66,7 +66,7 @@ class MainViewModel @Inject constructor(
                 job?.cancel()
                 job = viewModelScope.launch {
                     try {
-                    //    val response = firestoreService.updateUserOnline(true)
+                        val response = firestoreService.updateUserOnline(true)
                     } catch (e: FirebaseFirestoreException) {
                         println("raheem: ${e.message}")
                     }
@@ -81,8 +81,8 @@ class MainViewModel @Inject constructor(
                 job?.cancel()
                 job = viewModelScope.launch {
                     try {
-//                        val responseOne = firestoreService.updateUserOnline(false)
-  //                      val response = firestoreService.updateUserLastSeen()
+                        val responseOne = firestoreService.updateUserOnline(false)
+                        val response = firestoreService.updateUserLastSeen()
                     } catch (e: FirebaseFirestoreException) {
                         println("raheem: ${e.message}")
                     }

@@ -205,8 +205,10 @@ matchingTasks.map { it.reference.delete().asDeferred() }.awaitAll()
  * */
 
 
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.dataObjects
 import com.google.firebase.firestore.toObject
@@ -263,10 +265,10 @@ class FirestoreServiceImpl @Inject constructor(
         get() =
             auth.currentUser.flatMapLatest { user ->
                 userChatCollection(user.id)
-                    //                  .whereEqualTo(USER_ID_FIELD, user.id)
-//                    .orderBy(CREATED_AT_FIELD, Query.Direction.DESCENDING)
+                    .orderBy(DATE_FIELD, Query.Direction.DESCENDING)
                     .dataObjects()
             }
+
     @OptIn(ExperimentalCoroutinesApi::class)
     override val userArchives: Flow<List<Chat>>
         get() =
@@ -291,7 +293,7 @@ class FirestoreServiceImpl @Inject constructor(
         get() =
             chatIdRepository.readChatIdState().flatMapLatest { chatId ->
                 chatCollection(chatId)
-                   // .orderBy(DATE_FIELD, Query.Direction.DESCENDING)
+                    .orderBy(DATE_FIELD, Query.Direction.DESCENDING)
                     .dataObjects()
             }
 
@@ -306,6 +308,26 @@ class FirestoreServiceImpl @Inject constructor(
     override suspend fun report(uid: String, partnerUid: String, report: Report): Unit = trace(SAVE_REPORT) { userReportDocument(uid = uid, partnerUid = partnerUid).set(report).await() }
     override suspend fun saveFeedback(feedback: Feedback): Unit = trace(SAVE_FEEDBACK_TRACE) { feedbackCollection().add(feedback).await() }
     override suspend fun saveLang(feedback: Feedback): Unit = trace(SAVE_LANG_TRACE) { langDocument(feedback).set(feedback).await() }
+    override suspend fun updateUserOnline(value: Boolean): Unit = trace(UPDATE_USER_ONLINE_TRACE) {
+        userDocument(auth.currentUserId).update(
+            ONLINE_FIELD,
+            value
+        ).await()
+    }
+    override suspend fun updateUserLastSeen(): Unit = trace(UPDATE_USER_LAST_SEEN_TRACE) {
+        userDocument(auth.currentUserId).update(
+            LAST_SEEN_FIELD,
+            FieldValue.serverTimestamp()
+        ).await()
+    }
+    override suspend fun updateChatTimestamp(chatId: String): Unit = trace(UPDATE_CHAT_TIMESTAMP_TRACE) {
+        userChatCollection(auth.currentUserId).document(chatId).update(
+            DATE_FIELD, FieldValue.serverTimestamp()).await() }
+
+    override suspend fun updateChatLastMessage(chatId: String, text: String): Unit = trace(UPDATE_CHAT_LAST_MESSAGE_TRACE) {
+        userChatCollection(auth.currentUserId).document(chatId).update(
+            LAST_MESSAGE_FIELD, text).await() }
+
 
     override suspend fun deleteUserChat(uid: String, chatId: String) {
         userChatCollection(uid = uid).document(chatId).delete().await()
@@ -335,6 +357,9 @@ class FirestoreServiceImpl @Inject constructor(
 
     companion object {
         private const val DATE_FIELD = "date"
+        private const val ONLINE_FIELD = "online"
+        private const val LAST_SEEN_FIELD = "lastSeen"
+        private const val LAST_MESSAGE_FIELD = "lastMessage"
 
         private const val USER_COLLECTION = "User"
         private const val PHOTOS_COLLECTION = "Photos"
@@ -353,6 +378,11 @@ class FirestoreServiceImpl @Inject constructor(
         private const val SAVE_REPORT = "saveReport"
         private const val SAVE_FEEDBACK_TRACE = "saveFeedback"
         private const val SAVE_LANG_TRACE = "saveLang"
+
+        private const val UPDATE_USER_ONLINE_TRACE = "updateUserOnline"
+        private const val UPDATE_USER_LAST_SEEN_TRACE = "updateUserLastSeen"
+        private const val UPDATE_CHAT_LAST_MESSAGE_TRACE = "updateChatLastMessage"
+        private const val UPDATE_CHAT_TIMESTAMP_TRACE = "updateChatTimestamp"
 
         private const val DELETE_ACCOUNT_TRACE = "deleteAccount"
     }
@@ -529,20 +559,6 @@ Copyright 2022 Google LLC
 
 
 
-    override suspend fun updateUserOnline(value: Boolean): Unit = trace(UPDATE_USER_ONLINE_TRACE) {
-        userDocument(auth.currentUserId).update(
-            ONLINE_FIELD,
-            value
-        ).await()
-    }
-
-    override suspend fun updateUserLastSeen(): Unit = trace(UPDATE_USER_LAST_SEEN_TRACE) {
-        userDocument(auth.currentUserId).update(
-            LAST_SEEN_FIELD,
-            FieldValue.serverTimestamp()
-        ).await()
-    }
-
     override suspend fun updateUserDisplayName(newValue: String): Unit =
         trace(UPDATE_USER_DISPLAY_NAME_TRACE) {
             userDocument(auth.currentUserId).update(
@@ -566,13 +582,6 @@ Copyright 2022 Google LLC
             ).await()
         }
 
-    override suspend fun updateUserGender(newValue: String): Unit =
-        trace(UPDATE_USER_GENDER_TRACE) {
-            userDocument(auth.currentUserId).update(
-                GENDER_FIELD,
-                newValue
-            ).await()
-        }
 
     override suspend fun updateUserDescription(newValue: String): Unit =
         trace(UPDATE_USER_DESCRIPTION_TRACE) {
@@ -598,8 +607,6 @@ Copyright 2022 Google LLC
 
 
         private const val LANGUAGE_FIELD = "language"
-        private const val ONLINE_FIELD = "online"
-        private const val LAST_SEEN_FIELD = "lastSeen"
         private const val DISPLAY_NAME_FIELD = "displayName"
         private const val NAME_FIELD = "name"
         private const val SURNAME_FIELD = "surname"
@@ -610,8 +617,6 @@ Copyright 2022 Google LLC
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
         private const val SAVE_USER_ARCHIVE_TRACE = "saveUserArchive"
         private const val SAVE_USER_PHOTOS_TRACE = "saveUserPhotos"
-        private const val UPDATE_USER_ONLINE_TRACE = "updateUserOnline"
-        private const val UPDATE_USER_LAST_SEEN_TRACE = "updateUserLastSeen"
         private const val UPDATE_USER_DISPLAY_NAME_TRACE = "updateUSerDisplayName"
         private const val UPDATE_USER_NAME_TRACE = "updateUserName"
         private const val UPDATE_USER_SURNAME_TRACE = "updateUserSurname"
