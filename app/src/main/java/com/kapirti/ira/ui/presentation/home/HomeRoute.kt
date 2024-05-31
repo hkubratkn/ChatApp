@@ -78,7 +78,7 @@ fun HomeRoute(
                     items(users, key = { it.uid }) { userItem ->
                         UserItem(
                             user = userItem,
-                            onUserClick = {
+                            onClick = {
                                 includeUserIdViewModel.addPartnerId(it.uid)
                                 navigateUserProfile()
                             }
