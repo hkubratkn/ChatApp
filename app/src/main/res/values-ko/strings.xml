@@ -2,7 +2,7 @@
 <resources>
     <!--korean-->
     <string name="dark_mode">다크 모드</string>
-    <string name="add_photo">사진 추가</string>
+    <string name="profile_title">프로필</string>
     <string name="already_have_an_account">이미 계정이 있습니다.</string>
     <string name="archive">아카이브</string>
     <string name="avatar">아바타</string>

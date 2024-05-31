@@ -2,7 +2,7 @@
 <resources>
     <!--indonezian-->
     <string name="dark_mode">Mode gelap</string>
-    <string name="add_photo">TAMBAH FOTO</string>
+    <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Sudah memiliki akun</string>
     <string name="archive">Arsip</string>
     <string name="avatar">Avatar</string>

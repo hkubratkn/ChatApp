@@ -2,7 +2,7 @@
 <resources>
     <!--slovak-->
     <string name="dark_mode">Tmavý režim</string>
-    <string name="add_photo">PRIDAŤ FOTO</string>
+    <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Už máte účet</string>
     <string name="archive">Archív</string>
     <string name="avatar">Avatar</string>

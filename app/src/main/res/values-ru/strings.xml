@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--russian-->
+    <string name="profile_title">Профиль</string>
     <string name="dark_mode">Темный режим</string>
     <string name="add_photo">ДОБАВИТЬ ФОТОГРАФИЮ</string>
     <string name="already_have_an_account">Уже есть аккаунт</string>

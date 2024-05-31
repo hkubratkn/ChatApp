@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--dutch-->
+    <string name="profile_title">Profiel</string>
     <string name="dark_mode">Donkere modus</string>
-    <string name="add_photo">FOTO TOEVOEGEN</string>
     <string name="already_have_an_account">Heb al een account</string>
     <string name="archive">Archief</string>
     <string name="avatar">Avatar</string>

@@ -2,7 +2,7 @@
 <resources>
     <!--polish-->
     <string name="dark_mode">Tryb ciemny</string>
-    <string name="add_photo">DODAJ ZDJĘCIE</string>
+    <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Posiadasz już konto</string>
     <string name="archive">Archiwum</string>
     <string name="avatar">Avatar</string>

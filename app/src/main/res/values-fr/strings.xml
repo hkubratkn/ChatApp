@@ -2,7 +2,7 @@
 <resources>
     <!--french-->
     <string name="dark_mode">Mode sombre</string>
-    <string name="add_photo">AJOUTER UNE PHOTO</string>
+    <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Vous avez déjà un compte</string>
     <string name="archive">Archives</string>
     <string name="avatar">Avatar</string>

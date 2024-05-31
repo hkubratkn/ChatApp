@@ -2,11 +2,8 @@
 <resources>
     <!--latvian-->
     <string name="dark_mode">Tumšais režīms</string>
-    <string name="add_photo">PIEVIENOT FOTO</string>
     <string name="already_have_an_account">Jau ir konts</string>
-    <string name="archive">Arhīvs</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Dzimšanas diena</string>
+    <string name="profile_title">Profils</string>
     <string name="block">Bloķēt</string>
     <string name="block_user">Vai vēlaties bloķēt lietotāju?</string>
     <string name="cancel">Atcelt</string>

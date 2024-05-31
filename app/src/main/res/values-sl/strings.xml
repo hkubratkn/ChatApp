@@ -2,7 +2,7 @@
 <resources>
     <!--slovenian-->
     <string name="dark_mode">Temni način</string>
-    <string name="add_photo">DODATI FOTO</string>
+    <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Že imate račun</string>
     <string name="archive">Arhiv</string>
     <string name="avatar">Avatar</string>

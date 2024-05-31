@@ -44,7 +44,7 @@ fun HomeScreen(
                 items(items, key = { it.uid }) { userItem ->
                     UserItem(
                         user = userItem,
-                        onUserClick = {
+                        onClick = {
                             onUserClick(userItem)
                         }
                     )

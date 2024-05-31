@@ -2,7 +2,7 @@
 <resources>
     <!--spanish-->
     <string name="dark_mode">Modo oscuro</string>
-    <string name="add_photo">AÑADIR FOTO</string>
+    <string name="profile_title">Perfil</string>
     <string name="already_have_an_account">Ya tiene una cuenta</string>
     <string name="archive">Archivo</string>
     <string name="avatar">Avatar</string>

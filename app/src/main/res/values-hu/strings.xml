@@ -2,7 +2,7 @@
 <resources>
     <!--hungarian-->
     <string name="dark_mode">Sötét üzemmód</string>
-    <string name="add_photo">FOTÓ HOZZÁADÁSA</string>
+    <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Már van fiókja</string>
     <string name="archive">Archívum</string>
     <string name="avatar">Avatar</string>

@@ -2,7 +2,7 @@
 <resources>
     <!--arabic-->
     <string name="dark_mode">الوضع المظلم</string>
-    <string name="add_photo">إضافة صورة</string>
+    <string name="profile_title">الملف الشخصي</string>
     <string name="already_have_an_account">هل لديك حساب</string>
     <string name="archive">أرشيف</string>
     <string name="avatar">الصورة الرمزية</string>

@@ -2,7 +2,7 @@
 <resources>
     <!--italian-->
     <string name="dark_mode">Modalità scura</string>
-    <string name="add_photo">AGGIUNGI FOTO</string>
+    <string name="profile_title">Profilo</string>
     <string name="already_have_an_account">Avete già un account</string>
     <string name="archive">Archivio</string>
     <string name="avatar">Avatar</string>

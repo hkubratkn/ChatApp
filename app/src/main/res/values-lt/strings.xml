@@ -2,11 +2,8 @@
 <resources>
     <!--lithuanian-->
     <string name="dark_mode">Tamsusis režimas</string>
-    <string name="add_photo">PRIDĖTI NUOTRAUKĄ</string>
     <string name="already_have_an_account">Jau turite paskyrą</string>
-    <string name="archive">Archyvas</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Gimtadienis</string>
+    <string name="profile_title">Profilis</string>
     <string name="block">Blokas</string>
     <string name="block_user">Ar norite blokuoti naudotoją?</string>
     <string name="cancel">Atšaukti</string>

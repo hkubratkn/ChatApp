@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--norwegian-->
+    <string name="profile_title">Profil</string>
     <string name="dark_mode">Mørk modus</string>
-    <string name="add_photo">LEGG TIL FOTO</string>
     <string name="already_have_an_account">Du har allerede en konto</string>
     <string name="archive">Arkiv</string>
     <string name="avatar">Avatar</string>

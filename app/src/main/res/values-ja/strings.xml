@@ -2,7 +2,7 @@
 <resources>
     <!--japanese-->
     <string name="dark_mode">ダークモード</string>
-    <string name="add_photo">写真を追加する</string>
+    <string name="profile_title">プロフィール</string>
     <string name="already_have_an_account">すでにアカウントをお持ちの方</string>
     <string name="archive">アーカイブ</string>
     <string name="avatar">アバター</string>

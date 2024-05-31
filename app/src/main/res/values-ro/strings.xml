@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--romanian-->
+    <string name="profile_title">Profil</string>
     <string name="dark_mode">Modul întunecat</string>
     <string name="add_photo">ADAUGĂ FOTO</string>
     <string name="already_have_an_account">Aveți deja un cont</string>
