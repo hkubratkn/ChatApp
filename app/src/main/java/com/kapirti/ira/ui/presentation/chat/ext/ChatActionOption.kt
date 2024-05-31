@@ -13,9 +13,9 @@ enum class ChatActionOption(val title: String) {
 
         fun getOptions(hasEditOption: Boolean): List<String> {
             val options = mutableListOf<String>()
-            values().forEach { chatAction ->
-                if (hasEditOption || chatAction != Block) {
-                    options.add(chatAction.title)
+            values().forEach { taskAction ->
+                if (hasEditOption || taskAction != Block) {
+                    options.add(taskAction.title)
                 }
             }
             return options

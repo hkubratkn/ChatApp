@@ -1,6 +1,7 @@
 package com.kapirti.ira.ui.presentation.chat.chatnope
 
 import com.google.firebase.Timestamp
+import com.kapirti.ira.core.datastore.ChatIdRepository
 import com.kapirti.ira.model.Chat
 import com.kapirti.ira.model.ChatMessage
 import com.kapirti.ira.model.User
@@ -19,6 +20,7 @@ import kotlinx.coroutines.flow.map
 class ChatNopeViewModel @Inject constructor(
     private val accountService: AccountService,
     private val firestoreService: FirestoreService,
+    private val chatIdRepository: ChatIdRepository,
     logService: LogService,
 ): ZepiViewModel(logService) {
     private val _partner = MutableStateFlow<User?>(User())
@@ -86,6 +88,7 @@ class ChatNopeViewModel @Inject constructor(
         profileName: String, profileSurname: String, profilePhoto: String, profileUid: String
     ) {
         launchCatching {
+            chatIdRepository.saveChatIdState(chatId)
             val date = Timestamp.now()
 
             firestoreService.saveChatMessage(

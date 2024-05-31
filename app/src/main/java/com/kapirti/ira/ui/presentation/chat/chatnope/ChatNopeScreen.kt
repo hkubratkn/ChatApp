@@ -111,17 +111,6 @@ fun ChatNopeScreen(
                 sendEnabled = sendEnabled,
                 onInputChanged = { viewModel.updateInput(it) },
                 onSendClick = {
-                    /**            showInterstialAd()
-                    includeChatViewModel.addChat(
-                    Chat(
-                    chatId = chatId,
-                    partnerName = userName,
-                    partnerSurname = userSurname,
-                    partnerPhoto = userPhoto,
-                    partnerUid = userUid,
-                    date = Timestamp.now()
-                    )
-                    )*/
                     viewModel.send(
                         chatId = chatId,
                         partnerName = userName,

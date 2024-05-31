@@ -55,6 +55,12 @@ class QChatNavigationActions(navController: NavHostController) {
             popUpTo(ZepiDestinations.SPLASH_ROUTE){ inclusive = true }
         }
     }
+    val openAndPopUpChatNopeToExist: () -> Unit = {
+        navController.navigate(ZepiDestinations.CHATEXIST_ROUTE){
+            launchSingleTop = true
+            popUpTo(ZepiDestinations.CHATNOPE_ROUTE){ inclusive = true }
+        }
+    }
     val navigateAndPopUpLoginToRegister: () -> Unit = {
         navController.navigate(ZepiDestinations.REGISTER_ROUTE){
             launchSingleTop = true

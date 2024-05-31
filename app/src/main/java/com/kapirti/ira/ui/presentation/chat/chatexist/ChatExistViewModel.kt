@@ -148,10 +148,10 @@ class ChatExistViewModel @Inject constructor(
         options.value = ChatActionOption.getOptions(hasEditOption)
     }
     fun onChatActionClick(action: String) {
-        when (ChatActionOption.getByTitle(action)) {
-            ChatActionOption.Block -> onBlockClick()
-            ChatActionOption.Report -> onReportClick()
-        }
+       // when (ChatActionOption.getByTitle(action)) {
+           // ChatActionOption.Block -> onBlockClick()
+           // ChatActionOption.Report -> onReportClick()
+       // }
     }
     private fun onBlockClick() {
         showBlockDialog.value = true

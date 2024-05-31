@@ -298,7 +298,6 @@ class FirestoreServiceImpl @Inject constructor(
 
 
 
-
     override suspend fun getUser(uid: String): User? = userDocument(uid).get().await().toObject()
     override suspend fun saveUser(user: User): Unit = trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
     override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_CHAT_TRACE) { userChatCollection(uid).document(chatId).set(chat).await() }

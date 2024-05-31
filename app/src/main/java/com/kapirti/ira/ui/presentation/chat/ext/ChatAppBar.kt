@@ -64,7 +64,7 @@ fun ChatAppBar(
         },
         actions = {
             DropdownContextMenu(options, Modifier.contextMenu(), onActionClick)
-        }
+        },
     )
 }
 

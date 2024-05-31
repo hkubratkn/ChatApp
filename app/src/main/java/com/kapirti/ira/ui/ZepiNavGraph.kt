@@ -55,7 +55,7 @@ fun ZepiNavGraph(
 
     openAndPopUpSplashToHome: () -> Unit,
     openAndPopUpSplashToLogin: () -> Unit,
-
+    openAndPopUpChatNopeToExist: () -> Unit,
 
     loginToRegister: () -> Unit,
     registerToLogin: () -> Unit,
@@ -421,7 +421,7 @@ fun ZepiNavGraph(
                 composable(ZepiDestinations.CHATNOPE_ROUTE) {
                     ChatNopeScreen(
                         popUp = popUpScreen,
-                        openAndPopUpChatNopeToExist = {},//openAndPopUpChatNopeToExist,
+                        openAndPopUpChatNopeToExist = openAndPopUpChatNopeToExist,
                         includeUserIdViewModel = includeUserIdViewModel,
                         showInterstialAd = showInterstitialAds,
                         //userUid = userId,

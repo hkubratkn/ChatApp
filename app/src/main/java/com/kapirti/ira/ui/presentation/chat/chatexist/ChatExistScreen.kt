@@ -57,7 +57,7 @@ fun ChatExistScreen(
     includeChatViewModel: IncludeChatViewModel,
     modifier: Modifier = Modifier,
     viewModel: ChatExistViewModel = hiltViewModel(),
-){
+) {
     val options by viewModel.options
 
     LaunchedEffect(includeChatViewModel) {
@@ -115,10 +115,15 @@ fun ChatExistScreen(
                 AlertDialog(
                     title = { Text(stringResource(AppText.block)) },
                     text = { Text(stringResource(AppText.block_user)) },
-                    dismissButton = { DialogCancelButton(AppText.cancel) { viewModel.showBlockDialog.value = false } },
+                    dismissButton = {
+                        DialogCancelButton(AppText.cancel) {
+                            viewModel.showBlockDialog.value = false
+                        }
+                    },
                     confirmButton = {
                         DialogConfirmButton(AppText.block) {
-                            viewModel.onBlockButtonClick(popUp,
+                            viewModel.onBlockButtonClick(
+                                popUp,
                                 name = profileName, surname = profileSurname, photo = profilePhoto,
                                 partnerUid = partnerUid, partnerPhoto = partnerPhoto,
                                 partnerSurname = partnerSurname, partnerName = partnerName
@@ -133,10 +138,15 @@ fun ChatExistScreen(
                 AlertDialog(
                     title = { Text(stringResource(AppText.report)) },
                     text = { Text(stringResource(AppText.report_user)) },
-                    dismissButton = { DialogCancelButton(AppText.cancel) { viewModel.showReportDialog.value = false } },
+                    dismissButton = {
+                        DialogCancelButton(AppText.cancel) {
+                            viewModel.showReportDialog.value = false
+                        }
+                    },
                     confirmButton = {
                         DialogConfirmButton(AppText.report) {
-                            viewModel.onReportButtonClick(popUp,
+                            viewModel.onReportButtonClick(
+                                popUp,
                                 name = profileName, surname = profileSurname, photo = profilePhoto,
                                 partnerUid = partnerUid, partnerPhoto = partnerPhoto,
                                 partnerSurname = partnerSurname, partnerName = partnerName
@@ -147,18 +157,16 @@ fun ChatExistScreen(
                     onDismissRequest = { viewModel.showReportDialog.value = false }
                 )
             }
-
-
         }
     }
+
+    LaunchedEffect(viewModel) { viewModel.loadChatOptions() }
 
     LifecycleEffect(
         onResume = { viewModel.setForeground(foreground) },
         onPause = { viewModel.setForeground(false) },
     )
-    LaunchedEffect(viewModel) { viewModel.loadChatOptions() }
 }
-
 
 
 /**
@@ -207,20 +215,6 @@ private fun ChatContent(
                 onActionClick = onActionClick,
             )
         },
-/**        bottomBar = {
-            InputBar(
-                input = input,
-                onInputChanged = onInputChanged,
-                onSendClick = onSendClick,
-                onCameraClick = onCameraClick,
-                onPhotoPickerClick = onPhotoPickerClick,
-                contentPadding = PaddingValues(0.dp),
-                sendEnabled = sendEnabled,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .windowInsetsPadding(WindowInsets.ime.exclude(WindowInsets.navigationBars)),
-            )
-        }*/
     ) { innerPadding ->
         Column {
             val layoutDirection = LocalLayoutDirection.current

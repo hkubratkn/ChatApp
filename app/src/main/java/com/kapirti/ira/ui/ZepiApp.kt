@@ -83,6 +83,7 @@ fun ZepiApp(
 
             openAndPopUpSplashToHome = navigationActions.openAndPopUpSplashToHome,
             openAndPopUpSplashToLogin = navigationActions.openAndPopUpSplashToLogin,
+            openAndPopUpChatNopeToExist = navigationActions.openAndPopUpChatNopeToExist,
 
             loginToRegister = navigationActions.navigateAndPopUpLoginToRegister,
             registerToLogin = navigationActions.navigateAndPopUpRegisterToLogin,
