@@ -59,10 +59,9 @@ fun ChatExistScreen(
     viewModel: ChatExistViewModel = hiltViewModel(),
 ){
     val options by viewModel.options
-    val uiState by viewModel.uiState
 
     LaunchedEffect(includeChatViewModel) {
-        viewModel.initialize(includeChatViewModel.chat ?: Chat())
+        viewModel.initialize(includeChatViewModel.chat)
 
         if (prefilledText != null) {
             viewModel.prefillInput(prefilledText)
@@ -75,13 +74,13 @@ fun ChatExistScreen(
     val sendEnabled by viewModel.sendEnabled.collectAsStateWithLifecycle()
     val messages by viewModel.messages.collectAsStateWithLifecycle()
 
-    partner?.let { itUser ->
+    partner?.let { itPartner ->
         me?.let { itMe ->
 
-            val userName = itUser.name
-            val userSurname = itUser.surname
-            val userPhoto = itUser.photo
-            val userUid = itUser.uid
+            val partnerName = itPartner.name
+            val partnerSurname = itPartner.surname
+            val partnerPhoto = itPartner.photo
+            val partnerUid = itPartner.uid
 
             val profileName = itMe.name
             val profileSurname = itMe.surname
@@ -89,12 +88,13 @@ fun ChatExistScreen(
             val profileUid = itMe.uid
 
             ChatContent(
-                user = itUser,
+                me = itMe,
+                partner = itPartner,
                 onBackPressed = popUp,
                 options = options,
                 onActionClick = { action -> viewModel.onChatActionClick(action) },
                 onTopBarClick = {
-                    includeUserIdViewModel.addPartnerId(uiState.partnerUid)
+                    includeUserIdViewModel.addPartnerId(partnerUid)
                     navigateUserProfile()
                 },
                 modifier = modifier
@@ -104,37 +104,11 @@ fun ChatExistScreen(
                 input = input,
                 sendEnabled = sendEnabled,
                 onInputChanged = { viewModel.updateInput(it) },
-                onSendClick = {
-                    /**            showInterstialAd()
-                    includeChatViewModel.addChat(
-                    Chat(
-                    chatId = chatId,
-                    partnerName = userName,
-                    partnerSurname = userSurname,
-                    partnerPhoto = userPhoto,
-                    partnerUid = userUid,
-                    date = Timestamp.now()
-                    )
-                    )*/
-                    viewModel.send(
-                     /**   chatId = chatId,
-                        partnerName = userName,
-                        partnerSurname = userSurname,
-                        partnerPhoto = userPhoto,
-                        partnerUid = userUid,
-                        profileName = profileName,
-                        profileSurname = profileSurname,
-                        profilePhoto = profilePhoto,
-                        profileUid = profileUid,
-                        openAndPopUpChatNopeToExist = openAndPopUpChatNopeToExist*/
-                    )
-                },
+                onSendClick = { viewModel.send() },
                 onCameraClick = onCameraClick,
                 onPhotoPickerClick = onPhotoPickerClick,
                 onVideoClick = onVideoClick,
             )
-
-
 
 
             if (viewModel.showBlockDialog.value) {
@@ -144,10 +118,10 @@ fun ChatExistScreen(
                     dismissButton = { DialogCancelButton(AppText.cancel) { viewModel.showBlockDialog.value = false } },
                     confirmButton = {
                         DialogConfirmButton(AppText.block) {
-                            viewModel.onBlockButtonClick(popUp, chatId = uiState.chatId,
+                            viewModel.onBlockButtonClick(popUp,
                                 name = profileName, surname = profileSurname, photo = profilePhoto,
-                                partnerUid = userUid, partnerPhoto = userPhoto,
-                                partnerSurname = userSurname, partnerName = userName
+                                partnerUid = partnerUid, partnerPhoto = partnerPhoto,
+                                partnerSurname = partnerSurname, partnerName = partnerName
                             )
                             viewModel.showBlockDialog.value = false
                         }
@@ -162,10 +136,10 @@ fun ChatExistScreen(
                     dismissButton = { DialogCancelButton(AppText.cancel) { viewModel.showReportDialog.value = false } },
                     confirmButton = {
                         DialogConfirmButton(AppText.report) {
-                            viewModel.onReportButtonClick(popUp, chatId = uiState.chatId,
+                            viewModel.onReportButtonClick(popUp,
                                 name = profileName, surname = profileSurname, photo = profilePhoto,
-                                partnerUid = userUid, partnerPhoto = userPhoto,
-                                partnerSurname = userSurname, partnerName = userName
+                                partnerUid = partnerUid, partnerPhoto = partnerPhoto,
+                                partnerSurname = partnerSurname, partnerName = partnerName
                             )
                             viewModel.showReportDialog.value = false
                         }
@@ -202,7 +176,8 @@ fun ChatExistScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ChatContent(
-    user: User,
+    me: User,
+    partner: User,
     onBackPressed: (() -> Unit)?,
     options: List<String>,
     onTopBarClick: () -> Unit,
@@ -224,7 +199,7 @@ private fun ChatContent(
             .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             ChatAppBar(
-                user = user,
+                user = partner,
                 scrollBehavior = scrollBehavior,
                 onBackPressed = onBackPressed,
                 options = options,
@@ -232,7 +207,7 @@ private fun ChatContent(
                 onActionClick = onActionClick,
             )
         },
-        bottomBar = {
+/**        bottomBar = {
             InputBar(
                 input = input,
                 onInputChanged = onInputChanged,
@@ -245,17 +220,19 @@ private fun ChatContent(
                     .fillMaxWidth()
                     .windowInsetsPadding(WindowInsets.ime.exclude(WindowInsets.navigationBars)),
             )
-        }
+        }*/
     ) { innerPadding ->
         Column {
             val layoutDirection = LocalLayoutDirection.current
             MessageList(
+                me = me,
+                partner = partner,
                 messages = messages,
                 contentPadding = innerPadding.copy(layoutDirection, bottom = 16.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f),
-                onVideoClick = onVideoClick,
+                //onVideoClick = onVideoClick,
             )
             InputBar(
                 input = input,

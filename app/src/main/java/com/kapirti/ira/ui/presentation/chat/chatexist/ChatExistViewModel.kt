@@ -33,15 +33,8 @@ class ChatExistViewModel @Inject constructor(
     var showBlockDialog = mutableStateOf(false)
     var showReportDialog = mutableStateOf(false)
 
-    var uiState = mutableStateOf(ChatExistUiState())
-        private set
-
-    private val chatId
-        get() = uiState.value.chatId
-    private val partnerId
-        get() = uiState.value.partnerUid
-
-
+    private val _chatId = MutableStateFlow<String?>("")
+   // var chatId: StateFlow<String?> = _chatId
 
     private val _partner = MutableStateFlow<User?>(User())
     var partner: StateFlow<User?> = _partner
@@ -53,25 +46,15 @@ class ChatExistViewModel @Inject constructor(
     val messages = firestoreService.chatMessages.stateInUi(emptyList())
 
 
-    fun initialize(chat: Chat){
+    fun initialize(chat: Chat?){
         launchCatching {
-            onChatIdChange(chat.chatId)
-            onPartnerIdChange(chat.partnerUid)
-            getPartnerInfo()
-        }
-    }
-    private fun getPartnerInfo() {
-        launchCatching {
-            _partner.value = firestoreService.getUser(partnerId)
-            _me.value = firestoreService.getUser(accountService.currentUserId)
-        }
-    }
+            chat?.let {
+                _chatId.value = it.chatId
+                _partner.value = firestoreService.getUser(it.partnerUid)
+                _me.value = firestoreService.getUser(accountService.currentUserId)
 
-    private fun onChatIdChange(newValue: String) {
-        uiState.value = uiState.value.copy(chatId = newValue)
-    }
-    private fun onPartnerIdChange(newValue: String) {
-        uiState.value = uiState.value.copy(partnerUid = newValue)
+            }
+        }
     }
 
     /**
@@ -123,8 +106,7 @@ class ChatExistViewModel @Inject constructor(
      * suppressing further notifications.
      */
     fun setForeground(foreground: Boolean) {
-        val chatId = chatId
-        if (chatId != "") {
+        if (_chatId.value != "") {
             if (foreground) {
                // repository.activateChat(chatId)
             } else {
@@ -144,11 +126,16 @@ class ChatExistViewModel @Inject constructor(
     }
 
     fun send() {
-        val chatId = chatId.toInt()
-        if (chatId <= 0) return
+        val chatId = _chatId.value
+        if (chatId == "") return
         val input = _input.value
         if (!isInputValid(input)) return
         launchCatching {
+            firestoreService.saveChatMessage(chatId = chatId ?: "", chatMessage = ChatMessage(
+                text = _input.value,
+                senderId = accountService.currentUserId,
+                timestamp = Timestamp.now()))
+
            // repository.sendMessage(chatId, input, null, null)
             _input.value = ""
         }
@@ -175,7 +162,7 @@ class ChatExistViewModel @Inject constructor(
     }
 
     fun onReportButtonClick(
-        popUpScreen: () -> Unit, chatId: String, name: String, surname: String, photo: String,
+        popUpScreen: () -> Unit, name: String, surname: String, photo: String,
         partnerUid: String, partnerName: String, partnerSurname: String, partnerPhoto: String
     ) {
         val date = Timestamp.now()
@@ -193,7 +180,6 @@ class ChatExistViewModel @Inject constructor(
             )
             onBlockButtonClick(
                 popUpScreen = popUpScreen,
-                chatId = chatId,
                 name = name,
                 surname = surname,
                 photo = photo,
@@ -205,7 +191,7 @@ class ChatExistViewModel @Inject constructor(
         }
     }
     fun onBlockButtonClick(
-        popUpScreen: () -> Unit, chatId: String, name: String, surname: String, photo: String,
+        popUpScreen: () -> Unit, name: String, surname: String, photo: String,
         partnerUid: String, partnerName: String, partnerSurname: String, partnerPhoto: String
     ) {
         val date = Timestamp.now()
@@ -232,9 +218,9 @@ class ChatExistViewModel @Inject constructor(
                     date = date
                 )
             )
-            firestoreService.deleteChat(chatId = chatId)
-            firestoreService.deleteUserChat(uid = accountService.currentUserId, chatId = chatId)
-            firestoreService.deleteUserChat(uid = partnerUid, chatId = chatId)
+            firestoreService.deleteChat(chatId = _chatId.value ?: "")
+            firestoreService.deleteUserChat(uid = accountService.currentUserId, _chatId.value ?: "")
+            firestoreService.deleteUserChat(uid = partnerUid, _chatId.value ?: "")
             popUpScreen()
         }
     }
@@ -394,17 +380,6 @@ repository.deactivateChat(chatId)
 
 
 
-fun send() {
-val chatId = chatId.value
-if (chatId <= 0) return
-val input = _input.value
-if (!isInputValid(input)) return
-viewModelScope.launch {
-repository.sendMessage(chatId, input, null, null)
-_input.value = ""
-}
-}
-}
 
 */
 

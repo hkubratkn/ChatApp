@@ -34,7 +34,8 @@ fun rememberTabContent(
     archives: List<Chat>,
     onChatClick: (Chat) -> Unit,
 ): List<TabContentChats> {
-    val favoritesSection = TabContentChats(SectionsChats.ChatsList) { TabWithChats(chats = chats, onChatClick = onChatClick) }
+    val favoritesSection = TabContentChats(SectionsChats.ChatsList) {
+        TabWithChats(chats = chats, onChatClick = onChatClick) }
     val assetsSection = TabContentChats(SectionsChats.ArchiveList) { TabWithArchives(archives = archives) }
 
     return listOf(favoritesSection, assetsSection)

@@ -198,12 +198,14 @@ private fun ChatContent(
         Column {
             val layoutDirection = LocalLayoutDirection.current
             MessageList(
+                me = User(),
+                partner = User(),
                 messages = messages,
                 contentPadding = innerPadding.copy(layoutDirection, bottom = 16.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f),
-                onVideoClick = onVideoClick,
+                //onVideoClick = onVideoClick,
             )
             InputBar(
                 input = input,

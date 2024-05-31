@@ -291,7 +291,7 @@ class FirestoreServiceImpl @Inject constructor(
         get() =
             chatIdRepository.readChatIdState().flatMapLatest { chatId ->
                 chatCollection(chatId)
-                    .orderBy(DATE_FIELD, Query.Direction.DESCENDING)
+                   // .orderBy(DATE_FIELD, Query.Direction.DESCENDING)
                     .dataObjects()
             }
 
