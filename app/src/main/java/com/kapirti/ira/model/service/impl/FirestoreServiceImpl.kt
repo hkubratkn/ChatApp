@@ -301,6 +301,7 @@ class FirestoreServiceImpl @Inject constructor(
 
 
     override suspend fun getUser(uid: String): User? = userDocument(uid).get().await().toObject()
+    override suspend fun getChatUnreadCount(who: String, chatId: String): Chat? = userChatCollection(who).document(chatId).get().await().toObject()
     override suspend fun saveUser(user: User): Unit = trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
     override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_CHAT_TRACE) { userChatCollection(uid).document(chatId).set(chat).await() }
     override suspend fun saveChatMessage(chatId: String, chatMessage: ChatMessage): Unit = trace(SAVE_CHAT_MESSAGE_TRACE) { chatCollection(chatId = chatId).add(chatMessage).await() }
@@ -320,12 +321,16 @@ class FirestoreServiceImpl @Inject constructor(
             FieldValue.serverTimestamp()
         ).await()
     }
-    override suspend fun updateChatTimestamp(chatId: String): Unit = trace(UPDATE_CHAT_TIMESTAMP_TRACE) {
-        userChatCollection(auth.currentUserId).document(chatId).update(
+    override suspend fun updateChatTimestamp(who: String, chatId: String): Unit = trace(UPDATE_CHAT_TIMESTAMP_TRACE) {
+        userChatCollection(who).document(chatId).update(
             DATE_FIELD, FieldValue.serverTimestamp()).await() }
 
-    override suspend fun updateChatLastMessage(chatId: String, text: String): Unit = trace(UPDATE_CHAT_LAST_MESSAGE_TRACE) {
-        userChatCollection(auth.currentUserId).document(chatId).update(
+    override suspend fun updateChatUnreadCount(who: String, chatId: String, count: Int): Unit = trace(UPDATE_CHAT_UNREAD_TRACE) {
+        userChatCollection(who).document(chatId).update(
+            UNREAD_FIELD, count).await() }
+
+    override suspend fun updateChatLastMessage(who: String, chatId: String, text: String): Unit = trace(UPDATE_CHAT_LAST_MESSAGE_TRACE) {
+        userChatCollection(who).document(chatId).update(
             LAST_MESSAGE_FIELD, text).await() }
 
 
@@ -360,6 +365,7 @@ class FirestoreServiceImpl @Inject constructor(
         private const val ONLINE_FIELD = "online"
         private const val LAST_SEEN_FIELD = "lastSeen"
         private const val LAST_MESSAGE_FIELD = "lastMessage"
+        private const val UNREAD_FIELD = "unread"
 
         private const val USER_COLLECTION = "User"
         private const val PHOTOS_COLLECTION = "Photos"
@@ -382,6 +388,7 @@ class FirestoreServiceImpl @Inject constructor(
         private const val UPDATE_USER_ONLINE_TRACE = "updateUserOnline"
         private const val UPDATE_USER_LAST_SEEN_TRACE = "updateUserLastSeen"
         private const val UPDATE_CHAT_LAST_MESSAGE_TRACE = "updateChatLastMessage"
+        private const val UPDATE_CHAT_UNREAD_TRACE = "updateChatUnread"
         private const val UPDATE_CHAT_TIMESTAMP_TRACE = "updateChatTimestamp"
 
         private const val DELETE_ACCOUNT_TRACE = "deleteAccount"

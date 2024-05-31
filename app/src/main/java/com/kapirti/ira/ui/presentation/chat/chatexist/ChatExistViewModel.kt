@@ -133,7 +133,7 @@ class ChatExistViewModel @Inject constructor(
     private var job: Job? = null
 
 
-    fun send() {
+    fun send(partnerUid: String) {
         val chatId = _chatId.value
         if (chatId == "") return
         val input = _input.value
@@ -147,11 +147,15 @@ class ChatExistViewModel @Inject constructor(
                     chatMessage = ChatMessage(
                         text = _input.value,
                         senderId = accountService.currentUserId,
-                        timestamp = Timestamp.now()
+                        date = Timestamp.now()
                     )
                 )
-                firestoreService.updateChatLastMessage(chatId = chatId ?: "", text = _input.value)
-                firestoreService.updateChatTimestamp(chatId = chatId ?: "")
+                firestoreService.updateChatLastMessage(who = accountService.currentUserId, chatId = chatId ?: "", text = _input.value)
+                firestoreService.updateChatLastMessage(who = partnerUid, chatId = chatId ?: "", text = _input.value)
+                firestoreService.updateChatTimestamp(who = accountService.currentUserId, chatId = chatId ?: "")
+                firestoreService.updateChatTimestamp(who = partnerUid, chatId = chatId ?: "")
+                val unreadCount = firestoreService.getChatUnreadCount(who = partnerUid, chatId = chatId ?: "")
+                firestoreService.updateChatUnreadCount(who = partnerUid, chatId = chatId ?: "", count = unreadCount?.let { it.unread + 1 } ?: 1)
 
                 // repository.sendMessage(chatId, input, null, null)
                 _input.value = ""

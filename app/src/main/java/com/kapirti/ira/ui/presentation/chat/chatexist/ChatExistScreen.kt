@@ -104,7 +104,7 @@ fun ChatExistScreen(
                 input = input,
                 sendEnabled = sendEnabled,
                 onInputChanged = { viewModel.updateInput(it) },
-                onSendClick = { viewModel.send() },
+                onSendClick = { viewModel.send(partnerUid) },
                 onCameraClick = onCameraClick,
                 onPhotoPickerClick = onPhotoPickerClick,
                 onVideoClick = onVideoClick,

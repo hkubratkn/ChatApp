@@ -96,7 +96,7 @@ class ChatNopeViewModel @Inject constructor(
                 ChatMessage(
                     text = input.value,
                     senderId = profileUid,
-                    timestamp = date,
+                    date = date,
                 )
             )
 

@@ -35,6 +35,7 @@ interface FirestoreService {
     val chatMessages: Flow<List<ChatMessage>>
 
     suspend fun getUser(userId: String): User?
+    suspend fun getChatUnreadCount(who: String, chatId: String): Chat?
 
     suspend fun saveUser(user: User)
     suspend fun saveUserChat(uid: String, chatId: String, chat: Chat)
@@ -51,8 +52,9 @@ interface FirestoreService {
 
     suspend fun updateUserOnline(value: Boolean)
     suspend fun updateUserLastSeen()
-    suspend fun updateChatLastMessage(chatId: String, text: String)
-    suspend fun updateChatTimestamp(chatId: String)
+    suspend fun updateChatLastMessage(who: String, chatId: String, text: String)
+    suspend fun updateChatUnreadCount(who: String, chatId: String, count: Int)
+    suspend fun updateChatTimestamp(who: String, chatId: String)
 
     /*
     package com.example.makeitso.model.service

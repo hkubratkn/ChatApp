@@ -9,7 +9,7 @@ data class ChatMessage(
    // val isIncoming: Boolean,
     val senderId: String = "",
     @ServerTimestamp
-    val timestamp: Timestamp? = null,
+    val date: Timestamp? = null,
 //    val mediaUri: String?,
   //  val mediaMimeType: String?,
 )
