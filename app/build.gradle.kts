@@ -22,8 +22,8 @@ android {
         applicationId = "com.kapirti.ira"
         minSdk = 21
         targetSdk = 34
-        versionCode = 118
-        versionName = "1.0.106"
+        versionCode = 121
+        versionName = "1.0.109"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -139,13 +139,18 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-perf-ktx")
     implementation("com.google.firebase:firebase-config-ktx")
+
     implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.android.gms:play-services-auth:21.0.0")
+
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.google.firebase:firebase-messaging-ktx")
     implementation("com.google.android.ump:user-messaging-platform:2.1.0")
     implementation("com.google.android.gms:play-services-ads:22.6.0")
     implementation("androidx.compose.material3:material3-window-size-class:1.2.1")
+
+
 
     implementation("com.google.android.play:review:2.0.1")
 }

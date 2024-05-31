@@ -5,6 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.ira.common.ext.isValidEmail
 import com.kapirti.ira.core.datastore.LangRepository
+import com.kapirti.ira.iraaa.ggoo.SignInResult
+import com.kapirti.ira.iraaa.ggoo.SignInState
 import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
@@ -12,6 +14,9 @@ import com.kapirti.ira.ui.presentation.ZepiViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Locale
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 
 @HiltViewModel
 class LogInViewModel @Inject constructor(
@@ -20,6 +25,40 @@ class LogInViewModel @Inject constructor(
     private val langRepository: LangRepository,
     logService: LogService,
 ): ZepiViewModel(logService) {
+    private val _state = MutableStateFlow(SignInState())
+    val state = _state.asStateFlow()
+
+    fun onSignInResult(result: SignInResult) {
+        _state.update { it.copy(
+            isSignInSuccessful = result.data != null,
+            signInError = result.errorMessage
+        ) }
+    }
+    fun googleLoginDone(restartApp: () -> Unit,) {
+        launchCatching {
+            val user = firestoreService.getUser(accountService.currentUserId)
+            langRepository.saveLangState(
+                user?.let { it.language } ?: Locale.getDefault().getDisplayLanguage()
+            )
+            resetState()
+            restartApp()
+        }
+    }
+
+    fun resetState() {
+        _state.update { SignInState() }
+    }
+
+
+
+
+
+
+
+
+
+    //try
+
     var uiState = mutableStateOf(LogInUiState())
         private set
 

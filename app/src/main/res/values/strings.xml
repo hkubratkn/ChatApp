@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Quick Chat</string>
+    <string name="web_client_id">698610992240-ft7uso81glfh8pn6fnj09bulpbi3mo67.apps.googleusercontent.com</string>
 
     <!-- App -->
     <string name="not_connected">⚠️You aren’t connected to the internet</string>
@@ -59,6 +60,8 @@
     <string name="email">E-mail</string>
     <string name="password">Password</string>
     <string name="repeat_password">Repeat password</string>
+    <string name="log_in_with_google">Log in with Google</string>
+    <string name="register_with_google">Register with Google</string>
 
     <!-- Edit Screen -->
     <string name="next">Next</string>

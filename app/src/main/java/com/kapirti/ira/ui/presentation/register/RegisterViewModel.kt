@@ -16,8 +16,21 @@
 
 package com.kapirti.ira.ui.presentation.register
 
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.ira.core.datastore.EditTypeRepository
@@ -26,6 +39,9 @@ import com.kapirti.ira.common.ext.isValidEmail
 import com.kapirti.ira.common.ext.isValidPassword
 import com.kapirti.ira.common.ext.passwordMatches
 import com.kapirti.ira.core.constants.EditType.PROFILE
+import com.kapirti.ira.iraaa.ggoo.SignInResult
+import com.kapirti.ira.iraaa.ggoo.SignInState
+import com.kapirti.ira.iraaa.ggoo.UserData
 import com.kapirti.ira.model.Feedback
 import com.kapirti.ira.model.User
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,6 +51,9 @@ import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
 import com.kapirti.ira.ui.presentation.ZepiViewModel
 import java.util.Locale
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
@@ -44,6 +63,13 @@ class RegisterViewModel @Inject constructor(
     private val langRepository: LangRepository,
     private val editTypeRepository: EditTypeRepository,
 ): ZepiViewModel(logService) {
+    private val _state = MutableStateFlow(SignInState())
+    val state = _state.asStateFlow()
+
+
+
+
+
     val langValue = Locale.getDefault().getDisplayLanguage()
 
     var uiState = mutableStateOf(RegisterUiState())
@@ -55,6 +81,45 @@ class RegisterViewModel @Inject constructor(
         get() = uiState.value.password
     private val button
         get() = uiState.value.button
+
+
+
+
+    fun onSignInResult(result: SignInResult) {
+        _state.update { it.copy(
+            isSignInSuccessful = result.data != null,
+            signInError = result.errorMessage
+        ) }
+    }
+
+    fun googleRegisterDone(
+        navigateAndPopUpRegisterToEdit: () -> Unit,
+        userData: UserData?
+    ) {
+        launchCatching {
+            firestoreService.saveUser(
+                User(
+                    photo = userData?.let { it.profilePictureUrl } ?: "",
+                    displayName = userData?.let { it.username } ?: "",
+                    language = langValue,
+                    online = true,
+                    uid = accountService.currentUserId,
+                    date = Timestamp.now()
+                )
+            )
+
+            firestoreService.saveLang(Feedback(langValue))
+            editTypeRepository.saveEditTypeState(PROFILE)
+            langRepository.saveLangState(langValue)
+            resetState()
+            navigateAndPopUpRegisterToEdit()
+        }
+    }
+
+    fun resetState() {
+        _state.update { SignInState() }
+    }
+
 
 
     fun onEmailChange(newValue: String) { uiState.value = uiState.value.copy(email = newValue) }

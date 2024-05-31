@@ -23,6 +23,7 @@ class AccountServiceImpl @Inject constructor(private val auth: FirebaseAuth) : A
     override val currentUserDisplayName: String
         get() = auth.currentUser?.displayName.orEmpty()
 
+
     override val currentUser: Flow<UserUid>
         get() = callbackFlow {
             val listener =
@@ -44,6 +45,7 @@ class AccountServiceImpl @Inject constructor(private val auth: FirebaseAuth) : A
     override suspend fun linkAccount(email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password).await()
     }
+
 
     override suspend fun displayName(newValue: String){
         val profileUpdates = userProfileChangeRequest {

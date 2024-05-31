@@ -1,5 +1,6 @@
 package com.kapirti.ira.ui.presentation.home
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -15,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.kapirti.ira.common.composable.NoSurfaceImage
 import com.kapirti.ira.model.User
+import com.kapirti.ira.ui.theme.CardBackgroundBlueColor
 
 @Composable
 fun UserItem(
@@ -24,7 +26,8 @@ fun UserItem(
     val backgroundColor = if(user.online) Color.Green.copy(0.4f) else Color.Gray.copy(0.2f)
 
     Card(
-        colors = CardDefaults.cardColors(containerColor = backgroundColor),
+        colors = CardDefaults.cardColors(containerColor = CardBackgroundBlueColor),
+        border = BorderStroke(1.dp, backgroundColor),
         modifier = Modifier.padding(8.dp, 0.dp, 8.dp, 8.dp)
     ) {
         Row(
