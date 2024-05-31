@@ -22,6 +22,7 @@
     <string name="permission_message">To be notified when you have new messages, please grant the notification permission.</string>
     <string name="permission_rationale">Please grant the notification permission so that the app can demonstrate usage of the Notification APIs.</string>
     <string name="permission_grant">GRANT</string>
+    <string name="long_click">Long click</string>
 
 
     <!-- Profile Screen -->

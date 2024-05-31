@@ -33,10 +33,13 @@ fun rememberTabContent(
     chats: List<Chat>,
     archives: List<Chat>,
     onChatClick: (Chat) -> Unit,
+    onLongClickChats: (Chat) -> Unit,
+    onLongClickArchives: (Chat) -> Unit,
 ): List<TabContentChats> {
     val favoritesSection = TabContentChats(SectionsChats.ChatsList) {
-        TabWithChats(chats = chats, onChatClick = onChatClick) }
-    val assetsSection = TabContentChats(SectionsChats.ArchiveList) { TabWithArchives(archives = archives) }
+        TabWithChats(chats = chats, onChatClick = onChatClick, onLongClick = onLongClickChats) }
+    val assetsSection = TabContentChats(SectionsChats.ArchiveList) {
+        TabWithArchives(archives = archives, onClick = onChatClick, onLongClick = onLongClickArchives) }
 
     return listOf(favoritesSection, assetsSection)
 }
@@ -67,6 +70,7 @@ fun ChatsScreen(
 private fun TabWithChats(
     chats: List<Chat>,
     onChatClick: (Chat) -> Unit,
+    onLongClick: (Chat) -> Unit,
     modifier: Modifier = Modifier,
 ) {
    // val scrollState = rememberLazyListState()
@@ -85,7 +89,8 @@ private fun TabWithChats(
             chats.forEach{ chat ->
                 ChatRow(
                     chat = chat,
-                    onClick = { onChatClick(chat) }
+                    onClick = { onChatClick(chat) },
+                    onLongClick = { onLongClick(chat) },
                 )
             }
            /** Column(
@@ -108,7 +113,8 @@ private fun TabWithChats(
 @Composable
 private fun TabWithArchives(
     archives: List<Chat>,
-    //    onAssetClick: (Asset) -> Unit,
+    onClick: (Chat) -> Unit,
+    onLongClick: (Chat) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     InterestsAdaptiveContentLayout(
@@ -125,7 +131,8 @@ private fun TabWithArchives(
             archives.forEach{ archive ->
                 ChatRow(
                     chat = archive,
-                    onClick = { /*TODO*/ }
+                    onClick = { onClick(archive) },
+                    onLongClick = { onLongClick(archive) },
                 )
             }
         }

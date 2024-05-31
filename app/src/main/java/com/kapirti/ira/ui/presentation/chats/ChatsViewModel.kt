@@ -3,6 +3,8 @@ package com.kapirti.ira.ui.presentation.chats
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.kapirti.ira.core.datastore.ChatIdRepository
+import com.kapirti.ira.model.Chat
+import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
 import com.kapirti.ira.soci.ui.stateInUi
@@ -10,6 +12,7 @@ import com.kapirti.ira.ui.presentation.ZepiViewModel
 
 @HiltViewModel
 class ChatsViewModel @Inject constructor(
+    private val accountService: AccountService,
     private val firestoreService: FirestoreService,
     private val chatIdRepository: ChatIdRepository,
     logService: LogService,
@@ -26,19 +29,28 @@ class ChatsViewModel @Inject constructor(
             chatIdRepository.saveChatIdState(chatId)
         }
     }
+    fun onLongClickChats(chat: Chat) {
+        launchCatching {
+            firestoreService.saveUserArchive(
+                uid = accountService.currentUserId,
+                chat = chat,
+                chatId = chat.chatId
+            )
+            firestoreService.deleteUserChat(
+                uid = accountService.currentUserId,
+                chatId = chat.chatId
+            )
+        }
+    }
+    fun onLongClickArchives(chat: Chat){
+        launchCatching {
+            firestoreService.saveUserChat(uid = accountService.currentUserId, chat = chat, chatId = chat.chatId)
+            firestoreService.deleteUserArchive(uid = accountService.currentUserId, chatId = chat.chatId)
+        }
+    }
 }
 
     /**
-
- /**   fun onArchiveSwipe(chat: Chat){
-        launchCatching{
-            firestoreService.saveUserArchive(uid = accountService.currentUserId, chat = chat, chatId = chat.chatId)
-            firestoreService.deleteUserChat(uid = accountService.currentUserId, chatId = chat.chatId)
-        }
-    }*/
-
-
-
 
     private var job: Job? = null
 
@@ -134,12 +146,7 @@ return Async.Error(AppText.no_archives_all)
 return Async.Success(archive)
 }
 
-fun onChatSwipe(chat: Chat){
-launchCatching {
-firestoreService.saveUserChat(uid = accountService.currentUserId, chat = chat, chatId = chat.chatId)
-firestoreService.deleteUserArchive(uid = accountService.currentUserId, chatId = chat.chatId)
-}
-}
+
 
 fun refresh() {
 _isLoading.value = true

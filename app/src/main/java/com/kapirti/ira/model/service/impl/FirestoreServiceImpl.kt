@@ -304,6 +304,7 @@ class FirestoreServiceImpl @Inject constructor(
     override suspend fun getChatUnreadCount(who: String, chatId: String): Chat? = userChatCollection(who).document(chatId).get().await().toObject()
     override suspend fun saveUser(user: User): Unit = trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
     override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_CHAT_TRACE) { userChatCollection(uid).document(chatId).set(chat).await() }
+    override suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_ARCHIVE_TRACE) { userArchiveCollection(uid).document(chatId).set(chat).await() }
     override suspend fun saveChatMessage(chatId: String, chatMessage: ChatMessage): Unit = trace(SAVE_CHAT_MESSAGE_TRACE) { chatCollection(chatId = chatId).add(chatMessage).await() }
     override suspend fun block(uid: String, partnerUid: String, block: Block): Unit = trace(SAVE_BLOCK_USER) { userBlockDocument(uid, partnerUid).set(block).await() }
     override suspend fun report(uid: String, partnerUid: String, report: Report): Unit = trace(SAVE_REPORT) { userReportDocument(uid = uid, partnerUid = partnerUid).set(report).await() }
@@ -337,6 +338,10 @@ class FirestoreServiceImpl @Inject constructor(
     override suspend fun deleteUserChat(uid: String, chatId: String) {
         userChatCollection(uid = uid).document(chatId).delete().await()
     }
+    override suspend fun deleteUserArchive(uid: String, chatId: String) {
+        userArchiveCollection(uid).document(chatId).delete().await()
+    }
+
     override suspend fun deleteChat(chatId: String) {
         val matchingChats = chatCollection(chatId).get().await()
         matchingChats.map { it.reference.delete().asDeferred() }.awaitAll()
@@ -379,6 +384,7 @@ class FirestoreServiceImpl @Inject constructor(
 
         private const val SAVE_USER_TRACE = "saveUser"
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
+        private const val SAVE_USER_ARCHIVE_TRACE = "saveUserArchive"
         private const val SAVE_CHAT_MESSAGE_TRACE = "saveChatMessage"
         private const val SAVE_BLOCK_USER = "saveBlockUser"
         private const val SAVE_REPORT = "saveReport"
@@ -552,11 +558,6 @@ Copyright 2022 Google LLC
 
 
 
-    override suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat): Unit =
-        trace(SAVE_USER_ARCHIVE_TRACE) {
-            userArchiveCollection(uid).document(chatId).set(chat).await()
-        }
-
     override suspend fun saveUserPhotos(userPhotos: com.kapirti.video_food_delivery_shopping.model.UserPhotos): Unit =
         trace(SAVE_USER_PHOTOS_TRACE) {
             userPhotosCollection(auth.currentUserId).add(userPhotos).await()
@@ -605,11 +606,6 @@ Copyright 2022 Google LLC
 
 
 
-    override suspend fun deleteUserArchive(uid: String, chatId: String) {
-        userArchiveCollection(uid).document(chatId).delete().await()
-    }
-
-
 
 
 
@@ -622,7 +618,6 @@ Copyright 2022 Google LLC
         private const val PHOTO_FIELD = "photo"
 
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
-        private const val SAVE_USER_ARCHIVE_TRACE = "saveUserArchive"
         private const val SAVE_USER_PHOTOS_TRACE = "saveUserPhotos"
         private const val UPDATE_USER_DISPLAY_NAME_TRACE = "updateUSerDisplayName"
         private const val UPDATE_USER_NAME_TRACE = "updateUserName"

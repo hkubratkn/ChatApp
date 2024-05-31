@@ -41,6 +41,12 @@ fun ChatsRoute(
             includeChatViewModel.addChat(it)
             navigateChatsToChatExist()
         },
+        onLongClickChats = {
+            viewModel.onLongClickChats(it)
+        },
+        onLongClickArchives = {
+            viewModel.onLongClickArchives(it)
+        }
     )
     val (currentSection, updateSection) = rememberSaveable {
         mutableStateOf(tabContent.first().section)

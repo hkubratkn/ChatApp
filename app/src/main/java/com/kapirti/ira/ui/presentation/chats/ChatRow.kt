@@ -1,7 +1,8 @@
 package com.kapirti.ira.ui.presentation.chats
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,24 +17,30 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kapirti.ira.common.composable.NoSurfaceImage
 import com.kapirti.ira.model.Chat
+import com.kapirti.ira.R.string as AppText
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ChatRow(
     chat: Chat,
-    onClick: (() -> Unit)?,
+    onClick: () -> Unit,
+    onLongClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .then(
-                if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier,
+            .combinedClickable(
+                onLongClickLabel = stringResource(AppText.long_click),
+                onLongClick = onLongClick,
+                onClick = onClick,
             )
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically,
