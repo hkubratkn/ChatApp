@@ -20,7 +20,8 @@ android {
 
     defaultConfig {
         applicationId = "com.kapirti.ira"
-        minSdk = 21
+        minSdk = 24
+      //  minSdk = 21
         targetSdk = 34
         versionCode = 124
         versionName = "1.0.112"
@@ -153,4 +154,7 @@ dependencies {
 
 
     implementation("com.google.android.play:review:2.0.1")
+
+    implementation("io.getstream:stream-video-android-ui-compose:0.5.7")
+    implementation("io.getstream:stream-video-android-previewdata:0.5.7")
 }

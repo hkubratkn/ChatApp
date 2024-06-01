@@ -1,10 +1,8 @@
 package com.kapirti.ira.ui.presentation.chat.chatexist
 
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.viewModelScope
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestoreException
-import com.kapirti.ira.core.datastore.ChatIdRepository
 import com.kapirti.ira.model.Block
 import com.kapirti.ira.model.Chat
 import com.kapirti.ira.model.ChatMessage
@@ -15,7 +13,7 @@ import com.kapirti.ira.model.service.ConfigurationService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
 import com.kapirti.ira.soci.ui.stateInUi
-import com.kapirti.ira.ui.presentation.ZepiViewModel
+import com.kapirti.ira.ui.presentation.QuickChatViewModel
 import com.kapirti.ira.ui.presentation.chat.ext.ChatActionOption
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -23,7 +21,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 
 @HiltViewModel
 class ChatExistViewModel @Inject constructor(
@@ -32,7 +29,7 @@ class ChatExistViewModel @Inject constructor(
     private val configurationService: ConfigurationService,
 // private val repository: ChatRepository,
     logService: LogService
-) : ZepiViewModel(logService) {
+) : QuickChatViewModel(logService) {
     val options = mutableStateOf<List<String>>(listOf())
     var showBlockDialog = mutableStateOf(false)
     var showReportDialog = mutableStateOf(false)

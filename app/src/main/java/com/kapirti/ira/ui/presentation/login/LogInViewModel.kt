@@ -10,7 +10,7 @@ import com.kapirti.ira.iraaa.ggoo.SignInState
 import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
-import com.kapirti.ira.ui.presentation.ZepiViewModel
+import com.kapirti.ira.ui.presentation.QuickChatViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Locale
 import javax.inject.Inject
@@ -24,7 +24,7 @@ class LogInViewModel @Inject constructor(
     private val firestoreService: FirestoreService,
     private val langRepository: LangRepository,
     logService: LogService,
-): ZepiViewModel(logService) {
+): QuickChatViewModel(logService) {
     private val _state = MutableStateFlow(SignInState())
     val state = _state.asStateFlow()
 

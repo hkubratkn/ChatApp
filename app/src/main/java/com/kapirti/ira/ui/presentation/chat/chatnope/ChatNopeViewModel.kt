@@ -9,7 +9,7 @@ import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
 import com.kapirti.ira.soci.ui.stateInUi
-import com.kapirti.ira.ui.presentation.ZepiViewModel
+import com.kapirti.ira.ui.presentation.QuickChatViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,7 +22,7 @@ class ChatNopeViewModel @Inject constructor(
     private val firestoreService: FirestoreService,
     private val chatIdRepository: ChatIdRepository,
     logService: LogService,
-): ZepiViewModel(logService) {
+): QuickChatViewModel(logService) {
     private val _partner = MutableStateFlow<User?>(User())
     var partner: StateFlow<User?> = _partner
 

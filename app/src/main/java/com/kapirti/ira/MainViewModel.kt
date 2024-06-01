@@ -26,7 +26,7 @@ import com.kapirti.ira.model.Theme
 import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
-import com.kapirti.ira.ui.presentation.ZepiViewModel
+import com.kapirti.ira.ui.presentation.QuickChatViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -39,7 +39,7 @@ class MainViewModel @Inject constructor(
     private val getThemePreferencesUseCase: GetThemePreferencesUseCase,
     private val getThemeUpdateUseCase: GetThemeUpdateUseCase,
     logService: LogService
-) : ZepiViewModel(logService) {
+) : QuickChatViewModel(logService) {
     val hasUser = accountService.hasUser
 
     private val _theme by lazy { mutableStateOf(Theme.Light) }

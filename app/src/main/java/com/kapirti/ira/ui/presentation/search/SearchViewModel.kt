@@ -4,7 +4,7 @@ import com.kapirti.ira.core.room.recent.Recent
 import com.kapirti.ira.core.room.recent.RecentDao
 import com.kapirti.ira.model.service.LogService
 import com.kapirti.ira.model.service.FirestoreService
-import com.kapirti.ira.ui.presentation.ZepiViewModel
+import com.kapirti.ira.ui.presentation.QuickChatViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -13,7 +13,7 @@ class SearchViewModel @Inject constructor(
     private val firestoreService: FirestoreService,
     private val recentDao: RecentDao,
     logService: LogService
-): ZepiViewModel(logService){
+): QuickChatViewModel(logService){
     val users = firestoreService.users
     val recents = recentDao.recents()
 

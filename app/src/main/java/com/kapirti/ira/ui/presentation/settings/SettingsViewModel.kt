@@ -19,7 +19,7 @@ import com.kapirti.ira.core.usecase.SaveThemePreferencesUseCase
 import com.kapirti.ira.model.Theme
 import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.LogService
-import com.kapirti.ira.ui.presentation.ZepiViewModel
+import com.kapirti.ira.ui.presentation.QuickChatViewModel
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
@@ -32,7 +32,7 @@ class SettingsViewModel @Inject constructor(
     private val publishThemeUpdateUseCase: PublishThemeUpdateUseCase,
     private val getThemePreferencesUseCase: GetThemePreferencesUseCase,
     private val getThemeUpdateUseCase: GetThemeUpdateUseCase,
-): ZepiViewModel(logService) {
+): QuickChatViewModel(logService) {
     val hasUser = accountService.hasUser
 
     private val _theme by lazy { mutableStateOf(Theme.Light) }

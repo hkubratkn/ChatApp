@@ -21,13 +21,13 @@ import javax.inject.Inject
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
 import com.kapirti.ira.soci.ui.stateInUi
-import com.kapirti.ira.ui.presentation.ZepiViewModel
+import com.kapirti.ira.ui.presentation.QuickChatViewModel
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     logService: LogService,
     private val firestoreService: FirestoreService,
-): ZepiViewModel(logService) {
+): QuickChatViewModel(logService) {
 
     val users = firestoreService.users
         .stateInUi(emptyList())

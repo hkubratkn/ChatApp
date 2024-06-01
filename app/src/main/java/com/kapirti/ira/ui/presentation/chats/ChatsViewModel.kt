@@ -8,7 +8,7 @@ import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
 import com.kapirti.ira.soci.ui.stateInUi
-import com.kapirti.ira.ui.presentation.ZepiViewModel
+import com.kapirti.ira.ui.presentation.QuickChatViewModel
 
 @HiltViewModel
 class ChatsViewModel @Inject constructor(
@@ -16,7 +16,7 @@ class ChatsViewModel @Inject constructor(
     private val firestoreService: FirestoreService,
     private val chatIdRepository: ChatIdRepository,
     logService: LogService,
-): ZepiViewModel(logService) {
+): QuickChatViewModel(logService) {
     val chats = firestoreService.userChats
         .stateInUi(emptyList())
 

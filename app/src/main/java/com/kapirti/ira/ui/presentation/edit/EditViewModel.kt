@@ -20,7 +20,7 @@ import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
 import com.kapirti.ira.model.service.StorageService
-import com.kapirti.ira.ui.presentation.ZepiViewModel
+import com.kapirti.ira.ui.presentation.QuickChatViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -32,7 +32,7 @@ class EditViewModel @Inject constructor(
     private val editTypeRepository: EditTypeRepository,
     private val langRepository: LangRepository,
     logService: LogService,
-): ZepiViewModel(logService) {
+): QuickChatViewModel(logService) {
     val uid = accountService.currentUserId
 
     private val _editType = mutableStateOf<String?>(null)

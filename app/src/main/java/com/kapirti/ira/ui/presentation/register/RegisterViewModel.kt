@@ -16,21 +16,8 @@
 
 package com.kapirti.ira.ui.presentation.register
 
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Text
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.ira.core.datastore.EditTypeRepository
@@ -49,7 +36,7 @@ import javax.inject.Inject
 import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
-import com.kapirti.ira.ui.presentation.ZepiViewModel
+import com.kapirti.ira.ui.presentation.QuickChatViewModel
 import java.util.Locale
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -62,7 +49,7 @@ class RegisterViewModel @Inject constructor(
     private val firestoreService: FirestoreService,
     private val langRepository: LangRepository,
     private val editTypeRepository: EditTypeRepository,
-): ZepiViewModel(logService) {
+): QuickChatViewModel(logService) {
     private val _state = MutableStateFlow(SignInState())
     val state = _state.asStateFlow()
 

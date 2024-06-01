@@ -7,7 +7,7 @@ import com.kapirti.ira.core.datastore.OnBoardingRepository
 import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.ConfigurationService
 import com.kapirti.ira.model.service.LogService
-import com.kapirti.ira.ui.presentation.ZepiViewModel
+import com.kapirti.ira.ui.presentation.QuickChatViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 @HiltViewModel
@@ -16,7 +16,7 @@ class SplashViewModel @Inject constructor(
     private val onBoardingRepository: OnBoardingRepository,
     private val accountService: AccountService,
     logService: LogService,
-): ZepiViewModel(logService) {
+): QuickChatViewModel(logService) {
     val showError = mutableStateOf(false)
 
     init {
