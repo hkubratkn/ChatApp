@@ -18,8 +18,11 @@
     <string name="email">E-mail</string>
     <string name="email_error">Indtast venligst en gyldig e-mail.</string>
     <string name="empty_password_error">Adgangskoden må ikke være tom.</string>
-    <string name="enjoy">God fornøjelse</string>
-    <string name="enjoy_text">Chat med dine jævnaldrende</string>
+    <string name="chats_title">Chats</string>
+    <string name="archive_title">Arkiv</string>
+    <string name="permission_message">Hvis du vil have besked, når du har fået nye beskeder, skal du give tilladelse til at få besked.</string>
+    <string name="permission_rationale">Giv venligst notifikationstilladelsen, så appen kan demonstrere brugen af notifikations-API’erne.</string>
+    <string name="long_click">Langt klik</string>
     <string name="feedback">Feedback</string>
     <string name="feedback_description">Vi forbedrer hele tiden vores produkt ved at lytte til din feedback.</string>
     <string name="female">Kvinde</string>

@@ -18,8 +18,11 @@
     <string name="email">Sähköposti</string>
     <string name="email_error">Syötä voimassa oleva sähköpostiosoite.</string>
     <string name="empty_password_error">Salasana ei voi olla tyhjä.</string>
-    <string name="enjoy">Nauti</string>
-    <string name="enjoy_text">Keskustele vertaistesi kanssa</string>
+    <string name="chats_title">Keskustelut</string>
+    <string name="archive_title">Arkisto</string>
+    <string name="permission_message">Jos haluat saada ilmoituksen uusista viesteistä, myönnä ilmoitusoikeus.</string>
+    <string name="permission_rationale">Myönnä ilmoitusoikeus, jotta sovellus voi demonstroida ilmoitusliittymien käyttöä.</string>
+    <string name="long_click">Pitkä klikkaus</string>
     <string name="feedback">Palaute</string>
     <string name="feedback_description">Parannamme jatkuvasti tuotteitamme kuuntelemalla palautettasi.</string>
     <string name="female">Nainen</string>

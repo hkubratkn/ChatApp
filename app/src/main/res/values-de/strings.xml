@@ -18,8 +18,11 @@
     <string name="email">E-Mail</string>
     <string name="email_error">Bitte geben Sie eine gültige E-Mail ein.</string>
     <string name="empty_password_error">Das Passwort darf nicht leer sein.</string>
-    <string name="enjoy">Genießen Sie</string>
-    <string name="enjoy_text">Chatten Sie mit Gleichaltrigen</string>
+    <string name="chats_title">Chats</string>
+    <string name="archive_title">Archiv</string>
+    <string name="permission_message">Um benachrichtigt zu werden, wenn Sie neue Nachrichten haben, erteilen Sie bitte die Genehmigung zur Benachrichtigung.</string>
+    <string name="permission_rationale">Bitte gewähren Sie die Benachrichtigungsberechtigung, damit die Anwendung die Verwendung der Benachrichtigungs-APIs demonstrieren kann.</string>
+    <string name="long_click">Langer Klick</string>
     <string name="feedback">Rückmeldung</string>
     <string name="feedback_description">Wir verbessern unser Produkt ständig, indem wir auf Ihr Feedback hören.</string>
     <string name="female">Weiblich</string>

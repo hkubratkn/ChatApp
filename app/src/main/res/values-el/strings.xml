@@ -18,8 +18,11 @@
     <string name="email">Ηλεκτρονικό ταχυδρομείο</string>
     <string name="email_error">Παρακαλώ εισάγετε ένα έγκυρο email.</string>
     <string name="empty_password_error">Ο κωδικός πρόσβασης δεν μπορεί να είναι άδειος.</string>
-    <string name="enjoy">Απολαύστε το</string>
-    <string name="enjoy_text">Συζητήστε με τους συνομηλίκους σας</string>
+    <string name="chats_title">Συζητήσεις</string>
+    <string name="archive_title">Αρχείο</string>
+    <string name="permission_message">Για να λαμβάνετε ειδοποιήσεις όταν έχετε νέα μηνύματα, παρακαλούμε δώστε το δικαίωμα ειδοποίησης.</string>
+    <string name="permission_rationale">Παρακαλούμε παραχωρήστε το δικαίωμα ειδοποίησης, ώστε η εφαρμογή να μπορεί να επιδείξει τη χρήση των API ειδοποίησης.</string>
+    <string name="long_click">Μακρύ κλικ</string>
     <string name="feedback">Ανατροφοδότηση</string>
     <string name="feedback_description">Βελτιώνουμε συνεχώς το προϊόν μας ακούγοντας τα σχόλιά σας.</string>
     <string name="female">Γυναίκα</string>

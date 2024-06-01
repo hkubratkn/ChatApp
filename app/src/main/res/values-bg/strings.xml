@@ -18,8 +18,11 @@
     <string name="email">Имейл</string>
     <string name="email_error">Моля, въведете валиден имейл.</string>
     <string name="empty_password_error">Паролата не може да бъде празна.</string>
-    <string name="enjoy">Насладете се на</string>
-    <string name="enjoy_text">Разговаряйте с връстниците си</string>
+    <string name="chats_title">Чатове</string>
+    <string name="archive_title">Архив</string>
+    <string name="permission_message">За да бъдете уведомявани за нови съобщения, дайте разрешение за уведомяване.</string>
+    <string name="permission_rationale">Моля, дайте разрешение за уведомяване, за да може приложението да демонстрира използването на API за уведомяване.</string>
+    <string name="long_click">Дълъг клик</string>
     <string name="feedback">Обратна връзка</string>
     <string name="feedback_description">Непрекъснато подобряваме нашия продукт, като се вслушваме в обратната ви връзка.</string>
     <string name="female">Жена</string>

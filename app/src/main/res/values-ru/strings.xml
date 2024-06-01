@@ -18,8 +18,11 @@
     <string name="email">Электронная почта</string>
     <string name="email_error">Пожалуйста, введите действительный адрес электронной почты.</string>
     <string name="empty_password_error">Пароль не может быть пустым.</string>
-    <string name="enjoy">Наслаждайтесь</string>
-    <string name="enjoy_text">Общайтесь со своими сверстниками</string>
+    <string name="chats_title">Чаты</string>
+    <string name="archive_title">Архив</string>
+    <string name="permission_message">Чтобы получать уведомления о новых сообщениях, разрешите уведомления.</string>
+    <string name="permission_rationale">Пожалуйста, предоставьте разрешение на уведомления, чтобы приложение могло продемонстрировать использование API уведомлений.</string>
+    <string name="long_click">Долгое нажатие</string>
     <string name="feedback">Обратная связь</string>
     <string name="feedback_description">Мы постоянно совершенствуем наш продукт, прислушиваясь к вашим отзывам.</string>
     <string name="female">Женский</string>

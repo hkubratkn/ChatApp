@@ -5,9 +5,6 @@
     <string name="dark_mode">Modul întunecat</string>
     <string name="home_title">Pagina de start</string>
     <string name="already_have_an_account">Aveți deja un cont</string>
-    <string name="archive">Arhiva</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Ziua de naștere</string>
     <string name="block">Bloc</string>
     <string name="block_user">Doriți să blocați un utilizator?</string>
     <string name="cancel">Anulează</string>
@@ -21,8 +18,11 @@
     <string name="email">Email</string>
     <string name="email_error">Vă rugăm să introduceți un e-mail valid.</string>
     <string name="empty_password_error">Parola nu poate fi goală.</string>
-    <string name="enjoy">Bucurați-vă de</string>
-    <string name="enjoy_text">Discutați cu colegii dvs.</string>
+    <string name="chats_title">Discuții</string>
+    <string name="archive_title">Arhiva</string>
+    <string name="permission_message">Pentru a fi anunțat când primiți mesaje noi, vă rugăm să acordați permisiunea de notificare.</string>
+    <string name="permission_rationale">Vă rugăm să acordați permisiunea de notificare pentru ca aplicația să poată demonstra utilizarea API-urilor de notificare.</string>
+    <string name="long_click">Clic lung</string>
     <string name="feedback">Feedback</string>
     <string name="feedback_description">Ne îmbunătățim în mod constant produsul nostru, ascultând feedback-ul dumneavoastră.</string>
     <string name="female">Femeie</string>

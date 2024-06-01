@@ -5,9 +5,11 @@
     <string name="dark_mode">Karanlık mod</string>
     <string name="home_title">Ana Sayfa</string>
     <string name="already_have_an_account">Zaten bir hesabım var</string>
-    <string name="archive">Arşiv</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Doğum Gününüz</string>
+    <string name="chats_title">Sohbetler</string>
+    <string name="archive_title">Arşiv</string>
+    <string name="permission_message">Yeni mesajlarınız olduğunda bildirim almak için lütfen bildirim iznini verin.</string>
+    <string name="permission_rationale">Uygulamanın Bildirim API’lerinin kullanımını gösterebilmesi için lütfen bildirim iznini verin.</string>
+    <string name="long_click">Uzun tıklama</string>
     <string name="block">Engelle</string>
     <string name="block_user">Bir kullanıcıyı engellemek mi istiyorsunuz?</string>
     <string name="cancel">İptal</string>

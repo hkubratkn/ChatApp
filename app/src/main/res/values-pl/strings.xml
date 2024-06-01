@@ -18,8 +18,11 @@
     <string name="email">E-mail</string>
     <string name="email_error">Wprowadź prawidłowy adres e-mail.</string>
     <string name="empty_password_error">Hasło nie może być puste.</string>
-    <string name="enjoy">Ciesz się</string>
-    <string name="enjoy_text">Czat z rówieśnikami</string>
+    <string name="chats_title">Czaty</string>
+    <string name="archive_title">Archiwum</string>
+    <string name="permission_message">Aby otrzymywać powiadomienia o nowych wiadomościach, należy przyznać uprawnienie do otrzymywania powiadomień.</string>
+    <string name="permission_rationale">Przyznaj uprawnienia do powiadomień, aby aplikacja mogła zademonstrować korzystanie z interfejsów API powiadomień.</string>
+    <string name="long_click">Długie kliknięcie</string>
     <string name="feedback">Informacje zwrotne</string>
     <string name="feedback_description">Nieustannie ulepszamy nasz produkt, słuchając opinii użytkowników.</string>
     <string name="female">Kobieta</string>

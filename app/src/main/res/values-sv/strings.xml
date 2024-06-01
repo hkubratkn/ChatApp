@@ -5,9 +5,11 @@
     <string name="dark_mode">Mörkt läge</string>
     <string name="home_title">Hemsidan</string>
     <string name="already_have_an_account">Har redan ett konto</string>
-    <string name="archive">Arkiv</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Födelsedag</string>
+    <string name="chats_title">Chattar</string>
+    <string name="archive_title">Arkiv</string>
+    <string name="permission_message">Om du vill bli meddelad när du har nya meddelanden måste du bevilja aviseringsbehörighet.</string>
+    <string name="permission_rationale">Ge tillstånd för avisering så att appen kan demonstrera användningen av API:erna för avisering.</string>
+    <string name="long_click">Långt klick</string>
     <string name="block">Block</string>
     <string name="block_user">Vill du blockera en användare?</string>
     <string name="cancel">Avbryt</string>

@@ -18,8 +18,11 @@
     <string name="email">Email</string>
     <string name="email_error">Masukkan email yang valid.</string>
     <string name="empty_password_error">Kata sandi tidak boleh kosong.</string>
-    <string name="enjoy">Nikmati</string>
-    <string name="enjoy_text">Mengobrol dengan rekan-rekan Anda</string>
+    <string name="chats_title">Obrolan</string>
+    <string name="archive_title">Arsip</string>
+    <string name="permission_message">Untuk mendapatkan notifikasi ketika Anda memiliki pesan baru, berikan izin notifikasi.</string>
+    <string name="permission_rationale">Berikan izin notifikasi agar aplikasi dapat mendemonstrasikan penggunaan API Notifikasi.</string>
+    <string name="long_click">Klik panjang</string>
     <string name="feedback">Umpan balik</string>
     <string name="feedback_description">Kami terus meningkatkan produk kami dengan mendengarkan umpan balik dari Anda.</string>
     <string name="female">Perempuan</string>

@@ -21,7 +21,11 @@
     <string name="feedback">Atsauksmes</string>
     <string name="feedback_description">Mēs pastāvīgi uzlabojam savu produktu, uzklausot jūsu atsauksmes.</string>
     <string name="female">Sievietes</string>
-    <string name="finish">Apdare</string>
+    <string name="chats_title">Tērzēšanas</string>
+    <string name="archive_title">Arhīvs</string>
+    <string name="permission_message">Lai saņemtu paziņojumus par jauniem ziņojumiem, piešķiriet atļauju saņemt paziņojumus.</string>
+    <string name="permission_rationale">Lūdzu, piešķiriet paziņojumu atļauju, lai lietotne varētu demonstrēt paziņojumu API lietojumu.</string>
+    <string name="long_click">Garais klikšķis</string>
     <string name="forgotten_password">Aizmirsāt paroli? Noklikšķiniet, lai saņemtu atgūšanas e-pastu</string>
     <string name="gender">Dzimums</string>
     <string name="generic_error">Ir noticis kaut kas nepareizs. Lūdzu, mēģiniet vēlreiz.</string>

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--chinese-->
+    <string name="chats_title">聊天</string>
+    <string name="archive_title">档案</string>
+    <string name="permission_message">要在有新信息时收到通知，请授予通知权限。</string>
+    <string name="permission_rationale">请授予通知权限，以便应用程序可以演示如何使用通知 API。</string>
+    <string name="long_click">长时间点击</string>
     <string name="home_title">主页</string>
     <string name="profile_title">简介</string>
     <string name="dark_mode">黑暗模式</string>

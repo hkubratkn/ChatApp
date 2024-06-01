@@ -18,8 +18,11 @@
     <string name="email">E-mail</string>
     <string name="email_error">Vul een geldig e-mailadres in.</string>
     <string name="empty_password_error">Het wachtwoord kan niet leeg zijn.</string>
-    <string name="enjoy">Geniet van</string>
-    <string name="enjoy_text">Chatten met je collega’s</string>
+    <string name="chats_title">Praatjes</string>
+    <string name="archive_title">Archief</string>
+    <string name="permission_message">Om op de hoogte te worden gebracht wanneer je nieuwe berichten hebt, moet je de notificatie-toestemming verlenen.</string>
+    <string name="permission_rationale">Geef de notificatie-toestemming zodat de app het gebruik van de Notificatie-API's kan demonstreren.</string>
+    <string name="long_click">Lang klikken</string>
     <string name="feedback">Feedback</string>
     <string name="feedback_description">Wij verbeteren ons product voortdurend door naar uw feedback te luisteren.</string>
     <string name="female">Vrouw</string>

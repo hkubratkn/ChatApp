@@ -18,8 +18,11 @@
     <string name="email">Email</string>
     <string name="email_error">Please insert a valid email.</string>
     <string name="empty_password_error">Password cannot be empty.</string>
-    <string name="enjoy">Enjoy</string>
-    <string name="enjoy_text">Chat with your peers</string>
+    <string name="chats_title">Chats</string>
+    <string name="archive_title">Archive</string>
+    <string name="permission_message">To be notified when you have new messages, please grant the notification permission.</string>
+    <string name="permission_rationale">Please grant the notification permission so that the app can demonstrate usage of the Notification APIs.</string>
+    <string name="long_click">Long click</string>
     <string name="feedback">Feedback</string>
     <string name="feedback_description">We are constantly improving our product by listening to your feedback.</string>
     <string name="female">Female</string>

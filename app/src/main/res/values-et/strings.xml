@@ -18,8 +18,11 @@
     <string name="email">E-post</string>
     <string name="email_error">Palun sisestage kehtiv e-posti aadress.</string>
     <string name="empty_password_error">Parool ei saa olla tühi.</string>
-    <string name="enjoy">Nautige</string>
-    <string name="enjoy_text">Vestle oma eakaaslastega</string>
+    <string name="chats_title">Vestlused</string>
+    <string name="archive_title">Arhiiv</string>
+    <string name="permission_message">Kui soovite saada teateid uute sõnumite ilmumisest, andke palun teavitamisõigus.</string>
+    <string name="permission_rationale">Palun andke teavitamise luba, et rakendus saaks näidata teavitamise APIde kasutamist.</string>
+    <string name="long_click">Pikk klõps</string>
     <string name="feedback">Tagasiside</string>
     <string name="feedback_description">Me täiustame oma toodet pidevalt, kuulates teie tagasisidet.</string>
     <string name="female">Naised</string>

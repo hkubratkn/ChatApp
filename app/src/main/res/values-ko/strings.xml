@@ -18,8 +18,11 @@
     <string name="email">이메일</string>
     <string name="email_error">유효한 이메일을 입력하세요.</string>
     <string name="empty_password_error">비밀번호는 비워 둘 수 없습니다.</string>
-    <string name="enjoy">즐기기</string>
-    <string name="enjoy_text">동료들과 채팅하기</string>
+    <string name="chats_title">채팅</string>
+    <string name="archive_title">아카이브</string>
+    <string name="permission_message">새 메시지가 있을 때 알림을 받으려면 알림 권한을 부여하세요.</string>
+    <string name="permission_rationale">앱이 알림 API 사용을 시연할 수 있도록 알림 권한을 부여해 주세요.</string>
+    <string name="long_click">길게 클릭</string>
     <string name="feedback">피드백</string>
     <string name="feedback_description">당사는 사용자의 피드백에 귀 기울여 지속적으로 제품을 개선하고 있습니다.</string>
     <string name="female">여성</string>

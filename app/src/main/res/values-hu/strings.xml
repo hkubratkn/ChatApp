@@ -18,8 +18,11 @@
     <string name="email">E-mail</string>
     <string name="email_error">Kérjük, adjon meg egy érvényes e-mailt.</string>
     <string name="empty_password_error">A jelszó nem lehet üres.</string>
-    <string name="enjoy">Élvezze a</string>
-    <string name="enjoy_text">Csevegj társaiddal</string>
+    <string name="chats_title">Beszélgetések</string>
+    <string name="archive_title">Archívum</string>
+    <string name="permission_message">Ha értesítést szeretne kapni az új üzenetekről, kérjük, adja meg az értesítési engedélyt.</string>
+    <string name="permission_rationale">Kérjük, adja meg az értesítési engedélyt, hogy az alkalmazás bemutathassa az értesítési API-k használatát.</string>
+    <string name="long_click">Hosszú kattintás</string>
     <string name="feedback">Visszajelzés</string>
     <string name="feedback_description">Az Ön visszajelzéseit meghallgatva folyamatosan fejlesztjük termékünket.</string>
     <string name="female">Női</string>

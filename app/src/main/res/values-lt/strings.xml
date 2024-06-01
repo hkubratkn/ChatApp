@@ -21,7 +21,11 @@
     <string name="feedback">Atsiliepimai</string>
     <string name="feedback_description">Įsiklausydami į jūsų atsiliepimus nuolat tobuliname savo produktą.</string>
     <string name="female">Moteris</string>
-    <string name="finish">Apdaila</string>
+    <string name="chats_title">Pokalbiai</string>
+    <string name="archive_title">Archyvas</string>
+    <string name="permission_message">Norėdami, kad jums būtų pranešama apie naujus pranešimus, suteikite pranešimo leidimą.</string>
+    <string name="permission_rationale">Suteikite pranešimų leidimą, kad programa galėtų demonstruoti pranešimų API naudojimą.</string>
+    <string name="long_click">Ilgas paspaudimas</string>
     <string name="forgotten_password">Pamiršote slaptažodį? Spustelėkite, kad gautumėte atkūrimo el. laišką</string>
     <string name="gender">Lytis</string>
     <string name="generic_error">Atsitiko kažkas blogo. Bandykite dar kartą.</string>

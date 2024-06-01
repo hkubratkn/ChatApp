@@ -18,8 +18,11 @@
     <string name="email">E-mail</string>
     <string name="email_error">Vložte prosím platný e-mail.</string>
     <string name="empty_password_error">Heslo nesmí být prázdné.</string>
-    <string name="enjoy">Užijte si</string>
-    <string name="enjoy_text">Chatujte se svými vrstevníky</string>
+    <string name="chats_title">Chaty</string>
+    <string name="archive_title">Archiv</string>
+    <string name="permission_message">Chcete-li být informováni o nových zprávách, udělte oprávnění k oznamování.</string>
+    <string name="permission_rationale">Udělte oprávnění k oznámení, aby aplikace mohla demonstrovat použití rozhraní API pro oznámení.</string>
+    <string name="long_click">Dlouhé kliknutí</string>
     <string name="feedback">Zpětná vazba</string>
     <string name="feedback_description">Neustále vylepšujeme náš produkt tím, že nasloucháme vaší zpětné vazbě.</string>
     <string name="female">Ženy</string>

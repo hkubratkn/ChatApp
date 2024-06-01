@@ -18,8 +18,11 @@
     <string name="email">電子メール</string>
     <string name="email_error">有効な電子メールを挿入してください。</string>
     <string name="empty_password_error">パスワードは空欄にできません。</string>
-    <string name="enjoy">楽しむ</string>
-    <string name="enjoy_text">同業者とのチャット</string>
+    <string name="chats_title">チャット</string>
+    <string name="archive_title">アーカイブ</string>
+    <string name="permission_message">新着メッセージの通知を受けるには、通知許可を与えてください。</string>
+    <string name="permission_rationale">アプリが通知アプリの使い方を実証できるように、通知許可を与えてください。</string>
+    <string name="long_click">ロングクリック</string>
     <string name="feedback">フィードバック</string>
     <string name="feedback_description">お客様の声に耳を傾けながら、常に製品の改良を続けています。</string>
     <string name="female">女性</string>

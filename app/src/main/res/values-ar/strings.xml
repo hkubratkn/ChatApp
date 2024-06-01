@@ -18,8 +18,11 @@
     <string name="email">بريد إلكتروني</string>
     <string name="email_error">الرجاء إدخال بريد إلكتروني صالح.</string>
     <string name="empty_password_error">لا يمكن أن تكون كلمة المرور فارغة.</string>
-    <string name="enjoy">يتمتع</string>
-    <string name="enjoy_text">تحدث مع زملائك</string>
+    <string name="chats_title">الدردشات</string>
+    <string name="archive_title">الأرشيف</string>
+    <string name="permission_message">ليتم إعلامك عندما تصلك رسائل جديدة، يرجى منح إذن الإشعارات.</string>
+    <string name="permission_rationale">يرجى منح إذن الإشعارات حتى يتمكن التطبيق من إظهار استخدام واجهات برمجة تطبيقات الإشعارات.</string>
+    <string name="long_click">نقرة طويلة</string>
     <string name="feedback">تعليق</string>
     <string name="feedback_description">نعمل باستمرار على تحسين منتجاتنا من خلال الاستماع إلى ملاحظاتك.</string>
     <string name="female">أنثى</string>

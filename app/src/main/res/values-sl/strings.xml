@@ -18,8 +18,11 @@
     <string name="email">E-pošta</string>
     <string name="email_error">Prosimo, vstavite veljavno e-poštno sporočilo.</string>
     <string name="empty_password_error">Geslo ne sme biti prazno.</string>
-    <string name="enjoy">Uživajte na spletni strani .</string>
-    <string name="enjoy_text">Klepetajte z vrstniki</string>
+    <string name="chats_title">Pogovori</string>
+    <string name="archive_title">Arhiv</string>
+    <string name="permission_message">Če želite biti obveščeni o novih sporočilih, odobrite dovoljenje za obveščanje.</string>
+    <string name="permission_rationale">Odobrite dovoljenje za obvestila, da bo aplikacija lahko prikazala uporabo API-jev za obvestila.</string>
+    <string name="long_click">Dolgi klik</string>
     <string name="feedback">Povratne informacije</string>
     <string name="feedback_description">S poslušanjem vaših povratnih informacij nenehno izboljšujemo svoj izdelek.</string>
     <string name="female">Ženske</string>

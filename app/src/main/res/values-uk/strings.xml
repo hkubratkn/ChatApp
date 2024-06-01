@@ -5,9 +5,11 @@
     <string name="dark_mode">Темний режим</string>
     <string name="home_title">Головна</string>
     <string name="already_have_an_account">Вже існує обліковий запис</string>
-    <string name="archive">Архів</string>
-    <string name="avatar">Аватар</string>
-    <string name="birthday">День народження</string>
+    <string name="chats_title">Чати</string>
+    <string name="archive_title">Архів</string>
+    <string name="permission_message">Щоб отримувати сповіщення про нові повідомлення, будь ласка, надайте дозвіл на сповіщення.</string>
+    <string name="permission_rationale">Будь ласка, надайте дозвіл на сповіщення, щоб програма могла продемонструвати використання API сповіщень.</string>
+    <string name="long_click">Довге клацання</string>
     <string name="block">Блок</string>
     <string name="block_user">Ви хочете заблокувати користувача?</string>
     <string name="cancel">Скасувати</string>
