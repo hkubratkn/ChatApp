@@ -46,6 +46,7 @@ import com.kapirti.ira.ui.presentation.register.RegisterScreen
 import com.kapirti.ira.ui.presentation.search.SearchScreen
 import com.kapirti.ira.ui.presentation.splash.SplashScreen
 import com.kapirti.ira.ui.presentation.timeline.Timeline
+import com.kapirti.ira.ui.presentation.userprofile.videocall.VideoCallScreen
 
 
 @Composable
@@ -65,8 +66,9 @@ fun ZepiNavGraph(
     openLoginScreen: () -> Unit,
 
     navigateEdit: () -> Unit,
-    navigateUserProfile: () -> Unit,
     navigateSearch: () -> Unit,
+    navigateUserProfile: () -> Unit,
+    navigateVideoCall: () -> Unit,
     navigateBlockUser: () -> Unit,
 
     navigateAndPopUpSearchToUserProfile: () -> Unit,
@@ -414,6 +416,7 @@ fun ZepiNavGraph(
                         onLoginClick = openLoginScreen,
                         onChatExistClick = {}, //userProfileToChatExist,
                         onChatNopeClick = userProfileToChatNope,
+                        navigateVideoCall = navigateVideoCall,
                         showInterstitialAds = showInterstitialAds,
                         includeUserIdViewModel = includeUserIdViewModel
                     )
@@ -449,6 +452,7 @@ fun ZepiNavGraph(
                         modifier = Modifier.fillMaxSize(),
                     )
                 }
+                composable(ZepiDestinations.VIDEO_CALL_ROUTE) { VideoCallScreen(popUp = popUpScreen)}
                 composable(
                     route = ZepiDestinations.BLOCK_USERS_ROUTE
                 ) {

@@ -88,14 +88,14 @@ fun ZepiApp(
             loginToRegister = navigationActions.navigateAndPopUpLoginToRegister,
             registerToLogin = navigationActions.navigateAndPopUpRegisterToLogin,
 
-
             userProfileToChatNope = navigationActions.navigateAndPopUpUserProfileToChatNope,
 
             openLoginScreen = navigationActions.navigateLogin,
 
             navigateEdit = navigationActions.navigateEdit,
-            navigateUserProfile = navigationActions.navigateUserProfile,
             navigateSearch = navigationActions.navigateSearch,
+            navigateUserProfile = navigationActions.navigateUserProfile,
+            navigateVideoCall = navigationActions.navigateVideoCall,
             navigateBlockUser = navigationActions.navigateBlockUser,
 
             navigateAndPopUpSearchToUserProfile = navigationActions.navigateAndPopUpSearchToUserProfile,

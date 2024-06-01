@@ -45,6 +45,8 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.filled.ChatBubble
+import androidx.compose.material.icons.filled.Mic
+import androidx.compose.material.icons.filled.VideoCall
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -86,6 +88,7 @@ internal fun UserProfileRoute(
     onChatExistClick: () -> Unit,
     onChatNopeClick: () -> Unit,
     onLoginClick: () -> Unit,
+    navigateVideoCall: () -> Unit,
     showInterstitialAds: () -> Unit,
     includeUserIdViewModel: IncludeUserIdViewModel,
     viewModel: ChatsViewModel = hiltViewModel(),
@@ -97,6 +100,7 @@ internal fun UserProfileRoute(
         onChatNopeClick = onChatNopeClick,
         onChatExistClick = onChatExistClick,
         onLoginClick = onLoginClick,
+        navigateVideoCall = navigateVideoCall,
         showInterstitialAds = showInterstitialAds,
         includeUserIdViewModel = includeUserIdViewModel,
         chats = chats,
@@ -109,6 +113,7 @@ private fun UserProfileScreen(
     onChatExistClick: () -> Unit,
     onChatNopeClick: () -> Unit,
     onLoginClick: () -> Unit,
+    navigateVideoCall: () -> Unit,
     showInterstitialAds: () -> Unit,
     includeUserIdViewModel: IncludeUserIdViewModel,
     chats: List<Chat>,
@@ -119,6 +124,7 @@ private fun UserProfileScreen(
         onChatNopeClick = onChatNopeClick,
         onChatExistClick = onChatExistClick,
         onLoginClick = onLoginClick,
+        navigateVideoCall = navigateVideoCall,
         showInterstitialAds = showInterstitialAds,
         includeUserIdViewModel = includeUserIdViewModel,
         chats = chats,
@@ -132,6 +138,7 @@ private fun UserProfileContent(
     onChatExistClick: () -> Unit,
     onChatNopeClick: () -> Unit,
     onLoginClick: () -> Unit,
+    navigateVideoCall: () -> Unit,
     showInterstitialAds: () -> Unit,
     includeUserIdViewModel: IncludeUserIdViewModel,
     chats: List<Chat>,
@@ -142,6 +149,7 @@ private fun UserProfileContent(
         onChatNopeClick = onChatNopeClick,
         onChatExistClick = onChatExistClick,
         onLoginClick = onLoginClick,
+        navigateVideoCall = navigateVideoCall,
         showInterstialAd = showInterstitialAds,
         chats = chats,
         includeUserIdViewModel = includeUserIdViewModel,
@@ -156,6 +164,7 @@ private fun UserProfileBody(
     onChatExistClick: () -> Unit,
     onChatNopeClick: () -> Unit,
     onLoginClick: () -> Unit,
+    navigateVideoCall: () -> Unit,
     includeUserIdViewModel: IncludeUserIdViewModel,
     showInterstialAd: () -> Unit,
     chats: List<Chat>,
@@ -178,30 +187,6 @@ private fun UserProfileBody(
     }
 
     Scaffold(
-        floatingActionButton = {
-            IconButton(
-                modifier = Modifier
-                    .clip(CircleShape)
-                    .background(Color.Red)
-                    .systemBarsPadding(),
-                onClick = {
-                    showInterstialAd()
-                    if (viewModel.hasUser) {
-                        val result = user.value.uid in missList
-
-                        if(result){
-                            onChatExistClick()
-                        } else {
-                            onChatNopeClick()
-                        }
-                    } else {
-                        onLoginClick()
-                    }
-                }
-            ) {
-                Icon(Icons.Default.ChatBubble, null)
-            }
-        },
         modifier = modifier.systemBarsPadding()
     ) { innerPadding ->
         BoxWithConstraints(
@@ -214,7 +199,27 @@ private fun UserProfileBody(
             Box(Modifier.fillMaxSize()) {
                 val scroll = rememberScrollState(0)
                 Header(user.value.gender)
-                Body(user = user.value, photos = userPhotos.value ,scroll = scroll)
+                Body(
+                    user = user.value,
+                    photos = userPhotos.value,
+                    scroll = scroll,
+                    onChatClick = {
+                        showInterstialAd()
+                        if (viewModel.hasUser) {
+                            val result = user.value.uid in missList
+
+                            if (result) {
+                                onChatExistClick()
+                            } else {
+                                onChatNopeClick()
+                            }
+                        } else {
+                            onLoginClick()
+                        }
+                    },
+                    onVideoClick = navigateVideoCall,
+                    onSoundClick = navigateVideoCall,
+                )
                 Title(user.value) { scroll.value }
                 Image(user.value.photo) { scroll.value }
                 Up(popUpScreen)
@@ -323,7 +328,10 @@ private fun Up(upPress: () -> Unit) {
 private fun Body(
     user: User?,
     photos: List<UserPhotos>,
-    scroll: ScrollState
+    scroll: ScrollState,
+    onChatClick: () -> Unit,
+    onSoundClick: () -> Unit,
+    onVideoClick: () -> Unit,
 ) {
     Column {
         Spacer(
@@ -395,6 +403,16 @@ private fun Body(
                     }
 
 
+                    Spacer(Modifier.height(16.dp))
+                    BasicDivider()
+
+                    CallRow(
+                        onChatClick = onChatClick,
+                        onSoundClick = onSoundClick,
+                        onVideoClick = onVideoClick,
+                    )
+
+
                     Spacer(
                         modifier = Modifier
                             .padding(bottom = BottomBarHeight)
@@ -408,7 +426,7 @@ private fun Body(
 }
 
 @Composable
-private fun Title(user: com.kapirti.ira.model.User?, scrollProvider: () -> Int) {
+private fun Title(user: User?, scrollProvider: () -> Int) {
     val maxOffset = with(LocalDensity.current) { MaxTitleOffset.toPx() }
     val minOffset = with(LocalDensity.current) { MinTitleOffset.toPx() }
 
@@ -533,5 +551,24 @@ private fun CartBottomBar(modifier: Modifier = Modifier) {
                 AdsBannerToolbar(ads = ADS_USER_PROFILE_BANNER_ID)
             }
         }
+    }
+}
+
+@Composable
+private fun CallRow(
+    onChatClick: () -> Unit,
+    onSoundClick: () -> Unit,
+    onVideoClick: () -> Unit,
+){
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(50.dp),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ){
+        IconButton(onClick = onChatClick) { Icon(Icons.Default.ChatBubble, contentDescription = null) }
+        IconButton(onClick = onSoundClick) { Icon(Icons.Default.Mic, contentDescription = null) }
+        IconButton(onClick = onVideoClick) { Icon(Icons.Default.VideoCall, contentDescription = null) }
     }
 }
