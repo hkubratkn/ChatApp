@@ -2,7 +2,7 @@
 <resources>
     <!--telugu-->
     <string name="dark_mode">డార్క్ మోడ్</string>
-    <string name="add_photo">ఫోటోను జోడించండి</string>
+    <string name="home_title">హోమ్ పేజీ</string>
     <string name="already_have_an_account">ఖాతా కలిగి ఉన్నారా</string>
     <string name="archive">ఆర్కైవ్</string>
     <string name="avatar">అవతార్</string>

@@ -3,7 +3,7 @@
     <!--swedish-->
     <string name="profile_title">Profil</string>
     <string name="dark_mode">Mörkt läge</string>
-    <string name="add_photo">LÄGG TILL FOTO</string>
+    <string name="home_title">Hemsidan</string>
     <string name="already_have_an_account">Har redan ett konto</string>
     <string name="archive">Arkiv</string>
     <string name="avatar">Avatar</string>

@@ -2,7 +2,7 @@
 <resources>
     <!--icelandic-->
     <string name="dark_mode">Dökk stilling</string>
-    <string name="add_photo">BÆTA VIÐ MYND</string>
+    <string name="home_title">Heimasíða</string>
     <string name="already_have_an_account">Er nú þegar með reikning</string>
     <string name="archive">Skjalasafn</string>
     <string name="avatar">Avatar</string>

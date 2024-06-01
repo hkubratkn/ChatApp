@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--vietnamese-->
+    <string name="home_title">Trang chủ</string>
     <string name="dark_mode">Chế độ tối</string>
     <string name="already_have_an_account">Bạn co săn san để tạo một tai khoản</string>
     <string name="cancel">Hủy bỏ</string>

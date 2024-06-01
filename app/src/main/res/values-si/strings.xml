@@ -2,7 +2,7 @@
 <resources>
     <!--sinhala-->
     <string name="dark_mode">අඳුරු මාදිලිය</string>
-    <string name="add_photo">ඡායාරූපය එක් කරන්න</string>
+    <string name="home_title">මුල් පිටුව</string>
     <string name="already_have_an_account">දැනටමත් ගිණුමක් ඇත</string>
     <string name="archive">සංරක්ෂිතය</string>
     <string name="avatar">අවතාරය</string>

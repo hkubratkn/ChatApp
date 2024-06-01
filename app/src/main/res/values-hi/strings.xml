@@ -2,7 +2,7 @@
 <resources>
     <!--hindi-->
     <string name="dark_mode">डार्क मोड</string>
-    <string name="add_photo">तस्वीर जोड़ो</string>
+    <string name="home_title">होम पेज</string>
     <string name="already_have_an_account">क्या आपके पास पहले से एक खाता मौजूद है</string>
     <string name="archive">पुरालेख</string>
     <string name="avatar">अवतार</string>

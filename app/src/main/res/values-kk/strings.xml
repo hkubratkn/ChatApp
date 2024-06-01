@@ -2,7 +2,7 @@
 <resources>
     <!--kazakh-->
     <string name="dark_mode">Қараңғы режим</string>
-    <string name="add_photo">ФОТО ҚОСУ</string>
+    <string name="home_title">Негізгі бет</string>
     <string name="already_have_an_account">Тіркелгі бар</string>
     <string name="archive">Мұрағат</string>
     <string name="avatar">Аватар</string>

@@ -2,7 +2,7 @@
 <resources>
     <!--belarusian-->
     <string name="dark_mode">Цёмны рэжым</string>
-    <string name="add_photo">ДАДАЦЬ ФОТА</string>
+    <string name="home_title">Галоўная старонка</string>
     <string name="already_have_an_account">Ужо ёсць уліковы запіс</string>
     <string name="archive">Архіў</string>
     <string name="avatar">Аватар</string>

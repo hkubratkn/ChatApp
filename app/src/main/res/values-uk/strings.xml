@@ -3,7 +3,7 @@
     <!--ukraine-->
     <string name="profile_title">Профіль</string>
     <string name="dark_mode">Темний режим</string>
-    <string name="add_photo">ДОДАТИ ФОТО</string>
+    <string name="home_title">Головна</string>
     <string name="already_have_an_account">Вже існує обліковий запис</string>
     <string name="archive">Архів</string>
     <string name="avatar">Аватар</string>

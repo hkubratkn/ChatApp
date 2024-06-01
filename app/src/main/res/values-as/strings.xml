@@ -2,7 +2,7 @@
 <resources>
     <!--assamese-->
     <string name="dark_mode">ডাৰ্ক মোড</string>
-    <string name="add_photo">ফটো যোগ কৰক</string>
+    <string name="home_title">হোম পেজ</string>
     <string name="already_have_an_account">ইতিমধ্যে এটা একাউণ্ট আছে</string>
     <string name="archive">পুৰালেখ</string>
     <string name="avatar">অৱতাৰ</string>

@@ -4,9 +4,7 @@
     <string name="dark_mode">Tmavý režim</string>
     <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Již máte účet</string>
-    <string name="archive">Archiv</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Narozeniny</string>
+    <string name="home_title">Domovská stránka</string>
     <string name="block">Blok</string>
     <string name="block_user">Chcete uživatele zablokovat?</string>
     <string name="cancel">Zrušit</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--chinese-->
+    <string name="home_title">主页</string>
     <string name="profile_title">简介</string>
     <string name="dark_mode">黑暗模式</string>
     <string name="already_have_an_account">已经有了一个账户</string>

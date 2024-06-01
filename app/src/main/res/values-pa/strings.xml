@@ -2,7 +2,7 @@
 <resources>
     <!--punjabi-->
     <string name="dark_mode">ਡਾਰਕ ਮੋਡ</string>
-    <string name="add_photo">ਫੋਟੋ ਸ਼ਾਮਲ ਕਰੋ</string>
+    <string name="home_title">ਮੁੱਖ ਪੰਨਾ</string>
     <string name="already_have_an_account">ਪਹਿਲਾਂ ਹੀ ਇੱਕ ਖਾਤਾ ਹੈ</string>
     <string name="archive">ਪੁਰਾਲੇਖ</string>
     <string name="avatar">ਅਵਤਾਰ</string>

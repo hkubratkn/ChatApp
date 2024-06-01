@@ -2,7 +2,7 @@
 <resources>
     <!--kyrgyz-->
     <string name="dark_mode">Караңгы режим</string>
-    <string name="add_photo">СҮРӨТ КОШУУ</string>
+    <string name="home_title">Башкы бет</string>
     <string name="already_have_an_account">Каттоо эсебиңиз бар</string>
     <string name="archive">Архив</string>
     <string name="avatar">Аватар</string>

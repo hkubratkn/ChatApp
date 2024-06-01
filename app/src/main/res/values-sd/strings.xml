@@ -2,7 +2,7 @@
 <resources>
     <!--sindhi-->
     <string name="dark_mode">ڳاڙهو موڊ</string>
-    <string name="add_photo">فوٽو شامل ڪريو</string>
+    <string name="home_title">هوم صفحو</string>
     <string name="already_have_an_account">اڳ ۾ ئي هڪ اڪائونٽ آهي</string>
     <string name="archive">آرڪائيو</string>
     <string name="avatar">اوتار</string>

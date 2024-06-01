@@ -2,7 +2,7 @@
 <resources>
     <!--burmese-->
     <string name="dark_mode">အမှောင်မုဒ်</string>
-    <string name="add_photo">ဓာတ်ပုံထည့်ပါ။</string>
+    <string name="home_title">ပင်မစာမျက်နှာ</string>
     <string name="already_have_an_account">အကောင့်ရှိပြီးသားလား</string>
     <string name="archive">စုစည်းမှု</string>
     <string name="avatar">ကိုယ်ပွား</string>

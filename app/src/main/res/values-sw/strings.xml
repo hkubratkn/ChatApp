@@ -2,7 +2,7 @@
 <resources>
     <!--swahili-->
     <string name="dark_mode">Hali ya giza</string>
-    <string name="add_photo">ONGEZA PICHA</string>
+    <string name="home_title">pagina de inicio</string>
     <string name="already_have_an_account">Tayari unayo akaunti</string>
     <string name="archive">Hifadhi</string>
     <string name="avatar">Avatar</string>

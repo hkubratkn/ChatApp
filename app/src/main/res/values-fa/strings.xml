@@ -2,7 +2,7 @@
 <resources>
     <!--persian-->
     <string name="dark_mode">حالت تاریک</string>
-    <string name="add_photo">افزودن عکس</string>
+    <string name="home_title">صفحه نخست</string>
     <string name="already_have_an_account">قبلاً یک حساب کاربری دارید</string>
     <string name="archive">بایگانی</string>
     <string name="avatar">آواتار</string>

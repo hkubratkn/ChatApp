@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--zulu-->
+    <string name="home_title">Ikhasi lasekhaya</string>
     <string name="dark_mode">Imodi emnyama</string>
     <string name="already_have_an_account">Usuvele unayo i-akhawunti</string>
     <string name="cancel">Khansela</string>

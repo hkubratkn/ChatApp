@@ -4,9 +4,7 @@
     <string name="dark_mode">Tume režiim</string>
     <string name="profile_title">Profiil</string>
     <string name="already_have_an_account">Sul on juba konto</string>
-    <string name="archive">Arhiiv</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Sünnipäev</string>
+    <string name="home_title">Koduleht</string>
     <string name="block">Plokk</string>
     <string name="block_user">Kas soovite kasutaja blokeerida?</string>
     <string name="cancel">Tühista</string>

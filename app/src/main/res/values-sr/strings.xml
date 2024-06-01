@@ -2,7 +2,7 @@
 <resources>
     <!--serbian-->
     <string name="dark_mode">Тамни режим</string>
-    <string name="add_photo">ДОДАЈ СЛИКУ</string>
+    <string name="home_title">Почетна страница</string>
     <string name="already_have_an_account">Већ имате налог</string>
     <string name="archive">Арһива</string>
     <string name="avatar">Аватар</string>

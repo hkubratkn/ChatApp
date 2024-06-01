@@ -4,9 +4,7 @@
     <string name="dark_mode">Σκοτεινή λειτουργία</string>
     <string name="profile_title">Προφίλ</string>
     <string name="already_have_an_account">Έχετε ήδη λογαριασμό</string>
-    <string name="archive">Αρχείο</string>
-    <string name="avatar">Άβαταρ</string>
-    <string name="birthday">Γενέθλια</string>
+    <string name="home_title">Αρχική σελίδα</string>
     <string name="block">Μπλοκ</string>
     <string name="block_user">Θέλετε να μπλοκάρετε έναν χρήστη;</string>
     <string name="cancel">Ακύρωση</string>

@@ -4,9 +4,7 @@
     <string name="dark_mode">Temni način</string>
     <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Že imate račun</string>
-    <string name="archive">Arhiv</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Rojstni dan</string>
+    <string name="home_title">Domača stran</string>
     <string name="block">Blok</string>
     <string name="block_user">Želite blokirati uporabnika?</string>
     <string name="cancel">Prekliči</string>

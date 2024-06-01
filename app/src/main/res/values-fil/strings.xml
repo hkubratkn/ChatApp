@@ -2,7 +2,7 @@
 <resources>
     <!--filipino-->
     <string name="dark_mode">Dark mode</string>
-    <string name="add_photo">magdagdag ng larawan</string>
+    <string name="home_title">Home</string>
     <string name="already_have_an_account">Mayroon nang account</string>
     <string name="archive">Archive</string>
     <string name="avatar">Avatar</string>

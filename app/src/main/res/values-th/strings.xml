@@ -2,7 +2,7 @@
 <resources>
     <!--thai-->
     <string name="dark_mode">โหมดมืด</string>
-    <string name="add_photo">เพิ่มรูปภาพ</string>
+    <string name="home_title">หน้าแรก</string>
     <string name="already_have_an_account">มีบัญชีอยู่แล้ว</string>
     <string name="archive">คลังเก็บเอกสารสำคัญ</string>
     <string name="avatar">สัญลักษณ์</string>

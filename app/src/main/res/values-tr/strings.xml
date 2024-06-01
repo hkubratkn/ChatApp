@@ -3,7 +3,7 @@
     <!--turkish-->
     <string name="profile_title">Profil</string>
     <string name="dark_mode">Karanlık mod</string>
-    <string name="add_photo">FOTOĞRAF EKLE</string>
+    <string name="home_title">Ana Sayfa</string>
     <string name="already_have_an_account">Zaten bir hesabım var</string>
     <string name="archive">Arşiv</string>
     <string name="avatar">Avatar</string>

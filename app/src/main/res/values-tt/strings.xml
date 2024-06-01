@@ -2,7 +2,7 @@
 <resources>
     <!--tatar-->
     <string name="dark_mode">Караңгы режим</string>
-    <string name="add_photo">ФОТО өстәгез</string>
+    <string name="home_title">Баш бит</string>
     <string name="already_have_an_account">Инде хисап бар</string>
     <string name="archive">архив</string>
     <string name="avatar">Аватар</string>

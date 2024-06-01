@@ -4,9 +4,7 @@
     <string name="dark_mode">ダークモード</string>
     <string name="profile_title">プロフィール</string>
     <string name="already_have_an_account">すでにアカウントをお持ちの方</string>
-    <string name="archive">アーカイブ</string>
-    <string name="avatar">アバター</string>
-    <string name="birthday">誕生日</string>
+    <string name="home_title">ホームページ</string>
     <string name="block">ブロック</string>
     <string name="block_user">ユーザーをブロックしたいのですか？</string>
     <string name="cancel">キャンセル</string>

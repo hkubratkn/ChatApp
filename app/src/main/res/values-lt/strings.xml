@@ -17,8 +17,7 @@
     <string name="email">El. paštas</string>
     <string name="email_error">Įveskite galiojantį el. pašto adresą.</string>
     <string name="empty_password_error">Slaptažodis negali būti tuščias.</string>
-    <string name="enjoy">Mėgaukitės</string>
-    <string name="enjoy_text">Bendraukite su bendraminčiais</string>
+    <string name="home_title">Pagrindinis puslapis</string>
     <string name="feedback">Atsiliepimai</string>
     <string name="feedback_description">Įsiklausydami į jūsų atsiliepimus nuolat tobuliname savo produktą.</string>
     <string name="female">Moteris</string>

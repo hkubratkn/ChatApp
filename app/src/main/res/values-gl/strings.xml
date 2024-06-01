@@ -2,7 +2,7 @@
 <resources>
     <!--galician-->
     <string name="dark_mode">Modo escuro</string>
-    <string name="add_photo">ENGADIR FOTO</string>
+    <string name="home_title">Páxina de inicio</string>
     <string name="already_have_an_account">Xa ten unha conta</string>
     <string name="archive">Arquivo</string>
     <string name="avatar">Avatar</string>

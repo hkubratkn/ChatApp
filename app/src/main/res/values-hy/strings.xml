@@ -2,7 +2,7 @@
 <resources>
     <!--armanian-->
     <string name="dark_mode">Մութ ռեժիմ</string>
-    <string name="add_photo">ԱՎԵԼԱՑՆԵԼ ԼՈՒՍԱՆԿԱՐ</string>
+    <string name="home_title">Գլխավոր էջ</string>
     <string name="already_have_an_account">Արդեն ունեք հաշիվ</string>
     <string name="archive">Արխիվ</string>
     <string name="avatar">Անձնանշան</string>

@@ -2,7 +2,7 @@
 <resources>
     <!--kurdish-->
     <string name="dark_mode">Moda tarî</string>
-    <string name="add_photo">PÊZÊKIRIN WÊNE</string>
+    <string name="home_title">Rûpelê malê</string>
     <string name="already_have_an_account">Jixwe hesabek heye</string>
     <string name="archive">Arşîv</string>
     <string name="avatar">Avatar</string>

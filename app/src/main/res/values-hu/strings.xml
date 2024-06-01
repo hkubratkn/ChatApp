@@ -4,9 +4,7 @@
     <string name="dark_mode">Sötét üzemmód</string>
     <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Már van fiókja</string>
-    <string name="archive">Archívum</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Születésnap</string>
+    <string name="home_title">Kezdőlap</string>
     <string name="block">Blokk</string>
     <string name="block_user">Szeretne letiltani egy felhasználót?</string>
     <string name="cancel">Törölje</string>

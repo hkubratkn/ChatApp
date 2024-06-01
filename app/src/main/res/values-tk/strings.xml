@@ -2,7 +2,7 @@
 <resources>
     <!--turkmen-->
     <string name="dark_mode">Garaňky re .im</string>
-    <string name="add_photo">FOTO goş</string>
+    <string name="home_title">Baş sahypa</string>
     <string name="already_have_an_account">Eýýäm hasabyňyz bar</string>
     <string name="archive">Arhiw</string>
     <string name="avatar">Avatar</string>

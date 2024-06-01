@@ -2,7 +2,7 @@
 <resources>
     <!--basque-->
     <string name="dark_mode">Modu iluna</string>
-    <string name="add_photo">GEHITU ARGAZKIA</string>
+    <string name="home_title">Hasierako orria</string>
     <string name="already_have_an_account">Dagoeneko kontu bat daukazu</string>
     <string name="archive">Artxiboa</string>
     <string name="avatar">Avatarra</string>

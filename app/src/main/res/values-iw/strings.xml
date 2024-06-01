@@ -2,7 +2,7 @@
 <resources>
     <!--hebrew-->
     <string name="dark_mode">מצב כהה</string>
-    <string name="add_photo">הוסף תמונה</string>
+    <string name="home_title">דף הבית</string>
     <string name="already_have_an_account">כבר יש לך חשבון</string>
     <string name="archive">ארכיון</string>
     <string name="avatar">גִלגוּל</string>

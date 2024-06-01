@@ -2,7 +2,7 @@
 <resources>
     <!--tajik-->
     <string name="dark_mode">Ҳолати торик</string>
-    <string name="add_photo">ИЛОВАИ СУРАТ</string>
+    <string name="home_title">Саҳифаи асосӣ</string>
     <string name="already_have_an_account">Аллакай ҳисоб доред</string>
     <string name="archive">Архив</string>
     <string name="avatar">Аватар</string>

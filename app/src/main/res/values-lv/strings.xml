@@ -17,8 +17,7 @@
     <string name="email">E-pasts</string>
     <string name="email_error">Lūdzu, ievadiet derīgu e-pasta adresi.</string>
     <string name="empty_password_error">Parole nedrīkst būt tukša.</string>
-    <string name="enjoy">Izbaudiet</string>
-    <string name="enjoy_text">Tērzējiet ar saviem vienaudžiem</string>
+    <string name="home_title">Sākumlapa</string>
     <string name="feedback">Atsauksmes</string>
     <string name="feedback_description">Mēs pastāvīgi uzlabojam savu produktu, uzklausot jūsu atsauksmes.</string>
     <string name="female">Sievietes</string>

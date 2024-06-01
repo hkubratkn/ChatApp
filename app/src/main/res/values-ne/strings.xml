@@ -2,7 +2,7 @@
 <resources>
     <!--nepali-->
     <string name="dark_mode">गाढा मोड</string>
-    <string name="add_photo">फोटो थप्नुहोस्</string>
+    <string name="home_title">गृह पृष्ठ</string>
     <string name="already_have_an_account">पहिले नै खाता छ</string>
     <string name="archive">अभिलेख</string>
     <string name="avatar">अवतार</string>

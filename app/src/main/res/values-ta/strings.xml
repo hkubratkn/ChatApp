@@ -2,7 +2,7 @@
 <resources>
     <!--tamil-->
     <string name="dark_mode">இருண்ட பயன்முறை</string>
-    <string name="add_photo">புகைப்படம் சேர்க்க</string>
+    <string name="home_title">முகப்பு பக்கம்</string>
     <string name="already_have_an_account">ஏற்கனவே ஒரு கணக்கு உள்ளதா</string>
     <string name="archive">காப்பகம்</string>
     <string name="avatar">அவதாரம்</string>

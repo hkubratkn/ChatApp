@@ -3,11 +3,8 @@
     <!--russian-->
     <string name="profile_title">Профиль</string>
     <string name="dark_mode">Темный режим</string>
-    <string name="add_photo">ДОБАВИТЬ ФОТОГРАФИЮ</string>
+    <string name="home_title">Главная страница</string>
     <string name="already_have_an_account">Уже есть аккаунт</string>
-    <string name="archive">Архив</string>
-    <string name="avatar">Аватар</string>
-    <string name="birthday">День рождения</string>
     <string name="block">Блок</string>
     <string name="block_user">Вы хотите заблокировать пользователя?</string>
     <string name="cancel">Отмена</string>

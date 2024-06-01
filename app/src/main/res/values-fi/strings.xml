@@ -4,9 +4,7 @@
     <string name="dark_mode">Tumma tila</string>
     <string name="profile_title">Profiili</string>
     <string name="already_have_an_account">Sinulla on jo tili</string>
-    <string name="archive">Arkisto</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Syntymäpäivä</string>
+    <string name="home_title">Kotisivu</string>
     <string name="block">Lohko</string>
     <string name="block_user">Haluatko estää käyttäjän?</string>
     <string name="cancel">Peruuta</string>

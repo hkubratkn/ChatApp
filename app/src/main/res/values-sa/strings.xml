@@ -2,7 +2,7 @@
 <resources>
     <!--sanskrit-->
     <string name="dark_mode">डार्क मोड</string>
-    <string name="add_photo">फोटो योजयतु</string>
+    <string name="home_title">मुखपृष्ठम्</string>
     <string name="already_have_an_account">पूर्वमेव खाता अस्ति</string>
     <string name="archive">लेखागार</string>
     <string name="avatar">अवतार</string>

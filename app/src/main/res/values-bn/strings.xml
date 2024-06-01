@@ -2,7 +2,7 @@
 <resources>
     <!--bangla-->
     <string name="dark_mode">ডার্ক মোড</string>
-    <string name="add_photo">ঘফজ</string>
+    <string name="home_title">হোম পেজ</string>
     <string name="already_have_an_account">ইতিমধ্যে একটি সদস্যপদ আছে</string>
     <string name="archive">সংরক্ষণাগার</string>
     <string name="avatar">অবতার</string>

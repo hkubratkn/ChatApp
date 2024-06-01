@@ -2,7 +2,7 @@
 <resources>
     <!--kannada-->
     <string name="dark_mode">ಡಾರ್ಕ್ ಮೋಡ್</string>
-    <string name="add_photo">ಫೋಟೋ ಸೇರಿಸಿ</string>
+    <string name="home_title">ಮುಖಪುಟ</string>
     <string name="already_have_an_account">ಈಗಾಗಲೇ ಖಾತೆ ಹೊಂದಿದ್ದೀರ</string>
     <string name="archive">ಆರ್ಕೈವ್</string>
     <string name="avatar">ಅವತಾರ</string>

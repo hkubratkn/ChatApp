@@ -4,9 +4,7 @@
     <string name="dark_mode">Mode gelap</string>
     <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Sudah memiliki akun</string>
-    <string name="archive">Arsip</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Ulang tahun</string>
+    <string name="home_title">Halaman beranda</string>
     <string name="block">Blokir</string>
     <string name="block_user">Apakah Anda ingin memblokir pengguna?</string>
     <string name="cancel">Batal</string>

@@ -4,9 +4,7 @@
     <string name="dark_mode">الوضع المظلم</string>
     <string name="profile_title">الملف الشخصي</string>
     <string name="already_have_an_account">هل لديك حساب</string>
-    <string name="archive">أرشيف</string>
-    <string name="avatar">الصورة الرمزية</string>
-    <string name="birthday">عيد ميلاد</string>
+    <string name="home_title">الصفحة الرئيسية</string>
     <string name="block">حاجز</string>
     <string name="block_user">هل تريد منع مستخدم؟</string>
     <string name="cancel">يلغي</string>

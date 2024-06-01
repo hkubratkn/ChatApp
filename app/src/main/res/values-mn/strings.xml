@@ -2,7 +2,7 @@
 <resources>
     <!--mongolian-->
     <string name="dark_mode">Харанхуй горим</string>
-    <string name="add_photo">ЗУРАГ НЭМЭХ</string>
+    <string name="home_title">Нүүр хуудас</string>
     <string name="already_have_an_account">Бүртгэлтэй байна</string>
     <string name="archive">Архив</string>
     <string name="avatar">Аватар</string>

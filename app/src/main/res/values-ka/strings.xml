@@ -2,7 +2,7 @@
 <resources>
     <!--georgian-->
     <string name="dark_mode">მუქი რეჟიმი</string>
-    <string name="add_photo">ᲤᲝᲢᲝᲡ ᲓᲐᲛᲐᲢᲔᲑᲐ</string>
+    <string name="home_title">მთავარი გვერდი</string>
     <string name="already_have_an_account">Უკვე გაქვთ ანგარიში</string>
     <string name="archive">არქივი</string>
     <string name="avatar">ავატარი</string>

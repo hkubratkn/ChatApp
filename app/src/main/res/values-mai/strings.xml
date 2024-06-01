@@ -2,7 +2,7 @@
 <resources>
     <!--maithili-->
     <string name="dark_mode">डार्क मोड</string>
-    <string name="add_photo">फोटो जोड़ू</string>
+    <string name="home_title">मुख पृष्ठ</string>
     <string name="already_have_an_account">पहिनेसँ खाता अछि</string>
     <string name="archive">संग्रह</string>
     <string name="avatar">अवतार</string>

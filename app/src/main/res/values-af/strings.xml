@@ -2,7 +2,7 @@
 <resources>
     <!--afrikans-->
     <string name="dark_mode">Donker modus</string>
-    <string name="add_photo">VOEG FOTO BY</string>
+    <string name="home_title">Tuisblad</string>
     <string name="already_have_an_account">Reeds ’n rekening</string>
     <string name="archive">Argief</string>
     <string name="avatar">Avatar</string>

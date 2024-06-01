@@ -4,9 +4,7 @@
     <string name="profile_title">Profiel</string>
     <string name="dark_mode">Donkere modus</string>
     <string name="already_have_an_account">Heb al een account</string>
-    <string name="archive">Archief</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Verjaardag</string>
+    <string name="home_title">Startpagina</string>
     <string name="block">Blok</string>
     <string name="block_user">Wilt u een gebruiker blokkeren?</string>
     <string name="cancel">Annuleren</string>

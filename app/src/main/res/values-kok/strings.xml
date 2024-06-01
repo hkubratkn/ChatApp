@@ -2,7 +2,7 @@
 <resources>
     <!--konkani-->
     <string name="dark_mode">डार्क मोड</string>
-    <string name="add_photo">फोटो जोडात</string>
+    <string name="home_title">मुखेल पान</string>
     <string name="already_have_an_account">पयलींच खातें आसा</string>
     <string name="archive">संग्रह</string>
     <string name="avatar">अवतार</string>

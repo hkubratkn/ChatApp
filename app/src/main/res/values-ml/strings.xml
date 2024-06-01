@@ -2,7 +2,7 @@
 <resources>
     <!--malayalam-->
     <string name="dark_mode">ഡാർക്ക് മോഡ്</string>
-    <string name="add_photo">ഫോട്ടോ ചേർക്കുക</string>
+    <string name="home_title">ഹോം പേജ്</string>
     <string name="already_have_an_account">ഇതിനകം ഒരു അക്കൗണ്ട് ഉണ്ടോ</string>
     <string name="archive">ആർക്കൈവ്</string>
     <string name="avatar">അവതാർ</string>

@@ -4,9 +4,7 @@
     <string name="profile_title">Profil</string>
     <string name="dark_mode">Mørk modus</string>
     <string name="already_have_an_account">Du har allerede en konto</string>
-    <string name="archive">Arkiv</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Bursdag</string>
+    <string name="home_title">Startside</string>
     <string name="block">Blokk</string>
     <string name="block_user">Ønsker du å blokkere en bruker?</string>
     <string name="cancel">Avbryt</string>

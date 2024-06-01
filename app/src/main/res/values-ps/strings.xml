@@ -2,7 +2,7 @@
 <resources>
     <!--pashto-->
     <string name="dark_mode">تیاره حالت</string>
-    <string name="add_photo">عکس اضافه کړئ</string>
+    <string name="home_title">کور پاڼه</string>
     <string name="already_have_an_account">لا دمخه یو حساب لرئ</string>
     <string name="archive">آرشیف</string>
     <string name="avatar">اوتار</string>

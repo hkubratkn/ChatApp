@@ -4,9 +4,7 @@
     <string name="dark_mode">Modalità scura</string>
     <string name="profile_title">Profilo</string>
     <string name="already_have_an_account">Avete già un account</string>
-    <string name="archive">Archivio</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Compleanno</string>
+    <string name="home_title">Pagina iniziale</string>
     <string name="block">Blocco</string>
     <string name="block_user">Volete bloccare un utente?</string>
     <string name="cancel">Annullamento</string>

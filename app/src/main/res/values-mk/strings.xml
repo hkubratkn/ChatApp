@@ -2,7 +2,7 @@
 <resources>
     <!--macedonian-->
     <string name="dark_mode">Темен режим</string>
-    <string name="add_photo">ДОДАЈ ФОТОГРАФИЈА</string>
+    <string name="home_title">Почетна страница</string>
     <string name="already_have_an_account">Веќе имате профил</string>
     <string name="archive">Архива</string>
     <string name="avatar">Аватар</string>

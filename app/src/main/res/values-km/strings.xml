@@ -2,7 +2,7 @@
 <resources>
     <!--khmer-->
     <string name="dark_mode">របៀបងងឹត</string>
-    <string name="add_photo">បន្ថែមរូបថត</string>
+    <string name="home_title">ទំព័រដើម</string>
     <string name="already_have_an_account">មានគណនីរួចហើយ</string>
     <string name="archive">បណ្ណសារ</string>
     <string name="avatar">រូបតំណាង</string>

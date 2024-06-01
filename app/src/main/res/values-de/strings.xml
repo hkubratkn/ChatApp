@@ -4,9 +4,7 @@
     <string name="dark_mode">Dunkler Modus</string>
     <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Sie haben bereits ein Konto</string>
-    <string name="archive">Archiv</string>
-    <string name="avatar">Avatar</string>
-    <string name="birthday">Geburtstag</string>
+    <string name="home_title">Hauptseite</string>
     <string name="block">Block</string>
     <string name="block_user">Möchten Sie einen Benutzer sperren?</string>
     <string name="cancel">Abbrechen</string>

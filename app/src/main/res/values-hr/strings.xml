@@ -2,7 +2,7 @@
 <resources>
     <!--croatian-->
     <string name="dark_mode">Tamni način rada</string>
-    <string name="add_photo">DODAJ FOTOGRAFIJU</string>
+    <string name="home_title">Početna stranica</string>
     <string name="already_have_an_account">Već imate račun</string>
     <string name="archive">Arhiva</string>
     <string name="avatar">Avatar</string>

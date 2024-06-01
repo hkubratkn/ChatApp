@@ -2,7 +2,7 @@
 <resources>
     <!--urdu-->
     <string name="dark_mode">ڈارک موڈ</string>
-    <string name="add_photo">تصویر لگاو</string>
+    <string name="home_title">ہوم پیج</string>
     <string name="already_have_an_account">پہلے سے ہی ایک اکاؤنٹ ہے۔</string>
     <string name="archive">محفوظ شدہ دستاویزات</string>
     <string name="avatar">اوتار</string>

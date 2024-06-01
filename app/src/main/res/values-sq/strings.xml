@@ -2,7 +2,7 @@
 <resources>
     <!--albanian-->
     <string name="dark_mode">Modaliteti i errët</string>
-    <string name="add_photo">SHTO FOTO</string>
+    <string name="home_title">Faqja kryesore</string>
     <string name="already_have_an_account">Posedoni një llogari</string>
     <string name="archive">Arkivi</string>
     <string name="avatar">Avatar</string>

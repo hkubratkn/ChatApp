@@ -2,7 +2,7 @@
 <resources>
     <!--azerbeijani-->
     <string name="dark_mode">Qaranlıq rejim</string>
-    <string name="add_photo">FOTO ƏLAVƏ EDİN</string>
+    <string name="home_title">Əsas səhifə</string>
     <string name="already_have_an_account">Artıq bir hesabınız var mı</string>
     <string name="archive">Arxiv</string>
     <string name="avatar">Avatar</string>

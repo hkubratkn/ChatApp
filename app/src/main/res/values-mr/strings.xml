@@ -2,7 +2,7 @@
 <resources>
     <!--marathi-->
     <string name="dark_mode">गडद मोड</string>
-    <string name="add_photo">फोटो जोडा</string>
+    <string name="home_title">मुखपृष्ठ</string>
     <string name="already_have_an_account">आधीपासूनच एक खाते आहे</string>
     <string name="archive">संग्रहण</string>
     <string name="avatar">अवतार</string>

@@ -2,7 +2,7 @@
 <resources>
     <!--amharic-->
     <string name="dark_mode">ጨለማ ሁነታ</string>
-    <string name="add_photo">ፎቶ ጨምር</string>
+    <string name="home_title">መነሻ ገጽ</string>
     <string name="already_have_an_account">መለያ አለህ</string>
     <string name="archive">ማህደር</string>
     <string name="avatar">አምሳያ</string>

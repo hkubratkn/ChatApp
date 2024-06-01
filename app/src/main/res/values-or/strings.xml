@@ -2,7 +2,7 @@
 <resources>
     <!--odia-->
     <string name="dark_mode">ଗା ark ମୋଡ୍ |</string>
-    <string name="add_photo">ଫଟୋ ଯୋଡନ୍ତୁ |</string>
+    <string name="home_title">ମୂଳପୃଷ୍ଠା |</string>
     <string name="already_have_an_account">ପୂର୍ବରୁ ଏକ ଖାତା ଅଛି |</string>
     <string name="archive">ଅଭିଲେଖାଗାର</string>
     <string name="avatar">ଅବତାର</string>

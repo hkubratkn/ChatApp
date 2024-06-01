@@ -2,7 +2,7 @@
 <resources>
     <!--malay-->
     <string name="dark_mode">Mod gelap</string>
-    <string name="add_photo">TAMBAH FOTO</string>
+    <string name="home_title">Laman utama</string>
     <string name="already_have_an_account">Sudah mempunyai akaun</string>
     <string name="archive">Arkib</string>
     <string name="avatar">Avatar</string>

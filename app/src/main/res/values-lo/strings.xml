@@ -2,7 +2,7 @@
 <resources>
     <!--lao-->
     <string name="dark_mode">ໂໝດມືດ</string>
-    <string name="add_photo">ເພີ່ມຮູບ</string>
+    <string name="home_title">ຫນ້າທໍາອິດ</string>
     <string name="already_have_an_account">ມີບັນຊີຢູ່ແລ້ວ</string>
     <string name="archive">ຮວບຮວມ</string>
     <string name="avatar">ຮູບແທນຕົວ</string>

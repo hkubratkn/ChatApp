@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--uzbek-->
+    <string name="home_title">Bosh sahifa</string>
     <string name="dark_mode">Qorong’i rejim</string>
     <string name="already_have_an_account">Allaqachon hisobingiz bor</string>
     <string name="cancel">Bekor qilish</string>
