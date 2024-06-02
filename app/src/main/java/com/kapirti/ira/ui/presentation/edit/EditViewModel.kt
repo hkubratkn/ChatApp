@@ -11,6 +11,7 @@ import com.kapirti.ira.core.constants.EditType.DELETE
 import com.kapirti.ira.core.constants.EditType.FEEDBACK
 import com.kapirti.ira.core.constants.EditType.LANG
 import com.kapirti.ira.core.constants.EditType.PROFILE
+import com.kapirti.ira.core.constants.EditType.PROFILE_PHOTO
 import com.kapirti.ira.core.datastore.EditTypeRepository
 import com.kapirti.ira.core.datastore.LangRepository
 import com.kapirti.ira.model.Delete
@@ -74,12 +75,12 @@ class EditViewModel @Inject constructor(
             SurveyQuestion.FREE_TIME,
             SurveyQuestion.DESCRIPTION,
         )
-
+        PROFILE_PHOTO -> listOf(SurveyQuestion.TAKE_SELFIE)
      /**   DISPLAY_NAME -> listOf(SurveyQuestion.DISPLAY_NAME)
         NAME_SURNAME -> listOf(SurveyQuestion.NAME_SURNAME)
         GENDER -> listOf(SurveyQuestion.GENDER)
         DESCRIPTION -> listOf(SurveyQuestion.DESCRIPTION)
-        PHOTO -> listOf(SurveyQuestion.TAKE_SELFIE)*/
+        */
         DELETE -> listOf(SurveyQuestion.DELETE)
         FEEDBACK -> listOf(SurveyQuestion.FEEDBACK)
         LANG -> listOf(SurveyQuestion.LANG)
@@ -180,7 +181,9 @@ class EditViewModel @Inject constructor(
             PROFILE -> {
                 saveAll(restartApp = restartApp)
             }
-
+            PROFILE_PHOTO -> {
+                //photoBitmapSave(context = context, restartApp = restartApp)
+            }
       /**      DISPLAY_NAME -> {
                 saveDisplayName(restartApp = restartApp)
             }
@@ -197,9 +200,7 @@ class EditViewModel @Inject constructor(
                 saveDescription(restartApp = restartApp)
             }
 
-            PHOTO -> {
-                photoBitmapSave(context = context, restartApp = restartApp)
-            }*/
+           */
 
             FEEDBACK -> {
                 feedbackSave(popUp)
