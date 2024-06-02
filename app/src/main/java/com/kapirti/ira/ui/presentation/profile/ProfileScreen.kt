@@ -263,6 +263,7 @@ private fun ProfileProperty(label: String, value: String, isLink: Boolean = fals
 fun ProfileScreen(
     user: User,
     photos: List<UserPhotos>,
+    onProfilePhotoClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val scrollState = rememberScrollState()
@@ -278,6 +279,7 @@ fun ProfileScreen(
                 .size(300.dp)
                 .clip(CircleShape)
                 .padding(10.dp)
+                .clickable { onProfilePhotoClick() }
         )
 
         Text(

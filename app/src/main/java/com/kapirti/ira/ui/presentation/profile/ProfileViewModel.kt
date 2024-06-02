@@ -1,5 +1,7 @@
 package com.kapirti.ira.ui.presentation.profile
 
+import com.kapirti.ira.core.constants.EditType.PROFILE_PHOTO
+import com.kapirti.ira.core.datastore.EditTypeRepository
 import com.kapirti.ira.core.datastore.UserIdRepository
 import com.kapirti.ira.model.User
 import com.kapirti.ira.model.service.AccountService
@@ -18,8 +20,8 @@ class ProfileViewModel @Inject constructor(
     private val accountService: AccountService,
     private val firestoreService: FirestoreService,
     private val userIdRepository: UserIdRepository,
+    private val editTypeRepository: EditTypeRepository,
     logService: LogService,
-//    private val editTypeRepository: EditTypeRepository,
 ): QuickChatViewModel(logService){
     val hasUser = accountService.hasUser
 
@@ -34,6 +36,13 @@ class ProfileViewModel @Inject constructor(
             firestoreService.getUser(accountService.currentUserId)?.let { itUser ->
                 _user.value = itUser
             }
+        }
+    }
+
+    fun onProfilePhotoClick(navigateEdit: () -> Unit){
+        launchCatching {
+            editTypeRepository.saveEditTypeState(PROFILE_PHOTO)
+            navigateEdit()
         }
     }
 }

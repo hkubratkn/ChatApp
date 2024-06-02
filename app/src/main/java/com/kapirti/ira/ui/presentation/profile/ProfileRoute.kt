@@ -49,7 +49,8 @@ fun ProfileRoute(
         ProfileScreen(
             user = user.value,
             modifier = Modifier.padding(innerPadding),
-            photos = photos
+            photos = photos,
+            onProfilePhotoClick = { viewModel.onProfilePhotoClick(navigateEdit) },
         )
     }
 }
