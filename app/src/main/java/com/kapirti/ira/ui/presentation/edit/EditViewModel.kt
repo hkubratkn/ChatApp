@@ -11,8 +11,12 @@ import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.Timestamp
 import com.kapirti.ira.core.constants.Cons.DEFAULT_LANGUAGE_CODE
 import com.kapirti.ira.core.constants.EditType.DELETE
+import com.kapirti.ira.core.constants.EditType.DESCRIPTION
+import com.kapirti.ira.core.constants.EditType.DISPLAY_NAME
 import com.kapirti.ira.core.constants.EditType.FEEDBACK
+import com.kapirti.ira.core.constants.EditType.GENDER
 import com.kapirti.ira.core.constants.EditType.LANG
+import com.kapirti.ira.core.constants.EditType.NAME_SURNAME
 import com.kapirti.ira.core.constants.EditType.PROFILE
 import com.kapirti.ira.core.constants.EditType.PROFILE_PHOTO
 import com.kapirti.ira.core.datastore.EditTypeRepository
@@ -81,11 +85,10 @@ class EditViewModel @Inject constructor(
             SurveyQuestion.DESCRIPTION,
         )
         PROFILE_PHOTO -> listOf(SurveyQuestion.TAKE_SELFIE)
-     /**   DISPLAY_NAME -> listOf(SurveyQuestion.DISPLAY_NAME)
+        DISPLAY_NAME -> listOf(SurveyQuestion.DISPLAY_NAME)
         NAME_SURNAME -> listOf(SurveyQuestion.NAME_SURNAME)
         GENDER -> listOf(SurveyQuestion.GENDER)
         DESCRIPTION -> listOf(SurveyQuestion.DESCRIPTION)
-        */
         DELETE -> listOf(SurveyQuestion.DELETE)
         FEEDBACK -> listOf(SurveyQuestion.FEEDBACK)
         LANG -> listOf(SurveyQuestion.LANG)
@@ -189,10 +192,9 @@ class EditViewModel @Inject constructor(
             PROFILE_PHOTO -> {
                 profilePhotoBitmapSave(context = context, restartApp = restartApp)
             }
-      /**      DISPLAY_NAME -> {
+            DISPLAY_NAME -> {
                 saveDisplayName(restartApp = restartApp)
             }
-
             NAME_SURNAME -> {
                 saveNameSurname(restartApp = restartApp)
             }
@@ -200,12 +202,9 @@ class EditViewModel @Inject constructor(
             GENDER -> {
                 saveGender(restartApp = restartApp)
             }
-
             DESCRIPTION -> {
                 saveDescription(restartApp = restartApp)
             }
-
-           */
 
             FEEDBACK -> {
                 feedbackSave(popUp)
@@ -275,30 +274,30 @@ class EditViewModel @Inject constructor(
         }
     }
 
-/**    private fun profilePhotoSave(restartApp: () -> Unit) {
-launchCatching {
-_bitmap.value?.let { bitmapNew ->
-val kucukBitmap = kucukBitmapOlustur(bitmapNew!!, 300)
-val outputStream = ByteArrayOutputStream()
-kucukBitmap.compress(Bitmap.CompressFormat.PNG, 50, outputStream)
-val byteDizisi = outputStream.toByteArray()
-val randomUid = UUID.randomUUID().toString()
+    /**    private fun profilePhotoSave(restartApp: () -> Unit) {
+    launchCatching {
+    _bitmap.value?.let { bitmapNew ->
+    val kucukBitmap = kucukBitmapOlustur(bitmapNew!!, 300)
+    val outputStream = ByteArrayOutputStream()
+    kucukBitmap.compress(Bitmap.CompressFormat.PNG, 50, outputStream)
+    val byteDizisi = outputStream.toByteArray()
+    val randomUid = UUID.randomUUID().toString()
 
-storageService.savePhoto(byteDizisi, uid = randomUid)
-val link = storageService.getPhoto(randomUid)
-firestoreService.saveUserPhotos(
-UserPhotos(
-photo = link,
-date = Timestamp.now()
-)
-)
-restartApp()
-}
-}
-}
-    */
+    storageService.savePhoto(byteDizisi, uid = randomUid)
+    val link = storageService.getPhoto(randomUid)
+    firestoreService.saveUserPhotos(
+    UserPhotos(
+    photo = link,
+    date = Timestamp.now()
+    )
+    )
+    restartApp()
+    }
+    }
+    }
+     */
 
-/**    private fun saveDisplayName(restartApp: () -> Unit) {
+    private fun saveDisplayName(restartApp: () -> Unit) {
         launchCatching {
             accountService.displayName(_displayName.value!!)
             firestoreService.updateUserDisplayName(newValue = _displayName.value!!)
@@ -313,20 +312,18 @@ restartApp()
             restartApp()
         }
     }
-
     private fun saveGender(restartApp: () -> Unit) {
         launchCatching {
             firestoreService.updateUserGender(newValue = _gender.value!!)
             restartApp()
         }
     }
-
     private fun saveDescription(restartApp: () -> Unit) {
         launchCatching {
             firestoreService.updateUserDescription(newValue = _description.value!!)
             restartApp()
         }
-    }*/
+    }
 
     private fun openDelete() {
         launchCatching {

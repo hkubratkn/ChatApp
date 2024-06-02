@@ -55,6 +55,11 @@ interface FirestoreService {
     suspend fun updateUserOnline(value: Boolean)
     suspend fun updateUserLastSeen()
     suspend fun updateUserProfilePhoto(photo: String)
+    suspend fun updateUserName(newValue: String)
+    suspend fun updateUserSurname(newValue: String)
+    suspend fun updateUserDisplayName(newValue: String)
+    suspend fun updateUserGender(newValue: String)
+    suspend fun updateUserDescription(newValue: String)
     suspend fun updateChatLastMessage(who: String, chatId: String, text: String)
     suspend fun updateChatUnreadCount(who: String, chatId: String, count: Int)
     suspend fun updateChatTimestamp(who: String, chatId: String)
@@ -87,13 +92,6 @@ interface FirestoreService {
 
 
     suspend fun saveUserPhotos(userPhotos: UserPhotos)
-
-    suspend fun updateUserName(newValue: String)
-    suspend fun updateUserSurname(newValue: String)
-    suspend fun updateUserDisplayName(newValue: String)
-    suspend fun updateUserGender(newValue: String)
-    suspend fun updateUserDescription(newValue: String)
-
 
     val userBlock: Flow<List<com.kapirti.ira.model.Block>>
 

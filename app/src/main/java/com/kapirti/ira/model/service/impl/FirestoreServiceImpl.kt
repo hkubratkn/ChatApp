@@ -319,17 +319,27 @@ class FirestoreServiceImpl @Inject constructor(
     override suspend fun updateUserProfilePhoto(photo: String): Unit = trace(UPDATE_USER_PROFILE_PHOTO_TRACE) {
         userDocument(auth.currentUserId).update(PHOTO_FIELD, photo).await()
     }
+
+    override suspend fun updateUserDisplayName(newValue: String): Unit =
+        trace(UPDATE_USER_DISPLAY_NAME_TRACE) { userDocument(auth.currentUserId).update(DISPLAY_NAME_FIELD, newValue).await() }
+    override suspend fun updateUserName(newValue: String): Unit = trace(UPDATE_USER_NAME_TRACE) {
+        userDocument(auth.currentUserId).update(NAME_FIELD, newValue).await() }
+    override suspend fun updateUserSurname(newValue: String): Unit =
+        trace(UPDATE_USER_SURNAME_TRACE) { userDocument(auth.currentUserId).update(SURNAME_FIELD, newValue).await() }
+    override suspend fun updateUserDescription(newValue: String): Unit =
+        trace(UPDATE_USER_DESCRIPTION_TRACE) { userDocument(auth.currentUserId).update(DESCRIPTION_FIELD, newValue).await() }
+
+    override suspend fun updateUserGender(newValue: String): Unit =
+        trace(UPDATE_USER_GENDER_TRACE) { userDocument(auth.currentUserId).update(GENDER_FIELD, newValue).await() }
+
     override suspend fun updateChatTimestamp(who: String, chatId: String): Unit = trace(UPDATE_CHAT_TIMESTAMP_TRACE) {
-        userChatCollection(who).document(chatId).update(
-            DATE_FIELD, FieldValue.serverTimestamp()).await() }
+        userChatCollection(who).document(chatId).update(DATE_FIELD, FieldValue.serverTimestamp()).await() }
 
     override suspend fun updateChatUnreadCount(who: String, chatId: String, count: Int): Unit = trace(UPDATE_CHAT_UNREAD_TRACE) {
-        userChatCollection(who).document(chatId).update(
-            UNREAD_FIELD, count).await() }
+        userChatCollection(who).document(chatId).update(UNREAD_FIELD, count).await() }
 
     override suspend fun updateChatLastMessage(who: String, chatId: String, text: String): Unit = trace(UPDATE_CHAT_LAST_MESSAGE_TRACE) {
-        userChatCollection(who).document(chatId).update(
-            LAST_MESSAGE_FIELD, text).await() }
+        userChatCollection(who).document(chatId).update(LAST_MESSAGE_FIELD, text).await() }
 
 
     override suspend fun deleteUserChat(uid: String, chatId: String) {
@@ -367,6 +377,11 @@ class FirestoreServiceImpl @Inject constructor(
         private const val ONLINE_FIELD = "online"
         private const val LAST_SEEN_FIELD = "lastSeen"
         private const val PHOTO_FIELD = "photo"
+        private const val DISPLAY_NAME_FIELD = "displayName"
+        private const val NAME_FIELD = "name"
+        private const val SURNAME_FIELD = "surname"
+        private const val GENDER_FIELD = "gender"
+        private const val DESCRIPTION_FIELD = "description"
         private const val LAST_MESSAGE_FIELD = "lastMessage"
         private const val UNREAD_FIELD = "unread"
 
@@ -392,6 +407,11 @@ class FirestoreServiceImpl @Inject constructor(
         private const val UPDATE_USER_ONLINE_TRACE = "updateUserOnline"
         private const val UPDATE_USER_LAST_SEEN_TRACE = "updateUserLastSeen"
         private const val UPDATE_USER_PROFILE_PHOTO_TRACE = "updateUserProfilePhoto"
+        private const val UPDATE_USER_DISPLAY_NAME_TRACE = "updateUSerDisplayName"
+        private const val UPDATE_USER_NAME_TRACE = "updateUserName"
+        private const val UPDATE_USER_SURNAME_TRACE = "updateUserSurname"
+        private const val UPDATE_USER_GENDER_TRACE = "updateUserGender"
+        private const val UPDATE_USER_DESCRIPTION_TRACE = "updateUserDescription"
         private const val UPDATE_CHAT_LAST_MESSAGE_TRACE = "updateChatLastMessage"
         private const val UPDATE_CHAT_UNREAD_TRACE = "updateChatUnread"
         private const val UPDATE_CHAT_TIMESTAMP_TRACE = "updateChatTimestamp"
@@ -565,53 +585,10 @@ Copyright 2022 Google LLC
 
 
 
-
-    override suspend fun updateUserDisplayName(newValue: String): Unit =
-        trace(UPDATE_USER_DISPLAY_NAME_TRACE) {
-            userDocument(auth.currentUserId).update(
-                DISPLAY_NAME_FIELD,
-                newValue
-            ).await()
-        }
-
-    override suspend fun updateUserName(newValue: String): Unit = trace(UPDATE_USER_NAME_TRACE) {
-        userDocument(auth.currentUserId).update(
-            NAME_FIELD,
-            newValue
-        ).await()
-    }
-
-    override suspend fun updateUserSurname(newValue: String): Unit =
-        trace(UPDATE_USER_SURNAME_TRACE) {
-            userDocument(auth.currentUserId).update(
-                SURNAME_FIELD,
-                newValue
-            ).await()
-        }
-
-
-    override suspend fun updateUserDescription(newValue: String): Unit =
-        trace(UPDATE_USER_DESCRIPTION_TRACE) {
-            userDocument(auth.currentUserId).update(
-                DESCRIPTION_FIELD,
-                newValue
-            ).await()
-        }
-
         private const val LANGUAGE_FIELD = "language"
-        private const val DISPLAY_NAME_FIELD = "displayName"
-        private const val NAME_FIELD = "name"
-        private const val SURNAME_FIELD = "surname"
-        private const val GENDER_FIELD = "gender"
-        private const val DESCRIPTION_FIELD = "description"
 
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
         private const val SAVE_USER_PHOTOS_TRACE = "saveUserPhotos"
-        private const val UPDATE_USER_DISPLAY_NAME_TRACE = "updateUSerDisplayName"
-        private const val UPDATE_USER_NAME_TRACE = "updateUserName"
-        private const val UPDATE_USER_SURNAME_TRACE = "updateUserSurname"
-        private const val UPDATE_USER_GENDER_TRACE = "updateUserGender"
-        private const val UPDATE_USER_DESCRIPTION_TRACE = "updateUserDescription"
     }
 }
  /**

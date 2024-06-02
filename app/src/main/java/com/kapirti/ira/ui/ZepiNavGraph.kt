@@ -184,7 +184,8 @@ fun ZepiNavGraph(
                         openDrawer = openDrawer,
                         navigateEdit = navigateEdit,
                         navigatePhotos = navigatePhotos,
-                        showInterstialAd = showInterstitialAds
+                        showInterstialAd = showInterstitialAds,
+                        includeUserIdViewModel = includeUserIdViewModel,
                     )
                 }
                 composable(ZepiDestinations.SETTINGS_ROUTE) {
