@@ -80,6 +80,8 @@
     <string name="description">Description</string>
     <string name="why_delete_account">why are you deleting your account</string>
     <string name="selfie_skills">Show off your selfie skills!</string>
+    <string name="add_photo">ADD PHOTO</string>
+    <string name="retake_photo">RETAKE PHOTO</string>
     <string name="feedback_description">We are constantly improving our product by listening to your feedback.</string>
     <string name="name_and_surname">Name And Surname</string>
     <string name="display_name">Display name</string>
