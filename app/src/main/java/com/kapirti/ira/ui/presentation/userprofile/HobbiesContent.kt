@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.kapirti.ira.ui.presentation.userprofile
 
 import androidx.compose.foundation.layout.Column
@@ -52,7 +36,7 @@ fun HobbyCollection(
         ) {
             Text(
                 text = stringResource(R.string.in_my_free_time),
-                style = MaterialTheme.typography.headlineSmall,
+                style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.primary,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -61,20 +45,20 @@ fun HobbyCollection(
                     .wrapContentWidth(Alignment.Start)
             )
         }
-        Hobbys(hobbies)
+        Hobbies(hobbies)
     }
 }
 
 @Composable
-private fun Hobbys(
-    hobbys: List<String>,
+private fun Hobbies(
+    hobbies: List<String>,
     modifier: Modifier = Modifier
 ) {
     LazyRow(
         modifier = modifier,
         contentPadding = PaddingValues(start = 12.dp, end = 12.dp)
     ) {
-        items(hobbys) { hobby ->
+        items(hobbies) { hobby ->
             HobbyItem(hobby)
         }
     }

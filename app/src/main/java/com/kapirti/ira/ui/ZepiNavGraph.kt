@@ -46,6 +46,7 @@ import com.kapirti.ira.ui.presentation.register.RegisterScreen
 import com.kapirti.ira.ui.presentation.search.SearchScreen
 import com.kapirti.ira.ui.presentation.splash.SplashScreen
 import com.kapirti.ira.ui.presentation.timeline.Timeline
+import com.kapirti.ira.ui.presentation.userprofile.photos.PhotosScreen
 import com.kapirti.ira.ui.presentation.userprofile.videocall.VideoCallScreen
 
 
@@ -453,6 +454,7 @@ fun ZepiNavGraph(
                     )
                 }
                 composable(ZepiDestinations.VIDEO_CALL_ROUTE) { VideoCallScreen(popUp = popUpScreen)}
+                composable(ZepiDestinations.PHOTOS_ROUTE){ PhotosScreen() }
                 composable(
                     route = ZepiDestinations.BLOCK_USERS_ROUTE
                 ) {

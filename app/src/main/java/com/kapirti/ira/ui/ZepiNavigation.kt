@@ -13,6 +13,7 @@ object ZepiDestinations {
     const val CHATNOPE_ROUTE = "chatnope"
     const val CHATEXIST_ROUTE = "chatexist"
     const val VIDEO_CALL_ROUTE = "videoCall"
+    const val PHOTOS_ROUTE = "photos"
     const val BLOCK_USERS_ROUTE = "blockUsers"
 
     const val HOME_ROUTE = "home"
