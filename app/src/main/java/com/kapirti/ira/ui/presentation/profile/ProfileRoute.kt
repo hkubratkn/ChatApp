@@ -17,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.kapirti.ira.core.viewmodel.IncludeUserIdViewModel
 
 @Composable
 fun ProfileRoute(
@@ -25,6 +26,7 @@ fun ProfileRoute(
     showInterstialAd: () -> Unit,
     isExpandedScreen: Boolean,
     openDrawer: () -> Unit,
+    includeUserIdViewModel: IncludeUserIdViewModel,
     modifier: Modifier = Modifier,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     viewModel: ProfileViewModel = hiltViewModel(),
@@ -50,7 +52,15 @@ fun ProfileRoute(
             modifier = Modifier.padding(innerPadding),
             photos = photos,
             onProfilePhotoClick = { viewModel.onProfilePhotoClick(navigateEdit) },
-            navigatePhotos = navigatePhotos,
+            onLongClickDisplayName = { viewModel.onDisplayNameClick(navigateEdit) },
+            onLongClickNameSurname = { viewModel.onNameSurnameClick(navigateEdit) },
+            onLongClickGender = { viewModel.onGenderClick(navigateEdit) },
+            onLongClickDescription= { viewModel.onDescriptionClick(navigateEdit) },
+            onLongClickBirthday = { viewModel.onBirthdayClick(navigateEdit) },
+            navigatePhotos = {
+                includeUserIdViewModel.addPartnerId(user.value.uid)
+                navigatePhotos()
+            }
         )
     }
 }

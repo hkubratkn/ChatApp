@@ -1,5 +1,9 @@
 package com.kapirti.ira.ui.presentation.profile
 
+import com.kapirti.ira.core.constants.EditType.DESCRIPTION
+import com.kapirti.ira.core.constants.EditType.DISPLAY_NAME
+import com.kapirti.ira.core.constants.EditType.GENDER
+import com.kapirti.ira.core.constants.EditType.NAME_SURNAME
 import com.kapirti.ira.core.constants.EditType.PROFILE_PHOTO
 import com.kapirti.ira.core.datastore.EditTypeRepository
 import com.kapirti.ira.core.datastore.UserIdRepository
@@ -50,65 +54,41 @@ class ProfileViewModel @Inject constructor(
             navigateEdit()
         }
     }
+    fun onDisplayNameClick(navigateEdit: () -> Unit){
+        launchCatching {
+            editTypeRepository.saveEditTypeState(DISPLAY_NAME)
+            navigateEdit()
+        }
+    }
+    fun onNameSurnameClick(navigateEdit: () -> Unit){
+        launchCatching {
+            editTypeRepository.saveEditTypeState(NAME_SURNAME)
+            navigateEdit()
+        }
+    }
+    fun onGenderClick(navigateEdit: () -> Unit){
+        launchCatching {
+            editTypeRepository.saveEditTypeState(GENDER)
+            navigateEdit()
+        }
+    }
+    fun onBirthdayClick(navigateEdit: () -> Unit){
+        launchCatching {
+           // editTypeRepository.saveEditTypeState(BIRTHDAY)
+           // navigateEdit()
+        }
+    }
+    fun onDescriptionClick(navigateEdit: () -> Unit){
+        launchCatching {
+            editTypeRepository.saveEditTypeState(DESCRIPTION)
+            navigateEdit()
+        }
+    }
 }
 
 
 
 
-/**
-data class InterestsUiState(
-    val topics: List<String> = emptyList(),
-    val people: List<String> = emptyList(),
-    val loading: Boolean = false,
-)
-
-
-data class SelectedAssetUiState(
-    val items: List<Asset> = emptyList(),
-    val isLoading: Boolean = false,
-    val userMessage: Int? = null,
-)
-
-val displayName = accountService.currentUserDisplayName
-
-
-fun onPhotoClick(openScreen: (String) -> Unit){
-launchCatching {
-editTypeRepository.saveEditTypeState(PHOTO)
-openScreen(EDIT_SCREEN)
-}
-}
-fun onDisplayNameClick(openScreen: (String) -> Unit){
-launchCatching {
-editTypeRepository.saveEditTypeState(DISPLAY_NAME)
-openScreen(EDIT_SCREEN)
-}
-}
-fun onNameSurnameClick(openScreen: (String) -> Unit){
-launchCatching {
-editTypeRepository.saveEditTypeState(NAME_SURNAME)
-openScreen(EDIT_SCREEN)
-}
-}
-fun onGenderClick(openScreen: (String) -> Unit){
-launchCatching {
-editTypeRepository.saveEditTypeState(GENDER)
-openScreen(EDIT_SCREEN)
-}
-}
-fun onBirthdayClick(openScreen: (String) -> Unit){
-launchCatching {
-editTypeRepository.saveEditTypeState(BIRTHDAY)
-openScreen(EDIT_SCREEN)
-}
-}
-fun onDescriptionClick(openScreen: (String) -> Unit){
-launchCatching {
-editTypeRepository.saveEditTypeState(DESCRIPTION)
-openScreen(EDIT_SCREEN)
-}
-}
-*/
 /**
 
 data class SelectedUserPhotosUiState(

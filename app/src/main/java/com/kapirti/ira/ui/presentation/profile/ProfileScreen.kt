@@ -29,9 +29,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.kapirti.ira.R.string as AppText
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
 import com.kapirti.ira.common.composable.BasicDivider
 import com.kapirti.ira.common.composable.NoSurfaceImage
-import com.kapirti.ira.common.composable.QChatSurface
 import com.kapirti.ira.common.ext.toReadableString
 import com.kapirti.ira.model.User
 import com.kapirti.ira.model.UserPhotos
@@ -259,17 +260,25 @@ private fun ProfileProperty(label: String, value: String, isLink: Boolean = fals
     }
 }*/
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ProfileScreen(
     user: User,
     photos: List<UserPhotos>,
     onProfilePhotoClick: () -> Unit,
+    onLongClickDisplayName: () -> Unit,
+    onLongClickNameSurname: () -> Unit,
+    onLongClickGender: () -> Unit,
+    onLongClickDescription: () -> Unit,
+    onLongClickBirthday: () -> Unit,
     navigatePhotos: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val scrollState = rememberScrollState()
     Column(
-        modifier = modifier.statusBarsPadding().verticalScroll(scrollState),
+        modifier = modifier
+            .statusBarsPadding()
+            .verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -286,78 +295,118 @@ fun ProfileScreen(
         Spacer(Modifier.height(16.dp))
         BasicDivider()
         Spacer(Modifier.height(40.dp))
-        Text(
-            text = stringResource(AppText.display_name),
-            style = MaterialTheme.typography.bodyLarge,
-            color = Color(0x99000000),
-        )
-        Spacer(Modifier.height(4.dp))
-        Text(
-            text = user?.let { it.displayName } ?: "",
-            style = MaterialTheme.typography.bodySmall,
-            color = Color(0x99000000),
-        )
+        Column(
+            Modifier.combinedClickable(
+                onLongClickLabel = stringResource(id = AppText.long_click),
+                onLongClick = onLongClickDisplayName,
+                onClick = {}
+            ),
+        ) {
+            Text(
+                text = stringResource(AppText.display_name),
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color(0x99000000),
+            )
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = user?.let { it.displayName } ?: "",
+                style = MaterialTheme.typography.bodySmall,
+                color = Color(0x99000000),
+            )
+        }
 
         Spacer(Modifier.height(16.dp))
         BasicDivider()
         Spacer(Modifier.height(40.dp))
-        Text(
-            text = stringResource(AppText.name_and_surname),
-            style = MaterialTheme.typography.bodyLarge,
-            color = Color(0x99000000),
-        )
-        Spacer(Modifier.height(4.dp))
-        Text(
-            text = user?.let { "${it.name} ${it.surname}"} ?: "",
-            style = MaterialTheme.typography.bodySmall,
-            color = Color(0x99000000),
-        )
+        Column(
+            Modifier.combinedClickable(
+                onLongClickLabel = stringResource(id = AppText.long_click),
+                onLongClick = onLongClickNameSurname,
+                onClick = {}
+            ),
+        ) {
+            Text(
+                text = stringResource(AppText.name_and_surname),
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color(0x99000000),
+            )
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = user?.let { "${it.name} ${it.surname}" } ?: "",
+                style = MaterialTheme.typography.bodySmall,
+                color = Color(0x99000000),
+            )
+        }
 
 
         Spacer(Modifier.height(16.dp))
         BasicDivider()
         Spacer(Modifier.height(40.dp))
-        Text(
-            text = stringResource(AppText.description),
-            style = MaterialTheme.typography.bodyLarge,
-            color = Color(0x99000000),
-        )
-        Spacer(Modifier.height(4.dp))
-        Text(
-            text = user?.let { it.description } ?: "",
-            style = MaterialTheme.typography.bodySmall,
-            color = Color(0x99000000),
-        )
+        Column(
+            Modifier.combinedClickable(
+                onLongClickLabel = stringResource(id = AppText.long_click),
+                onLongClick = onLongClickDescription,
+                onClick = {}
+            ),
+        ) {
+            Text(
+                text = stringResource(AppText.description),
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color(0x99000000),
+            )
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = user?.let { it.description } ?: "",
+                style = MaterialTheme.typography.bodySmall,
+                color = Color(0x99000000),
+            )
+        }
 
         Spacer(Modifier.height(16.dp))
         BasicDivider()
         Spacer(Modifier.height(40.dp))
-        Text(
-            text = stringResource(AppText.gender),
-            style = MaterialTheme.typography.bodyLarge,
-            color = Color(0x99000000),
-        )
-        Spacer(Modifier.height(4.dp))
-        Text(
-            text = user?.let { it.gender } ?: "",
-            style = MaterialTheme.typography.bodySmall,
-            color = Color(0x99000000),
-        )
+        Column(
+            Modifier.combinedClickable(
+                onLongClickLabel = stringResource(id = AppText.long_click),
+                onLongClick = onLongClickGender,
+                onClick = {}
+            ),
+        ) {
+            Text(
+                text = stringResource(AppText.gender),
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color(0x99000000),
+            )
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = user?.let { it.gender } ?: "",
+                style = MaterialTheme.typography.bodySmall,
+                color = Color(0x99000000),
+            )
+        }
 
         Spacer(Modifier.height(16.dp))
         BasicDivider()
         Spacer(Modifier.height(40.dp))
-        Text(
-            text = stringResource(AppText.age),
-            style = MaterialTheme.typography.bodyLarge,
-            color = Color(0x99000000),
-        )
-        Spacer(Modifier.height(4.dp))
-        Text(
-            text = user?.let { it.birthday } ?: "",
-            style = MaterialTheme.typography.bodySmall,
-            color = Color(0x99000000),
-        )
+        Column(
+            Modifier.combinedClickable(
+                onLongClickLabel = stringResource(id = AppText.long_click),
+                onLongClick = onLongClickBirthday,
+                onClick = {}
+            ),
+        ) {
+            Text(
+                text = stringResource(AppText.age),
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color(0x99000000),
+            )
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = user?.let { it.birthday } ?: "",
+                style = MaterialTheme.typography.bodySmall,
+                color = Color(0x99000000),
+            )
+        }
 
         Spacer(Modifier.height(16.dp))
         BasicDivider()

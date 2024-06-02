@@ -236,67 +236,6 @@ private fun UserProfileBody(
         }
     }
 }
-/**
-
-@Composable
-private fun PhotosContent(
-    loading: Boolean,
-    items: List<UserPhotos>,
-    onRefresh: () -> Unit,
-    onAssetClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    LoadingContent(
-        loading = loading,
-        empty = items.isEmpty() && !loading,
-        emptyContent = {
-            EmptyContent(
-                icon = Icons.Default.Add,
-                label = R.string.user_photos_not_found,
-                modifier = modifier
-            )
-        },
-        onRefresh = onRefresh
-    ) {
-        Column(
-            modifier = modifier
-                .selectableGroup()
-                .padding(horizontal = 16.dp)
-//                .verticalScroll(rememberScrollState())
-                .statusBarsPadding()
-        ) {
-            StaggeredVerticalGrid(
-                maxColumnWidth = 220.dp,
-                modifier = Modifier.padding(4.dp)
-            ) {
-                items.forEach { course ->
-                    val selected = true //val selected = course == selectedAnswer
-                    RadioButtonLang(
-                        modifier = Modifier.padding(vertical = 8.dp),
-                        date = course.date.toString(),
-                        photo = course.photo,
-                        selected = selected,
-                        onOptionSelected = { }//onOptionSelected(course) }
-                    )
-                }
-            }
-        }
-        /** items.forEach { item ->
-        HomeTopItem(
-        topAsset = item,
-        onAssetClick = { onAssetClick(item) }
-        )
-        }*/
-    }
-}
-
-
-*/
-
-
-
-
-
 
 @Composable
 private fun Header(gender: String) {
