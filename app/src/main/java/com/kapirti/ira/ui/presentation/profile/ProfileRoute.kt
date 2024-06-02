@@ -26,8 +26,6 @@ fun ProfileRoute(
     isExpandedScreen: Boolean,
     openDrawer: () -> Unit,
     modifier: Modifier = Modifier,
-    // includeAssetViewModel: IncludeAssetViewModel,
-    // navigateToAssetDetail: () -> Unit,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     viewModel: ProfileViewModel = hiltViewModel(),
 ) {
@@ -56,26 +54,3 @@ fun ProfileRoute(
         )
     }
 }
-
-
-/**
-    // val selectedAsset by viewModel.selectedAsset.collectAsStateWithLifecycle()
-
-
-    val tabContent = rememberTabContent(
-        selectedPhotos = selectedPhotos,
-        //selectedAssets = selectedAsset,
-        onRefresh = viewModel::refresh,
-        onAssetClick = {
-            // includeAssetViewModel.addAsset(it)
-            // navigateToAssetDetail()
-        },
-    )
-    val (currentSection, updateSection) = rememberSaveable {
-        mutableStateOf(tabContent.first().section)
-    }
-
-
-
-}
-*/

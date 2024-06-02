@@ -28,7 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.kapirti.ira.R
+import com.kapirti.ira.R.string as AppText
 import com.kapirti.ira.common.composable.BasicDivider
 import com.kapirti.ira.common.composable.NoSurfaceImage
 import com.kapirti.ira.common.composable.QChatSurface
@@ -283,18 +283,87 @@ fun ProfileScreen(
                 .clickable { onProfilePhotoClick() }
         )
 
+        Spacer(Modifier.height(16.dp))
+        BasicDivider()
+        Spacer(Modifier.height(40.dp))
         Text(
-            text = user?.let { it.description } ?: "",
+            text = stringResource(AppText.display_name),
+            style = MaterialTheme.typography.bodyLarge,
+            color = Color(0x99000000),
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = user?.let { it.displayName } ?: "",
             style = MaterialTheme.typography.bodySmall,
             color = Color(0x99000000),
-            overflow = TextOverflow.Ellipsis,
         )
 
         Spacer(Modifier.height(16.dp))
         BasicDivider()
         Spacer(Modifier.height(40.dp))
         Text(
-            text = stringResource(R.string.join),
+            text = stringResource(AppText.name_and_surname),
+            style = MaterialTheme.typography.bodyLarge,
+            color = Color(0x99000000),
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = user?.let { "${it.name} ${it.surname}"} ?: "",
+            style = MaterialTheme.typography.bodySmall,
+            color = Color(0x99000000),
+        )
+
+
+        Spacer(Modifier.height(16.dp))
+        BasicDivider()
+        Spacer(Modifier.height(40.dp))
+        Text(
+            text = stringResource(AppText.description),
+            style = MaterialTheme.typography.bodyLarge,
+            color = Color(0x99000000),
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = user?.let { it.description } ?: "",
+            style = MaterialTheme.typography.bodySmall,
+            color = Color(0x99000000),
+        )
+
+        Spacer(Modifier.height(16.dp))
+        BasicDivider()
+        Spacer(Modifier.height(40.dp))
+        Text(
+            text = stringResource(AppText.gender),
+            style = MaterialTheme.typography.bodyLarge,
+            color = Color(0x99000000),
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = user?.let { it.gender } ?: "",
+            style = MaterialTheme.typography.bodySmall,
+            color = Color(0x99000000),
+        )
+
+        Spacer(Modifier.height(16.dp))
+        BasicDivider()
+        Spacer(Modifier.height(40.dp))
+        Text(
+            text = stringResource(AppText.age),
+            style = MaterialTheme.typography.bodyLarge,
+            color = Color(0x99000000),
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = user?.let { it.birthday } ?: "",
+            style = MaterialTheme.typography.bodySmall,
+            color = Color(0x99000000),
+        )
+
+        Spacer(Modifier.height(16.dp))
+        BasicDivider()
+        Spacer(Modifier.height(40.dp))
+        Text(
+            text = stringResource(AppText.join),
             style = MaterialTheme.typography.bodyLarge,
             color = Color(0x99000000),
         )

@@ -39,7 +39,6 @@
     <string name="sign_out_title">Sign out?</string>
     <string name="sign_out_description">You will have to sign in again to see your tasks.</string>
     <string name="cancel">Cancel</string>
-    <string name="edit_profile">Edit profile</string>
 
     <!-- Subscriptions Screen -->
     <string name="subscriptions_title">Subscriptions</string>
@@ -101,6 +100,7 @@
     <!-- User Profile Screen -->
     <string name="online">Online</string>
     <string name="join">Join</string>
+    <string name="age">Age</string>
 
     <!-- Photos Screen -->
     <string name="photos_title">Photos</string>

@@ -81,12 +81,6 @@ class SettingsViewModel @Inject constructor(
             navigateEdit()
         }
     }
-    fun onEditProfileClick(navigateEdit: () -> Unit){
-        launchCatching {
-            editTypeRepository.saveEditTypeState(PROFILE)
-            navigateEdit()
-        }
-    }
 
     fun onDeleteClick(navigateEdit: () -> Unit){
         launchCatching {

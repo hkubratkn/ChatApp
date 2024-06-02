@@ -103,11 +103,6 @@ fun SettingsScreen(
 
         if (viewModel.hasUser) {
             RegularCardEditor(
-                stringResource(AppText.edit_profile),
-                Icons.Default.ManageAccounts,
-                "", Modifier.card()
-            ) { viewModel.onEditProfileClick(navigateEdit) }
-            RegularCardEditor(
                 stringResource(id = AppText.block_users_title),
                 Icons.Default.Block,
                 "", Modifier.card()
