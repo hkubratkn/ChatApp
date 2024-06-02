@@ -459,6 +459,7 @@ fun ZepiNavGraph(
                 composable(ZepiDestinations.VIDEO_CALL_ROUTE) { VideoCallScreen(popUp = popUpScreen)}
                 composable(ZepiDestinations.PHOTOS_ROUTE){ PhotosRoute(
                     popUp = popUpScreen,
+                    navigateEdit = navigateEdit,
                     isExpandedScreen = isExpandedScreen,
                     includeUserIdViewModel = includeUserIdViewModel,
                 ) }

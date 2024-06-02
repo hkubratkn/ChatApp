@@ -6,6 +6,7 @@ object EditType {
    // const val NAME_SURNAME = "NAME_SURNAME"
    // const val GENDER = "GENDER"
     const val PROFILE_PHOTO = "profilePhoto"
+    const val PHOTOS = "photos"
    // const val DESCRIPTION = "DESCRIPTION"
     const val FEEDBACK = "FEEDBACK"
     const val LANG = "LANG"

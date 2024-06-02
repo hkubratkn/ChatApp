@@ -13,6 +13,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.kapirti.ira.R.string as AppText
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.ui.Modifier
 import com.kapirti.ira.common.composable.AdsBannerToolbar
 import com.kapirti.ira.common.composable.BackToolbar
@@ -24,6 +25,7 @@ import com.kapirti.ira.ui.presentation.chats.ChatsScreen
 @Composable
 fun PhotosRoute(
     popUp: () -> Unit,
+    navigateEdit: () -> Unit,
     isExpandedScreen: Boolean,
     includeUserIdViewModel: IncludeUserIdViewModel,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
@@ -36,7 +38,13 @@ fun PhotosRoute(
         )
     }
 
+    val currentUserId = viewModel.currentUserId
     val userPhotos = viewModel.userPhotos.collectAsStateWithLifecycle()
+    val actionsIcon = if(currentUserId == includeUserIdViewModel.partnerId){
+        Icons.Default.Add
+    } else {
+        Icons.Default.Star
+    }
 
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
@@ -44,10 +52,14 @@ fun PhotosRoute(
         topBar = {
             BackToolbar(
                 text = AppText.photos_title,
-                actionsIcon = Icons.Default.Add,
+                actionsIcon = actionsIcon,
                 isExpandedScreen = isExpandedScreen,
-                onActionsClick = {},
                 popUp = popUp,
+                onActionsClick = {
+                    if(currentUserId == includeUserIdViewModel.partnerId){
+                        viewModel.onAddClick(navigateEdit)
+                    }
+                }
             )
         }
     ) { innerPadding ->
