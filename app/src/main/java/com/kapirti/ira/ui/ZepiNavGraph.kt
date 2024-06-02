@@ -69,6 +69,7 @@ fun ZepiNavGraph(
     navigateEdit: () -> Unit,
     navigateSearch: () -> Unit,
     navigateUserProfile: () -> Unit,
+    navigatePhotos: () -> Unit,
     navigateVideoCall: () -> Unit,
     navigateBlockUser: () -> Unit,
 
@@ -182,6 +183,7 @@ fun ZepiNavGraph(
                         isExpandedScreen = isExpandedScreen,
                         openDrawer = openDrawer,
                         navigateEdit = navigateEdit,
+                        navigatePhotos = navigatePhotos,
                         showInterstialAd = showInterstitialAds
                     )
                 }
@@ -417,6 +419,7 @@ fun ZepiNavGraph(
                         onLoginClick = openLoginScreen,
                         onChatExistClick = {}, //userProfileToChatExist,
                         onChatNopeClick = userProfileToChatNope,
+                        navigatePhotos = navigatePhotos,
                         navigateVideoCall = navigateVideoCall,
                         showInterstitialAds = showInterstitialAds,
                         includeUserIdViewModel = includeUserIdViewModel

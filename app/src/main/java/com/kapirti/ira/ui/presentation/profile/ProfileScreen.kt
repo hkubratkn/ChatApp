@@ -264,6 +264,7 @@ fun ProfileScreen(
     user: User,
     photos: List<UserPhotos>,
     onProfilePhotoClick: () -> Unit,
+    navigatePhotos: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val scrollState = rememberScrollState()
@@ -321,7 +322,10 @@ fun ProfileScreen(
 
         photos?.let {
             key(it) {
-                PhotosContent(photos = photos)
+                PhotosContent(
+                    photos = photos,
+                    onLongClick = navigatePhotos
+                )
             }
         }
     }

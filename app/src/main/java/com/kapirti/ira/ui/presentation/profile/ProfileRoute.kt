@@ -21,6 +21,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 @Composable
 fun ProfileRoute(
     navigateEdit: () -> Unit,
+    navigatePhotos: () -> Unit,
     showInterstialAd: () -> Unit,
     isExpandedScreen: Boolean,
     openDrawer: () -> Unit,
@@ -31,7 +32,7 @@ fun ProfileRoute(
     viewModel: ProfileViewModel = hiltViewModel(),
 ) {
     val user = viewModel.user.collectAsStateWithLifecycle()
-    val photos by viewModel.photos.collectAsStateWithLifecycle()
+    val photos by viewModel.userPhotos.collectAsStateWithLifecycle()
 
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
@@ -51,6 +52,7 @@ fun ProfileRoute(
             modifier = Modifier.padding(innerPadding),
             photos = photos,
             onProfilePhotoClick = { viewModel.onProfilePhotoClick(navigateEdit) },
+            navigatePhotos = navigatePhotos,
         )
     }
 }

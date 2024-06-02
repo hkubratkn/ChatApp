@@ -95,6 +95,7 @@ fun ZepiApp(
             navigateEdit = navigationActions.navigateEdit,
             navigateSearch = navigationActions.navigateSearch,
             navigateUserProfile = navigationActions.navigateUserProfile,
+            navigatePhotos = navigationActions.navigatePhotos,
             navigateVideoCall = navigationActions.navigateVideoCall,
             navigateBlockUser = navigationActions.navigateBlockUser,
 

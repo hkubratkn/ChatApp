@@ -28,13 +28,13 @@ import kotlinx.coroutines.flow.Flow
 
 interface FirestoreService {
     val users: Flow<List<User>>
-    val userPhotos: Flow<List<UserPhotos>>
     val userChats: Flow<List<Chat>>
     val userArchives: Flow<List<Chat>>
     val userBlockUsers: Flow<List<Block>>
     val chatMessages: Flow<List<ChatMessage>>
 
     suspend fun getUser(userId: String): User?
+    suspend fun getUserPhotos(userId: String): Flow<List<UserPhotos>>
     suspend fun getChatUnreadCount(who: String, chatId: String): Chat?
 
     suspend fun saveUser(user: User)

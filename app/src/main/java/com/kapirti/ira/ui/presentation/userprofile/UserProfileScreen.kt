@@ -88,6 +88,7 @@ internal fun UserProfileRoute(
     onChatExistClick: () -> Unit,
     onChatNopeClick: () -> Unit,
     onLoginClick: () -> Unit,
+    navigatePhotos: () -> Unit,
     navigateVideoCall: () -> Unit,
     showInterstitialAds: () -> Unit,
     includeUserIdViewModel: IncludeUserIdViewModel,
@@ -100,6 +101,7 @@ internal fun UserProfileRoute(
         onChatNopeClick = onChatNopeClick,
         onChatExistClick = onChatExistClick,
         onLoginClick = onLoginClick,
+        navigatePhotos = navigatePhotos,
         navigateVideoCall = navigateVideoCall,
         showInterstitialAds = showInterstitialAds,
         includeUserIdViewModel = includeUserIdViewModel,
@@ -113,6 +115,7 @@ private fun UserProfileScreen(
     onChatExistClick: () -> Unit,
     onChatNopeClick: () -> Unit,
     onLoginClick: () -> Unit,
+    navigatePhotos: () -> Unit,
     navigateVideoCall: () -> Unit,
     showInterstitialAds: () -> Unit,
     includeUserIdViewModel: IncludeUserIdViewModel,
@@ -124,6 +127,7 @@ private fun UserProfileScreen(
         onChatNopeClick = onChatNopeClick,
         onChatExistClick = onChatExistClick,
         onLoginClick = onLoginClick,
+        navigatePhotos = navigatePhotos,
         navigateVideoCall = navigateVideoCall,
         showInterstitialAds = showInterstitialAds,
         includeUserIdViewModel = includeUserIdViewModel,
@@ -138,6 +142,7 @@ private fun UserProfileContent(
     onChatExistClick: () -> Unit,
     onChatNopeClick: () -> Unit,
     onLoginClick: () -> Unit,
+    navigatePhotos: () -> Unit,
     navigateVideoCall: () -> Unit,
     showInterstitialAds: () -> Unit,
     includeUserIdViewModel: IncludeUserIdViewModel,
@@ -149,6 +154,7 @@ private fun UserProfileContent(
         onChatNopeClick = onChatNopeClick,
         onChatExistClick = onChatExistClick,
         onLoginClick = onLoginClick,
+        navigatePhotos = navigatePhotos,
         navigateVideoCall = navigateVideoCall,
         showInterstialAd = showInterstitialAds,
         chats = chats,
@@ -164,6 +170,7 @@ private fun UserProfileBody(
     onChatExistClick: () -> Unit,
     onChatNopeClick: () -> Unit,
     onLoginClick: () -> Unit,
+    navigatePhotos: () -> Unit,
     navigateVideoCall: () -> Unit,
     includeUserIdViewModel: IncludeUserIdViewModel,
     showInterstialAd: () -> Unit,
@@ -179,7 +186,7 @@ private fun UserProfileBody(
     }
 
     val user = viewModel.user.collectAsStateWithLifecycle()
-    val userPhotos = viewModel.photos.collectAsStateWithLifecycle()
+    val userPhotos = viewModel.userPhotos.collectAsStateWithLifecycle()
 
     val missList = arrayListOf(viewModel.uid)
     for (mek in chats) {
@@ -203,6 +210,7 @@ private fun UserProfileBody(
                     user = user.value,
                     photos = userPhotos.value,
                     scroll = scroll,
+                    onLongClick = navigatePhotos,
                     onChatClick = {
                         showInterstialAd()
                         if (viewModel.hasUser) {
@@ -329,6 +337,7 @@ private fun Body(
     user: User?,
     photos: List<UserPhotos>,
     scroll: ScrollState,
+    onLongClick: () -> Unit,
     onChatClick: () -> Unit,
     onSoundClick: () -> Unit,
     onVideoClick: () -> Unit,
@@ -392,16 +401,17 @@ private fun Body(
                         }
                     }
 
-
                     Spacer(Modifier.height(16.dp))
                     BasicDivider()
 
-                    photos?.let {
-                        key(it) {
-                            PhotosContent(photos = photos)
+                    if(photos.isNotEmpty()){
+                        key(photos) {
+                            PhotosContent(
+                                photos = photos,
+                                onLongClick = onLongClick
+                            )
                         }
                     }
-
 
                     Spacer(Modifier.height(16.dp))
                     BasicDivider()

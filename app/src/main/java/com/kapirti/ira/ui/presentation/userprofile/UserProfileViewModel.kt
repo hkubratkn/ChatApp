@@ -2,6 +2,7 @@ package com.kapirti.ira.ui.presentation.userprofile
 
 import com.kapirti.ira.core.datastore.UserIdRepository
 import com.kapirti.ira.model.User
+import com.kapirti.ira.model.UserPhotos
 import com.kapirti.ira.model.service.AccountService
 import com.kapirti.ira.model.service.FirestoreService
 import com.kapirti.ira.model.service.LogService
@@ -25,13 +26,17 @@ class UserProfileViewModel @Inject constructor(
     private val _user = MutableStateFlow<User>(User())
     var user: StateFlow<User> = _user
 
-    val photos = firestoreService.userPhotos.stateInUi(emptyList())
+    private val _userPhotos = MutableStateFlow<List<UserPhotos>>(emptyList())
+    val userPhotos: StateFlow<List<UserPhotos>> = _userPhotos
 
     fun initialize(userUid: String) {
         launchCatching {
             userIdRepository.saveUserIdState(userUid)
             firestoreService.getUser(userUid)?.let { itUser ->
                 _user.value = itUser
+                firestoreService.getUserPhotos(itUser.uid).collect{ itPhotos ->
+                    _userPhotos.value = itPhotos
+                }
             }
         }
     }

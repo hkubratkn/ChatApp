@@ -18,15 +18,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.kapirti.ira.R.string as AppText
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
 import com.kapirti.ira.common.composable.NoSurfaceImage
 import com.kapirti.ira.common.composable.QChatSurface
 import com.kapirti.ira.common.ext.getYearFromTimeStamp
 import com.kapirti.ira.model.UserPhotos
 
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PhotosContent(
     photos: List<UserPhotos>,
+    onLongClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier) {
@@ -45,6 +49,11 @@ fun PhotosContent(
                 modifier = Modifier
                     .weight(1f)
                     .wrapContentWidth(Alignment.Start)
+                    .combinedClickable(
+                        onClick = {},
+                        onLongClick = onLongClick,
+                        onLongClickLabel = stringResource(id = AppText.long_click),
+                    ),
             )
         }
         Photos(photos)

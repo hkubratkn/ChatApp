@@ -107,11 +107,14 @@ class QChatNavigationActions(navController: NavHostController) {
     val navigateEdit: () -> Unit = {
         navController.navigate(ZepiDestinations.EDIT_ROUTE){ launchSingleTop = true }
     }
+    val navigateSearch: () -> Unit = {
+        navController.navigate(ZepiDestinations.SEARCH_ROUTE){ launchSingleTop = true }
+    }
     val navigateUserProfile: () -> Unit = {
         navController.navigate(ZepiDestinations.USER_PROFILE_ROUTE){ launchSingleTop = true }
     }
-    val navigateSearch: () -> Unit = {
-        navController.navigate(ZepiDestinations.SEARCH_ROUTE){ launchSingleTop = true }
+    val navigatePhotos: () -> Unit = {
+        navController.navigate(ZepiDestinations.PHOTOS_ROUTE){ launchSingleTop = true }
     }
     val navigateChatExist: () -> Unit = {
         navController.navigate(ZepiDestinations.CHATEXIST_ROUTE){ launchSingleTop = true }

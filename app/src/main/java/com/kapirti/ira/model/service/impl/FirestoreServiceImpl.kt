@@ -228,11 +228,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.tasks.await
 import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.snapshots
+import com.google.firebase.firestore.toObjects
 import com.kapirti.ira.core.datastore.UserIdRepository
 import com.kapirti.ira.model.Block
 import com.kapirti.ira.model.Report
 import com.kapirti.ira.model.UserPhotos
 import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.asDeferred
 
 class FirestoreServiceImpl @Inject constructor(
@@ -249,16 +252,6 @@ class FirestoreServiceImpl @Inject constructor(
                 //                  .whereEqualTo(USER_ID_FIELD, user.id)
 //                    .orderBy(CREATED_AT_FIELD, Query.Direction.DESCENDING)
                 .dataObjects()
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    override val userPhotos: Flow<List<UserPhotos>>
-        get() =
-            userIdRepository.readUserIdState().flatMapLatest { userId ->
-                userChatCollection(userId)
-                    //                  .whereEqualTo(USER_ID_FIELD, user.id)
-//                    .orderBy(CREATED_AT_FIELD, Query.Direction.DESCENDING)
-                    .dataObjects()
-            }
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override val userChats: Flow<List<Chat>>
@@ -302,6 +295,15 @@ class FirestoreServiceImpl @Inject constructor(
 
     override suspend fun getUser(uid: String): User? = userDocument(uid).get().await().toObject()
     override suspend fun getChatUnreadCount(who: String, chatId: String): Chat? = userChatCollection(who).document(chatId).get().await().toObject()
+    override suspend fun getUserPhotos(userUid: String): Flow<List<UserPhotos>> = userPhotosCollection(userUid).snapshots().map { snapshot -> snapshot.toObjects() }
+    //get().await().toObjects()
+
+
+
+                    //                  .whereEqualTo(USER_ID_FIELD, user.id)
+//                    .orderBy(CREATED_AT_FIELD, Query.Direction.DESCENDING)
+
+
     override suspend fun saveUser(user: User): Unit = trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
     override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_CHAT_TRACE) { userChatCollection(uid).document(chatId).set(chat).await() }
     override suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_ARCHIVE_TRACE) { userArchiveCollection(uid).document(chatId).set(chat).await() }
@@ -503,7 +505,7 @@ Copyright 2022 Google LLC
     override val usersAll: Flow<List<User>>
         get() =
             auth.currentUser.flatMapLatest { users ->
-                userCollection().snapshots().map { snapshot -> snapshot.toObjects() }
+    userCollection().snapshots().map { snapshot -> snapshot.toObjects() }
             }
 
 
