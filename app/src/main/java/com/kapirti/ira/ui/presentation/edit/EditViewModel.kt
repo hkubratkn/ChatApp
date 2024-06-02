@@ -2,7 +2,10 @@ package com.kapirti.ira.ui.presentation.edit
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.ImageDecoder
 import android.net.Uri
+import android.os.Build
+import android.provider.MediaStore
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.Timestamp
@@ -23,6 +26,8 @@ import com.kapirti.ira.model.service.LogService
 import com.kapirti.ira.model.service.StorageService
 import com.kapirti.ira.ui.presentation.QuickChatViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.io.ByteArrayOutputStream
+import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
@@ -182,7 +187,7 @@ class EditViewModel @Inject constructor(
                 saveAll(restartApp = restartApp)
             }
             PROFILE_PHOTO -> {
-                //photoBitmapSave(context = context, restartApp = restartApp)
+                profilePhotoBitmapSave(context = context, restartApp = restartApp)
             }
       /**      DISPLAY_NAME -> {
                 saveDisplayName(restartApp = restartApp)
@@ -238,24 +243,22 @@ class EditViewModel @Inject constructor(
             restartApp()
         }
     }
-
-  /**  private fun photoBitmapSave(context: Context, restartApp: () -> Unit) {
+    private fun profilePhotoBitmapSave(context: Context, restartApp: () -> Unit) {
         launchCatching {
             _selfieUri?.let {
                 if (Build.VERSION.SDK_INT < 28) {
                     _bitmap.value =
                         MediaStore.Images.Media.getBitmap(context.contentResolver, it.value)
-                    photoSave(restartApp)
+                    profilePhotoSave(restartApp)
                 } else {
                     val source = ImageDecoder.createSource(context.contentResolver, it.value!!)
                     _bitmap.value = ImageDecoder.decodeBitmap(source)
-                    photoSave(restartApp)
+                    profilePhotoSave(restartApp)
                 }
             }
         }
     }
-
-    private fun photoSave(restartApp: () -> Unit) {
+    private fun profilePhotoSave(restartAppProfile: () -> Unit) {
         launchCatching {
             _bitmap.value?.let { bitmapNew ->
                 val kucukBitmap = kucukBitmapOlustur(bitmapNew!!, 300)
@@ -266,16 +269,34 @@ class EditViewModel @Inject constructor(
 
                 storageService.savePhoto(byteDizisi, uid = randomUid)
                 val link = storageService.getPhoto(randomUid)
-                firestoreService.saveUserPhotos(
-                    UserPhotos(
-                        photo = link,
-                        date = Timestamp.now()
-                    )
-                )
-                restartApp()
+                firestoreService.updateUserProfilePhoto(link)
+                restartAppProfile()
             }
         }
-    }*/
+    }
+
+/**    private fun profilePhotoSave(restartApp: () -> Unit) {
+launchCatching {
+_bitmap.value?.let { bitmapNew ->
+val kucukBitmap = kucukBitmapOlustur(bitmapNew!!, 300)
+val outputStream = ByteArrayOutputStream()
+kucukBitmap.compress(Bitmap.CompressFormat.PNG, 50, outputStream)
+val byteDizisi = outputStream.toByteArray()
+val randomUid = UUID.randomUUID().toString()
+
+storageService.savePhoto(byteDizisi, uid = randomUid)
+val link = storageService.getPhoto(randomUid)
+firestoreService.saveUserPhotos(
+UserPhotos(
+photo = link,
+date = Timestamp.now()
+)
+)
+restartApp()
+}
+}
+}
+    */
 
 /**    private fun saveDisplayName(restartApp: () -> Unit) {
         launchCatching {

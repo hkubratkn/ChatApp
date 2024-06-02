@@ -311,16 +311,11 @@ class FirestoreServiceImpl @Inject constructor(
     override suspend fun saveFeedback(feedback: Feedback): Unit = trace(SAVE_FEEDBACK_TRACE) { feedbackCollection().add(feedback).await() }
     override suspend fun saveLang(feedback: Feedback): Unit = trace(SAVE_LANG_TRACE) { langDocument(feedback).set(feedback).await() }
     override suspend fun updateUserOnline(value: Boolean): Unit = trace(UPDATE_USER_ONLINE_TRACE) {
-        userDocument(auth.currentUserId).update(
-            ONLINE_FIELD,
-            value
-        ).await()
-    }
+        userDocument(auth.currentUserId).update(ONLINE_FIELD, value).await() }
     override suspend fun updateUserLastSeen(): Unit = trace(UPDATE_USER_LAST_SEEN_TRACE) {
-        userDocument(auth.currentUserId).update(
-            LAST_SEEN_FIELD,
-            FieldValue.serverTimestamp()
-        ).await()
+        userDocument(auth.currentUserId).update(LAST_SEEN_FIELD, FieldValue.serverTimestamp()).await() }
+    override suspend fun updateUserProfilePhoto(photo: String): Unit = trace(UPDATE_USER_PROFILE_PHOTO_TRACE) {
+        userDocument(auth.currentUserId).update(PHOTO_FIELD, photo).await()
     }
     override suspend fun updateChatTimestamp(who: String, chatId: String): Unit = trace(UPDATE_CHAT_TIMESTAMP_TRACE) {
         userChatCollection(who).document(chatId).update(
@@ -369,6 +364,7 @@ class FirestoreServiceImpl @Inject constructor(
         private const val DATE_FIELD = "date"
         private const val ONLINE_FIELD = "online"
         private const val LAST_SEEN_FIELD = "lastSeen"
+        private const val PHOTO_FIELD = "photo"
         private const val LAST_MESSAGE_FIELD = "lastMessage"
         private const val UNREAD_FIELD = "unread"
 
@@ -393,6 +389,7 @@ class FirestoreServiceImpl @Inject constructor(
 
         private const val UPDATE_USER_ONLINE_TRACE = "updateUserOnline"
         private const val UPDATE_USER_LAST_SEEN_TRACE = "updateUserLastSeen"
+        private const val UPDATE_USER_PROFILE_PHOTO_TRACE = "updateUserProfilePhoto"
         private const val UPDATE_CHAT_LAST_MESSAGE_TRACE = "updateChatLastMessage"
         private const val UPDATE_CHAT_UNREAD_TRACE = "updateChatUnread"
         private const val UPDATE_CHAT_TIMESTAMP_TRACE = "updateChatTimestamp"
@@ -599,23 +596,12 @@ Copyright 2022 Google LLC
             ).await()
         }
 
-    override suspend fun updateUserPhoto(photo: String): Unit = trace(UPDATE_USER_PHOTO_TRACE) {
-        userDocument(auth.currentUserId).update(PHOTO_FIELD, photo).await()
-    }
-
-
-
-
-
-
-
         private const val LANGUAGE_FIELD = "language"
         private const val DISPLAY_NAME_FIELD = "displayName"
         private const val NAME_FIELD = "name"
         private const val SURNAME_FIELD = "surname"
         private const val GENDER_FIELD = "gender"
         private const val DESCRIPTION_FIELD = "description"
-        private const val PHOTO_FIELD = "photo"
 
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
         private const val SAVE_USER_PHOTOS_TRACE = "saveUserPhotos"
@@ -624,7 +610,6 @@ Copyright 2022 Google LLC
         private const val UPDATE_USER_SURNAME_TRACE = "updateUserSurname"
         private const val UPDATE_USER_GENDER_TRACE = "updateUserGender"
         private const val UPDATE_USER_DESCRIPTION_TRACE = "updateUserDescription"
-        private const val UPDATE_USER_PHOTO_TRACE = "updateUserPhoto"
     }
 }
  /**
