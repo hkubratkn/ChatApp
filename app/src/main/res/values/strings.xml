@@ -102,6 +102,10 @@
     <string name="online">Online</string>
     <string name="join">Join</string>
 
+    <!-- Photos Screen -->
+    <string name="photos_title">Photos</string>
+    <string name="no_photos_all">You have no photos!</string>
+
     <!-- Chat Screen -->
     <string name="back">Back</string>
     <string name="message">Message</string>

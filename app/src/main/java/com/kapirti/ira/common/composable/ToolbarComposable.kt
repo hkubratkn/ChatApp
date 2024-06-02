@@ -33,6 +33,7 @@ import com.google.android.gms.ads.AdView
 import com.kapirti.ira.R.string as AppText
 import com.kapirti.ira.R.drawable as AppIcon
 import android.widget.Toast
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.ui.platform.LocalContext
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -53,13 +54,6 @@ fun HomeTopAppBar(
                 contentDescription = stringResource(AppText.app_name),
                 modifier = Modifier.size(40.dp)
             )
-            /**            Image(
-            painter = painterResource(R.drawable.icon),
-            contentDescription = title,
-            contentScale = ContentScale.Inside,
-            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onBackground),
-            modifier = Modifier.fillMaxWidth()
-            )*/
         },
         navigationIcon = {
             IconButton(onClick = openDrawer) {
@@ -125,6 +119,44 @@ fun MenuToolbar(
             IconButton(
                 onClick = { Toast.makeText(context, "Not work yet", Toast.LENGTH_LONG). show()}
             ) {
+                Icon(
+                    imageVector = actionsIcon,
+                    contentDescription = null
+                )
+            }
+        }
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BackToolbar(
+    @StringRes text: Int,
+    actionsIcon: ImageVector,
+    isExpandedScreen: Boolean,
+    popUp: () -> Unit,
+    onActionsClick: () -> Unit,
+) {
+    CenterAlignedTopAppBar(
+        title = {
+            Text(
+                text = stringResource(text),
+                style = MaterialTheme.typography.titleLarge
+            )
+        },
+        navigationIcon = {
+            if (!isExpandedScreen) {
+                IconButton(onClick = popUp) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                }
+            }
+        },
+        actions = {
+            IconButton(onClick = onActionsClick) {
                 Icon(
                     imageVector = actionsIcon,
                     contentDescription = null
