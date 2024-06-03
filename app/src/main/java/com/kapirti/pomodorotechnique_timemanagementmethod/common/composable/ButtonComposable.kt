@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.common.composable
+package com.kapirti.pomodorotechnique_timemanagementmethod.common.composable
 
 import androidx.annotation.StringRes
 import androidx.compose.animation.core.animateDp

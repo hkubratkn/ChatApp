@@ -33,12 +33,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.drawable as AppIcon
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import androidx.compose.material.icons.filled.Timer
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.PomodoroDestinations
 
 @Composable
 fun AppNavRail(
     currentRoute: String,
-    navigateToHome: () -> Unit,
+    navigateToPomodoro: () -> Unit,
     navigateToSettings: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -55,10 +56,10 @@ fun AppNavRail(
     ) {
         Spacer(Modifier.weight(1f))
         NavigationRailItem(
-            selected = currentRoute == PomodoroDestinations.HOME_ROUTE,
-            onClick = navigateToHome,
-            icon = { Icon(Icons.Filled.Home, stringResource(AppText.home_title)) },
-            label = { Text(stringResource(AppText.home_title)) },
+            selected = currentRoute == PomodoroDestinations.POMODORO_ROUTE,
+            onClick = navigateToPomodoro,
+            icon = { Icon(Icons.Filled.Timer, stringResource(AppText.pomodoro_title)) },
+            label = { Text(stringResource(AppText.pomodoro_title)) },
             alwaysShowLabel = false
         )
         NavigationRailItem(

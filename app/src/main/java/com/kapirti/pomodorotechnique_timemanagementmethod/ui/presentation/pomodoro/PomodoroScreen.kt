@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service
-/**
-import com.google.firebase.perf.ktx.trace
-import com.google.firebase.perf.metrics.Trace
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.pomodoro
 
-inline fun <T> trace(name: String, block: Trace.() -> T): T = Trace.create(name).trace(block)
-*/
+import androidx.compose.runtime.Composable
+
+@Composable
+fun PomodoroScreen (){
+}

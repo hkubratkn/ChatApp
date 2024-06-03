@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.runtime.Composable
@@ -13,14 +12,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AppNavRail
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.home.HomeRoute
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.pomodoro.PomodoroRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.settings.SettingsRoute
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.splash.SplashScreen
 
 
 @Composable
@@ -33,12 +31,15 @@ fun ZepiNavGraph(
     openDrawer: () -> Unit,
     closeDrawer: () -> Unit,
 
-    navigateToHome: () -> Unit,
+    navigateToPomodoro: () -> Unit,
     navigateToSettings: () -> Unit,
     navigateToSubscriptions: () -> Unit,
 
+    openAndPopUpSplashToPomodoro: () -> Unit,
+    openAndPopUpSplashToLogin: () -> Unit,
+
     navController: NavHostController = rememberNavController(),
-    startDestination: String = PomodoroDestinations.HOME_ROUTE,
+    startDestination: String = PomodoroDestinations.SPLASH_ROUTE,
     modifier: Modifier = Modifier,
 ) {
     val activity = LocalContext.current as Activity
@@ -58,7 +59,7 @@ fun ZepiNavGraph(
         drawerContent = {
             AppDrawer(
                 currentRoute = currentRoute,
-                navigateToHome = navigateToHome,
+                navigateToPomodoro = navigateToPomodoro,
                // navigateToTimeline = navigateToTimeline,
                // navigateToChats = navigateToChats,
                // navigateToProfile = navigateToProfile,
@@ -75,7 +76,7 @@ fun ZepiNavGraph(
             if (isExpandedScreen) {
                 AppNavRail(
                     currentRoute = currentRoute,
-                    navigateToHome = {}, //navigationActions.navigateToHome,
+                    navigateToPomodoro = navigateToPomodoro,
                     navigateToSettings = navigateToSettings,
                 )
             }
@@ -85,8 +86,8 @@ fun ZepiNavGraph(
                 startDestination = startDestination,
                 modifier = modifier,
             ) {
-                composable(PomodoroDestinations.HOME_ROUTE) {
-                    HomeRoute(
+                composable(PomodoroDestinations.POMODORO_ROUTE) {
+                    PomodoroRoute(
                         openDrawer = openDrawer,
                         navigateSearch = {}
                     )
@@ -100,6 +101,14 @@ fun ZepiNavGraph(
                         navigateBlockUser = {}, //navigateBlockUser
                     )
                 }
+
+                composable(PomodoroDestinations.SPLASH_ROUTE) {
+                    SplashScreen(
+                        openAndPopUpSplashToPomodoro = openAndPopUpSplashToPomodoro,
+                        openAndPopUpSplashToLogin = openAndPopUpSplashToLogin,
+                        showInterstialAd = showInterstitialAds
+                    )
+                }
             }
         }
     }
@@ -107,8 +116,6 @@ fun ZepiNavGraph(
  /**   restartApp : () -> Unit,
     popUpScreen: () -> Unit,
 
-    openAndPopUpSplashToHome: () -> Unit,
-    openAndPopUpSplashToLogin: () -> Unit,
     openAndPopUpChatNopeToExist: () -> Unit,
 
     loginToRegister: () -> Unit,
@@ -355,13 +362,7 @@ fun ZepiNavGraph(
 
 
 
-                composable(ZepiDestinations.SPLASH_ROUTE) {
-                    SplashScreen(
-                        openAndPopUpSplashToHome = openAndPopUpSplashToHome,
-                        openAndPopUpSplashToLogin = openAndPopUpSplashToLogin,
-                        showInterstialAd = showInterstitialAds
-                    )
-                }
+
                 composable(ZepiDestinations.LOG_IN_ROUTE) {
                     LogInScreen(
                         restartApp = restartApp,

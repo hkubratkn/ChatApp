@@ -14,10 +14,14 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service
-/**
-interface ConfigurationService {
-    suspend fun fetchConfiguration(): Boolean
-    val isShowTaskEditButtonConfig: Boolean
-}
-*/
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.pomodoro
+
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+
+@HiltViewModel
+class PomodoroViewModel @Inject constructor(
+    logService: LogService
+): PomodoroViewModel(logService){}

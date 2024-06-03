@@ -1,8 +1,10 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.model.service.module
 
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.ConfigurationService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.impl.AccountServiceImpl
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.impl.ConfigurationServiceImpl
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.impl.LogServiceImpl
 import dagger.Binds
 import dagger.Module
@@ -18,8 +20,8 @@ abstract class ServiceModule {
 
   /**  @Binds abstract fun provideFirestoreService(impl: FirestoreServiceImpl): FirestoreService
 
-    @Binds abstract fun provideStorageService(impl: StorageServiceImpl): StorageService
+    @Binds abstract fun provideStorageService(impl: StorageServiceImpl): StorageService*/
 
     @Binds
-    abstract fun provideConfigurationService(impl: ConfigurationServiceImpl): ConfigurationService*/
+    abstract fun provideConfigurationService(impl: ConfigurationServiceImpl): ConfigurationService
 }

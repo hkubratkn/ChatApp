@@ -24,12 +24,13 @@ import androidx.compose.ui.unit.dp
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.drawable as AppIcon
 import androidx.compose.material.icons.filled.ChatBubbleOutline
+import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.filled.VideoLibrary
 
 @Composable
 fun AppDrawer(
     currentRoute: String,
-    navigateToHome: () -> Unit,
+    navigateToPomodoro: () -> Unit,
    // navigateToTimeline: () -> Unit,
     //navigateToChats: () -> Unit,
     navigateToSubscriptions: () -> Unit,
@@ -47,10 +48,10 @@ fun AppDrawer(
         if(hasUser) {
 
             NavigationDrawerItem(
-                label = { Text(stringResource(id = AppText.home_title)) },
-                icon = { Icon(Icons.Filled.Home, null) },
-                selected = currentRoute == PomodoroDestinations.HOME_ROUTE,
-                onClick = { navigateToHome(); closeDrawer() },
+                label = { Text(stringResource(id = AppText.pomodoro_title)) },
+                icon = { Icon(Icons.Filled.Timer, null) },
+                selected = currentRoute == PomodoroDestinations.POMODORO_ROUTE,
+                onClick = { navigateToPomodoro(); closeDrawer() },
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
            /** NavigationDrawerItem(
