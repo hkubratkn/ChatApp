@@ -4,7 +4,11 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 
 object PomodoroDestinations {
-    const val HOME_ROUTE = "home"
+    const val SPLASH_ROUTE = "splash"
+    const val LOG_IN_ROUTE = "login"
+    const val REGISTER_ROUTE = "register"
+
+    const val POMODORO_ROUTE = "pomodoro"
     const val SETTINGS_ROUTE = "settings"
     const val SUBSCRIPTIONS_ROUTE = "subscriptions"
 }
@@ -12,8 +16,8 @@ object PomodoroDestinations {
 
 class PomodoroNavigationActions(navController: NavHostController) {
 
-    val navigateToHome: () -> Unit = {
-        navController.navigate(PomodoroDestinations.HOME_ROUTE) {
+    val navigateToPomodoro: () -> Unit = {
+        navController.navigate(PomodoroDestinations.POMODORO_ROUTE) {
             popUpTo(navController.graph.findStartDestination().id) {
                 saveState = true
             }
@@ -21,13 +25,41 @@ class PomodoroNavigationActions(navController: NavHostController) {
             restoreState = true
         }
     }
+    val navigateToSettings: () -> Unit = {
+        navController.navigate(PomodoroDestinations.SETTINGS_ROUTE) {
+            popUpTo(navController.graph.findStartDestination().id) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+    val navigateToSubscriptions: () -> Unit = {
+        navController.navigate(PomodoroDestinations.SUBSCRIPTIONS_ROUTE) {
+            popUpTo(navController.graph.findStartDestination().id) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+
+    val openAndPopUpSplashToPomodoro: () -> Unit = {
+        navController.navigate(PomodoroDestinations.POMODORO_ROUTE){
+            launchSingleTop = true
+            popUpTo(PomodoroDestinations.SPLASH_ROUTE){ inclusive = true }
+        }
+    }
+    val openAndPopUpSplashToLogin: () -> Unit = {
+        navController.navigate(PomodoroDestinations.LOG_IN_ROUTE){
+            launchSingleTop = true
+            popUpTo(PomodoroDestinations.SPLASH_ROUTE){ inclusive = true }
+        }
+    }
 }
 
 /**
 
-    const val SPLASH_ROUTE = "splash"
-    const val LOG_IN_ROUTE = "login"
-    const val REGISTER_ROUTE = "register"
     const val EDIT_ROUTE = "edit"
     const val USER_PROFILE_ROUTE = "userProfile"
     const val SEARCH_ROUTE = "search"
@@ -37,6 +69,7 @@ class PomodoroNavigationActions(navController: NavHostController) {
     const val PHOTOS_ROUTE = "photos"
     const val BLOCK_USERS_ROUTE = "blockUsers"
 
+    const val HOME_ROUTE = "home"
     const val TIMELINE_ROUTE = "timeline"
     const val CHATS_ROUTE = "chats"
     const val PROFILE_ROUTE = "profile"
@@ -62,18 +95,7 @@ class PomodoroNavigationActions(navController: NavHostController) {
         navController.popBackStack()
     }
 
-    val openAndPopUpSplashToHome: () -> Unit = {
-        navController.navigate(ZepiDestinations.HOME_ROUTE){
-            launchSingleTop = true
-            popUpTo(ZepiDestinations.SPLASH_ROUTE){ inclusive = true }
-        }
-    }
-    val openAndPopUpSplashToLogin: () -> Unit = {
-        navController.navigate(ZepiDestinations.LOG_IN_ROUTE){
-            launchSingleTop = true
-            popUpTo(ZepiDestinations.SPLASH_ROUTE){ inclusive = true }
-        }
-    }
+
     val openAndPopUpChatNopeToExist: () -> Unit = {
         navController.navigate(ZepiDestinations.CHATEXIST_ROUTE){
             launchSingleTop = true
@@ -171,23 +193,6 @@ class PomodoroNavigationActions(navController: NavHostController) {
             restoreState = true
         }
     }
-    val navigateToSettings: () -> Unit = {
-        navController.navigate(ZepiDestinations.SETTINGS_ROUTE) {
-            popUpTo(navController.graph.findStartDestination().id) {
-                saveState = true
-            }
-            launchSingleTop = true
-            restoreState = true
-        }
-    }
-    val navigateToSubscriptions: () -> Unit = {
-        navController.navigate(ZepiDestinations.SUBSCRIPTIONS_ROUTE) {
-            popUpTo(navController.graph.findStartDestination().id) {
-                saveState = true
-            }
-            launchSingleTop = true
-            restoreState = true
-        }
-    }
+
 }
 */

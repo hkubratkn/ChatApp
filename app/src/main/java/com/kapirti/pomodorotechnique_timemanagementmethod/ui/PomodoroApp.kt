@@ -64,7 +64,7 @@ fun PomodoroApp(
 
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute =
-            navBackStackEntry?.destination?.route ?: PomodoroDestinations.HOME_ROUTE
+            navBackStackEntry?.destination?.route ?: PomodoroDestinations.POMODORO_ROUTE
 
         val isExpandedScreen = widthSizeClass == WindowWidthSizeClass.Expanded
         val sizeAwareDrawerState = rememberSizeAwareDrawerState(isExpandedScreen)
@@ -80,12 +80,18 @@ fun PomodoroApp(
             currentRoute = currentRoute,
             sizeAwareDrawerState = sizeAwareDrawerState,
             hasUser = hasUser,
+
+            navigateToPomodoro = navigationActions.navigateToPomodoro,
+            navigateToSettings = navigationActions.navigateToSettings,
+            navigateToSubscriptions = navigationActions.navigateToSubscriptions,
+
+
+            openAndPopUpSplashToPomodoro = navigationActions.openAndPopUpSplashToPomodoro,
+            openAndPopUpSplashToLogin = navigationActions.openAndPopUpSplashToLogin,
           /**  popUpScreen = navigationActions.popUp,
             restartApp = navigationActions.clearAndNavigate,
 
 
-            openAndPopUpSplashToHome = navigationActions.openAndPopUpSplashToHome,
-            openAndPopUpSplashToLogin = navigationActions.openAndPopUpSplashToLogin,
             openAndPopUpChatNopeToExist = navigationActions.openAndPopUpChatNopeToExist,
 
             loginToRegister = navigationActions.navigateAndPopUpLoginToRegister,
@@ -111,12 +117,9 @@ fun PomodoroApp(
             navigateChatsToChatExist = navigationActions.navigateChatExist,
 
 
-            navigateToSettings = navigationActions.navigateToSettings,
-            navigateToHome = navigationActions.navigateToHome,
             navigateToTimeline = navigationActions.navigateToTimeline,
             navigateToChats = navigationActions.navigateToChats,
             navigateToProfile = navigationActions.navigateToProfile,
-            navigateToSubscriptions = navigationActions.navigateToSubscriptions,
 
             shortcutParams = shortcutParams*/
         )
