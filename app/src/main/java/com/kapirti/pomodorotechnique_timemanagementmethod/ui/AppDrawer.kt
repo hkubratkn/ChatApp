@@ -1,5 +1,5 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui
-
+/**
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -108,3 +108,4 @@ private fun QChatLogo(modifier: Modifier = Modifier) {
         )
     }
 }
+*/

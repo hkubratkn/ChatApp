@@ -14,12 +14,10 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.core
-
-sealed class Async<out T> {
-    object Loading : Async<Nothing>()
-
-    data class Error(val errorMessage: Int) : Async<Nothing>()
-
-    data class Success<out T>(val data: T) : Async<T>()
+package com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service
+/**
+interface ConfigurationService {
+    suspend fun fetchConfiguration(): Boolean
+    val isShowTaskEditButtonConfig: Boolean
 }
+*/

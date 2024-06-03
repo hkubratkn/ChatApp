@@ -1,5 +1,5 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod
-
+/**
 import androidx.compose.runtime.Stable
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.data.NetworkMonitor
 import kotlinx.coroutines.CoroutineScope
@@ -20,3 +20,4 @@ class ZepiAppState(
             initialValue = false,
         )
 }
+*/
