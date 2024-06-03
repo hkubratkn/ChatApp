@@ -1,5 +1,5 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui
-
+/**
 import android.app.Activity
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -21,11 +21,11 @@ import androidx.navigation.navArgument
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AppNavRail
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeChatViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeUserIdViewModel
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.EditRoute
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.userprofile.UserProfileRoute
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.profile.ProfileRoute
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.settings.SettingsRoute
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.subscribe.SubscribeScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.edit.EditRoute
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.userprofile.UserProfileRoute
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.profile.ProfileRoute
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.settings.SettingsRoute
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.subscribe.SubscribeScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.soci.model.extractChatId
 import com.kapirti.pomodorotechnique_timemanagementmethod.soci.ui.camera.Camera
 import com.kapirti.pomodorotechnique_timemanagementmethod.soci.ui.camera.Media
@@ -35,19 +35,19 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.soci.ui.camera.MediaTy
 //import com.zepi.social_chat_food.soci.ui.photopicker.navigation.photoPickerScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.soci.ui.player.VideoPlayerScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.soci.ui.videoedit.VideoEditScreen
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.blockusers.BlockUsersRoute
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chat.chatexist.ChatExistScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.blockusers.BlockUsersRoute
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.chat.chatexist.ChatExistScreen
 //import com.kapirti.video_food_delivery_shopping.ui.presentation.chat.chatexist.ChatScreen
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chat.chatnope.ChatNopeScreen
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats.ChatsRoute
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.chat.chatnope.ChatNopeScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.chats.ChatsRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.home.HomeRoute
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.login.LogInScreen
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.register.RegisterScreen
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.search.SearchScreen
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.splash.SplashScreen
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.Timeline
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.userprofile.photos.PhotosRoute
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.userprofile.videocall.VideoCallScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.login.LogInScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.register.RegisterScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.search.SearchScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.splash.SplashScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.timeline.Timeline
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.userprofile.photos.PhotosRoute
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.userprofile.videocall.VideoCallScreen
 
 
 @Composable
@@ -457,7 +457,7 @@ fun ZepiNavGraph(
                         modifier = Modifier.fillMaxSize(),
                     )
                 }
-                composable(ZepiDestinations.VIDEO_CALL_ROUTE) { VideoCallScreen(popUp = popUpScreen)}
+                composable(ZepiDestinations.VIDEO_CALL_ROUTE) { VideoCallScreen(popUp = popUpScreen) }
                 composable(ZepiDestinations.PHOTOS_ROUTE){ PhotosRoute(
                     popUp = popUpScreen,
                     navigateEdit = navigateEdit,
@@ -566,3 +566,4 @@ fun (
 
 */
 
+*/

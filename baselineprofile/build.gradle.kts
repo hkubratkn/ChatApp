@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.google.android.samples.socialite.baselineprofile"
+    namespace = "com.kapirti.pomodorotechnique_timemanagementmethod"
     compileSdk = 34
 
     compileOptions {

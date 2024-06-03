@@ -15,11 +15,11 @@ kotlin {
 }
 
 android {
-    namespace = "com.kapirti.ira"
+    namespace = "com.kapirti.pomodorotechnique_timemanagementmethod"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.kapirti.ira"
+        applicationId = "com.kapirti.pomodorotechnique_timemanagementmethod"
         minSdk = 24
       //  minSdk = 21
         targetSdk = 34

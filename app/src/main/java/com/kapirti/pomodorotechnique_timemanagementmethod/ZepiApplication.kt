@@ -21,7 +21,7 @@ import com.google.android.ump.ConsentForm
 import com.google.android.ump.ConsentInformation
 import com.google.android.ump.ConsentRequestParameters
 import com.google.android.ump.UserMessagingPlatform
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_APP_OPEN_ID
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsAds.ADS_APP_OPEN_ID
 import java.util.concurrent.atomic.AtomicBoolean
 
 

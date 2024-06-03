@@ -42,7 +42,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3006196735467220~6697995747" />
+            android:value="ca-app-pub-3006196735467220~1176844821" />
         <meta-data
             android:name="firebase_performance_logcat_enabled"
             android:value="true" />
@@ -81,7 +81,7 @@
             <!--
                 This is used as the content URI of notifications. It navigates directly to the
                 specified chat screen.
-            -->
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -92,10 +92,10 @@
                     android:pathPattern="/chat/*"
                     android:scheme="https" />
             </intent-filter>
-            <!--
+
                 This opens the chat screen with the message field filled with the passed text.
                 This is necessary for making our dynamic shortcuts appear in Direct Share.
-            -->
+            --><!--
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
 
@@ -106,7 +106,7 @@
 
             <meta-data
                 android:name="android.app.shortcuts"
-                android:resource="@xml/sharing_shortcuts" />
+                android:resource="@xml/sharing_shortcuts" />-->
         </activity>
         <!--
             This Activity is the expanded Bubble. For that, this Activity has to have several
@@ -115,7 +115,7 @@
             - resizeableActivity="true": The expanded Bubble is resized by the System UI.
             - documentLaunchMode="always": We show multiple bubbles in this sample. There will be
                                            multiple instances of this Activity.
-        -->
+        --><!--
         <activity
             android:name="com.kapirti.pomodorotechnique_timemanagementmethod.soci.BubbleActivity"
             android:allowEmbedded="true"
@@ -134,7 +134,7 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-
+-->
 <!--
         <activity android:name="com.zepi.social_chat_food.soci.widget.SociaLiteAppWidgetConfigActivity"
             android:taskAffinity=""
@@ -155,7 +155,7 @@
 -->
         <!-- Trigger Google Play services to install the backported photo picker module.
          Refer https://developer.android.com/training/data-storage/shared/photopicker#device-availability -->
-        <service
+    <!--    <service
             android:name="com.google.android.gms.metadata.ModuleDependencies"
             android:enabled="false"
             android:exported="false"
@@ -166,7 +166,7 @@
             </intent-filter>
             <meta-data
                 android:name="photopicker_activity:0:required" android:value="" />
-        </service>
+        </service>-->
 
     </application>
 

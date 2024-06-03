@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Quick Chat</string>
-    <string name="web_client_id">698610992240-ft7uso81glfh8pn6fnj09bulpbi3mo67.apps.googleusercontent.com</string>
+    <string name="app_name">Pomodoro</string>
 
     <!-- App -->
+    <!-- Home Screen -->
+    <!-- Timeline Screen -->
+    <!-- Chats Screen -->
+    <!-- Profile Screen -->
+    <!-- Settings Screen -->
+    <!-- Subscriptions Screen -->
+    <!-- login register screen -->
+    <!-- Edit Screen -->
+    <!-- filter screen -->
+    <!-- Search Screen -->
+    <!-- User Profile Screen -->
+    <!-- Photos Screen -->
+    <!-- Chat Screen -->
+    <!-- Block Users Screen -->
+</resources>
+    <!--
+        <string name="web_client_id">698610992240-ft7uso81glfh8pn6fnj09bulpbi3mo67.apps.googleusercontent.com</string>
+
     <string name="not_connected">⚠️You aren’t connected to the internet</string>
     <string name="generic_error">Something wrong happened. Please try again.</string>
     <string name="try_again">Try again</string>
 
-    <!-- Home Screen -->
     <string name="home_title">Home</string>
     <string name="no_users_all">You have no users!</string>
 
-    <!-- Timeline Screen -->
     <string name="timeline_title">Timeline</string>
 
-    <!-- Chats Screen -->
     <string name="chats_title">Chats</string>
     <string name="archive_title">Archive</string>
     <string name="no_chats_all">You have no chats!</string>
@@ -25,10 +39,8 @@
     <string name="long_click">Long click</string>
 
 
-    <!-- Profile Screen -->
     <string name="profile_title">Profile</string>
 
-    <!-- Settings Screen -->
     <string name="settings_title">Settings</string>
     <string name="share">Share</string>
     <string name="rate">Rate</string>
@@ -40,12 +52,10 @@
     <string name="sign_out_description">You will have to sign in again to see your tasks.</string>
     <string name="cancel">Cancel</string>
 
-    <!-- Subscriptions Screen -->
     <string name="subscriptions_title">Subscriptions</string>
 
 
 
-    <!-- login register screen -->
     <string name="welcome_back">Welcome back</string>
     <string name="log_in">Log In</string>
     <string name="forgotten_password">Forgot password? Click to get recovery email</string>
@@ -63,7 +73,6 @@
     <string name="log_in_with_google">Log in with Google</string>
     <string name="register_with_google">Register with Google</string>
 
-    <!-- Edit Screen -->
     <string name="next">Next</string>
     <string name="done">Done</string>
     <string name="previous">Previous</string>
@@ -87,26 +96,21 @@
     <string name="female">Female</string>
     <string name="male">Male</string>
 
-    <!-- filter screen -->
     <string name="gender">Gender</string>
 
-    <!-- Search Screen -->
     <string name="search">Search</string>
     <string name="search_count">%1d users</string>
     <string name="search_no_matches">No matches for “%1s”</string>
     <string name="search_no_matches_retry">Try broadening your search</string>
     <string name="recent_searches">Recent searches</string>
 
-    <!-- User Profile Screen -->
     <string name="online">Online</string>
     <string name="join">Join</string>
     <string name="age">Age</string>
 
-    <!-- Photos Screen -->
     <string name="photos_title">Photos</string>
     <string name="no_photos_all">You have no photos!</string>
 
-    <!-- Chat Screen -->
     <string name="back">Back</string>
     <string name="message">Message</string>
     <string name="block">Block</string>
@@ -114,11 +118,9 @@
     <string name="report">Report</string>
     <string name="report_user">Do you want to report and block a user?</string>
 
-    <!-- Block Users Screen -->
     <string name="block_users_title">Block users</string>
     <string name="no_block_users_all">You have no block users!</string>
-</resources>
-    <!--
+
   <string name="loading_chats_error">Error while loading chats</string>
     <string name="archive">Archive</string>
 
