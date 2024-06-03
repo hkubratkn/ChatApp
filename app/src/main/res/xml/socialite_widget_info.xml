@@ -16,7 +16,7 @@
 
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:resizeMode="horizontal|vertical"
-    android:configure="com.kapirti.ira.soci.widget.SociaLiteAppWidgetConfigActivity"
+    android:configure="com.kapirti.pomodorotechnique_timemanagementmethod.soci.widget.SociaLiteAppWidgetConfigActivity"
     android:widgetFeatures="configuration_optional|reconfigurable"
     android:minHeight="128dp"
     android:minWidth="192dp"

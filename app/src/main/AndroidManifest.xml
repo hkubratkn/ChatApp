@@ -64,7 +64,7 @@
         </receiver> -->
 
         <activity
-            android:name="com.kapirti.ira.MainActivity"
+            android:name="com.kapirti.pomodorotechnique_timemanagementmethod.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Social"
             android:windowSoftInputMode="adjustResize"
@@ -117,7 +117,7 @@
                                            multiple instances of this Activity.
         -->
         <activity
-            android:name="com.kapirti.ira.soci.BubbleActivity"
+            android:name="com.kapirti.pomodorotechnique_timemanagementmethod.soci.BubbleActivity"
             android:allowEmbedded="true"
             android:documentLaunchMode="always"
             android:exported="true"
