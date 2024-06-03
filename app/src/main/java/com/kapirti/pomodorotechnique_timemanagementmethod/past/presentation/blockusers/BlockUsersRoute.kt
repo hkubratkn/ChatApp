@@ -29,7 +29,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.EmptyContent
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsBannerToolbar
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsAds.ADS_BLOCK_USERS_BANNER_ID
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_BLOCK_USERS_BANNER_ID
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.filled.Search

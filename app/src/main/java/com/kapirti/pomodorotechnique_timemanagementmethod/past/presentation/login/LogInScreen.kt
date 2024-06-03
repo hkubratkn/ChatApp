@@ -32,7 +32,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsBannerToolbar
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsAds.ADS_LOG_IN_BANNER_ID
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_LOG_IN_BANNER_ID
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.iraaa.ggoo.GoogleAuthUiClient
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult

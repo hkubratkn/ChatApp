@@ -55,7 +55,7 @@ import androidx.compose.ui.unit.dp
 import com.kapirti.pomodorotechnique_timemanagementmethod.R
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsBannerToolbar
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.supportWideScreen
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsAds.ADS_EDIT_BANNER_ID
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_EDIT_BANNER_ID
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.theme.stronglyDeemphasizedAlpha
 
 @Composable

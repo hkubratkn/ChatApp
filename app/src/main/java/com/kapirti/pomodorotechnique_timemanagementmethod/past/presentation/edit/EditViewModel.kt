@@ -25,7 +25,7 @@ import android.provider.MediaStore
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.Timestamp
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Cons.DEFAULT_LANGUAGE_CODE
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Cons.DEFAULT_LANGUAGE_CODE
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.EditType.DELETE
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.EditType.DESCRIPTION
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.EditType.DISPLAY_NAME

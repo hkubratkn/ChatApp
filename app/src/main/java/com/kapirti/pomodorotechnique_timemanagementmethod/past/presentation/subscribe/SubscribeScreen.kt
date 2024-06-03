@@ -39,7 +39,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsB
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.drawable as AppIcon
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.basicButton
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.smallSpacer
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsAds.ADS_SUBSCRIBE_BANNER_ID
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_SUBSCRIBE_BANNER_ID
 
 @Composable
 fun SubscribeScreen(

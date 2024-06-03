@@ -76,7 +76,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.Surf
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.arrowBackIcon
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.calculateBirthday
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.timeCustomFormat
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsAds.ADS_USER_PROFILE_BANNER_ID
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_USER_PROFILE_BANNER_ID
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsGender.MALE
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.User
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.UserPhotos

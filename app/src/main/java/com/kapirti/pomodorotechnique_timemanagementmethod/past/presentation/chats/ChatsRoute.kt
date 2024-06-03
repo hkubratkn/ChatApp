@@ -32,7 +32,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsBannerToolbar
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.MenuToolbar
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsAds
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeChatViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 
@@ -70,7 +70,7 @@ fun ChatsRoute(
 
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
-        bottomBar = { AdsBannerToolbar(com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsAds.ADS_CHATS_BANNER_ID) },
+        bottomBar = { AdsBannerToolbar(com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_CHATS_BANNER_ID) },
         topBar = {
             MenuToolbar(
                 text = AppText.chats_title,

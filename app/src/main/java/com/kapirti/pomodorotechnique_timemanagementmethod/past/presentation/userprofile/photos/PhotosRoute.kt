@@ -32,7 +32,7 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.ui.Modifier
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsBannerToolbar
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.BackToolbar
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsAds
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeUserIdViewModel
 
 @Composable
@@ -61,7 +61,7 @@ fun PhotosRoute(
 
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
-        bottomBar = { AdsBannerToolbar(com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsAds.ADS_PHOTOS_BANNER_ID) },
+        bottomBar = { AdsBannerToolbar(com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_PHOTOS_BANNER_ID) },
         topBar = {
             BackToolbar(
                 text = AppText.photos_title,

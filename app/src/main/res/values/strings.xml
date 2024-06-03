@@ -4,11 +4,22 @@
 
     <!-- App -->
     <!-- Home Screen -->
+    <string name="home_title">Home</string>
+
     <!-- Timeline Screen -->
     <!-- Chats Screen -->
     <!-- Profile Screen -->
     <!-- Settings Screen -->
+    <string name="settings_title">Settings</string>
+    <string name="share">Share</string>
+    <string name="rate">Rate</string>
+    <string name="feedback">Feedback</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="dark_mode">Dark mode</string>
+
     <!-- Subscriptions Screen -->
+    <string name="subscriptions_title">Subscriptions</string>
+
     <!-- login register screen -->
     <!-- Edit Screen -->
     <!-- filter screen -->
@@ -25,7 +36,6 @@
     <string name="generic_error">Something wrong happened. Please try again.</string>
     <string name="try_again">Try again</string>
 
-    <string name="home_title">Home</string>
     <string name="no_users_all">You have no users!</string>
 
     <string name="timeline_title">Timeline</string>
@@ -41,18 +51,11 @@
 
     <string name="profile_title">Profile</string>
 
-    <string name="settings_title">Settings</string>
-    <string name="share">Share</string>
-    <string name="rate">Rate</string>
-    <string name="feedback">Feedback</string>
-    <string name="privacy_policy">Privacy Policy</string>
-    <string name="dark_mode">Dark mode</string>
     <string name="sign_out">Sign out</string>
     <string name="sign_out_title">Sign out?</string>
     <string name="sign_out_description">You will have to sign in again to see your tasks.</string>
     <string name="cancel">Cancel</string>
 
-    <string name="subscriptions_title">Subscriptions</string>
 
 
 

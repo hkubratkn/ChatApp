@@ -64,7 +64,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsB
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.BasicDivider
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.QChatSurface
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.arrowBackIcon
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsAds.ADS_SEARCH_BANNER_ID
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_SEARCH_BANNER_ID
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeUserIdViewModel
 
 @Composable

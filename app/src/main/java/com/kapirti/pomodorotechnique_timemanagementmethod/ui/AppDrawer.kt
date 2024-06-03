@@ -1,5 +1,5 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui
-/**
+
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -30,10 +30,10 @@ import androidx.compose.material.icons.filled.VideoLibrary
 fun AppDrawer(
     currentRoute: String,
     navigateToHome: () -> Unit,
-    navigateToTimeline: () -> Unit,
-    navigateToChats: () -> Unit,
+   // navigateToTimeline: () -> Unit,
+    //navigateToChats: () -> Unit,
     navigateToSubscriptions: () -> Unit,
-    navigateToProfile: () -> Unit,
+    //navigateToProfile: () -> Unit,
     navigateToSettings: () -> Unit,
     closeDrawer: () -> Unit,
     hasUser: Boolean,
@@ -49,11 +49,11 @@ fun AppDrawer(
             NavigationDrawerItem(
                 label = { Text(stringResource(id = AppText.home_title)) },
                 icon = { Icon(Icons.Filled.Home, null) },
-                selected = currentRoute == ZepiDestinations.HOME_ROUTE,
+                selected = currentRoute == PomodoroDestinations.HOME_ROUTE,
                 onClick = { navigateToHome(); closeDrawer() },
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
-            NavigationDrawerItem(
+           /** NavigationDrawerItem(
                 label = { Text(stringResource(id = AppText.timeline_title)) },
                 icon = { Icon(Icons.Filled.VideoLibrary, null) },
                 selected = currentRoute == ZepiDestinations.TIMELINE_ROUTE,
@@ -73,20 +73,20 @@ fun AppDrawer(
                 selected = currentRoute == ZepiDestinations.PROFILE_ROUTE,
                 onClick = { navigateToProfile(); closeDrawer() },
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
-            )
+            )*/
         }
 
         NavigationDrawerItem(
             label = { Text(stringResource(id = AppText.settings_title)) },
             icon = { Icon(Icons.Default.Settings, null)},
-            selected = currentRoute == ZepiDestinations.SETTINGS_ROUTE,
+            selected = currentRoute == PomodoroDestinations.SETTINGS_ROUTE,
             onClick = { navigateToSettings(); closeDrawer() },
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
         )
         NavigationDrawerItem(
             label = { Text(stringResource(id = AppText.subscriptions_title)) },
             icon = { Icon(Icons.Default.Subscriptions, null)},
-            selected = currentRoute == ZepiDestinations.SUBSCRIPTIONS_ROUTE,
+            selected = currentRoute == PomodoroDestinations.SUBSCRIPTIONS_ROUTE,
             onClick = { navigateToSubscriptions(); closeDrawer() },
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
         )
@@ -108,4 +108,3 @@ private fun QChatLogo(modifier: Modifier = Modifier) {
         )
     }
 }
-*/

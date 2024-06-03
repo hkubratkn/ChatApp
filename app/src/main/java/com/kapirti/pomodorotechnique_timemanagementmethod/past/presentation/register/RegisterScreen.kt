@@ -55,7 +55,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.basicButton
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.fieldModifier
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.smallSpacer
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.textButton
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsAds.ADS_REGISTER_BANNER_ID
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_REGISTER_BANNER_ID
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.iraaa.ggoo.GoogleAuthUiClient
 import kotlinx.coroutines.launch
 
