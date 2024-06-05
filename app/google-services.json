@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "411230460844",
+    "project_id": "pomodoro-255ad",
+    "storage_bucket": "pomodoro-255ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411230460844:android:427386e1c7fa6a9061b809",
+        "android_client_info": {
+          "package_name": "com.kapirti.pomodorotechnique_timemanagementmethod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411230460844-tfo5jkc5a76foq3vpf568lnv57hkos5a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kapirti.pomodorotechnique_timemanagementmethod",
+            "certificate_hash": "241534960b4fca22196ec8420610cb56f9265211"
+          }
+        },
+        {
+          "client_id": "411230460844-78i6e1s467k4huq3gkj7vtat9ncn6onk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtkCHZ20oMRuomkX1S4vDTbv780r6ygu0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411230460844-78i6e1s467k4huq3gkj7vtat9ncn6onk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
