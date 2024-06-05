@@ -34,7 +34,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds
 
 @Composable
 internal fun PomodoroScreen(
-    navigateToHome: () -> Unit,
+    navigateToPomodoro: () -> Unit,
     showInterstialAd: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: PomodoroViewModel = hiltViewModel()
@@ -54,7 +54,7 @@ internal fun PomodoroScreen(
 
             if (viewModel.finishClick) {
                 BasicButton(text = AppText.try_again, modifier = Modifier.card(), true, action = {
-                    navigateToHome()
+                    navigateToPomodoro()
                     showInterstialAd()
                 })
                 Spacer(modifier = Modifier.smallSpacer())

@@ -35,7 +35,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds
 fun PomodoroRoute(
     openDrawer: () -> Unit,
     navigateTimeOver: () -> Unit,
-    navigateToHome: () -> Unit,
+    navigateToPomodoro: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: PomodoroViewModel = hiltViewModel(),
 ) {
@@ -67,7 +67,7 @@ fun PomodoroRoute(
     ) { innerPadding ->
         PomodoroScreen(
             modifier = Modifier.padding(innerPadding),
-            navigateToHome = navigateToHome,
+            navigateToPomodoro = navigateToPomodoro,
             showInterstialAd = {},
         )
     }

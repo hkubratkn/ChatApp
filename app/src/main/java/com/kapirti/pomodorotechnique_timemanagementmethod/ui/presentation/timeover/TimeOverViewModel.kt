@@ -44,7 +44,7 @@ class TimeOverViewModel @Inject constructor(
 
     private val _finishClick = mutableStateOf(false)
 
-    fun onStartPressed(context: Context, navigateToHome: () -> Unit,){
+    fun onStartPressed(context: Context, navigateToPomodoro: () -> Unit,){
         launchCatching{
             _startBtnStatus.value = false
             _finishBtnStatus.value = true
@@ -54,7 +54,7 @@ class TimeOverViewModel @Inject constructor(
 
                     if(_finishClick.value){
                         cancel()
-                        navigateToHome()
+                        navigateToPomodoro()
                     }
                 }
 
@@ -67,7 +67,7 @@ class TimeOverViewModel @Inject constructor(
                     mediaPlayer.start()
                     Thread.sleep(5000)
                     mediaPlayer.stop()
-                    navigateToHome()
+                    navigateToPomodoro()
                 }
             }.start()
         }

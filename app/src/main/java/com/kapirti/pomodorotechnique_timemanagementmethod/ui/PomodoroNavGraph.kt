@@ -21,6 +21,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.pomodo
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.register.RegisterScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.settings.SettingsRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.splash.SplashScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeover.TimeOverScreen
 
 
 @Composable
@@ -43,6 +44,8 @@ fun ZepiNavGraph(
     openAndPopUpSplashToPomodoro: () -> Unit,
     openAndPopUpSplashToLogin: () -> Unit,
     navigateAndPopUpRegisterToEdit: () -> Unit,
+
+    navigateTimeOver: () -> Unit,
 
     loginToRegister: () -> Unit,
     registerToLogin: () -> Unit,
@@ -98,7 +101,8 @@ fun ZepiNavGraph(
                 composable(PomodoroDestinations.POMODORO_ROUTE) {
                     PomodoroRoute(
                         openDrawer = openDrawer,
-                        navigateSearch = {}
+                        navigateTimeOver = navigateTimeOver,
+                        navigateToPomodoro = navigateToPomodoro,
                     )
                 }
                 composable(PomodoroDestinations.SETTINGS_ROUTE) {
@@ -131,6 +135,13 @@ fun ZepiNavGraph(
                         navigateAndPopUpRegisterToEdit = navigateAndPopUpRegisterToEdit,
                         registerToLogin = registerToLogin,
                         showInterstitialAds = showInterstitialAds,
+                    )
+                }
+                composable(PomodoroDestinations.TIME_OVER_ROUTE){
+                    TimeOverScreen(
+                        openDrawer = openDrawer,
+                        navigateToPomodoro = navigateToPomodoro,
+                        showInterstialAd = showInterstitialAds,
                     )
                 }
             }
