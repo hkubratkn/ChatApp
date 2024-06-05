@@ -19,6 +19,7 @@ package com.kapirti.pomodorotechnique_timemanagementmethod.common.composable
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -124,5 +125,93 @@ fun ThemeCardEditor(
 
             Switch(checked = checked, onCheckedChange = onCheckedChange)
         }
+    }
+}
+
+@Composable
+fun PomoCardEditor(
+    @StringRes title: Int,
+    content: String,
+    onPlusClick: () -> Unit,
+    onMinusClick: () -> Unit,
+    plusBtnState: Boolean,
+    minusBtnState: Boolean,
+    highlightColor: Color = MaterialTheme.colorScheme.onSurface,
+    modifier: Modifier
+) {
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.onPrimary
+        ),
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        ) {
+            Column(modifier = Modifier.weight(1f)) { Text(stringResource(title), color = highlightColor) }
+
+            if (content.isNotBlank()) {
+                Text(text = content, modifier = Modifier.padding(16.dp, 0.dp))
+            }
+
+            Button(enabled = minusBtnState, onClick = { onMinusClick() }) { Text(text = "-", color = highlightColor) }
+            Button(enabled = plusBtnState, onClick = { onPlusClick() }) { Text(text = "+", color = highlightColor) }
+        }
+    }
+}
+
+@Composable
+fun BottomCard(
+    @StringRes start: Int,
+    @StringRes finish: Int,
+    startBtnStatus: Boolean,
+    finishBtnStatus: Boolean,
+    onStartClick: () -> Unit,
+    onFinishClick: () -> Unit,
+) {
+    BottomCardEditor(
+        start = start,
+        finish = finish,
+        startBtnStatus = startBtnStatus,
+        finishBtnStatus = finishBtnStatus,
+        onStartClick = { onStartClick() },
+        onFinishClick = { onFinishClick() },
+    )
+
+}
+
+@Composable
+private fun BottomCardEditor(
+    @StringRes start: Int,
+    @StringRes finish: Int,
+    startBtnStatus: Boolean,
+    finishBtnStatus: Boolean,
+    onStartClick: () -> Unit,
+    onFinishClick: () -> Unit
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 10.dp)
+    ) {
+        FinishButtonComposable(
+            title = finish,
+            btnState = finishBtnStatus,
+            backgroundColor = MaterialTheme.colorScheme.error,
+            contentColor = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.fillMaxWidth(0.3f),
+            onButtonClick = { onFinishClick() }
+        )
+        Spacer(modifier = Modifier.width(10.dp))
+        StartButtonComposable(
+            title = start,
+            btnState = startBtnStatus,
+            modifier = Modifier.fillMaxWidth(0.4f),
+            onButtonClick = { onStartClick() }
+        )
     }
 }

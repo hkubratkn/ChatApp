@@ -35,6 +35,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -149,6 +150,52 @@ fun JumpToButton(
             modifier = modifier
                 .offset(x = 0.dp, y = -bottomOffset)
                 .height(36.dp)
+        )
+    }
+}
+
+@Composable
+fun FinishButtonComposable(
+    @StringRes title: Int,
+    onButtonClick: () -> Unit,
+    btnState: Boolean,
+    backgroundColor: Color,
+    contentColor: Color,
+    modifier: Modifier
+) {
+    Button(
+        enabled = btnState,
+        modifier = modifier,
+        colors = ButtonDefaults.textButtonColors(
+            containerColor = backgroundColor,
+            contentColor = contentColor
+        ),
+        onClick = {
+            onButtonClick()
+        }
+    ) {
+        Text(
+            text = stringResource(id = title)
+        )
+    }
+}
+
+@Composable
+fun StartButtonComposable(
+    @StringRes title: Int,
+    onButtonClick: () -> Unit,
+    btnState: Boolean,
+    modifier: Modifier
+) {
+    Button(
+        enabled = btnState,
+        modifier = modifier,
+        onClick = {
+            onButtonClick()
+        }
+    ) {
+        Text(
+            text = stringResource(id = title)
         )
     }
 }

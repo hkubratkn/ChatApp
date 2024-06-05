@@ -18,6 +18,7 @@ package com.kapirti.pomodorotechnique_timemanagementmethod.common.composable
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -30,6 +31,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.sp
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.textButton
 
 @Composable
@@ -37,6 +39,18 @@ fun HeaderText(@StringRes text: Int) {
     Text(
         text = stringResource(id = text),
         fontStyle = FontStyle.Italic,
+    )
+}
+
+@Composable
+fun TextPomo(
+    title: String
+) {
+    Text(
+        text = title,
+        fontSize = 100.sp,
+        color = MaterialTheme.colorScheme.onSurface,
+        fontWeight = FontWeight.Bold
     )
 }
 

@@ -45,6 +45,11 @@
 
 
     <!-- Edit Screen -->
+    <string name="done">Done</string>
+
+    <!-- Timeover screen -->
+    <string name="start">Start</string>
+
     <!-- filter screen -->
     <!-- Search Screen -->
     <!-- User Profile Screen -->
@@ -80,7 +85,6 @@
 
 
     <string name="next">Next</string>
-    <string name="done">Done</string>
     <string name="previous">Previous</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="delete_my_account">Delete my account</string>

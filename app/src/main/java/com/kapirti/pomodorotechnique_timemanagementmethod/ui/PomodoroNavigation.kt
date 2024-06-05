@@ -8,6 +8,7 @@ object PomodoroDestinations {
     const val LOG_IN_ROUTE = "login"
     const val REGISTER_ROUTE = "register"
     const val EDIT_ROUTE = "edit"
+    const val TIME_OVER_ROUTE = "timeOver"
 
     const val POMODORO_ROUTE = "pomodoro"
     const val SETTINGS_ROUTE = "settings"
@@ -54,6 +55,12 @@ class PomodoroNavigationActions(navController: NavHostController) {
             restoreState = true
         }
     }
+
+
+    val navigateTimeOver: () -> Unit = {
+        navController.navigate(PomodoroDestinations.TIME_OVER_ROUTE){ launchSingleTop = true }
+    }
+
 
     val openAndPopUpSplashToPomodoro: () -> Unit = {
         navController.navigate(PomodoroDestinations.POMODORO_ROUTE){
@@ -141,7 +148,7 @@ class PomodoroNavigationActions(navController: NavHostController) {
 
 
     val navigateLogin: () -> Unit = {
-        navController.navigate(ZepiDestinations.LOG_IN_ROUTE){ launchSingleTop = true }
+    navController.navigate(ZepiDestinations.LOG_IN_ROUTE){ launchSingleTop = true }
     }
     val navigateRegister: () -> Unit = {
         navController.navigate(ZepiDestinations.REGISTER_ROUTE){ launchSingleTop = true }

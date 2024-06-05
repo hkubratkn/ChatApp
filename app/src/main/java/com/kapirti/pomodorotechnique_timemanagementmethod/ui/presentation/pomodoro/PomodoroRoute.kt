@@ -17,12 +17,16 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.pomodoro
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.kapirti.pomodorotechnique_timemanagementmethod.R
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsBannerToolbar
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.BottomCard
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.HomeTopAppBar
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_HOME_BANNER_ID
 
@@ -30,19 +34,41 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds
 @Composable
 fun PomodoroRoute(
     openDrawer: () -> Unit,
-    navigateSearch: () -> Unit,
+    navigateTimeOver: () -> Unit,
+    navigateToHome: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: PomodoroViewModel = hiltViewModel(),
 ) {
+    val context = LocalContext.current
+
     Scaffold(
         topBar = {
             HomeTopAppBar(
                 openDrawer = openDrawer,
             )
         },
-        bottomBar = { AdsBannerToolbar(ads = ADS_HOME_BANNER_ID) },
+        bottomBar = {
+            BottomCard(
+                start = R.string.start,
+                finish = R.string.done,
+                startBtnStatus = viewModel.startBtnStatus,
+                finishBtnStatus = viewModel.finishBtnStatus,
+                onStartClick = {
+                    viewModel.onStartPressed(context = context, navigateTimeOver = navigateTimeOver)
+                    //showInterstialAd()
+                },
+                onFinishClick = {
+                    viewModel.onFinishClicked()
+                    //showInterstialAd()
+                }
+            )
+        },
         modifier = modifier.fillMaxSize(),
     ) { innerPadding ->
-        PomodoroScreen()
+        PomodoroScreen(
+            modifier = Modifier.padding(innerPadding),
+            navigateToHome = navigateToHome,
+            showInterstialAd = {},
+        )
     }
 }
