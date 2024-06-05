@@ -28,6 +28,21 @@
     <!-- login register screen -->
     <string name="log_in_with_google">Log in with Google</string>
     <string name="register_with_google">Register with Google</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="email_error">Please insert a valid email.</string>
+    <string name="empty_password_error">Password cannot be empty.</string>
+    <string name="recovery_email_sent">Check your inbox for the recovery email.</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="log_in">Log In</string>
+    <string name="forgotten_password">Forgot password? Click to get recovery email</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="password_error">Your password should have at least six digits and include one digit, one lower case letter and one upper case letter.</string>
+    <string name="password_match_error">Passwords do not match.</string>
+    <string name="register">Register</string>
+    <string name="already_have_an_account">Already have an account</string>
+
 
     <!-- Edit Screen -->
     <!-- filter screen -->
@@ -63,20 +78,6 @@
 
 
 
-    <string name="welcome_back">Welcome back</string>
-    <string name="log_in">Log In</string>
-    <string name="forgotten_password">Forgot password? Click to get recovery email</string>
-    <string name="create_new_account">Create New Account</string>
-    <string name="email_error">Please insert a valid email.</string>
-    <string name="empty_password_error">Password cannot be empty.</string>
-    <string name="recovery_email_sent">Check your inbox for the recovery email.</string>
-    <string name="password_error">Your password should have at least six digits and include one digit, one lower case letter and one upper case letter.</string>
-    <string name="password_match_error">Passwords do not match.</string>
-    <string name="register">Register</string>
-    <string name="already_have_an_account">Already have an account</string>
-    <string name="email">E-mail</string>
-    <string name="password">Password</string>
-    <string name="repeat_password">Repeat password</string>
 
     <string name="next">Next</string>
     <string name="done">Done</string>

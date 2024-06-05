@@ -81,6 +81,9 @@ fun PomodoroApp(
             sizeAwareDrawerState = sizeAwareDrawerState,
             hasUser = hasUser,
 
+            popUpScreen = navigationActions.popUp,
+            restartApp = navigationActions.clearAndNavigate,
+
             navigateToPomodoro = navigationActions.navigateToPomodoro,
             navigateToSettings = navigationActions.navigateToSettings,
             navigateToSubscriptions = navigationActions.navigateToSubscriptions,
@@ -88,14 +91,16 @@ fun PomodoroApp(
 
             openAndPopUpSplashToPomodoro = navigationActions.openAndPopUpSplashToPomodoro,
             openAndPopUpSplashToLogin = navigationActions.openAndPopUpSplashToLogin,
-          /**  popUpScreen = navigationActions.popUp,
-            restartApp = navigationActions.clearAndNavigate,
+            navigateAndPopUpRegisterToEdit = navigationActions.navigateAndPopUpRegisterToEdit,
+
+            loginToRegister = navigationActions.navigateAndPopUpLoginToRegister,
+            registerToLogin = navigationActions.navigateAndPopUpRegisterToLogin,
+
+            /**
 
 
             openAndPopUpChatNopeToExist = navigationActions.openAndPopUpChatNopeToExist,
 
-            loginToRegister = navigationActions.navigateAndPopUpLoginToRegister,
-            registerToLogin = navigationActions.navigateAndPopUpRegisterToLogin,
 
             userProfileToChatNope = navigationActions.navigateAndPopUpUserProfileToChatNope,
 
@@ -109,7 +114,6 @@ fun PomodoroApp(
             navigateBlockUser = navigationActions.navigateBlockUser,
 
             navigateAndPopUpSearchToUserProfile = navigationActions.navigateAndPopUpSearchToUserProfile,
-            navigateAndPopUpRegisterToEdit = navigationActions.navigateAndPopUpRegisterToEdit,
 
             includeUserIdViewModel = includeUserIdViewModel,
             includeChatViewModel = includeChatViewModel,

@@ -30,7 +30,6 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsB
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.BasicButton
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.BasicTextButton
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.EmailField
-import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.GoogleSignInRow
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.HeaderText
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.HyperlinkText
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.PasswordField

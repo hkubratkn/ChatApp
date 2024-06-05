@@ -7,6 +7,7 @@ object PomodoroDestinations {
     const val SPLASH_ROUTE = "splash"
     const val LOG_IN_ROUTE = "login"
     const val REGISTER_ROUTE = "register"
+    const val EDIT_ROUTE = "edit"
 
     const val POMODORO_ROUTE = "pomodoro"
     const val SETTINGS_ROUTE = "settings"
@@ -15,6 +16,16 @@ object PomodoroDestinations {
 
 
 class PomodoroNavigationActions(navController: NavHostController) {
+    val clearAndNavigate: () -> Unit = {
+        navController.navigate(PomodoroDestinations.SPLASH_ROUTE){
+            launchSingleTop = true
+            popUpTo(0) { inclusive = true }
+        }
+    }
+    val popUp: () -> Unit = {
+        navController.popBackStack()
+    }
+
 
     val navigateToPomodoro: () -> Unit = {
         navController.navigate(PomodoroDestinations.POMODORO_ROUTE) {
@@ -56,11 +67,28 @@ class PomodoroNavigationActions(navController: NavHostController) {
             popUpTo(PomodoroDestinations.SPLASH_ROUTE){ inclusive = true }
         }
     }
+    val navigateAndPopUpLoginToRegister: () -> Unit = {
+        navController.navigate(PomodoroDestinations.REGISTER_ROUTE){
+            launchSingleTop = true
+            popUpTo(PomodoroDestinations.LOG_IN_ROUTE){ inclusive = true }
+        }
+    }
+    val navigateAndPopUpRegisterToLogin: () -> Unit = {
+        navController.navigate(PomodoroDestinations.LOG_IN_ROUTE){
+            launchSingleTop = true
+            popUpTo(PomodoroDestinations.REGISTER_ROUTE){ inclusive = true }
+        }
+    }
+    val navigateAndPopUpRegisterToEdit: () -> Unit = {
+        navController.navigate(PomodoroDestinations.EDIT_ROUTE){
+            launchSingleTop = true
+            popUpTo(PomodoroDestinations.REGISTER_ROUTE){ inclusive = true }
+        }
+    }
 }
 
 /**
 
-    const val EDIT_ROUTE = "edit"
     const val USER_PROFILE_ROUTE = "userProfile"
     const val SEARCH_ROUTE = "search"
     const val CHATNOPE_ROUTE = "chatnope"
@@ -85,15 +113,6 @@ class PomodoroNavigationActions(navController: NavHostController) {
 }
 
 
-    val clearAndNavigate: () -> Unit = {
-        navController.navigate(ZepiDestinations.SPLASH_ROUTE){
-            launchSingleTop = true
-            popUpTo(0) { inclusive = true }
-        }
-    }
-    val popUp: () -> Unit = {
-        navController.popBackStack()
-    }
 
 
     val openAndPopUpChatNopeToExist: () -> Unit = {
@@ -102,24 +121,8 @@ class PomodoroNavigationActions(navController: NavHostController) {
             popUpTo(ZepiDestinations.CHATNOPE_ROUTE){ inclusive = true }
         }
     }
-    val navigateAndPopUpLoginToRegister: () -> Unit = {
-        navController.navigate(ZepiDestinations.REGISTER_ROUTE){
-            launchSingleTop = true
-            popUpTo(ZepiDestinations.LOG_IN_ROUTE){ inclusive = true }
-        }
-    }
-    val navigateAndPopUpRegisterToLogin: () -> Unit = {
-        navController.navigate(ZepiDestinations.LOG_IN_ROUTE){
-            launchSingleTop = true
-            popUpTo(ZepiDestinations.REGISTER_ROUTE){ inclusive = true }
-        }
-    }
-    val navigateAndPopUpRegisterToEdit: () -> Unit = {
-        navController.navigate(ZepiDestinations.EDIT_ROUTE){
-            launchSingleTop = true
-            popUpTo(ZepiDestinations.REGISTER_ROUTE){ inclusive = true }
-        }
-    }
+
+
     val navigateAndPopUpSearchToUserProfile: () -> Unit = {
         navController.navigate(ZepiDestinations.USER_PROFILE_ROUTE){
             launchSingleTop = true
