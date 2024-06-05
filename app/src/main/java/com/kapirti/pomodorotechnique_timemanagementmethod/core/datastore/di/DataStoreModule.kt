@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.core.datastore.di
-/**
+package com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.di
+
 import android.content.Context
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.ChatIdRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRepository
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.OnBoardingRepository
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.UserIdRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,11 +30,11 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DataStoreModule {
 
-    @Provides
+/**    @Provides
     @Singleton
     fun provideOnBoardingRepository(
         @ApplicationContext context: Context
-    ) = OnBoardingRepository(context = context)
+    ) = OnBoardingRepository(context = context)*/
 
     @Provides
     @Singleton
@@ -51,7 +48,7 @@ object DataStoreModule {
         @ApplicationContext context: Context
     ) = EditTypeRepository(context)
 
-    @Provides
+  /**  @Provides
     @Singleton
     fun provideChatIdRepository(
         @ApplicationContext context: Context
@@ -61,6 +58,6 @@ object DataStoreModule {
     @Singleton
     fun provideUserIdRepository(
         @ApplicationContext context: Context
-    ) = UserIdRepository(context)
+    ) = UserIdRepository(context)*/
 }
-*/
+

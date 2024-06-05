@@ -1,21 +1,5 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.register
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.register
-/**
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.Timestamp
@@ -25,18 +9,18 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRep
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidEmail
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidPassword
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.passwordMatches
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.ggoo.SignInResult
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.ggoo.SignInState
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.ggoo.UserData
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.EditType.PROFILE
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.iraaa.ggoo.SignInResult
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.iraaa.ggoo.SignInState
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.iraaa.ggoo.UserData
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Feedback
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.AccountService
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.FirestoreService
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.LogService
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.QuickChatViewModel
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
 import java.util.Locale
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -44,12 +28,12 @@ import kotlinx.coroutines.flow.update
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-    logService: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.LogService,
-    private val accountService: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.AccountService,
-    private val firestoreService: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.FirestoreService,
+    logService: LogService,
+    private val accountService: AccountService,
+    private val firestoreService: FirestoreService,
     private val langRepository: LangRepository,
     private val editTypeRepository: EditTypeRepository,
-): QuickChatViewModel(logService) {
+): PomodoroViewModel(logService) {
     private val _state = MutableStateFlow(SignInState())
     val state = _state.asStateFlow()
 
@@ -85,7 +69,7 @@ class RegisterViewModel @Inject constructor(
     ) {
         launchCatching {
             firestoreService.saveUser(
-                com.kapirti.pomodorotechnique_timemanagementmethod.past.model.User(
+                User(
                     photo = userData?.let { it.profilePictureUrl } ?: "",
                     displayName = userData?.let { it.username } ?: "",
                     language = langValue,
@@ -96,7 +80,7 @@ class RegisterViewModel @Inject constructor(
             )
 
             firestoreService.saveLang(
-                com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Feedback(
+                Feedback(
                     langValue
                 )
             )
@@ -148,7 +132,7 @@ class RegisterViewModel @Inject constructor(
             try {
                 accountService.linkAccount(email, password)
                 firestoreService.saveUser(
-                    com.kapirti.pomodorotechnique_timemanagementmethod.past.model.User(
+                    User(
                         language = langValue,
                         online = true,
                         uid = accountService.currentUserId,
@@ -156,7 +140,7 @@ class RegisterViewModel @Inject constructor(
                     )
                 )
                 firestoreService.saveLang(
-                    com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Feedback(
+                    Feedback(
                         langValue
                     )
                 )
@@ -173,4 +157,4 @@ class RegisterViewModel @Inject constructor(
 
     fun onButtonChange() { uiState.value = uiState.value.copy(button = !button) }
 }
-*/
+

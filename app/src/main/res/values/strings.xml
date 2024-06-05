@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pomodoro</string>
+    <string name="web_client_id">411230460844-78i6e1s467k4huq3gkj7vtat9ncn6onk.apps.googleusercontent.com</string>
 
     <!-- App -->
     <string name="not_connected">⚠️You aren’t connected to the internet</string>
@@ -25,6 +26,9 @@
     <string name="subscriptions_title">Subscriptions</string>
 
     <!-- login register screen -->
+    <string name="log_in_with_google">Log in with Google</string>
+    <string name="register_with_google">Register with Google</string>
+
     <!-- Edit Screen -->
     <!-- filter screen -->
     <!-- Search Screen -->
@@ -34,7 +38,6 @@
     <!-- Block Users Screen -->
 </resources>
     <!--
-        <string name="web_client_id">698610992240-ft7uso81glfh8pn6fnj09bulpbi3mo67.apps.googleusercontent.com</string>
 
 
     <string name="no_users_all">You have no users!</string>
@@ -74,8 +77,6 @@
     <string name="email">E-mail</string>
     <string name="password">Password</string>
     <string name="repeat_password">Repeat password</string>
-    <string name="log_in_with_google">Log in with Google</string>
-    <string name="register_with_google">Register with Google</string>
 
     <string name="next">Next</string>
     <string name="done">Done</string>

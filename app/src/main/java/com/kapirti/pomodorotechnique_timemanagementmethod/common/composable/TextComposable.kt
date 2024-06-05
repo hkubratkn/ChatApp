@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.common.composable
-/**
+package com.kapirti.pomodorotechnique_timemanagementmethod.common.composable
+
 import androidx.annotation.StringRes
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Text
@@ -97,4 +97,3 @@ fun HyperlinkText(
     )
 
 }
-*/

@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.login
-/**
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.login
+
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidEmail
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRepository
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.iraaa.ggoo.SignInResult
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.iraaa.ggoo.SignInState
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.AccountService
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.FirestoreService
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.LogService
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.QuickChatViewModel
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.ggoo.SignInResult
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.ggoo.SignInState
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Locale
 import javax.inject.Inject
@@ -36,11 +36,11 @@ import kotlinx.coroutines.flow.update
 
 @HiltViewModel
 class LogInViewModel @Inject constructor(
-    private val accountService: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.AccountService,
-    private val firestoreService: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.FirestoreService,
+    private val accountService: AccountService,
+    private val firestoreService: FirestoreService,
     private val langRepository: LangRepository,
-    logService: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.LogService,
-): QuickChatViewModel(logService) {
+    logService: LogService,
+): PomodoroViewModel(logService) {
     private val _state = MutableStateFlow(SignInState())
     val state = _state.asStateFlow()
 
@@ -154,4 +154,4 @@ class LogInViewModel @Inject constructor(
         }
     }
 }
-*/
+

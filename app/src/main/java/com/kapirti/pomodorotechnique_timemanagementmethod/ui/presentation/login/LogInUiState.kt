@@ -14,17 +14,10 @@
  * limitations under the License.
  */
 
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.login
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.iraaa.ggoo
-/**
-data class SignInResult(
-    val data: UserData?,
-    val errorMessage: String?
+data class LogInUiState(
+    val email: String = "",
+    val password: String = "",
+    val button: Boolean = true
 )
-
-data class UserData(
-    val userId: String,
-    val username: String?,
-    val profilePictureUrl: String?
-)
-*/

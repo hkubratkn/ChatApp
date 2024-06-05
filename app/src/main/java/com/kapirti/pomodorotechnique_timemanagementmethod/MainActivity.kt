@@ -79,11 +79,11 @@ class MainActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
-       // viewModel.saveIsOnline()
+        viewModel.saveIsOnline()
     }
     override fun onPause() {
         super.onPause()
-       // viewModel.saveLastSeen()
+        viewModel.saveLastSeen()
     }
 
     private fun showInterstitialAd(){

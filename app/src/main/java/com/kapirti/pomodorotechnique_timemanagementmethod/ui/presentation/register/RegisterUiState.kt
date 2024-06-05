@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.register
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.iraaa.ggoo
-/**
-data class SignInState(
-    val isSignInSuccessful: Boolean = false,
-    val signInError: String? = null
+data class RegisterUiState(
+    val email: String = "",
+    val password: String = "",
+    val repeatPassword: String = "",
+    val button: Boolean = true
 )
-*/

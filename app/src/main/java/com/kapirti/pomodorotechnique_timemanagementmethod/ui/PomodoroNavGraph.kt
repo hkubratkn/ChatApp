@@ -16,7 +16,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AppNavRail
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.login.LogInScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.pomodoro.PomodoroRoute
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.register.RegisterScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.settings.SettingsRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.splash.SplashScreen
 
@@ -31,12 +33,19 @@ fun ZepiNavGraph(
     openDrawer: () -> Unit,
     closeDrawer: () -> Unit,
 
+    restartApp : () -> Unit,
+    popUpScreen: () -> Unit,
+
     navigateToPomodoro: () -> Unit,
     navigateToSettings: () -> Unit,
     navigateToSubscriptions: () -> Unit,
 
     openAndPopUpSplashToPomodoro: () -> Unit,
     openAndPopUpSplashToLogin: () -> Unit,
+    navigateAndPopUpRegisterToEdit: () -> Unit,
+
+    loginToRegister: () -> Unit,
+    registerToLogin: () -> Unit,
 
     navController: NavHostController = rememberNavController(),
     startDestination: String = PomodoroDestinations.SPLASH_ROUTE,
@@ -109,17 +118,28 @@ fun ZepiNavGraph(
                         showInterstialAd = showInterstitialAds
                     )
                 }
+
+                composable(PomodoroDestinations.LOG_IN_ROUTE) {
+                    LogInScreen(
+                        restartApp = restartApp,
+                        loginToRegister = loginToRegister,
+                        showInterstialAd = showInterstitialAds,
+                    )
+                }
+                composable(PomodoroDestinations.REGISTER_ROUTE) {
+                    RegisterScreen(
+                        navigateAndPopUpRegisterToEdit = navigateAndPopUpRegisterToEdit,
+                        registerToLogin = registerToLogin,
+                        showInterstitialAds = showInterstitialAds,
+                    )
+                }
             }
         }
     }
 }
- /**   restartApp : () -> Unit,
-    popUpScreen: () -> Unit,
+ /**
 
     openAndPopUpChatNopeToExist: () -> Unit,
-
-    loginToRegister: () -> Unit,
-    registerToLogin: () -> Unit,
 
     userProfileToChatNope: () -> Unit,
 
@@ -133,7 +153,6 @@ fun ZepiNavGraph(
     navigateBlockUser: () -> Unit,
 
     navigateAndPopUpSearchToUserProfile: () -> Unit,
-    navigateAndPopUpRegisterToEdit: () -> Unit,
 
     includeUserIdViewModel: IncludeUserIdViewModel,
     includeChatViewModel: IncludeChatViewModel,
@@ -362,21 +381,6 @@ fun ZepiNavGraph(
 
 
 
-
-                composable(ZepiDestinations.LOG_IN_ROUTE) {
-                    LogInScreen(
-                        restartApp = restartApp,
-                        loginToRegister = loginToRegister,
-                        showInterstialAd = showInterstitialAds,
-                    )
-                }
-                composable(ZepiDestinations.REGISTER_ROUTE) {
-                    RegisterScreen(
-                        navigateAndPopUpRegisterToEdit = navigateAndPopUpRegisterToEdit,
-                        registerToLogin = registerToLogin,
-                        showInterstitialAds = showInterstitialAds,
-                    )
-                }
                 composable(ZepiDestinations.EDIT_ROUTE) {
                     EditRoute(
                         popUp = popUpScreen,

@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.model
-/**
+package com.kapirti.pomodorotechnique_timemanagementmethod.model
+
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ServerTimestamp
 
@@ -37,4 +37,3 @@ data class User(
     @ServerTimestamp
     var date: Timestamp? = null
 )
-*/

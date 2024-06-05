@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.iraaa.ggoo
-/**
+package com.kapirti.pomodorotechnique_timemanagementmethod.model.ggoo
+
 import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
@@ -25,7 +25,7 @@ import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.kapirti.pomodorotechnique_timemanagementmethod.R
+import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.tasks.await
 
@@ -88,11 +88,11 @@ class GoogleAuthUiClient(
                 GoogleIdTokenRequestOptions.builder()
                     .setSupported(true)
                     .setFilterByAuthorizedAccounts(false)
-                    .setServerClientId(context.getString(R.string.web_client_id))
+                    .setServerClientId(context.getString(AppText.web_client_id))
                     .build()
             )
             .setAutoSelectEnabled(true)
             .build()
     }
 }
-*/
+

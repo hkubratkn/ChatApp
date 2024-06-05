@@ -1,20 +1,19 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package com.kapirti.pomodorotechnique_timemanagementmethod.model.service
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
+
+
+interface FirestoreService {
+    suspend fun getUser(userId: String): User?
+    suspend fun saveUser(user: User)
+    suspend fun saveLang(feedback: Feedback)
+
+    suspend fun updateUserOnline(value: Boolean)
+    suspend fun updateUserLastSeen()
+
+}
+
 /**
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Block
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.User
@@ -26,25 +25,21 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Report
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.UserPhotos
 import kotlinx.coroutines.flow.Flow
 
-interface FirestoreService {
     val users: Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.User>>
     val userChats: Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat>>
     val userArchives: Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat>>
     val userBlockUsers: Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Block>>
     val chatMessages: Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.ChatMessage>>
 
-    suspend fun getUser(userId: String): com.kapirti.pomodorotechnique_timemanagementmethod.past.model.User?
     suspend fun getUserPhotos(userId: String): Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.UserPhotos>>
     suspend fun getChatUnreadCount(who: String, chatId: String): com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat?
 
-    suspend fun saveUser(user: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.User)
     suspend fun saveUserChat(uid: String, chatId: String, chat: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat)
     suspend fun saveUserArchive(uid: String, chatId: String, chat: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat)
     suspend fun saveChatMessage(chatId: String, chatMessage: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.ChatMessage)
     suspend fun block(uid: String, partnerUid: String, block: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Block)
     suspend fun report(uid: String, partnerUid: String, report: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Report)
     suspend fun saveFeedback(feedback: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Feedback)
-    suspend fun saveLang(feedback: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Feedback)
 
     suspend fun deleteUserChat(uid: String, chatId: String)
     suspend fun deleteUserArchive(uid: String, chatId: String)
@@ -52,8 +47,6 @@ interface FirestoreService {
     suspend fun deleteAccount(delete: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Delete)
 
 
-    suspend fun updateUserOnline(value: Boolean)
-    suspend fun updateUserLastSeen()
     suspend fun updateUserProfilePhoto(photo: String)
     suspend fun updateUserName(newValue: String)
     suspend fun updateUserSurname(newValue: String)

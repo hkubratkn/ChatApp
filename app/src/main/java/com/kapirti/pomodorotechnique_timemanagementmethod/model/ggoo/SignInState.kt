@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.model
-/**
-data class Feedback (
-    val text: String = "",
-    val uid: String = "",
-    val email: String = "",
+
+package com.kapirti.pomodorotechnique_timemanagementmethod.model.ggoo
+
+data class SignInState(
+    val isSignInSuccessful: Boolean = false,
+    val signInError: String? = null
 )
-*/

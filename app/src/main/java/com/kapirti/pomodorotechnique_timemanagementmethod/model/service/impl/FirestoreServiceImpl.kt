@@ -1,49 +1,65 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package com.kapirti.pomodorotechnique_timemanagementmethod.model.service.impl
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.impl
-
-
-/**
- *
- *
- *
- *
-package com.kapirti.ira.model.service.impl
-
-import com.kapirti.ira.model.service.AccountService
-import com.kapirti.ira.model.service.FirestoreService
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.kapirti.ira.core.datastore.LangRepository
-import com.kapirti.ira.model.*
-import com.kapirti.ira.model.service.trace
-import kotlinx.coroutines.awaitAll
+import com.google.firebase.firestore.dataObjects
+import com.google.firebase.firestore.toObject
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRepository
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
-
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.tasks.await
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.snapshots
+import com.google.firebase.firestore.toObjects
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.trace
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.tasks.asDeferred
 
 class FirestoreServiceImpl @Inject constructor(
-private val firestore: FirebaseFirestore,
-private val auth: AccountService,
-private val langRepository: LangRepository,
+    private val firestore: FirebaseFirestore,
+    private val auth: AccountService,
+    private val langRepository: LangRepository,
 // private val chatIdRepository: ChatIdRepository
 ): FirestoreService {
+    override suspend fun getUser(uid: String): User? = userDocument(uid).get().await().toObject()
+    override suspend fun saveUser(user: User): Unit = trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
+    override suspend fun saveLang(feedback: Feedback): Unit =
+        trace(SAVE_LANG_TRACE) {
+            langDocument(feedback).set(feedback).await()
+        }
+    override suspend fun updateUserOnline(value: Boolean): Unit = trace(UPDATE_USER_ONLINE_TRACE){ userDocument(auth.currentUserId).update(ONLINE_FIELD, value).await() }
+    override suspend fun updateUserLastSeen(): Unit = trace(UPDATE_USER_LAST_SEEN_TRACE) { userDocument(auth.currentUserId).update(LAST_SEEN_FIELD, FieldValue.serverTimestamp()).await()}
+
+    private fun userCollection(): CollectionReference = firestore.collection(USER_COLLECTION)
+    private fun userDocument(uid: String): DocumentReference = userCollection().document(uid)
+    private fun langDocument(feedback: Feedback): DocumentReference = firestore.collection(LANG_COLLECTION).document(feedback.text)
+
+
+
+    companion object {
+        private const val USER_COLLECTION = "User"
+        private const val LANG_COLLECTION = "Lang"
+        private const val ONLINE_FIELD = "online"
+        private const val LAST_SEEN_FIELD = "lastSeen"
+
+        private const val SAVE_USER_TRACE = "saveUser"
+        private const val SAVE_LANG_TRACE = "saveLang"
+
+        private const val UPDATE_USER_ONLINE_TRACE = "updateUserOnline"
+        private const val UPDATE_USER_LAST_SEEN_TRACE = "updateUserLastSeen"
+    }
+}
+/**
+
 override val usersAll: Flow<List<User>>
 get() =
 auth.currentUser.flatMapLatest { users ->
@@ -72,10 +88,8 @@ userPhotosCollection(user.id).orderBy(DATE_FIELD, Query.Direction.DESCENDING).sn
 }
 
 
-override suspend fun getUser(uid: String): User? = userDocument(uid).get().await().toObject()
 override suspend fun getUserChat(uid: String, chatId: String): Chat? = chatCollection(uid).document(chatId).get().await().toObject()
 override suspend fun chatRow(chatId: String): Flow<List<ChatRow>> = chatCollection(chatId).orderBy(DATE_FIELD, Query.Direction.DESCENDING).snapshots().map { snapshot -> snapshot.toObjects() }
-override suspend fun saveUser(user: User): Unit = trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
 override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_CHAT_TRACE){ userChatCollection(uid).document(chatId).set(chat).await() }
 override suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_ARCHIVE_TRACE){ userArchiveCollection(uid).document(chatId).set(chat).await()}
 override suspend fun saveUserPhotos(userPhotos: UserPhotos): Unit = trace(SAVE_USER_PHOTOS_TRACE){ userPhotosCollection(auth.currentUserId).add(userPhotos).await() }
@@ -84,8 +98,6 @@ override suspend fun saveFeedback(feedback: Feedback): Unit = trace(SAVE_FEEDBAC
 override suspend fun block(uid: String, partnerUid: String, block: Block): Unit = trace(SAVE_BLOCK_USER) { userBlockDocument(uid, partnerUid).set(block).await() }
 override suspend fun report(uid: String, partnerUid: String, report: Report): Unit = trace(SAVE_REPORT) { userReportDocument(uid = uid, partnerUid = partnerUid).set(report).await() }
 
-override suspend fun updateUserOnline(value: Boolean): Unit = trace(UPDATE_USER_ONLINE_TRACE){ userDocument(auth.currentUserId).update(ONLINE_FIELD, value).await() }
-override suspend fun updateUserLastSeen(): Unit = trace(UPDATE_USER_LAST_SEEN_TRACE) { userDocument(auth.currentUserId).update(LAST_SEEN_FIELD, FieldValue.serverTimestamp()).await()}
 override suspend fun updateUserDisplayName(newValue: String): Unit = trace(UPDATE_USER_DISPLAY_NAME_TRACE){ userDocument(auth.currentUserId).update(DISPLAY_NAME_FIELD, newValue).await()}
 override suspend fun updateUserName(newValue: String): Unit = trace(UPDATE_USER_NAME_TRACE){ userDocument(auth.currentUserId).update(NAME_FIELD, newValue).await() }
 override suspend fun updateUserSurname(newValue: String): Unit = trace(UPDATE_USER_SURNAME_TRACE){ userDocument(auth.currentUserId).update(SURNAME_FIELD, newValue).await() }
@@ -103,9 +115,6 @@ matchingChats.map { it.reference.delete().asDeferred() }.awaitAll()
 
 
 
-
-private fun userCollection(): CollectionReference = firestore.collection(USER_COLLECTION)
-private fun userDocument(uid: String): DocumentReference = userCollection().document(uid)
 private fun userChatCollection(uid: String): CollectionReference = userDocument(uid).collection(CHAT_COLLECTION)
 private fun userArchiveCollection(uid: String): CollectionReference = userDocument(uid).collection(ARCHIVE_COLLECTION)
 private fun userPhotosCollection(uid: String): CollectionReference = userDocument(uid).collection(PHOTOS_COLLECTION)
@@ -118,8 +127,6 @@ private fun userReportDocument(uid: String, partnerUid: String): DocumentReferen
 
 
 
-companion object {
-private const val USER_COLLECTION = "User"
 private const val CHAT_COLLECTION = "Chat"
 private const val ARCHIVE_COLLECTION = "Archive"
 private const val PHOTOS_COLLECTION = "Photos"
@@ -130,8 +137,6 @@ private const val REPORT_COLLECTION = "Report"
 
 private const val DATE_FIELD = "date"
 private const val LANGUAGE_FIELD = "language"
-private const val ONLINE_FIELD = "online"
-private const val LAST_SEEN_FIELD = "lastSeen"
 private const val DISPLAY_NAME_FIELD = "displayName"
 private const val NAME_FIELD = "name"
 private const val SURNAME_FIELD = "surname"
@@ -139,7 +144,6 @@ private const val GENDER_FIELD = "gender"
 private const val DESCRIPTION_FIELD = "description"
 private const val PHOTO_FIELD = "photo"
 
-private const val SAVE_USER_TRACE = "saveUser"
 private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
 private const val SAVE_USER_ARCHIVE_TRACE = "saveUserArchive"
 private const val SAVE_USER_PHOTOS_TRACE = "saveUserPhotos"
@@ -147,8 +151,6 @@ private const val SAVE_CHAT_ROW = "saveChatRow"
 private const val SAVE_FEEDBACK_TRACE = "saveFeedback"
 private const val SAVE_BLOCK_USER = "saveBlockUser"
 private const val SAVE_REPORT = "saveReport"
-private const val UPDATE_USER_ONLINE_TRACE = "updateUserOnline"
-private const val UPDATE_USER_LAST_SEEN_TRACE = "updateUserLastSeen"
 private const val UPDATE_USER_DISPLAY_NAME_TRACE = "updateUSerDisplayName"
 private const val UPDATE_USER_NAME_TRACE = "updateUserName"
 private const val UPDATE_USER_SURNAME_TRACE = "updateUserSurname"
@@ -353,10 +355,7 @@ class FirestoreServiceImpl @Inject constructor(
         com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.trace(
             SAVE_FEEDBACK_TRACE
         ) { feedbackCollection().add(feedback).await() }
-    override suspend fun saveLang(feedback: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Feedback): Unit =
-        com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.trace(SAVE_LANG_TRACE) {
-            langDocument(feedback).set(feedback).await()
-        }
+
     override suspend fun updateUserOnline(value: Boolean): Unit =
         com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.trace(
             UPDATE_USER_ONLINE_TRACE
@@ -453,7 +452,6 @@ class FirestoreServiceImpl @Inject constructor(
     private fun userReportDocument(uid: String, partnerUid: String): DocumentReference = userDocument(partnerUid).collection(REPORT_COLLECTION).document(uid)
     private fun deleteCollection(): CollectionReference = firestore.collection(DELETE_COLLECTION)
     private fun feedbackCollection(): CollectionReference = firestore.collection(FEEDBACK_COLLECTION)
-    private fun langDocument(feedback: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Feedback): DocumentReference = firestore.collection(LANG_COLLECTION).document(feedback.text)
 
 
 
@@ -478,7 +476,6 @@ class FirestoreServiceImpl @Inject constructor(
         private const val REPORT_COLLECTION = "Report"
         private const val DELETE_COLLECTION = "Delete"
         private const val FEEDBACK_COLLECTION = "Feedback"
-        private const val LANG_COLLECTION = "Lang"
 
         private const val SAVE_USER_TRACE = "saveUser"
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
@@ -487,7 +484,6 @@ class FirestoreServiceImpl @Inject constructor(
         private const val SAVE_BLOCK_USER = "saveBlockUser"
         private const val SAVE_REPORT = "saveReport"
         private const val SAVE_FEEDBACK_TRACE = "saveFeedback"
-        private const val SAVE_LANG_TRACE = "saveLang"
 
         private const val UPDATE_USER_ONLINE_TRACE = "updateUserOnline"
         private const val UPDATE_USER_LAST_SEEN_TRACE = "updateUserLastSeen"

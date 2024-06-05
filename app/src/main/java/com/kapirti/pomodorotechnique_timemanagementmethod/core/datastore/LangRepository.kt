@@ -14,31 +14,31 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.core.datastore
-/**
+package com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore
+
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.EditType.FEEDBACK
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Cons.DEFAULT_LANGUAGE_CODE
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 
-class EditTypeRepository(private val context: Context){
+class LangRepository (private val context: Context) {
     companion object PreferencesKey {
-        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "edit_type_pref")
-        val EDIT_TYPE_KEY = stringPreferencesKey(name = "edit_type_completed")
+        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "lang_pref")
+        val LANGUAGE_KEY = stringPreferencesKey(name = "lang_code")
     }
 
-    suspend fun saveEditTypeState(type: String) {
+    suspend fun saveLangState(language: String) {
         context.dataStore.edit { preferences ->
-            preferences[EDIT_TYPE_KEY] = type
+            preferences[LANGUAGE_KEY] = language
         }
     }
 
-    fun readEditTypeState(): Flow<String> {
+    fun readLangState(): Flow<String> {
         return context.dataStore.data
             .catch { exception ->
                 if (exception is IOException) {
@@ -48,9 +48,9 @@ class EditTypeRepository(private val context: Context){
                 }
             }
             .map { preferences ->
-                val editTypeState = preferences[EDIT_TYPE_KEY] ?: FEEDBACK
-                editTypeState
+                val languageState = preferences[LANGUAGE_KEY] ?: DEFAULT_LANGUAGE_CODE
+                languageState
             }
     }
 }
-*/
+

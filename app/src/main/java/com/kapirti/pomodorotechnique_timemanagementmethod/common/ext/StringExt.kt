@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.common.ext
+package com.kapirti.pomodorotechnique_timemanagementmethod.common.ext
 
 import android.util.Patterns
 import java.util.regex.Pattern
