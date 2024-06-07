@@ -88,6 +88,7 @@
     <string name="feedback_description">We are constantly improving our product by listening to your feedback.</string>
     <string name="name_and_surname">Name And Surname</string>
     <string name="display_name">Display name</string>
+    <string name="pomo">Pomo</string>
 
     <!-- Timeover screen -->
     <string name="start">Start</string>

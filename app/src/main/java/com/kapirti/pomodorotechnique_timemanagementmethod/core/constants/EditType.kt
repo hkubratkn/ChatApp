@@ -25,4 +25,5 @@ object EditType {
     const val FEEDBACK = "FEEDBACK"
     const val LANG = "LANG"
     const val DELETE = "DELETE"
+    const val POMO = "POMO"
 }

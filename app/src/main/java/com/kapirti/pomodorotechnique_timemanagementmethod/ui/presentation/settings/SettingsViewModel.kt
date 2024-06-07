@@ -26,6 +26,8 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRep
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.DELETE
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.FEEDBACK
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.LANG
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.POMO
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.PomoService
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.repository.SettingsRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.usecase.GetThemePreferencesUseCase
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.usecase.GetThemeUpdateUseCase
@@ -43,6 +45,7 @@ class SettingsViewModel @Inject constructor(
     private val editTypeRepository: EditTypeRepository,
     private val langRepository: LangRepository,
     private val settingsRepository: SettingsRepository,
+    private val pomoService: PomoService,
     private val saveThemePreferencesUseCase: SaveThemePreferencesUseCase,
     private val publishThemeUpdateUseCase: PublishThemeUpdateUseCase,
     private val getThemePreferencesUseCase: GetThemePreferencesUseCase,
@@ -57,11 +60,20 @@ class SettingsViewModel @Inject constructor(
     val lang: String?
         get() = _lang.value
 
+
+    private val _pomo = mutableStateOf<Int?>(20)
+    val pomo: Int?
+        get() = _pomo.value
+
+
     init {
         launchCatching {
-            langRepository.readLangState().collect{ itLang ->
+            langRepository.readLangState().collect { itLang ->
                 _lang.value = itLang
-                getThemeUpdateUseCase().collect { _theme.value = it }
+                pomoService.pomo().collect { scored ->
+                    _pomo.value = scored
+                    getThemeUpdateUseCase().collect { _theme.value = it }
+                }
             }
         }
     }
@@ -93,6 +105,12 @@ class SettingsViewModel @Inject constructor(
     fun onLangClick(navigateEdit: () -> Unit){
         launchCatching {
             editTypeRepository.saveEditTypeState(LANG)
+            navigateEdit()
+        }
+    }
+    fun onPomoClick(navigateEdit: () -> Unit){
+        launchCatching {
+            editTypeRepository.saveEditTypeState(POMO)
             navigateEdit()
         }
     }

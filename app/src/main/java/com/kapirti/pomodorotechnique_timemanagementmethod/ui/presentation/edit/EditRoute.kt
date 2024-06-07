@@ -25,6 +25,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.Dial
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.PasswordField
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.fieldModifier
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.PomoQuestion
 
 private const val CONTENT_ANIMATION_DURATION = 300
 
@@ -135,9 +136,16 @@ fun EditRoute(
                     onOptionSelected = viewModel::onLangChange,
                     modifier = modifier
                 )
+                SurveyQuestion.POMO -> PomoValueQuestion(
+                    value = viewModel.pomo.toString(),
+                    minusBtnState = if (viewModel.pomo ?: 0 > 5) true else false ?: true,
+                    onPlusClick = viewModel::pomoIncrease,
+                    onMinusClick = viewModel::pomoDecrease,
+                )
             }
         }
     }
+
     val empty_password_error = stringResource(id = AppText.empty_password_error)
     if (viewModel.showWarningDialog ?: false) {
         AlertDialog(

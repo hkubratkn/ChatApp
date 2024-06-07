@@ -36,6 +36,7 @@ import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material.icons.filled.PrivacyTip
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.StarRate
+import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -99,6 +100,12 @@ fun SettingsScreen(
             "",
             Modifier.card(),
         ) { viewModel.onFeedbackClick(navigateEdit) }
+        RegularCardEditor(
+            viewModel.pomo.toString(),
+            Icons.Default.Timer,
+            "",
+            Modifier.card()
+        ) { viewModel.onPomoClick(navigateEdit) }
         RegularCardEditor(
             viewModel.lang ?: DEFAULT_LANGUAGE_CODE,
             Icons.Default.Flag,

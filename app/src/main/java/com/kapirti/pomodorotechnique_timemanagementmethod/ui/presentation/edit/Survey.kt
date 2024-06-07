@@ -4,11 +4,13 @@ import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import androidx.annotation.StringRes
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.QChatRepo
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.FieldQuestion
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.FieldQuestionDouble
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.FieldQuestionHeight
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.PhotoQuestion
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.PomoQuestion
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.SingleChoiceQuestionAvatar
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.SingleChoiceQuestionLang
 
@@ -156,3 +158,22 @@ fun LangQuestion(
     )
 }
 
+@Composable
+fun PomoValueQuestion(
+    value: String,
+    minusBtnState: Boolean,
+    onPlusClick: () -> Unit,
+    onMinusClick: () -> Unit,
+    modifier: Modifier = Modifier,
+){
+    PomoQuestion(
+        titleResourceId = AppText.pomo,
+        directionsResourceId = AppText.pomo,
+        value = value,
+        minusBtnState = minusBtnState,
+        plusBtnState = true,
+        modifier = modifier,
+        onMinusClick = onMinusClick,
+        onPlusClick = onPlusClick,
+    )
+}

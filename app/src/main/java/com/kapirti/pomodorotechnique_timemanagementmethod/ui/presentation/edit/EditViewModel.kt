@@ -15,10 +15,12 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditTyp
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.FEEDBACK
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.LANG
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.NAME_SURNAME
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.POMO
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.PROFILE
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.PROFILE_PHOTO
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRepository
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.PomoService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Delete
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
@@ -39,6 +41,7 @@ class EditViewModel @Inject constructor(
     private val storageService: StorageService,
     private val editTypeRepository: EditTypeRepository,
     private val langRepository: LangRepository,
+    private val pomoService: PomoService,
     logService: LogService,
 ): PomodoroViewModel(logService) {
     val uid = accountService.currentUserId
@@ -50,6 +53,15 @@ class EditViewModel @Inject constructor(
     private val _lang = mutableStateOf<String?>(null)
     val lang: String?
         get() = _lang.value
+
+    private val _pomo = mutableStateOf<Int?>(20)
+    val pomo: Int?
+        get() = _pomo.value
+
+    private val _increaseBtnState = mutableStateOf<Boolean?>(true)
+    val increaseBtnState: Boolean?
+        get() = _increaseBtnState.value
+
 
     var uiState = mutableStateOf(SettingsUiState())
         private set
@@ -67,6 +79,9 @@ class EditViewModel @Inject constructor(
                 _editType.value = it
                 langRepository.readLangState().collect { itLang ->
                     _lang.value = itLang
+                    pomoService.pomo().collect { scored ->
+                        _pomo.value = scored
+                    }
                 }
             }
         }
@@ -87,6 +102,7 @@ class EditViewModel @Inject constructor(
         DELETE -> listOf(SurveyQuestion.DELETE)
         FEEDBACK -> listOf(SurveyQuestion.FEEDBACK)
         LANG -> listOf(SurveyQuestion.LANG)
+        POMO -> listOf(SurveyQuestion.POMO)
         else -> emptyList()
     }
 
@@ -197,6 +213,7 @@ class EditViewModel @Inject constructor(
             LANG -> {
                 saveLang(popUp)
             }
+            POMO -> { popUp() }
 
             DELETE -> {
                 openDelete()
@@ -362,6 +379,9 @@ class EditViewModel @Inject constructor(
         _isNextEnabled.value = getIsNextEnabled()
     }
 
+    fun pomoIncrease(){ launchCatching { pomoService.increase() } }
+    fun pomoDecrease(){ launchCatching { pomoService.decrease() } }
+
 
     private fun getIsNextEnabled(): Boolean {
         return when (questionOrder[questionIndex]) {
@@ -373,6 +393,7 @@ class EditViewModel @Inject constructor(
             SurveyQuestion.DELETE -> _description.value != null
             SurveyQuestion.FEEDBACK -> _description.value != null
             SurveyQuestion.LANG -> _lang.value != null
+            SurveyQuestion.POMO -> _pomo.value != null
         }
     }
 
@@ -396,6 +417,7 @@ enum class SurveyQuestion {
     DELETE,
     FEEDBACK,
     LANG,
+    POMO
 }
 
 data class SurveyScreenData(
