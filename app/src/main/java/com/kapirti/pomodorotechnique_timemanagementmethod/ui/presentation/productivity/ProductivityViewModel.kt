@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.pomodoro
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.productivity
 
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
@@ -33,7 +33,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.room.pomodoro.Wor
 import java.time.LocalDateTime
 
 @HiltViewModel
-class PomodoroViewModel @Inject constructor(
+class ProductivityViewModel @Inject constructor(
     private val pomoService: PomoService,
     private val workTimeDao: WorkTimeDao,
     logService: LogService

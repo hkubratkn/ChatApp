@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Subscriptions
 import androidx.compose.material3.Icon
@@ -26,13 +25,12 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.R.drawable as AppIcon
 import androidx.compose.material.icons.filled.ChatBubbleOutline
 import androidx.compose.material.icons.filled.SupervisorAccount
 import androidx.compose.material.icons.filled.Timer
-import androidx.compose.material.icons.filled.VideoLibrary
 import androidx.compose.material.icons.filled.Work
 
 @Composable
 fun AppDrawer(
     currentRoute: String,
-    navigateToPomodoro: () -> Unit,
+    navigateToProductivity: () -> Unit,
    // navigateToTimeline: () -> Unit,
     navigateToJob: () -> Unit,
     navigateToEmployee: () -> Unit,
@@ -65,10 +63,10 @@ fun AppDrawer(
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
             NavigationDrawerItem(
-                label = { Text(stringResource(id = AppText.pomodoro_title)) },
+                label = { Text(stringResource(id = AppText.productivity_title)) },
                 icon = { Icon(Icons.Filled.Timer, null) },
-                selected = currentRoute == PomodoroDestinations.POMODORO_ROUTE,
-                onClick = { navigateToPomodoro(); closeDrawer() },
+                selected = currentRoute == PomodoroDestinations.PRODUCTIVITY_ROUTE,
+                onClick = { navigateToProductivity(); closeDrawer() },
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
             NavigationDrawerItem(

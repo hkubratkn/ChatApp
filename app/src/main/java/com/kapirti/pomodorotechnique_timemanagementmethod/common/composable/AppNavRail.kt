@@ -19,7 +19,6 @@ package com.kapirti.pomodorotechnique_timemanagementmethod.common.composable
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ListAlt
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -39,7 +38,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.ui.PomodoroDestination
 @Composable
 fun AppNavRail(
     currentRoute: String,
-    navigateToPomodoro: () -> Unit,
+    navigateToProductivity: () -> Unit,
     navigateToSettings: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -56,10 +55,10 @@ fun AppNavRail(
     ) {
         Spacer(Modifier.weight(1f))
         NavigationRailItem(
-            selected = currentRoute == PomodoroDestinations.POMODORO_ROUTE,
-            onClick = navigateToPomodoro,
-            icon = { Icon(Icons.Filled.Timer, stringResource(AppText.pomodoro_title)) },
-            label = { Text(stringResource(AppText.pomodoro_title)) },
+            selected = currentRoute == PomodoroDestinations.PRODUCTIVITY_ROUTE,
+            onClick = navigateToProductivity,
+            icon = { Icon(Icons.Filled.Timer, stringResource(AppText.productivity_title)) },
+            label = { Text(stringResource(AppText.productivity_title)) },
             alwaysShowLabel = false
         )
         NavigationRailItem(

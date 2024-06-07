@@ -23,7 +23,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.E
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.employee.EmployeeScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.job.JobScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.login.LogInScreen
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.pomodoro.PomodoroRoute
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.productivity.ProductivityRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.profile.ProfileRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.register.RegisterScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.settings.SettingsRoute
@@ -44,7 +44,7 @@ fun ZepiNavGraph(
     restartApp : () -> Unit,
     popUpScreen: () -> Unit,
 
-    navigateToPomodoro: () -> Unit,
+    navigateToProductivity: () -> Unit,
 
     navigateToJob: () -> Unit,
     navigateToEmployee: () -> Unit,
@@ -53,7 +53,7 @@ fun ZepiNavGraph(
     navigateToSettings: () -> Unit,
     navigateToSubscriptions: () -> Unit,
 
-    openAndPopUpSplashToPomodoro: () -> Unit,
+    openAndPopUpSplashToProductivity: () -> Unit,
     openAndPopUpSplashToLogin: () -> Unit,
     navigateAndPopUpRegisterToEdit: () -> Unit,
 
@@ -86,7 +86,7 @@ fun ZepiNavGraph(
         drawerContent = {
             AppDrawer(
                 currentRoute = currentRoute,
-                navigateToPomodoro = navigateToPomodoro,
+                navigateToProductivity = navigateToProductivity,
                // navigateToTimeline = navigateToTimeline,
                 navigateToJob = navigateToJob,
                 navigateToEmployee = navigateToEmployee,
@@ -105,7 +105,7 @@ fun ZepiNavGraph(
             if (isExpandedScreen) {
                 AppNavRail(
                     currentRoute = currentRoute,
-                    navigateToPomodoro = navigateToPomodoro,
+                    navigateToProductivity = navigateToProductivity,
                     navigateToSettings = navigateToSettings,
                 )
             }
@@ -115,11 +115,11 @@ fun ZepiNavGraph(
                 startDestination = startDestination,
                 modifier = modifier,
             ) {
-                composable(PomodoroDestinations.POMODORO_ROUTE) {
-                    PomodoroRoute(
+                composable(PomodoroDestinations.PRODUCTIVITY_ROUTE) {
+                    ProductivityRoute(
                         openDrawer = openDrawer,
                         navigateTimeOver = navigateTimeOver,
-                        navigateToPomodoro = navigateToPomodoro,
+                        navigateToProductivity = navigateToProductivity,
                     )
                 }
                 composable(PomodoroDestinations.JOB_ROUTE){ JobScreen()}
@@ -151,7 +151,7 @@ fun ZepiNavGraph(
 
                 composable(PomodoroDestinations.SPLASH_ROUTE) {
                     SplashScreen(
-                        openAndPopUpSplashToPomodoro = openAndPopUpSplashToPomodoro,
+                        openAndPopUpSplashToProductivity = openAndPopUpSplashToProductivity,
                         openAndPopUpSplashToLogin = openAndPopUpSplashToLogin,
                         showInterstialAd = showInterstitialAds
                     )
@@ -180,7 +180,7 @@ fun ZepiNavGraph(
                 composable(PomodoroDestinations.TIME_OVER_ROUTE){
                     TimeOverScreen(
                         openDrawer = openDrawer,
-                        navigateToPomodoro = navigateToPomodoro,
+                        navigateToProductivity = navigateToProductivity,
                         showInterstialAd = showInterstitialAds,
                     )
                 }

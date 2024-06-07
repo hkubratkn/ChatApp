@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.pomodoro
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.productivity
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -25,19 +25,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.R
-import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsBannerToolbar
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.BottomCard
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.HomeTopAppBar
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_HOME_BANNER_ID
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PomodoroRoute(
+fun ProductivityRoute(
     openDrawer: () -> Unit,
     navigateTimeOver: () -> Unit,
-    navigateToPomodoro: () -> Unit,
+    navigateToProductivity: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: PomodoroViewModel = hiltViewModel(),
+    viewModel: ProductivityViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current
 
@@ -65,9 +63,9 @@ fun PomodoroRoute(
         },
         modifier = modifier.fillMaxSize(),
     ) { innerPadding ->
-        PomodoroScreen(
+        ProductivityScreen(
             modifier = Modifier.padding(innerPadding),
-            navigateToPomodoro = navigateToPomodoro,
+            navigateToPomodoro = navigateToProductivity,
             showInterstialAd = {},
         )
     }

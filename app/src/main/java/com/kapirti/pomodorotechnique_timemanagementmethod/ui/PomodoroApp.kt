@@ -67,7 +67,7 @@ fun PomodoroApp(
 
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute =
-            navBackStackEntry?.destination?.route ?: PomodoroDestinations.POMODORO_ROUTE
+            navBackStackEntry?.destination?.route ?: PomodoroDestinations.PRODUCTIVITY_ROUTE
 
         val isExpandedScreen = widthSizeClass == WindowWidthSizeClass.Expanded
         val sizeAwareDrawerState = rememberSizeAwareDrawerState(isExpandedScreen)
@@ -89,7 +89,7 @@ fun PomodoroApp(
             popUpScreen = navigationActions.popUp,
             restartApp = navigationActions.clearAndNavigate,
 
-            navigateToPomodoro = navigationActions.navigateToPomodoro,
+            navigateToProductivity = navigationActions.navigateToProductivity,
             navigateToJob = navigationActions.navigateToJob,
             navigateToEmployee = navigationActions.navigateToEmployee,
             navigateToChats = navigationActions.navigateToChats,
@@ -98,7 +98,7 @@ fun PomodoroApp(
             navigateToSubscriptions = navigationActions.navigateToSubscriptions,
 
 
-            openAndPopUpSplashToPomodoro = navigationActions.openAndPopUpSplashToPomodoro,
+            openAndPopUpSplashToProductivity = navigationActions.openAndPopUpSplashToProductivity,
             openAndPopUpSplashToLogin = navigationActions.openAndPopUpSplashToLogin,
             navigateAndPopUpRegisterToEdit = navigationActions.navigateAndPopUpRegisterToEdit,
 

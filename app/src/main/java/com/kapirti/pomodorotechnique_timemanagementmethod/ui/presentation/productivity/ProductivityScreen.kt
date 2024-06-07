@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.pomodoro
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.productivity
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -33,14 +33,13 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.smallSpacer
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_POMODORO_BANNER_ID
 
 @Composable
-internal fun PomodoroScreen(
+internal fun ProductivityScreen(
     navigateToPomodoro: () -> Unit,
     showInterstialAd: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: PomodoroViewModel = hiltViewModel()
+    viewModel: ProductivityViewModel = hiltViewModel()
 ) {
     Scaffold(
-
         modifier = modifier.fillMaxSize(),
     ) { paddingValues ->
 

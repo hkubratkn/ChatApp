@@ -25,7 +25,7 @@ private const val SPLASH_TIMEOUT = 1000L
 
 @Composable
 fun SplashScreen(
-    openAndPopUpSplashToPomodoro: () -> Unit,
+    openAndPopUpSplashToProductivity: () -> Unit,
     openAndPopUpSplashToLogin: () -> Unit,
     showInterstialAd: () -> Unit,
     modifier: Modifier = Modifier,
@@ -44,7 +44,7 @@ fun SplashScreen(
             Text(text = stringResource(AppText.generic_error))
 
             BasicButton(AppText.try_again, Modifier.basicButton(), true) {
-                viewModel.onAppStart(openAndPopUpSplashToPomodoro, openAndPopUpSplashToLogin)
+                viewModel.onAppStart(openAndPopUpSplashToProductivity, openAndPopUpSplashToLogin)
                 showInterstialAd()
             }
         } else {
@@ -54,6 +54,6 @@ fun SplashScreen(
 
     LaunchedEffect(true) {
         delay(SPLASH_TIMEOUT)
-        viewModel.onAppStart(openAndPopUpSplashToPomodoro, openAndPopUpSplashToLogin)
+        viewModel.onAppStart(openAndPopUpSplashToProductivity, openAndPopUpSplashToLogin)
     }
 }

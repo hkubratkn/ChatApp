@@ -12,7 +12,7 @@ object PomodoroDestinations {
 
     const val JOB_ROUTE = "job"
     const val EMPLOYEE_ROUTE = "employee"
-    const val POMODORO_ROUTE = "pomodoro"
+    const val PRODUCTIVITY_ROUTE = "productivity"
     const val CHATS_ROUTE = "chats"
     const val PROFILE_ROUTE = "profile"
     const val SETTINGS_ROUTE = "settings"
@@ -32,8 +32,8 @@ class PomodoroNavigationActions(navController: NavHostController) {
     }
 
 
-    val navigateToPomodoro: () -> Unit = {
-        navController.navigate(PomodoroDestinations.POMODORO_ROUTE) {
+    val navigateToProductivity: () -> Unit = {
+        navController.navigate(PomodoroDestinations.PRODUCTIVITY_ROUTE) {
             popUpTo(navController.graph.findStartDestination().id) {
                 saveState = true
             }
@@ -104,8 +104,8 @@ class PomodoroNavigationActions(navController: NavHostController) {
     }
 
 
-    val openAndPopUpSplashToPomodoro: () -> Unit = {
-        navController.navigate(PomodoroDestinations.POMODORO_ROUTE){
+    val openAndPopUpSplashToProductivity: () -> Unit = {
+        navController.navigate(PomodoroDestinations.PRODUCTIVITY_ROUTE){
             launchSingleTop = true
             popUpTo(PomodoroDestinations.SPLASH_ROUTE){ inclusive = true }
         }
