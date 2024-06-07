@@ -11,6 +11,7 @@ object PomodoroDestinations {
     const val TIME_OVER_ROUTE = "timeOver"
 
     const val POMODORO_ROUTE = "pomodoro"
+    const val PROFILE_ROUTE = "profile"
     const val SETTINGS_ROUTE = "settings"
     const val SUBSCRIPTIONS_ROUTE = "subscriptions"
 }
@@ -37,6 +38,15 @@ class PomodoroNavigationActions(navController: NavHostController) {
             restoreState = true
         }
     }
+    val navigateToProfile: () -> Unit = {
+        navController.navigate(PomodoroDestinations.PROFILE_ROUTE) {
+            popUpTo(navController.graph.findStartDestination().id) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
     val navigateToSettings: () -> Unit = {
         navController.navigate(PomodoroDestinations.SETTINGS_ROUTE) {
             popUpTo(navController.graph.findStartDestination().id) {
@@ -56,7 +66,9 @@ class PomodoroNavigationActions(navController: NavHostController) {
         }
     }
 
-
+    val navigateEdit: () -> Unit = {
+        navController.navigate(PomodoroDestinations.EDIT_ROUTE){ launchSingleTop = true }
+    }
     val navigateTimeOver: () -> Unit = {
         navController.navigate(PomodoroDestinations.TIME_OVER_ROUTE){ launchSingleTop = true }
     }
@@ -107,7 +119,6 @@ class PomodoroNavigationActions(navController: NavHostController) {
     const val HOME_ROUTE = "home"
     const val TIMELINE_ROUTE = "timeline"
     const val CHATS_ROUTE = "chats"
-    const val PROFILE_ROUTE = "profile"
 
    /**
     const val ASSET_DETAIL_SCREEN = "assetDetail"
@@ -153,9 +164,7 @@ class PomodoroNavigationActions(navController: NavHostController) {
     val navigateRegister: () -> Unit = {
         navController.navigate(ZepiDestinations.REGISTER_ROUTE){ launchSingleTop = true }
     }
-    val navigateEdit: () -> Unit = {
-        navController.navigate(ZepiDestinations.EDIT_ROUTE){ launchSingleTop = true }
-    }
+
     val navigateSearch: () -> Unit = {
         navController.navigate(ZepiDestinations.SEARCH_ROUTE){ launchSingleTop = true }
     }
@@ -194,15 +203,7 @@ class PomodoroNavigationActions(navController: NavHostController) {
             restoreState = true
         }
     }
-    val navigateToProfile: () -> Unit = {
-        navController.navigate(ZepiDestinations.PROFILE_ROUTE) {
-            popUpTo(navController.graph.findStartDestination().id) {
-                saveState = true
-            }
-            launchSingleTop = true
-            restoreState = true
-        }
-    }
+
 
 }
 */

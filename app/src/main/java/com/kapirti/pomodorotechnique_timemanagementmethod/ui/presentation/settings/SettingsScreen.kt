@@ -28,17 +28,25 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.Alignment
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Block
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Feedback
 import androidx.compose.material.icons.filled.Flag
+import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material.icons.filled.PrivacyTip
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.StarRate
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.DangerousCardEditor
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.DialogCancelButton
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.DialogConfirmButton
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.RegularCardEditor
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.ThemeCardEditor
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.card
@@ -107,12 +115,10 @@ fun SettingsScreen(
             modifier = Modifier.card()
         )
         Spacer(modifier = Modifier.spacer())
-    }
-}
-/**
+
         if (viewModel.hasUser) {
             RegularCardEditor(
-                stringResource(id = AppText.block_users_title),
+                stringResource(id = AppText.blocked_users_title),
                 Icons.Default.Block,
                 "", Modifier.card()
             ) { navigateBlockUser() }
@@ -144,5 +150,5 @@ fun SettingsScreen(
             },
             onDismissRequest = { showSignOutDialog = false }
         )
-    }*/
-
+    }
+}

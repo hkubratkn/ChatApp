@@ -17,7 +17,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.ggoo.UserData
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.EditType.PROFILE
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.PROFILE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel

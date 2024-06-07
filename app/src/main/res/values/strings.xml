@@ -13,7 +13,14 @@
 
     <!-- Timeline Screen -->
     <!-- Chats Screen -->
+    <string name="long_click">Long click</string>
+
     <!-- Profile Screen -->
+    <string name="profile_title">Profile</string>
+    <string name="online">Online</string>
+    <string name="join">Join</string>
+    <string name="age">Age</string>
+
     <!-- Settings Screen -->
     <string name="settings_title">Settings</string>
     <string name="share">Share</string>
@@ -21,6 +28,10 @@
     <string name="feedback">Feedback</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="dark_mode">Dark mode</string>
+    <string name="sign_out">Sign out</string>
+    <string name="sign_out_title">Sign out?</string>
+    <string name="sign_out_description">You will have to sign in again to see your tasks.</string>
+    <string name="cancel">Cancel</string>
 
     <!-- Subscriptions Screen -->
     <string name="subscriptions_title">Subscriptions</string>
@@ -46,6 +57,24 @@
 
     <!-- Edit Screen -->
     <string name="done">Done</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="question_count">\u00A0of %d</string>
+    <string name="delete_my_account">Delete my account</string>
+    <string name="delete_account_title">Delete account?</string>
+    <string name="delete_account_description">You will lose all your data and your account will be deleted. This action is irreversible.</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="select_all">Select all that apply.</string>
+    <string name="tell_us_about_you">Tell us something about yourself</string>
+    <string name="description">Description</string>
+    <string name="why_delete_account">why are you deleting your account</string>
+    <string name="selfie_skills">Show off your selfie skills!</string>
+    <string name="add_photo">ADD PHOTO</string>
+    <string name="retake_photo">RETAKE PHOTO</string>
+    <string name="feedback_description">We are constantly improving our product by listening to your feedback.</string>
+    <string name="name_and_surname">Name And Surname</string>
+    <string name="display_name">Display name</string>
 
     <!-- Timeover screen -->
     <string name="start">Start</string>
@@ -55,7 +84,9 @@
     <!-- User Profile Screen -->
     <!-- Photos Screen -->
     <!-- Chat Screen -->
-    <!-- Block Users Screen -->
+    <!-- Blocked Users Screen -->
+    <string name="blocked_users_title">Blocked users</string>
+    <string name="no_blocked_users_all">You have no blocked users!</string>
 </resources>
     <!--
 
@@ -70,43 +101,6 @@
     <string name="permission_message">To be notified when you have new messages, please grant the notification permission.</string>
     <string name="permission_rationale">Please grant the notification permission so that the app can demonstrate usage of the Notification APIs.</string>
     <string name="permission_grant">GRANT</string>
-    <string name="long_click">Long click</string>
-
-
-    <string name="profile_title">Profile</string>
-
-    <string name="sign_out">Sign out</string>
-    <string name="sign_out_title">Sign out?</string>
-    <string name="sign_out_description">You will have to sign in again to see your tasks.</string>
-    <string name="cancel">Cancel</string>
-
-
-
-
-
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="question_count">\u00A0of %d</string>
-    <string name="delete_my_account">Delete my account</string>
-    <string name="delete_account_title">Delete account?</string>
-    <string name="delete_account_description">You will lose all your data and your account will be deleted. This action is irreversible.</string>
-    <string name="name">Name</string>
-    <string name="surname">Surname</string>
-    <string name="in_my_free_time">In my free time I like to …</string>
-    <string name="select_all">Select all that apply.</string>
-    <string name="tell_us_about_you">Tell us something about yourself</string>
-    <string name="description">Description</string>
-    <string name="why_delete_account">why are you deleting your account</string>
-    <string name="selfie_skills">Show off your selfie skills!</string>
-    <string name="add_photo">ADD PHOTO</string>
-    <string name="retake_photo">RETAKE PHOTO</string>
-    <string name="feedback_description">We are constantly improving our product by listening to your feedback.</string>
-    <string name="name_and_surname">Name And Surname</string>
-    <string name="display_name">Display name</string>
-    <string name="female">Female</string>
-    <string name="male">Male</string>
-
-    <string name="gender">Gender</string>
 
     <string name="search">Search</string>
     <string name="search_count">%1d users</string>
@@ -114,9 +108,6 @@
     <string name="search_no_matches_retry">Try broadening your search</string>
     <string name="recent_searches">Recent searches</string>
 
-    <string name="online">Online</string>
-    <string name="join">Join</string>
-    <string name="age">Age</string>
 
     <string name="photos_title">Photos</string>
     <string name="no_photos_all">You have no photos!</string>
@@ -128,8 +119,6 @@
     <string name="report">Report</string>
     <string name="report_user">Do you want to report and block a user?</string>
 
-    <string name="block_users_title">Block users</string>
-    <string name="no_block_users_all">You have no block users!</string>
 
   <string name="loading_chats_error">Error while loading chats</string>
     <string name="archive">Archive</string>

@@ -21,9 +21,11 @@ import androidx.compose.runtime.State
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import androidx.compose.runtime.mutableStateOf
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.EditType.DELETE
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.EditType.FEEDBACK
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.EditType.LANG
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRepository
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.DELETE
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.FEEDBACK
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.LANG
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.repository.SettingsRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.usecase.GetThemePreferencesUseCase
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.usecase.GetThemeUpdateUseCase
@@ -38,8 +40,8 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.Pomodo
 class SettingsViewModel @Inject constructor(
     logService: LogService,
     private val accountService: AccountService,
-  //  private val editTypeRepository: EditTypeRepository,
-   // private val langRepository: LangRepository,
+    private val editTypeRepository: EditTypeRepository,
+    private val langRepository: LangRepository,
     private val settingsRepository: SettingsRepository,
     private val saveThemePreferencesUseCase: SaveThemePreferencesUseCase,
     private val publishThemeUpdateUseCase: PublishThemeUpdateUseCase,
@@ -57,10 +59,10 @@ class SettingsViewModel @Inject constructor(
 
     init {
         launchCatching {
-           // langRepository.readLangState().collect{ itLang ->
-             //   _lang.value = itLang
+            langRepository.readLangState().collect{ itLang ->
+                _lang.value = itLang
                 getThemeUpdateUseCase().collect { _theme.value = it }
-            //}
+            }
         }
     }
 
@@ -84,20 +86,20 @@ class SettingsViewModel @Inject constructor(
 
     fun onFeedbackClick(navigateEdit: () -> Unit){
         launchCatching {
-           // editTypeRepository.saveEditTypeState(FEEDBACK)
+            editTypeRepository.saveEditTypeState(FEEDBACK)
             navigateEdit()
         }
     }
     fun onLangClick(navigateEdit: () -> Unit){
         launchCatching {
-            //editTypeRepository.saveEditTypeState(LANG)
+            editTypeRepository.saveEditTypeState(LANG)
             navigateEdit()
         }
     }
 
     fun onDeleteClick(navigateEdit: () -> Unit){
         launchCatching {
-           // editTypeRepository.saveEditTypeState(DELETE)
+            editTypeRepository.saveEditTypeState(DELETE)
             navigateEdit()
         }
     }

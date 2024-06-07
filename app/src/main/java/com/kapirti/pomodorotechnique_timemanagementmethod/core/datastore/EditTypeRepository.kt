@@ -20,7 +20,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.EditType.FEEDBACK
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.FEEDBACK
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map

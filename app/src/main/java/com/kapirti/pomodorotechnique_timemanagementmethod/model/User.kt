@@ -26,8 +26,6 @@ data class User(
     val surname: String = "Surname",
     val photo: String = "Photo",
     val birthday: String = "Birthday",
-    val gender: String = "Gender",
-    val hobby: List<String> = listOf(),
     val description: String = "Description",
     val language: String = "Language",
     val online: Boolean = false,

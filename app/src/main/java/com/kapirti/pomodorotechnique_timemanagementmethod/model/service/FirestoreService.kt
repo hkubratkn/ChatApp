@@ -1,5 +1,6 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.model.service
 
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Delete
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
 
@@ -8,9 +9,16 @@ interface FirestoreService {
     suspend fun getUser(userId: String): User?
     suspend fun saveUser(user: User)
     suspend fun saveLang(feedback: Feedback)
+    suspend fun saveFeedback(feedback: Feedback)
 
     suspend fun updateUserOnline(value: Boolean)
     suspend fun updateUserLastSeen()
+    suspend fun updateUserProfilePhoto(photo: String)
+    suspend fun updateUserName(newValue: String)
+    suspend fun updateUserSurname(newValue: String)
+    suspend fun updateUserDisplayName(newValue: String)
+    suspend fun updateUserDescription(newValue: String)
+    suspend fun deleteAccount(delete: Delete)
 
 }
 
@@ -39,20 +47,12 @@ import kotlinx.coroutines.flow.Flow
     suspend fun saveChatMessage(chatId: String, chatMessage: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.ChatMessage)
     suspend fun block(uid: String, partnerUid: String, block: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Block)
     suspend fun report(uid: String, partnerUid: String, report: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Report)
-    suspend fun saveFeedback(feedback: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Feedback)
 
     suspend fun deleteUserChat(uid: String, chatId: String)
     suspend fun deleteUserArchive(uid: String, chatId: String)
     suspend fun deleteChat(chatId: String)
-    suspend fun deleteAccount(delete: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Delete)
 
 
-    suspend fun updateUserProfilePhoto(photo: String)
-    suspend fun updateUserName(newValue: String)
-    suspend fun updateUserSurname(newValue: String)
-    suspend fun updateUserDisplayName(newValue: String)
-    suspend fun updateUserGender(newValue: String)
-    suspend fun updateUserDescription(newValue: String)
     suspend fun updateChatLastMessage(who: String, chatId: String, text: String)
     suspend fun updateChatUnreadCount(who: String, chatId: String, count: Int)
     suspend fun updateChatTimestamp(who: String, chatId: String)

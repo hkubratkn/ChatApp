@@ -16,7 +16,7 @@
 
 package com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.userprofile.photos
 /**
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.EditType.PHOTOS
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.PHOTOS
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.UserPhotos
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.AccountService

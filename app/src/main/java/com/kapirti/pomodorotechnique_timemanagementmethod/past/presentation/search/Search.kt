@@ -17,16 +17,16 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.search
 /**
 import androidx.compose.runtime.Immutable
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Avatar.AVATAR_1
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Avatar.AVATAR_10
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Avatar.AVATAR_2
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Avatar.AVATAR_3
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Avatar.AVATAR_4
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Avatar.AVATAR_5
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Avatar.AVATAR_6
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Avatar.AVATAR_7
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Avatar.AVATAR_8
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Avatar.AVATAR_9
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Avatar.AVATAR_1
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Avatar.AVATAR_10
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Avatar.AVATAR_2
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Avatar.AVATAR_3
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Avatar.AVATAR_4
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Avatar.AVATAR_5
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Avatar.AVATAR_6
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Avatar.AVATAR_7
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Avatar.AVATAR_8
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Avatar.AVATAR_9
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext

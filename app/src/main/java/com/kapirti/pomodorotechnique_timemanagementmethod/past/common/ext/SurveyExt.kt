@@ -28,8 +28,8 @@ import androidx.compose.material.icons.filled.SportsMartialArts
 import androidx.compose.material.icons.filled.VideogameAsset
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsGender.FEMALE
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.ConsGender.MALE
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsGender.FEMALE
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsGender.MALE
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Hobby.DANCE
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Hobby.DRAW
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.core.constants.Hobby.PLAY_GAMES

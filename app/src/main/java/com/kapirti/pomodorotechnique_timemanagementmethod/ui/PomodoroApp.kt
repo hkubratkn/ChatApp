@@ -21,8 +21,10 @@ import androidx.compose.material3.SnackbarDuration.Indefinite
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.PomodoroAppState
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.data.NetworkMonitor
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeUserIdViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.theme.PomodoroTheme
 import kotlinx.coroutines.CoroutineScope
 
@@ -38,7 +40,7 @@ fun PomodoroApp(
         networkMonitor = networkMonitor,
     ),
 ) {
-   // val includeUserIdViewModel: IncludeUserIdViewModel = viewModel()
+    val includeUserIdViewModel: IncludeUserIdViewModel = viewModel()
    // val includeChatViewModel: IncludeChatViewModel = viewModel()
 
     PomodoroTheme(isDarkTheme) {
@@ -80,11 +82,14 @@ fun PomodoroApp(
             currentRoute = currentRoute,
             sizeAwareDrawerState = sizeAwareDrawerState,
             hasUser = hasUser,
+            includeUserIdViewModel = includeUserIdViewModel,
+//            includeChatViewModel = includeChatViewModel,
 
             popUpScreen = navigationActions.popUp,
             restartApp = navigationActions.clearAndNavigate,
 
             navigateToPomodoro = navigationActions.navigateToPomodoro,
+            navigateToProfile = navigationActions.navigateToProfile,
             navigateToSettings = navigationActions.navigateToSettings,
             navigateToSubscriptions = navigationActions.navigateToSubscriptions,
 
@@ -93,6 +98,7 @@ fun PomodoroApp(
             openAndPopUpSplashToLogin = navigationActions.openAndPopUpSplashToLogin,
             navigateAndPopUpRegisterToEdit = navigationActions.navigateAndPopUpRegisterToEdit,
 
+            navigateEdit = navigationActions.navigateEdit,
             navigateTimeOver = navigationActions.navigateTimeOver,
 
             loginToRegister = navigationActions.navigateAndPopUpLoginToRegister,
@@ -106,7 +112,6 @@ fun PomodoroApp(
 
             openLoginScreen = navigationActions.navigateLogin,
 
-            navigateEdit = navigationActions.navigateEdit,
             navigateSearch = navigationActions.navigateSearch,
             navigateUserProfile = navigationActions.navigateUserProfile,
             navigatePhotos = navigationActions.navigatePhotos,
@@ -115,15 +120,13 @@ fun PomodoroApp(
 
             navigateAndPopUpSearchToUserProfile = navigationActions.navigateAndPopUpSearchToUserProfile,
 
-            includeUserIdViewModel = includeUserIdViewModel,
-            includeChatViewModel = includeChatViewModel,
+
 
             navigateChatsToChatExist = navigationActions.navigateChatExist,
 
 
             navigateToTimeline = navigationActions.navigateToTimeline,
             navigateToChats = navigationActions.navigateToChats,
-            navigateToProfile = navigationActions.navigateToProfile,
 
             shortcutParams = shortcutParams*/
         )

@@ -34,7 +34,7 @@ fun AppDrawer(
    // navigateToTimeline: () -> Unit,
     //navigateToChats: () -> Unit,
     navigateToSubscriptions: () -> Unit,
-    //navigateToProfile: () -> Unit,
+    navigateToProfile: () -> Unit,
     navigateToSettings: () -> Unit,
     closeDrawer: () -> Unit,
     hasUser: Boolean,
@@ -54,6 +54,13 @@ fun AppDrawer(
                 onClick = { navigateToPomodoro(); closeDrawer() },
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
+            NavigationDrawerItem(
+                label = { Text(stringResource(id = AppText.profile_title)) },
+                icon = { Icon(Icons.Default.AccountCircle, null) },
+                selected = currentRoute == PomodoroDestinations.PROFILE_ROUTE,
+                onClick = { navigateToProfile(); closeDrawer() },
+                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+            )
            /** NavigationDrawerItem(
                 label = { Text(stringResource(id = AppText.timeline_title)) },
                 icon = { Icon(Icons.Filled.VideoLibrary, null) },
@@ -68,13 +75,7 @@ fun AppDrawer(
                 onClick = { navigateToChats(); closeDrawer() },
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
-            NavigationDrawerItem(
-                label = { Text(stringResource(id = AppText.profile_title)) },
-                icon = { Icon(Icons.Default.AccountCircle, null) },
-                selected = currentRoute == ZepiDestinations.PROFILE_ROUTE,
-                onClick = { navigateToProfile(); closeDrawer() },
-                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
-            )*/
+          */
         }
 
         NavigationDrawerItem(
