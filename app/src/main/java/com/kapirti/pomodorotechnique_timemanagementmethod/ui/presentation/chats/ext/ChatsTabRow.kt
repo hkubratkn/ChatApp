@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.chats.ext
-/**
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats.ext
+
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
@@ -28,8 +28,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.chats.SectionsChats
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.chats.TabContentChats
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats.SectionsChats
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats.TabContentChats
 
 
 @Composable
@@ -92,4 +92,3 @@ private fun ChatsTabRowContent(
         }
     }
 }
-*/

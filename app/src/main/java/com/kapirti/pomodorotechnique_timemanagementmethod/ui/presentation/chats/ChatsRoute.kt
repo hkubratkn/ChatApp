@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.chats
-/**
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats
+
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -70,7 +70,7 @@ fun ChatsRoute(
 
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
-        bottomBar = { AdsBannerToolbar(com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_CHATS_BANNER_ID) },
+        bottomBar = { AdsBannerToolbar(ConsAds.ADS_CHATS_BANNER_ID) },
         topBar = {
             MenuToolbar(
                 text = AppText.chats_title,
@@ -89,4 +89,3 @@ fun ChatsRoute(
         )
     }
 }
-*/

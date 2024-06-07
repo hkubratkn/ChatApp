@@ -10,7 +10,10 @@ object PomodoroDestinations {
     const val EDIT_ROUTE = "edit"
     const val TIME_OVER_ROUTE = "timeOver"
 
+    const val JOB_ROUTE = "job"
+    const val EMPLOYEE_ROUTE = "employee"
     const val POMODORO_ROUTE = "pomodoro"
+    const val CHATS_ROUTE = "chats"
     const val PROFILE_ROUTE = "profile"
     const val SETTINGS_ROUTE = "settings"
     const val SUBSCRIPTIONS_ROUTE = "subscriptions"
@@ -31,6 +34,33 @@ class PomodoroNavigationActions(navController: NavHostController) {
 
     val navigateToPomodoro: () -> Unit = {
         navController.navigate(PomodoroDestinations.POMODORO_ROUTE) {
+            popUpTo(navController.graph.findStartDestination().id) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+    val navigateToJob: () -> Unit = {
+        navController.navigate(PomodoroDestinations.JOB_ROUTE) {
+            popUpTo(navController.graph.findStartDestination().id) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+    val navigateToEmployee: () -> Unit = {
+        navController.navigate(PomodoroDestinations.EMPLOYEE_ROUTE) {
+            popUpTo(navController.graph.findStartDestination().id) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+    val navigateToChats: () -> Unit = {
+        navController.navigate(PomodoroDestinations.CHATS_ROUTE) {
             popUpTo(navController.graph.findStartDestination().id) {
                 saveState = true
             }
@@ -118,7 +148,6 @@ class PomodoroNavigationActions(navController: NavHostController) {
 
     const val HOME_ROUTE = "home"
     const val TIMELINE_ROUTE = "timeline"
-    const val CHATS_ROUTE = "chats"
 
    /**
     const val ASSET_DETAIL_SCREEN = "assetDetail"
@@ -194,16 +223,6 @@ class PomodoroNavigationActions(navController: NavHostController) {
             restoreState = true
         }
     }
-    val navigateToChats: () -> Unit = {
-        navController.navigate(ZepiDestinations.CHATS_ROUTE) {
-            popUpTo(navController.graph.findStartDestination().id) {
-                saveState = true
-            }
-            launchSingleTop = true
-            restoreState = true
-        }
-    }
-
 
 }
 */

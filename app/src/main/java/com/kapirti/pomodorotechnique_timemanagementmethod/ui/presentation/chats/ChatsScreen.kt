@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.chats
-/**
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats
+
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,10 +31,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.kapirti.pomodorotechnique_timemanagementmethod.R
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.EmptyContent
-import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.InterestsAdaptiveContentLayout
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.tabContainerModifier
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.chats.ext.ChatsTabRow
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Chat
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.common.composable.InterestsAdaptiveContentLayout
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats.ext.ChatsTabRow
 
 
 enum class SectionsChats(@StringRes val titleResId: Int) {
@@ -46,11 +46,11 @@ class TabContentChats(val section: SectionsChats, val content: @Composable () ->
 
 @Composable
 fun rememberTabContent(
-    chats: List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat>,
-    archives: List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat>,
-    onChatClick: (com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat) -> Unit,
-    onLongClickChats: (com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat) -> Unit,
-    onLongClickArchives: (com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat) -> Unit,
+    chats: List<Chat>,
+    archives: List<Chat>,
+    onChatClick: (Chat) -> Unit,
+    onLongClickChats: (Chat) -> Unit,
+    onLongClickArchives: (Chat) -> Unit,
 ): List<TabContentChats> {
     val favoritesSection = TabContentChats(SectionsChats.ChatsList) {
         TabWithChats(chats = chats, onChatClick = onChatClick, onLongClick = onLongClickChats) }
@@ -84,9 +84,9 @@ fun ChatsScreen(
 
 @Composable
 private fun TabWithChats(
-    chats: List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat>,
-    onChatClick: (com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat) -> Unit,
-    onLongClick: (com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat) -> Unit,
+    chats: List<Chat>,
+    onChatClick: (Chat) -> Unit,
+    onLongClick: (Chat) -> Unit,
     modifier: Modifier = Modifier,
 ) {
    // val scrollState = rememberLazyListState()
@@ -128,9 +128,9 @@ private fun TabWithChats(
 
 @Composable
 private fun TabWithArchives(
-    archives: List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat>,
-    onClick: (com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat) -> Unit,
-    onLongClick: (com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat) -> Unit,
+    archives: List<Chat>,
+    onClick: (Chat) -> Unit,
+    onLongClick: (Chat) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     InterestsAdaptiveContentLayout(
@@ -272,4 +272,3 @@ Text(stringResource(AppText.archive))
 
 }
  */
-*/

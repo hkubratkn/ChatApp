@@ -1,4 +1,4 @@
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.common
+package com.kapirti.pomodorotechnique_timemanagementmethod.common
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement

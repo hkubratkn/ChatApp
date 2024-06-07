@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.chats
-/**
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats
+
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
@@ -39,13 +39,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.NoSurfaceImage
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Chat
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ChatRow(
-    chat: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat,
+    chat: Chat,
     onClick: () -> Unit,
     onLongClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -102,4 +102,3 @@ fun ChatRow(
         }
     }
 }
-*/

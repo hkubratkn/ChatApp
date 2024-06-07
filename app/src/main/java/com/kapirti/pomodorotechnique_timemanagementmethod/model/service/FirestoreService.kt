@@ -1,13 +1,20 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.model.service
 
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Chat
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Delete
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
+import kotlinx.coroutines.flow.Flow
 
 
 interface FirestoreService {
+    val userChats: Flow<List<Chat>>
+    val userArchives: Flow<List<Chat>>
+
     suspend fun getUser(userId: String): User?
     suspend fun saveUser(user: User)
+    suspend fun saveUserChat(uid: String, chatId: String, chat: Chat)
+    suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat)
     suspend fun saveLang(feedback: Feedback)
     suspend fun saveFeedback(feedback: Feedback)
 
@@ -19,6 +26,8 @@ interface FirestoreService {
     suspend fun updateUserDisplayName(newValue: String)
     suspend fun updateUserDescription(newValue: String)
     suspend fun deleteAccount(delete: Delete)
+    suspend fun deleteUserChat(uid: String, chatId: String)
+    suspend fun deleteUserArchive(uid: String, chatId: String)
 
 }
 
@@ -34,22 +43,16 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.UserPhotos
 import kotlinx.coroutines.flow.Flow
 
     val users: Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.User>>
-    val userChats: Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat>>
-    val userArchives: Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat>>
     val userBlockUsers: Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Block>>
     val chatMessages: Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.ChatMessage>>
 
     suspend fun getUserPhotos(userId: String): Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.UserPhotos>>
     suspend fun getChatUnreadCount(who: String, chatId: String): com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat?
 
-    suspend fun saveUserChat(uid: String, chatId: String, chat: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat)
-    suspend fun saveUserArchive(uid: String, chatId: String, chat: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat)
     suspend fun saveChatMessage(chatId: String, chatMessage: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.ChatMessage)
     suspend fun block(uid: String, partnerUid: String, block: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Block)
     suspend fun report(uid: String, partnerUid: String, report: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Report)
 
-    suspend fun deleteUserChat(uid: String, chatId: String)
-    suspend fun deleteUserArchive(uid: String, chatId: String)
     suspend fun deleteChat(chatId: String)
 
 

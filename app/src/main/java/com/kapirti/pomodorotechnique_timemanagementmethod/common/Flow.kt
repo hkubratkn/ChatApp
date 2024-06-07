@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.soci.ui
-/**
+package com.kapirti.pomodorotechnique_timemanagementmethod.common
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
@@ -33,4 +33,3 @@ fun <T> Flow<T>.stateInUi(
 ): StateFlow<T> {
     return stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000L), initialValue)
 }
-*/

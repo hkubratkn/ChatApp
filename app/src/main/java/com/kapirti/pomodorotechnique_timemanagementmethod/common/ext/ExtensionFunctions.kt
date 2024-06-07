@@ -1,4 +1,4 @@
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.common.ext
+package com.kapirti.pomodorotechnique_timemanagementmethod.common.ext
 
 import java.text.SimpleDateFormat
 import java.util.Calendar

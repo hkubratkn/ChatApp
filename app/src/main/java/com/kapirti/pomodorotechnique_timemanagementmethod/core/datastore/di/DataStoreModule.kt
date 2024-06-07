@@ -17,6 +17,7 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.di
 
 import android.content.Context
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.ChatIdRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.PomoService
@@ -56,12 +57,12 @@ object DataStoreModule {
         @ApplicationContext context: Context
     ) = PomoService(context)
 
-    /**  @Provides
+    @Provides
     @Singleton
     fun provideChatIdRepository(
         @ApplicationContext context: Context
     ) = ChatIdRepository(context)
-*/
+
     @Provides
     @Singleton
     fun provideUserIdRepository(

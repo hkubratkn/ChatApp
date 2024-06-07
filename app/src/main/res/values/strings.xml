@@ -12,8 +12,21 @@
     <string name="pomodoro_title">Pomodoro</string>
 
     <!-- Timeline Screen -->
+
+    <!-- Job Screen -->
+    <string name="job_title">Job</string>
+
+    <!-- Employee Screen -->
+    <string name="employee_title">Employee</string>
+
     <!-- Chats Screen -->
+    <string name="chats_title">Chats</string>
+    <string name="archive_title">Archive</string>
     <string name="long_click">Long click</string>
+    <string name="no_chats_all">You have no chats!</string>
+    <string name="permission_message">To be notified when you have new messages, please grant the notification permission.</string>
+    <string name="permission_rationale">Please grant the notification permission so that the app can demonstrate usage of the Notification APIs.</string>
+    <string name="permission_grant">GRANT</string>
 
     <!-- Profile Screen -->
     <string name="profile_title">Profile</string>
@@ -94,13 +107,6 @@
     <string name="no_users_all">You have no users!</string>
 
     <string name="timeline_title">Timeline</string>
-
-    <string name="chats_title">Chats</string>
-    <string name="archive_title">Archive</string>
-    <string name="no_chats_all">You have no chats!</string>
-    <string name="permission_message">To be notified when you have new messages, please grant the notification permission.</string>
-    <string name="permission_rationale">Please grant the notification permission so that the app can demonstrate usage of the Notification APIs.</string>
-    <string name="permission_grant">GRANT</string>
 
     <string name="search">Search</string>
     <string name="search_count">%1d users</string>

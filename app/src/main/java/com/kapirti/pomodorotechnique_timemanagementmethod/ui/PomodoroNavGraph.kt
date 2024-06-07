@@ -16,8 +16,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AppNavRail
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeChatViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeUserIdViewModel
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats.ChatsRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.EditRoute
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.employee.EmployeeScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.job.JobScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.login.LogInScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.pomodoro.PomodoroRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.profile.ProfileRoute
@@ -41,6 +45,10 @@ fun ZepiNavGraph(
     popUpScreen: () -> Unit,
 
     navigateToPomodoro: () -> Unit,
+
+    navigateToJob: () -> Unit,
+    navigateToEmployee: () -> Unit,
+    navigateToChats: () -> Unit,
     navigateToProfile: () -> Unit,
     navigateToSettings: () -> Unit,
     navigateToSubscriptions: () -> Unit,
@@ -56,7 +64,7 @@ fun ZepiNavGraph(
     registerToLogin: () -> Unit,
 
     includeUserIdViewModel: IncludeUserIdViewModel,
-   // includeChatViewModel: IncludeChatViewModel,
+    includeChatViewModel: IncludeChatViewModel,
     navController: NavHostController = rememberNavController(),
     startDestination: String = PomodoroDestinations.SPLASH_ROUTE,
     modifier: Modifier = Modifier,
@@ -80,7 +88,9 @@ fun ZepiNavGraph(
                 currentRoute = currentRoute,
                 navigateToPomodoro = navigateToPomodoro,
                // navigateToTimeline = navigateToTimeline,
-               // navigateToChats = navigateToChats,
+                navigateToJob = navigateToJob,
+                navigateToEmployee = navigateToEmployee,
+                navigateToChats = navigateToChats,
                 navigateToProfile = navigateToProfile,
                 navigateToSettings = navigateToSettings,
                 navigateToSubscriptions = navigateToSubscriptions,
@@ -110,6 +120,16 @@ fun ZepiNavGraph(
                         openDrawer = openDrawer,
                         navigateTimeOver = navigateTimeOver,
                         navigateToPomodoro = navigateToPomodoro,
+                    )
+                }
+                composable(PomodoroDestinations.JOB_ROUTE){ JobScreen()}
+                composable(PomodoroDestinations.EMPLOYEE_ROUTE){ EmployeeScreen() }
+                composable(PomodoroDestinations.CHATS_ROUTE){
+                    ChatsRoute(
+                        includeChatViewModel = includeChatViewModel,
+                        isExpandedScreen = isExpandedScreen,
+                        openDrawer = openDrawer,
+                        navigateChatsToChatExist = {}, //navigateChatsToChatExist,
                     )
                 }
                 composable(PomodoroDestinations.PROFILE_ROUTE) {
@@ -189,8 +209,6 @@ fun ZepiNavGraph(
 
 
 
-    navigateToProfile: () -> Unit,
-    navigateToChats: () -> Unit,
     navigateToTimeline: () -> Unit,
 
     shortcutParams: ShortcutParams?,
@@ -545,17 +563,6 @@ fun (
                 showInterstialAd = showInterstitialAds)
         }
 
-
-
-        composable(QChatDestinations.CHATS_ROUTE){
-            ChatsRoute(
-                chatsToArchive = chatsToArchive,
-                chatsToChat = chatsToChat,
-                includeChatViewModel = includeChatViewModel,
-                isExpandedScreen = isExpandedScreen,
-                openDrawer = openDrawer
-            )
-        }
 
 */
 

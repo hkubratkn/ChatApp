@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.chats
+package com.kapirti.pomodorotechnique_timemanagementmethod.past
 /**
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
