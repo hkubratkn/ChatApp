@@ -24,9 +24,9 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.NoSurfaceImage
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.toReadableString
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.common.composable.BasicDivider
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.common.ext.toReadableString
 
 /**
 import androidx.compose.foundation.*

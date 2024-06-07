@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.PomodoroAppState
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.data.NetworkMonitor
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeChatViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeUserIdViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.theme.PomodoroTheme
 import kotlinx.coroutines.CoroutineScope
@@ -41,7 +42,7 @@ fun PomodoroApp(
     ),
 ) {
     val includeUserIdViewModel: IncludeUserIdViewModel = viewModel()
-   // val includeChatViewModel: IncludeChatViewModel = viewModel()
+    val includeChatViewModel: IncludeChatViewModel = viewModel()
 
     PomodoroTheme(isDarkTheme) {
         val isOffline by appState.isOffline.collectAsStateWithLifecycle()
@@ -83,12 +84,15 @@ fun PomodoroApp(
             sizeAwareDrawerState = sizeAwareDrawerState,
             hasUser = hasUser,
             includeUserIdViewModel = includeUserIdViewModel,
-//            includeChatViewModel = includeChatViewModel,
+            includeChatViewModel = includeChatViewModel,
 
             popUpScreen = navigationActions.popUp,
             restartApp = navigationActions.clearAndNavigate,
 
             navigateToPomodoro = navigationActions.navigateToPomodoro,
+            navigateToJob = navigationActions.navigateToJob,
+            navigateToEmployee = navigationActions.navigateToEmployee,
+            navigateToChats = navigationActions.navigateToChats,
             navigateToProfile = navigationActions.navigateToProfile,
             navigateToSettings = navigationActions.navigateToSettings,
             navigateToSubscriptions = navigationActions.navigateToSubscriptions,
@@ -126,7 +130,6 @@ fun PomodoroApp(
 
 
             navigateToTimeline = navigationActions.navigateToTimeline,
-            navigateToChats = navigationActions.navigateToChats,
 
             shortcutParams = shortcutParams*/
         )

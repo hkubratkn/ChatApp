@@ -15,6 +15,7 @@ import kotlinx.coroutines.tasks.await
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.snapshots
 import com.google.firebase.firestore.toObjects
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Chat
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Delete
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
@@ -31,8 +32,36 @@ class FirestoreServiceImpl @Inject constructor(
     private val langRepository: LangRepository,
 // private val chatIdRepository: ChatIdRepository
 ): FirestoreService {
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override val userChats: Flow<List<Chat>>
+        get() =
+            auth.currentUser.flatMapLatest { user ->
+                userChatCollection(user.id)
+                    .orderBy(DATE_FIELD, Query.Direction.DESCENDING)
+                    .dataObjects()
+            }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override val userArchives: Flow<List<Chat>>
+        get() =
+            auth.currentUser.flatMapLatest { user ->
+                userArchiveCollection(user.id)
+                    //                  .whereEqualTo(USER_ID_FIELD, user.id)
+//                    .orderBy(CREATED_AT_FIELD, Query.Direction.DESCENDING)
+                    .dataObjects()
+            }
+
     override suspend fun getUser(uid: String): User? = userDocument(uid).get().await().toObject()
     override suspend fun saveUser(user: User): Unit = trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
+    override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit =
+        trace(
+            SAVE_USER_CHAT_TRACE
+        ) { userChatCollection(uid).document(chatId).set(chat).await() }
+    override suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat): Unit =
+        trace(
+            SAVE_USER_ARCHIVE_TRACE
+        ) { userArchiveCollection(uid).document(chatId).set(chat).await() }
+
     override suspend fun saveFeedback(feedback: Feedback): Unit = trace(SAVE_FEEDBACK_TRACE){ feedbackCollection().add(feedback).await() }
     override suspend fun saveLang(feedback: Feedback): Unit =
         trace(SAVE_LANG_TRACE) {
@@ -47,10 +76,19 @@ class FirestoreServiceImpl @Inject constructor(
     override suspend fun updateUserProfilePhoto(photo: String): Unit = trace(UPDATE_USER_PROFILE_PHOTO_TRACE) { userDocument(auth.currentUserId).update(PHOTO_FIELD, photo).await() }
 
     override suspend fun deleteAccount(delete: Delete): Unit = trace(DELETE_ACCOUNT_TRACE) { deleteCollection().add(delete).await() }
+    override suspend fun deleteUserChat(uid: String, chatId: String) {
+        userChatCollection(uid = uid).document(chatId).delete().await()
+    }
+    override suspend fun deleteUserArchive(uid: String, chatId: String) {
+        userArchiveCollection(uid).document(chatId).delete().await()
+    }
 
 
     private fun userCollection(): CollectionReference = firestore.collection(USER_COLLECTION)
     private fun userDocument(uid: String): DocumentReference = userCollection().document(uid)
+    private fun userChatCollection(uid: String): CollectionReference = userDocument(uid).collection(CHAT_COLLECTION)
+    private fun userArchiveCollection(uid: String): CollectionReference = userDocument(uid).collection(ARCHIVE_COLLECTION)
+
     private fun langDocument(feedback: Feedback): DocumentReference = firestore.collection(LANG_COLLECTION).document(feedback.text)
     private fun deleteCollection(): CollectionReference = firestore.collection(DELETE_COLLECTION)
     private fun feedbackCollection(): CollectionReference = firestore.collection(FEEDBACK_COLLECTION)
@@ -58,6 +96,8 @@ class FirestoreServiceImpl @Inject constructor(
 
     companion object {
         private const val USER_COLLECTION = "User"
+        private const val CHAT_COLLECTION = "Chat"
+        private const val ARCHIVE_COLLECTION = "Archive"
         private const val LANG_COLLECTION = "Lang"
         private const val DELETE_COLLECTION = "Delete"
         private const val FEEDBACK_COLLECTION = "Feedback"
@@ -73,6 +113,8 @@ class FirestoreServiceImpl @Inject constructor(
         private const val PHOTO_FIELD = "photo"
 
         private const val SAVE_USER_TRACE = "saveUser"
+        private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
+        private const val SAVE_USER_ARCHIVE_TRACE = "saveUserArchive"
         private const val SAVE_LANG_TRACE = "saveLang"
         private const val SAVE_FEEDBACK_TRACE = "saveFeedback"
 
@@ -275,24 +317,7 @@ class FirestoreServiceImpl @Inject constructor(
 //                    .orderBy(CREATED_AT_FIELD, Query.Direction.DESCENDING)
                 .dataObjects()
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    override val userChats: Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat>>
-        get() =
-            auth.currentUser.flatMapLatest { user ->
-                userChatCollection(user.id)
-                    .orderBy(DATE_FIELD, Query.Direction.DESCENDING)
-                    .dataObjects()
-            }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    override val userArchives: Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat>>
-        get() =
-            auth.currentUser.flatMapLatest { user ->
-                userArchiveCollection(user.id)
-                    //                  .whereEqualTo(USER_ID_FIELD, user.id)
-//                    .orderBy(CREATED_AT_FIELD, Query.Direction.DESCENDING)
-                    .dataObjects()
-            }
     @OptIn(ExperimentalCoroutinesApi::class)
     override val userBlockUsers: Flow<List<com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Block>>
         get() =
@@ -330,15 +355,7 @@ class FirestoreServiceImpl @Inject constructor(
         com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.trace(SAVE_USER_TRACE) {
             userDocument(auth.currentUserId).set(user).await()
         }
-    override suspend fun saveUserChat(uid: String, chatId: String, chat: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat): Unit =
-        com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.trace(
-            SAVE_USER_CHAT_TRACE
-        ) { userChatCollection(uid).document(chatId).set(chat).await() }
-    override suspend fun saveUserArchive(uid: String, chatId: String, chat: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.Chat): Unit =
-        com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.trace(
-            SAVE_USER_ARCHIVE_TRACE
-        ) { userArchiveCollection(uid).document(chatId).set(chat).await() }
-    override suspend fun saveChatMessage(chatId: String, chatMessage: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.ChatMessage): Unit =
+       override suspend fun saveChatMessage(chatId: String, chatMessage: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.ChatMessage): Unit =
         com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.trace(
             SAVE_CHAT_MESSAGE_TRACE
         ) { chatCollection(chatId = chatId).add(chatMessage).await() }
@@ -423,12 +440,6 @@ class FirestoreServiceImpl @Inject constructor(
         }
 
 
-    override suspend fun deleteUserChat(uid: String, chatId: String) {
-        userChatCollection(uid = uid).document(chatId).delete().await()
-    }
-    override suspend fun deleteUserArchive(uid: String, chatId: String) {
-        userArchiveCollection(uid).document(chatId).delete().await()
-    }
 
     override suspend fun deleteChat(chatId: String) {
         val matchingChats = chatCollection(chatId).get().await()
@@ -444,8 +455,6 @@ class FirestoreServiceImpl @Inject constructor(
     private fun userCollection(): CollectionReference = firestore.collection(USER_COLLECTION)
     private fun userDocument(uid: String): DocumentReference = userCollection().document(uid)
     private fun userPhotosCollection(uid: String): CollectionReference = userDocument(uid).collection(PHOTOS_COLLECTION)
-    private fun userChatCollection(uid: String): CollectionReference = userDocument(uid).collection(CHAT_COLLECTION)
-    private fun userArchiveCollection(uid: String): CollectionReference = userDocument(uid).collection(ARCHIVE_COLLECTION)
     private fun chatCollection(chatId: String): CollectionReference = firestore.collection(CHAT_COLLECTION).document(chatId).collection(chatId)
     private fun userBlockCollection(uid: String): CollectionReference = userDocument(uid).collection(BLOCK_COLLECTION)
     private fun userBlockDocument(uid: String, partnerUid: String): DocumentReference = userBlockCollection(uid).document(partnerUid)
@@ -470,16 +479,12 @@ class FirestoreServiceImpl @Inject constructor(
 
         private const val USER_COLLECTION = "User"
         private const val PHOTOS_COLLECTION = "Photos"
-        private const val CHAT_COLLECTION = "Chat"
-        private const val ARCHIVE_COLLECTION = "Archive"
         private const val BLOCK_COLLECTION = "Block"
         private const val REPORT_COLLECTION = "Report"
         private const val DELETE_COLLECTION = "Delete"
         private const val FEEDBACK_COLLECTION = "Feedback"
 
         private const val SAVE_USER_TRACE = "saveUser"
-        private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
-        private const val SAVE_USER_ARCHIVE_TRACE = "saveUserArchive"
         private const val SAVE_CHAT_MESSAGE_TRACE = "saveChatMessage"
         private const val SAVE_BLOCK_USER = "saveBlockUser"
         private const val SAVE_REPORT = "saveReport"
