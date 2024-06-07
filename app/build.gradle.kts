@@ -20,11 +20,10 @@ android {
 
     defaultConfig {
         applicationId = "com.kapirti.pomodorotechnique_timemanagementmethod"
-        minSdk = 24
-      //  minSdk = 21
+        minSdk = 21
         targetSdk = 34
-        versionCode = 69
-        versionName = "1.0.52"
+        versionCode = 70
+        versionName = "1.0.53"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -154,7 +153,4 @@ dependencies {
 
 
     implementation("com.google.android.play:review:2.0.1")
-
-    implementation("io.getstream:stream-video-android-ui-compose:0.5.7")
-    implementation("io.getstream:stream-video-android-previewdata:0.5.7")
 }
