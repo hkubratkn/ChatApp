@@ -117,9 +117,10 @@ fun ZepiNavGraph(
             ) {
                 composable(PomodoroDestinations.PRODUCTIVITY_ROUTE) {
                     ProductivityRoute(
+                        isExpandedScreen = isExpandedScreen,
                         openDrawer = openDrawer,
-                        navigateTimeOver = navigateTimeOver,
-                        navigateToProductivity = navigateToProductivity,
+                       // navigateTimeOver = navigateTimeOver,
+                       // navigateToProductivity = navigateToProductivity,
                     )
                 }
                 composable(PomodoroDestinations.JOB_ROUTE){ JobScreen()}

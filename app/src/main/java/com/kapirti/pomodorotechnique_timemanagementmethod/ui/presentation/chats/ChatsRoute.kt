@@ -76,7 +76,8 @@ fun ChatsRoute(
                 text = AppText.chats_title,
                 actionsIcon = Icons.Default.Search,
                 isExpandedScreen = isExpandedScreen,
-                openDrawer = openDrawer
+                openDrawer = openDrawer,
+                {}
             )
         }
     ) { innerPadding ->

@@ -16,6 +16,105 @@
 
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.productivity
 
+import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.tabContainerModifier
+import com.kapirti.pomodorotechnique_timemanagementmethod.past.common.composable.InterestsAdaptiveContentLayout
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.productivity.ext.ProductivityTabRow
+
+
+enum class SectionsProductivity(@StringRes val titleResId: Int) {
+    Pomodoro(AppText.pomodoro),
+    Timer(AppText.timer),
+    Stayed(AppText.stayed)
+}
+
+class TabContentProductivity(val section: SectionsProductivity, val content: @Composable () -> Unit)
+
+@Composable
+fun rememberTabContent(): List<TabContentProductivity> {
+    val pomodoroSection = TabContentProductivity(SectionsProductivity.Pomodoro) { TabWithPomodoro() }
+    val timerSection = TabContentProductivity(SectionsProductivity.Timer) { TabWithTimer() }
+    val stayedSection = TabContentProductivity(SectionsProductivity.Stayed) { TabWithStayed() }
+
+    return listOf(pomodoroSection, timerSection, stayedSection)
+}
+
+@Composable
+fun ProductivityScreen(
+    currentSection: SectionsProductivity,
+    isExpandedScreen: Boolean,
+    updateSection: (SectionsProductivity) -> Unit,
+    tabContent: List<TabContentProductivity>,
+    modifier: Modifier = Modifier
+) {
+    val selectedTabIndex = tabContent.indexOfFirst { it.section == currentSection }
+    Column(modifier) {
+        ProductivityTabRow(selectedTabIndex, updateSection, tabContent, isExpandedScreen)
+        Divider(
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
+        )
+        Box(modifier = Modifier.weight(1f)) {
+            // display the current tab content which is a @Composable () -> Unit
+            tabContent[selectedTabIndex].content()
+        }
+    }
+}
+
+
+@Composable
+private fun TabWithPomodoro(
+    modifier: Modifier = Modifier,
+) {
+    InterestsAdaptiveContentLayout(
+        topPadding = 16.dp,
+        modifier = tabContainerModifier.verticalScroll(rememberScrollState())
+    ) {
+    }
+}
+
+@Composable
+private fun TabWithTimer(
+    modifier: Modifier = Modifier,
+) {
+    InterestsAdaptiveContentLayout(
+        topPadding = 16.dp,
+        modifier = tabContainerModifier.verticalScroll(rememberScrollState())
+    ) {
+    }
+}
+
+@Composable
+private fun TabWithStayed(
+    modifier: Modifier = Modifier,
+) {
+    InterestsAdaptiveContentLayout(
+        topPadding = 16.dp,
+        modifier = tabContainerModifier.verticalScroll(rememberScrollState())
+    ) {
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/**
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
@@ -63,3 +162,4 @@ internal fun ProductivityScreen(
         }
     }
 }
+*/

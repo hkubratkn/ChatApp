@@ -48,7 +48,7 @@ fun SettingsRoute(
                 text = AppText.settings_title,
                 actionsIcon = Icons.Default.Stars,
                 isExpandedScreen = isExpandedScreen,
-                openDrawer = openDrawer
+                openDrawer = openDrawer, {}
             )
         }
     ) { innerPadding ->

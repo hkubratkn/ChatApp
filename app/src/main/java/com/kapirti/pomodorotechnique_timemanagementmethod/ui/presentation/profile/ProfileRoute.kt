@@ -38,7 +38,7 @@ fun ProfileRoute(
                 text = AppText.profile_title,
                 actionsIcon = Icons.Default.AccountCircle,
                 isExpandedScreen = isExpandedScreen,
-                openDrawer = openDrawer
+                openDrawer = openDrawer, {}
             )
         },
         modifier = modifier.fillMaxSize(),

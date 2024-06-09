@@ -16,6 +16,77 @@
 
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.productivity
 
+import androidx.compose.material.icons.filled.Close
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsBannerToolbar
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.MenuToolbar
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_PRODUCTIVITY_BANNER_ID
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+
+@Composable
+fun ProductivityRoute(
+    isExpandedScreen: Boolean,
+    openDrawer: () -> Unit,
+    modifier: Modifier = Modifier,
+    snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
+    viewModel: ProductivityViewModel = hiltViewModel()
+) {
+    val tabContent = rememberTabContent()
+    val (currentSection, updateSection) = rememberSaveable {
+        mutableStateOf(tabContent.first().section)
+    }
+
+    Scaffold(
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
+        bottomBar = { AdsBannerToolbar(ADS_PRODUCTIVITY_BANNER_ID) },
+        topBar = {
+            MenuToolbar(
+                text = AppText.productivity_title,
+                actionsIcon = Icons.Default.Close,
+                isExpandedScreen = isExpandedScreen,
+                openDrawer = openDrawer,
+                onActionClick = {}
+            )
+        }
+    ) { innerPadding ->
+        ProductivityScreen(
+            tabContent = tabContent,
+            currentSection = currentSection,
+            isExpandedScreen = isExpandedScreen,
+            updateSection = updateSection,
+            modifier = modifier.padding(innerPadding)
+        )
+    }
+}
+
+
+
+
+
+
+
+/**
+
+
+
+
+
+
+
+
+
+
+
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -70,3 +141,4 @@ fun ProductivityRoute(
         )
     }
 }
+*/
