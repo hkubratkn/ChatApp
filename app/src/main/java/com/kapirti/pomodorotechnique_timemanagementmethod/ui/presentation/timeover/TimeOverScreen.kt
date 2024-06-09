@@ -32,7 +32,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsL
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.BottomCard
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.TextPomo
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.smallSpacer
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_TIMEOVER_BANNER_ID
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_TIME_OVER_BANNER_ID
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -72,7 +72,7 @@ internal fun TimeOverScreen(
         ) {
             TextPomo(title = viewModel.score.toString())
             Spacer(modifier = Modifier.smallSpacer())
-            AdsLargeBanner(ads = ADS_TIMEOVER_BANNER_ID)
+            AdsLargeBanner(ads = ADS_TIME_OVER_BANNER_ID)
         }
     }
 }

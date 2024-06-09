@@ -16,5 +16,13 @@
 
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.employee
 
-class EmployeeScreen {
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+
+@Composable
+fun EmployeeScreen (
+    modifier: Modifier = Modifier
+){
+    Text("Employee Screen")
 }

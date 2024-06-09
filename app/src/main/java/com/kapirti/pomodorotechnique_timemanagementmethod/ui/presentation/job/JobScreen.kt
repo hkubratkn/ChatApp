@@ -16,5 +16,13 @@
 
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.job
 
-class JobScreen {
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+
+@Composable
+fun JobScreen (
+    modifier: Modifier = Modifier,
+){
+    Text(text = "Job Screen")
 }

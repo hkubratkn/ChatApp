@@ -30,7 +30,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.Basi
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.TextPomo
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.card
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.smallSpacer
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_POMODORO_BANNER_ID
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_PRODUCTIVITY_BANNER_ID
 
 @Composable
 internal fun ProductivityScreen(
@@ -59,7 +59,7 @@ internal fun ProductivityScreen(
                 Spacer(modifier = Modifier.smallSpacer())
             }
 
-            AdsLargeBanner(ads = ADS_POMODORO_BANNER_ID)
+            AdsLargeBanner(ads = ADS_PRODUCTIVITY_BANNER_ID)
         }
     }
 }
