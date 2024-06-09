@@ -32,16 +32,30 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun ProductivityRoute(
     isExpandedScreen: Boolean,
     openDrawer: () -> Unit,
+    navigateToProductivity: () -> Unit,
+    navigateTimeOver: () -> Unit,
+    showInterstitialAds: () -> Unit,
     modifier: Modifier = Modifier,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     viewModel: ProductivityViewModel = hiltViewModel()
 ) {
-    val tabContent = rememberTabContent()
+    val context = LocalContext.current
+    val tabContent = rememberTabContent(
+        pomo = viewModel.pomo.toString(),
+        finishClick = viewModel.finishClick,
+        navigateToPomodoro = navigateToProductivity,
+        showInterstialAd = showInterstitialAds,
+        startBtnStatus = viewModel.startBtnStatus,
+        finishBtnStatus = viewModel.finishBtnStatus,
+        onStartPressed = { viewModel.onStartPressed(context = context, navigateTimeOver = navigateTimeOver)},
+        onFinishClicked = { viewModel.onFinishClicked()}
+    )
     val (currentSection, updateSection) = rememberSaveable {
         mutableStateOf(tabContent.first().section)
     }
@@ -117,20 +131,7 @@ fun ProductivityRoute(
             )
         },
         bottomBar = {
-            BottomCard(
-                start = R.string.start,
-                finish = R.string.done,
-                startBtnStatus = viewModel.startBtnStatus,
-                finishBtnStatus = viewModel.finishBtnStatus,
-                onStartClick = {
-                    viewModel.onStartPressed(context = context, navigateTimeOver = navigateTimeOver)
-                    //showInterstialAd()
-                },
-                onFinishClick = {
-                    viewModel.onFinishClicked()
-                    //showInterstialAd()
-                }
-            )
+
         },
         modifier = modifier.fillMaxSize(),
     ) { innerPadding ->

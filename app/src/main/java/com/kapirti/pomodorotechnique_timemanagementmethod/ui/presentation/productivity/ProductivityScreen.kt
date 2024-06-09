@@ -27,6 +27,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.Alignment
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.BasicButton
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.BottomCard
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.TextPomo
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.card
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.smallSpacer
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.tabContainerModifier
 import com.kapirti.pomodorotechnique_timemanagementmethod.past.common.composable.InterestsAdaptiveContentLayout
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.productivity.ext.ProductivityTabRow
@@ -41,8 +50,18 @@ enum class SectionsProductivity(@StringRes val titleResId: Int) {
 class TabContentProductivity(val section: SectionsProductivity, val content: @Composable () -> Unit)
 
 @Composable
-fun rememberTabContent(): List<TabContentProductivity> {
-    val pomodoroSection = TabContentProductivity(SectionsProductivity.Pomodoro) { TabWithPomodoro() }
+fun rememberTabContent(
+    pomo: String,
+    finishClick: Boolean,
+    startBtnStatus: Boolean,
+    finishBtnStatus: Boolean,
+    navigateToPomodoro: () -> Unit,
+    showInterstialAd: () -> Unit,
+    onStartPressed: () -> Unit,
+    onFinishClicked: () -> Unit,
+): List<TabContentProductivity> {
+    val pomodoroSection = TabContentProductivity(SectionsProductivity.Pomodoro) {
+        TabWithPomodoro(pomo = pomo, finishClick = finishClick, startBtnStatus = startBtnStatus, finishBtnStatus = finishBtnStatus, navigateToPomodoro = navigateToPomodoro, onFinishClicked = onFinishClicked, onStartPressed = onStartPressed, showInterstialAd = showInterstialAd, ) }
     val timerSection = TabContentProductivity(SectionsProductivity.Timer) { TabWithTimer() }
     val stayedSection = TabContentProductivity(SectionsProductivity.Stayed) { TabWithStayed() }
 
@@ -73,14 +92,56 @@ fun ProductivityScreen(
 
 @Composable
 private fun TabWithPomodoro(
+    pomo: String,
+    finishClick: Boolean,
+    startBtnStatus: Boolean,
+    finishBtnStatus: Boolean,
+    navigateToPomodoro: () -> Unit,
+    showInterstialAd: () -> Unit,
+    onStartPressed: () -> Unit,
+    onFinishClicked: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     InterestsAdaptiveContentLayout(
         topPadding = 16.dp,
         modifier = tabContainerModifier.verticalScroll(rememberScrollState())
     ) {
+        Column(
+            modifier = modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            TextPomo(title = pomo)
+            Spacer(modifier = Modifier.smallSpacer())
+
+            if (finishClick) {
+                BasicButton(
+                    text = AppText.try_again, modifier = Modifier.card(), true,
+                    action = {
+                        navigateToPomodoro()
+                        showInterstialAd()
+                    }
+                )
+                Spacer(modifier = Modifier.smallSpacer())
+            }
+            BottomCard(
+                start = AppText.start,
+                finish = AppText.done,
+                startBtnStatus = startBtnStatus,
+                finishBtnStatus = finishBtnStatus,
+                onStartClick = {
+                    onStartPressed()
+                },
+                onFinishClick = {
+                    onFinishClicked()
+                }
+            )
+
+        }
     }
 }
+
+
 
 @Composable
 private fun TabWithTimer(
@@ -103,63 +164,3 @@ private fun TabWithStayed(
     ) {
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-/**
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.foundation.layout.*
-import androidx.compose.ui.Alignment
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
-import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsLargeBanner
-import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.BasicButton
-import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.TextPomo
-import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.card
-import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.smallSpacer
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_PRODUCTIVITY_BANNER_ID
-
-@Composable
-internal fun ProductivityScreen(
-    navigateToPomodoro: () -> Unit,
-    showInterstialAd: () -> Unit,
-    modifier: Modifier = Modifier,
-    viewModel: ProductivityViewModel = hiltViewModel()
-) {
-    Scaffold(
-        modifier = modifier.fillMaxSize(),
-    ) { paddingValues ->
-
-        Column(
-            modifier = Modifier.fillMaxWidth().fillMaxHeight().padding(paddingValues),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            TextPomo(title = viewModel.pomo.toString())
-            Spacer(modifier = Modifier.smallSpacer())
-
-            if (viewModel.finishClick) {
-                BasicButton(text = AppText.try_again, modifier = Modifier.card(), true, action = {
-                    navigateToPomodoro()
-                    showInterstialAd()
-                })
-                Spacer(modifier = Modifier.smallSpacer())
-            }
-
-            AdsLargeBanner(ads = ADS_PRODUCTIVITY_BANNER_ID)
-        }
-    }
-}
-*/
