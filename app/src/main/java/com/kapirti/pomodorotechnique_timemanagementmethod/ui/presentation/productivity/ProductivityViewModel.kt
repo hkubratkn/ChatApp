@@ -27,17 +27,24 @@ import android.os.CountDownTimer
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.mutableStateOf
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.raw as AppSound
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.PomoService
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.room.pomodoro.WorkTime
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.room.pomodoro.WorkTimeDao
 import java.time.LocalDateTime
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class ProductivityViewModel @Inject constructor(
     private val pomoService: PomoService,
     private val workTimeDao: WorkTimeDao,
     logService: LogService
-): PomodoroViewModel(logService){
+): PomodoroViewModel(logService) {
 
     private val _pomo = mutableStateOf(20)
     val pomo: Int
@@ -68,14 +75,14 @@ class ProductivityViewModel @Inject constructor(
 
     fun onStartPressed(context: Context, navigateTimeOver: () -> Unit) {
         launchCatching {
-            val pomoCalculate = _pomo.value*60*1000
+            val pomoCalculate = _pomo.value * 60 * 1000
             _startBtnStatus.value = false
             _finishBtnStatus.value = true
             object : CountDownTimer(pomoCalculate.toLong(), 1000) {
                 override fun onTick(p0: Long) {
                     _pomo.value = (p0 / 1000).toInt()
 
-                    if(_finishClick.value){
+                    if (_finishClick.value) {
                         cancel()
                         _finishBtnStatus.value = false
                     }
@@ -98,21 +105,52 @@ class ProductivityViewModel @Inject constructor(
         }
     }
 
-    fun onFinishClicked(){
-        launchCatching{
+    fun onFinishClicked() {
+        launchCatching {
             _finishClick.value = true
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun saveScore(){
+    private fun saveScore() {
         launchCatching {
             val tt = workTimeDao.workTime(day)
-            tt.collect{ itWT ->
+            tt.collect { itWT ->
                 val score = itWT?.work ?: 0
                 val totalScore = score + _pomo.value
                 workTimeDao.insert(WorkTime(uid = day, work = totalScore))
             }
         }
+    }
+
+
+//Timer
+    private val _timer = MutableStateFlow(0L)
+    val timer = _timer.asStateFlow()
+
+    private var timerJob: Job? = null
+
+    fun startTimer() {
+        timerJob?.cancel()
+        timerJob = viewModelScope.launch {
+            while (true) {
+                delay(1000)
+                _timer.value++
+            }
+        }
+    }
+
+    fun pauseTimer() {
+        timerJob?.cancel()
+    }
+
+    fun stopTimer() {
+        _timer.value = 0
+        timerJob?.cancel()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        timerJob?.cancel()
     }
 }

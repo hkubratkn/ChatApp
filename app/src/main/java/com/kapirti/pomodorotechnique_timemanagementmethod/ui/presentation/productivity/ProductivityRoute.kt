@@ -32,6 +32,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
 
 @Composable
@@ -45,6 +47,7 @@ fun ProductivityRoute(
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     viewModel: ProductivityViewModel = hiltViewModel()
 ) {
+    val timerValue by viewModel.timer.collectAsState()
     val context = LocalContext.current
     val tabContent = rememberTabContent(
         pomo = viewModel.pomo.toString(),
@@ -54,7 +57,12 @@ fun ProductivityRoute(
         startBtnStatus = viewModel.startBtnStatus,
         finishBtnStatus = viewModel.finishBtnStatus,
         onStartPressed = { viewModel.onStartPressed(context = context, navigateTimeOver = navigateTimeOver)},
-        onFinishClicked = { viewModel.onFinishClicked()}
+        onFinishClicked = { viewModel.onFinishClicked()},
+
+        timerValue = timerValue,
+        onStartClick = { viewModel.startTimer() },
+        onPauseClick = { viewModel.pauseTimer() },
+        onStopClick = { viewModel.stopTimer() },
     )
     val (currentSection, updateSection) = rememberSaveable {
         mutableStateOf(tabContent.first().section)
@@ -83,23 +91,7 @@ fun ProductivityRoute(
     }
 }
 
-
-
-
-
-
-
 /**
-
-
-
-
-
-
-
-
-
-
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
