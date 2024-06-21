@@ -145,7 +145,7 @@ fun LogInScreen(
             ) {
                 HeaderText(text = AppText.welcome_back)
                 Spacer(modifier = Modifier.width(5.dp))
-                Icon(imageVector = Icons.Default.Login, contentDescription = null)
+                Icon(imageVector = Icons.Default.Login, contentDescription = stringResource(id = AppText.log_in))
             }
 
             EmailField(uiState.email, viewModel::onEmailChange, Modifier.fieldModifier())

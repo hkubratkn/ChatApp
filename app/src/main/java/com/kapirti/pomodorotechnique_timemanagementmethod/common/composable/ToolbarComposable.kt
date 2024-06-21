@@ -57,7 +57,7 @@ fun HomeTopAppBar(
             IconButton(onClick = openDrawer) {
                 Icon(
                     imageVector = Icons.Default.Menu,
-                    contentDescription = null,
+                    contentDescription = stringResource(id = AppText.cd_menu),
                     tint = MaterialTheme.colorScheme.primary
                 )
             }
@@ -88,7 +88,7 @@ fun MenuToolbar(
                 IconButton(onClick = openDrawer) {
                     Icon(
                         imageVector = Icons.Default.Menu,
-                        contentDescription = null,
+                        contentDescription = stringResource(AppText.cd_menu),
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }
@@ -100,10 +100,10 @@ fun MenuToolbar(
             ) {
                 Icon(
                     imageVector = actionsIcon,
-                    contentDescription = null
+                    contentDescription = stringResource(id = AppText.cd_search),
                 )
             }
-        }
+        },
     )
 }
 
@@ -128,8 +128,8 @@ fun BackToolbar(
                 IconButton(onClick = popUp) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary
+                        contentDescription = stringResource(id = AppText.cd_back),
+                        tint = MaterialTheme.colorScheme.primary,
                     )
                 }
             }
@@ -138,10 +138,10 @@ fun BackToolbar(
             IconButton(onClick = onActionsClick) {
                 Icon(
                     imageVector = actionsIcon,
-                    contentDescription = null
+                    contentDescription = stringResource(id = AppText.cd_search),
                 )
             }
-        }
+        },
     )
 }
 

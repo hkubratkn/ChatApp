@@ -270,12 +270,12 @@ fun ProfileScreen(
 
         NoSurfaceImage(
             imageUrl = user.photo,
-            contentDescription = null,
+            contentDescription = stringResource(id = AppText.cd_profile_photo),
             modifier = Modifier
                 .size(300.dp)
                 .clip(CircleShape)
                 .padding(10.dp)
-                .clickable { onProfilePhotoClick() }
+                .clickable { onProfilePhotoClick() },
         )
 
         Spacer(Modifier.height(16.dp))

@@ -104,6 +104,16 @@
     <!-- Blocked Users Screen -->
     <string name="blocked_users_title">Blocked users</string>
     <string name="no_blocked_users_all">You have no blocked users!</string>
+
+    <!-- Content descripiton -->
+    <string name="cd_menu">Menu</string>
+    <string name="cd_search">Search</string>
+    <string name="cd_back">Back</string>
+    <string name="cd_profile_photo">Profile photo</string>
+    <string name="cd_"></string>
+    <string name="cd_"></string>
+    <string name="cd_"></string>
+    <string name="cd_"></string>
 </resources>
     <!--
 

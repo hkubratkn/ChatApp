@@ -123,7 +123,12 @@ fun RegisterScreen(
             ) {
                 HeaderText(text = AppText.register)
                 Spacer(modifier = Modifier.width(5.dp))
-                Icon(imageVector = Icons.Default.PersonAddAlt1, contentDescription = null)
+                Icon(
+                    imageVector = Icons.Default.PersonAddAlt1,
+                    contentDescription = stringResource(
+                        id = AppText.register,
+                    ),
+                )
             }
 
             EmailField(uiState.email, viewModel::onEmailChange, fieldModifier)
