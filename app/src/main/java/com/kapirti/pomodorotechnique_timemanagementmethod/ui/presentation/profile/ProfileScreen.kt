@@ -255,9 +255,7 @@ fun ProfileScreen(
     user: User,
     onProfilePhotoClick: () -> Unit,
     onLongClickDisplayName: () -> Unit,
-    onLongClickNameSurname: () -> Unit,
     onLongClickDescription: () -> Unit,
-    onLongClickBirthday: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val scrollState = rememberScrollState()
@@ -301,29 +299,6 @@ fun ProfileScreen(
             )
         }
 
-        Spacer(Modifier.height(16.dp))
-        BasicDivider()
-        Spacer(Modifier.height(40.dp))
-        Column(
-            Modifier.combinedClickable(
-                onLongClickLabel = stringResource(id = AppText.long_click),
-                onLongClick = onLongClickNameSurname,
-                onClick = {}
-            ),
-        ) {
-            Text(
-                text = stringResource(AppText.name_and_surname),
-                style = MaterialTheme.typography.bodyLarge,
-                color = Color(0x99000000),
-            )
-            Spacer(Modifier.height(4.dp))
-            Text(
-                text = user?.let { "${it.name} ${it.surname}" } ?: "",
-                style = MaterialTheme.typography.bodySmall,
-                color = Color(0x99000000),
-            )
-        }
-
 
         Spacer(Modifier.height(16.dp))
         BasicDivider()
@@ -343,29 +318,6 @@ fun ProfileScreen(
             Spacer(Modifier.height(4.dp))
             Text(
                 text = user?.let { it.description } ?: "",
-                style = MaterialTheme.typography.bodySmall,
-                color = Color(0x99000000),
-            )
-        }
-
-        Spacer(Modifier.height(16.dp))
-        BasicDivider()
-        Spacer(Modifier.height(40.dp))
-        Column(
-            Modifier.combinedClickable(
-                onLongClickLabel = stringResource(id = AppText.long_click),
-                onLongClick = onLongClickBirthday,
-                onClick = {}
-            ),
-        ) {
-            Text(
-                text = stringResource(AppText.age),
-                style = MaterialTheme.typography.bodyLarge,
-                color = Color(0x99000000),
-            )
-            Spacer(Modifier.height(4.dp))
-            Text(
-                text = user?.let { it.birthday } ?: "",
                 style = MaterialTheme.typography.bodySmall,
                 color = Color(0x99000000),
             )

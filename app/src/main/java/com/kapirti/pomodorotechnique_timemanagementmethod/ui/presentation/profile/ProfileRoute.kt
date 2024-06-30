@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeUserIdViewModel
 
@@ -35,7 +36,7 @@ fun ProfileRoute(
         bottomBar = { AdsBannerToolbar(ads = ADS_PROFILE_BANNER_ID) },
         topBar = {
             MenuToolbar(
-                text = AppText.profile_title,
+                text = stringResource(AppText.profile_title),
                 actionsIcon = Icons.Default.AccountCircle,
                 isExpandedScreen = isExpandedScreen,
                 openDrawer = openDrawer, {}
@@ -48,9 +49,7 @@ fun ProfileRoute(
             modifier = Modifier.padding(innerPadding),
             onProfilePhotoClick = { viewModel.onProfilePhotoClick(navigateEdit) },
             onLongClickDisplayName = { viewModel.onDisplayNameClick(navigateEdit) },
-            onLongClickNameSurname = { viewModel.onNameSurnameClick(navigateEdit) },
             onLongClickDescription= { viewModel.onDescriptionClick(navigateEdit) },
-            onLongClickBirthday = { viewModel.onBirthdayClick(navigateEdit) },
         )
     }
 }

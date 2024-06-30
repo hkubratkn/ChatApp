@@ -14,6 +14,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditTyp
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.DESCRIPTION
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.DISPLAY_NAME
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.FEEDBACK
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.JOB
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.POMO
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.PROFILE
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.PROFILE_PHOTO
@@ -95,6 +96,9 @@ class EditViewModel @Inject constructor(
         PROFILE_PHOTO -> listOf(SurveyQuestion.TAKE_SELFIE)
         DISPLAY_NAME -> listOf(SurveyQuestion.DISPLAY_NAME)
         DESCRIPTION -> listOf(SurveyQuestion.DESCRIPTION)
+
+        JOB -> listOf()
+
         DELETE -> listOf(SurveyQuestion.DELETE)
         FEEDBACK -> listOf(SurveyQuestion.FEEDBACK)
         COUNTRY -> listOf(SurveyQuestion.COUNTRY)

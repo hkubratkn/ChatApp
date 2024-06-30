@@ -35,6 +35,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.Menu
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeChatViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import androidx.compose.ui.res.stringResource
 
 @Composable
 fun ChatsRoute(
@@ -73,7 +74,7 @@ fun ChatsRoute(
         bottomBar = { AdsBannerToolbar(ConsAds.ADS_CHATS_BANNER_ID) },
         topBar = {
             MenuToolbar(
-                text = AppText.chats_title,
+                text = stringResource(AppText.chats_title),
                 actionsIcon = Icons.Default.Search,
                 isExpandedScreen = isExpandedScreen,
                 openDrawer = openDrawer,

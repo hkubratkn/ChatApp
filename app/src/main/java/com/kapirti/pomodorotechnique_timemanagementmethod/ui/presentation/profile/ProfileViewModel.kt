@@ -2,7 +2,6 @@ package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.profi
 
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.DESCRIPTION
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.DISPLAY_NAME
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.NAME_SURNAME
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.PROFILE_PHOTO
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.UserIdRepository
@@ -49,18 +48,6 @@ class ProfileViewModel @Inject constructor(
         launchCatching {
             editTypeRepository.saveEditTypeState(DISPLAY_NAME)
             navigateEdit()
-        }
-    }
-    fun onNameSurnameClick(navigateEdit: () -> Unit){
-        launchCatching {
-            editTypeRepository.saveEditTypeState(NAME_SURNAME)
-            navigateEdit()
-        }
-    }
-    fun onBirthdayClick(navigateEdit: () -> Unit){
-        launchCatching {
-           // editTypeRepository.saveEditTypeState(BIRTHDAY)
-           // navigateEdit()
         }
     }
     fun onDescriptionClick(navigateEdit: () -> Unit){
