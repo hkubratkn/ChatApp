@@ -22,8 +22,10 @@ object EditType {
     const val DISPLAY_NAME = "DISPLAY_NAME"
     const val NAME_SURNAME = "NAME_SURNAME"
     const val DESCRIPTION = "DESCRIPTION"
+
+    const val JOB = "JOB"
+
     const val FEEDBACK = "FEEDBACK"
-    const val LANG = "LANG"
     const val DELETE = "DELETE"
     const val POMO = "POMO"
 }

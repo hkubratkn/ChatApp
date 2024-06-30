@@ -21,6 +21,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.Include
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats.ChatsRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.EditRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.employee.EmployeeScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.job.JobRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.job.JobScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.login.LogInScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.productivity.ProductivityRoute
@@ -125,7 +126,13 @@ fun ZepiNavGraph(
                         showInterstitialAds = showInterstitialAds,
                     )
                 }
-                composable(PomodoroDestinations.JOB_ROUTE){ JobScreen()}
+                composable(PomodoroDestinations.JOB_ROUTE){
+                    JobRoute(
+                        isExpandedScreen = isExpandedScreen,
+                        openDrawer = openDrawer,
+                        navigateEdit = navigateEdit,
+                    )
+                }
                 composable(PomodoroDestinations.EMPLOYEE_ROUTE){ EmployeeScreen() }
                 composable(PomodoroDestinations.CHATS_ROUTE){
                     ChatsRoute(

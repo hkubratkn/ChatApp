@@ -20,25 +20,25 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Cons.DEFAULT_LANGUAGE_CODE
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Cons.DEFAULT_COUNTRY
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 
-class LangRepository (private val context: Context) {
+class CountryRepository (private val context: Context) {
     companion object PreferencesKey {
-        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "lang_pref")
-        val LANGUAGE_KEY = stringPreferencesKey(name = "lang_code")
+        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "country_pref")
+        val COUNTRY_KEY = stringPreferencesKey(name = "country_code")
     }
 
-    suspend fun saveLangState(language: String) {
+    suspend fun saveCountryState(country: String) {
         context.dataStore.edit { preferences ->
-            preferences[LANGUAGE_KEY] = language
+            preferences[COUNTRY_KEY] = country
         }
     }
 
-    fun readLangState(): Flow<String> {
+    fun readCountryState(): Flow<String> {
         return context.dataStore.data
             .catch { exception ->
                 if (exception is IOException) {
@@ -48,7 +48,7 @@ class LangRepository (private val context: Context) {
                 }
             }
             .map { preferences ->
-                val languageState = preferences[LANGUAGE_KEY] ?: DEFAULT_LANGUAGE_CODE
+                val languageState = preferences[COUNTRY_KEY] ?: DEFAULT_COUNTRY
                 languageState
             }
     }

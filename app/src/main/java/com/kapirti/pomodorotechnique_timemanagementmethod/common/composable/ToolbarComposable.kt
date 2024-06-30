@@ -70,7 +70,7 @@ fun HomeTopAppBar(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MenuToolbar(
-    @StringRes text: Int,
+    text: String,
     actionsIcon: ImageVector,
     isExpandedScreen: Boolean,
     openDrawer: () -> Unit,
@@ -79,7 +79,7 @@ fun MenuToolbar(
     CenterAlignedTopAppBar(
         title = {
             Text(
-                text = stringResource(text),
+                text = text,
                 style = MaterialTheme.typography.titleLarge
             )
         },

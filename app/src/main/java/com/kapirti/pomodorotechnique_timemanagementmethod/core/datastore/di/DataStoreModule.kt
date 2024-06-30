@@ -18,8 +18,8 @@ package com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.di
 
 import android.content.Context
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.ChatIdRepository
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.CountryRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.PomoService
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.UserIdRepository
 import dagger.Module
@@ -41,9 +41,9 @@ object DataStoreModule {
 
     @Provides
     @Singleton
-    fun provideLangRepository(
+    fun provideCountryRepository(
         @ApplicationContext context: Context
-    ) = LangRepository(context = context)
+    ) = CountryRepository(context = context)
 
     @Provides
     @Singleton

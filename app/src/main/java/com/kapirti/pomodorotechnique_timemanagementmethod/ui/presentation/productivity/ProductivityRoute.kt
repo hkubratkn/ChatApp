@@ -108,30 +108,30 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.Home
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProductivityRoute(
-    openDrawer: () -> Unit,
-    navigateTimeOver: () -> Unit,
-    navigateToProductivity: () -> Unit,
-    modifier: Modifier = Modifier,
-    viewModel: ProductivityViewModel = hiltViewModel(),
+openDrawer: () -> Unit,
+navigateTimeOver: () -> Unit,
+navigateToProductivity: () -> Unit,
+modifier: Modifier = Modifier,
+viewModel: ProductivityViewModel = hiltViewModel(),
 ) {
-    val context = LocalContext.current
+val context = LocalContext.current
 
-    Scaffold(
-        topBar = {
-            HomeTopAppBar(
-                openDrawer = openDrawer,
-            )
-        },
-        bottomBar = {
+Scaffold(
+topBar = {
+HomeTopAppBar(
+openDrawer = openDrawer,
+)
+},
+bottomBar = {
 
-        },
-        modifier = modifier.fillMaxSize(),
-    ) { innerPadding ->
-        ProductivityScreen(
-            modifier = Modifier.padding(innerPadding),
-            navigateToPomodoro = navigateToProductivity,
-            showInterstialAd = {},
-        )
-    }
+},
+modifier = modifier.fillMaxSize(),
+) { innerPadding ->
+ProductivityScreen(
+modifier = Modifier.padding(innerPadding),
+navigateToPomodoro = navigateToProductivity,
+showInterstialAd = {},
+)
 }
-*/
+}
+ */

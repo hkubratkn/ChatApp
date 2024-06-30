@@ -18,6 +18,7 @@
 
     <!-- Job Screen -->
     <string name="job_title">Job</string>
+    <string name="no_jobs_all">You have no jobs!</string>
 
     <!-- Employee Screen -->
     <string name="employee_title">Employee</string>

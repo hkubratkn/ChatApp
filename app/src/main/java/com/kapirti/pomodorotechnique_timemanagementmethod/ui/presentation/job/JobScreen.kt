@@ -16,13 +16,37 @@
 
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.job
 
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.filled.Work
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.EmptyContent
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Job
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats.ChatRow
 
 @Composable
-fun JobScreen (
+fun JobScreen(
+    jobs: List<Job>,
     modifier: Modifier = Modifier,
-){
-    Text(text = "Job Screen")
+) {
+    if (jobs.isEmpty()) {
+        EmptyContent(
+            icon = Icons.Default.Work,
+            label = AppText.no_jobs_all,
+            modifier
+        )
+    } else {
+        Column(modifier.fillMaxSize()){
+            LazyColumn {
+                items(jobs, key = { it.id }){
+                    JobItem(it, {})
+                }
+            }
+        }
+    }
 }

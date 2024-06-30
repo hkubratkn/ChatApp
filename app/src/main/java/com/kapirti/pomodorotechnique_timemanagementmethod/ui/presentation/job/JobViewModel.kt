@@ -16,5 +16,32 @@
 
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.job
 
-class JobViewModel {
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.stateInUi
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Cons.DEFAULT_COUNTRY
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.JOB
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.CountryRepository
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+
+@HiltViewModel
+class JobViewModel @Inject constructor(
+    private val countryRepository: CountryRepository,
+    private val editTypeRepository: EditTypeRepository,
+    private val firestoreService: FirestoreService,
+    logService: LogService
+): PomodoroViewModel(logService){
+    val country = countryRepository.readCountryState().stateInUi(DEFAULT_COUNTRY)
+    val jobs = firestoreService.jobs.stateInUi(emptyList())
+
+    fun onAddClick(navigateEdit: () -> Unit){
+        launchCatching {
+            editTypeRepository.saveEditTypeState(JOB)
+            navigateEdit()
+        }
+    }
+
 }

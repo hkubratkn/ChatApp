@@ -6,7 +6,6 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.dataObjects
 import com.google.firebase.firestore.toObject
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
@@ -15,9 +14,11 @@ import kotlinx.coroutines.tasks.await
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.snapshots
 import com.google.firebase.firestore.toObjects
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.CountryRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Chat
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Delete
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Job
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
@@ -29,9 +30,18 @@ import kotlinx.coroutines.tasks.asDeferred
 class FirestoreServiceImpl @Inject constructor(
     private val firestore: FirebaseFirestore,
     private val auth: AccountService,
-    private val langRepository: LangRepository,
+    private val countryRepository: CountryRepository,
 // private val chatIdRepository: ChatIdRepository
 ): FirestoreService {
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override val jobs: Flow<List<Job>>
+        get() =
+            countryRepository.readCountryState().flatMapLatest { country ->
+                jobCollection(country)
+                    .orderBy(DATE_FIELD, Query.Direction.DESCENDING)
+                    .dataObjects()
+            }
+
     @OptIn(ExperimentalCoroutinesApi::class)
     override val userChats: Flow<List<Chat>>
         get() =
@@ -63,9 +73,9 @@ class FirestoreServiceImpl @Inject constructor(
         ) { userArchiveCollection(uid).document(chatId).set(chat).await() }
 
     override suspend fun saveFeedback(feedback: Feedback): Unit = trace(SAVE_FEEDBACK_TRACE){ feedbackCollection().add(feedback).await() }
-    override suspend fun saveLang(feedback: Feedback): Unit =
-        trace(SAVE_LANG_TRACE) {
-            langDocument(feedback).set(feedback).await()
+    override suspend fun saveCountry(feedback: Feedback): Unit =
+        trace(SAVE_COUNTRY_TRACE) {
+            countryDocument(feedback).set(feedback).await()
         }
     override suspend fun updateUserOnline(value: Boolean): Unit = trace(UPDATE_USER_ONLINE_TRACE){ userDocument(auth.currentUserId).update(ONLINE_FIELD, value).await() }
     override suspend fun updateUserLastSeen(): Unit = trace(UPDATE_USER_LAST_SEEN_TRACE) { userDocument(auth.currentUserId).update(LAST_SEEN_FIELD, FieldValue.serverTimestamp()).await()}
@@ -89,7 +99,10 @@ class FirestoreServiceImpl @Inject constructor(
     private fun userChatCollection(uid: String): CollectionReference = userDocument(uid).collection(CHAT_COLLECTION)
     private fun userArchiveCollection(uid: String): CollectionReference = userDocument(uid).collection(ARCHIVE_COLLECTION)
 
-    private fun langDocument(feedback: Feedback): DocumentReference = firestore.collection(LANG_COLLECTION).document(feedback.text)
+
+    private fun jobCollection(country: String): CollectionReference = firestore.collection(JOB_COLLECTION).document(country).collection(DOCTOR_COLLECTION)
+
+    private fun countryDocument(feedback: Feedback): DocumentReference = firestore.collection(COUNTRY_COLLECTION).document(feedback.text)
     private fun deleteCollection(): CollectionReference = firestore.collection(DELETE_COLLECTION)
     private fun feedbackCollection(): CollectionReference = firestore.collection(FEEDBACK_COLLECTION)
 
@@ -98,14 +111,15 @@ class FirestoreServiceImpl @Inject constructor(
         private const val USER_COLLECTION = "User"
         private const val CHAT_COLLECTION = "Chat"
         private const val ARCHIVE_COLLECTION = "Archive"
-        private const val LANG_COLLECTION = "Lang"
+        private const val JOB_COLLECTION = "Job"
+        private const val DOCTOR_COLLECTION = "Doctor"
+        private const val COUNTRY_COLLECTION = "Country"
         private const val DELETE_COLLECTION = "Delete"
         private const val FEEDBACK_COLLECTION = "Feedback"
 
         private const val ONLINE_FIELD = "online"
         private const val LAST_SEEN_FIELD = "lastSeen"
         private const val DATE_FIELD = "date"
-        private const val LANGUAGE_FIELD = "language"
         private const val DISPLAY_NAME_FIELD = "displayName"
         private const val NAME_FIELD = "name"
         private const val SURNAME_FIELD = "surname"
@@ -115,8 +129,8 @@ class FirestoreServiceImpl @Inject constructor(
         private const val SAVE_USER_TRACE = "saveUser"
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
         private const val SAVE_USER_ARCHIVE_TRACE = "saveUserArchive"
-        private const val SAVE_LANG_TRACE = "saveLang"
         private const val SAVE_FEEDBACK_TRACE = "saveFeedback"
+        private const val SAVE_COUNTRY_TRACE = "saveCountry"
 
         private const val UPDATE_USER_ONLINE_TRACE = "updateUserOnline"
         private const val UPDATE_USER_LAST_SEEN_TRACE = "updateUserLastSeen"

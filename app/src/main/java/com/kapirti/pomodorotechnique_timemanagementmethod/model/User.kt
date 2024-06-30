@@ -17,19 +17,16 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.model
 
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.ServerTimestamp
 
 data class User(
-    val uid: String = "uid",
+    @DocumentId val id: String = "id",
     val displayName: String = "Display name",
-    val name: String = "Name",
-    val surname: String = "Surname",
     val photo: String = "Photo",
-    val birthday: String = "Birthday",
     val description: String = "Description",
-    val language: String = "Language",
+    val country: String = "Country",
     val online: Boolean = false,
-    val token: String = "Token",
     @ServerTimestamp
     var lastSeen: Timestamp? = null,
     @ServerTimestamp
