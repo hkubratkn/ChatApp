@@ -14,18 +14,21 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.core.constants
+package com.kapirti.pomodorotechnique_timemanagementmethod.model
 
-object EditType {
-    const val PROFILE = "PROFILE"
-    const val PROFILE_PHOTO = "profilePhoto"
-    const val DISPLAY_NAME = "DISPLAY_NAME"
-    const val DESCRIPTION = "DESCRIPTION"
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.DocumentId
+import com.google.firebase.firestore.ServerTimestamp
 
-    const val JOB = "JOB"
-    const val COUNTRY = "COUNTRY"
+data class Job(
+    @DocumentId val id: String = "id",
+    val title: String = "Title",
+    val description: String = "Description",
+    val writerId: String = "WriterId",
+    val writerPhoto: String = "WriterPhoto",
+    val writerDisplayName: String = "WriterDisplayName",
+    @ServerTimestamp
+    var date: Timestamp? = null
+)
 
-    const val FEEDBACK = "FEEDBACK"
-    const val DELETE = "DELETE"
-    const val POMO = "POMO"
-}
+//data class UserJob()

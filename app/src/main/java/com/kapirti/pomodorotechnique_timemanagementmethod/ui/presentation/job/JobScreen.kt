@@ -27,11 +27,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.filled.Work
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.EmptyContent
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Job
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats.ChatRow
 
 @Composable
 fun JobScreen(
     jobs: List<Job>,
+    onItemClick: (Job) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     if (jobs.isEmpty()) {
@@ -44,7 +44,7 @@ fun JobScreen(
         Column(modifier.fillMaxSize()){
             LazyColumn {
                 items(jobs, key = { it.id }){
-                    JobItem(it, {})
+                    JobItem(it, onItemClick)
                 }
             }
         }

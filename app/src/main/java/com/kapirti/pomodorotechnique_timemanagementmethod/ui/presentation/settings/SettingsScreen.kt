@@ -52,8 +52,9 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.Regu
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.ThemeCardEditor
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.card
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.spacer
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Cons.DEFAULT_COUNTRY
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Theme
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Cons.DEFAULT_LANGUAGE_CODE
+
 
 @Composable
 fun SettingsScreen(
@@ -107,11 +108,11 @@ fun SettingsScreen(
             Modifier.card()
         ) { viewModel.onPomoClick(navigateEdit) }
         RegularCardEditor(
-            viewModel.lang ?: DEFAULT_LANGUAGE_CODE,
+            viewModel.country ?: DEFAULT_COUNTRY,
             Icons.Default.Flag,
             "",
             Modifier.card()
-        ) { viewModel.onLangClick(navigateEdit) }
+        ) { viewModel.onCountryClick(navigateEdit) }
         ThemeCardEditor(
             title = AppText.dark_mode,
             content = "",

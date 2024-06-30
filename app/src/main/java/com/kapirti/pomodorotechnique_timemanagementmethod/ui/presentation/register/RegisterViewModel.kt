@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidEmail
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidPassword
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.passwordMatches
@@ -18,6 +17,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountS
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.PROFILE
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.CountryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
@@ -31,7 +31,7 @@ class RegisterViewModel @Inject constructor(
     logService: LogService,
     private val accountService: AccountService,
     private val firestoreService: FirestoreService,
-    private val langRepository: LangRepository,
+    private val countryRepository: CountryRepository,
     private val editTypeRepository: EditTypeRepository,
 ): PomodoroViewModel(logService) {
     private val _state = MutableStateFlow(SignInState())
@@ -41,7 +41,7 @@ class RegisterViewModel @Inject constructor(
 
 
 
-    val langValue = Locale.getDefault().getDisplayLanguage()
+    val countryValue = Locale.getDefault().getDisplayCountry()
 
     var uiState = mutableStateOf(RegisterUiState())
         private set
@@ -72,20 +72,19 @@ class RegisterViewModel @Inject constructor(
                 User(
                     photo = userData?.let { it.profilePictureUrl } ?: "",
                     displayName = userData?.let { it.username } ?: "",
-                    language = langValue,
+                    country = countryValue,
                     online = true,
-                    uid = accountService.currentUserId,
                     date = Timestamp.now()
                 )
             )
 
-            firestoreService.saveLang(
+            firestoreService.saveCountry(
                 Feedback(
-                    langValue
+                    countryValue
                 )
             )
             editTypeRepository.saveEditTypeState(PROFILE)
-            langRepository.saveLangState(langValue)
+            countryRepository.saveCountryState(countryValue)
             resetState()
             navigateAndPopUpRegisterToEdit()
         }
@@ -133,19 +132,18 @@ class RegisterViewModel @Inject constructor(
                 accountService.linkAccount(email, password)
                 firestoreService.saveUser(
                     User(
-                        language = langValue,
+                        country = countryValue,
                         online = true,
-                        uid = accountService.currentUserId,
                         date = Timestamp.now()
                     )
                 )
-                firestoreService.saveLang(
+                firestoreService.saveCountry(
                     Feedback(
-                        langValue
+                        countryValue
                     )
                 )
                 editTypeRepository.saveEditTypeState(PROFILE)
-                langRepository.saveLangState(langValue)
+                countryRepository.saveCountryState(countryValue)
                 navigateAndPopUpRegisterToEdit()
             } catch (ex: FirebaseAuthException) {
                 launchCatching { snackbarHostState.showSnackbar(ex.localizedMessage ?: "") }

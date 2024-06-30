@@ -17,6 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AppNavRail
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeChatViewModel
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeJobViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeUserIdViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats.ChatsRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.EditRoute
@@ -61,12 +62,15 @@ fun ZepiNavGraph(
 
     navigateEdit: () -> Unit,
     navigateTimeOver: () -> Unit,
+    navigateJobDetail: () -> Unit,
 
     loginToRegister: () -> Unit,
     registerToLogin: () -> Unit,
 
     includeUserIdViewModel: IncludeUserIdViewModel,
     includeChatViewModel: IncludeChatViewModel,
+    includeJobViewModel: IncludeJobViewModel,
+
     navController: NavHostController = rememberNavController(),
     startDestination: String = PomodoroDestinations.SPLASH_ROUTE,
     modifier: Modifier = Modifier,
@@ -129,8 +133,10 @@ fun ZepiNavGraph(
                 composable(PomodoroDestinations.JOB_ROUTE){
                     JobRoute(
                         isExpandedScreen = isExpandedScreen,
+                        includeJobViewModel = includeJobViewModel,
                         openDrawer = openDrawer,
                         navigateEdit = navigateEdit,
+                        navigateJobDetail = navigateJobDetail,
                     )
                 }
                 composable(PomodoroDestinations.EMPLOYEE_ROUTE){ EmployeeScreen() }

@@ -9,6 +9,7 @@ object PomodoroDestinations {
     const val REGISTER_ROUTE = "register"
     const val EDIT_ROUTE = "edit"
     const val TIME_OVER_ROUTE = "timeOver"
+    const val JOB_DETAIL_ROUTE = "jobDetail"
 
     const val JOB_ROUTE = "job"
     const val EMPLOYEE_ROUTE = "employee"
@@ -102,6 +103,12 @@ class PomodoroNavigationActions(navController: NavHostController) {
     val navigateTimeOver: () -> Unit = {
         navController.navigate(PomodoroDestinations.TIME_OVER_ROUTE){ launchSingleTop = true }
     }
+    val navigateJobDetail: () -> Unit = {
+        navController.navigate(PomodoroDestinations.JOB_DETAIL_ROUTE){ launchSingleTop = true }
+    }
+
+
+
 
 
     val openAndPopUpSplashToProductivity: () -> Unit = {

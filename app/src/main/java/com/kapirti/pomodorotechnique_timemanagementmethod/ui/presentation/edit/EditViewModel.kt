@@ -8,18 +8,17 @@ import android.os.Build
 import android.provider.MediaStore
 import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.Timestamp
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Cons.DEFAULT_LANGUAGE_CODE
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Cons.DEFAULT_COUNTRY
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.COUNTRY
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.DELETE
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.DESCRIPTION
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.DISPLAY_NAME
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.FEEDBACK
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.LANG
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.NAME_SURNAME
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.POMO
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.PROFILE
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.PROFILE_PHOTO
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.CountryRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.PomoService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Delete
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
@@ -40,7 +39,7 @@ class EditViewModel @Inject constructor(
     private val firestoreService: FirestoreService,
     private val storageService: StorageService,
     private val editTypeRepository: EditTypeRepository,
-    private val langRepository: LangRepository,
+    private val countryRepository: CountryRepository,
     private val pomoService: PomoService,
     logService: LogService,
 ): PomodoroViewModel(logService) {
@@ -50,9 +49,9 @@ class EditViewModel @Inject constructor(
     val editType: String?
         get() = _editType.value
 
-    private val _lang = mutableStateOf<String?>(null)
-    val lang: String?
-        get() = _lang.value
+    private val _country = mutableStateOf<String?>(null)
+    val country: String?
+        get() = _country.value
 
     private val _pomo = mutableStateOf<Int?>(20)
     val pomo: Int?
@@ -77,8 +76,8 @@ class EditViewModel @Inject constructor(
         launchCatching {
             editTypeRepository.readEditTypeState().collect {
                 _editType.value = it
-                langRepository.readLangState().collect { itLang ->
-                    _lang.value = itLang
+                countryRepository.readCountryState().collect { itLang ->
+                    _country.value = itLang
                     pomoService.pomo().collect { scored ->
                         _pomo.value = scored
                     }
@@ -91,17 +90,14 @@ class EditViewModel @Inject constructor(
     private val questionOrder: List<SurveyQuestion> = when (_editType.value) {
         PROFILE -> listOf(
             SurveyQuestion.DISPLAY_NAME,
-            SurveyQuestion.NAME_SURNAME,
-            SurveyQuestion.AVATAR,
             SurveyQuestion.DESCRIPTION,
         )
         PROFILE_PHOTO -> listOf(SurveyQuestion.TAKE_SELFIE)
         DISPLAY_NAME -> listOf(SurveyQuestion.DISPLAY_NAME)
-        NAME_SURNAME -> listOf(SurveyQuestion.NAME_SURNAME)
         DESCRIPTION -> listOf(SurveyQuestion.DESCRIPTION)
         DELETE -> listOf(SurveyQuestion.DELETE)
         FEEDBACK -> listOf(SurveyQuestion.FEEDBACK)
-        LANG -> listOf(SurveyQuestion.LANG)
+        COUNTRY -> listOf(SurveyQuestion.COUNTRY)
         POMO -> listOf(SurveyQuestion.POMO)
         else -> emptyList()
     }
@@ -115,22 +111,6 @@ class EditViewModel @Inject constructor(
     private val _displayName = mutableStateOf<String?>(null)
     val displayName: String?
         get() = _displayName.value
-
-    private val _name = mutableStateOf<String?>(null)
-    val name: String?
-        get() = _name.value
-
-    private val _surname = mutableStateOf<String?>(null)
-    val surname: String?
-        get() = _surname.value
-
-    private val _birthday = mutableStateOf<String?>(null)
-    val birthday: String?
-        get() = _birthday.value
-
-    private val _avatar = mutableStateOf<String?>(null)
-    val avatar: String?
-        get() = _avatar.value
 
     private val _description = mutableStateOf<String?>(null)
     val description: String?
@@ -198,9 +178,6 @@ class EditViewModel @Inject constructor(
             DISPLAY_NAME -> {
                 saveDisplayName(restartApp = restartApp)
             }
-            NAME_SURNAME -> {
-                saveNameSurname(restartApp = restartApp)
-            }
 
             DESCRIPTION -> {
                 saveDescription(restartApp = restartApp)
@@ -210,8 +187,8 @@ class EditViewModel @Inject constructor(
                 feedbackSave(popUp)
             }
 
-            LANG -> {
-                saveLang(popUp)
+            COUNTRY -> {
+                saveCountry(popUp)
             }
             POMO -> { popUp() }
 
@@ -227,14 +204,9 @@ class EditViewModel @Inject constructor(
             firestoreService.saveUser(
                 User(
                     displayName = _displayName.value ?: "",
-                    name = _name.value ?: "",
-                    surname = _surname.value ?: "",
-                    birthday = _birthday.value ?: "",
-                    photo = _avatar.value ?: "",
                     description = _description.value ?: "",
-                    language = _lang.value ?: DEFAULT_LANGUAGE_CODE,
+                    country = _country.value ?: DEFAULT_COUNTRY,
                     online = true,
-                    uid = uid,
                     date = Timestamp.now()
                 )
             )
@@ -281,13 +253,6 @@ class EditViewModel @Inject constructor(
         }
     }
 
-    private fun saveNameSurname(restartApp: () -> Unit) {
-        launchCatching {
-            firestoreService.updateUserName(newValue = _name.value!!)
-            firestoreService.updateUserSurname(newValue = _surname.value!!)
-            restartApp()
-        }
-    }
     private fun saveDescription(restartApp: () -> Unit) {
         launchCatching {
             firestoreService.updateUserDescription(newValue = _description.value!!)
@@ -337,30 +302,15 @@ class EditViewModel @Inject constructor(
         }
     }
 
-    private fun saveLang(popUp: () -> Unit) {
+    private fun saveCountry(popUp: () -> Unit) {
         launchCatching {
-            langRepository.saveLangState(_lang.value ?: DEFAULT_LANGUAGE_CODE)
+            countryRepository.saveCountryState(_country.value ?: DEFAULT_COUNTRY)
             popUp()
         }
     }
 
     fun onDisplayNameChange(newValue: String) {
         _displayName.value = newValue
-        _isNextEnabled.value = getIsNextEnabled()
-    }
-
-    fun onNameChange(newValue: String) {
-        _name.value = newValue
-        _isNextEnabled.value = getIsNextEnabled()
-    }
-
-    fun onSurnameChange(newValue: String) {
-        _surname.value = newValue
-        _isNextEnabled.value = getIsNextEnabled()
-    }
-
-    fun onAvatarChange(newValue: String) {
-        _avatar.value = newValue
         _isNextEnabled.value = getIsNextEnabled()
     }
 
@@ -374,8 +324,8 @@ class EditViewModel @Inject constructor(
         _isNextEnabled.value = getIsNextEnabled()
     }
 
-    fun onLangChange(newValue: String) {
-        _lang.value = newValue
+    fun onCountryChange(newValue: String) {
+        _country.value = newValue
         _isNextEnabled.value = getIsNextEnabled()
     }
 
@@ -386,13 +336,13 @@ class EditViewModel @Inject constructor(
     private fun getIsNextEnabled(): Boolean {
         return when (questionOrder[questionIndex]) {
             SurveyQuestion.DISPLAY_NAME -> _displayName.value != null
-            SurveyQuestion.NAME_SURNAME -> _name.value != null && _surname.value != null
-            SurveyQuestion.AVATAR -> _avatar.value != null
             SurveyQuestion.DESCRIPTION -> _description.value != null
             SurveyQuestion.TAKE_SELFIE -> _selfieUri.value != null
+
             SurveyQuestion.DELETE -> _description.value != null
             SurveyQuestion.FEEDBACK -> _description.value != null
-            SurveyQuestion.LANG -> _lang.value != null
+
+            SurveyQuestion.COUNTRY -> _country.value != null
             SurveyQuestion.POMO -> _pomo.value != null
         }
     }
@@ -410,13 +360,14 @@ class EditViewModel @Inject constructor(
 
 enum class SurveyQuestion {
     DISPLAY_NAME,
-    NAME_SURNAME,
-    AVATAR,
     DESCRIPTION,
     TAKE_SELFIE,
+
+    COUNTRY,
+
     DELETE,
     FEEDBACK,
-    LANG,
+
     POMO
 }
 

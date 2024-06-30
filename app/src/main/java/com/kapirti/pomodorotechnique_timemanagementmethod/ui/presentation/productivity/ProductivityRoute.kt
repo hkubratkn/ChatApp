@@ -35,6 +35,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 
 @Composable
 fun ProductivityRoute(
@@ -73,7 +74,7 @@ fun ProductivityRoute(
         bottomBar = { AdsBannerToolbar(ADS_PRODUCTIVITY_BANNER_ID) },
         topBar = {
             MenuToolbar(
-                text = AppText.productivity_title,
+                text = stringResource(AppText.productivity_title),
                 actionsIcon = Icons.Default.Close,
                 isExpandedScreen = isExpandedScreen,
                 openDrawer = openDrawer,

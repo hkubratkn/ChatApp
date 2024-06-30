@@ -20,7 +20,7 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidEmail
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRepository
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.CountryRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
@@ -38,7 +38,7 @@ import kotlinx.coroutines.flow.update
 class LogInViewModel @Inject constructor(
     private val accountService: AccountService,
     private val firestoreService: FirestoreService,
-    private val langRepository: LangRepository,
+    private val countryRepository: CountryRepository,
     logService: LogService,
 ): PomodoroViewModel(logService) {
     private val _state = MutableStateFlow(SignInState())
@@ -53,8 +53,8 @@ class LogInViewModel @Inject constructor(
     fun googleLoginDone(restartApp: () -> Unit,) {
         launchCatching {
             val user = firestoreService.getUser(accountService.currentUserId)
-            langRepository.saveLangState(
-                user?.let { it.language } ?: Locale.getDefault().getDisplayLanguage()
+            countryRepository.saveCountryState(
+                user?.let { it.country } ?: Locale.getDefault().getDisplayCountry()
             )
             resetState()
             restartApp()
@@ -122,9 +122,9 @@ class LogInViewModel @Inject constructor(
             try {
                 accountService.authenticate(email, password)
                 val user = firestoreService.getUser(accountService.currentUserId)
-                langRepository.saveLangState(
-                    user?.let { it.language } ?:
-                    Locale.getDefault().getDisplayLanguage()
+                countryRepository.saveCountryState(
+                    user?.let { it.country } ?:
+                    Locale.getDefault().getDisplayCountry()
                 )
                 restartApp()
             } catch (ex: FirebaseAuthException) {

@@ -16,17 +16,17 @@
 
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.settings
 
+import android.provider.ContactsContract.CommonDataKinds.StructuredPostal.COUNTRY
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.State
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import androidx.compose.runtime.mutableStateOf
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.LangRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.DELETE
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.FEEDBACK
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.LANG
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.POMO
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.CountryRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.PomoService
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.repository.SettingsRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.usecase.GetThemePreferencesUseCase
@@ -43,7 +43,7 @@ class SettingsViewModel @Inject constructor(
     logService: LogService,
     private val accountService: AccountService,
     private val editTypeRepository: EditTypeRepository,
-    private val langRepository: LangRepository,
+    private val countryRepository: CountryRepository,
     private val settingsRepository: SettingsRepository,
     private val pomoService: PomoService,
     private val saveThemePreferencesUseCase: SaveThemePreferencesUseCase,
@@ -56,9 +56,9 @@ class SettingsViewModel @Inject constructor(
     private val _theme by lazy { mutableStateOf(Theme.Light) }
     val theme: State<Theme> by lazy { _theme.apply { updateTheme() } }
 
-    private val _lang = mutableStateOf<String?>(null)
-    val lang: String?
-        get() = _lang.value
+    private val _country = mutableStateOf<String?>(null)
+    val country: String?
+        get() = _country.value
 
 
     private val _pomo = mutableStateOf<Int?>(20)
@@ -68,8 +68,8 @@ class SettingsViewModel @Inject constructor(
 
     init {
         launchCatching {
-            langRepository.readLangState().collect { itLang ->
-                _lang.value = itLang
+            countryRepository.readCountryState().collect { itLang ->
+                _country.value = itLang
                 pomoService.pomo().collect { scored ->
                     _pomo.value = scored
                     getThemeUpdateUseCase().collect { _theme.value = it }
@@ -102,9 +102,9 @@ class SettingsViewModel @Inject constructor(
             navigateEdit()
         }
     }
-    fun onLangClick(navigateEdit: () -> Unit){
+    fun onCountryClick(navigateEdit: () -> Unit){
         launchCatching {
-            editTypeRepository.saveEditTypeState(LANG)
+            editTypeRepository.saveEditTypeState(COUNTRY)
             navigateEdit()
         }
     }

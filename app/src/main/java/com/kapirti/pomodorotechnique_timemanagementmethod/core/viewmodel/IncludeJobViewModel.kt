@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.core.constants
+package com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel
 
-object EditType {
-    const val PROFILE = "PROFILE"
-    const val PROFILE_PHOTO = "profilePhoto"
-    const val DISPLAY_NAME = "DISPLAY_NAME"
-    const val DESCRIPTION = "DESCRIPTION"
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Job
 
-    const val JOB = "JOB"
-    const val COUNTRY = "COUNTRY"
+class IncludeJobViewModel: ViewModel() {
+    var job by mutableStateOf<Job?>(null)
+        private set
 
-    const val FEEDBACK = "FEEDBACK"
-    const val DELETE = "DELETE"
-    const val POMO = "POMO"
+    fun addJob(newJob: Job) {
+        job = newJob
+    }
 }

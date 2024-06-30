@@ -26,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import androidx.compose.ui.res.stringResource
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsBannerToolbar
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.MenuToolbar
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_SETTINGS_BANNER_ID
@@ -45,10 +46,10 @@ fun SettingsRoute(
         bottomBar = { AdsBannerToolbar(ADS_SETTINGS_BANNER_ID) },
         topBar = {
             MenuToolbar(
-                text = AppText.settings_title,
+                text = stringResource(AppText . settings_title),
                 actionsIcon = Icons.Default.Stars,
                 isExpandedScreen = isExpandedScreen,
-                openDrawer = openDrawer, {}
+                openDrawer = openDrawer, {},
             )
         }
     ) { innerPadding ->

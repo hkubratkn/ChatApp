@@ -25,6 +25,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.PomodoroAppState
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.data.NetworkMonitor
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeChatViewModel
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeJobViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeUserIdViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.theme.PomodoroTheme
 import kotlinx.coroutines.CoroutineScope
@@ -43,6 +44,7 @@ fun PomodoroApp(
 ) {
     val includeUserIdViewModel: IncludeUserIdViewModel = viewModel()
     val includeChatViewModel: IncludeChatViewModel = viewModel()
+    val includeJobViewModel: IncludeJobViewModel = viewModel()
 
     PomodoroTheme(isDarkTheme) {
         val isOffline by appState.isOffline.collectAsStateWithLifecycle()
@@ -85,6 +87,7 @@ fun PomodoroApp(
             hasUser = hasUser,
             includeUserIdViewModel = includeUserIdViewModel,
             includeChatViewModel = includeChatViewModel,
+            includeJobViewModel = includeJobViewModel,
 
             popUpScreen = navigationActions.popUp,
             restartApp = navigationActions.clearAndNavigate,
@@ -104,6 +107,7 @@ fun PomodoroApp(
 
             navigateEdit = navigationActions.navigateEdit,
             navigateTimeOver = navigationActions.navigateTimeOver,
+            navigateJobDetail = navigationActions.navigateJobDetail,
 
             loginToRegister = navigationActions.navigateAndPopUpLoginToRegister,
             registerToLogin = navigationActions.navigateAndPopUpRegisterToLogin,
