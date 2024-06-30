@@ -7,12 +7,11 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import androidx.annotation.StringRes
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.QChatRepo
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.FieldQuestion
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.FieldQuestionDouble
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.FieldQuestionHeight
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.PhotoQuestion
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.PomoQuestion
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.SingleChoiceQuestionAvatar
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.SingleChoiceQuestionLang
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.SingleChoiceQuestionCountry
+
 
 @Composable
 fun DisplayNameQuestion(
@@ -27,57 +26,6 @@ fun DisplayNameQuestion(
         value = displayName,
         onValueChange = onDisplayNameChange,
         modifier = modifier,
-    )
-}
-
-@Composable
-fun NameSurnameQuestion(
-    name: String,
-    surname: String,
-    onNameChange: (String) -> Unit,
-    onSurnameChange: (String) -> Unit,
-    modifier: Modifier = Modifier,
-){
-    FieldQuestionDouble(
-        titleResourceId = AppText.name_and_surname,
-        directionsResourceId = AppText.name_and_surname,
-        textFirst = AppText.name,
-        textSecond = AppText.surname,
-        valueFirst = name,
-        valueSecond = surname,
-        onFirstChange = onNameChange,
-        onSecondChange = onSurnameChange,
-        modifier = modifier,
-    )
-}
-
-/**
-@Composable
-fun BirthdayQuestion(
-    birthday: String?,
-    onBirthdayChange: (Long) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    /** DateQuestion(
-    titleResourceId = AppText.birthday,
-    directionsResourceId = AppText.select_date,
-    birthday = birthday,
-    onBirthdayChange = onBirthdayChange,
-    modifier = modifier,
-    )*/
-}*/
-
-@Composable
-fun AvatarQuestion(
-    selectedAnswer: String?,
-    onOptionSelected: (String) -> Unit,
-    modifier: Modifier = Modifier,
-){
-    SingleChoiceQuestionAvatar(
-        possibleAnswers = QChatRepo.getAvatar(),
-        selectedAnswer = selectedAnswer,
-        onOptionSelected = onOptionSelected,
-        modifier = modifier
     )
 }
 
@@ -145,13 +93,13 @@ fun FeedbackQuestion(
 }
 
 @Composable
-fun LangQuestion(
+fun CountryQuestion(
     selectedAnswer: String?,
     onOptionSelected: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    SingleChoiceQuestionLang(
-        possibleAnswers = QChatRepo.getLangs(),
+    SingleChoiceQuestionCountry(
+        possibleAnswers = QChatRepo.getCountries(),
         selectedAnswer = selectedAnswer,
         onOptionSelected = onOptionSelected,
         modifier = modifier,

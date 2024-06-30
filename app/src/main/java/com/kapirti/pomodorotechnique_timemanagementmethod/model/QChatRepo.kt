@@ -15,15 +15,11 @@
  */
 package com.kapirti.pomodorotechnique_timemanagementmethod.model
 
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.LangConst.LANG_TURKISH
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.LangConst.LANG_ENGLISH
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.LangConst.LANG_PERSIAN
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.CountryConst.COUNTRY_TR
 
 object QChatRepo {
-    fun getAvatar(): List<String> = avatars
-    fun getLangs() : List<String> = langs
+    fun getCountries() : List<String> = countries
 }
 
-private val avatars = listOf(AVATAR_1,AVATAR_2,AVATAR_3,AVATAR_4,AVATAR_5,AVATAR_6,AVATAR_7,AVATAR_8,AVATAR_9,AVATAR_10,AVATAR_11,AVATAR_12,AVATAR_13,AVATAR_14,AVATAR_15,AVATAR_16,AVATAR_17,AVATAR_18,AVATAR_19,AVATAR_20,AVATAR_21,AVATAR_22,AVATAR_23,AVATAR_24,AVATAR_25,AVATAR_26,AVATAR_27,AVATAR_28,AVATAR_29,AVATAR_30,AVATAR_31,AVATAR_32,)
-private val langs = listOf(LANG_ENGLISH, LANG_TURKISH, LANG_PERSIAN)
+private val countries = listOf(COUNTRY_TR)
 

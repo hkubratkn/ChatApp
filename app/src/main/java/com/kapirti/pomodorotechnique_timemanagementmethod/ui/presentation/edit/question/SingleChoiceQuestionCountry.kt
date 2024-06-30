@@ -26,18 +26,22 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Flag
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.StaggeredVerticalGrid
-import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.SurfaceImage
 
 @Composable
-fun SingleChoiceQuestionAvatar(
+fun SingleChoiceQuestionCountry(
     possibleAnswers: List<String>,
     selectedAnswer: String?,
     onOptionSelected: (String) -> Unit,
@@ -56,9 +60,10 @@ fun SingleChoiceQuestionAvatar(
         ) {
             possibleAnswers.forEach { course ->
                 val selected = course == selectedAnswer
-                RadioButtonGender(
+                RadioButtonLang(
                     modifier = Modifier.padding(vertical = 8.dp),
-                    imageResourceId = course,
+                    text = course,
+                    imageResourceId = Icons.Default.Flag,
                     selected = selected,
                     onOptionSelected = { onOptionSelected(course) }
                 )
@@ -68,8 +73,9 @@ fun SingleChoiceQuestionAvatar(
 }
 
 @Composable
-private fun RadioButtonGender(
-    imageResourceId: String,
+private fun RadioButtonLang(
+    text: String,
+    imageResourceId: ImageVector,
     selected: Boolean,
     onOptionSelected: () -> Unit,
     modifier: Modifier = Modifier,
@@ -94,11 +100,12 @@ private fun RadioButtonGender(
         shape = MaterialTheme.shapes.medium
     ) {
         Column (horizontalAlignment = Alignment.CenterHorizontally){
-            SurfaceImage(
-                imageUrl = imageResourceId,
+            Icon(imageVector = imageResourceId,
                 contentDescription = null, modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp))
+            Text(text)
         }
     }
 }
+

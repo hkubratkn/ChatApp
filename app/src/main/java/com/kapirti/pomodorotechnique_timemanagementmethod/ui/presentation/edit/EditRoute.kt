@@ -91,22 +91,6 @@ fun EditRoute(
                     )
                 }
 
-                SurveyQuestion.NAME_SURNAME -> {
-                    NameSurnameQuestion(
-                        name = viewModel.name ?: "",
-                        surname = viewModel.surname ?: "",
-                        onNameChange = viewModel::onNameChange,
-                        onSurnameChange = viewModel::onSurnameChange,
-                        modifier = modifier,
-                    )
-                }
-
-                SurveyQuestion.AVATAR -> AvatarQuestion(
-                    selectedAnswer = viewModel.avatar,
-                    onOptionSelected = viewModel::onAvatarChange,
-                    modifier = modifier
-                )
-
                 SurveyQuestion.DESCRIPTION -> {
                     DescriptionQuestion(
                         description = viewModel.description ?: "",
@@ -131,9 +115,9 @@ fun EditRoute(
                     onFeedbackChange = viewModel::onDescriptionChange,
                     modifier = modifier
                 )
-                SurveyQuestion.LANG -> LangQuestion(
-                    selectedAnswer = viewModel.lang,
-                    onOptionSelected = viewModel::onLangChange,
+                SurveyQuestion.COUNTRY -> CountryQuestion(
+                    selectedAnswer = viewModel.country,
+                    onOptionSelected = viewModel::onCountryChange,
                     modifier = modifier
                 )
                 SurveyQuestion.POMO -> PomoValueQuestion(
