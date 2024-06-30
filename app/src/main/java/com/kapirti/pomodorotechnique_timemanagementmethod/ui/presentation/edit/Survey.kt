@@ -59,6 +59,23 @@ fun TakeSelfieQuestion(
     )
 }
 
+@Composable
+fun TitleQuestion(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+){
+    FieldQuestion(
+        titleResourceId = AppText.title,
+        directionsResourceId = AppText.title,
+        text = AppText.title,
+        value = value,
+        onValueChange = onValueChange,
+        modifier = modifier,
+    )
+}
+
+
 
 @Composable
 fun DeleteQuestion(

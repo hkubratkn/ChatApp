@@ -36,7 +36,6 @@
     <string name="profile_title">Profile</string>
     <string name="online">Online</string>
     <string name="join">Join</string>
-    <string name="age">Age</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Settings</string>
@@ -80,8 +79,7 @@
     <string name="delete_my_account">Delete my account</string>
     <string name="delete_account_title">Delete account?</string>
     <string name="delete_account_description">You will lose all your data and your account will be deleted. This action is irreversible.</string>
-    <string name="name">Name</string>
-    <string name="surname">Surname</string>
+    <string name="title">Title</string>
     <string name="select_all">Select all that apply.</string>
     <string name="tell_us_about_you">Tell us something about yourself</string>
     <string name="description">Description</string>
@@ -90,7 +88,6 @@
     <string name="add_photo">ADD PHOTO</string>
     <string name="retake_photo">RETAKE PHOTO</string>
     <string name="feedback_description">We are constantly improving our product by listening to your feedback.</string>
-    <string name="name_and_surname">Name And Surname</string>
     <string name="display_name">Display name</string>
     <string name="pomo">Pomo</string>
 

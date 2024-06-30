@@ -105,6 +105,12 @@ fun EditRoute(
                     modifier = modifier,
                 )
 
+                SurveyQuestion.TITLE -> TitleQuestion(
+                    value = viewModel.displayName ?: "",
+                    onValueChange = viewModel::onDisplayNameChange,
+                    modifier = modifier
+                )
+
                 SurveyQuestion.DELETE -> DeleteQuestion(
                     delete = viewModel.description ?: "",
                     onDeleteChange = viewModel::onDescriptionChange,

@@ -5,6 +5,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.Delete
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Job
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.UserJob
 import kotlinx.coroutines.flow.Flow
 
 
@@ -17,6 +18,8 @@ interface FirestoreService {
     suspend fun saveUser(user: User)
     suspend fun saveUserChat(uid: String, chatId: String, chat: Chat)
     suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat)
+    suspend fun saveUserJob(userJob: UserJob, id: String)
+    suspend fun saveJob(job: Job, country: String): String
     suspend fun saveCountry(feedback: Feedback)
     suspend fun saveFeedback(feedback: Feedback)
 

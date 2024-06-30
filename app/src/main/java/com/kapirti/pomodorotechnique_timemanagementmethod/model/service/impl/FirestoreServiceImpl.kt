@@ -20,6 +20,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.Delete
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Job
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.UserJob
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.trace
@@ -63,20 +64,13 @@ class FirestoreServiceImpl @Inject constructor(
 
     override suspend fun getUser(uid: String): User? = userDocument(uid).get().await().toObject()
     override suspend fun saveUser(user: User): Unit = trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
-    override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit =
-        trace(
-            SAVE_USER_CHAT_TRACE
-        ) { userChatCollection(uid).document(chatId).set(chat).await() }
-    override suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat): Unit =
-        trace(
-            SAVE_USER_ARCHIVE_TRACE
-        ) { userArchiveCollection(uid).document(chatId).set(chat).await() }
+    override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_CHAT_TRACE) { userChatCollection(uid).document(chatId).set(chat).await() }
+    override suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_ARCHIVE_TRACE) { userArchiveCollection(uid).document(chatId).set(chat).await() }
+    override suspend fun saveUserJob(userJob: UserJob, id: String): Unit = trace(SAVE_USER_JOB_TRACE){ userJobCollection(auth.currentUserId).document(id).set(userJob).await() }
 
+    override suspend fun saveJob(job: Job, country: String): String = trace(SAVE_JOB_TRACE) { jobCollection(country).add(job).await().id }
     override suspend fun saveFeedback(feedback: Feedback): Unit = trace(SAVE_FEEDBACK_TRACE){ feedbackCollection().add(feedback).await() }
-    override suspend fun saveCountry(feedback: Feedback): Unit =
-        trace(SAVE_COUNTRY_TRACE) {
-            countryDocument(feedback).set(feedback).await()
-        }
+    override suspend fun saveCountry(feedback: Feedback): Unit = trace(SAVE_COUNTRY_TRACE) { countryDocument(feedback).set(feedback).await() }
     override suspend fun updateUserOnline(value: Boolean): Unit = trace(UPDATE_USER_ONLINE_TRACE){ userDocument(auth.currentUserId).update(ONLINE_FIELD, value).await() }
     override suspend fun updateUserLastSeen(): Unit = trace(UPDATE_USER_LAST_SEEN_TRACE) { userDocument(auth.currentUserId).update(LAST_SEEN_FIELD, FieldValue.serverTimestamp()).await()}
     override suspend fun updateUserDisplayName(newValue: String): Unit = trace(UPDATE_USER_DISPLAY_NAME_TRACE){ userDocument(auth.currentUserId).update(DISPLAY_NAME_FIELD, newValue).await()}
@@ -98,6 +92,7 @@ class FirestoreServiceImpl @Inject constructor(
     private fun userDocument(uid: String): DocumentReference = userCollection().document(uid)
     private fun userChatCollection(uid: String): CollectionReference = userDocument(uid).collection(CHAT_COLLECTION)
     private fun userArchiveCollection(uid: String): CollectionReference = userDocument(uid).collection(ARCHIVE_COLLECTION)
+    private fun userJobCollection(uid: String): CollectionReference = userDocument(uid).collection(JOB_COLLECTION)
 
 
     private fun jobCollection(country: String): CollectionReference = firestore.collection(JOB_COLLECTION).document(country).collection(DOCTOR_COLLECTION)
@@ -129,8 +124,10 @@ class FirestoreServiceImpl @Inject constructor(
         private const val SAVE_USER_TRACE = "saveUser"
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
         private const val SAVE_USER_ARCHIVE_TRACE = "saveUserArchive"
+        private const val SAVE_USER_JOB_TRACE = "saveUserJob"
         private const val SAVE_FEEDBACK_TRACE = "saveFeedback"
         private const val SAVE_COUNTRY_TRACE = "saveCountry"
+        private const val SAVE_JOB_TRACE = "saveJob"
 
         private const val UPDATE_USER_ONLINE_TRACE = "updateUserOnline"
         private const val UPDATE_USER_LAST_SEEN_TRACE = "updateUserLastSeen"

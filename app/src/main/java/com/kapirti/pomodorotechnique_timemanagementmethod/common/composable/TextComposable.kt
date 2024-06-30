@@ -48,7 +48,7 @@ fun TextPomo(
 ) {
     Text(
         text = title,
-        fontSize = 100.sp,
+        fontSize = 30.sp,
         color = MaterialTheme.colorScheme.onSurface,
         fontWeight = FontWeight.Bold
     )

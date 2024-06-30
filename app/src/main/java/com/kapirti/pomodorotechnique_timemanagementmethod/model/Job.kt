@@ -25,10 +25,13 @@ data class Job(
     val title: String = "Title",
     val description: String = "Description",
     val writerId: String = "WriterId",
-    val writerPhoto: String = "WriterPhoto",
-    val writerDisplayName: String = "WriterDisplayName",
     @ServerTimestamp
     var date: Timestamp? = null
 )
 
-//data class UserJob()
+data class UserJob(
+    @DocumentId val id: String = "id",
+    val country: String = "Country",
+    @ServerTimestamp
+    var date: Timestamp? = null
+)

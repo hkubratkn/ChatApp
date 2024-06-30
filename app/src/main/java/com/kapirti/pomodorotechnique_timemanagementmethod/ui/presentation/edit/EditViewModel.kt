@@ -23,7 +23,9 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTyp
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.PomoService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Delete
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Job
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.UserJob
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
@@ -97,7 +99,10 @@ class EditViewModel @Inject constructor(
         DISPLAY_NAME -> listOf(SurveyQuestion.DISPLAY_NAME)
         DESCRIPTION -> listOf(SurveyQuestion.DESCRIPTION)
 
-        JOB -> listOf()
+        JOB -> listOf(
+            SurveyQuestion.TITLE,
+            SurveyQuestion.DESCRIPTION
+        )
 
         DELETE -> listOf(SurveyQuestion.DELETE)
         FEEDBACK -> listOf(SurveyQuestion.FEEDBACK)
@@ -186,6 +191,7 @@ class EditViewModel @Inject constructor(
             DESCRIPTION -> {
                 saveDescription(restartApp = restartApp)
             }
+            JOB -> { saveJob(restartApp) }
 
             FEEDBACK -> {
                 feedbackSave(popUp)
@@ -248,7 +254,6 @@ class EditViewModel @Inject constructor(
             }
         }
     }
-
     private fun saveDisplayName(restartApp: () -> Unit) {
         launchCatching {
             accountService.displayName(_displayName.value!!)
@@ -256,10 +261,32 @@ class EditViewModel @Inject constructor(
             restartApp()
         }
     }
-
     private fun saveDescription(restartApp: () -> Unit) {
         launchCatching {
             firestoreService.updateUserDescription(newValue = _description.value!!)
+            restartApp()
+        }
+    }
+
+
+    private fun saveJob(restartApp: () -> Unit) {
+        launchCatching {
+            val jobId = firestoreService.saveJob(
+                job = Job(
+                    title = _displayName.value ?: "",
+                    description = _description.value ?: "",
+                    writerId = accountService.currentUserId,
+                    date = Timestamp.now()
+                ),
+                country = _country.value ?: DEFAULT_COUNTRY
+            )
+            firestoreService.saveUserJob(
+                UserJob(
+                    country = _country.value ?: DEFAULT_COUNTRY,
+                    date = Timestamp.now()
+                ),
+                id = jobId,
+            )
             restartApp()
         }
     }
@@ -343,6 +370,8 @@ class EditViewModel @Inject constructor(
             SurveyQuestion.DESCRIPTION -> _description.value != null
             SurveyQuestion.TAKE_SELFIE -> _selfieUri.value != null
 
+            SurveyQuestion.TITLE -> _displayName.value != null
+
             SurveyQuestion.DELETE -> _description.value != null
             SurveyQuestion.FEEDBACK -> _description.value != null
 
@@ -368,6 +397,7 @@ enum class SurveyQuestion {
     TAKE_SELFIE,
 
     COUNTRY,
+    TITLE,
 
     DELETE,
     FEEDBACK,
