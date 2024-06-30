@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.subscribe
-/**
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.subscribe
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -95,4 +95,4 @@ fun SubscribeScreen(
             }
         }
     }
-}*/
+}

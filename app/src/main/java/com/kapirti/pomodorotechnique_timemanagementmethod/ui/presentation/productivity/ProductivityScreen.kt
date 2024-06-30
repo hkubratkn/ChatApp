@@ -59,7 +59,7 @@ class TabContentProductivity(val section: SectionsProductivity, val content: @Co
 
 @Composable
 fun rememberTabContent(
-    pomo: String,
+    pomo: Long,
     finishClick: Boolean,
     startBtnStatus: Boolean,
     finishBtnStatus: Boolean,
@@ -106,7 +106,7 @@ fun ProductivityScreen(
 
 @Composable
 private fun TabWithPomodoro(
-    pomo: String,
+    pomo: Long,
     finishClick: Boolean,
     startBtnStatus: Boolean,
     finishBtnStatus: Boolean,
@@ -125,7 +125,7 @@ private fun TabWithPomodoro(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            TextPomo(title = pomo)
+            TextPomo(title = pomo.formatTime())
             Spacer(modifier = Modifier.smallSpacer())
 
             if (finishClick) {

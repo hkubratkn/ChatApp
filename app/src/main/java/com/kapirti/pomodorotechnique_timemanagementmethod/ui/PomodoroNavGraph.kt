@@ -28,6 +28,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.profil
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.register.RegisterScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.settings.SettingsRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.splash.SplashScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.subscribe.SubscribeScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeover.TimeOverScreen
 
 
@@ -150,6 +151,9 @@ fun ZepiNavGraph(
                         navigateBlockUser = {}, //navigateBlockUser
                     )
                 }
+                composable(PomodoroDestinations.SUBSCRIPTIONS_ROUTE) {
+                    SubscribeScreen()
+                }
 
                 composable(PomodoroDestinations.SPLASH_ROUTE) {
                     SplashScreen(
@@ -233,11 +237,6 @@ fun ZepiNavGraph(
                         includeChatViewModel = includeChatViewModel,
                         navigateChatsToChatExist = navigateChatsToChatExist
                     )
-                }
-
-
-                composable(ZepiDestinations.SUBSCRIPTIONS_ROUTE) {
-                    SubscribeScreen()
                 }
 
 

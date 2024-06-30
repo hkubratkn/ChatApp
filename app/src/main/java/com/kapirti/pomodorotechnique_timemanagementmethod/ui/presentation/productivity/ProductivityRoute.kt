@@ -50,7 +50,7 @@ fun ProductivityRoute(
     val timerValue by viewModel.timer.collectAsState()
     val context = LocalContext.current
     val tabContent = rememberTabContent(
-        pomo = viewModel.pomo.toString(),
+        pomo = viewModel.pomo.toLong(),
         finishClick = viewModel.finishClick,
         navigateToPomodoro = navigateToProductivity,
         showInterstialAd = showInterstitialAds,

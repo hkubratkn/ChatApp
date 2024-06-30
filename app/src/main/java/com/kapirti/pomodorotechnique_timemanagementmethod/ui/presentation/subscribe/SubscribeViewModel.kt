@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.kapirti.pomodorotechnique_timemanagementmethod.past.presentation.subscribe
-/**
-import com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.LogService
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.QuickChatViewModel
+package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.subscribe
+
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class SubscribeViewModel @Inject constructor(
-    logService: com.kapirti.pomodorotechnique_timemanagementmethod.past.model.service.LogService,
-): QuickChatViewModel(logService) {}
-*/
+    logService: LogService,
+): PomodoroViewModel(logService) {}
+
