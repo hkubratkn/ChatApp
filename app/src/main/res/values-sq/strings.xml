@@ -5,7 +5,7 @@
     <string name="chats_title">Bisedat</string>
     <string name="archive_title">Arkivi</string>
     <string name="long_click">Klikoni gjatë</string>
-    <string name="permission_message">Për t'u njoftuar kur keni mesazhe të reja, ju lutemi jepni lejen e njoftimit.</string>
+    <string name="permission_message">Për t’u njoftuar kur keni mesazhe të reja, ju lutemi jepni lejen e njoftimit.</string>
     <string name="permission_rationale">Jepni lejen e njoftimit në mënyrë që aplikacioni të demonstrojë përdorimin e API-ve të njoftimit.</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Modaliteti i errët</string>

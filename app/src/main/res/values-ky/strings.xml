@@ -6,14 +6,11 @@
     <string name="archive_title">Архив</string>
     <string name="long_click">Узун чыкылдатуу</string>
     <string name="permission_message">Жаңы билдирүүлөрүңүз болгондо кабарлануу үчүн, эскертмеге уруксат бериңиз.</string>
-    <string name="permission_rationale">Колдонмо Эскертме API'лерин колдонууну көрсөтө алышы үчүн эскертмеге уруксат бериңиз.</string>
+    <string name="permission_rationale">Колдонмо Эскертме API’лерин колдонууну көрсөтө алышы үчүн эскертмеге уруксат бериңиз.</string>
     <string name="permission_grant">ГРАНТ</string>
     <string name="dark_mode">Караңгы режим</string>
     <string name="home_title">Башкы бет</string>
     <string name="already_have_an_account">Каттоо эсебиңиз бар</string>
-    <string name="archive">Архив</string>
-    <string name="avatar">Аватар</string>
-    <string name="birthday">Туулган күн</string>
     <string name="block">блок</string>
     <string name="block_user">Колдонуучуну бөгөттөөнү каалайсызбы?</string>
     <string name="cancel">Жокко чыгаруу</string>

@@ -5,7 +5,7 @@
     <string name="chats_title">আড্ডা</string>
     <string name="archive_title">পুৰালেখ</string>
     <string name="long_click">দীঘলীয়া ক্লিক কৰক</string>
-    <string name="permission_message">আপোনাৰ নতুন বাৰ্তা আহিলে অৱগত হ'বলৈ, অনুগ্ৰহ কৰি অধিসূচনাৰ অনুমতি প্ৰদান কৰক।</string>
+    <string name="permission_message">আপোনাৰ নতুন বাৰ্তা আহিলে অৱগত হ’বলৈ, অনুগ্ৰহ কৰি অধিসূচনাৰ অনুমতি প্ৰদান কৰক।</string>
     <string name="permission_rationale">অনুগ্ৰহ কৰি অধিসূচনাৰ অনুমতি প্ৰদান কৰক যাতে এপটোৱে অধিসূচনা এপিআইসমূহৰ ব্যৱহাৰ প্ৰদৰ্শন কৰিব পাৰে।</string>
     <string name="permission_grant">অনুদান</string>
     <string name="dark_mode">ডাৰ্ক মোড</string>

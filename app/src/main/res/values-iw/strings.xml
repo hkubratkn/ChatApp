@@ -2,7 +2,7 @@
 <resources>
     <!--hebrew-->
     <string name="subscriptions_title">מנויים</string>
-    <string name="chats_title">צ'אטים</string>
+    <string name="chats_title">’אטים</string>
     <string name="archive_title">ארכיון</string>
     <string name="long_click">קליק ארוך</string>
     <string name="permission_message">כדי לקבל הודעה כשיש לך הודעות חדשות, אנא הענק את הרשאת ההתראה.</string>

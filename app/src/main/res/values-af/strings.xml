@@ -6,7 +6,7 @@
     <string name="archive_title">Argief</string>
     <string name="long_click">Lang klik</string>
     <string name="permission_message">Om in kennis gestel te word wanneer jy nuwe boodskappe het, gee asseblief die kennisgewing toestemming.</string>
-    <string name="permission_rationale">Gee asseblief die kennisgewingtoestemming sodat die toepassing gebruik van die Kennisgewing-API's kan demonstreer.</string>
+    <string name="permission_rationale">Gee asseblief die kennisgewingtoestemming sodat die toepassing gebruik van die Kennisgewing-API’s kan demonstreer.</string>
     <string name="permission_grant">TOEKENNING</string>
     <string name="dark_mode">Donker modus</string>
     <string name="home_title">Tuisblad</string>

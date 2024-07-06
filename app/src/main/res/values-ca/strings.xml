@@ -6,7 +6,7 @@
     <string name="archive_title">Arxiu</string>
     <string name="long_click">Clic llarg</string>
     <string name="permission_message">Per rebre una notificació quan tinguis missatges nous, concediu el permís de notificació.</string>
-    <string name="permission_rationale">Concediu el permís de notificació perquè l'aplicació pugui demostrar l'ús de les API de notificació.</string>
+    <string name="permission_rationale">Concediu el permís de notificació perquè l’aplicació pugui demostrar l’ús de les API de notificació.</string>
     <string name="permission_grant">SUBVENCIÓ</string>
     <string name="dark_mode">Mode fosc</string>
     <string name="home_title">Pàgina d’inici</string>
