@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--telugu-->
+    <string name="subscriptions_title">చందాలు</string>
     <string name="chats_title">చాట్‌లు</string>
     <string name="archive_title">ఆర్కైవ్</string>
     <string name="long_click">లాంగ్ క్లిక్</string>

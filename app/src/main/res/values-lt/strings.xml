@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--lithuanian-->
+    <string name="subscriptions_title">Prenumeratos</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Tamsusis režimas</string>
     <string name="already_have_an_account">Jau turite paskyrą</string>

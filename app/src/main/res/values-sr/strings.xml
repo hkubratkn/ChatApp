@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--serbian-->
+    <string name="subscriptions_title">Претплате</string>
     <string name="chats_title">Ћаскања</string>
     <string name="archive_title">Архива</string>
     <string name="long_click">Дуг клик</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--azerbeijani-->
+    <string name="subscriptions_title">Abunəliklər</string>
     <string name="chats_title">Söhbətlər</string>
     <string name="archive_title">Arxiv</string>
     <string name="long_click">Uzun klik</string>

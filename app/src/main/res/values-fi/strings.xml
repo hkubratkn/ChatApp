@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--finnish-->
+    <string name="subscriptions_title">Tilaukset</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Tumma tila</string>
     <string name="profile_title">Profiili</string>

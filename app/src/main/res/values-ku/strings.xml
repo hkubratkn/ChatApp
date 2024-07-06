@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kurdish-->
+    <string name="subscriptions_title">Aboneyên</string>
     <string name="chats_title">Chats</string>
     <string name="archive_title">Arşîv</string>
     <string name="long_click">Bitikîne dirêj</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--thai-->
+    <string name="subscriptions_title">การสมัครรับข้อมูล</string>
     <string name="chats_title">แชท</string>
     <string name="archive_title">คลังเก็บเอกสารสำคัญ</string>
     <string name="long_click">คลิกยาวๆ</string>

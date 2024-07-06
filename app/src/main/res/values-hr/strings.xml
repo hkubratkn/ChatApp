@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--croatian-->
+    <string name="subscriptions_title">Pretplate</string>
     <string name="chats_title">Chatovi</string>
     <string name="archive_title">Arhiva</string>
     <string name="long_click">Dugi klik</string>

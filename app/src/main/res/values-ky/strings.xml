@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kyrgyz-->
+    <string name="subscriptions_title">Жазылуулар</string>
     <string name="chats_title">Чат</string>
     <string name="archive_title">Архив</string>
     <string name="long_click">Узун чыкылдатуу</string>

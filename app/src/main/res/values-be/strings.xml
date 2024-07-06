@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--belarusian-->
+    <string name="subscriptions_title">Падпіскі</string>
     <string name="chats_title">Чаты</string>
     <string name="archive_title">Архіў</string>
     <string name="long_click">Доўгі клік</string>
@@ -10,9 +11,6 @@
     <string name="dark_mode">Цёмны рэжым</string>
     <string name="home_title">Галоўная старонка</string>
     <string name="already_have_an_account">Ужо ёсць уліковы запіс</string>
-    <string name="archive">Архіў</string>
-    <string name="avatar">Аватар</string>
-    <string name="birthday">Дзень нараджэння</string>
     <string name="block">Блок</string>
     <string name="block_user">Вы хочаце заблакіраваць карыстальніка?</string>
     <string name="cancel">Адмяніць</string>
@@ -35,7 +33,6 @@
     <string name="forgotten_password">Забыўся пароль? Націсніце, каб атрымаць рэзервовы адрас электроннай пошты</string>
     <string name="gender">Пол</string>
     <string name="generic_error">Нешта не так здарылася. Калі ласка, паспрабуйце яшчэ раз.</string>
-    <string name="in_my_free_time">У вольны час люблю…</string>
     <string name="join">Далучайцеся</string>
     <string name="join_text">Зарэгіструйцеся або ўвайдзіце</string>
     <string name="jump_bottom">Скачок уніз</string>

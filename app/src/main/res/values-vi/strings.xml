@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--vietnamese-->
+    <string name="subscriptions_title">Đăng ký</string>
     <string name="block">Khối</string>
     <string name="block_user">Bạn có muốn chặn một người dùng?</string>
     <string name="chats_title">Trò chuyện</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--malayalam-->
+    <string name="subscriptions_title">സബ്സ്ക്രിപ്ഷനുകൾ</string>
     <string name="chats_title">ചാറ്റുകൾ</string>
     <string name="archive_title">ആർക്കൈവ്</string>
     <string name="long_click">നീണ്ട ക്ലിക്ക്</string>

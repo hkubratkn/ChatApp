@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--punjabi-->
+    <string name="subscriptions_title">ਗਾਹਕੀਆਂ</string>
     <string name="chats_title">ਗੱਲਬਾਤ</string>
     <string name="archive_title">ਪੁਰਾਲੇਖ</string>
     <string name="long_click">ਲੰਬੀ ਕਲਿੱਕ ਕਰੋ</string>

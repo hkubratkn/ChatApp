@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--turkmen-->
+    <string name="subscriptions_title">Abunalar</string>
     <string name="chats_title">Söhbetler</string>
     <string name="archive_title">Arhiw</string>
     <string name="long_click">Uzak basyň</string>

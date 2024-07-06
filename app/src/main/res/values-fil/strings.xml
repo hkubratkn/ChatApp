@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--filipino-->
+    <string name="subscriptions_title">Mga subscription</string>
     <string name="chats_title">Mga chat</string>
     <string name="archive_title">Archive</string>
     <string name="long_click">Mahabang pag-click</string>

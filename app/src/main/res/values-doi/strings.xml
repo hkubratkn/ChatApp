@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--dogri-->
+    <string name="subscriptions_title">सदस्यताएं दी</string>
     <string name="chats_title">गपशप करदे ने</string>
     <string name="archive_title">पुरालेख</string>
     <string name="long_click">लंबा क्लिक करो</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--armanian-->
+    <string name="subscriptions_title">Բաժանորդագրություններ</string>
     <string name="chats_title">Զրույցներ</string>
     <string name="archive_title">Արխիվ</string>
     <string name="long_click">Երկար սեղմեք</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--icelandic-->
+    <string name="subscriptions_title">Áskriftir</string>
     <string name="chats_title">Spjall</string>
     <string name="archive_title">Skjalasafn</string>
     <string name="long_click">Langur smellur</string>

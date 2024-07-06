@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--zulu-->
+    <string name="subscriptions_title">Okubhaliselwe</string>
     <string name="block">Vimba</string>
     <string name="block_user">Ingabe ufuna ukuvimba umsebenzisi?</string>
     <string name="chats_title">Izingxoxo</string>

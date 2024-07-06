@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--hindi-->
+    <string name="subscriptions_title">सदस्यता</string>
     <string name="chats_title">चैट</string>
     <string name="archive_title">पुरालेख</string>
     <string name="long_click">लंबा क्लिक</string>
     <string name="permission_message">नए संदेश आने पर सूचित होने के लिए कृपया अधिसूचना अनुमति प्रदान करें।</string>
     <string name="permission_rationale">कृपया अधिसूचना अनुमति प्रदान करें ताकि ऐप अधिसूचना API का उपयोग प्रदर्शित कर सके।</string>
     <string name="permission_grant">अनुदान</string>
-
     <string name="dark_mode">डार्क मोड</string>
     <string name="home_title">होम पेज</string>
     <string name="already_have_an_account">क्या आपके पास पहले से एक खाता मौजूद है</string>

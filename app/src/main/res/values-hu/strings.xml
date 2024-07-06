@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--hungarian-->
+    <string name="subscriptions_title">Előfizetések</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Sötét üzemmód</string>
     <string name="profile_title">Profil</string>

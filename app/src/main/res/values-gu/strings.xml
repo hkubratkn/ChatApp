@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--gujarati-->
+    <string name="subscriptions_title">સબ્સ્ક્રિપ્શન્સ</string>
     <string name="chats_title">ચેટ્સ</string>
     <string name="archive_title">આર્કાઇવ</string>
     <string name="long_click">લાંબી ક્લિક કરો</string>

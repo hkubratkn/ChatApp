@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--swahili-->
+    <string name="subscriptions_title">Usajili</string>
     <string name="chats_title">Soga</string>
     <string name="archive_title">Hifadhi</string>
     <string name="long_click">Bonyeza kwa muda mrefu</string>

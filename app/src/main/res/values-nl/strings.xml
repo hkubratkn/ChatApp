@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--dutch-->
+    <string name="subscriptions_title">Abonnementen</string>
     <string name="permission_grant">GRANT</string>
     <string name="profile_title">Profiel</string>
     <string name="dark_mode">Donkere modus</string>

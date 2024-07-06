@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--english-->
+    <string name="subscriptions_title">Subscriptions</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Dark mode</string>
     <string name="profile_title">Profile</string>

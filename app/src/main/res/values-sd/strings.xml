@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sindhi-->
+    <string name="subscriptions_title">رڪنيت</string>
     <string name="chats_title">چٽ</string>
     <string name="archive_title">آرڪائيو</string>
     <string name="long_click">ڊگھو ڪلڪ ڪريو</string>

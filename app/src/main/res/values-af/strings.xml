@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--afrikans-->
+    <string name="subscriptions_title">Subskripsies</string>
     <string name="chats_title">Geselsies</string>
     <string name="archive_title">Argief</string>
     <string name="long_click">Lang klik</string>

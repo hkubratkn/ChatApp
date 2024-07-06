@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--greek-->
+    <string name="subscriptions_title">Συνδρομές</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Σκοτεινή λειτουργία</string>
     <string name="profile_title">Προφίλ</string>

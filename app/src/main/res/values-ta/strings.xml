@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--tamil-->
+    <string name="subscriptions_title">சந்தாக்கள்</string>
     <string name="chats_title">அரட்டைகள்</string>
     <string name="archive_title">காப்பகம்</string>
     <string name="long_click">நீண்ட கிளிக்</string>
     <string name="permission_message">உங்களிடம் புதிய செய்திகள் வரும்போது அறிவிப்பைப் பெற, அறிவிப்பு அனுமதியை வழங்கவும்.</string>
     <string name="permission_rationale">அறிவிப்பு அனுமதியை வழங்கவும், இதனால் அறிவிப்பு APIகளின் பயன்பாட்டை ஆப்ஸ் நிரூபிக்க முடியும்.</string>
     <string name="permission_grant">கிராண்ட்</string>
-
     <string name="dark_mode">இருண்ட பயன்முறை</string>
     <string name="home_title">முகப்பு பக்கம்</string>
     <string name="already_have_an_account">ஏற்கனவே ஒரு கணக்கு உள்ளதா</string>

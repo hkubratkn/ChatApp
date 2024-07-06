@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--korean-->
+    <string name="subscriptions_title">구독</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">다크 모드</string>
     <string name="profile_title">프로필</string>

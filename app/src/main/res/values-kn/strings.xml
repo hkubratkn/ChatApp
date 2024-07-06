@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kannada-->
+    <string name="subscriptions_title">ಚಂದಾದಾರಿಕೆಗಳು</string>
     <string name="chats_title">ಚಾಟ್‌ಗಳು</string>
     <string name="archive_title">ಆರ್ಕೈವ್</string>
     <string name="long_click">ದೀರ್ಘ ಕ್ಲಿಕ್</string>

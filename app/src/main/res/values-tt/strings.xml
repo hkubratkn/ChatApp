@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--tatar-->
+    <string name="subscriptions_title">Подписка</string>
     <string name="chats_title">Чатлар</string>
     <string name="archive_title">Архив</string>
     <string name="long_click">Озын басыгыз</string>

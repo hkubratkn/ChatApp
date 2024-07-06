@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--indonezian-->
+    <string name="subscriptions_title">Langganan</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Mode gelap</string>
     <string name="profile_title">Profil</string>

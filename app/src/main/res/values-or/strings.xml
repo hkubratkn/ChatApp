@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--odia-->
+    <string name="subscriptions_title">ସଦସ୍ୟତା</string>
     <string name="chats_title">ଚାଟ୍</string>
     <string name="archive_title">ଅଭିଲେଖାଗାର</string>
     <string name="long_click">ଲମ୍ବା କ୍ଲିକ୍ କରନ୍ତୁ |</string>

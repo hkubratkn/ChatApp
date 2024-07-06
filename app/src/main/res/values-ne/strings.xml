@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--nepali-->
+    <string name="subscriptions_title">सदस्यताहरू</string>
     <string name="chats_title">च्याटहरू</string>
     <string name="archive_title">अभिलेख</string>
     <string name="long_click">लामो क्लिक</string>

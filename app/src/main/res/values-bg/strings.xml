@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--bulgarian-->
+    <string name="subscriptions_title">Абонаменти</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Тъмният режим</string>
     <string name="profile_title">Профил</string>

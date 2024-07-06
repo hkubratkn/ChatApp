@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--basque-->
+    <string name="subscriptions_title">Harpidetzak</string>
     <string name="chats_title">Txatak</string>
     <string name="archive_title">Artxiboa</string>
     <string name="long_click">Klik luzea</string>

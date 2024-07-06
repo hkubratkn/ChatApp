@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--catalan-->
+    <string name="subscriptions_title">Subscripcions</string>
     <string name="chats_title">Xats</string>
     <string name="archive_title">Arxiu</string>
     <string name="long_click">Clic llarg</string>

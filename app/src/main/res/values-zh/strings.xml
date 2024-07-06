@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--chinese-->
+    <string name="subscriptions_title">订阅</string>
     <string name="block">街区</string>
     <string name="block_user">您想阻止某个用户吗？</string>
     <string name="permission_grant">GRANT</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--uzbek-->
+    <string name="subscriptions_title">Obunalar</string>
     <string name="block">Bloklash</string>
     <string name="block_user">Foydalanuvchini bloklamoqchimisiz?</string>
     <string name="chats_title">Suhbatlar</string>
