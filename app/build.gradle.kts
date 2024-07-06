@@ -22,8 +22,8 @@ android {
         applicationId = "com.kapirti.pomodorotechnique_timemanagementmethod"
         minSdk = 21
         targetSdk = 34
-        versionCode = 76
-        versionName = "1.0.59"
+        versionCode = 77
+        versionName = "1.0.60"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
