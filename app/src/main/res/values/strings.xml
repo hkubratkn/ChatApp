@@ -114,6 +114,8 @@
     <string name="home_title">Home</string>
     <string name="block">Block</string>
     <string name="block_user">Do you want to block a user?</string>
+    <string name="report">Report</string>
+    <string name="report_user">Do you want to report and block a user?</string>
     <string name="search">Search</string>
     <string name="search_count">%1d users</string>
     <string name="search_no_matches">No matches for “%1s”</string>
@@ -131,8 +133,6 @@
 
     <string name="back">Back</string>
     <string name="message">Message</string>
-    <string name="report">Report</string>
-    <string name="report_user">Do you want to report and block a user?</string>
 
 
   <string name="loading_chats_error">Error while loading chats</string>
