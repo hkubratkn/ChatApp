@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--georgian-->
+    <string name="chats_title">ჩეთები</string>
+    <string name="archive_title">არქივი</string>
+    <string name="long_click">ხანგრძლივი დაწკაპუნებით</string>
+    <string name="permission_message">ახალი შეტყობინებების მიღების შესახებ შეტყობინების მისაღებად, გთხოვთ, მიანიჭოთ შეტყობინების ნებართვა.</string>
+    <string name="permission_rationale">გთხოვთ, მიანიჭოთ შეტყობინების ნებართვა, რათა აპმა შეძლოს შეტყობინებების API-ების გამოყენების დემონსტრირება.</string>
+    <string name="permission_grant">გრანტი</string>
     <string name="dark_mode">მუქი რეჟიმი</string>
     <string name="home_title">მთავარი გვერდი</string>
     <string name="already_have_an_account">Უკვე გაქვთ ანგარიში</string>

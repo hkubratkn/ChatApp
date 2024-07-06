@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--turkmen-->
+    <string name="chats_title">Söhbetler</string>
+    <string name="archive_title">Arhiw</string>
+    <string name="long_click">Uzak basyň</string>
+    <string name="permission_message">Täze habarlaryňyz bar bolsa habar bermek üçin habarnamanyň rugsadyny bermegiňizi haýyş edýäris.</string>
+    <string name="permission_rationale">Programma bildiriş API-leriniň ulanylyşyny görkezip biler ýaly, habarnamanyň rugsadyny bermegiňizi haýyş edýäris.</string>
+    <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Garaňky re .im</string>
     <string name="home_title">Baş sahypa</string>
     <string name="already_have_an_account">Eýýäm hasabyňyz bar</string>

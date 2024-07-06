@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--hindi-->
+    <string name="chats_title">चैट</string>
+    <string name="archive_title">पुरालेख</string>
+    <string name="long_click">लंबा क्लिक</string>
+    <string name="permission_message">नए संदेश आने पर सूचित होने के लिए कृपया अधिसूचना अनुमति प्रदान करें।</string>
+    <string name="permission_rationale">कृपया अधिसूचना अनुमति प्रदान करें ताकि ऐप अधिसूचना API का उपयोग प्रदर्शित कर सके।</string>
+    <string name="permission_grant">अनुदान</string>
+
     <string name="dark_mode">डार्क मोड</string>
     <string name="home_title">होम पेज</string>
     <string name="already_have_an_account">क्या आपके पास पहले से एक खाता मौजूद है</string>
-    <string name="archive">पुरालेख</string>
-    <string name="avatar">अवतार</string>
-    <string name="birthday">जन्मदिन</string>
     <string name="block">अवरोध पैदा करना</string>
     <string name="block_user">क्या आप किसी उपयोगकर्ता को ब्लॉक करना चाहते हैं?</string>
     <string name="cancel">रद्द करना</string>

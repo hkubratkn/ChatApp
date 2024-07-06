@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--basque-->
+    <string name="chats_title">Txatak</string>
+    <string name="archive_title">Artxiboa</string>
+    <string name="long_click">Klik luzea</string>
+    <string name="permission_message">Mezu berriak dituzunean jakinarazpena jasotzeko, eman jakinarazpen-baimena.</string>
+    <string name="permission_rationale">Mesedez, eman jakinarazpenaren baimena, aplikazioak Jakinarazpen APIen erabilera froga dezan.</string>
+    <string name="permission_grant">BEKA</string>
     <string name="dark_mode">Modu iluna</string>
     <string name="home_title">Hasierako orria</string>
     <string name="already_have_an_account">Dagoeneko kontu bat daukazu</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--japanese-->
+    <string name="permission_grant">GRANT</string>
     <string name="dark_mode">ダークモード</string>
     <string name="profile_title">プロフィール</string>
     <string name="already_have_an_account">すでにアカウントをお持ちの方</string>

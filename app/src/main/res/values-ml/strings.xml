@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--malayalam-->
+    <string name="chats_title">ചാറ്റുകൾ</string>
+    <string name="archive_title">ആർക്കൈവ്</string>
+    <string name="long_click">നീണ്ട ക്ലിക്ക്</string>
+    <string name="permission_message">നിങ്ങൾക്ക് പുതിയ സന്ദേശങ്ങൾ ലഭിക്കുമ്പോൾ അറിയിക്കുന്നതിന്, അറിയിപ്പ് അനുമതി നൽകുക.</string>
+    <string name="permission_rationale">അറിയിപ്പ് അനുമതി നൽകുക, അതുവഴി ആപ്പിന് അറിയിപ്പ് API-കളുടെ ഉപയോഗം പ്രദർശിപ്പിക്കാൻ കഴിയും.</string>
+    <string name="permission_grant">ഗ്രാൻ്റ്</string>
     <string name="dark_mode">ഡാർക്ക് മോഡ്</string>
     <string name="home_title">ഹോം പേജ്</string>
     <string name="already_have_an_account">ഇതിനകം ഒരു അക്കൗണ്ട് ഉണ്ടോ</string>

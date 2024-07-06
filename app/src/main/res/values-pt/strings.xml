@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--portuguese-->
+    <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Modo escuro</string>
     <string name="profile_title">Perfil</string>
     <string name="already_have_an_account">Já tem uma conta</string>

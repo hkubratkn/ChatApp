@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--swedish-->
+    <string name="permission_grant">GRANT</string>
     <string name="profile_title">Profil</string>
     <string name="dark_mode">Mörkt läge</string>
     <string name="home_title">Hemsidan</string>

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--lao-->
+    <string name="chats_title">ສົນທະນາ</string>
+    <string name="archive_title">ຮວບຮວມ</string>
+    <string name="long_click">ຄລິກຍາວ</string>
+    <string name="permission_message">ເພື່ອໄດ້ຮັບການແຈ້ງເຕືອນໃນເວລາທີ່ທ່ານມີຂໍ້ຄວາມໃຫມ່, ກະລຸນາອະນຸຍາດໃຫ້ການແຈ້ງການ.</string>
+    <string name="permission_rationale">ກະລຸນາອະນຸຍາດໃຫ້ການແຈ້ງການດັ່ງນັ້ນ app ສາມາດສະແດງໃຫ້ເຫັນການນໍາໃຊ້ APIs ການແຈ້ງເຕືອນໄດ້.</string>
+    <string name="permission_grant">ອະນຸມັດ</string>
     <string name="dark_mode">ໂໝດມືດ</string>
     <string name="home_title">ຫນ້າທໍາອິດ</string>
     <string name="already_have_an_account">ມີບັນຊີຢູ່ແລ້ວ</string>

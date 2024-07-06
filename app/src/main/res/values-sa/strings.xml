@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sanskrit-->
+    <string name="chats_title">चटः</string>
+    <string name="archive_title">लेखागार</string>
+    <string name="long_click">दीर्घकालं यावत् क्लिक् कुर्वन्तु</string>
+    <string name="permission_message">यदा भवतः नूतनाः सन्देशाः सन्ति तदा सूचितः भवितुम्, कृपया सूचनायाः अनुमतिं ददातु ।</string>
+    <string name="permission_rationale">कृपया सूचनानुमतिम् अयच्छन्तु येन एप् सूचना एपिआइ-प्रयोगं प्रदर्शयितुं शक्नोति।</string>
+    <string name="permission_grant">अनुदान</string>
     <string name="dark_mode">डार्क मोड</string>
     <string name="home_title">मुखपृष्ठम्</string>
     <string name="already_have_an_account">पूर्वमेव खाता अस्ति</string>

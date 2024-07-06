@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--amharic-->
+    <string name="chats_title">ቻቶች</string>
+    <string name="archive_title">ማህደር</string>
+    <string name="long_click">በረጅሙ ጠቅ ያድርጉ</string>
+    <string name="permission_message">አዲስ መልእክት ሲኖርዎት ለማሳወቅ እባክዎ የማሳወቂያ ፍቃድ ይስጡ።</string>
+    <string name="permission_rationale">መተግበሪያው የማሳወቂያ ኤፒአይዎችን አጠቃቀም ማሳየት እንዲችል እባክዎ የማሳወቂያ ፍቃድ ይስጡ።</string>
+    <string name="permission_grant">ይስጡ</string>
     <string name="dark_mode">ጨለማ ሁነታ</string>
     <string name="home_title">መነሻ ገጽ</string>
     <string name="already_have_an_account">መለያ አለህ</string>

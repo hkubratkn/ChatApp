@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--pashto-->
+    <string name="chats_title">چټ</string>
+    <string name="archive_title">آرشیف</string>
+    <string name="long_click">اوږد کلیک</string>
+    <string name="permission_message">د خبرتیا لپاره کله چې تاسو نوي پیغامونه لرئ، مهرباني وکړئ د خبرتیا اجازه ورکړئ.</string>
+    <string name="permission_rationale">مهرباني وکړئ د خبرتیا اجازه ورکړئ ترڅو ایپ د خبرتیا APIs کارول وښیې.</string>
+    <string name="permission_grant">گرانټ</string>
     <string name="dark_mode">تیاره حالت</string>
     <string name="home_title">کور پاڼه</string>
     <string name="already_have_an_account">لا دمخه یو حساب لرئ</string>

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kyrgyz-->
+    <string name="chats_title">Чат</string>
+    <string name="archive_title">Архив</string>
+    <string name="long_click">Узун чыкылдатуу</string>
+    <string name="permission_message">Жаңы билдирүүлөрүңүз болгондо кабарлануу үчүн, эскертмеге уруксат бериңиз.</string>
+    <string name="permission_rationale">Колдонмо Эскертме API'лерин колдонууну көрсөтө алышы үчүн эскертмеге уруксат бериңиз.</string>
+    <string name="permission_grant">ГРАНТ</string>
     <string name="dark_mode">Караңгы режим</string>
     <string name="home_title">Башкы бет</string>
     <string name="already_have_an_account">Каттоо эсебиңиз бар</string>

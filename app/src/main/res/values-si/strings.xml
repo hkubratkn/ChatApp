@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sinhala-->
+    <string name="chats_title">කතාබස්</string>
+    <string name="archive_title">සංරක්ෂිතය</string>
+    <string name="long_click">දිගු ක්ලික් කරන්න</string>
+    <string name="permission_message">ඔබට නව පණිවිඩ ඇති විට දැනුම් දීමට, කරුණාකර දැනුම් දීමේ අවසරය ලබා දෙන්න.</string>
+    <string name="permission_rationale">යෙදුමට දැනුම්දීම් API භාවිතය නිරූපණය කිරීමට හැකි වන පරිදි දැනුම්දීම් අවසරය ලබා දෙන්න.</string>
+    <string name="permission_grant">GRANT</string>
     <string name="dark_mode">අඳුරු මාදිලිය</string>
     <string name="home_title">මුල් පිටුව</string>
     <string name="already_have_an_account">දැනටමත් ගිණුමක් ඇත</string>

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--swahili-->
+    <string name="chats_title">Soga</string>
+    <string name="archive_title">Hifadhi</string>
+    <string name="long_click">Bonyeza kwa muda mrefu</string>
+    <string name="permission_message">Ili kuarifiwa unapokuwa na ujumbe mpya, tafadhali toa ruhusa ya arifa.</string>
+    <string name="permission_rationale">Tafadhali toa ruhusa ya arifa ili programu iweze kuonyesha matumizi ya API za Arifa.</string>
+    <string name="permission_grant">RUZUKU</string>
     <string name="dark_mode">Hali ya giza</string>
     <string name="home_title">pagina de inicio</string>
     <string name="already_have_an_account">Tayari unayo akaunti</string>

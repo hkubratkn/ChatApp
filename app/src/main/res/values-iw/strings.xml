@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--hebrew-->
+    <string name="chats_title">צ'אטים</string>
+    <string name="archive_title">ארכיון</string>
+    <string name="long_click">קליק ארוך</string>
+    <string name="permission_message">כדי לקבל הודעה כשיש לך הודעות חדשות, אנא הענק את הרשאת ההתראה.</string>
+    <string name="permission_rationale">אנא הענק את הרשאת ההתראה כדי שהאפליקציה תוכל להדגים שימוש בממשקי ה-API של התראות.</string>
+    <string name="permission_grant">מענק</string>
     <string name="dark_mode">מצב כהה</string>
     <string name="home_title">דף הבית</string>
     <string name="already_have_an_account">כבר יש לך חשבון</string>

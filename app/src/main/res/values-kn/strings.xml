@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kannada-->
+    <string name="chats_title">ಚಾಟ್‌ಗಳು</string>
+    <string name="archive_title">ಆರ್ಕೈವ್</string>
+    <string name="long_click">ದೀರ್ಘ ಕ್ಲಿಕ್</string>
+    <string name="permission_message">ನೀವು ಹೊಸ ಸಂದೇಶಗಳನ್ನು ಹೊಂದಿರುವಾಗ ಸೂಚಿಸಲು, ದಯವಿಟ್ಟು ಅಧಿಸೂಚನೆ ಅನುಮತಿಯನ್ನು ನೀಡಿ.</string>
+    <string name="permission_rationale">ಅಧಿಸೂಚನೆಯ ಅನುಮತಿಯನ್ನು ನೀಡಿ ಇದರಿಂದ ಅಪ್ಲಿಕೇಶನ್ ಅಧಿಸೂಚನೆ API ಗಳ ಬಳಕೆಯನ್ನು ಪ್ರದರ್ಶಿಸಬಹುದು.</string>
+    <string name="permission_grant">ಅನುದಾನ</string>
     <string name="dark_mode">ಡಾರ್ಕ್ ಮೋಡ್</string>
     <string name="home_title">ಮುಖಪುಟ</string>
     <string name="already_have_an_account">ಈಗಾಗಲೇ ಖಾತೆ ಹೊಂದಿದ್ದೀರ</string>

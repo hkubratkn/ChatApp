@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--uzbek-->
+    <string name="block">Bloklash</string>
+    <string name="block_user">Foydalanuvchini bloklamoqchimisiz?</string>
+    <string name="chats_title">Suhbatlar</string>
+    <string name="archive_title">Arxiv</string>
+    <string name="long_click">Uzoq bosing</string>
+    <string name="permission_message">Yangi xabarlar paydo bo‘lganda xabardor bo‘lish uchun bildirishnomaga ruxsat bering.</string>
+    <string name="permission_rationale">Iltimos, ilova xabarnoma API’laridan foydalanishini namoyish qilishi uchun bildirishnomaga ruxsat bering.</string>
+    <string name="permission_grant">GRANT</string>
     <string name="home_title">Bosh sahifa</string>
     <string name="dark_mode">Qorong’i rejim</string>
     <string name="already_have_an_account">Allaqachon hisobingiz bor</string>
@@ -17,17 +25,10 @@
     <string name="empty_password_error">Parol bo’sh bo’lishi mumkin emas.</string>
     <string name="feedback">Fikr-mulohaza</string>
     <string name="feedback_description">Sizning fikr-mulohazalaringizni tinglab, mahsulotimizni doimiy ravishda takomillashtirib boramiz.</string>
-    <string name="female">Ayol</string>
     <string name="forgotten_password">Parolni unutdingizmi? Muqobil e-pochtani olish uchun bosing</string>
-    <string name="gender">Jins</string>
     <string name="generic_error">Nimadir noto‘g‘ri bo‘ldi. Iltimos, yana bir bor urinib ko’ring.</string>
-    <string name="in_my_free_time">Bo’sh vaqtimda men yoqtiraman …</string>
     <string name="join">Qo’shilish</string>
     <string name="log_in">Tizimga kirish</string>
-    <string name="male">Erkak</string>
-    <string name="message">Xabar</string>
-    <string name="name">Ism</string>
-    <string name="name_and_surname">Ism va Familiya</string>
     <string name="next">Keyingisi</string>
     <string name="not_connected">⚠️Siz internetga ulanmagansiz</string>
     <string name="online">Onlayn</string>
@@ -50,7 +51,6 @@
     <string name="sign_out">tizimdan chiqish</string>
     <string name="sign_out_title">Tizimdan chiqish?</string>
     <string name="sign_out_description">Maʼlumotlaringizni koʻrish uchun tizimga qayta kirishingiz kerak boʻladi.</string>
-    <string name="surname">Familiya</string>
     <string name="tell_us_about_you">O’zingiz haqingizda biror narsa ayting</string>
     <string name="try_again">Qayta urinib ko’ring</string>
     <string name="welcome_back">qaytib kelganingizdan xursandmiz</string>

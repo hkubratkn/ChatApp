@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--urdu-->
+    <string name="chats_title">چیٹس</string>
+    <string name="archive_title">محفوظ شدہ دستاویزات</string>
+    <string name="long_click">لمبی کلک کریں۔</string>
+    <string name="permission_message">جب آپ کے پاس نئے پیغامات ہوں تو مطلع کرنے کے لیے، براہ کرم اطلاع کی اجازت دیں۔</string>
+    <string name="permission_rationale">براہ کرم اطلاع کی اجازت دیں تاکہ ایپ نوٹیفکیشن APIs کے استعمال کو ظاہر کر سکے۔</string>
+    <string name="permission_grant">عطا</string>
     <string name="dark_mode">ڈارک موڈ</string>
     <string name="home_title">ہوم پیج</string>
     <string name="already_have_an_account">پہلے سے ہی ایک اکاؤنٹ ہے۔</string>

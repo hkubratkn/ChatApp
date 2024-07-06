@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--bangla-->
+    <string name="chats_title">চ্যাট</string>
+    <string name="archive_title">সংরক্ষণাগার</string>
+    <string name="long_click">দীর্ঘ ক্লিক</string>
+    <string name="permission_message">আপনার কাছে যখন নতুন বার্তা আসবে তখন বিজ্ঞপ্তি পাওয়ার জন্য, অনুগ্রহ করে বিজ্ঞপ্তির অনুমতি দিন।</string>
+    <string name="permission_rationale">অনুগ্রহ করে বিজ্ঞপ্তির অনুমতি দিন যাতে অ্যাপটি বিজ্ঞপ্তি API-এর ব্যবহার প্রদর্শন করতে পারে।</string>
+    <string name="permission_grant">প্রদান</string>
     <string name="dark_mode">ডার্ক মোড</string>
     <string name="home_title">হোম পেজ</string>
     <string name="already_have_an_account">ইতিমধ্যে একটি সদস্যপদ আছে</string>

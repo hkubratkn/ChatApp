@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--serbian-->
+    <string name="chats_title">Ћаскања</string>
+    <string name="archive_title">Архива</string>
+    <string name="long_click">Дуг клик</string>
+    <string name="permission_message">Да бисте били обавештени када имате нове поруке, дајте дозволу за обавештења.</string>
+    <string name="permission_rationale">Дајте дозволу за обавештења како би апликација могла да демонстрира употребу АПИ-ја за обавештења.</string>
+    <string name="permission_grant">ОДОБРИТИ</string>
     <string name="dark_mode">Тамни режим</string>
     <string name="home_title">Почетна страница</string>
     <string name="already_have_an_account">Већ имате налог</string>

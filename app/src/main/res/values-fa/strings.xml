@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--persian-->
+    <string name="chats_title">چت ها</string>
+    <string name="archive_title">بایگانی</string>
+    <string name="long_click">کلیک طولانی</string>
+    <string name="permission_message">برای اطلاع از دریافت پیام های جدید، لطفاً مجوز اعلان را بدهید.</string>
+    <string name="permission_rationale">لطفاً مجوز اعلان را بدهید تا برنامه بتواند استفاده از APIهای اعلان را نشان دهد.</string>
+    <string name="permission_grant">اعطا کردن</string>
     <string name="dark_mode">حالت تاریک</string>
     <string name="home_title">صفحه نخست</string>
     <string name="already_have_an_account">قبلاً یک حساب کاربری دارید</string>

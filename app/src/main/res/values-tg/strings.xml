@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--tajik-->
+    <string name="chats_title">Чатҳо</string>
+    <string name="archive_title">Архив</string>
+    <string name="long_click">Клики дароз</string>
+    <string name="permission_message">Барои огоҳ шудан аз паёмҳои нав, лутфан иҷозати огоҳиро диҳед.</string>
+    <string name="permission_rationale">Лутфан иҷозати огоҳинома диҳед, то барнома тавонад истифодаи API-ҳои огоҳиро нишон диҳад.</string>
+    <string name="permission_grant">ГРАНТ</string>
     <string name="dark_mode">Ҳолати торик</string>
     <string name="home_title">Саҳифаи асосӣ</string>
     <string name="already_have_an_account">Аллакай ҳисоб доред</string>

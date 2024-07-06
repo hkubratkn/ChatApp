@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--burmese-->
+    <string name="chats_title">ချက်တင်များ</string>
+    <string name="archive_title">စုစည်းမှု</string>
+    <string name="long_click">ကြာကြာနှိပ်ပါ။</string>
+    <string name="permission_message">သင့်တွင် မက်ဆေ့ချ်အသစ်များ ရှိနေသောအခါ အကြောင်းကြားရန် ကျေးဇူးပြု၍ အသိပေးချက် ခွင့်ပြုချက်ပေးပါ။</string>
+    <string name="permission_rationale">အက်ပ်သည် Notification APIs များကို အသုံးပြုမှုသရုပ်ပြနိုင်စေရန် ကျေးဇူးပြု၍ အသိပေးချက်ခွင့်ပြုချက်ပေးပါ။</string>
+    <string name="permission_grant">ခွင့်ပြုပါ။</string>
     <string name="dark_mode">အမှောင်မုဒ်</string>
     <string name="home_title">ပင်မစာမျက်နှာ</string>
     <string name="already_have_an_account">အကောင့်ရှိပြီးသားလား</string>

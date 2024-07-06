@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--slovak-->
+    <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Tmavý režim</string>
     <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Už máte účet</string>

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--dogri-->
+    <string name="chats_title">गपशप करदे ने</string>
+    <string name="archive_title">पुरालेख</string>
+    <string name="long_click">लंबा क्लिक करो</string>
+    <string name="permission_message">जदूं तुंदे कोल नमें संदेश औंदे न तां सूचित होने लेई कृपा करियै सूचना दी अनुमति देओ.</string>
+    <string name="permission_rationale">कृपा करियै सूचना दी अनुमति देओ तां जे ऐप सूचना एपीआई दे इस्तेमाल दा प्रदर्शन करी सकै.</string>
+    <string name="permission_grant">ग्रांट</string>
     <string name="dark_mode">डार्क मोड</string>
     <string name="home_title">होम पेज</string>
     <string name="already_have_an_account">पहले से ही खाता है</string>

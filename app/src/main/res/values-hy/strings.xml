@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--armanian-->
+    <string name="chats_title">Զրույցներ</string>
+    <string name="archive_title">Արխիվ</string>
+    <string name="long_click">Երկար սեղմեք</string>
+    <string name="permission_message">Նոր հաղորդագրություններ ունենալու դեպքում ծանուցվելու համար խնդրում ենք տրամադրել ծանուցման թույլտվությունը:</string>
+    <string name="permission_rationale">Խնդրում ենք տրամադրել ծանուցման թույլտվությունը, որպեսզի հավելվածը կարողանա ցուցադրել Ծանուցման API-ների օգտագործումը:</string>
+    <string name="permission_grant">ԳՐԱՆՏ</string>
     <string name="dark_mode">Մութ ռեժիմ</string>
     <string name="home_title">Գլխավոր էջ</string>
     <string name="already_have_an_account">Արդեն ունեք հաշիվ</string>

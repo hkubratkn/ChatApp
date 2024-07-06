@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--latvian-->
+    <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Tumšais režīms</string>
     <string name="already_have_an_account">Jau ir konts</string>
     <string name="profile_title">Profils</string>

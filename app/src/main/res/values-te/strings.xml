@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--telugu-->
+    <string name="chats_title">చాట్‌లు</string>
+    <string name="archive_title">ఆర్కైవ్</string>
+    <string name="long_click">లాంగ్ క్లిక్</string>
+    <string name="permission_message">మీరు కొత్త సందేశాలను కలిగి ఉన్నప్పుడు తెలియజేయడానికి, దయచేసి నోటిఫికేషన్ అనుమతిని మంజూరు చేయండి.</string>
+    <string name="permission_rationale">దయచేసి నోటిఫికేషన్ అనుమతిని మంజూరు చేయండి, తద్వారా యాప్ నోటిఫికేషన్ APIల వినియోగాన్ని ప్రదర్శించగలదు.</string>
+    <string name="permission_grant">గ్రాంట్</string>
     <string name="dark_mode">డార్క్ మోడ్</string>
     <string name="home_title">హోమ్ పేజీ</string>
     <string name="already_have_an_account">ఖాతా కలిగి ఉన్నారా</string>

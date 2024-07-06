@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--filipino-->
+    <string name="chats_title">Mga chat</string>
+    <string name="archive_title">Archive</string>
+    <string name="long_click">Mahabang pag-click</string>
+    <string name="permission_message">Upang maabisuhan kapag mayroon kang mga bagong mensahe, mangyaring bigyan ng pahintulot ang notification.</string>
+    <string name="permission_rationale">Pakibigay ang pahintulot sa notification upang maipakita ng app ang paggamit ng mga Notification API.</string>
+    <string name="permission_grant">BIGYAN</string>
     <string name="dark_mode">Dark mode</string>
     <string name="home_title">Home</string>
     <string name="already_have_an_account">Mayroon nang account</string>

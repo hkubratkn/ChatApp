@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--icelandic-->
+    <string name="chats_title">Spjall</string>
+    <string name="archive_title">Skjalasafn</string>
+    <string name="long_click">Langur smellur</string>
+    <string name="permission_message">Til að fá tilkynningu þegar þú hefur ný skilaboð, vinsamlegast veittu tilkynningunni leyfi.</string>
+    <string name="permission_rationale">Vinsamlegast veittu tilkynningunni leyfi svo að appið geti sýnt fram á notkun tilkynninga-API.</string>
+    <string name="permission_grant">STYRKUR</string>
     <string name="dark_mode">Dökk stilling</string>
     <string name="home_title">Heimasíða</string>
     <string name="already_have_an_account">Er nú þegar með reikning</string>

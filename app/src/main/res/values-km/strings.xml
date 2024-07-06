@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--khmer-->
+    <string name="chats_title">ជជែក</string>
+    <string name="archive_title">បណ្ណសារ</string>
+    <string name="long_click">ចុចឱ្យយូរ</string>
+    <string name="permission_message">ដើម្បីទទួលបានការជូនដំណឹងនៅពេលដែលអ្នកមានសារថ្មី សូមផ្តល់ការអនុញ្ញាតការជូនដំណឹង។</string>
+    <string name="permission_rationale">សូមផ្តល់ការអនុញ្ញាតការជូនដំណឹង ដើម្បីឱ្យកម្មវិធីអាចបង្ហាញពីការប្រើប្រាស់ Notification APIs។</string>
+    <string name="permission_grant">ផ្តល់ជំនួយ</string>
     <string name="dark_mode">របៀបងងឹត</string>
     <string name="home_title">ទំព័រដើម</string>
     <string name="already_have_an_account">មានគណនីរួចហើយ</string>

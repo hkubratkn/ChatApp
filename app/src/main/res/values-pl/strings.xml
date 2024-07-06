@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--polish-->
+    <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Tryb ciemny</string>
     <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Posiadasz już konto</string>

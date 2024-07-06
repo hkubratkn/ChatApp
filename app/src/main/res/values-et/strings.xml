@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--estonian-->
+    <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Tume režiim</string>
     <string name="profile_title">Profiil</string>
     <string name="already_have_an_account">Sul on juba konto</string>

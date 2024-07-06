@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--ukraine-->
+    <string name="permission_grant">GRANT</string>
     <string name="profile_title">Профіль</string>
     <string name="dark_mode">Темний режим</string>
     <string name="home_title">Головна</string>

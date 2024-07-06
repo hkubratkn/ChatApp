@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--korean-->
+    <string name="permission_grant">GRANT</string>
     <string name="dark_mode">다크 모드</string>
     <string name="profile_title">프로필</string>
     <string name="already_have_an_account">이미 계정이 있습니다.</string>

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--vietnamese-->
+    <string name="block">Khối</string>
+    <string name="block_user">Bạn có muốn chặn một người dùng?</string>
+    <string name="chats_title">Trò chuyện</string>
+    <string name="archive_title">Lưu trữ</string>
+    <string name="long_click">Nhấp chuột dài</string>
+    <string name="permission_message">Để được thông báo khi bạn có tin nhắn mới, vui lòng cấp quyền thông báo.</string>
+    <string name="permission_rationale">Vui lòng cấp quyền thông báo để ứng dụng có thể chứng minh việc sử dụng API thông báo.</string>
+    <string name="permission_grant">KHOẢN TRỢ CẤP</string>
     <string name="home_title">Trang chủ</string>
     <string name="dark_mode">Chế độ tối</string>
     <string name="already_have_an_account">Bạn co săn san để tạo một tai khoản</string>
@@ -17,17 +25,10 @@
     <string name="empty_password_error">Mật khẩu không được để trống.</string>
     <string name="feedback">Nhận xét</string>
     <string name="feedback_description">Chúng tôi không ngừng cải thiện sản phẩm của mình bằng cách lắng nghe phản hồi của bạn.</string>
-    <string name="female">Nữ giới</string>
     <string name="forgotten_password">Đã quên mật khẩu? Nhấp để nhận email khôi phục</string>
-    <string name="gender">Giới tính</string>
     <string name="generic_error">Đã xảy ra sự cố. Vui lòng thử lại.</string>
-    <string name="in_my_free_time">Trong thời gian rảnh tôi thích …</string>
     <string name="join">Tham gia</string>
     <string name="log_in">Đăng nhập</string>
-    <string name="male">Nam giới</string>
-    <string name="message">Tin nhắn</string>
-    <string name="name">Tên</string>
-    <string name="name_and_surname">Tên và họ</string>
     <string name="next">Kế tiếp</string>
     <string name="not_connected">⚠️Bạn chưa kết nối với internet</string>
     <string name="online">Trực tuyến</string>
@@ -50,7 +51,6 @@
     <string name="sign_out">Đăng xuất</string>
     <string name="sign_out_title">Đăng xuất?</string>
     <string name="sign_out_description">Bạn sẽ phải đăng nhập lại để xem dữ liệu của mình.</string>
-    <string name="surname">Họ</string>
     <string name="tell_us_about_you">Hãy cho chúng tôi một cái gì đó về bản thân</string>
     <string name="try_again">Thử lại</string>
     <string name="welcome_back">Chào mừng trở lại</string>

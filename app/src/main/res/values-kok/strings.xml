@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--konkani-->
+    <string name="chats_title">गप्पा मारतात</string>
+    <string name="archive_title">संग्रह</string>
+    <string name="long_click">लांब क्लिक करात</string>
+    <string name="permission_message">तुमकां नवे संदेश आसतना कळोवपा खातीर, उपकार करून अधिसुचोवणी परवानगी दिवची.</string>
+    <string name="permission_rationale">उपकार करून अधिसुचोवणी परवानगी दिवची जेणे करून ऍप्लिकेशन अधिसुचोवणी एपीआयचो वापर दाखोवंक शकता.</string>
+    <string name="permission_grant">दिवप</string>
     <string name="dark_mode">डार्क मोड</string>
     <string name="home_title">मुखेल पान</string>
     <string name="already_have_an_account">पयलींच खातें आसा</string>

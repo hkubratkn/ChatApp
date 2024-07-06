@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sindhi-->
+    <string name="chats_title">چٽ</string>
+    <string name="archive_title">آرڪائيو</string>
+    <string name="long_click">ڊگھو ڪلڪ ڪريو</string>
+    <string name="permission_message">نوٽيفڪيشن حاصل ڪرڻ لاءِ جڏهن توهان وٽ نوان نياپا آهن، مهرباني ڪري نوٽيفڪيشن جي اجازت ڏيو.</string>
+    <string name="permission_rationale">مهرباني ڪري نوٽيفڪيشن جي اجازت ڏيو ته جيئن ايپ نوٽيفڪيشن APIs جي استعمال جو مظاهرو ڪري سگهي.</string>
+    <string name="permission_grant">گرانٽ</string>
     <string name="dark_mode">ڳاڙهو موڊ</string>
     <string name="home_title">هوم صفحو</string>
     <string name="already_have_an_account">اڳ ۾ ئي هڪ اڪائونٽ آهي</string>

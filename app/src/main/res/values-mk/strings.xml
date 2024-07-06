@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--macedonian-->
+    <string name="chats_title">Разговори</string>
+    <string name="archive_title">Архива</string>
+    <string name="long_click">Долг клик</string>
+    <string name="permission_message">За да бидете известени кога имате нови пораки, ве молиме дајте дозвола за известување.</string>
+    <string name="permission_rationale">Ве молиме дајте ја дозволата за известување за да може апликацијата да демонстрира користење на API за известување.</string>
+    <string name="permission_grant">ГРАНТ</string>
     <string name="dark_mode">Темен режим</string>
     <string name="home_title">Почетна страница</string>
     <string name="already_have_an_account">Веќе имате профил</string>

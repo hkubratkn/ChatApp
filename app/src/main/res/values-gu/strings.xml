@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--gujarati-->
+    <string name="chats_title">ચેટ્સ</string>
+    <string name="archive_title">આર્કાઇવ</string>
+    <string name="long_click">લાંબી ક્લિક કરો</string>
+    <string name="permission_message">જ્યારે તમારી પાસે નવા સંદેશાઓ હોય ત્યારે સૂચના મેળવવા માટે, કૃપા કરીને સૂચનાની પરવાનગી આપો.</string>
+    <string name="permission_rationale">કૃપા કરીને સૂચનાની પરવાનગી આપો જેથી એપ્લિકેશન સૂચના API નો ઉપયોગ દર્શાવી શકે.</string>
+    <string name="permission_grant">અનુદાન</string>
     <string name="dark_mode">ડાર્ક મોડ</string>
     <string name="home_title">હોમ પેજ</string>
     <string name="already_have_an_account">પહેલેથી જ એક એકાઉન્ટ છે</string>

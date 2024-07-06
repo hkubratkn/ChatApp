@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--odia-->
+    <string name="chats_title">ଚାଟ୍</string>
+    <string name="archive_title">ଅଭିଲେଖାଗାର</string>
+    <string name="long_click">ଲମ୍ବା କ୍ଲିକ୍ କରନ୍ତୁ |</string>
+    <string name="permission_message">ଯେତେବେଳେ ଆପଣଙ୍କର ନୂତନ ବାର୍ତ୍ତା ଅଛି ସେତେବେଳେ ସୂଚିତ ହେବାକୁ, ଦୟାକରି ବିଜ୍ଞପ୍ତି ଅନୁମତି ଦିଅନ୍ତୁ |</string>
+    <string name="permission_rationale">ଦୟାକରି ବିଜ୍ଞପ୍ତି ଅନୁମତି ଦିଅନ୍ତୁ ଯାହା ଦ୍ the ାରା ଆପ୍ ବିଜ୍ଞପ୍ତି API ର ବ୍ୟବହାର ପ୍ରଦର୍ଶନ କରିପାରିବ |</string>
+    <string name="permission_grant">ଅନୁଦାନ</string>
     <string name="dark_mode">ଗା ark ମୋଡ୍ |</string>
     <string name="home_title">ମୂଳପୃଷ୍ଠା |</string>
     <string name="already_have_an_account">ପୂର୍ବରୁ ଏକ ଖାତା ଅଛି |</string>

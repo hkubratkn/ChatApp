@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--croatian-->
+    <string name="chats_title">Chatovi</string>
+    <string name="archive_title">Arhiva</string>
+    <string name="long_click">Dugi klik</string>
+    <string name="permission_message">Da biste bili obaviješteni kada imate nove poruke, dajte dopuštenje za obavijest.</string>
+    <string name="permission_rationale">Dajte dopuštenje za obavijesti kako bi aplikacija mogla pokazati upotrebu API-ja za obavijesti.</string>
+    <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Tamni način rada</string>
     <string name="home_title">Početna stranica</string>
     <string name="already_have_an_account">Već imate račun</string>

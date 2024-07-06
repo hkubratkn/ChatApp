@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--malay-->
+    <string name="chats_title">Sembang</string>
+    <string name="archive_title">Arkib</string>
+    <string name="long_click">Klik lama</string>
+    <string name="permission_message">Untuk dimaklumkan apabila anda mempunyai mesej baharu, sila berikan kebenaran pemberitahuan.</string>
+    <string name="permission_rationale">Sila berikan kebenaran pemberitahuan supaya apl boleh menunjukkan penggunaan API Pemberitahuan.</string>
+    <string name="permission_grant">GERAN</string>
     <string name="dark_mode">Mod gelap</string>
     <string name="home_title">Laman utama</string>
     <string name="already_have_an_account">Sudah mempunyai akaun</string>

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--belarusian-->
+    <string name="chats_title">Чаты</string>
+    <string name="archive_title">Архіў</string>
+    <string name="long_click">Доўгі клік</string>
+    <string name="permission_message">Каб атрымліваць апавяшчэнні аб новых паведамленнях, дайце дазвол на апавяшчэнне.</string>
+    <string name="permission_rationale">Дайце дазвол на апавяшчэнне, каб праграма магла прадэманстраваць выкарыстанне API апавяшчэнняў.</string>
+    <string name="permission_grant">ГРАНТ</string>
     <string name="dark_mode">Цёмны рэжым</string>
     <string name="home_title">Галоўная старонка</string>
     <string name="already_have_an_account">Ужо ёсць уліковы запіс</string>

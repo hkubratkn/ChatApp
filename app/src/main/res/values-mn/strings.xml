@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--mongolian-->
+    <string name="chats_title">Чат</string>
+    <string name="archive_title">Архив</string>
+    <string name="long_click">Урт товшилт</string>
+    <string name="permission_message">Шинэ мессеж ирэх үед мэдэгдэхийн тулд мэдэгдлийн зөвшөөрлийг өгнө үү.</string>
+    <string name="permission_rationale">Апп нь мэдэгдлийн API-ийн хэрэглээг харуулахын тулд мэдэгдлийн зөвшөөрлийг өгнө үү.</string>
+    <string name="permission_grant">ГЭРЭЛТ</string>
     <string name="dark_mode">Харанхуй горим</string>
     <string name="home_title">Нүүр хуудас</string>
     <string name="already_have_an_account">Бүртгэлтэй байна</string>

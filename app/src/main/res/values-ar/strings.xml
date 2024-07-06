@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--arabic-->
+    <string name="permission_grant">GRANT</string>
     <string name="dark_mode">الوضع المظلم</string>
     <string name="profile_title">الملف الشخصي</string>
     <string name="already_have_an_account">هل لديك حساب</string>

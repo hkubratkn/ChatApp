@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--zulu-->
+    <string name="block">Vimba</string>
+    <string name="block_user">Ingabe ufuna ukuvimba umsebenzisi?</string>
+    <string name="chats_title">Izingxoxo</string>
+    <string name="archive_title">Faka kungobo yomlando</string>
+    <string name="long_click">Ukuchofoza isikhathi eside</string>
+    <string name="permission_message">Ukuze waziswe uma unemilayezo emisha, sicela unikeze imvume yesaziso.</string>
+    <string name="permission_rationale">Sicela unikeze imvume yesaziso ukuze uhlelo lokusebenza lubonise ukusetshenziswa kwama-API Ezaziso.</string>
+    <string name="permission_grant">UMNIKELO</string>
     <string name="home_title">Ikhasi lasekhaya</string>
     <string name="dark_mode">Imodi emnyama</string>
     <string name="already_have_an_account">Usuvele unayo i-akhawunti</string>
@@ -17,17 +25,10 @@
     <string name="empty_password_error">Iphasiwedi ayikwazi ukungabi nalutho.</string>
     <string name="feedback">Impendulo</string>
     <string name="feedback_description">Sihlala sithuthukisa umkhiqizo wethu ngokulalela impendulo yakho.</string>
-    <string name="female">Owesifazane</string>
     <string name="forgotten_password">Ukhohlwe iphasiwedi? Chofoza ukuze uthole i-imeyili yokutakula</string>
-    <string name="gender">Ubulili</string>
     <string name="generic_error">Kukhona okungalungile okwenzekile. Ngicela uzame futhi.</string>
-    <string name="in_my_free_time">Ngesikhathi sami sokuphumula ngithanda uku …</string>
     <string name="join">Joyina</string>
     <string name="log_in">Ngena ngemvume</string>
-    <string name="male">Owesilisa</string>
-    <string name="message">Umlayezo</string>
-    <string name="name">Igama</string>
-    <string name="name_and_surname">Igama Nesibongo</string>
     <string name="next">Olandelayo</string>
     <string name="not_connected">⚠️Awuxhunyiwe ku-inthanethi</string>
     <string name="online">Ku-inthanethi</string>
@@ -50,11 +51,9 @@
     <string name="sign_out">Phuma ngemvume</string>
     <string name="sign_out_title">Phuma ngemvume?</string>
     <string name="sign_out_description">Kuzodingeka ukuthi ungene ngemvume futhi ukuze ubone idatha yakho.</string>
-    <string name="surname">Isibongo</string>
     <string name="tell_us_about_you">Sitshele okuthile ngawe</string>
     <string name="try_again">Zama futhi</string>
     <string name="welcome_back">Siyakwamukela</string>
-
     <string name="no_chats_all">Awunazo izingxoxo!</string>
     <string name="no_users_all">Awunabasebenzisi!</string>
 </resources>

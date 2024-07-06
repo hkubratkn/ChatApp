@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--maithili-->
+    <string name="chats_title">गप्प-सप्प</string>
+    <string name="archive_title">संग्रह</string>
+    <string name="long_click">लंबा क्लिक करू</string>
+    <string name="permission_message">जखन अहाँक पास नव संदेश होयत तखन सूचित करबाक लेल, कृपया सूचनाक अनुमति दिअ.</string>
+    <string name="permission_rationale">कृपया सूचना कें अनुमति दिअ ताकि ऐप सूचना एपीआई कें उपयोग कें प्रदर्शन कयर सकय.</string>
+    <string name="permission_grant">अनुदान</string>
     <string name="dark_mode">डार्क मोड</string>
     <string name="home_title">मुख पृष्ठ</string>
     <string name="already_have_an_account">पहिनेसँ खाता अछि</string>

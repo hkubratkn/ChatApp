@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--tatar-->
+    <string name="chats_title">Чатлар</string>
+    <string name="archive_title">Архив</string>
+    <string name="long_click">Озын басыгыз</string>
+    <string name="permission_message">Яңа хәбәрләр булганда хәбәр итү өчен, рөхсәт бирегез.</string>
+    <string name="permission_rationale">Зинһар, хәбәр итү рөхсәтен бирегез, шуңа күрә кушымта Notification API’ларын куллануны күрсәтә ала.</string>
+    <string name="permission_grant">Грант</string>
     <string name="dark_mode">Караңгы режим</string>
     <string name="home_title">Баш бит</string>
     <string name="already_have_an_account">Инде хисап бар</string>

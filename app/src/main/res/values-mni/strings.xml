@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--manipuri-->
+    <string name="chats_title">ꯆꯦꯠꯁꯤꯡ꯫</string>
+    <string name="archive_title">ꯈꯣꯝꯖꯤꯟꯗꯨꯅꯥ ꯊꯝꯕ</string>
+    <string name="long_click">ꯂꯣꯡ ꯀ꯭ꯂꯤꯛ ꯇꯧꯕꯥ꯫</string>
+    <string name="permission_message">ꯑꯅꯧꯕꯥ ꯃꯦꯁꯦꯖꯁꯤꯡ ꯂꯥꯀꯄꯥ ꯃꯇꯃꯗꯥ ꯅꯣꯇꯤꯐꯥꯏ ꯇꯧꯅꯕꯒꯤꯗꯃꯛ, ꯆꯥꯅꯕꯤꯗꯨꯅꯥ ꯅꯣꯇꯤꯐꯤꯀꯦꯁꯅꯒꯤ ꯑꯌꯥꯕꯥ ꯄꯤꯕꯤꯌꯨ꯫</string>
+    <string name="permission_rationale">ꯆꯥꯅꯕꯤꯗꯨꯅꯥ ꯅꯣꯇꯤꯐꯤꯀꯦꯁꯅꯒꯤ ꯑꯌꯥꯕꯥ ꯄꯤꯕꯤꯌꯨ ꯃꯗꯨꯅꯥ ꯑꯦꯞ ꯑꯁꯤꯅꯥ ꯅꯣꯇꯤꯐꯤꯀꯦꯁꯟ APIꯁꯤꯡ ꯁꯤꯖꯤꯟꯅꯕꯒꯤ ꯃꯑꯣꯡ ꯎꯠꯄꯥ ꯉꯃꯒꯅꯤ꯫</string>
+    <string name="permission_grant">ꯄꯤꯕ</string>
     <string name="dark_mode">ꯗꯥꯔꯛ ꯃꯣꯗꯇꯥ ꯂꯩ꯫</string>
     <string name="home_title">ꯍꯣꯝ ꯄꯦꯖꯗꯥ ꯌꯦꯡꯕꯤꯌꯨ꯫</string>
     <string name="already_have_an_account">ꯍꯥꯟꯅꯗꯒꯤ ꯑꯦꯀꯥꯎꯟꯇ ꯑꯃꯥ ꯂꯩꯔꯦ꯫</string>

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kazakh-->
+    <string name="chats_title">Чаттар</string>
+    <string name="archive_title">Мұрағат</string>
+    <string name="long_click">Ұзақ басыңыз</string>
+    <string name="permission_message">Жаңа хабарламалар болған кезде хабарландыру алу үшін хабарландыруға рұқсат беріңіз.</string>
+    <string name="permission_rationale">Қолданба Хабарландыру API интерфейстерін пайдалануды көрсете алуы үшін хабарландыру рұқсатын беріңіз.</string>
+    <string name="permission_grant">ГРАНТ</string>
     <string name="dark_mode">Қараңғы режим</string>
     <string name="home_title">Негізгі бет</string>
     <string name="already_have_an_account">Тіркелгі бар</string>

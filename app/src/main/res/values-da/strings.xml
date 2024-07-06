@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--danish-->
+    <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Mørk tilstand</string>
     <string name="profile_title">Profil</string>
     <string name="already_have_an_account">Du har allerede en konto</string>

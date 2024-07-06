@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--azerbeijani-->
+    <string name="chats_title">Söhbətlər</string>
+    <string name="archive_title">Arxiv</string>
+    <string name="long_click">Uzun klik</string>
+    <string name="permission_message">Yeni mesajlarınız olduqda xəbərdar olmaq üçün bildiriş icazəsi verin.</string>
+    <string name="permission_rationale">Tətbiqin Bildiriş API-lərinin istifadəsini nümayiş etdirə bilməsi üçün bildiriş icazəsi verin.</string>
+    <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Qaranlıq rejim</string>
     <string name="home_title">Əsas səhifə</string>
     <string name="already_have_an_account">Artıq bir hesabınız var mı</string>

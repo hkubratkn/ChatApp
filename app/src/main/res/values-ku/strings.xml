@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kurdish-->
+    <string name="chats_title">Chats</string>
+    <string name="archive_title">Arşîv</string>
+    <string name="long_click">Bitikîne dirêj</string>
+    <string name="permission_message">Ji bo ku hûn gava peyamên we yên nû werin agahdar kirin, ji kerema xwe destûra ragihandinê bidin.</string>
+    <string name="permission_rationale">Ji kerema xwe destûra agahdarkirinê bidin da ku sepan bikaribe karanîna API-yên Notification nîşan bide.</string>
+    <string name="permission_grant">DAYIN</string>
     <string name="dark_mode">Moda tarî</string>
     <string name="home_title">Rûpelê malê</string>
     <string name="already_have_an_account">Jixwe hesabek heye</string>

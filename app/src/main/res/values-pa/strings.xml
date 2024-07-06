@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--punjabi-->
+    <string name="chats_title">ਗੱਲਬਾਤ</string>
+    <string name="archive_title">ਪੁਰਾਲੇਖ</string>
+    <string name="long_click">ਲੰਬੀ ਕਲਿੱਕ ਕਰੋ</string>
+    <string name="permission_message">ਤੁਹਾਡੇ ਕੋਲ ਨਵੇਂ ਸੁਨੇਹੇ ਆਉਣ 'ਤੇ ਸੂਚਿਤ ਕਰਨ ਲਈ, ਕਿਰਪਾ ਕਰਕੇ ਸੂਚਨਾ ਅਨੁਮਤੀ ਦਿਓ।</string>
+    <string name="permission_rationale">ਕਿਰਪਾ ਕਰਕੇ ਸੂਚਨਾ ਅਨੁਮਤੀ ਦਿਓ ਤਾਂ ਜੋ ਐਪ ਸੂਚਨਾ APIs ਦੀ ਵਰਤੋਂ ਦਾ ਪ੍ਰਦਰਸ਼ਨ ਕਰ ਸਕੇ।</string>
+    <string name="permission_grant">ਗ੍ਰਾਂਟ</string>
     <string name="dark_mode">ਡਾਰਕ ਮੋਡ</string>
     <string name="home_title">ਮੁੱਖ ਪੰਨਾ</string>
     <string name="already_have_an_account">ਪਹਿਲਾਂ ਹੀ ਇੱਕ ਖਾਤਾ ਹੈ</string>
