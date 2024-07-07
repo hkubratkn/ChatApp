@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--bangla-->
+    <string name="profile_title">প্রোফাইল</string>
     <string name="subscriptions_title">সদস্যতা</string>
     <string name="chats_title">চ্যাট</string>
     <string name="archive_title">সংরক্ষণাগার</string>

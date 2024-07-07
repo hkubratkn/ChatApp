@@ -142,10 +142,10 @@ private fun PasswordField(
         value = value,
         onValueChange = { onNewValue(it) },
         placeholder = { Text(text = stringResource(placeholder)) },
-        leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = "Lock") },
+        leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = stringResource(AppText.cd_lock)) },
         trailingIcon = {
             IconButton(onClick = { isVisible = !isVisible }) {
-                Icon(imageVector = icon, contentDescription = "Visibility")
+                Icon(imageVector = icon, contentDescription = stringResource(AppText.cd_visibility))
             }
         },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),

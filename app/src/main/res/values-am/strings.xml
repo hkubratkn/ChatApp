@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--amharic-->
+    <string name="profile_title">መገለጫ</string>
     <string name="subscriptions_title">የደንበኝነት ምዝገባዎች</string>
     <string name="chats_title">ቻቶች</string>
     <string name="archive_title">ማህደር</string>

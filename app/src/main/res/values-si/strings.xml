@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sinhala-->
+    <string name="profile_title">පැතිකඩ</string>
     <string name="subscriptions_title">දායකත්ව</string>
     <string name="chats_title">කතාබස්</string>
     <string name="archive_title">සංරක්ෂිතය</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--lao-->
+    <string name="profile_title">ໂປຣໄຟລ໌</string>
     <string name="subscriptions_title">ການສະໝັກໃຊ້</string>
     <string name="chats_title">ສົນທະນາ</string>
     <string name="archive_title">ຮວບຮວມ</string>

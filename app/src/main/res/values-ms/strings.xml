@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--malay-->
+    <string name="profile_title">Profil</string>
     <string name="subscriptions_title">Langganan</string>
     <string name="chats_title">Sembang</string>
     <string name="archive_title">Arkib</string>

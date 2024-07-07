@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--persian-->
+    <string name="profile_title">مشخصات</string>
     <string name="subscriptions_title">اشتراک ها</string>
     <string name="chats_title">چت ها</string>
     <string name="archive_title">بایگانی</string>

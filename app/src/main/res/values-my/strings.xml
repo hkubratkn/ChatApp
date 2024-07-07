@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--burmese-->
+    <string name="profile_title">ကိုယ်ရေးအကျဉ်း</string>
     <string name="subscriptions_title">စာရင်းသွင်းမှုများ</string>
     <string name="chats_title">ချက်တင်များ</string>
     <string name="archive_title">စုစည်းမှု</string>

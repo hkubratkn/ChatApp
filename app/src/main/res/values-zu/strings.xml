@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--zulu-->
+    <string name="profile_title">Iphrofayela</string>
+    <string name="settings_title">Izilungiselelo</string>
     <string name="subscriptions_title">Okubhaliselwe</string>
     <string name="block">Vimba</string>
     <string name="block_user">Ingabe ufuna ukuvimba umsebenzisi?</string>

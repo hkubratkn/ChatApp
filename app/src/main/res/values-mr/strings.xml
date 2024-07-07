@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--marathi-->
+    <string name="profile_title">प्रोफाइल</string>
     <string name="subscriptions_title">सदस्यता</string>
     <string name="chats_title">गप्पा</string>
     <string name="archive_title">संग्रहण</string>

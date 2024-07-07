@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--swahili-->
+    <string name="profile_title">Wasifu</string>
     <string name="subscriptions_title">Usajili</string>
     <string name="chats_title">Soga</string>
     <string name="archive_title">Hifadhi</string>

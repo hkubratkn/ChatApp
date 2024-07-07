@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--dogri-->
+    <string name="profile_title">प्रोफाइल</string>
     <string name="subscriptions_title">सदस्यताएं दी</string>
     <string name="chats_title">गपशप करदे ने</string>
     <string name="archive_title">पुरालेख</string>

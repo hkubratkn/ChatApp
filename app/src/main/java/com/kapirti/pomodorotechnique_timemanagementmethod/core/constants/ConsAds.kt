@@ -28,7 +28,7 @@ object ConsAds {
     const val ADS_LOG_IN_BANNER_ID = ""
     const val ADS_REGISTER_BANNER_ID = ""
     const val ADS_EDIT_BANNER_ID = ""
-    const val ADS_TIMEOVER_BANNER_ID = ""
+    const val ADS_TIME_OVER_BANNER_ID = ""
     const val ADS_USER_PROFILE_BANNER_ID = ""
     const val ADS_CHAT_BANNER_ID = ""
     const val ADS_PHOTOS_BANNER_ID = ""
@@ -36,9 +36,10 @@ object ConsAds {
     const val ADS_BLOCK_USERS_BANNER_ID = ""
 
     const val ADS_HOME_BANNER_ID = ""
-    const val ADS_POMODORO_BANNER_ID = ""
+    const val ADS_JOB_BANNER_ID = ""
+    const val ADS_PRODUCTIVITY_BANNER_ID = ""
     const val ADS_CHATS_BANNER_ID = ""
     const val ADS_SUBSCRIBE_BANNER_ID = ""
     const val ADS_PROFILE_BANNER_ID = ""
-    
+
 }

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--vietnamese-->
+    <string name="profile_title">Hồ sơ</string>
+    <string name="settings_title">Cài đặt</string>
     <string name="subscriptions_title">Đăng ký</string>
     <string name="block">Khối</string>
     <string name="block_user">Bạn có muốn chặn một người dùng?</string>

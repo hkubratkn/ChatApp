@@ -108,6 +108,8 @@
     <string name="cd_search">Search</string>
     <string name="cd_back">Back</string>
     <string name="cd_profile_photo">Profile photo</string>
+    <string name="cd_lock">Lock</string>
+    <string name="cd_visibility">Visibility</string>
 
 
     <!-- use now importants -->

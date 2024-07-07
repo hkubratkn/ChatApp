@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--odia-->
+    <string name="profile_title">ପ୍ରୋଫାଇଲ୍</string>
     <string name="subscriptions_title">ସଦସ୍ୟତା</string>
     <string name="chats_title">ଚାଟ୍</string>
     <string name="archive_title">ଅଭିଲେଖାଗାର</string>

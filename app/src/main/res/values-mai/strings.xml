@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--maithili-->
+    <string name="profile_title">रूपरेखा</string>
     <string name="subscriptions_title">सदस्यता</string>
     <string name="chats_title">गप्प-सप्प</string>
     <string name="archive_title">संग्रह</string>

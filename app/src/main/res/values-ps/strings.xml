@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--pashto-->
+    <string name="profile_title">پروفایل</string>
     <string name="subscriptions_title">ګډون</string>
     <string name="chats_title">چټ</string>
     <string name="archive_title">آرشیف</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--hebrew-->
+    <string name="profile_title">פּרוֹפִיל</string>
     <string name="subscriptions_title">מנויים</string>
     <string name="chats_title">’אטים</string>
     <string name="archive_title">ארכיון</string>
