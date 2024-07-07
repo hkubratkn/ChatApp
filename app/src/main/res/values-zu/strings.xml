@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--zulu-->
+    <string name="report">Bika</string>
+    <string name="report_user">Uyafuna ukubika futhi uvimbele umsebenzisi?</string>
     <string name="profile_title">Iphrofayela</string>
     <string name="settings_title">Izilungiselelo</string>
     <string name="subscriptions_title">Okubhaliselwe</string>
