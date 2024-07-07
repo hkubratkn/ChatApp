@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--chinese-->
+    <string name="report">报告</string>
+    <string name="report_user">您要报告和阻止用户吗？</string>
     <string name="settings_title">设置</string>
     <string name="subscriptions_title">订阅</string>
     <string name="block">街区</string>
