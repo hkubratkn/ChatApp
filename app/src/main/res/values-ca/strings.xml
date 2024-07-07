@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--catalan-->
+    <string name="job_title">Treball</string>
     <string name="employee_title">Empleat</string>
     <string name="profile_title">Perfil</string>
     <string name="subscriptions_title">Subscripcions</string>

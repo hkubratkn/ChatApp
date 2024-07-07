@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--mongolian-->
+    <string name="job_title">Ажил</string>
     <string name="employee_title">Ажилтан</string>
     <string name="profile_title">Профайл</string>
     <string name="subscriptions_title">Захиалга</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--odia-->
+    <string name="job_title">ଚାକିରି</string>
     <string name="employee_title">କର୍ମଚାରୀ</string>
     <string name="profile_title">ପ୍ରୋଫାଇଲ୍</string>
     <string name="subscriptions_title">ସଦସ୍ୟତା</string>

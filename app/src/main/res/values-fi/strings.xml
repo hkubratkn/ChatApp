@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--finnish-->
+    <string name="job_title">Työ</string>
     <string name="employee_title">Työntekijä</string>
     <string name="subscriptions_title">Tilaukset</string>
     <string name="permission_grant">GRANT</string>

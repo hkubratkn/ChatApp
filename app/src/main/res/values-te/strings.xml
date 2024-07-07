@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--telugu-->
+    <string name="job_title">ఉద్యోగం</string>
     <string name="employee_title">ఉద్యోగి</string>
     <string name="profile_title">ప్రొఫైల్</string>
     <string name="subscriptions_title">చందాలు</string>

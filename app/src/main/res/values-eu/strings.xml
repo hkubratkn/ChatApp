@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--basque-->
+    <string name="job_title">Lanpostua</string>
     <string name="employee_title">Langilea</string>
     <string name="profile_title">Profila</string>
     <string name="subscriptions_title">Harpidetzak</string>

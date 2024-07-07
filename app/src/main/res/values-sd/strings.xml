@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sindhi-->
+    <string name="job_title">نوڪري</string>
     <string name="employee_title">ملازم</string>
     <string name="profile_title">پروفائل</string>
     <string name="subscriptions_title">رڪنيت</string>

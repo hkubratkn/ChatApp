@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--tajik-->
+    <string name="job_title">Кор</string>
     <string name="employee_title">Корманд</string>
     <string name="profile_title">Профил</string>
     <string name="subscriptions_title">Обунаҳо</string>

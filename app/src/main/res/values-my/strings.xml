@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--burmese-->
+    <string name="job_title">အလုပ်</string>
     <string name="employee_title">ဝန်ထမ်း</string>
     <string name="profile_title">ကိုယ်ရေးအကျဉ်း</string>
     <string name="subscriptions_title">စာရင်းသွင်းမှုများ</string>

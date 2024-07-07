@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--thai-->
+    <string name="job_title">งาน</string>
     <string name="employee_title">พนักงาน</string>
     <string name="profile_title">ประวัติโดยย่อ</string>
     <string name="subscriptions_title">การสมัครรับข้อมูล</string>

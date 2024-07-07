@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--russian-->
+    <string name="job_title">Работа</string>
     <string name="employee_title">Сотрудник</string>
     <string name="subscriptions_title">Подписки</string>
     <string name="permission_grant">GRANT</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--swahili-->
+    <string name="job_title">Kazi</string>
     <string name="employee_title">Mfanyakazi</string>
     <string name="profile_title">Wasifu</string>
     <string name="subscriptions_title">Usajili</string>

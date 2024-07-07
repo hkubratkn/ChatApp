@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--korean-->
+    <string name="job_title">직업</string>
     <string name="employee_title">직원</string>
     <string name="subscriptions_title">구독</string>
     <string name="permission_grant">GRANT</string>

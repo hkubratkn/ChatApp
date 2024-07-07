@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--amharic-->
+    <string name="job_title">ኢዮብ</string>
     <string name="employee_title">ሰራተኛ</string>
     <string name="profile_title">መገለጫ</string>
     <string name="subscriptions_title">የደንበኝነት ምዝገባዎች</string>

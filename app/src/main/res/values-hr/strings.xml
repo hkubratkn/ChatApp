@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--croatian-->
+    <string name="job_title">Posao</string>
     <string name="employee_title">Zaposlenik</string>
     <string name="profile_title">Profil</string>
     <string name="subscriptions_title">Pretplate</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sinhala-->
+    <string name="job_title">රැකියා</string>
     <string name="employee_title">සේවකයා</string>
     <string name="profile_title">පැතිකඩ</string>
     <string name="subscriptions_title">දායකත්ව</string>

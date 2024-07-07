@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--afrikans-->
+    <string name="job_title">Job</string>
     <string name="employee_title">Werknemer</string>
     <string name="profile_title">Profiel</string>
     <string name="subscriptions_title">Subskripsies</string>

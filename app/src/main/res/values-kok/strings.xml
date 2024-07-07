@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--konkani-->
+    <string name="job_title">काम</string>
     <string name="employee_title">कर्मचारी</string>
     <string name="profile_title">प्रोफायल</string>
     <string name="subscriptions_title">सदस्यताय घेवप</string>

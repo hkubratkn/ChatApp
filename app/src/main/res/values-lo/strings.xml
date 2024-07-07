@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--lao-->
+    <string name="job_title">ວຽກ</string>
     <string name="employee_title">ລູກຈ້າງ</string>
     <string name="profile_title">ໂປຣໄຟລ໌</string>
     <string name="subscriptions_title">ການສະໝັກໃຊ້</string>

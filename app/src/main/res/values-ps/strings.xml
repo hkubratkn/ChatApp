@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--pashto-->
+    <string name="job_title">دنده</string>
     <string name="employee_title">کارمند</string>
     <string name="profile_title">پروفایل</string>
     <string name="subscriptions_title">ګډون</string>

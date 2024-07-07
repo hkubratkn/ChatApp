@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--uzbek-->
+    <string name="job_title">Ish</string>
     <string name="employee_title">Xodim</string>
     <string name="report">Hisobot</string>
     <string name="report_user">Foydalanuvchi haqida xabar berish va bloklashni xohlaysizmi?</string>

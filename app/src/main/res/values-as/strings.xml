@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--assamese-->
+    <string name="job_title">চাকৰি</string>
     <string name="employee_title">কৰ্মচাৰী</string>
     <string name="profile_title">ৰূপৰেখা</string>
     <string name="subscriptions_title">চাবস্ক্ৰিপচন</string>

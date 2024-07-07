@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--dutch-->
+    <string name="job_title">Vacature</string>
     <string name="employee_title">Werknemer</string>
     <string name="settings_title">Instellingen</string>
     <string name="subscriptions_title">Abonnementen</string>

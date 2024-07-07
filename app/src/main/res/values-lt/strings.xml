@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--lithuanian-->
+    <string name="job_title">Darbas</string>
     <string name="employee_title">Darbuotojas</string>
     <string name="subscriptions_title">Prenumeratos</string>
     <string name="permission_grant">GRANT</string>

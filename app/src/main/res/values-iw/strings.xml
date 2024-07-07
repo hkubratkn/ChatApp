@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--hebrew-->
+    <string name="job_title">עבודה</string>
     <string name="employee_title">עוֹבֵד</string>
     <string name="profile_title">פּרוֹפִיל</string>
     <string name="subscriptions_title">מנויים</string>

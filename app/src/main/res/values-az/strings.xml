@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--azerbeijani-->
+    <string name="job_title">İş</string>
     <string name="employee_title">işçi</string>
     <string name="profile_title">Profil</string>
     <string name="subscriptions_title">Abunəliklər</string>

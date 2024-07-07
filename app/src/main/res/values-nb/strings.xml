@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--norwegian-->
+    <string name="job_title">Jobb</string>
     <string name="employee_title">Ansatt</string>
     <string name="subscriptions_title">Abonnementer</string>
     <string name="permission_grant">GRANT</string>

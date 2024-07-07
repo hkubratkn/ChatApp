@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--zulu-->
+    <string name="job_title">Umsebenzi</string>
     <string name="employee_title">Isisebenzi</string>
     <string name="report">Bika</string>
     <string name="report_user">Uyafuna ukubika futhi uvimbele umsebenzisi?</string>

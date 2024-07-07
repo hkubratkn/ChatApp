@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--malay-->
+    <string name="job_title">Kerja</string>
     <string name="employee_title">Pekerja</string>
     <string name="profile_title">Profil</string>
     <string name="subscriptions_title">Langganan</string>

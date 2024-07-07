@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--japanese-->
+    <string name="job_title">仕事</string>
     <string name="employee_title">従業員</string>
     <string name="subscriptions_title">サブスクリプション</string>
     <string name="permission_grant">GRANT</string>

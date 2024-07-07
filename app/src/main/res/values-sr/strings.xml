@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--serbian-->
+    <string name="job_title">Јоб</string>
     <string name="employee_title">Запослени</string>
     <string name="profile_title">Профил</string>
     <string name="subscriptions_title">Претплате</string>

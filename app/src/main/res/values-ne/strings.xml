@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--nepali-->
+    <string name="job_title">जागिर</string>
     <string name="employee_title">कर्मचारी</string>
     <string name="profile_title">प्रोफाइल</string>
     <string name="subscriptions_title">सदस्यताहरू</string>

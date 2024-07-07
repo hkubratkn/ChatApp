@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--chinese-->
+    <string name="job_title">工作</string>
     <string name="employee_title">员工</string>
     <string name="report">报告</string>
     <string name="report_user">您要报告和阻止用户吗？</string>

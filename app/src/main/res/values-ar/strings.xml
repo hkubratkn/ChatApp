@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--arabic-->
+    <string name="job_title">الوظيفة</string>
     <string name="employee_title">موظف</string>
     <string name="subscriptions_title">الاشتراكات</string>
     <string name="permission_grant">GRANT</string>

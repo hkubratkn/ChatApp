@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--portuguese-->
+    <string name="job_title">Emprego</string>
     <string name="employee_title">Empregado</string>
     <string name="subscriptions_title">Assinaturas</string>
     <string name="permission_grant">GRANT</string>
