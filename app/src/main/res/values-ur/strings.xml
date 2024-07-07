@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--urdu-->
+    <string name="employee_title">ملازم</string>
     <string name="profile_title">پروفائل</string>
     <string name="subscriptions_title">سبسکرپشنز</string>
     <string name="chats_title">چیٹس</string>

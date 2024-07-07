@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--armanian-->
+    <string name="employee_title">Աշխատակից</string>
     <string name="profile_title">Անձնագիր</string>
     <string name="subscriptions_title">Բաժանորդագրություններ</string>
     <string name="chats_title">Զրույցներ</string>

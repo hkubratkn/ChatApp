@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sanskrit-->
+    <string name="employee_title">कार्मिक</string>
     <string name="subscriptions_title">सदस्यता</string>
     <string name="chats_title">चटः</string>
     <string name="archive_title">लेखागार</string>

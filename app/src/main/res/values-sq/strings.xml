@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--albanian-->
+    <string name="employee_title">Punonjës</string>
     <string name="profile_title">Profili</string>
     <string name="subscriptions_title">Abonimet</string>
     <string name="chats_title">Bisedat</string>

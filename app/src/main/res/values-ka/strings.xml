@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--georgian-->
+    <string name="employee_title">თანამშრომელი</string>
     <string name="profile_title">პროფილი</string>
     <string name="subscriptions_title">Abonnements</string>
     <string name="chats_title">ჩეთები</string>

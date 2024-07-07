@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--khmer-->
+    <string name="employee_title">និយោជិត</string>
     <string name="profile_title">ប្រវត្តិរូប</string>
     <string name="subscriptions_title">ការជាវ</string>
     <string name="chats_title">ជជែក</string>

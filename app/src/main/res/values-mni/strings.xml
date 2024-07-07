@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--manipuri-->
+    <string name="employee_title">ꯊꯕꯀ ꯇꯧꯕ ꯃꯤ</string>
     <string name="profile_title">ꯃꯤꯑꯣꯏ ꯑꯃꯒꯤ ꯁꯝꯂꯞꯄ ꯋꯥꯔꯣꯜ</string>
     <string name="subscriptions_title">ꯁꯕꯁ꯭ꯛꯔꯤꯄꯁꯟ ꯇꯧꯕꯥ꯫</string>
     <string name="chats_title">ꯆꯦꯠꯁꯤꯡ꯫</string>

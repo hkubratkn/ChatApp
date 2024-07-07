@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kurdish-->
+    <string name="employee_title">Karker</string>
     <string name="profile_title">Tengal</string>
     <string name="subscriptions_title">Aboneyên</string>
     <string name="chats_title">Chats</string>

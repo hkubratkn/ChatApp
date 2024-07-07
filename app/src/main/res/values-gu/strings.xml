@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--gujarati-->
+    <string name="employee_title">કર્મચારી</string>
     <string name="profile_title">પ્રોફાઇલ</string>
     <string name="subscriptions_title">સબ્સ્ક્રિપ્શન્સ</string>
     <string name="chats_title">ચેટ્સ</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--slovenian-->
+    <string name="employee_title">Zaposleni</string>
     <string name="subscriptions_title">Naročnine</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Temni način</string>

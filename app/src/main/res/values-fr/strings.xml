@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--french-->
+    <string name="employee_title">Employé</string>
     <string name="subscriptions_title">Abonnements</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Mode sombre</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--czech-->
+    <string name="employee_title">Zaměstnanci</string>
     <string name="subscriptions_title">Předplatné</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Tmavý režim</string>

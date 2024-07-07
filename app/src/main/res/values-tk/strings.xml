@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--turkmen-->
+    <string name="employee_title">Işgär</string>
     <string name="profile_title">Profil</string>
     <string name="subscriptions_title">Abunalar</string>
     <string name="chats_title">Söhbetler</string>

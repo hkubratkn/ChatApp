@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--icelandic-->
+    <string name="employee_title">Starfsmaður</string>
     <string name="profile_title">Prófíll</string>
     <string name="subscriptions_title">Áskriftir</string>
     <string name="chats_title">Spjall</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--belarusian-->
+    <string name="employee_title">Супрацоўнік</string>
     <string name="profile_title">Профіль</string>
     <string name="subscriptions_title">Падпіскі</string>
     <string name="chats_title">Чаты</string>

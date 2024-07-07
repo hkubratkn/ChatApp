@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kyrgyz-->
+    <string name="employee_title">Кызматкер</string>
     <string name="profile_title">Профиль</string>
     <string name="subscriptions_title">Жазылуулар</string>
     <string name="chats_title">Чат</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--vietnamese-->
+    <string name="employee_title">Người lao động</string>
     <string name="report">Báo cáo</string>
     <string name="report_user">Bạn có muốn báo cáo và chặn một người dùng?</string>
     <string name="profile_title">Hồ sơ</string>

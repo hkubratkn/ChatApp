@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--romanian-->
+    <string name="employee_title">Angajat</string>
     <string name="subscriptions_title">Abonamente</string>
     <string name="permission_grant">GRANT</string>
     <string name="profile_title">Profil</string>

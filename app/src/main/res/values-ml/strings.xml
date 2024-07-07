@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--malayalam-->
+    <string name="employee_title">ജീവനക്കാരൻ</string>
     <string name="profile_title">പ്രൊഫൈൽ</string>
     <string name="subscriptions_title">സബ്സ്ക്രിപ്ഷനുകൾ</string>
     <string name="chats_title">ചാറ്റുകൾ</string>

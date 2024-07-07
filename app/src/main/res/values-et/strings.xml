@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--estonian-->
+    <string name="employee_title">Töötaja</string>
     <string name="subscriptions_title">Tellimused</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Tume režiim</string>

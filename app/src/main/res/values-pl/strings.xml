@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--polish-->
+    <string name="employee_title">Pracownik</string>
     <string name="subscriptions_title">Subskrypcje</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Tryb ciemny</string>

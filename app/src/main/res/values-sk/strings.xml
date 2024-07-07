@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--slovak-->
+    <string name="employee_title">Zamestnanec</string>
     <string name="subscriptions_title">Predplatné</string>
     <string name="permission_grant">GRANT</string>
     <string name="dark_mode">Tmavý režim</string>

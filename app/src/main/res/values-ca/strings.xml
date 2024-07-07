@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--catalan-->
+    <string name="employee_title">Empleat</string>
     <string name="profile_title">Perfil</string>
     <string name="subscriptions_title">Subscripcions</string>
     <string name="chats_title">Xats</string>

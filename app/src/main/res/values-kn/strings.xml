@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kannada-->
+    <string name="employee_title">ಉದ್ಯೋಗಿ</string>
     <string name="profile_title">ಪ್ರೊಫೈಲ್</string>
     <string name="subscriptions_title">ಚಂದಾದಾರಿಕೆಗಳು</string>
     <string name="chats_title">ಚಾಟ್‌ಗಳು</string>
