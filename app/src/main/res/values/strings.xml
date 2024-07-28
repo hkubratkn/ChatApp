@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pomodoro</string>
-    <string name="web_client_id">411230460844-78i6e1s467k4huq3gkj7vtat9ncn6onk.apps.googleusercontent.com</string>
 
     <!-- App -->
     <string name="not_connected">⚠️You aren’t connected to the internet</string>

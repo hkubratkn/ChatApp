@@ -24,15 +24,10 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.Country
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
-import com.kapirti.pomodorotechnique_timemanagementmethod.model.ggoo.SignInResult
-import com.kapirti.pomodorotechnique_timemanagementmethod.model.ggoo.SignInState
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Locale
 import javax.inject.Inject
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 
 @HiltViewModel
 class LogInViewModel @Inject constructor(
@@ -41,40 +36,6 @@ class LogInViewModel @Inject constructor(
     private val countryRepository: CountryRepository,
     logService: LogService,
 ): PomodoroViewModel(logService) {
-    private val _state = MutableStateFlow(SignInState())
-    val state = _state.asStateFlow()
-
-    fun onSignInResult(result: SignInResult) {
-        _state.update { it.copy(
-            isSignInSuccessful = result.data != null,
-            signInError = result.errorMessage
-        ) }
-    }
-    fun googleLoginDone(restartApp: () -> Unit,) {
-        launchCatching {
-            val user = firestoreService.getUser(accountService.currentUserId)
-            countryRepository.saveCountryState(
-                user?.let { it.country } ?: Locale.getDefault().getDisplayCountry()
-            )
-            resetState()
-            restartApp()
-        }
-    }
-
-    fun resetState() {
-        _state.update { SignInState() }
-    }
-
-
-
-
-
-
-
-
-
-    //try
-
     var uiState = mutableStateOf(LogInUiState())
         private set
 

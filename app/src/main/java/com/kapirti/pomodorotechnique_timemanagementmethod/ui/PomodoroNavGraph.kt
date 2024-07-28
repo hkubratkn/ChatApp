@@ -171,7 +171,6 @@ fun ZepiNavGraph(
                 composable(PomodoroDestinations.SPLASH_ROUTE) {
                     SplashScreen(
                         openAndPopUpSplashToProductivity = openAndPopUpSplashToProductivity,
-                        openAndPopUpSplashToLogin = openAndPopUpSplashToLogin,
                         showInterstialAd = showInterstitialAds
                     )
                 }

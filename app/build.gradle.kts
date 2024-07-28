@@ -22,8 +22,8 @@ android {
         applicationId = "com.kapirti.pomodorotechnique_timemanagementmethod"
         minSdk = 21
         targetSdk = 34
-        versionCode = 79
-        versionName = "1.0.62"
+        versionCode = 81
+        versionName = "1.0.64"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -141,7 +141,6 @@ dependencies {
     implementation("com.google.firebase:firebase-config-ktx")
 
     implementation("com.google.firebase:firebase-auth-ktx")
-    implementation("com.google.android.gms:play-services-auth:21.0.0")
 
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")

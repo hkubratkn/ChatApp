@@ -10,9 +10,6 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidPass
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.passwordMatches
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
-import com.kapirti.pomodorotechnique_timemanagementmethod.model.ggoo.SignInResult
-import com.kapirti.pomodorotechnique_timemanagementmethod.model.ggoo.SignInState
-import com.kapirti.pomodorotechnique_timemanagementmethod.model.ggoo.UserData
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
@@ -34,13 +31,6 @@ class RegisterViewModel @Inject constructor(
     private val countryRepository: CountryRepository,
     private val editTypeRepository: EditTypeRepository,
 ): PomodoroViewModel(logService) {
-    private val _state = MutableStateFlow(SignInState())
-    val state = _state.asStateFlow()
-
-
-
-
-
     val countryValue = Locale.getDefault().getDisplayCountry()
 
     var uiState = mutableStateOf(RegisterUiState())
@@ -52,48 +42,6 @@ class RegisterViewModel @Inject constructor(
         get() = uiState.value.password
     private val button
         get() = uiState.value.button
-
-
-
-
-    fun onSignInResult(result: SignInResult) {
-        _state.update { it.copy(
-            isSignInSuccessful = result.data != null,
-            signInError = result.errorMessage
-        ) }
-    }
-
-    fun googleRegisterDone(
-        navigateAndPopUpRegisterToEdit: () -> Unit,
-        userData: UserData?
-    ) {
-        launchCatching {
-            firestoreService.saveUser(
-                User(
-                    photo = userData?.let { it.profilePictureUrl } ?: "",
-                    displayName = userData?.let { it.username } ?: "",
-                    country = countryValue,
-                    online = true,
-                    date = Timestamp.now()
-                )
-            )
-
-            firestoreService.saveCountry(
-                Feedback(
-                    countryValue
-                )
-            )
-            editTypeRepository.saveEditTypeState(PROFILE)
-            countryRepository.saveCountryState(countryValue)
-            resetState()
-            navigateAndPopUpRegisterToEdit()
-        }
-    }
-
-    fun resetState() {
-        _state.update { SignInState() }
-    }
-
 
 
     fun onEmailChange(newValue: String) { uiState.value = uiState.value.copy(email = newValue) }

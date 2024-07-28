@@ -12,7 +12,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 @HiltViewModel
 class SplashViewModel @Inject constructor(
     configurationService: ConfigurationService,
-    //private val onBoardingRepository: OnBoardingRepository,
     private val accountService: AccountService,
     logService: LogService,
 ): PomodoroViewModel(logService) {
@@ -22,32 +21,31 @@ class SplashViewModel @Inject constructor(
         launchCatching { configurationService.fetchConfiguration() }
     }
 
-    fun onAppStart(openAndPopUpSplashToHome: () -> Unit, openAndPopUpSplashToLogin: () -> Unit,) {
+    fun onAppStart(openAndPopUpSplashToHome: () -> Unit) {
+
         showError.value = false
-        checkState(openAndPopUpSplashToHome, openAndPopUpSplashToLogin)
+        if (accountService.hasUser) openAndPopUpSplashToHome()
+        else createAnonymousAccount(openAndPopUpSplashToHome)
     }
 
-    private fun checkState(openAndPopUpSplashToPomodoro: () -> Unit, openAndPopUpSplashToLogin: () -> Unit,) {
-        launchCatching(snackbar = false) {
+    private fun createAnonymousAccount(openAndPopUpSplashToHome: () -> Unit) {
+        launchCatching() {
             try {
-                if (accountService.hasUser) {
-                    openAndPopUpSplashToPomodoro()
-                } else {
-                    openAndPopUpSplashToLogin()
-
-               // onBoardingRepository.readOnBoardingState().collect { completed ->
-                 //   openAndPopUp(ZepiDestinations.HOME_ROUTE, ZepiDestinations.SPLASH_ROUTE)
-
-                    /** if (completed) {
-                        openAndPopUp(QChatDestinations.HOME_ROUTE, QChatDestinations.SPLASH_ROUTE)
-                    } else {
-                        openAndPopUp(WELCOME_SCREEN, SPLASH_SCREEN)
-                    }*/
-                }
+                accountService.createAnonymousAccount()
             } catch (ex: FirebaseAuthException) {
                 showError.value = true
                 throw ex
             }
+            openAndPopUpSplashToHome()
         }
     }
 }
+
+// onBoardingRepository.readOnBoardingState().collect { completed ->
+//   openAndPopUp(ZepiDestinations.HOME_ROUTE, ZepiDestinations.SPLASH_ROUTE)
+
+/** if (completed) {
+openAndPopUp(QChatDestinations.HOME_ROUTE, QChatDestinations.SPLASH_ROUTE)
+} else {
+openAndPopUp(WELCOME_SCREEN, SPLASH_SCREEN)
+}*/

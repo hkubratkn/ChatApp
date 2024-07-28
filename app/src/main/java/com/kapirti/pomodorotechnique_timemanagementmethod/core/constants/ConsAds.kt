@@ -1,7 +1,7 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.core.constants
 
 object ConsAds {
-    /**
+
     const val ADS_APP_OPEN_ID = "ca-app-pub-3006196735467220/1047253827"
     const val ADS_INTERSTITIAL_ID = "ca-app-pub-3006196735467220/7205343651"
     const val ADS_WELCOME_BANNER_ID = ""
@@ -21,7 +21,7 @@ object ConsAds {
     const val ADS_CHATS_BANNER_ID = "ca-app-pub-3006196735467220/6604833882"
     const val ADS_SUBSCRIBE_BANNER_ID = ""
     const val ADS_PROFILE_BANNER_ID = "ca-app-pub-3006196735467220/3051767534"
-*/
+/**
     const val ADS_APP_OPEN_ID = ""
     const val ADS_INTERSTITIAL_ID = ""
     const val ADS_WELCOME_BANNER_ID = ""
@@ -41,5 +41,5 @@ object ConsAds {
     const val ADS_CHATS_BANNER_ID = ""
     const val ADS_SUBSCRIBE_BANNER_ID = ""
     const val ADS_PROFILE_BANNER_ID = ""
-
+*/
 }

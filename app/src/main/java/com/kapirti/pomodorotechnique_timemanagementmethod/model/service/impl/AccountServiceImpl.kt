@@ -1,25 +1,11 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.kapirti.pomodorotechnique_timemanagementmethod.model.service.impl
 
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
-import com.kapirti.pomodorotechnique_timemanagementmethod.model.UserUid
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.UserIsAnonymous
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.trace
 import javax.inject.Inject
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -40,19 +26,16 @@ class AccountServiceImpl @Inject constructor(private val auth: FirebaseAuth) : A
         get() = auth.currentUser?.displayName.orEmpty()
 
 
-    override val currentUser: Flow<UserUid>
+    override val currentUser: Flow<UserIsAnonymous>
         get() = callbackFlow {
             val listener =
                 FirebaseAuth.AuthStateListener { auth ->
-                    this.trySend(auth.currentUser?.let {
-                        UserUid(
-                            it.uid
-                        )
-                    } ?: UserUid())
+                    this.trySend(auth.currentUser?.let { UserIsAnonymous(it.uid, it.isAnonymous) } ?: UserIsAnonymous())
                 }
             auth.addAuthStateListener(listener)
             awaitClose { auth.removeAuthStateListener(listener) }
         }
+
 
     override suspend fun authenticate(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).await()
@@ -62,9 +45,15 @@ class AccountServiceImpl @Inject constructor(private val auth: FirebaseAuth) : A
         auth.sendPasswordResetEmail(email).await()
     }
 
-    override suspend fun linkAccount(email: String, password: String) {
-        auth.createUserWithEmailAndPassword(email, password).await()
+    override suspend fun createAnonymousAccount() {
+        auth.signInAnonymously().await()
     }
+
+    override suspend fun linkAccount(email: String, password: String): Unit =
+        trace(LINK_ACCOUNT_TRACE) {
+            val credential = EmailAuthProvider.getCredential(email, password)
+            auth.currentUser!!.linkWithCredential(credential).await()
+        }
 
 
     override suspend fun displayName(newValue: String){
@@ -75,10 +64,20 @@ class AccountServiceImpl @Inject constructor(private val auth: FirebaseAuth) : A
     }
 
     override suspend fun signOut() {
+        if (auth.currentUser!!.isAnonymous) {
+            auth.currentUser!!.delete()
+        }
         auth.signOut()
+
+        // Sign the user back in anonymously.
+        createAnonymousAccount()
     }
 
     override suspend fun deleteAccount() {
         auth.currentUser!!.delete().await()
+    }
+
+    companion object {
+        private const val LINK_ACCOUNT_TRACE = "linkAccount"
     }
 }
