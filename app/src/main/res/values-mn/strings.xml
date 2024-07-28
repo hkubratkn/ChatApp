@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--mongolian-->
+    <string name="blocked_users_title">Хориглосон хэрэглэгчид</string>
+    <string name="no_blocked_users_all">Танд хориглосон хэрэглэгч байхгүй!</string>
     <string name="job_title">Ажил</string>
     <string name="employee_title">Ажилтан</string>
     <string name="profile_title">Профайл</string>

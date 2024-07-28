@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kazakh-->
+    <string name="blocked_users_title">Блокталған пайдаланушылар</string>
+    <string name="no_blocked_users_all">Сізде блокталған пайдаланушылар жоқ!</string>
     <string name="job_title">Жұмыс</string>
     <string name="employee_title">Қызметкер</string>
     <string name="profile_title">Профиль</string>

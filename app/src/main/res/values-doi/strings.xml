@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--dogri-->
+    <string name="blocked_users_title">अवरुद्ध उपयोगकर्ताएं गी</string>
+    <string name="no_blocked_users_all">तुंदे कोल कोई ब्लॉक कीते गेदे यूजर नेईं न !</string>
     <string name="job_title">नौकरी</string>
     <string name="employee_title">नौकर</string>
     <string name="profile_title">प्रोफाइल</string>

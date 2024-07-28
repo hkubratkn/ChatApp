@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--odia-->
+    <string name="blocked_users_title">ଅବରୋଧିତ ବ୍ୟବହାରକାରୀ |</string>
+    <string name="no_blocked_users_all">ଆପଣଙ୍କର କ blocked ଣସି ଅବରୋଧିତ ଉପଭୋକ୍ତା ନାହାଁନ୍ତି!</string>
     <string name="job_title">ଚାକିରି</string>
     <string name="employee_title">କର୍ମଚାରୀ</string>
     <string name="profile_title">ପ୍ରୋଫାଇଲ୍</string>

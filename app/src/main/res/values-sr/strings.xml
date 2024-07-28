@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--serbian-->
+    <string name="blocked_users_title">Блокирани корисници</string>
+    <string name="no_blocked_users_all">Немате блокираних корисника!</string>
     <string name="job_title">Јоб</string>
     <string name="employee_title">Запослени</string>
     <string name="profile_title">Профил</string>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--afrikans-->
+    <string name="no_blocked_users_all">Jy het geen geblokkeerde gebruikers nie!</string>
+    <string name="blocked_users_title">Geblokkeerde gebruikers</string>
     <string name="job_title">Job</string>
     <string name="employee_title">Werknemer</string>
     <string name="profile_title">Profiel</string>

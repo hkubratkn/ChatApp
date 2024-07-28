@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--hindi-->
+    <string name="blocked_users_title">रोके गए उपयोगकर्ता</string>
+    <string name="no_blocked_users_all">आपके पास कोई भी उपयोगकर्ता अवरुद्ध नहीं है!</string>
     <string name="job_title">काम</string>
     <string name="employee_title">कर्मचारी</string>
     <string name="profile_title">प्रोफ़ाइल</string>

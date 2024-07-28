@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--pashto-->
+    <string name="blocked_users_title">بلاک شوي کاروونکي</string>
+    <string name="no_blocked_users_all">تاسو هیڅ بلاک شوي کارونکي نلرئ!</string>
     <string name="job_title">دنده</string>
     <string name="employee_title">کارمند</string>
     <string name="profile_title">پروفایل</string>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--bulgarian-->
+    <string name="blocked_users_title">Блокирани потребители</string>
+    <string name="no_blocked_users_all">Нямате блокирани потребители!</string>
     <string name="job_title">Работа</string>
     <string name="employee_title">Служител</string>
     <string name="subscriptions_title">Абонаменти</string>

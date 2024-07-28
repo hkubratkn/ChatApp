@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kyrgyz-->
+    <string name="blocked_users_title">Бөгөттөлгөн колдонуучулар</string>
+    <string name="no_blocked_users_all">Сизде бөгөттөлгөн колдонуучулар жок!</string>
     <string name="job_title">Job</string>
     <string name="employee_title">Кызматкер</string>
     <string name="profile_title">Профиль</string>

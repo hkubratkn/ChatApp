@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--slovak-->
+    <string name="privacy_policy">Zásady ochrany osobných údajov</string>
+    <string name="blocked_users_title">Zablokovaní používatelia</string>
+    <string name="no_blocked_users_all">Nemáte žiadnych zablokovaných používateľov!</string>
     <string name="job_title">Práca</string>
     <string name="employee_title">Zamestnanec</string>
     <string name="subscriptions_title">Predplatné</string>

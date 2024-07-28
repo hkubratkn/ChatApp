@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--azerbeijani-->
+    <string name="blocked_users_title">Bloklanmış istifadəçilər</string>
+    <string name="no_blocked_users_all">Bloklanmış istifadəçiniz yoxdur!</string>
     <string name="job_title">İş</string>
     <string name="employee_title">işçi</string>
     <string name="profile_title">Profil</string>

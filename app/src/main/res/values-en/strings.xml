@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--english-->
+    <string name="blocked_users_title">Blocked users</string>
+    <string name="no_blocked_users_all">You have no blocked users!</string>
     <string name="job_title">Job</string>
     <string name="employee_title">Employee</string>
     <string name="subscriptions_title">Subscriptions</string>

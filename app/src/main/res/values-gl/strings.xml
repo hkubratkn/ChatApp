@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--galician-->
+    <string name="blocked_users_title">Usuarios bloqueados</string>
+    <string name="no_blocked_users_all">Non tes usuarios bloqueados!</string>
     <string name="job_title">Traballo</string>
     <string name="employee_title">Empregado</string>
     <string name="profile_title">Perfil</string>

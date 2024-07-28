@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--marathi-->
+    <string name="blocked_users_title">अवरोधित वापरकर्ते</string>
+    <string name="no_blocked_users_all">तुमच्याकडे कोणतेही अवरोधित वापरकर्ते नाहीत!</string>
     <string name="job_title">नोकरी</string>
     <string name="employee_title">कर्मचारी</string>
     <string name="profile_title">प्रोफाइल</string>

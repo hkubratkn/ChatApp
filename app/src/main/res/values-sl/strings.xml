@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--slovenian-->
+    <string name="privacy_policy">Pravilnik o zasebnosti</string>
+    <string name="blocked_users_title">Blokirani uporabniki</string>
+    <string name="no_blocked_users_all">Nimate blokiranih uporabnikov!</string>
     <string name="job_title">Delo</string>
     <string name="employee_title">Zaposleni</string>
     <string name="subscriptions_title">Naročnine</string>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--tatar-->
+    <string name="blocked_users_title">Блокланган кулланучылар</string>
+    <string name="no_blocked_users_all">Сездә блокланган кулланучылар юк!</string>
     <string name="job_title">Эш</string>
     <string name="employee_title">Хезмәтче</string>
     <string name="profile_title">Профиль</string>

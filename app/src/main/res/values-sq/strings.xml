@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--albanian-->
+    <string name="blocked_users_title">Përdoruesit e bllokuar</string>
+    <string name="no_blocked_users_all">Nuk keni përdorues të bllokuar!</string>
     <string name="job_title">Punë</string>
     <string name="employee_title">Punonjës</string>
     <string name="profile_title">Profili</string>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--greek-->
+    <string name="blocked_users_title">Αποκλεισμένοι χρήστες</string>
+    <string name="no_blocked_users_all">Δεν έχετε μπλοκαρισμένους χρήστες!</string>
     <string name="job_title">Εργασία</string>
     <string name="employee_title">Εργαζόμενος</string>
     <string name="subscriptions_title">Συνδρομές</string>

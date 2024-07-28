@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sanskrit-->
+    <string name="blocked_users_title">अवरुद्धाः उपयोक्तारः</string>
+    <string name="no_blocked_users_all">भवतः अवरुद्धाः उपयोक्तारः नास्ति!</string>
     <string name="job_title">कार्य</string>
     <string name="employee_title">कार्मिक</string>
     <string name="subscriptions_title">सदस्यता</string>

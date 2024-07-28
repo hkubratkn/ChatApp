@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--manipuri-->
+    <string name="blocked_users_title">ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯕꯥ ꯌꯨꯖꯔꯁꯤꯡ꯫</string>
+    <string name="no_blocked_users_all">ꯑꯗꯣꯃꯒꯤ ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯕꯥ ꯌꯨꯖꯔ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ!</string>
     <string name="job_title">ꯊꯕꯛ</string>
     <string name="employee_title">ꯊꯕꯀ ꯇꯧꯕ ꯃꯤ</string>
     <string name="profile_title">ꯃꯤꯑꯣꯏ ꯑꯃꯒꯤ ꯁꯝꯂꯞꯄ ꯋꯥꯔꯣꯜ</string>

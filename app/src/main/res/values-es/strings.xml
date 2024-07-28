@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--spanish-->
+    <string name="privacy_policy">Política de privacidad</string>
+    <string name="blocked_users_title">Usuarios bloqueados</string>
+    <string name="no_blocked_users_all">No tienes usuarios bloqueados.</string>
     <string name="job_title">Empleo</string>
     <string name="employee_title">Empleado</string>
     <string name="subscriptions_title">Suscripciones</string>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--tajik-->
+    <string name="blocked_users_title">Корбарони басташуда</string>
+    <string name="no_blocked_users_all">Шумо корбарони басташуда надоред!</string>
     <string name="job_title">Кор</string>
     <string name="employee_title">Корманд</string>
     <string name="profile_title">Профил</string>
