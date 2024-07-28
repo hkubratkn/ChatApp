@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--urdu-->
+    <string name="productivity_title">پیداوری</string>
+    <string name="pomodoro">پومودورو</string>
+    <string name="timer">ٹائمر</string>
+    <string name="stayed">ٹھہرے رہے</string>
     <string name="blocked_users_title">مسدود صارفین</string>
     <string name="no_blocked_users_all">آپ کے پاس کوئی مسدود صارف نہیں ہے!</string>
     <string name="job_title">جاب</string>

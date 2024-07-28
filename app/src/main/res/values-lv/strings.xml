@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--latvian-->
+    <string name="productivity_title">Produktivitāte</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Taimeris</string>
+    <string name="stayed">Uzturējās</string>
     <string name="blocked_users_title">Bloķētie lietotāji</string>
     <string name="no_blocked_users_all">Jums nav bloķētu lietotāju!</string>
     <string name="job_title">Darbs</string>

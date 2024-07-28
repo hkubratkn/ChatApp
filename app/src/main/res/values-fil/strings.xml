@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--filipino-->
+    <string name="productivity_title">Produktibidad</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Timer</string>
+    <string name="stayed">Nanatili</string>
     <string name="blocked_users_title">Mga naka-block na user</string>
     <string name="no_blocked_users_all">Wala kang mga naka-block na user!</string>
     <string name="job_title">Trabaho</string>

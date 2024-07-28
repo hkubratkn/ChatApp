@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--khmer-->
+    <string name="productivity_title">ផលិតភាព</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">កម្មវិធីកំណត់ម៉ោង</string>
+    <string name="stayed">បានស្នាក់នៅ</string>
     <string name="blocked_users_title">អ្នកប្រើប្រាស់ដែលត្រូវបានរារាំង</string>
     <string name="no_blocked_users_all">អ្នកមិនមានអ្នកប្រើប្រាស់ដែលត្រូវបានរារាំងទេ!</string>
     <string name="job_title">ការងារ</string>

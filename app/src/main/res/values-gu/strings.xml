@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--gujarati-->
+    <string name="productivity_title">ઉત્પાદકતા</string>
+    <string name="pomodoro">પોમોડોરો</string>
+    <string name="timer">ટાઈમર</string>
+    <string name="stayed">રહ્યા</string>
     <string name="blocked_users_title">અવરોધિત વપરાશકર્તાઓ</string>
     <string name="no_blocked_users_all">તમારી પાસે કોઈ અવરોધિત વપરાશકર્તાઓ નથી!</string>
     <string name="job_title">જોબ</string>

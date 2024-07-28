@@ -9,7 +9,6 @@
 
     <!-- Productivity Screen -->
     <string name="productivity_title">Productivity</string>
-    <string name="pomodoro">Pomodoro</string>
     <string name="timer">Timer</string>
     <string name="stayed">Stayed</string>
 

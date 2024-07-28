@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--greek-->
+    <string name="productivity_title">Παραγωγικότητα</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Χρονοδιακόπτης</string>
+    <string name="stayed">Έμεινε</string>
     <string name="blocked_users_title">Αποκλεισμένοι χρήστες</string>
     <string name="no_blocked_users_all">Δεν έχετε μπλοκαρισμένους χρήστες!</string>
     <string name="job_title">Εργασία</string>

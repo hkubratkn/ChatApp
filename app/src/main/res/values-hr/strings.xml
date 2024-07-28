@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--croatian-->
+    <string name="productivity_title">Produktivnost</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Timer</string>
+    <string name="stayed">Ostao</string>
     <string name="blocked_users_title">Blokirani korisnici</string>
     <string name="no_blocked_users_all">Nemate blokiranih korisnika!</string>
     <string name="job_title">Posao</string>

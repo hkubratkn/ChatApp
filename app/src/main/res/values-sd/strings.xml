@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sindhi-->
+    <string name="productivity_title">پيداوار</string>
+    <string name="pomodoro">پومودورو</string>
+    <string name="timer">ٽائمر</string>
+    <string name="stayed">رهيو</string>
     <string name="blocked_users_title">بند ٿيل صارفين</string>
     <string name="no_blocked_users_all">توهان وٽ ڪو به بلاڪ ٿيل استعمال ڪندڙ ناهي!</string>
     <string name="job_title">نوڪري</string>

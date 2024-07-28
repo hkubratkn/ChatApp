@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--chinese-->
+    <string name="productivity_title">生产率</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">计时器</string>
+    <string name="stayed">已入住</string>
     <string name="blocked_users_title">被屏蔽的用户</string>
     <string name="no_blocked_users_all">您没有被阻止的用户！</string>
     <string name="job_title">工作</string>
@@ -60,7 +64,6 @@
     <string name="sign_out">签出</string>
     <string name="sign_out_title">签出？</string>
     <string name="sign_out_description">你将不得不再次登录以查看你的数据。</string>
-    <string name="surname">姓氏</string>
     <string name="tell_us_about_you">告诉我们一些关于你自己的情况</string>
     <string name="try_again">再试一次</string>
     <string name="welcome_back">欢迎回来</string>

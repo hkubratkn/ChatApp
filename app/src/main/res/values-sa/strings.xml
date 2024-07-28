@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sanskrit-->
+    <string name="productivity_title">उत्पादकता</string>
+    <string name="pomodoro">पोमोदोरो</string>
+    <string name="timer">टाइमर</string>
+    <string name="stayed">स्थिता</string>
     <string name="blocked_users_title">अवरुद्धाः उपयोक्तारः</string>
     <string name="no_blocked_users_all">भवतः अवरुद्धाः उपयोक्तारः नास्ति!</string>
     <string name="job_title">कार्य</string>

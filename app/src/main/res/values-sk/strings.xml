@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--slovak-->
+    <string name="productivity_title">Produktivita</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Časovač</string>
+    <string name="stayed">Zostal</string>
     <string name="privacy_policy">Zásady ochrany osobných údajov</string>
     <string name="blocked_users_title">Zablokovaní používatelia</string>
     <string name="no_blocked_users_all">Nemáte žiadnych zablokovaných používateľov!</string>

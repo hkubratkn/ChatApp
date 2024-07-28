@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--turkish-->
+    <string name="productivity_title">Verimlilik</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Zamanlayıcı</string>
+    <string name="stayed">Kaldı</string>
     <string name="blocked_users_title">Engellenen kullanıcılar</string>
     <string name="no_blocked_users_all">Engellenmiş kullanıcınız yok!</string>
     <string name="job_title">İş</string>

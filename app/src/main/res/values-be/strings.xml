@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--belarusian-->
+    <string name="productivity_title">Прадукцыйнасць</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Таймер</string>
+    <string name="stayed">Застаўся</string>
     <string name="blocked_users_title">Заблакіраваныя карыстальнікі</string>
     <string name="no_blocked_users_all">У вас няма заблакіраваных карыстальнікаў!</string>
     <string name="job_title">Праца</string>

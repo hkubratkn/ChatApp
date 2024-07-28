@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--vietnamese-->
+    <string name="productivity_title">Năng suất</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Bộ đếm thời gian</string>
+    <string name="stayed">Đã ở lại</string>
     <string name="blocked_users_title">Người dùng bị chặn</string>
     <string name="no_blocked_users_all">Bạn không có người dùng bị chặn!</string>
     <string name="job_title">Công việc</string>

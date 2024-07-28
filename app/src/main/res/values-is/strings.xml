@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--icelandic-->
+    <string name="productivity_title">Framleiðni</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Tímamælir</string>
+    <string name="stayed">Gisti</string>
     <string name="blocked_users_title">Lokaðir notendur</string>
     <string name="no_blocked_users_all">Þú hefur enga lokaða notendur!</string>
     <string name="job_title">Job</string>

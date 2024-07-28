@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kazakh-->
+    <string name="productivity_title">Өнімділік</string>
+    <string name="pomodoro">Помодоро</string>
+    <string name="timer">Таймер</string>
+    <string name="stayed">Қалды</string>
     <string name="blocked_users_title">Блокталған пайдаланушылар</string>
     <string name="no_blocked_users_all">Сізде блокталған пайдаланушылар жоқ!</string>
     <string name="job_title">Жұмыс</string>

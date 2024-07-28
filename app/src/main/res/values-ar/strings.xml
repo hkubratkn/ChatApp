@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--arabic-->
+    <string name="productivity_title">الإنتاجية</string>
+    <string name="pomodoro">بومودورو</string>
+    <string name="timer">المؤقِّت</string>
+    <string name="stayed">بقيت</string>
     <string name="blocked_users_title">المستخدمون المحظورون</string>
     <string name="no_blocked_users_all">ليس لديك مستخدمون محظورون!</string>
     <string name="job_title">الوظيفة</string>

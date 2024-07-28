@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--finnish-->
+    <string name="productivity_title">Tuottavuus</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Ajastin</string>
+    <string name="stayed">Pysyi</string>
     <string name="blocked_users_title">Estetyt käyttäjät</string>
     <string name="no_blocked_users_all">Sinulla ei ole estettyjä käyttäjiä!</string>
     <string name="job_title">Työ</string>

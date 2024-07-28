@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--german-->
+    <string name="productivity_title">Produktivität</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Zeitschaltuhr</string>
+    <string name="stayed">Bleibt</string>
     <string name="privacy_policy">Datenschutzbestimmungen</string>
     <string name="blocked_users_title">Gesperrte Benutzer</string>
     <string name="no_blocked_users_all">Sie haben keine gesperrten Benutzer!</string>

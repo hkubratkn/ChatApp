@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--bangla-->
+    <string name="productivity_title">প্রমোদ</string>
+    <string name="pomodoro">পোমোডোরো</string>
+    <string name="timer">টাইমার</string>
+    <string name="stayed">থাকল</string>
     <string name="blocked_users_title">অবরুদ্ধ ব্যবহারকারী</string>
     <string name="no_blocked_users_all">আপনার কোন অবরুদ্ধ ব্যবহারকারী নেই!</string>
     <string name="job_title">চাকরি</string>

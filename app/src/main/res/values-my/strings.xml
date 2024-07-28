@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--burmese-->
+    <string name="productivity_title">ကုန်ထုတ်စွမ်းအား</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">အချိန်တိုင်း</string>
+    <string name="stayed">နေခဲ့သည်။</string>
     <string name="blocked_users_title">အသုံးပြုသူများကို ပိတ်ဆို့ထားသည်။</string>
     <string name="no_blocked_users_all">သင့်တွင် ပိတ်ဆို့ထားသော အသုံးပြုသူများ မရှိပါ။</string>
     <string name="job_title">အလုပ်</string>

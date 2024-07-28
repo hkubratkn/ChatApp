@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--armanian-->
+    <string name="productivity_title">Արտադրողականություն</string>
+    <string name="pomodoro">Պոմոդորո</string>
+    <string name="timer">Ժամաչափ</string>
+    <string name="stayed">Մնաց</string>
     <string name="blocked_users_title">Արգելափակված օգտվողներ</string>
     <string name="no_blocked_users_all">Դուք արգելափակված օգտվողներ չունեք:</string>
     <string name="job_title">Աշխատանք</string>

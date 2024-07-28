@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--basque-->
+    <string name="productivity_title">Produktibitatea</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Tenporizadorea</string>
+    <string name="stayed">Egonduta</string>
     <string name="blocked_users_title">Blokeatutako erabiltzaileak</string>
     <string name="no_blocked_users_all">Ez duzu erabiltzaile blokeaturik!</string>
     <string name="job_title">Lanpostua</string>

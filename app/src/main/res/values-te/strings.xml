@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--telugu-->
+    <string name="productivity_title">ఉత్పాదకత</string>
+    <string name="pomodoro">పోమోడోరో</string>
+    <string name="timer">టైమర్</string>
+    <string name="stayed">బస చేశారు</string>
     <string name="blocked_users_title">బ్లాక్ చేయబడిన వినియోగదారులు</string>
     <string name="no_blocked_users_all">మీకు బ్లాక్ చేయబడిన వినియోగదారులు లేరు!</string>
     <string name="job_title">ఉద్యోగం</string>

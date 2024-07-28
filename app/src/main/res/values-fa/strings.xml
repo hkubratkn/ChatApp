@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--persian-->
+    <string name="productivity_title">بهره وری</string>
+    <string name="pomodoro">پومودورو</string>
+    <string name="timer">تایمر</string>
+    <string name="stayed">ماند</string>
     <string name="blocked_users_title">کاربران مسدود شده</string>
     <string name="no_blocked_users_all">شما هیچ کاربر مسدودی ندارید!</string>
     <string name="job_title">کار</string>

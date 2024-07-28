@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--danish-->
+    <string name="productivity_title">Produktivitet</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Timer</string>
+    <string name="stayed">Blev boende</string>
     <string name="blocked_users_title">Blokerede brugere</string>
     <string name="no_blocked_users_all">Du har ingen blokerede brugere!</string>
     <string name="job_title">Arbejde</string>

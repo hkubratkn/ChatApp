@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--punjabi-->
+    <string name="productivity_title">ਉਤਪਾਦਕਤਾ</string>
+    <string name="pomodoro">ਪੋਮੋਡੋਰੋ</string>
+    <string name="timer">ਟਾਈਮਰ</string>
+    <string name="stayed">ਰਹੇ</string>
     <string name="blocked_users_title">ਬਲਾਕ ਕੀਤੇ ਉਪਭੋਗਤਾ</string>
     <string name="no_blocked_users_all">ਤੁਹਾਡੇ ਕੋਲ ਕੋਈ ਬਲੌਕ ਕੀਤੇ ਉਪਭੋਗਤਾ ਨਹੀਂ ਹਨ!</string>
     <string name="job_title">ਨੌਕਰੀ</string>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--estonian-->
+    <string name="productivity_title">Tootlikkus</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Taimer</string>
+    <string name="stayed">Jäi</string>
     <string name="blocked_users_title">Blokeeritud kasutajad</string>
     <string name="no_blocked_users_all">Sul ei ole blokeeritud kasutajaid!</string>
     <string name="job_title">Töö</string>

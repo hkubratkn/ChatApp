@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--georgian-->
+    <string name="productivity_title">პროდუქტიულობა</string>
+    <string name="pomodoro">პომოდორო</string>
+    <string name="timer">ტაიმერი</string>
+    <string name="stayed">Დარჩა</string>
     <string name="blocked_users_title">დაბლოკილი მომხმარებლები</string>
     <string name="no_blocked_users_all">თქვენ არ გყავთ დაბლოკილი მომხმარებლები!</string>
     <string name="job_title">Სამუშაო</string>

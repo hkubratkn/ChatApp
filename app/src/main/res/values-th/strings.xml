@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--thai-->
+    <string name="productivity_title">ผลผลิต</string>
+    <string name="pomodoro">โปโมโดโร</string>
+    <string name="timer">ตัวจับเวลา</string>
+    <string name="stayed">อยู่ต่อ</string>
     <string name="blocked_users_title">ผู้ใช้ที่ถูกบล็อค</string>
     <string name="no_blocked_users_all">คุณไม่มีผู้ใช้ที่ถูกบล็อค!</string>
     <string name="job_title">งาน</string>

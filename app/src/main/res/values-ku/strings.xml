@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kurdish-->
+    <string name="productivity_title">Baikarhatinî</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Timer</string>
+    <string name="stayed">Dimîne</string>
     <string name="blocked_users_title">Bikarhênerên astengkirî</string>
     <string name="no_blocked_users_all">Tu bikarhênerên astengkirî tune ne!</string>
     <string name="job_title">Kar</string>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--portuguese-->
+    <string name="productivity_title">Produtividade</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Temporizador</string>
+    <string name="stayed">Hospedado</string>
     <string name="blocked_users_title">Utilizadores bloqueados</string>
     <string name="no_blocked_users_all">Não tem utilizadores bloqueados!</string>
     <string name="job_title">Emprego</string>

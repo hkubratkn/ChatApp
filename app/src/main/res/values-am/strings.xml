@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--amharic-->
+    <string name="productivity_title">ምርታማነት</string>
+    <string name="pomodoro">ፖሞዶሮ</string>
+    <string name="timer">ሰዓት ቆጣሪ</string>
+    <string name="stayed">ቆየ</string>
     <string name="blocked_users_title">የታገዱ ተጠቃሚዎች</string>
     <string name="no_blocked_users_all">ምንም የታገዱ ተጠቃሚዎች የሉዎትም!</string>
     <string name="job_title">ኢዮብ</string>

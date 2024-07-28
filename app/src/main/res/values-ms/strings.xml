@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--malay-->
+    <string name="productivity_title">Produktiviti</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Pemasa</string>
+    <string name="stayed">Tinggal</string>
     <string name="blocked_users_title">Pengguna yang disekat</string>
     <string name="no_blocked_users_all">Anda tiada pengguna yang disekat!</string>
     <string name="job_title">Kerja</string>

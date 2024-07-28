@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--uzbek-->
+    <string name="productivity_title">Hosildorlik</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Taymer</string>
+    <string name="stayed">Qoldi</string>
     <string name="blocked_users_title">Bloklangan foydalanuvchilar</string>
     <string name="no_blocked_users_all">Sizda bloklangan foydalanuvchi yo’q!</string>
     <string name="job_title">Ish</string>

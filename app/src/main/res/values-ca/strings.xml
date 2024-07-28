@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--catalan-->
+    <string name="productivity_title">Productivitat</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Temporitzador</string>
+    <string name="stayed">Es va quedar</string>
     <string name="blocked_users_title">Usuaris bloquejats</string>
     <string name="no_blocked_users_all">No teniu usuaris bloquejats!</string>
     <string name="job_title">Treball</string>

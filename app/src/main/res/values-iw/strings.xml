@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--hebrew-->
+    <string name="productivity_title">פִּריוֹן</string>
+    <string name="pomodoro">פומודורו</string>
+    <string name="timer">שָׁעוֹן עֶצֶר</string>
+    <string name="stayed">נשאר</string>
     <string name="blocked_users_title">משתמשים חסומים</string>
     <string name="no_blocked_users_all">אין לך משתמשים חסומים!</string>
     <string name="job_title">עבודה</string>

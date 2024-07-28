@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--manipuri-->
+    <string name="productivity_title">ꯄꯣꯠꯊꯣꯛ ꯄꯨꯊꯣꯀꯄꯥ ꯉꯝꯕꯥ꯫</string>
+    <string name="pomodoro">ꯄꯣꯃꯣꯗꯣꯔꯣ꯫</string>
+    <string name="timer">ꯇꯥꯏꯃꯔ ꯇꯧꯕꯥ꯫</string>
+    <string name="stayed">ꯂꯩꯈꯤ꯫</string>
     <string name="blocked_users_title">ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯕꯥ ꯌꯨꯖꯔꯁꯤꯡ꯫</string>
     <string name="no_blocked_users_all">ꯑꯗꯣꯃꯒꯤ ꯕ꯭ꯂꯣꯛ ꯇꯧꯔꯕꯥ ꯌꯨꯖꯔ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ!</string>
     <string name="job_title">ꯊꯕꯛ</string>

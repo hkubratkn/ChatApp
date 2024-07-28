@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--english-->
+    <string name="productivity_title">Productivity</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Timer</string>
+    <string name="stayed">Stayed</string>
     <string name="blocked_users_title">Blocked users</string>
     <string name="no_blocked_users_all">You have no blocked users!</string>
     <string name="job_title">Job</string>

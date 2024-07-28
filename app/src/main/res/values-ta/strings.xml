@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--tamil-->
+    <string name="productivity_title">உற்பத்தித்திறன்</string>
+    <string name="pomodoro">பொமோடோரோ</string>
+    <string name="timer">டைமர்</string>
+    <string name="stayed">தங்கினார்</string>
     <string name="blocked_users_title">தடுக்கப்பட்ட பயனர்கள்</string>
     <string name="no_blocked_users_all">நீங்கள் தடுக்கப்பட்ட பயனர்கள் இல்லை!</string>
     <string name="job_title">வேலை</string>

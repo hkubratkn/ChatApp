@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--odia-->
+    <string name="productivity_title">ଉତ୍ପାଦକତା |</string>
+    <string name="pomodoro">ପୋମୋଡୋରୋ |</string>
+    <string name="timer">ଟାଇମର୍ |</string>
+    <string name="stayed">ରହିଲେ |</string>
     <string name="blocked_users_title">ଅବରୋଧିତ ବ୍ୟବହାରକାରୀ |</string>
     <string name="no_blocked_users_all">ଆପଣଙ୍କର କ blocked ଣସି ଅବରୋଧିତ ଉପଭୋକ୍ତା ନାହାଁନ୍ତି!</string>
     <string name="job_title">ଚାକିରି</string>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--lao-->
+    <string name="productivity_title">ຜົນຜະລິດ</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">ໂມງຈັບເວລາ</string>
+    <string name="stayed">ຢູ່</string>
     <string name="blocked_users_title">ຜູ້ໃຊ້ທີ່ຖືກບລັອກ</string>
     <string name="no_blocked_users_all">ທ່ານບໍ່ມີຜູ້ໃຊ້ທີ່ຖືກບລັອກ!</string>
     <string name="job_title">ວຽກ</string>

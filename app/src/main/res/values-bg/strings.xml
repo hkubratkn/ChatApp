@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--bulgarian-->
+    <string name="productivity_title">Производителност</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Таймер</string>
+    <string name="stayed">Останал</string>
     <string name="blocked_users_title">Блокирани потребители</string>
     <string name="no_blocked_users_all">Нямате блокирани потребители!</string>
     <string name="job_title">Работа</string>

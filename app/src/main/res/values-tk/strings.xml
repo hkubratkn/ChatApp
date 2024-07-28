@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--turkmen-->
+    <string name="productivity_title">Önümçilik</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Taymer</string>
+    <string name="stayed">Galan</string>
     <string name="blocked_users_title">Bloklanan ulanyjylar</string>
     <string name="no_blocked_users_all">Bloklanan ulanyjylaryňyz ýok!</string>
     <string name="job_title">Iş</string>

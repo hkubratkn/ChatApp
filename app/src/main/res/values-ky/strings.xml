@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kyrgyz-->
+    <string name="productivity_title">Өндүрүмдүүлүк</string>
+    <string name="pomodoro">Помодоро</string>
+    <string name="timer">Таймер</string>
+    <string name="stayed">калды</string>
     <string name="blocked_users_title">Бөгөттөлгөн колдонуучулар</string>
     <string name="no_blocked_users_all">Сизде бөгөттөлгөн колдонуучулар жок!</string>
     <string name="job_title">Job</string>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kannada-->
+    <string name="productivity_title">ಉತ್ಪಾದಕತೆ</string>
+    <string name="pomodoro">ಪೊಮೊಡೊರೊ</string>
+    <string name="timer">ಟೈಮರ್</string>
+    <string name="stayed">ತಂಗಿದ್ದರು</string>
     <string name="blocked_users_title">ನಿರ್ಬಂಧಿಸಿದ ಬಳಕೆದಾರರು</string>
     <string name="no_blocked_users_all">ನೀವು ಯಾವುದೇ ನಿರ್ಬಂಧಿತ ಬಳಕೆದಾರರನ್ನು ಹೊಂದಿಲ್ಲ!</string>
     <string name="job_title">ಉದ್ಯೋಗ</string>

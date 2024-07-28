@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--czech-->
+    <string name="productivity_title">Produktivita</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Časovač</string>
+    <string name="stayed">Pobýval</string>
     <string name="blocked_users_title">Blokovaní uživatelé</string>
     <string name="no_blocked_users_all">Nemáte žádné blokované uživatele!</string>
     <string name="job_title">Práce</string>

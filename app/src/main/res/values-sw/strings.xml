@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--swahili-->
+    <string name="productivity_title">Tija</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="timer">Kipima muda</string>
+    <string name="stayed">Alikaa</string>
     <string name="blocked_users_title">Watumiaji waliozuiwa</string>
     <string name="no_blocked_users_all">Huna watumiaji waliozuiwa!</string>
     <string name="job_title">Kazi</string>

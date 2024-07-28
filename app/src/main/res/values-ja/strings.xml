@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--japanese-->
+    <string name="productivity_title">生産性</string>
+    <string name="pomodoro">ポモドーロ</string>
+    <string name="timer">タイマー</string>
+    <string name="stayed">宿泊</string>
     <string name="blocked_users_title">ブロックされたユーザー</string>
     <string name="no_blocked_users_all">ブロックされているユーザーはいません！</string>
     <string name="job_title">仕事</string>
