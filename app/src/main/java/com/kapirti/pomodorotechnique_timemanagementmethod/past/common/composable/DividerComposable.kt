@@ -17,6 +17,7 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.past.common.composable
 
 import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,10 +31,10 @@ fun BasicDivider(
     thickness: Dp = 1.dp,
     startIndent: Dp = 0.dp
 ) {
-    Divider(
+    HorizontalDivider(
         modifier = modifier,
-        color = color,
-        thickness = thickness
+        thickness = thickness,
+        color = color
     )
 }
 

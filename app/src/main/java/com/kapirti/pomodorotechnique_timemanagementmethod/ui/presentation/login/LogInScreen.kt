@@ -44,6 +44,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Login
 import androidx.compose.material.icons.filled.Login
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -101,7 +102,7 @@ fun LogInScreen(
             ) {
                 HeaderText(text = AppText.welcome_back)
                 Spacer(modifier = Modifier.width(5.dp))
-                Icon(imageVector = Icons.Default.Login, contentDescription = stringResource(id = AppText.log_in))
+                Icon(imageVector = Icons.AutoMirrored.Filled.Login, contentDescription = stringResource(id = AppText.log_in))
             }
 
             EmailField(uiState.email, viewModel::onEmailChange, Modifier.fieldModifier())

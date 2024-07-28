@@ -32,6 +32,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.drawable as AppIcon
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import androidx.compose.material.icons.automirrored.filled.ListAlt
 import androidx.compose.material.icons.filled.Timer
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.PomodoroDestinations
 
@@ -64,7 +65,7 @@ fun AppNavRail(
         NavigationRailItem(
             selected = currentRoute == PomodoroDestinations.SETTINGS_ROUTE,
             onClick = navigateToSettings,
-            icon = { Icon(Icons.Filled.ListAlt, stringResource(AppText.settings_title)) },
+            icon = { Icon(Icons.AutoMirrored.Filled.ListAlt, stringResource(AppText.settings_title)) },
             label = { Text(stringResource(AppText.settings_title)) },
             alwaysShowLabel = false
         )

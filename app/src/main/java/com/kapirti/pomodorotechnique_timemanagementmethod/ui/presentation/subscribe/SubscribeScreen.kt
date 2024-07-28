@@ -44,7 +44,6 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds
 @Composable
 fun SubscribeScreen(
     modifier: Modifier = Modifier,
-    viewModel: SubscribeViewModel = hiltViewModel()
 ) {
     val borderWidth = 4.dp
     val rainbowColorsBrush = remember {

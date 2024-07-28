@@ -299,7 +299,7 @@ class EditViewModel @Inject constructor(
 
     fun onDeleteMyAccountClick(
         restartApp: () -> Unit,
-        empty_password_error: String
+        //empty_password_error: String
     ) {
         if (password.isBlank()) {
             //launchCatching { onShowSnackbar(empty_password_error, "") }

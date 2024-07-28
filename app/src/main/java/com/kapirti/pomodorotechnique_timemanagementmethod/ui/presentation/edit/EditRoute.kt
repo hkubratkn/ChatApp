@@ -128,7 +128,7 @@ fun EditRoute(
                 )
                 SurveyQuestion.POMO -> PomoValueQuestion(
                     value = viewModel.pomo.toString(),
-                    minusBtnState = if (viewModel.pomo ?: 0 > 5) true else false ?: true,
+                    minusBtnState = if (viewModel.pomo ?: 0 > 5) true else false,
                     onPlusClick = viewModel::pomoIncrease,
                     onMinusClick = viewModel::pomoDecrease,
                 )

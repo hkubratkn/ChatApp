@@ -35,6 +35,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.sp
@@ -93,7 +94,7 @@ fun ProductivityScreen(
     val selectedTabIndex = tabContent.indexOfFirst { it.section == currentSection }
     Column(modifier) {
         ProductivityTabRow(selectedTabIndex, updateSection, tabContent, isExpandedScreen)
-        Divider(
+        HorizontalDivider(
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
         )
         Box(modifier = Modifier.weight(1f)) {
@@ -199,7 +200,7 @@ private fun TabWithTimer(
 
 @Composable
 private fun TabWithStayed(
-    modifier: Modifier = Modifier,
+    //modifier: Modifier = Modifier,
 ) {
     InterestsAdaptiveContentLayout(
         topPadding = 16.dp,

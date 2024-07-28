@@ -293,7 +293,7 @@ fun ProfileScreen(
             )
             Spacer(Modifier.height(4.dp))
             Text(
-                text = user?.let { it.displayName } ?: "",
+                text = user.displayName,
                 style = MaterialTheme.typography.bodySmall,
                 color = Color(0x99000000),
             )
@@ -317,7 +317,7 @@ fun ProfileScreen(
             )
             Spacer(Modifier.height(4.dp))
             Text(
-                text = user?.let { it.description } ?: "",
+                text = user.let { it.description },
                 style = MaterialTheme.typography.bodySmall,
                 color = Color(0x99000000),
             )
@@ -333,7 +333,7 @@ fun ProfileScreen(
         )
         Spacer(Modifier.height(4.dp))
         Text(
-            text = user?.let { itUser -> itUser.date?.let { itLast -> itLast.seconds.toReadableString() } }
+            text = user.let { itUser -> itUser.date?.let { itLast -> itLast.seconds.toReadableString() } }
                 ?: "",
             style = MaterialTheme.typography.bodySmall,
             color = Color(0x99000000),

@@ -22,7 +22,7 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun EmployeeScreen (
-    modifier: Modifier = Modifier
+    //modifier: Modifier = Modifier
 ){
     Text("Employee Screen")
 }

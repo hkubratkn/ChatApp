@@ -17,6 +17,8 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.past.common.composable
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.ArrowBack
+import androidx.compose.material.icons.automirrored.outlined.ArrowForward
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.ArrowForward
 import androidx.compose.runtime.Composable
@@ -30,5 +32,5 @@ private fun arrowIcon(ltrIcon: ImageVector, rtlIcon: ImageVector): ImageVector =
 
 @Composable
 fun arrowBackIcon() = arrowIcon(
-    ltrIcon = Icons.Outlined.ArrowBack, rtlIcon = Icons.Outlined.ArrowForward
+    ltrIcon = Icons.AutoMirrored.Outlined.ArrowBack, rtlIcon = Icons.AutoMirrored.Outlined.ArrowForward
 )

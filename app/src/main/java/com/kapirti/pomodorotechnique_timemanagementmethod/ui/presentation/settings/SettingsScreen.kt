@@ -28,11 +28,11 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.Alignment
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.Block
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Feedback
 import androidx.compose.material.icons.filled.Flag
-import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material.icons.filled.PrivacyTip
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.StarRate
@@ -132,7 +132,7 @@ fun SettingsScreen(
             ) { navigateBlockUser() }
             RegularCardEditor(
                 stringResource(AppText.sign_out),
-                Icons.Default.Logout,
+                Icons.AutoMirrored.Filled.Logout,
                 "",
                 Modifier.card()
             ) { showSignOutDialog = true }

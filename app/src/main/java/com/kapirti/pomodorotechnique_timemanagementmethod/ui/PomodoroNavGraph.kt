@@ -57,7 +57,7 @@ fun ZepiNavGraph(
     navigateToSubscriptions: () -> Unit,
 
     openAndPopUpSplashToProductivity: () -> Unit,
-    openAndPopUpSplashToLogin: () -> Unit,
+    //openAndPopUpSplashToLogin: () -> Unit,
     navigateAndPopUpRegisterToEdit: () -> Unit,
 
     navigateEdit: () -> Unit,
@@ -67,7 +67,7 @@ fun ZepiNavGraph(
     loginToRegister: () -> Unit,
     registerToLogin: () -> Unit,
 
-    includeUserIdViewModel: IncludeUserIdViewModel,
+    //includeUserIdViewModel: IncludeUserIdViewModel,
     includeChatViewModel: IncludeChatViewModel,
     includeJobViewModel: IncludeJobViewModel,
 

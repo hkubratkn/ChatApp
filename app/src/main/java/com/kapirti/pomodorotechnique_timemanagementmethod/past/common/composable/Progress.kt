@@ -11,12 +11,12 @@ val primaryDarkColor: Color = Color(0xFF263238)
 
 @Composable
 fun LoadingContent(
-    loading: Boolean,
+    //loading: Boolean,
     empty: Boolean,
     emptyContent: @Composable () -> Unit,
-    onRefresh: () -> Unit,
-    modifier: Modifier = Modifier,
-    content: @Composable () -> Unit
+    //onRefresh: () -> Unit,
+    //modifier: Modifier = Modifier,
+    //content: @Composable () -> Unit
 ) {
     if (empty) {
         emptyContent()

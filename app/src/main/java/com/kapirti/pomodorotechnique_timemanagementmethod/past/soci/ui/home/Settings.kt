@@ -6,8 +6,8 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun Settings(
-    contentPadding: PaddingValues,
-    modifier: Modifier = Modifier,
+    //contentPadding: PaddingValues,
+    //modifier: Modifier = Modifier,
 ) {}/**
     val viewModel: SettingsViewModel = hiltViewModel()
     LazyColumn(

@@ -9,10 +9,10 @@ private const val TAG = "VideoEditScreen"
 @androidx.annotation.OptIn(UnstableApi::class)
 @Composable
 fun VideoEditScreen(
-    chatId: Long,
-    uri: String,
-    onCloseButtonClicked: () -> Unit,
-    navController: NavController,
+   // chatId: Long,
+   // uri: String,
+    //onCloseButtonClicked: () -> Unit,
+    //navController: NavController,
 ) {
 }/**
     val context = LocalContext.current

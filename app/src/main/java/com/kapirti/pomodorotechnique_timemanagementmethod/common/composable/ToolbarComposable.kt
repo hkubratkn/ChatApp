@@ -33,6 +33,7 @@ import com.google.android.gms.ads.AdView
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.drawable as AppIcon
 import android.widget.Toast
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.ui.platform.LocalContext
 
@@ -127,7 +128,7 @@ fun BackToolbar(
             if (!isExpandedScreen) {
                 IconButton(onClick = popUp) {
                     Icon(
-                        imageVector = Icons.Default.ArrowBack,
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = stringResource(id = AppText.cd_back),
                         tint = MaterialTheme.colorScheme.primary,
                     )

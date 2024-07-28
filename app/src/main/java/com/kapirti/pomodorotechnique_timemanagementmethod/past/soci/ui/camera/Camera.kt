@@ -7,9 +7,9 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun Camera(
-    chatId: Long,
-    onMediaCaptured: (Media?) -> Unit,
-    modifier: Modifier = Modifier,
+    //chatId: Long,
+    //onMediaCaptured: (Media?) -> Unit,
+    //modifier: Modifier = Modifier,
   //  viewModel: CameraViewModel = hiltViewModel(),
 ) {}/**
     var surfaceProvider by remember { mutableStateOf<Preview.SurfaceProvider?>(null) }
