@@ -2,7 +2,7 @@
 <resources>
     <!--tamil-->
     <string name="productivity_title">உற்பத்தித்திறன்</string>
-    <string name="pomodoro">பொமோடோரோ</string>
+    <string name="app_name">பொமோடோரோ</string>
     <string name="timer">டைமர்</string>
     <string name="stayed">தங்கினார்</string>
     <string name="blocked_users_title">தடுக்கப்பட்ட பயனர்கள்</string>

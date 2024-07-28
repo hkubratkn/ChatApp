@@ -2,7 +2,7 @@
 <resources>
     <!--sinhala-->
     <string name="productivity_title">ඵලදායිතාව</string>
-    <string name="pomodoro">පොමෝඩෝරෝ</string>
+    <string name="app_name">පොමෝඩෝරෝ</string>
     <string name="timer">ටයිමර්</string>
     <string name="stayed">රැඳී සිටියා</string>
     <string name="blocked_users_title">අවහිර කළ පරිශීලකයන්</string>

@@ -2,7 +2,7 @@
 <resources>
     <!--konkani-->
     <string name="productivity_title">उत्पादकता</string>
-    <string name="pomodoro">पोमोडोरो हें नांव</string>
+    <string name="app_name">पोमोडोरो हें नांव</string>
     <string name="timer">टाइमर</string>
     <string name="stayed">रावलो</string>
     <string name="blocked_users_title">आडायल्ले वापरप्यांक</string>

@@ -2,7 +2,7 @@
 <resources>
     <!--persian-->
     <string name="productivity_title">بهره وری</string>
-    <string name="pomodoro">پومودورو</string>
+    <string name="app_name">پومودورو</string>
     <string name="timer">تایمر</string>
     <string name="stayed">ماند</string>
     <string name="blocked_users_title">کاربران مسدود شده</string>

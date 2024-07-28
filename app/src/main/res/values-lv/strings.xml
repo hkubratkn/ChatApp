@@ -2,7 +2,7 @@
 <resources>
     <!--latvian-->
     <string name="productivity_title">Produktivitāte</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Taimeris</string>
     <string name="stayed">Uzturējās</string>
     <string name="blocked_users_title">Bloķētie lietotāji</string>

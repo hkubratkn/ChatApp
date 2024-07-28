@@ -2,7 +2,7 @@
 <resources>
     <!--dogri-->
     <string name="productivity_title">उत्पादकता दा</string>
-    <string name="pomodoro">पोमोडोरो ने दी</string>
+    <string name="app_name">पोमोडोरो ने दी</string>
     <string name="timer">टाइमर</string>
     <string name="stayed">रुके</string>
     <string name="blocked_users_title">अवरुद्ध उपयोगकर्ताएं गी</string>

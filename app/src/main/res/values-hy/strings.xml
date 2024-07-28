@@ -2,7 +2,7 @@
 <resources>
     <!--armanian-->
     <string name="productivity_title">Արտադրողականություն</string>
-    <string name="pomodoro">Պոմոդորո</string>
+    <string name="app_name">Պոմոդորո</string>
     <string name="timer">Ժամաչափ</string>
     <string name="stayed">Մնաց</string>
     <string name="blocked_users_title">Արգելափակված օգտվողներ</string>

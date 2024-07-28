@@ -2,7 +2,7 @@
 <resources>
     <!--basque-->
     <string name="productivity_title">Produktibitatea</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Tenporizadorea</string>
     <string name="stayed">Egonduta</string>
     <string name="blocked_users_title">Blokeatutako erabiltzaileak</string>

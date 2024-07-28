@@ -2,7 +2,7 @@
 <resources>
     <!--nepali-->
     <string name="productivity_title">उत्पादकता</string>
-    <string name="pomodoro">पोमोडोरो</string>
+    <string name="app_name">पोमोडोरो</string>
     <string name="timer">टाइमर</string>
     <string name="stayed">रह्यो</string>
     <string name="blocked_users_title">अवरुद्ध प्रयोगकर्ताहरू</string>

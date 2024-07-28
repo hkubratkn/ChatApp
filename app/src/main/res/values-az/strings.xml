@@ -2,7 +2,7 @@
 <resources>
     <!--azerbeijani-->
     <string name="productivity_title">Məhsuldarlıq</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Taymer</string>
     <string name="stayed">Qaldı</string>
     <string name="blocked_users_title">Bloklanmış istifadəçilər</string>

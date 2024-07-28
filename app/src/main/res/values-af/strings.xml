@@ -2,7 +2,7 @@
 <resources>
     <!--afrikans-->
     <string name="productivity_title">Produktiwiteit</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Afteller</string>
     <string name="stayed">Gebly</string>
     <string name="no_blocked_users_all">Jy het geen geblokkeerde gebruikers nie!</string>

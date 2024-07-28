@@ -2,7 +2,7 @@
 <resources>
     <!--slovenian-->
     <string name="productivity_title">Produktivnost</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Časovnik</string>
     <string name="stayed">Ostal</string>
     <string name="privacy_policy">Pravilnik o zasebnosti</string>

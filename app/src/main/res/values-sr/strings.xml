@@ -2,7 +2,7 @@
 <resources>
     <!--serbian-->
     <string name="productivity_title">Продуктивност</string>
-    <string name="pomodoro">Помодоро</string>
+    <string name="app_name">Помодоро</string>
     <string name="timer">Тајмер</string>
     <string name="stayed">Остао</string>
     <string name="blocked_users_title">Блокирани корисници</string>

@@ -2,7 +2,7 @@
 <resources>
     <!--telugu-->
     <string name="productivity_title">ఉత్పాదకత</string>
-    <string name="pomodoro">పోమోడోరో</string>
+    <string name="app_name">పోమోడోరో</string>
     <string name="timer">టైమర్</string>
     <string name="stayed">బస చేశారు</string>
     <string name="blocked_users_title">బ్లాక్ చేయబడిన వినియోగదారులు</string>

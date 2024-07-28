@@ -2,7 +2,7 @@
 <resources>
     <!--romanian-->
     <string name="productivity_title">Productivitate</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Cronometru</string>
     <string name="stayed">A rămas</string>
     <string name="blocked_users_title">Utilizatori blocați</string>

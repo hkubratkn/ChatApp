@@ -2,7 +2,7 @@
 <resources>
     <!--pashto-->
     <string name="productivity_title">محصول</string>
-    <string name="pomodoro">پومودورو</string>
+    <string name="app_name">پومودورو</string>
     <string name="timer">ټایمر</string>
     <string name="stayed">پاتې شو</string>
     <string name="blocked_users_title">بلاک شوي کاروونکي</string>

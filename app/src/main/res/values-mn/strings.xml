@@ -2,7 +2,7 @@
 <resources>
     <!--mongolian-->
     <string name="productivity_title">Бүтээмж</string>
-    <string name="pomodoro">Помодоро</string>
+    <string name="app_name">Помодоро</string>
     <string name="timer">Цаг хэмжигч</string>
     <string name="stayed">Үлдсэн</string>
     <string name="blocked_users_title">Хориглосон хэрэглэгчид</string>

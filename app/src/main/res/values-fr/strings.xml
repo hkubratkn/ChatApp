@@ -2,7 +2,7 @@
 <resources>
     <!--french-->
     <string name="productivity_title">Productivité</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Minuterie</string>
     <string name="stayed">Séjour</string>
     <string name="blocked_users_title">Utilisateurs bloqués</string>

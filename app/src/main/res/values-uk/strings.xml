@@ -2,7 +2,7 @@
 <resources>
     <!--ukraine-->
     <string name="productivity_title">Продуктивність</string>
-    <string name="pomodoro">Помодоро</string>
+    <string name="app_name">Помодоро</string>
     <string name="timer">Таймер</string>
     <string name="stayed">Залишився.</string>
     <string name="no_blocked_users_all">У вас немає заблокованих користувачів!</string>

@@ -2,7 +2,7 @@
 <resources>
     <!--indonezian-->
     <string name="productivity_title">Produktivitas</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Pengatur waktu</string>
     <string name="stayed">Tinggal</string>
     <string name="blocked_users_title">Pengguna yang diblokir</string>

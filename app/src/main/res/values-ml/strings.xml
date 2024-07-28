@@ -2,7 +2,7 @@
 <resources>
     <!--malayalam-->
     <string name="productivity_title">ഉത്പാദനക്ഷമത</string>
-    <string name="pomodoro">പോമോഡോറോ</string>
+    <string name="app_name">പോമോഡോറോ</string>
     <string name="timer">ടൈമർ</string>
     <string name="stayed">താമസിച്ചു</string>
     <string name="blocked_users_title">തടഞ്ഞ ഉപയോക്താക്കൾ</string>

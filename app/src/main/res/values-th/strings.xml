@@ -2,7 +2,7 @@
 <resources>
     <!--thai-->
     <string name="productivity_title">ผลผลิต</string>
-    <string name="pomodoro">โปโมโดโร</string>
+    <string name="app_name">โปโมโดโร</string>
     <string name="timer">ตัวจับเวลา</string>
     <string name="stayed">อยู่ต่อ</string>
     <string name="blocked_users_title">ผู้ใช้ที่ถูกบล็อค</string>

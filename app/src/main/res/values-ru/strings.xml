@@ -2,7 +2,7 @@
 <resources>
     <!--russian-->
     <string name="productivity_title">Производительность</string>
-    <string name="pomodoro">Помодоро</string>
+    <string name="app_name">Помодоро</string>
     <string name="timer">Таймер</string>
     <string name="stayed">Остался</string>
     <string name="blocked_users_title">Заблокированные пользователи</string>

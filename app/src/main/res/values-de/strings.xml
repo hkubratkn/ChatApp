@@ -2,7 +2,7 @@
 <resources>
     <!--german-->
     <string name="productivity_title">Produktivität</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Zeitschaltuhr</string>
     <string name="stayed">Bleibt</string>
     <string name="privacy_policy">Datenschutzbestimmungen</string>

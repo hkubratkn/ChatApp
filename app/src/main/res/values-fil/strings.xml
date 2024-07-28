@@ -2,7 +2,7 @@
 <resources>
     <!--filipino-->
     <string name="productivity_title">Produktibidad</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Timer</string>
     <string name="stayed">Nanatili</string>
     <string name="blocked_users_title">Mga naka-block na user</string>

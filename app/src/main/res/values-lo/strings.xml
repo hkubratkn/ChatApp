@@ -2,7 +2,7 @@
 <resources>
     <!--lao-->
     <string name="productivity_title">ຜົນຜະລິດ</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">ໂມງຈັບເວລາ</string>
     <string name="stayed">ຢູ່</string>
     <string name="blocked_users_title">ຜູ້ໃຊ້ທີ່ຖືກບລັອກ</string>

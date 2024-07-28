@@ -2,7 +2,7 @@
 <resources>
     <!--assamese-->
     <string name="productivity_title">উৎপাদনশীলতা</string>
-    <string name="pomodoro">পোমোডোৰো</string>
+    <string name="app_name">পোমোডোৰো</string>
     <string name="timer">টাইমাৰ</string>
     <string name="stayed">থাকিল</string>
     <string name="blocked_users_title">ব্লক কৰা ব্যৱহাৰকাৰী</string>

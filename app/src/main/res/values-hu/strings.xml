@@ -2,7 +2,7 @@
 <resources>
     <!--hungarian-->
     <string name="productivity_title">Termelékenység</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Időzítő</string>
     <string name="stayed">Maradt</string>
     <string name="blocked_users_title">Blokkolt felhasználók</string>

@@ -2,7 +2,7 @@
 <resources>
     <!--arabic-->
     <string name="productivity_title">الإنتاجية</string>
-    <string name="pomodoro">بومودورو</string>
+    <string name="app_name">بومودورو</string>
     <string name="timer">المؤقِّت</string>
     <string name="stayed">بقيت</string>
     <string name="blocked_users_title">المستخدمون المحظورون</string>

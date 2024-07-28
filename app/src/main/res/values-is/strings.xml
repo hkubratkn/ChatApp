@@ -2,7 +2,7 @@
 <resources>
     <!--icelandic-->
     <string name="productivity_title">Framleiðni</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Tímamælir</string>
     <string name="stayed">Gisti</string>
     <string name="blocked_users_title">Lokaðir notendur</string>

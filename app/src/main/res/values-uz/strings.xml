@@ -2,7 +2,7 @@
 <resources>
     <!--uzbek-->
     <string name="productivity_title">Hosildorlik</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Taymer</string>
     <string name="stayed">Qoldi</string>
     <string name="blocked_users_title">Bloklangan foydalanuvchilar</string>

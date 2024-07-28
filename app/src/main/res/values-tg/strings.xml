@@ -2,7 +2,7 @@
 <resources>
     <!--tajik-->
     <string name="productivity_title">Маҳсулнокӣ</string>
-    <string name="pomodoro">Помодоро</string>
+    <string name="app_name">Помодоро</string>
     <string name="timer">Таймер</string>
     <string name="stayed">монд</string>
     <string name="blocked_users_title">Корбарони басташуда</string>

@@ -2,7 +2,7 @@
 <resources>
     <!--norwegian-->
     <string name="productivity_title">Produktivitet</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Timer</string>
     <string name="stayed">Ble</string>
     <string name="blocked_users_title">Blokkerte brukere</string>

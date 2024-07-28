@@ -2,7 +2,7 @@
 <resources>
     <!--odia-->
     <string name="productivity_title">ଉତ୍ପାଦକତା |</string>
-    <string name="pomodoro">ପୋମୋଡୋରୋ |</string>
+    <string name="app_name">ପୋମୋଡୋରୋ |</string>
     <string name="timer">ଟାଇମର୍ |</string>
     <string name="stayed">ରହିଲେ |</string>
     <string name="blocked_users_title">ଅବରୋଧିତ ବ୍ୟବହାରକାରୀ |</string>

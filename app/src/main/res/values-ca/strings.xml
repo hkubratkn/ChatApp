@@ -2,7 +2,7 @@
 <resources>
     <!--catalan-->
     <string name="productivity_title">Productivitat</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Temporitzador</string>
     <string name="stayed">Es va quedar</string>
     <string name="blocked_users_title">Usuaris bloquejats</string>

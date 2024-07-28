@@ -2,7 +2,7 @@
 <resources>
     <!--chinese-->
     <string name="productivity_title">生产率</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">计时器</string>
     <string name="stayed">已入住</string>
     <string name="blocked_users_title">被屏蔽的用户</string>

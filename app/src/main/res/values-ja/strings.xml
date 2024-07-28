@@ -2,7 +2,7 @@
 <resources>
     <!--japanese-->
     <string name="productivity_title">生産性</string>
-    <string name="pomodoro">ポモドーロ</string>
+    <string name="app_name">ポモドーロ</string>
     <string name="timer">タイマー</string>
     <string name="stayed">宿泊</string>
     <string name="blocked_users_title">ブロックされたユーザー</string>

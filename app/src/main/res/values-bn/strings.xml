@@ -2,7 +2,7 @@
 <resources>
     <!--bangla-->
     <string name="productivity_title">প্রমোদ</string>
-    <string name="pomodoro">পোমোডোরো</string>
+    <string name="app_name">পোমোডোরো</string>
     <string name="timer">টাইমার</string>
     <string name="stayed">থাকল</string>
     <string name="blocked_users_title">অবরুদ্ধ ব্যবহারকারী</string>

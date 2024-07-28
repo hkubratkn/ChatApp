@@ -2,7 +2,7 @@
 <resources>
     <!--punjabi-->
     <string name="productivity_title">ਉਤਪਾਦਕਤਾ</string>
-    <string name="pomodoro">ਪੋਮੋਡੋਰੋ</string>
+    <string name="app_name">ਪੋਮੋਡੋਰੋ</string>
     <string name="timer">ਟਾਈਮਰ</string>
     <string name="stayed">ਰਹੇ</string>
     <string name="blocked_users_title">ਬਲਾਕ ਕੀਤੇ ਉਪਭੋਗਤਾ</string>

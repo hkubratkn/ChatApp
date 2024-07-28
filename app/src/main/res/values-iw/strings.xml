@@ -2,7 +2,7 @@
 <resources>
     <!--hebrew-->
     <string name="productivity_title">פִּריוֹן</string>
-    <string name="pomodoro">פומודורו</string>
+    <string name="app_name">פומודורו</string>
     <string name="timer">שָׁעוֹן עֶצֶר</string>
     <string name="stayed">נשאר</string>
     <string name="blocked_users_title">משתמשים חסומים</string>

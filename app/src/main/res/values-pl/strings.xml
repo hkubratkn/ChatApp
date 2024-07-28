@@ -2,7 +2,7 @@
 <resources>
     <!--polish-->
     <string name="productivity_title">Wydajność</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Timer</string>
     <string name="stayed">Zostałem</string>
     <string name="blocked_users_title">Zablokowani użytkownicy</string>

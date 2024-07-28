@@ -2,7 +2,7 @@
 <resources>
     <!--amharic-->
     <string name="productivity_title">ምርታማነት</string>
-    <string name="pomodoro">ፖሞዶሮ</string>
+    <string name="app_name">ፖሞዶሮ</string>
     <string name="timer">ሰዓት ቆጣሪ</string>
     <string name="stayed">ቆየ</string>
     <string name="blocked_users_title">የታገዱ ተጠቃሚዎች</string>

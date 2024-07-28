@@ -2,7 +2,7 @@
 <resources>
     <!--galician-->
     <string name="productivity_title">Produtividade</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Temporizador</string>
     <string name="stayed">Quedou</string>
     <string name="blocked_users_title">Usuarios bloqueados</string>

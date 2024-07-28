@@ -2,7 +2,7 @@
 <resources>
     <!--turkmen-->
     <string name="productivity_title">Önümçilik</string>
-    <string name="pomodoro">Pomodoro</string>
+    <string name="app_name">Pomodoro</string>
     <string name="timer">Taymer</string>
     <string name="stayed">Galan</string>
     <string name="blocked_users_title">Bloklanan ulanyjylar</string>
