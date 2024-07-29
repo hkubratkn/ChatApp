@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kannada-->
+    <string name="why_delete_account">ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಏಕೆ ಅಳಿಸುತ್ತಿದ್ದೀರಿ</string>
     <string name="privacy_policy">ಗೌಪ್ಯತಾ ನೀತಿ</string>
     <string name="productivity_title">ಉತ್ಪಾದಕತೆ</string>
     <string name="app_name">ಪೊಮೊಡೊರೊ</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kurdish-->
+    <string name="why_delete_account">çima tu hesabê xwe jê dikî</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="productivity_title">Baikarhatinî</string>
     <string name="app_name">Pomodoro</string>
