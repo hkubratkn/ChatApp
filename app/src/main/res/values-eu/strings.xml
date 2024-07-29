@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--basque-->
+    <string name="privacy_policy">Pribatutasun-politika</string>
     <string name="productivity_title">Produktibitatea</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Tenporizadorea</string>

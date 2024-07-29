@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--polish-->
+    <string name="privacy_policy">Polityka prywatności</string>
     <string name="productivity_title">Wydajność</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Timer</string>

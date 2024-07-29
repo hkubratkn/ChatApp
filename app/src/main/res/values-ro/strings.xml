@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--romanian-->
+    <string name="privacy_policy">Politica de confidențialitate</string>
     <string name="productivity_title">Productivitate</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Cronometru</string>

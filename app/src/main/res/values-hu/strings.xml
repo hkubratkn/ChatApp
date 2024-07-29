@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--hungarian-->
+    <string name="privacy_policy">Adatvédelmi irányelvek</string>
     <string name="productivity_title">Termelékenység</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Időzítő</string>

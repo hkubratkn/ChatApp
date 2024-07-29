@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--icelandic-->
+    <string name="privacy_policy">Friðhelgisstefna</string>
     <string name="productivity_title">Framleiðni</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Tímamælir</string>

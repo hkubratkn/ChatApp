@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--malayalam-->
+    <string name="privacy_policy">സ്വകാര്യതാ നയം</string>
     <string name="productivity_title">ഉത്പാദനക്ഷമത</string>
     <string name="app_name">പോമോഡോറോ</string>
     <string name="timer">ടൈമർ</string>

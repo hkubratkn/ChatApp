@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--albanian-->
+    <string name="privacy_policy">Politika e privatësisë</string>
     <string name="productivity_title">Produktiviteti</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Timer</string>

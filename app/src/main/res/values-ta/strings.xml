@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--tamil-->
+    <string name="privacy_policy">தனியுரிமைக் கொள்கை</string>
     <string name="productivity_title">உற்பத்தித்திறன்</string>
     <string name="app_name">பொமோடோரோ</string>
     <string name="timer">டைமர்</string>

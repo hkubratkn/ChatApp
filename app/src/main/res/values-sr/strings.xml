@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--serbian-->
+    <string name="privacy_policy">Правила о приватности</string>
     <string name="productivity_title">Продуктивност</string>
     <string name="app_name">Помодоро</string>
     <string name="timer">Тајмер</string>

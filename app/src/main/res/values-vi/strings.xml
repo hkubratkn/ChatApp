@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--vietnamese-->
-    <string name="no_jobs_all">Bạn không có việc làm!</string>
+    <string name="privacy_policy">Chính sách bảo mật</string>
     <string name="productivity_title">Năng suất</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Bộ đếm thời gian</string>

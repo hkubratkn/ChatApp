@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--persian-->
+    <string name="privacy_policy">سیاست حفظ حریم خصوصی</string>
     <string name="productivity_title">بهره وری</string>
     <string name="app_name">پومودورو</string>
     <string name="timer">تایمر</string>

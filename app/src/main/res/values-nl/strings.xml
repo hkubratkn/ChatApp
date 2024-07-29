@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--dutch-->
+    <string name="privacy_policy">Privacybeleid</string>
     <string name="productivity_title">Productiviteit</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Timer</string>

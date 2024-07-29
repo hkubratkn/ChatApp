@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--bangla-->
+    <string name="privacy_policy">গোপনীয়তা নীতি</string>
     <string name="productivity_title">প্রমোদ</string>
     <string name="app_name">পোমোডোরো</string>
     <string name="timer">টাইমার</string>

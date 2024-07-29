@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--arabic-->
+    <string name="privacy_policy">سياسة الخصوصية</string>
     <string name="productivity_title">الإنتاجية</string>
     <string name="app_name">بومودورو</string>
     <string name="timer">المؤقِّت</string>

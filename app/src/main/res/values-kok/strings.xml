@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--konkani-->
+    <string name="privacy_policy">गुप्तताय धोरण</string>
     <string name="productivity_title">उत्पादकता</string>
     <string name="app_name">पोमोडोरो हें नांव</string>
     <string name="timer">टाइमर</string>

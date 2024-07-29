@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--kazakh-->
+    <string name="privacy_policy">Құпиялылық саясаты</string>
     <string name="productivity_title">Өнімділік</string>
     <string name="app_name">Помодоро</string>
     <string name="timer">Таймер</string>

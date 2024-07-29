@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--odia-->
+    <string name="privacy_policy">ଗୋପନୀୟତା ନୀତି</string>
     <string name="productivity_title">ଉତ୍ପାଦକତା |</string>
     <string name="app_name">ପୋମୋଡୋରୋ |</string>
     <string name="timer">ଟାଇମର୍ |</string>

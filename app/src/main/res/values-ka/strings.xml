@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--georgian-->
+    <string name="privacy_policy">Კონფიდენციალურობის პოლიტიკა</string>
     <string name="productivity_title">პროდუქტიულობა</string>
     <string name="app_name">პომოდორო</string>
     <string name="timer">ტაიმერი</string>

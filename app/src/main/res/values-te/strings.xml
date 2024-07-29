@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--telugu-->
+    <string name="privacy_policy">గోప్యతా విధానం</string>
     <string name="productivity_title">ఉత్పాదకత</string>
     <string name="app_name">పోమోడోరో</string>
     <string name="timer">టైమర్</string>

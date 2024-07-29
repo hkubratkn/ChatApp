@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--punjabi-->
+    <string name="privacy_policy">ਪਰਾਈਵੇਟ ਨੀਤੀ</string>
     <string name="productivity_title">ਉਤਪਾਦਕਤਾ</string>
     <string name="app_name">ਪੋਮੋਡੋਰੋ</string>
     <string name="timer">ਟਾਈਮਰ</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--gujarati-->
+    <string name="privacy_policy">ગોપનીયતા નીતિ</string>
     <string name="productivity_title">ઉત્પાદકતા</string>
     <string name="app_name">પોમોડોરો</string>
     <string name="timer">ટાઈમર</string>

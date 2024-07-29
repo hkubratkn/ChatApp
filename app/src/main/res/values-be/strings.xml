@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--belarusian-->
+    <string name="privacy_policy">Палітыка прыватнасці</string>
     <string name="productivity_title">Прадукцыйнасць</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Таймер</string>

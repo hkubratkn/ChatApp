@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--korean-->
+    <string name="privacy_policy">개인정보 보호정책</string>
     <string name="productivity_title">생산성</string>
     <string name="app_name">포모도로</string>
     <string name="timer">타이머</string>

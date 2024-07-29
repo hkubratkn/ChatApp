@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--zulu-->
-    <string name="no_jobs_all">Awunayo imisebenzi!</string>
+    <string name="privacy_policy">Inqubomgomo yobumfihlo</string>
     <string name="productivity_title">Ukukhiqiza</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Isikhathi</string>

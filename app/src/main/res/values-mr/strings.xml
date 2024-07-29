@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--marathi-->
+    <string name="privacy_policy">गोपनीयता धोरण</string>
     <string name="productivity_title">उत्पादकता</string>
     <string name="app_name">पोमोडोरो</string>
     <string name="timer">टाइमर</string>

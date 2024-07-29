@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--catalan-->
+    <string name="privacy_policy">Política de privacitat</string>
     <string name="productivity_title">Productivitat</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Temporitzador</string>

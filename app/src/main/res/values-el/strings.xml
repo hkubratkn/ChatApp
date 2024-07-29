@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--greek-->
+    <string name="privacy_policy">Πολιτική απορρήτου</string>
     <string name="productivity_title">Παραγωγικότητα</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Χρονοδιακόπτης</string>

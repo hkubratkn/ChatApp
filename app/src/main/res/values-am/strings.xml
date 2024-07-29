@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--amharic-->
+    <string name="privacy_policy">የ ግል የሆነ</string>
     <string name="productivity_title">ምርታማነት</string>
     <string name="app_name">ፖሞዶሮ</string>
     <string name="timer">ሰዓት ቆጣሪ</string>

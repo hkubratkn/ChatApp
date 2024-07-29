@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--burmese-->
+    <string name="privacy_policy">ကိုယ်ရေးအချက်အလက်မူဝါဒ</string>
     <string name="productivity_title">ကုန်ထုတ်စွမ်းအား</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">အချိန်တိုင်း</string>

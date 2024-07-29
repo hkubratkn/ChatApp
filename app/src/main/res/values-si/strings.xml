@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sinhala-->
+    <string name="privacy_policy">රහස්යතා ප්රතිපත්තිය</string>
     <string name="productivity_title">ඵලදායිතාව</string>
     <string name="app_name">පොමෝඩෝරෝ</string>
     <string name="timer">ටයිමර්</string>

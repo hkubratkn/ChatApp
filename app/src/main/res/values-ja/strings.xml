@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--japanese-->
+    <string name="privacy_policy">プライバシーポリシー</string>
     <string name="productivity_title">生産性</string>
     <string name="app_name">ポモドーロ</string>
     <string name="timer">タイマー</string>

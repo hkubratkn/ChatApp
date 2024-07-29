@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--khmer-->
+    <string name="privacy_policy">គោលការណ៍ភាពឯកជន</string>
     <string name="productivity_title">ផលិតភាព</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">កម្មវិធីកំណត់ម៉ោង</string>
