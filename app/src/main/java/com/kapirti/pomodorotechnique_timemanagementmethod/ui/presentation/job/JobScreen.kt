@@ -37,7 +37,7 @@ fun JobScreen(
     if (jobs.isEmpty()) {
         EmptyContent(
             icon = Icons.Default.Work,
-            label = AppText.no_jobs_all,
+            label = AppText.job_vacancies_not_found,
             modifier
         )
     } else {

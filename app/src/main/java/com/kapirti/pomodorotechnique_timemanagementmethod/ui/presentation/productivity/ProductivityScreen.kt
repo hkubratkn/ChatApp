@@ -51,7 +51,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.produc
 
 
 enum class SectionsProductivity(@StringRes val titleResId: Int) {
-    Pomodoro(AppText.pomodoro),
+    Pomodoro(AppText.app_name),
     Timer(AppText.timer),
     Stayed(AppText.stayed)
 }

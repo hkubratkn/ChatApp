@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--uzbek-->
-    <string name="why_delete_account">nega hisobingizni o'chirib tashlaysiz</string>
+    <string name="why_delete_account">nega hisobingizni o’chirib tashlaysiz</string>
     <string name="privacy_policy">Maxfiylik siyosati</string>
     <string name="productivity_title">Hosildorlik</string>
     <string name="app_name">Pomodoro</string>

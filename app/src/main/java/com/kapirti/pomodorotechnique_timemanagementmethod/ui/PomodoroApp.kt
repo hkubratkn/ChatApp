@@ -84,8 +84,6 @@ fun PomodoroApp(
             closeDrawer = { coroutineScope.launch { sizeAwareDrawerState.close() } },
             currentRoute = currentRoute,
             sizeAwareDrawerState = sizeAwareDrawerState,
-            hasUser = hasUser,
-            includeUserIdViewModel = includeUserIdViewModel,
             includeChatViewModel = includeChatViewModel,
             includeJobViewModel = includeJobViewModel,
 
@@ -102,7 +100,6 @@ fun PomodoroApp(
 
 
             openAndPopUpSplashToProductivity = navigationActions.openAndPopUpSplashToProductivity,
-            openAndPopUpSplashToLogin = navigationActions.openAndPopUpSplashToLogin,
             navigateAndPopUpRegisterToEdit = navigationActions.navigateAndPopUpRegisterToEdit,
 
             navigateEdit = navigationActions.navigateEdit,

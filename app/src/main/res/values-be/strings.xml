@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--belarusian-->
+    <string name="why_delete_account">чаму вы выдаляеце свой уліковы запіс</string>
     <string name="privacy_policy">Палітыка прыватнасці</string>
     <string name="productivity_title">Прадукцыйнасць</string>
     <string name="app_name">Pomodoro</string>

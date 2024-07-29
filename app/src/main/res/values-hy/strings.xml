@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--armanian-->
+    <string name="why_delete_account">ինչու եք ջնջում ձեր հաշիվը</string>
     <string name="privacy_policy">Գաղտնիության քաղաքականություն</string>
     <string name="productivity_title">Արտադրողականություն</string>
     <string name="app_name">Պոմոդորո</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--lao-->
+    <string name="why_delete_account">ເປັນຫຍັງເຈົ້າຈຶ່ງລຶບບັນຊີຂອງທ່ານ</string>
     <string name="privacy_policy">ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ</string>
     <string name="productivity_title">ຜົນຜະລິດ</string>
     <string name="app_name">Pomodoro</string>

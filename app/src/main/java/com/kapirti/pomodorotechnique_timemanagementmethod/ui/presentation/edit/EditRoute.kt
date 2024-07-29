@@ -149,8 +149,7 @@ fun EditRoute(
             confirmButton = {
                 DialogConfirmButton(AppText.delete_my_account) {
                     viewModel.onDeleteMyAccountClick(
-                        restartApp = restartApp,
-                        empty_password_error = empty_password_error
+                        restartApp = restartApp
                     )
                 }
             },

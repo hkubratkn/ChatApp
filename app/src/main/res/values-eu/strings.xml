@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--basque-->
+    <string name="why_delete_account">zergatik ezabatzen ari zara zure kontua</string>
     <string name="privacy_policy">Pribatutasun-politika</string>
     <string name="productivity_title">Produktibitatea</string>
     <string name="app_name">Pomodoro</string>

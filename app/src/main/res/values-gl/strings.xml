@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--galician-->
+    <string name="why_delete_account">por que estás eliminando a túa conta</string>
     <string name="privacy_policy">Política de Privacidade</string>
     <string name="productivity_title">Produtividade</string>
     <string name="app_name">Pomodoro</string>

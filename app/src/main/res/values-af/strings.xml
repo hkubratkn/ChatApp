@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--afrikans-->
+    <string name="why_delete_account">hoekom vee jy jou rekening uit</string>
     <string name="privacy_policy">Privaatheidsbeleid</string>
     <string name="productivity_title">Produktiwiteit</string>
     <string name="app_name">Pomodoro</string>

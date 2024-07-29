@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--finnish-->
+    <string name="why_delete_account">miksi poistat tilisi</string>
     <string name="privacy_policy">Tietosuojakäytäntö</string>
     <string name="productivity_title">Tuottavuus</string>
     <string name="app_name">Pomodoro</string>

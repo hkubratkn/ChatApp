@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--estonian-->
+    <string name="why_delete_account">miks sa oma konto kustutad</string>
     <string name="privacy_policy">Privaatsuspoliitika</string>
     <string name="productivity_title">Tootlikkus</string>
     <string name="app_name">Pomodoro</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--catalan-->
+    <string name="why_delete_account">per què estàs suprimint el teu compte</string>
     <string name="privacy_policy">Política de privacitat</string>
     <string name="productivity_title">Productivitat</string>
     <string name="app_name">Pomodoro</string>
