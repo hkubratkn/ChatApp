@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--norwegian-->
+    <string name="why_delete_account">hvorfor sletter du kontoen din</string>
     <string name="privacy_policy">Retningslinjer for personvern</string>
     <string name="productivity_title">Produktivitet</string>
     <string name="app_name">Pomodoro</string>

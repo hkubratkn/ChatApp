@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--malayalam-->
+    <string name="why_delete_account">എന്തുകൊണ്ടാണ് നിങ്ങൾ നിങ്ങളുടെ അക്കൗണ്ട് ഇല്ലാതാക്കുന്നത്</string>
     <string name="privacy_policy">സ്വകാര്യതാ നയം</string>
     <string name="productivity_title">ഉത്പാദനക്ഷമത</string>
     <string name="app_name">പോമോഡോറോ</string>

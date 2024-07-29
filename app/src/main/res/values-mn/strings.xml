@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--mongolian-->
+    <string name="why_delete_account">яагаад бүртгэлээ устгаад байгаа юм</string>
     <string name="privacy_policy">Нууцлалын бодлого</string>
     <string name="productivity_title">Бүтээмж</string>
     <string name="app_name">Помодоро</string>

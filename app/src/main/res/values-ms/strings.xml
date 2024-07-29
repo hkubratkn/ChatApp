@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--malay-->
+    <string name="why_delete_account">mengapa anda memadam akaun anda</string>
     <string name="privacy_policy">Dasar Privasi</string>
     <string name="productivity_title">Produktiviti</string>
     <string name="app_name">Pomodoro</string>
