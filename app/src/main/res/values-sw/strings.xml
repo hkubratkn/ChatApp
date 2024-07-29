@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--swahili-->
+    <string name="why_delete_account">kwa nini unafuta akaunti yako</string>
     <string name="privacy_policy">Sera ya Faragha</string>
     <string name="productivity_title">Tija</string>
     <string name="app_name">Pomodoro</string>

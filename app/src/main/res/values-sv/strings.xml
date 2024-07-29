@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--swedish-->
+    <string name="why_delete_account">varför raderar du ditt konto</string>
     <string name="privacy_policy">Integritetspolicy</string>
     <string name="productivity_title">Produktivitet</string>
     <string name="app_name">Pomodoro</string>

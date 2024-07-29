@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--vietnamese-->
+    <string name="why_delete_account">tại sao bạn lại xóa tài khoản của mình</string>
     <string name="privacy_policy">Chính sách bảo mật</string>
     <string name="productivity_title">Năng suất</string>
     <string name="app_name">Pomodoro</string>

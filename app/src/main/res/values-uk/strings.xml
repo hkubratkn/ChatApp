@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--ukraine-->
+    <string name="why_delete_account">чому ви видаляєте свій обліковий запис</string>
     <string name="privacy_policy">Політика конфіденційності</string>
     <string name="productivity_title">Продуктивність</string>
     <string name="app_name">Помодоро</string>

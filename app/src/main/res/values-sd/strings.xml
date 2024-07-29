@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sindhi-->
+    <string name="why_delete_account">توهان پنهنجو اڪائونٽ ڇو حذف ڪري رهيا آهيو</string>
     <string name="privacy_policy">رازداري پاليسي</string>
     <string name="productivity_title">پيداوار</string>
     <string name="app_name">پومودورو</string>

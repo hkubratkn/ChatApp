@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--turkish-->
+    <string name="why_delete_account">neden hesabını siliyorsun</string>
     <string name="privacy_policy">Gizlilik Politikası</string>
     <string name="productivity_title">Verimlilik</string>
     <string name="app_name">Pomodoro</string>

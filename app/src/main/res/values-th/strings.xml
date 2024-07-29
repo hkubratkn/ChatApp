@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--thai-->
+    <string name="why_delete_account">ทำไมคุณถึงลบบัญชีของคุณ</string>
     <string name="privacy_policy">นโยบายความเป็นส่วนตัว</string>
     <string name="productivity_title">ผลผลิต</string>
     <string name="app_name">โปโมโดโร</string>

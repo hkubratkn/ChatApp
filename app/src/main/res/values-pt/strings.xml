@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--portuguese-->
+    <string name="why_delete_account"></string>
     <string name="privacy_policy">Política de privacidade</string>
     <string name="productivity_title">Produtividade</string>
     <string name="app_name">Pomodoro</string>
