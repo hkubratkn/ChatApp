@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--dogri-->
+    <string name="why_delete_account">तुस अपना खाता क्यों डिलीट करदे ओ</string>
     <string name="privacy_policy">गोपनीयता नीति</string>
     <string name="productivity_title">उत्पादकता दा</string>
     <string name="app_name">पोमोडोरो ने दी</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--english-->
+    <string name="why_delete_account">why are you deleting your account</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="productivity_title">Productivity</string>
     <string name="app_name">Pomodoro</string>

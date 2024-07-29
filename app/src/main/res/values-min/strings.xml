@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- minangkabau -->
-    <string name="why_delete_account">baa kok sanak maapuih akun sanak</string>
     <string name="productivity_title">Productivity</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Timer</string>
