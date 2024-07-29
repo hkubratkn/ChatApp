@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--german-->
+    <string name="why_delete_account">Warum löschst du dein Konto?</string>
     <string name="productivity_title">Produktivität</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Zeitschaltuhr</string>
