@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--turkish-->
+    <string name="no_jobs_all">İşiniz yok!</string>
     <string name="productivity_title">Verimlilik</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Zamanlayıcı</string>

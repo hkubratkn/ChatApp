@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--thai-->
+    <string name="no_jobs_all"></string>
     <string name="productivity_title">ผลผลิต</string>
     <string name="app_name">โปโมโดโร</string>
     <string name="timer">ตัวจับเวลา</string>

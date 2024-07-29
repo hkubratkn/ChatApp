@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--chinese-->
+    <string name="no_jobs_all">你们没有工作</string>
     <string name="productivity_title">生产率</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">计时器</string>

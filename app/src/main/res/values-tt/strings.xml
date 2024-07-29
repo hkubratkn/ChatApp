@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--tatar-->
+    <string name="no_jobs_all"></string>
     <string name="productivity_title">Producитештерүчәнлек</string>
     <string name="app_name">Помодоро</string>
     <string name="timer">Таймер</string>

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- minangkabau -->
+    <string name="no_jobs_all">Indak ado karajo awak!</string>
     <string name="productivity_title">Productivity</string>
     <string name="app_name">Pomodoro</string>
     <string name="timer">Timer</string>
     <string name="stayed">Stayed</string>
+    <string name="job_title">Karajo</string>
+    <string name="employee_title">Pagawai</string>
     <string name="no_bookmarks_all">Sanak indak punyo aset penanda buku!</string>
-    <string name="app_name">Masin Konstruksi</string>
     <string name="not_connected">⚠️Sanak indak tasambuang jo internet</string>
     <string name="generic_error">Ado nan salah tajadi. Silahkan cubo baliak.</string>
     <string name="try_again">Cubo baliak</string>

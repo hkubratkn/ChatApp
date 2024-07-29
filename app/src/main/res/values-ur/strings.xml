@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--urdu-->
+    <string name="no_jobs_all"></string>
     <string name="productivity_title">پیداوری</string>
     <string name="app_name">پومودورو</string>
     <string name="timer">ٹائمر</string>
