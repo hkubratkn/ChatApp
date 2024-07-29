@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--albanian-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">pse po e fshini llogarinë tuaj</string>
     <string name="privacy_policy">Politika e privatësisë</string>
     <string name="productivity_title">Produktiviteti</string>

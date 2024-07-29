@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--japanese-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">なぜアカウントを削除するのか</string>
     <string name="privacy_policy">プライバシーポリシー</string>
     <string name="productivity_title">生産性</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--filipino-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">bakit mo binubura ang iyong account</string>
     <string name="privacy_policy">Patakaran sa Privacy</string>
     <string name="productivity_title">Produktibidad</string>

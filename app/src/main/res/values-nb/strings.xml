@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--norwegian-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">hvorfor sletter du kontoen din</string>
     <string name="privacy_policy">Retningslinjer for personvern</string>
     <string name="productivity_title">Produktivitet</string>

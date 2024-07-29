@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--catalan-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">per què estàs suprimint el teu compte</string>
     <string name="privacy_policy">Política de privacitat</string>
     <string name="productivity_title">Productivitat</string>

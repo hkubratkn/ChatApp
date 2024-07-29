@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--tajik-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">чаро шумо ҳисоби худро нест мекунед</string>
     <string name="privacy_policy">Сиёсати Корбурди Маълумоти Шахсӣ</string>
     <string name="productivity_title">Маҳсулнокӣ</string>

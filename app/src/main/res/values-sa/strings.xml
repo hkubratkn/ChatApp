@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sanskrit-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">किमर्थं भवन्तः स्वस्य खातं विलोपयन्ति</string>
     <string name="privacy_policy">गोपनीयता नीति</string>
     <string name="productivity_title">उत्पादकता</string>

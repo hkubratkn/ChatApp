@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--odia-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">ଆପଣ କାହିଁକି ଆପଣଙ୍କର ଖାତା ବିଲୋପ କରୁଛନ୍ତି?</string>
     <string name="privacy_policy">ଗୋପନୀୟତା ନୀତି</string>
     <string name="productivity_title">ଉତ୍ପାଦକତା |</string>

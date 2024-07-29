@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--telugu-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">మీరు మీ ఖాతాను ఎందుకు తొలగిస్తున్నారు</string>
     <string name="privacy_policy">గోప్యతా విధానం</string>
     <string name="productivity_title">ఉత్పాదకత</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--dutch-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">waarom verwijder je je account</string>
     <string name="privacy_policy">Privacybeleid</string>
     <string name="productivity_title">Productiviteit</string>

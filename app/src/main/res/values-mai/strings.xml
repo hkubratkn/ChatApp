@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--maithili-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">अहाँ अपन खाता किएक डिलीट क रहल छी</string>
     <string name="privacy_policy">गोपनीयता नीति</string>
     <string name="productivity_title">उत्पादकता</string>

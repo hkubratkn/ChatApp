@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--gujarati-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">તમે તમારું એકાઉન્ટ કેમ કાઢી રહ્યા છો</string>
     <string name="privacy_policy">ગોપનીયતા નીતિ</string>
     <string name="productivity_title">ઉત્પાદકતા</string>

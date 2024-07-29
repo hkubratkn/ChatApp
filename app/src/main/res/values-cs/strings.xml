@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--czech-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">proč mažete svůj účet</string>
     <string name="privacy_policy">Zásady ochrany osobních údajů</string>
     <string name="productivity_title">Produktivita</string>

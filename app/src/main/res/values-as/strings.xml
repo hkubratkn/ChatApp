@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--assamese-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">আপুনি আপোনাৰ একাউণ্ট কিয় মচি পেলাইছে</string>
     <string name="privacy_policy">গোপনীয়তা নীতি</string>
     <string name="productivity_title">উৎপাদনশীলতা</string>

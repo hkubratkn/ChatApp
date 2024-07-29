@@ -16,7 +16,6 @@
 
     <!-- Job Screen -->
     <string name="job_title">Job</string>
-    <string name="period_not_found">Period not found</string>
     <string name="job_vacancies_not_found">job vacancies not found</string>
 
     <!-- Employee Screen -->

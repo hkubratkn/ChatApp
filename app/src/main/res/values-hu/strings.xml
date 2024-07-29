@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--hungarian-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">miért törli a fiókját</string>
     <string name="privacy_policy">Adatvédelmi irányelvek</string>
     <string name="productivity_title">Termelékenység</string>

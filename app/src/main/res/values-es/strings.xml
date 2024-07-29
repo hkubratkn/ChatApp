@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--spanish-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">¿por qué borras tu cuenta?</string>
     <string name="productivity_title">Productividad</string>
     <string name="app_name">Pomodoro</string>

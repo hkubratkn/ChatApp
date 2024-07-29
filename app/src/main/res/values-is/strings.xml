@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--icelandic-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">af hverju ertu að eyða reikningnum þínum</string>
     <string name="privacy_policy">Friðhelgisstefna</string>
     <string name="productivity_title">Framleiðni</string>

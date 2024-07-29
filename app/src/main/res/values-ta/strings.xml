@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--tamil-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">உங்கள் கணக்கை ஏன் நீக்குகிறீர்கள்</string>
     <string name="privacy_policy">தனியுரிமைக் கொள்கை</string>
     <string name="productivity_title">உற்பத்தித்திறன்</string>

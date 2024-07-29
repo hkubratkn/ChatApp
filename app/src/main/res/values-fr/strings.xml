@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--french-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">Pourquoi supprimez-vous votre compte ?</string>
     <string name="privacy_policy">Politique de confidentialité</string>
     <string name="productivity_title">Productivité</string>

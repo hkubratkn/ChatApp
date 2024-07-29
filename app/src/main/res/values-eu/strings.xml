@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--basque-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">zergatik ezabatzen ari zara zure kontua</string>
     <string name="privacy_policy">Pribatutasun-politika</string>
     <string name="productivity_title">Produktibitatea</string>

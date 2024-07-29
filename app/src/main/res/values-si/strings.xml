@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sinhala-->
+    <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">ඔබ ඔබේ ගිණුම මකා දමන්නේ ඇයි?</string>
     <string name="privacy_policy">රහස්යතා ප්රතිපත්තිය</string>
     <string name="productivity_title">ඵලදායිතාව</string>
