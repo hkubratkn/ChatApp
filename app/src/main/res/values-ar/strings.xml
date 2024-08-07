@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--arabic-->
+    <string name="job_vacancies_not_found">لم يتم العثور على وظائف شاغرة</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">لماذا تقوم بحذف حسابك</string>
     <string name="privacy_policy">سياسة الخصوصية</string>

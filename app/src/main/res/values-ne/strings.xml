@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--nepali-->
+    <string name="job_vacancies_not_found">जागिर खाली छैन</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">तपाईं आफ्नो खाता किन मेट्दै हुनुहुन्छ</string>
     <string name="privacy_policy">गोपनीयता नीति</string>

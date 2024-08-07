@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--zulu-->
+    <string name="job_vacancies_not_found">izikhala zomsebenzi azitholakali</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">kungani ususa i-akhawunti yakho</string>
     <string name="privacy_policy">Inqubomgomo yobumfihlo</string>

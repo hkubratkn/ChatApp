@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--tamil-->
+    <string name="job_vacancies_not_found">வேலை காலியிடங்கள் காணப்படவில்லை</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">உங்கள் கணக்கை ஏன் நீக்குகிறீர்கள்</string>
     <string name="privacy_policy">தனியுரிமைக் கொள்கை</string>

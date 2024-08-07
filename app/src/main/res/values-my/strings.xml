@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--burmese-->
+    <string name="job_vacancies_not_found">အလုပ်အကိုင် လစ်လပ်များကို ရှာမတွေ့ပါ။</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">မင်းအကောင့်ကို ဘာလို့ဖျက်တာလဲ။</string>
     <string name="privacy_policy">ကိုယ်ရေးအချက်အလက်မူဝါဒ</string>

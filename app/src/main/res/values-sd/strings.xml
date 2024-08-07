@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--sindhi-->
+    <string name="job_vacancies_not_found">نوڪريون نه مليون</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">توهان پنهنجو اڪائونٽ ڇو حذف ڪري رهيا آهيو</string>
     <string name="privacy_policy">رازداري پاليسي</string>

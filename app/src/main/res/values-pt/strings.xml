@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--portuguese-->
+    <string name="job_vacancies_not_found">ofertas de emprego não encontradas</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">porque está a apagar a sua conta</string>
     <string name="privacy_policy">Política de privacidade</string>

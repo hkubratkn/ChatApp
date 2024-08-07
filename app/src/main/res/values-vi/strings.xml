@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--vietnamese-->
+    <string name="job_vacancies_not_found">không tìm thấy việc làm</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">tại sao bạn lại xóa tài khoản của mình</string>
     <string name="privacy_policy">Chính sách bảo mật</string>

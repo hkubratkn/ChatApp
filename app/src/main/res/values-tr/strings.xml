@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--turkish-->
+    <string name="job_vacancies_not_found">iş ilanları bulunamadı</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">neden hesabını siliyorsun</string>
     <string name="privacy_policy">Gizlilik Politikası</string>

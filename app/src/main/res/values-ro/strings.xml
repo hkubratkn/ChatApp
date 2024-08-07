@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--romanian-->
+    <string name="job_vacancies_not_found">locuri de muncă vacante nu au fost găsite</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">de ce vă ștergeți contul</string>
     <string name="privacy_policy">Politica de confidențialitate</string>

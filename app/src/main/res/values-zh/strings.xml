@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--chinese-->
+    <string name="job_vacancies_not_found">未找到职位空缺</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">为什么要删除账户</string>
     <string name="privacy_policy">隐私政策</string>

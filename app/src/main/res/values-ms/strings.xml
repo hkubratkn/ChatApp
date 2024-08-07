@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--malay-->
+    <string name="job_vacancies_not_found">jawatan kosong tidak ditemui</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">mengapa anda memadam akaun anda</string>
     <string name="privacy_policy">Dasar Privasi</string>

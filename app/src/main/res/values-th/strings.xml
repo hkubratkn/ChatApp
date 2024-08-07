@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--thai-->
+    <string name="job_vacancies_not_found">ไม่พบตำแหน่งงานว่าง</string>
     <string name="question_count">\u00A0of %d</string>
     <string name="why_delete_account">ทำไมคุณถึงลบบัญชีของคุณ</string>
     <string name="privacy_policy">นโยบายความเป็นส่วนตัว</string>
