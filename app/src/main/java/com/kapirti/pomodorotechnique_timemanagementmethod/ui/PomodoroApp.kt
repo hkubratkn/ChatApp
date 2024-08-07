@@ -108,6 +108,7 @@ fun PomodoroApp(
 
             loginToRegister = navigationActions.navigateAndPopUpLoginToRegister,
             registerToLogin = navigationActions.navigateAndPopUpRegisterToLogin,
+            hasUser = hasUser
 
             /**
             openAndPopUpChatNopeToExist = navigationActions.openAndPopUpChatNopeToExist,

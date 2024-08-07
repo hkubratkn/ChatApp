@@ -13,7 +13,7 @@ object ConsAds {
     const val ADS_CHAT_BANNER_ID = ""
     const val ADS_PHOTOS_BANNER_ID = ""
     const val ADS_SETTINGS_BANNER_ID = "ca-app-pub-3006196735467220/5459606043"
-    const val ADS_BLOCK_USERS_BANNER_ID = "ca-app-pub-3006196735467220/4546799107"
+    const val ADS_BLOCKED_USERS_BANNER_ID = "ca-app-pub-3006196735467220/4546799107"
 
     const val ADS_HOME_BANNER_ID = ""
     const val ADS_TIMELINE_BANNER_ID = "ca-app-pub-3006196735467220/6824476068"
