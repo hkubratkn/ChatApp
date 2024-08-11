@@ -34,6 +34,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.drawable as AppIcon
 import android.widget.Toast
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.ui.platform.LocalContext
 
@@ -65,6 +66,45 @@ fun HomeTopAppBar(
         },
         scrollBehavior = scrollBehavior,
         modifier = modifier
+    )
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TimelineToolbar(
+    isExpandedScreen: Boolean,
+    openDrawer: () -> Unit,
+    onActionsClick: () -> Unit,
+) {
+    CenterAlignedTopAppBar(
+        title = {
+            Text(
+                text = stringResource(AppText.timeline_title),
+                style = MaterialTheme.typography.titleLarge
+            )
+        },
+        navigationIcon = {
+            if (!isExpandedScreen) {
+                IconButton(onClick = openDrawer) {
+                    Icon(
+                        imageVector = Icons.Default.Menu,
+                        contentDescription = stringResource(id = AppText.cd_menu),
+                        tint = MaterialTheme.colorScheme.primary,
+                    )
+                }
+            }
+        },
+        actions = {
+            IconButton(
+                onClick = { onActionsClick() }
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = stringResource(id = AppText.cd_menu_actions),
+                )
+            }
+        }
     )
 }
 

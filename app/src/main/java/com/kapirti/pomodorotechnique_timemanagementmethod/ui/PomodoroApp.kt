@@ -84,12 +84,16 @@ fun PomodoroApp(
             closeDrawer = { coroutineScope.launch { sizeAwareDrawerState.close() } },
             currentRoute = currentRoute,
             sizeAwareDrawerState = sizeAwareDrawerState,
+
+            includeUserIdViewModel = includeUserIdViewModel,
             includeChatViewModel = includeChatViewModel,
             includeJobViewModel = includeJobViewModel,
 
             popUpScreen = navigationActions.popUp,
             restartApp = navigationActions.clearAndNavigate,
 
+            navigateLogin = navigationActions.navigateLogin,
+            navigateToTimeline = navigationActions.navigateToTimeline,
             navigateToProductivity = navigationActions.navigateToProductivity,
             navigateToJob = navigationActions.navigateToJob,
             navigateToEmployee = navigationActions.navigateToEmployee,
@@ -97,9 +101,10 @@ fun PomodoroApp(
             navigateToProfile = navigationActions.navigateToProfile,
             navigateToSettings = navigationActions.navigateToSettings,
             navigateToSubscriptions = navigationActions.navigateToSubscriptions,
+            navigateUserProfile = navigationActions.navigateUserProfile,
 
 
-            openAndPopUpSplashToProductivity = navigationActions.openAndPopUpSplashToProductivity,
+            navigateAndPopUpSplashToTimeline = navigationActions.navigateAndPopUpSplashToTimeline,
             navigateAndPopUpRegisterToEdit = navigationActions.navigateAndPopUpRegisterToEdit,
 
             navigateEdit = navigationActions.navigateEdit,
@@ -108,7 +113,6 @@ fun PomodoroApp(
 
             loginToRegister = navigationActions.navigateAndPopUpLoginToRegister,
             registerToLogin = navigationActions.navigateAndPopUpRegisterToLogin,
-            hasUser = hasUser
 
             /**
             openAndPopUpChatNopeToExist = navigationActions.openAndPopUpChatNopeToExist,

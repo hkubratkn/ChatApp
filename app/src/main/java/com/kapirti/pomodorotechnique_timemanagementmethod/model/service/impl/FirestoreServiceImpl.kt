@@ -24,6 +24,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.UserJob
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.trace
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.Timeline
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.asDeferred
@@ -34,6 +35,13 @@ class FirestoreServiceImpl @Inject constructor(
     private val countryRepository: CountryRepository,
 // private val chatIdRepository: ChatIdRepository
 ): FirestoreService {
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override val timelines: Flow<List<Timeline>>
+        get() = countryRepository.readCountryState().flatMapLatest { country ->
+            timelineCollection(country)
+                .dataObjects()
+        }
+
     @OptIn(ExperimentalCoroutinesApi::class)
     override val jobs: Flow<List<Job>>
         get() =
@@ -93,6 +101,7 @@ class FirestoreServiceImpl @Inject constructor(
     private fun userChatCollection(uid: String): CollectionReference = userDocument(uid).collection(CHAT_COLLECTION)
     private fun userArchiveCollection(uid: String): CollectionReference = userDocument(uid).collection(ARCHIVE_COLLECTION)
     private fun userJobCollection(uid: String): CollectionReference = userDocument(uid).collection(JOB_COLLECTION)
+    private fun timelineCollection(lang: String): CollectionReference = firestore.collection(TIMELINE_COLLECTION).document(lang).collection(TIMELINE_COLLECTION)
 
 
     private fun jobCollection(country: String): CollectionReference = firestore.collection(JOB_COLLECTION).document(country).collection(DOCTOR_COLLECTION)
@@ -106,6 +115,7 @@ class FirestoreServiceImpl @Inject constructor(
         private const val USER_COLLECTION = "User"
         private const val CHAT_COLLECTION = "Chat"
         private const val ARCHIVE_COLLECTION = "Archive"
+        private const val TIMELINE_COLLECTION = "Timeline"
         private const val JOB_COLLECTION = "Job"
         private const val DOCTOR_COLLECTION = "Doctor"
         private const val COUNTRY_COLLECTION = "Country"

@@ -6,10 +6,12 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Job
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.UserJob
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.Timeline
 import kotlinx.coroutines.flow.Flow
 
 
 interface FirestoreService {
+    val timelines: Flow<List<Timeline>>
     val jobs: Flow<List<Job>>
     val userChats: Flow<List<Chat>>
     val userArchives: Flow<List<Chat>>

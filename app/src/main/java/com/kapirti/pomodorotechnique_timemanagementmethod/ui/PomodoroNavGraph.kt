@@ -31,12 +31,12 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.regist
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.settings.SettingsRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.splash.SplashScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.subscribe.SubscribeScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.TimelineRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeover.TimeOverScreen
 
 
 @Composable
 fun ZepiNavGraph(
-    hasUser: Boolean,
     sizeAwareDrawerState: DrawerState,
     currentRoute: String,
     isExpandedScreen: Boolean,
@@ -47,16 +47,18 @@ fun ZepiNavGraph(
     restartApp : () -> Unit,
     popUpScreen: () -> Unit,
 
+    navigateLogin: () -> Unit,
     navigateToProductivity: () -> Unit,
-
+    navigateToTimeline: () -> Unit,
     navigateToJob: () -> Unit,
     navigateToEmployee: () -> Unit,
     navigateToChats: () -> Unit,
     navigateToProfile: () -> Unit,
     navigateToSettings: () -> Unit,
     navigateToSubscriptions: () -> Unit,
+    navigateUserProfile: () -> Unit,
 
-    openAndPopUpSplashToProductivity: () -> Unit,
+    navigateAndPopUpSplashToTimeline: () -> Unit,
     //openAndPopUpSplashToLogin: () -> Unit,
     navigateAndPopUpRegisterToEdit: () -> Unit,
 
@@ -67,7 +69,7 @@ fun ZepiNavGraph(
     loginToRegister: () -> Unit,
     registerToLogin: () -> Unit,
 
-    //includeUserIdViewModel: IncludeUserIdViewModel,
+    includeUserIdViewModel: IncludeUserIdViewModel,
     includeChatViewModel: IncludeChatViewModel,
     includeJobViewModel: IncludeJobViewModel,
 
@@ -93,7 +95,7 @@ fun ZepiNavGraph(
             AppDrawer(
                 currentRoute = currentRoute,
                 navigateToProductivity = navigateToProductivity,
-               // navigateToTimeline = navigateToTimeline,
+                navigateToTimeline = navigateToTimeline,
                 navigateToJob = navigateToJob,
                 navigateToEmployee = navigateToEmployee,
                 navigateToChats = navigateToChats,
@@ -101,7 +103,6 @@ fun ZepiNavGraph(
                 navigateToSettings = navigateToSettings,
                 navigateToSubscriptions = navigateToSubscriptions,
                 closeDrawer = closeDrawer,
-                hasUser = hasUser,
             )
         },
         drawerState = sizeAwareDrawerState,
@@ -121,6 +122,16 @@ fun ZepiNavGraph(
                 startDestination = startDestination,
                 modifier = modifier,
             ) {
+                composable(route = PomodoroDestinations.TIMELINE_ROUTE,) {
+                    TimelineRoute(
+                        openDrawer = openDrawer,
+                        includeUserIdViewModel = includeUserIdViewModel,
+                        isExpandedScreen = isExpandedScreen,
+                        navigateLogin = navigateLogin,
+                        navigateEdit = navigateEdit,
+                        navigateUserProfile = navigateUserProfile,
+                    )
+                }
                 composable(PomodoroDestinations.PRODUCTIVITY_ROUTE) {
                     ProductivityRoute(
                         isExpandedScreen = isExpandedScreen,
@@ -170,7 +181,7 @@ fun ZepiNavGraph(
 
                 composable(PomodoroDestinations.SPLASH_ROUTE) {
                     SplashScreen(
-                        openAndPopUpSplashToProductivity = openAndPopUpSplashToProductivity,
+                        navigateAndPopUpSplashToTimeline = navigateAndPopUpSplashToTimeline,
                         showInterstialAd = showInterstitialAds
                     )
                 }
@@ -232,13 +243,7 @@ fun ZepiNavGraph(
     shortcutParams: ShortcutParams?,
 ) {
 
-                composable(
-                    route = ZepiDestinations.TIMELINE_ROUTE,
-                ) {
-                    Timeline(
-                        modifier = modifier,
-                    )
-                }
+
                 composable(
                     route = ZepiDestinations.CHATS_ROUTE//"home",
                 ) {

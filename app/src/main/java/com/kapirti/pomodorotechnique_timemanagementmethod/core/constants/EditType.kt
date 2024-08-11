@@ -22,6 +22,8 @@ object EditType {
     const val DISPLAY_NAME = "DISPLAY_NAME"
     const val DESCRIPTION = "DESCRIPTION"
 
+    const val TIMELINE_VIDEO = "timelineVideo"
+
     const val JOB = "JOB"
     const val COUNTRY = "COUNTRY"
 

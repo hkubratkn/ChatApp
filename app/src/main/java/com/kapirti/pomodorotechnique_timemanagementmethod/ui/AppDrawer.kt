@@ -24,6 +24,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.drawable as AppIcon
 import androidx.compose.material.icons.filled.ChatBubbleOutline
 import androidx.compose.material.icons.filled.SupervisorAccount
+import androidx.compose.material.icons.filled.Timeline
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.filled.Work
 
@@ -31,7 +32,7 @@ import androidx.compose.material.icons.filled.Work
 fun AppDrawer(
     currentRoute: String,
     navigateToProductivity: () -> Unit,
-   // navigateToTimeline: () -> Unit,
+    navigateToTimeline: () -> Unit,
     navigateToJob: () -> Unit,
     navigateToEmployee: () -> Unit,
     navigateToChats: () -> Unit,
@@ -39,77 +40,86 @@ fun AppDrawer(
     navigateToSettings: () -> Unit,
     navigateToSubscriptions: () -> Unit,
     closeDrawer: () -> Unit,
-    hasUser: Boolean,
     modifier: Modifier = Modifier
 ) {
     ModalDrawerSheet(modifier) {
-        QChatLogo(
+        PomodoroLogo(
             modifier = Modifier.padding(horizontal = 28.dp, vertical = 24.dp)
         )
 
-        if(hasUser) {
-            NavigationDrawerItem(
-                label = { Text(stringResource(id = AppText.job_title)) },
-                icon = { Icon(Icons.Default.Work, null) },
-                selected = currentRoute == PomodoroDestinations.JOB_ROUTE,
-                onClick = { navigateToJob(); closeDrawer() },
-                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
-            )
-            NavigationDrawerItem(
-                label = { Text(stringResource(id = AppText.employee_title)) },
-                icon = { Icon(Icons.Default.SupervisorAccount, null) },
-                selected = currentRoute == PomodoroDestinations.EMPLOYEE_ROUTE,
-                onClick = { navigateToEmployee(); closeDrawer() },
-                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
-            )
-            NavigationDrawerItem(
-                label = { Text(stringResource(id = AppText.productivity_title)) },
-                icon = { Icon(Icons.Filled.Timer, null) },
-                selected = currentRoute == PomodoroDestinations.PRODUCTIVITY_ROUTE,
-                onClick = { navigateToProductivity(); closeDrawer() },
-                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
-            )
-            NavigationDrawerItem(
-                label = { Text(stringResource(id = AppText.chats_title)) },
-                icon = { Icon(Icons.Default.ChatBubbleOutline, null) },
-                selected = currentRoute == PomodoroDestinations.CHATS_ROUTE,
-                onClick = { navigateToChats(); closeDrawer() },
-                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
-            )
-            NavigationDrawerItem(
-                label = { Text(stringResource(id = AppText.profile_title)) },
-                icon = { Icon(Icons.Default.AccountCircle, null) },
-                selected = currentRoute == PomodoroDestinations.PROFILE_ROUTE,
-                onClick = { navigateToProfile(); closeDrawer() },
-                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
-            )
-           /** NavigationDrawerItem(
-                label = { Text(stringResource(id = AppText.timeline_title)) },
-                icon = { Icon(Icons.Filled.VideoLibrary, null) },
-                selected = currentRoute == ZepiDestinations.TIMELINE_ROUTE,
-                onClick = { navigateToTimeline(); closeDrawer() },
-                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
-            )
-           NavigationDrawerItem(
-           label = { Text(stringResource(id = AppText.chats_title)) },
-           icon = { Icon(Icons.Default.ChatBubbleOutline, null) },
-           selected = currentRoute == ZepiDestinations.CHATS_ROUTE,
-           onClick = { navigateToChats(); closeDrawer() },
-           modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
-           )
-          */
-        }
+        NavigationDrawerItem(
+            label = { Text(stringResource(id = AppText.timeline_title)) },
+            icon = { Icon(Icons.Filled.Timeline, stringResource(id = AppText.timeline_title)) },
+            selected = currentRoute == PomodoroDestinations.TIMELINE_ROUTE,
+            onClick = { navigateToTimeline(); closeDrawer() },
+            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+        )
+        NavigationDrawerItem(
+            label = { Text(stringResource(id = AppText.job_title)) },
+            icon = { Icon(Icons.Default.Work, stringResource(id = AppText.job_title)) },
+            selected = currentRoute == PomodoroDestinations.JOB_ROUTE,
+            onClick = { navigateToJob(); closeDrawer() },
+            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding),
+        )
+        NavigationDrawerItem(
+            label = { Text(stringResource(id = AppText.employee_title)) },
+            icon = {
+                Icon(
+                    Icons.Default.SupervisorAccount,
+                    stringResource(id = AppText.employee_title)
+                )
+            },
+            selected = currentRoute == PomodoroDestinations.EMPLOYEE_ROUTE,
+            onClick = { navigateToEmployee(); closeDrawer() },
+            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+        )
+        NavigationDrawerItem(
+            label = { Text(stringResource(id = AppText.productivity_title)) },
+            icon = { Icon(Icons.Filled.Timer, stringResource(id = AppText.productivity_title)) },
+            selected = currentRoute == PomodoroDestinations.PRODUCTIVITY_ROUTE,
+            onClick = { navigateToProductivity(); closeDrawer() },
+            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+        )
+        NavigationDrawerItem(
+            label = { Text(stringResource(id = AppText.chats_title)) },
+            icon = {
+                Icon(
+                    Icons.Default.ChatBubbleOutline,
+                    stringResource(id = AppText.chats_title)
+                )
+            },
+            selected = currentRoute == PomodoroDestinations.CHATS_ROUTE,
+            onClick = { navigateToChats(); closeDrawer() },
+            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+        )
+        NavigationDrawerItem(
+            label = { Text(stringResource(id = AppText.profile_title)) },
+            icon = {
+                Icon(
+                    Icons.Default.AccountCircle,
+                    stringResource(id = AppText.profile_title)
+                )
+            },
+            selected = currentRoute == PomodoroDestinations.PROFILE_ROUTE,
+            onClick = { navigateToProfile(); closeDrawer() },
+            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+        )
 
         NavigationDrawerItem(
             label = { Text(stringResource(id = AppText.settings_title)) },
-            icon = { Icon(Icons.Default.Settings, null)},
+            icon = { Icon(Icons.Default.Settings, stringResource(id = AppText.settings_title)) },
             selected = currentRoute == PomodoroDestinations.SETTINGS_ROUTE,
             onClick = { navigateToSettings(); closeDrawer() },
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
         )
         NavigationDrawerItem(
             label = { Text(stringResource(id = AppText.subscriptions_title)) },
-            icon = { Icon(Icons.Default.Subscriptions, null)},
+            icon = {
+                Icon(
+                    Icons.Default.Subscriptions,
+                    stringResource(id = AppText.subscriptions_title)
+                )
+            },
             selected = currentRoute == PomodoroDestinations.SUBSCRIPTIONS_ROUTE,
             onClick = { navigateToSubscriptions(); closeDrawer() },
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
@@ -118,12 +128,12 @@ fun AppDrawer(
 }
 
 @Composable
-private fun QChatLogo(modifier: Modifier = Modifier) {
+private fun PomodoroLogo(modifier: Modifier = Modifier) {
     Row(modifier = modifier) {
         Icon(
-            painterResource(AppIcon.ic_launcher_foreground),
-            contentDescription = null,
-            modifier = Modifier.size(40.dp)
+            painterResource(AppIcon.icon),
+            contentDescription = stringResource(id = AppText.cd_logo),
+            modifier = Modifier.size(40.dp),
         )
         Spacer(Modifier.width(8.dp))
         Text(

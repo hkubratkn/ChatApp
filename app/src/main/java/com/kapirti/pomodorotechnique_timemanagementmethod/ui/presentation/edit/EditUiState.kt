@@ -16,6 +16,6 @@
 
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit
 
-data class SettingsUiState(
+data class EditUiState(
     val password: String = ""
 )

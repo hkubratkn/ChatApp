@@ -1,8 +1,7 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod
 
-import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
 import android.app.Activity
+import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import androidx.lifecycle.Lifecycle
@@ -16,17 +15,17 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.appopen.AppOpenAd
 import com.google.android.gms.ads.appopen.AppOpenAd.AppOpenAdLoadCallback
-import java.util.Date
 import com.google.android.ump.ConsentForm
 import com.google.android.ump.ConsentInformation
 import com.google.android.ump.ConsentRequestParameters
 import com.google.android.ump.UserMessagingPlatform
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_APP_OPEN_ID
+import dagger.hilt.android.HiltAndroidApp
+import java.util.Date
 import java.util.concurrent.atomic.AtomicBoolean
 
-
 @HiltAndroidApp
-class PomodoroApplication: Application(), Application.ActivityLifecycleCallbacks, LifecycleObserver {
+class PomodoroApplication : Application(), Application.ActivityLifecycleCallbacks, LifecycleObserver {
     private lateinit var consentInformation: ConsentInformation
     private var isMobileAdsInitializeCalled = AtomicBoolean(false)
 

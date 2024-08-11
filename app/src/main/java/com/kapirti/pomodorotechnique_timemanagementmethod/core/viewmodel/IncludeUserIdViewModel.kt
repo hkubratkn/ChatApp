@@ -9,7 +9,7 @@ class IncludeUserIdViewModel: ViewModel() {
     var partnerId by mutableStateOf<String?>(null)
         private set
 
-    fun addPartnerId(newChat: String) {
+    fun addUserId(newChat: String) {
         partnerId = newChat
     }
 }

@@ -25,7 +25,7 @@ private const val SPLASH_TIMEOUT = 1000L
 
 @Composable
 fun SplashScreen(
-    openAndPopUpSplashToProductivity: () -> Unit,
+    navigateAndPopUpSplashToTimeline: () -> Unit,
     showInterstialAd: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SplashViewModel = hiltViewModel()
@@ -43,16 +43,16 @@ fun SplashScreen(
             Text(text = stringResource(AppText.generic_error))
 
             BasicButton(AppText.try_again, Modifier.basicButton(), true) {
-                viewModel.onAppStart(openAndPopUpSplashToProductivity)
+                viewModel.onAppStart(navigateAndPopUpSplashToTimeline)
                 showInterstialAd()
             }
         } else {
-            Image(painter = painterResource(id = AppIcon.ic_launcher_foreground), contentDescription = null, modifier = Modifier.padding(20.dp))
+            Image(painter = painterResource(id = AppIcon.icon), contentDescription = stringResource(AppText.app_name), modifier = Modifier.padding(20.dp))
         }
     }
 
     LaunchedEffect(true) {
         delay(SPLASH_TIMEOUT)
-        viewModel.onAppStart(openAndPopUpSplashToProductivity)
+        viewModel.onAppStart(navigateAndPopUpSplashToTimeline)
     }
 }

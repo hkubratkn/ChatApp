@@ -21,14 +21,14 @@ class SplashViewModel @Inject constructor(
         launchCatching { configurationService.fetchConfiguration() }
     }
 
-    fun onAppStart(openAndPopUpSplashToHome: () -> Unit) {
+    fun onAppStart(navigateAndPopUpSplashToTimeline: () -> Unit) {
 
         showError.value = false
-        if (accountService.hasUser) openAndPopUpSplashToHome()
-        else createAnonymousAccount(openAndPopUpSplashToHome)
+        if (accountService.hasUser) navigateAndPopUpSplashToTimeline()
+        else createAnonymousAccount(navigateAndPopUpSplashToTimeline)
     }
 
-    private fun createAnonymousAccount(openAndPopUpSplashToHome: () -> Unit) {
+    private fun createAnonymousAccount(navigateAndPopUpSplashToTimeline: () -> Unit) {
         launchCatching() {
             try {
                 accountService.createAnonymousAccount()
@@ -36,7 +36,7 @@ class SplashViewModel @Inject constructor(
                 showError.value = true
                 throw ex
             }
-            openAndPopUpSplashToHome()
+            navigateAndPopUpSplashToTimeline()
         }
     }
 }

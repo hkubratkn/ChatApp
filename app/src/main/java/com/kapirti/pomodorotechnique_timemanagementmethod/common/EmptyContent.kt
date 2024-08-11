@@ -13,6 +13,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import com.kapirti.pomodorotechnique_timemanagementmethod.R.drawable as AppIcon
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 
 @Composable
 fun EmptyContent(
@@ -27,9 +34,35 @@ fun EmptyContent(
     ) {
         Icon(
             imageVector = icon,
-            contentDescription = null,
-            modifier = Modifier.size(96.dp)
+            contentDescription = stringResource(id = AppText.cd_icon),
+            modifier = Modifier.size(96.dp),
         )
         Text(stringResource(id = label))
+    }
+}
+
+@Composable
+fun EmptyTimeline(
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier
+            .padding(64.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Image(
+            painter = painterResource(id = AppIcon.empty_timeline),
+            contentDescription = stringResource(id = AppText.timeline_title),
+        )
+        Text(
+            text = stringResource(AppText.timeline_empty_title),
+            modifier = Modifier.padding(top = 64.dp),
+            style = MaterialTheme.typography.titleLarge,
+        )
+        Text(
+            text = stringResource(AppText.timeline_empty_message),
+            textAlign = TextAlign.Center,
+        )
     }
 }
