@@ -13,6 +13,9 @@
     <string name="stayed">Stayed</string>
 
     <!-- Timeline Screen -->
+    <string name="timeline_title">Timeline</string>
+    <string name="timeline_empty_title">No photos or video.</string>
+    <string name="timeline_empty_message">Videos and photos from messages will display here. Add a message or refine your search.</string>
 
     <!-- Job Screen -->
     <string name="job_title">Job</string>
@@ -107,6 +110,9 @@
     <string name="cd_lock">Lock</string>
     <string name="cd_visibility">Visibility</string>
     <string name="cd_logo">Logo</string>
+    <string name="cd_icon">icon</string>
+    <string name="cd_menu_actions">Menu actions</string>
+    <string name="cd_user_photo">User photo</string>
 
 
     <!-- use now importants -->

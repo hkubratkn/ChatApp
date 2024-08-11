@@ -65,7 +65,7 @@ class EditViewModel @Inject constructor(
         get() = _increaseBtnState.value
 
 
-    var uiState = mutableStateOf(SettingsUiState())
+    var uiState = mutableStateOf(EditUiState())
         private set
 
     private val password
