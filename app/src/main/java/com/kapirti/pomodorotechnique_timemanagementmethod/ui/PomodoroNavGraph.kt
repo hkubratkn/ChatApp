@@ -19,11 +19,11 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AppN
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeChatViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeJobViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeUserIdViewModel
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.blockedusers.BlockedUsersRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats.ChatsRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.EditRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.employee.EmployeeScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.job.JobRoute
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.job.JobScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.login.LogInScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.productivity.ProductivityRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.profile.ProfileRoute
@@ -36,7 +36,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeov
 
 
 @Composable
-fun ZepiNavGraph(
+fun PomodoroNavGraph(
     sizeAwareDrawerState: DrawerState,
     currentRoute: String,
     isExpandedScreen: Boolean,
@@ -48,6 +48,7 @@ fun ZepiNavGraph(
     popUpScreen: () -> Unit,
 
     navigateLogin: () -> Unit,
+    navigateRegister: () -> Unit,
     navigateToProductivity: () -> Unit,
     navigateToTimeline: () -> Unit,
     navigateToJob: () -> Unit,
@@ -57,6 +58,7 @@ fun ZepiNavGraph(
     navigateToSettings: () -> Unit,
     navigateToSubscriptions: () -> Unit,
     navigateUserProfile: () -> Unit,
+    navigateBlockedUser: () -> Unit,
 
     navigateAndPopUpSplashToTimeline: () -> Unit,
     //openAndPopUpSplashToLogin: () -> Unit,
@@ -172,7 +174,9 @@ fun ZepiNavGraph(
                         openDrawer = openDrawer,
                         navigateEdit = navigateEdit,
                         restartApp = restartApp,
-                        navigateBlockUser = {}, //navigateBlockUser
+                        navigateRegister = navigateRegister,
+                        navigateLogin = navigateLogin,
+                        navigateBlockedUser = navigateBlockedUser,
                     )
                 }
                 composable(PomodoroDestinations.SUBSCRIPTIONS_ROUTE) {
@@ -211,6 +215,14 @@ fun ZepiNavGraph(
                         openDrawer = openDrawer,
                         navigateToProductivity = navigateToProductivity,
                         showInterstialAd = showInterstitialAds,
+                    )
+                }
+                composable(
+                    route = PomodoroDestinations.BLOCKED_USERS_ROUTE
+                ) {
+                    BlockedUsersRoute(
+                        isExpandedScreen = isExpandedScreen,
+                        openDrawer = openDrawer,
                     )
                 }
             }
@@ -493,14 +505,7 @@ fun ZepiNavGraph(
                     isExpandedScreen = isExpandedScreen,
                     includeUserIdViewModel = includeUserIdViewModel,
                 ) }
-                composable(
-                    route = ZepiDestinations.BLOCK_USERS_ROUTE
-                ) {
-                    BlockUsersRoute(
-                        isExpandedScreen = isExpandedScreen,
-                        openDrawer = openDrawer,
-                        )
-                }
+
 
 
 

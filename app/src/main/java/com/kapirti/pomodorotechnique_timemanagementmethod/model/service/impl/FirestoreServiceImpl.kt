@@ -15,6 +15,7 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.snapshots
 import com.google.firebase.firestore.toObjects
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.CountryRepository
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Block
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Chat
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Delete
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
@@ -65,9 +66,13 @@ class FirestoreServiceImpl @Inject constructor(
         get() =
             auth.currentUser.flatMapLatest { user ->
                 userArchiveCollection(user.id)
-                    //                  .whereEqualTo(USER_ID_FIELD, user.id)
-//                    .orderBy(CREATED_AT_FIELD, Query.Direction.DESCENDING)
+                    .orderBy(DATE_FIELD, Query.Direction.DESCENDING)
                     .dataObjects()
+            }
+
+    override val userBlockedUsers: Flow<List<Block>>
+        get() = auth.currentUser.flatMapLatest { user ->
+                userBlockCollection(user.id).snapshots().map { snapshot -> snapshot.toObjects() }
             }
 
     override suspend fun getUser(uid: String): User? = userDocument(uid).get().await().toObject()
@@ -100,6 +105,7 @@ class FirestoreServiceImpl @Inject constructor(
     private fun userDocument(uid: String): DocumentReference = userCollection().document(uid)
     private fun userChatCollection(uid: String): CollectionReference = userDocument(uid).collection(CHAT_COLLECTION)
     private fun userArchiveCollection(uid: String): CollectionReference = userDocument(uid).collection(ARCHIVE_COLLECTION)
+    private fun userBlockCollection(uid: String): CollectionReference = userDocument(uid).collection(BLOCK_COLLECTION)
     private fun userJobCollection(uid: String): CollectionReference = userDocument(uid).collection(JOB_COLLECTION)
     private fun timelineCollection(lang: String): CollectionReference = firestore.collection(TIMELINE_COLLECTION).document(lang).collection(TIMELINE_COLLECTION)
 
@@ -115,6 +121,7 @@ class FirestoreServiceImpl @Inject constructor(
         private const val USER_COLLECTION = "User"
         private const val CHAT_COLLECTION = "Chat"
         private const val ARCHIVE_COLLECTION = "Archive"
+        private const val BLOCK_COLLECTION = "Block"
         private const val TIMELINE_COLLECTION = "Timeline"
         private const val JOB_COLLECTION = "Job"
         private const val DOCTOR_COLLECTION = "Doctor"
@@ -219,7 +226,6 @@ private fun userArchiveCollection(uid: String): CollectionReference = userDocume
 private fun userPhotosCollection(uid: String): CollectionReference = userDocument(uid).collection(PHOTOS_COLLECTION)
 private fun chatCollection(chatId: String): CollectionReference = firestore.collection(CHAT_COLLECTION).document(chatId).collection(chatId)
 
-private fun userBlockCollection(uid: String): CollectionReference = userDocument(uid).collection(BLOCK_COLLECTION)
 private fun userBlockDocument(uid: String, partnerUid: String): DocumentReference = userBlockCollection(uid).document(partnerUid)
 private fun userReportDocument(uid: String, partnerUid: String): DocumentReference = userDocument(partnerUid).collection(REPORT_COLLECTION).document(uid)
 
@@ -231,11 +237,7 @@ private fun userReportDocument(uid: String, partnerUid: String): DocumentReferen
 /**
 
 
-override val userBlock: Flow<List<com.kapirti.ira.model.Block>>
-get() =
-auth.currentUser.flatMapLatest { user ->
-userBlockCollection(user.id).snapshots().map { snapshot -> snapshot.toObjects() }
-}
+
 
 override suspend fun saveLang(feedback: com.kapirti.ira.model.Feedback): Unit = trace(
 SAVE_LANG_TRACE
@@ -500,7 +502,6 @@ class FirestoreServiceImpl @Inject constructor(
 
         private const val USER_COLLECTION = "User"
         private const val PHOTOS_COLLECTION = "Photos"
-        private const val BLOCK_COLLECTION = "Block"
         private const val REPORT_COLLECTION = "Report"
         private const val DELETE_COLLECTION = "Delete"
         private const val FEEDBACK_COLLECTION = "Feedback"

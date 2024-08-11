@@ -33,9 +33,11 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds
 
 @Composable
 fun SettingsRoute(
+    navigateLogin: () -> Unit,
+    navigateRegister: () -> Unit,
     navigateEdit: () -> Unit,
     restartApp: () -> Unit,
-    navigateBlockUser: () -> Unit,
+    navigateBlockedUser: () -> Unit,
     isExpandedScreen: Boolean,
     openDrawer: () -> Unit,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
@@ -54,11 +56,13 @@ fun SettingsRoute(
         }
     ) { innerPadding ->
         SettingsScreen(
+            navigateLogin = navigateLogin,
+            navigateRegister = navigateRegister,
             navigateEdit = navigateEdit,
             restartApp = restartApp,
             snackbarHostState = snackbarHostState,
             modifier = modifier.padding(innerPadding),
-            navigateBlockUser = navigateBlockUser,
+            navigateBlockedUser = navigateBlockedUser,
         )
     }
 }

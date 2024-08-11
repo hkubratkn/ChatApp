@@ -10,6 +10,7 @@ object PomodoroDestinations {
     const val EDIT_ROUTE = "edit"
     const val TIME_OVER_ROUTE = "timeOver"
     const val JOB_DETAIL_ROUTE = "jobDetail"
+    const val BLOCKED_USERS_ROUTE = "blockedUsers"
 
     const val TIMELINE_ROUTE = "timeline"
     const val JOB_ROUTE = "job"
@@ -111,6 +112,9 @@ class PomodoroNavigationActions(navController: NavHostController) {
     val navigateLogin: () -> Unit = {
         navController.navigate(PomodoroDestinations.LOG_IN_ROUTE){ launchSingleTop = true }
     }
+    val navigateRegister: () -> Unit = {
+        navController.navigate(PomodoroDestinations.REGISTER_ROUTE){ launchSingleTop = true }
+    }
     val navigateEdit: () -> Unit = {
         navController.navigate(PomodoroDestinations.EDIT_ROUTE){ launchSingleTop = true }
     }
@@ -122,6 +126,9 @@ class PomodoroNavigationActions(navController: NavHostController) {
     }
     val navigateUserProfile: () -> Unit = {
         navController.navigate(PomodoroDestinations.USER_PROFILE_ROUTE){ launchSingleTop = true }
+    }
+    val navigateBlockedUsers: () -> Unit = {
+        navController.navigate(PomodoroDestinations.BLOCKED_USERS_ROUTE){ launchSingleTop = true }
     }
 
 
@@ -159,7 +166,6 @@ class PomodoroNavigationActions(navController: NavHostController) {
     const val CHATEXIST_ROUTE = "chatexist"
     const val VIDEO_CALL_ROUTE = "videoCall"
     const val PHOTOS_ROUTE = "photos"
-    const val BLOCK_USERS_ROUTE = "blockUsers"
 
     const val HOME_ROUTE = "home"
 

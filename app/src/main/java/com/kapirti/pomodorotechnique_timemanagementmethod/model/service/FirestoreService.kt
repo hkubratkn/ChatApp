@@ -1,5 +1,6 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.model.service
 
+import com.kapirti.pomodorotechnique_timemanagementmethod.model.Block
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Chat
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Delete
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
@@ -15,6 +16,7 @@ interface FirestoreService {
     val jobs: Flow<List<Job>>
     val userChats: Flow<List<Chat>>
     val userArchives: Flow<List<Chat>>
+    val userBlockedUsers: Flow<List<Block>>
 
     suspend fun getUser(userId: String): User?
     suspend fun saveUser(user: User)

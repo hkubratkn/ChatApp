@@ -37,6 +37,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.Theme
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
+import kotlinx.coroutines.flow.map
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
@@ -51,7 +52,7 @@ class SettingsViewModel @Inject constructor(
     private val getThemePreferencesUseCase: GetThemePreferencesUseCase,
     private val getThemeUpdateUseCase: GetThemeUpdateUseCase,
 ): PomodoroViewModel(logService) {
-    val hasUser = accountService.hasUser
+    val uiState = accountService.currentUser.map { SettingsUiState(it.isAnonymous) }
 
     private val _theme by lazy { mutableStateOf(Theme.Light) }
     val theme: State<Theme> by lazy { _theme.apply { updateTheme() } }

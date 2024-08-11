@@ -28,11 +28,13 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.Alignment
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Login
 import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.Block
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Feedback
 import androidx.compose.material.icons.filled.Flag
+import androidx.compose.material.icons.filled.PersonAdd
 import androidx.compose.material.icons.filled.PrivacyTip
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.StarRate
@@ -40,6 +42,7 @@ import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -58,8 +61,10 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.Theme
 
 @Composable
 fun SettingsScreen(
+    navigateLogin: () -> Unit,
+    navigateRegister: () -> Unit,
     navigateEdit: () -> Unit,
-    navigateBlockUser: () -> Unit,
+    navigateBlockedUser: () -> Unit,
     restartApp: () -> Unit,
     snackbarHostState: SnackbarHostState,
     modifier: Modifier = Modifier,
@@ -67,6 +72,7 @@ fun SettingsScreen(
 ) {
     val theme by viewModel.theme
     var showSignOutDialog by remember { mutableStateOf(false) }
+    val uiState by viewModel.uiState.collectAsState(initial = SettingsUiState(false))
 
 
     Column(
@@ -124,24 +130,20 @@ fun SettingsScreen(
         )
         Spacer(modifier = Modifier.spacer())
 
-        if (viewModel.hasUser) {
-            RegularCardEditor(
-                stringResource(id = AppText.blocked_users_title),
-                Icons.Default.Block,
-                "", Modifier.card()
-            ) { navigateBlockUser() }
-            RegularCardEditor(
-                stringResource(AppText.sign_out),
-                Icons.AutoMirrored.Filled.Logout,
-                "",
-                Modifier.card()
-            ) { showSignOutDialog = true }
-            DangerousCardEditor(
-                stringResource(AppText.delete_my_account),
-                Icons.Default.Delete,
-                "",
-                Modifier.card()
-            ) { viewModel.onDeleteClick(navigateEdit)}
+
+
+        if (uiState.isAnonymousAccount) {
+            RegularCardEditor(stringResource(AppText.log_in),
+                    Icons.AutoMirrored.Default.Login, "", Modifier.card()) { navigateLogin() }
+            RegularCardEditor(stringResource(AppText.register),
+                Icons.Default.PersonAdd, "", Modifier.card()) { navigateRegister() }
+        } else {
+            RegularCardEditor(stringResource(id = AppText.blocked_users_title),
+                Icons.Default.Block, "", Modifier.card()) { navigateBlockedUser() }
+            RegularCardEditor(stringResource(AppText.sign_out),
+                Icons.AutoMirrored.Default.Logout, "", Modifier.card()) { showSignOutDialog = true }
+            DangerousCardEditor(stringResource(AppText.delete_my_account),
+                Icons.Default.Delete, "", Modifier.card()) { viewModel.onDeleteClick(navigateEdit)}
         }
     }
 

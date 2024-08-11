@@ -76,7 +76,7 @@ fun PomodoroApp(
 
 
 
-        ZepiNavGraph(
+        PomodoroNavGraph(
             isExpandedScreen = isExpandedScreen,
             showInterstitialAds = showInterstitialAds,
             navController = navController,
@@ -93,6 +93,7 @@ fun PomodoroApp(
             restartApp = navigationActions.clearAndNavigate,
 
             navigateLogin = navigationActions.navigateLogin,
+            navigateRegister = navigationActions.navigateRegister,
             navigateToTimeline = navigationActions.navigateToTimeline,
             navigateToProductivity = navigationActions.navigateToProductivity,
             navigateToJob = navigationActions.navigateToJob,
@@ -102,6 +103,7 @@ fun PomodoroApp(
             navigateToSettings = navigationActions.navigateToSettings,
             navigateToSubscriptions = navigationActions.navigateToSubscriptions,
             navigateUserProfile = navigationActions.navigateUserProfile,
+            navigateBlockedUser = navigationActions.navigateBlockedUsers,
 
 
             navigateAndPopUpSplashToTimeline = navigationActions.navigateAndPopUpSplashToTimeline,
