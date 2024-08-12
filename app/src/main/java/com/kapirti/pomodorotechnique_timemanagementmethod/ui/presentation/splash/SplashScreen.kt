@@ -19,9 +19,9 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.drawable as AppIcon
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.BasicButton
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.basicButton
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Cons.SPLASH_TIMEOUT
 import kotlinx.coroutines.delay
 
-private const val SPLASH_TIMEOUT = 1000L
 
 @Composable
 fun SplashScreen(

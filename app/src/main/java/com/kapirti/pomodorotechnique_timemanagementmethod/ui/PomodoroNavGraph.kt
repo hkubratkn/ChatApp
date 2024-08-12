@@ -23,6 +23,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.blocke
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats.ChatsRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.EditRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.employee.EmployeeScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.home.HomeRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.job.JobRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.login.LogInScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.productivity.ProductivityRoute
@@ -51,6 +52,7 @@ fun PomodoroNavGraph(
     navigateRegister: () -> Unit,
     navigateToProductivity: () -> Unit,
     navigateToTimeline: () -> Unit,
+    navigateToHome: () -> Unit,
     navigateToJob: () -> Unit,
     navigateToEmployee: () -> Unit,
     navigateToChats: () -> Unit,
@@ -98,6 +100,7 @@ fun PomodoroNavGraph(
                 currentRoute = currentRoute,
                 navigateToProductivity = navigateToProductivity,
                 navigateToTimeline = navigateToTimeline,
+                navigateToHome = navigateToHome,
                 navigateToJob = navigateToJob,
                 navigateToEmployee = navigateToEmployee,
                 navigateToChats = navigateToChats,
@@ -132,6 +135,10 @@ fun PomodoroNavGraph(
                         navigateLogin = navigateLogin,
                         navigateEdit = navigateEdit,
                         navigateUserProfile = navigateUserProfile,
+                    )
+                }
+                composable(route = PomodoroDestinations.HOME_ROUTE,) {
+                    HomeRoute(
                     )
                 }
                 composable(PomodoroDestinations.PRODUCTIVITY_ROUTE) {

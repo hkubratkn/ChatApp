@@ -17,9 +17,11 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.di
 
 import android.content.Context
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.AskReviewDataStore
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.ChatIdRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.CountryRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.IsReviewDataStore
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.PomoService
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.UserIdRepository
 import dagger.Module
@@ -68,5 +70,17 @@ object DataStoreModule {
     fun provideUserIdRepository(
         @ApplicationContext context: Context
     ) = UserIdRepository(context)
+
+    @Provides
+    @Singleton
+    fun provideAskReviewRepository(
+        @ApplicationContext context: Context
+    ) = AskReviewDataStore(context)
+
+    @Provides
+    @Singleton
+    fun provideIsReviewRepository(
+        @ApplicationContext context: Context
+    ) = IsReviewDataStore(context)
 }
 

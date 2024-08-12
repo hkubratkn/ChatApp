@@ -17,6 +17,11 @@
     <string name="timeline_empty_title">No photos or video.</string>
     <string name="timeline_empty_message">Videos and photos from messages will display here. Add a message or refine your search.</string>
 
+    <!-- Home Screen -->
+    <string name="review_title">Review us</string>
+    <string name="review_description">Want to welcome new friends? Leave us a comment and help us invite new friends to the app</string>
+    <string name="review_now">Review now</string>
+
     <!-- Job Screen -->
     <string name="job_title">Job</string>
     <string name="job_vacancies_not_found">job vacancies not found</string>

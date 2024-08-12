@@ -13,6 +13,7 @@ object PomodoroDestinations {
     const val BLOCKED_USERS_ROUTE = "blockedUsers"
 
     const val TIMELINE_ROUTE = "timeline"
+    const val HOME_ROUTE = "home"
     const val JOB_ROUTE = "job"
     const val EMPLOYEE_ROUTE = "employee"
     const val PRODUCTIVITY_ROUTE = "productivity"

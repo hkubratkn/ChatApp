@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.drawable as AppIcon
 import androidx.compose.material.icons.filled.ChatBubbleOutline
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.SupervisorAccount
 import androidx.compose.material.icons.filled.Timeline
 import androidx.compose.material.icons.filled.Timer
@@ -33,6 +34,7 @@ fun AppDrawer(
     currentRoute: String,
     navigateToProductivity: () -> Unit,
     navigateToTimeline: () -> Unit,
+    navigateToHome: () -> Unit,
     navigateToJob: () -> Unit,
     navigateToEmployee: () -> Unit,
     navigateToChats: () -> Unit,
@@ -52,6 +54,13 @@ fun AppDrawer(
             icon = { Icon(Icons.Filled.Timeline, stringResource(id = AppText.timeline_title)) },
             selected = currentRoute == PomodoroDestinations.TIMELINE_ROUTE,
             onClick = { navigateToTimeline(); closeDrawer() },
+            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+        )
+        NavigationDrawerItem(
+            label = { Text(stringResource(id = AppText.home_title)) },
+            icon = { Icon(Icons.Filled.Home, stringResource(id = AppText.home_title)) },
+            selected = currentRoute == PomodoroDestinations.HOME_ROUTE,
+            onClick = { navigateToHome(); closeDrawer() },
             modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
         )
         NavigationDrawerItem(
