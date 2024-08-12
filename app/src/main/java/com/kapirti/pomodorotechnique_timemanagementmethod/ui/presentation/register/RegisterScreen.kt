@@ -25,7 +25,6 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.Emai
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.HeaderText
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.HyperlinkText
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.PasswordField
-import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.RepeatPasswordField
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.basicButton
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.fieldModifier
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.smallSpacer
@@ -80,12 +79,6 @@ fun RegisterScreen(
 
             EmailField(uiState.email, viewModel::onEmailChange, fieldModifier)
             PasswordField(uiState.password, viewModel::onPasswordChange, fieldModifier)
-            RepeatPasswordField(
-                uiState.repeatPassword,
-                viewModel::onRepeatPasswordChange,
-                fieldModifier
-            )
-
             Spacer(modifier = Modifier.smallSpacer())
 
             HyperlinkText(

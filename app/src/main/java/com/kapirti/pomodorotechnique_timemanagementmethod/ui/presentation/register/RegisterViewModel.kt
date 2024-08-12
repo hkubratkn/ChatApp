@@ -7,7 +7,6 @@ import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidEmail
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidPassword
-import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.passwordMatches
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
@@ -46,8 +45,6 @@ class RegisterViewModel @Inject constructor(
 
     fun onEmailChange(newValue: String) { uiState.value = uiState.value.copy(email = newValue) }
     fun onPasswordChange(newValue: String) { uiState.value = uiState.value.copy(password = newValue) }
-    fun onRepeatPasswordChange(newValue: String) { uiState.value = uiState.value.copy(repeatPassword = newValue) }
-
 
     fun onRegisterClick(
         snackbarHostState: SnackbarHostState,
@@ -65,12 +62,6 @@ class RegisterViewModel @Inject constructor(
 
         if (!password.isValidPassword()) {
             launchCatching { snackbarHostState.showSnackbar(password_error) }
-            onButtonChange()
-            return
-        }
-
-        if (!password.passwordMatches(uiState.value.repeatPassword)) {
-            launchCatching { snackbarHostState.showSnackbar(password_match_error) }
             onButtonChange()
             return
         }
