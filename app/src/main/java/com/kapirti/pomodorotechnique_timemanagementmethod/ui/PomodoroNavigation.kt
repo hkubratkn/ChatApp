@@ -46,6 +46,15 @@ class PomodoroNavigationActions(navController: NavHostController) {
             restoreState = true
         }
     }
+    val navigateToHome: () -> Unit = {
+        navController.navigate(PomodoroDestinations.HOME_ROUTE) {
+            popUpTo(navController.graph.findStartDestination().id) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
     val navigateToProductivity: () -> Unit = {
         navController.navigate(PomodoroDestinations.PRODUCTIVITY_ROUTE) {
             popUpTo(navController.graph.findStartDestination().id) {

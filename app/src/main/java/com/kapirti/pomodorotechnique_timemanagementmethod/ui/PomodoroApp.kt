@@ -95,6 +95,7 @@ fun PomodoroApp(
             navigateLogin = navigationActions.navigateLogin,
             navigateRegister = navigationActions.navigateRegister,
             navigateToTimeline = navigationActions.navigateToTimeline,
+            navigateToHome = navigationActions.navigateToHome,
             navigateToProductivity = navigationActions.navigateToProductivity,
             navigateToJob = navigationActions.navigateToJob,
             navigateToEmployee = navigationActions.navigateToEmployee,

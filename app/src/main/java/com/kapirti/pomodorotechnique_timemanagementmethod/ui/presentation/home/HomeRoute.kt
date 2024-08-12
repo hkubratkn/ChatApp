@@ -71,6 +71,7 @@ fun HomeRoute(
         bottomBar = { AdsBannerToolbar(ads = ConsAds.ADS_HOME_BANNER_ID) },
         modifier = modifier.fillMaxSize(),
     ) { innerPadding ->
+        Text("home screen")
     }
 
     if (viewModel.showReviewDialog.value) {
