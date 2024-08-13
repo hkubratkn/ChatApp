@@ -9,6 +9,8 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountS
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.settings.SettingsUiState
+import kotlinx.coroutines.flow.map
 
 @HiltViewModel
 class ChatsViewModel @Inject constructor(
@@ -17,6 +19,8 @@ class ChatsViewModel @Inject constructor(
     private val chatIdRepository: ChatIdRepository,
     logService: LogService,
 ): PomodoroViewModel(logService) {
+    val uiState = accountService.currentUser.map { SettingsUiState(it.isAnonymous) }
+
     val chats = firestoreService.userChats
         .stateInUi(emptyList())
 

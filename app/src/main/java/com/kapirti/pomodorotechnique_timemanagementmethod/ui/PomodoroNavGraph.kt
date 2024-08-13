@@ -165,6 +165,8 @@ fun PomodoroNavGraph(
                         includeChatViewModel = includeChatViewModel,
                         isExpandedScreen = isExpandedScreen,
                         openDrawer = openDrawer,
+                        navigateLogin = navigateLogin,
+                        navigateRegister = navigateRegister,
                         navigateChatsToChatExist = {}, //navigateChatsToChatExist,
                     )
                 }
@@ -173,6 +175,8 @@ fun PomodoroNavGraph(
                         isExpandedScreen = isExpandedScreen,
                         openDrawer = openDrawer,
                         navigateEdit = navigateEdit,
+                        navigateRegister = navigateRegister,
+                        navigateLogin = navigateLogin
                     )
                 }
                 composable(PomodoroDestinations.SETTINGS_ROUTE) {

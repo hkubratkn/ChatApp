@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2024 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.chats
 
 import androidx.compose.foundation.layout.padding
@@ -35,13 +19,18 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.Menu
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.viewmodel.IncludeChatViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.res.stringResource
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.AnonContent
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.settings.SettingsUiState
 
 @Composable
 fun ChatsRoute(
     isExpandedScreen: Boolean,
     openDrawer: () -> Unit,
     includeChatViewModel: IncludeChatViewModel,
+    navigateLogin: () -> Unit,
+    navigateRegister: () -> Unit,
     navigateChatsToChatExist: () -> Unit,
     modifier: Modifier = Modifier,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
@@ -49,6 +38,7 @@ fun ChatsRoute(
 ) {
     val chats by viewModel.chats.collectAsStateWithLifecycle()
     val archives by viewModel.archives.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsState(initial = SettingsUiState(false))
 
     val tabContent = rememberTabContent(
         chats = chats,
@@ -82,12 +72,20 @@ fun ChatsRoute(
             )
         }
     ) { innerPadding ->
-        ChatsScreen(
-            tabContent = tabContent,
-            currentSection = currentSection,
-            isExpandedScreen = isExpandedScreen,
-            updateSection = updateSection,
-            modifier = modifier.padding(innerPadding)
-        )
+        if (uiState.isAnonymousAccount) {
+            AnonContent(
+                navigateLogin = navigateLogin,
+                navigateRegister = navigateRegister,
+                modifier = Modifier.padding(innerPadding)
+            )
+        } else {
+            ChatsScreen(
+                tabContent = tabContent,
+                currentSection = currentSection,
+                isExpandedScreen = isExpandedScreen,
+                updateSection = updateSection,
+                modifier = modifier.padding(innerPadding)
+            )
+        }
     }
 }

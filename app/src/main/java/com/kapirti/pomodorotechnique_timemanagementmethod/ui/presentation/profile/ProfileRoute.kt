@@ -15,20 +15,26 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.kapirti.pomodorotechnique_timemanagementmethod.common.AnonContent
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.settings.SettingsUiState
 
 @Composable
 fun ProfileRoute(
     navigateEdit: () -> Unit,
     isExpandedScreen: Boolean,
     openDrawer: () -> Unit,
+    navigateLogin: () -> Unit,
+    navigateRegister: () -> Unit,
     modifier: Modifier = Modifier,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     viewModel: ProfileViewModel = hiltViewModel(),
 ) {
     val user by viewModel.user.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsState(initial = SettingsUiState(false))
 
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
@@ -43,12 +49,20 @@ fun ProfileRoute(
         },
         modifier = modifier.fillMaxSize(),
     ) { innerPadding ->
-        ProfileScreen(
-            user = user,
-            modifier = Modifier.padding(innerPadding),
-            onProfilePhotoClick = { viewModel.onProfilePhotoClick(navigateEdit) },
-            onLongClickDisplayName = { viewModel.onDisplayNameClick(navigateEdit) },
-            onLongClickDescription= { viewModel.onDescriptionClick(navigateEdit) },
-        )
+        if (uiState.isAnonymousAccount) {
+            AnonContent(
+                navigateLogin = navigateLogin,
+                navigateRegister = navigateRegister,
+                modifier = Modifier.padding(innerPadding)
+            )
+        } else {
+            ProfileScreen(
+                user = user,
+                modifier = Modifier.padding(innerPadding),
+                onProfilePhotoClick = { viewModel.onProfilePhotoClick(navigateEdit) },
+                onLongClickDisplayName = { viewModel.onDisplayNameClick(navigateEdit) },
+                onLongClickDescription = { viewModel.onDescriptionClick(navigateEdit) },
+            )
+        }
     }
 }

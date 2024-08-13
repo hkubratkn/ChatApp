@@ -10,10 +10,12 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountS
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.settings.SettingsUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
 
 
 @HiltViewModel
@@ -24,7 +26,7 @@ class ProfileViewModel @Inject constructor(
     private val editTypeRepository: EditTypeRepository,
     logService: LogService,
 ): PomodoroViewModel(logService){
-    val hasUser = accountService.hasUser
+    val uiState = accountService.currentUser.map { SettingsUiState(it.isAnonymous) }
 
     private val _user = MutableStateFlow<User>(User())
     var user: StateFlow<User> = _user
