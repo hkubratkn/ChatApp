@@ -11,6 +11,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.q
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.PhotoQuestion
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.PomoQuestion
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.SingleChoiceQuestionCountry
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit.question.VideoQuestion
 
 
 @Composable
@@ -55,6 +56,19 @@ fun TakeSelfieQuestion(
         titleResourceId = AppText.selfie_skills,
         imageUri = imageUri,
         onPhotoTaken = onPhotoTaken,
+        modifier = modifier,
+    )
+}
+@Composable
+fun TakeVideoQuestion(
+    videoUri: Uri?,
+    onVideoTaken: (Uri) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    VideoQuestion(
+        titleResourceId = AppText.selfie_skills,
+        videoUri = videoUri,
+        onVideoTaken = onVideoTaken,
         modifier = modifier,
     )
 }

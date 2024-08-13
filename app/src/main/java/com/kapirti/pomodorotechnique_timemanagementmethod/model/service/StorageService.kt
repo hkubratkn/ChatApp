@@ -16,7 +16,11 @@
 
 package com.kapirti.pomodorotechnique_timemanagementmethod.model.service
 
+import android.net.Uri
+
 interface StorageService {
     suspend fun getPhoto(uid: String): String
+    suspend fun getVideo(uid: String): String
     suspend fun savePhoto(photo: ByteArray, uid: String)
+    suspend fun saveVideo(uri: Uri, uid: String)
 }

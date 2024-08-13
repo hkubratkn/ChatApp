@@ -104,6 +104,11 @@ fun EditRoute(
                     onPhotoTaken = viewModel::onSelfieResponse,
                     modifier = modifier,
                 )
+                SurveyQuestion.TAKE_VIDEO -> TakeVideoQuestion(
+                    videoUri = viewModel.videoUri,
+                    onVideoTaken = viewModel::onVideoResponse,
+                    modifier = modifier,
+                )
 
                 SurveyQuestion.TITLE -> TitleQuestion(
                     value = viewModel.displayName ?: "",

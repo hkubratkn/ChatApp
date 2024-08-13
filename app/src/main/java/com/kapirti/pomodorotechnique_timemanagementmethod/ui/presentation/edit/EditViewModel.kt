@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import androidx.compose.runtime.mutableStateOf
+import androidx.core.net.toUri
 import com.google.firebase.Timestamp
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Cons.DEFAULT_COUNTRY
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.COUNTRY
@@ -18,6 +19,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditTyp
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.POMO
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.PROFILE
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.PROFILE_PHOTO
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.TIMELINE_VIDEO
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.CountryRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.PomoService
@@ -31,6 +33,8 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.Firestor
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.StorageService
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.Timeline
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.UserTimeline
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.io.ByteArrayOutputStream
 import java.util.UUID
@@ -99,6 +103,7 @@ class EditViewModel @Inject constructor(
         DISPLAY_NAME -> listOf(SurveyQuestion.DISPLAY_NAME)
         DESCRIPTION -> listOf(SurveyQuestion.DESCRIPTION)
 
+        TIMELINE_VIDEO -> listOf(SurveyQuestion.TAKE_VIDEO)
         JOB -> listOf(
             SurveyQuestion.TITLE,
             SurveyQuestion.DESCRIPTION
@@ -128,6 +133,10 @@ class EditViewModel @Inject constructor(
     private val _selfieUri = mutableStateOf<Uri?>(null)
     val selfieUri
         get() = _selfieUri.value
+
+    private val _videoUri = mutableStateOf<Uri?>(null)
+    val videoUri
+        get() = _videoUri.value
 
     private val _bitmap = mutableStateOf<Bitmap?>(null)
     val bitmap
@@ -178,33 +187,19 @@ class EditViewModel @Inject constructor(
         restartApp: () -> Unit,
     ) {
         when (_editType.value) {
-            PROFILE -> {
-                saveAll(restartApp = restartApp)
-            }
-            PROFILE_PHOTO -> {
-                profilePhotoBitmapSave(context = context, restartApp = restartApp)
-            }
-            DISPLAY_NAME -> {
-                saveDisplayName(restartApp = restartApp)
-            }
+            PROFILE -> { saveAll(restartApp = restartApp) }
+            PROFILE_PHOTO -> { profilePhotoBitmapSave(context = context, restartApp = restartApp) }
+            DISPLAY_NAME -> { saveDisplayName(restartApp = restartApp) }
+            DESCRIPTION -> { saveDescription(restartApp = restartApp) }
 
-            DESCRIPTION -> {
-                saveDescription(restartApp = restartApp)
-            }
+
+            TIMELINE_VIDEO -> { videoBitmapSave(restartApp = restartApp) }
             JOB -> { saveJob(restartApp) }
 
-            FEEDBACK -> {
-                feedbackSave(popUp)
-            }
-
-            COUNTRY -> {
-                saveCountry(popUp)
-            }
+            FEEDBACK -> { feedbackSave(popUp) }
+            COUNTRY -> { saveCountry(popUp) }
             POMO -> { popUp() }
-
-            DELETE -> {
-                openDelete()
-            }
+            DELETE -> { openDelete() }
         }
     }
 
@@ -268,6 +263,32 @@ class EditViewModel @Inject constructor(
         }
     }
 
+    private fun videoBitmapSave(restartApp: () -> Unit) {
+        launchCatching {
+            val randomUid = UUID.randomUUID().toString()
+            val me = firestoreService.getUser(accountService.currentUserId)
+            _videoUri.let {
+                storageService.saveVideo(it.value ?: "".toUri(), uid = randomUid)
+                val link = storageService.getVideo(randomUid)
+                val doclink = firestoreService.saveTimeline(
+                    Timeline(
+                        date = Timestamp.now(),
+                        uri = link,
+                        writerId = accountService.currentUserId,
+                        writerDisplayName = me?.displayName ?: "",
+                        writerPhoto = me?.photo ?: ""
+                    )
+                )
+                firestoreService.saveUserTimeline(
+                    docId = doclink,
+                    UserTimeline(
+                        date = Timestamp.now()
+                    )
+                )
+                restartApp()
+            }
+        }
+    }
 
     private fun saveJob(restartApp: () -> Unit) {
         launchCatching {
@@ -349,6 +370,10 @@ class EditViewModel @Inject constructor(
         _selfieUri.value = uri
         _isNextEnabled.value = getIsNextEnabled()
     }
+    fun onVideoResponse(uri: Uri) {
+        _videoUri.value = uri
+        _isNextEnabled.value = getIsNextEnabled()
+    }
 
     fun onDescriptionChange(newValue: String) {
         _description.value = newValue
@@ -369,6 +394,9 @@ class EditViewModel @Inject constructor(
             SurveyQuestion.DISPLAY_NAME -> _displayName.value != null
             SurveyQuestion.DESCRIPTION -> _description.value != null
             SurveyQuestion.TAKE_SELFIE -> _selfieUri.value != null
+
+
+            SurveyQuestion.TAKE_VIDEO -> _videoUri.value != null
 
             SurveyQuestion.TITLE -> _displayName.value != null
 
@@ -396,6 +424,8 @@ enum class SurveyQuestion {
     DESCRIPTION,
     TAKE_SELFIE,
 
+
+    TAKE_VIDEO,
     COUNTRY,
     TITLE,
 

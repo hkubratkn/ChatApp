@@ -26,6 +26,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountS
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.trace
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.Timeline
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.UserTimeline
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.asDeferred
@@ -39,7 +40,7 @@ class FirestoreServiceImpl @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     override val timelines: Flow<List<Timeline>>
         get() = countryRepository.readCountryState().flatMapLatest { country ->
-            timelineCollection(country)
+            timelineCollection()
                 .dataObjects()
         }
 
@@ -79,8 +80,12 @@ class FirestoreServiceImpl @Inject constructor(
     override suspend fun saveUser(user: User): Unit = trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
     override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_CHAT_TRACE) { userChatCollection(uid).document(chatId).set(chat).await() }
     override suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_ARCHIVE_TRACE) { userArchiveCollection(uid).document(chatId).set(chat).await() }
+    override suspend fun saveUserTimeline(id: String, userTimeline: UserTimeline): Unit =
+        trace(SAVE_USER_TIMELINE_TRACE) { userTimelineCollection(auth.currentUserId).document(id).set(userTimeline).await() }
     override suspend fun saveUserJob(userJob: UserJob, id: String): Unit = trace(SAVE_USER_JOB_TRACE){ userJobCollection(auth.currentUserId).document(id).set(userJob).await() }
 
+    override suspend fun saveTimeline(timeline: Timeline): String =
+        trace(SAVE_TIMELINE_TRACE) { timelineCollection().add(timeline).await().id }
     override suspend fun saveJob(job: Job, country: String): String = trace(SAVE_JOB_TRACE) { jobCollection(country).add(job).await().id }
     override suspend fun saveFeedback(feedback: Feedback): Unit = trace(SAVE_FEEDBACK_TRACE){ feedbackCollection().add(feedback).await() }
     override suspend fun saveCountry(feedback: Feedback): Unit = trace(SAVE_COUNTRY_TRACE) { countryDocument(feedback).set(feedback).await() }
@@ -106,8 +111,10 @@ class FirestoreServiceImpl @Inject constructor(
     private fun userChatCollection(uid: String): CollectionReference = userDocument(uid).collection(CHAT_COLLECTION)
     private fun userArchiveCollection(uid: String): CollectionReference = userDocument(uid).collection(ARCHIVE_COLLECTION)
     private fun userBlockCollection(uid: String): CollectionReference = userDocument(uid).collection(BLOCK_COLLECTION)
+    private fun userTimelineCollection(uid: String): CollectionReference = userDocument(uid).collection(TIMELINE_COLLECTION)
     private fun userJobCollection(uid: String): CollectionReference = userDocument(uid).collection(JOB_COLLECTION)
-    private fun timelineCollection(lang: String): CollectionReference = firestore.collection(TIMELINE_COLLECTION).document(lang).collection(TIMELINE_COLLECTION)
+    private fun timelineCollection(): CollectionReference = firestore.collection(TIMELINE_COLLECTION).document(
+        TIMELINE_COLLECTION).collection(TIMELINE_COLLECTION)
 
 
     private fun jobCollection(country: String): CollectionReference = firestore.collection(JOB_COLLECTION).document(country).collection(DOCTOR_COLLECTION)
@@ -141,7 +148,9 @@ class FirestoreServiceImpl @Inject constructor(
         private const val SAVE_USER_TRACE = "saveUser"
         private const val SAVE_USER_CHAT_TRACE = "saveUserChat"
         private const val SAVE_USER_ARCHIVE_TRACE = "saveUserArchive"
+        private const val SAVE_USER_TIMELINE_TRACE = "saveUserTimeline"
         private const val SAVE_USER_JOB_TRACE = "saveUserJob"
+        private const val SAVE_TIMELINE_TRACE = "saveTimeline"
         private const val SAVE_FEEDBACK_TRACE = "saveFeedback"
         private const val SAVE_COUNTRY_TRACE = "saveCountry"
         private const val SAVE_JOB_TRACE = "saveJob"

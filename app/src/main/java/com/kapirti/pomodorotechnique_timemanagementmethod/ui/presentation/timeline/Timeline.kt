@@ -31,7 +31,6 @@ data class Timeline(
 
 data class UserTimeline(
     @DocumentId val id: String = "",
-    val uri: String = "",
     @ServerTimestamp var date: Timestamp? = null
 )
 
