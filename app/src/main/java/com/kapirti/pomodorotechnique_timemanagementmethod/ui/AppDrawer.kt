@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.drawable as AppIcon
+import androidx.compose.foundation.Image
 import androidx.compose.material.icons.filled.ChatBubbleOutline
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.SupervisorAccount
@@ -139,8 +140,7 @@ fun AppDrawer(
 @Composable
 private fun PomodoroLogo(modifier: Modifier = Modifier) {
     Row(modifier = modifier) {
-        Icon(
-            painterResource(AppIcon.icon),
+        Image(painter = painterResource(AppIcon.icon),
             contentDescription = stringResource(id = AppText.cd_logo),
             modifier = Modifier.size(40.dp),
         )
