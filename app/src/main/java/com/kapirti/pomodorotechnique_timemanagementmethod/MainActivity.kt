@@ -18,7 +18,6 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.play.core.review.ReviewManagerFactory
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_INTERSTITIAL_ID
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.data.NetworkMonitor
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Theme
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.PomodoroApp
@@ -29,7 +28,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private var mInterstitialAd: InterstitialAd? = null
     private val viewModel: MainViewModel by viewModels()
 
     @Inject
@@ -56,12 +54,10 @@ class MainActivity : ComponentActivity() {
 
             val widthSizeClass = calculateWindowSizeClass(this).widthSizeClass
             PomodoroApp(
-                hasUser = viewModel.hasUser,
 //                shortcutParams = extractShortcutParams(intent),
                 widthSizeClass = widthSizeClass,
                 networkMonitor = networkMonitor,
                 isDarkTheme = isDarkTheme,
-                showInterstitialAds = { showInterstitialAd() }
             )
 
             inAppReview(this)
@@ -84,34 +80,6 @@ class MainActivity : ComponentActivity() {
     override fun onPause() {
         super.onPause()
         viewModel.saveLastSeen()
-    }
-
-    private fun showInterstitialAd(){
-        if (mInterstitialAd != null) {
-            mInterstitialAd?.show(this)
-            loadInterstialAd()
-        } else {
-            loadInterstialAd()
-        }
-    }
-
-    private fun loadInterstialAd() {
-        var adRequest = AdRequest.Builder().build()
-
-        InterstitialAd.load(
-            this,
-            ADS_INTERSTITIAL_ID,
-            adRequest,
-            object : InterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(adError: LoadAdError) {
-                    mInterstitialAd = null
-                }
-
-                override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                    mInterstitialAd = interstitialAd
-                }
-            }
-        )
     }
 }
 

@@ -43,7 +43,6 @@ fun ProductivityRoute(
     openDrawer: () -> Unit,
     navigateToProductivity: () -> Unit,
     navigateTimeOver: () -> Unit,
-    showInterstitialAds: () -> Unit,
     modifier: Modifier = Modifier,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     viewModel: ProductivityViewModel = hiltViewModel()
@@ -54,7 +53,6 @@ fun ProductivityRoute(
         pomo = viewModel.pomo.toLong(),
         finishClick = viewModel.finishClick,
         navigateToPomodoro = navigateToProductivity,
-        showInterstialAd = showInterstitialAds,
         startBtnStatus = viewModel.startBtnStatus,
         finishBtnStatus = viewModel.finishBtnStatus,
         onStartPressed = { viewModel.onStartPressed(context = context, navigateTimeOver = navigateTimeOver)},

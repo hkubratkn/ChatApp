@@ -1,12 +1,19 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.register
 
+import android.app.Activity
+import android.content.Context
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.mutableStateOf
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidEmail
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidPassword
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_REGISTER_INTERSTITIAL_ID
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
@@ -30,6 +37,7 @@ class RegisterViewModel @Inject constructor(
     private val countryRepository: CountryRepository,
     private val editTypeRepository: EditTypeRepository,
 ): PomodoroViewModel(logService) {
+    private var mInterstitialAd: InterstitialAd? = null
     val countryValue = Locale.getDefault().getDisplayCountry()
 
     var uiState = mutableStateOf(RegisterUiState())
@@ -43,6 +51,10 @@ class RegisterViewModel @Inject constructor(
         get() = uiState.value.button
 
 
+    fun initialize(context: Context) {
+        loadInterstitialAd(context)
+    }
+
     fun onEmailChange(newValue: String) { uiState.value = uiState.value.copy(email = newValue) }
     fun onPasswordChange(newValue: String) { uiState.value = uiState.value.copy(password = newValue) }
 
@@ -52,6 +64,7 @@ class RegisterViewModel @Inject constructor(
         email_error: String,
         password_error: String,
         password_match_error: String,
+        context: Context
     ) {
         onButtonChange()
         if (!email.isValidEmail()) {
@@ -68,6 +81,7 @@ class RegisterViewModel @Inject constructor(
 
         launchCatching {
             try {
+                showInterstitialAd(context)
                 accountService.linkAccount(email, password)
                 firestoreService.saveUser(
                     User(
@@ -92,6 +106,35 @@ class RegisterViewModel @Inject constructor(
         }
     }
 
-    fun onButtonChange() { uiState.value = uiState.value.copy(button = !button) }
+    private fun onButtonChange() { uiState.value = uiState.value.copy(button = !button) }
+
+
+    private fun showInterstitialAd(context: Context){
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(context as Activity)
+            loadInterstitialAd(context)
+        } else {
+            loadInterstitialAd(context)
+        }
+    }
+
+    private fun loadInterstitialAd(context: Context) {
+        var adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(
+            context,
+            ADS_REGISTER_INTERSTITIAL_ID,
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    mInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    mInterstitialAd = interstitialAd
+                }
+            }
+        )
+    }
 }
 

@@ -41,7 +41,6 @@ fun PomodoroNavGraph(
     sizeAwareDrawerState: DrawerState,
     currentRoute: String,
     isExpandedScreen: Boolean,
-    showInterstitialAds: () -> Unit,
     openDrawer: () -> Unit,
     closeDrawer: () -> Unit,
 
@@ -147,7 +146,6 @@ fun PomodoroNavGraph(
                         openDrawer = openDrawer,
                         navigateTimeOver = navigateTimeOver,
                         navigateToProductivity = navigateToProductivity,
-                        showInterstitialAds = showInterstitialAds,
                     )
                 }
                 composable(PomodoroDestinations.JOB_ROUTE){
@@ -197,7 +195,6 @@ fun PomodoroNavGraph(
                 composable(PomodoroDestinations.SPLASH_ROUTE) {
                     SplashScreen(
                         navigateAndPopUpSplashToTimeline = navigateAndPopUpSplashToTimeline,
-                        showInterstialAd = showInterstitialAds
                     )
                 }
 
@@ -205,14 +202,12 @@ fun PomodoroNavGraph(
                     LogInScreen(
                         restartApp = restartApp,
                         loginToRegister = loginToRegister,
-                        showInterstialAd = showInterstitialAds,
                     )
                 }
                 composable(PomodoroDestinations.REGISTER_ROUTE) {
                     RegisterScreen(
                         navigateAndPopUpRegisterToEdit = navigateAndPopUpRegisterToEdit,
                         registerToLogin = registerToLogin,
-                        showInterstitialAds = showInterstitialAds,
                     )
                 }
                 composable(PomodoroDestinations.EDIT_ROUTE) {
@@ -225,7 +220,6 @@ fun PomodoroNavGraph(
                     TimeOverScreen(
                         openDrawer = openDrawer,
                         navigateToProductivity = navigateToProductivity,
-                        showInterstialAd = showInterstitialAds,
                     )
                 }
                 composable(

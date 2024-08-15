@@ -16,10 +16,17 @@
 
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.login
 
+import android.app.Activity
+import android.content.Context
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.mutableStateOf
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidEmail
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_LOGIN_INTERSTITIAL_ID
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.CountryRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
@@ -36,6 +43,7 @@ class LogInViewModel @Inject constructor(
     private val countryRepository: CountryRepository,
     logService: LogService,
 ): PomodoroViewModel(logService) {
+    private var mInterstitialAd: InterstitialAd? = null
     var uiState = mutableStateOf(LogInUiState())
         private set
 
@@ -45,6 +53,10 @@ class LogInViewModel @Inject constructor(
         get() = uiState.value.password
     private val button
         get() = uiState.value.button
+
+    fun initialize(context: Context) {
+        loadInterstitialAd(context)
+    }
 
     fun onEmailChange(newValue: String) {
         uiState.value = uiState.value.copy(email = newValue)
@@ -60,7 +72,8 @@ class LogInViewModel @Inject constructor(
 
     fun onLogInClick(
         restartApp: () -> Unit, snackbarHostState: SnackbarHostState,
-        emailError: String, emptyPasswordError: String
+        emailError: String, emptyPasswordError: String,
+        context: Context
         ) {
         onButtonChange()
         if (!email.isValidEmail()) {
@@ -81,6 +94,7 @@ class LogInViewModel @Inject constructor(
 
         launchCatching {
             try {
+                showInterstitialAd(context)
                 accountService.authenticate(email, password)
                 val user = firestoreService.getUser(accountService.currentUserId)
                 countryRepository.saveCountryState(
@@ -90,6 +104,7 @@ class LogInViewModel @Inject constructor(
                 restartApp()
             } catch (ex: FirebaseAuthException) {
                 launchCatching {
+                    showInterstitialAd(context)
                     snackbarHostState.showSnackbar(ex.localizedMessage ?: "")
                     onButtonChange()
                 }
@@ -100,7 +115,8 @@ class LogInViewModel @Inject constructor(
 
     fun onForgotPasswordClick(
         snackbarHostState: SnackbarHostState,
-        emailError: String, recoveryEmailSent: String
+        emailError: String, recoveryEmailSent: String,
+        context: Context
     ) {
         if (!email.isValidEmail()) {
             launchCatching {
@@ -110,9 +126,38 @@ class LogInViewModel @Inject constructor(
         }
 
         launchCatching {
+            showInterstitialAd(context)
             accountService.sendRecoveryEmail(email)
             snackbarHostState.showSnackbar(recoveryEmailSent)
         }
+    }
+
+    private fun showInterstitialAd(context: Context){
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(context as Activity)
+            loadInterstitialAd(context)
+        } else {
+            loadInterstitialAd(context)
+        }
+    }
+
+    private fun loadInterstitialAd(context: Context) {
+        var adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(
+            context,
+            ADS_LOGIN_INTERSTITIAL_ID,
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    mInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    mInterstitialAd = interstitialAd
+                }
+            }
+        )
     }
 }
 

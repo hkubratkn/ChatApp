@@ -62,6 +62,8 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.basicButton
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.fieldModifier
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.smallSpacer
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.textButton
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Cons.SPLASH_TIMEOUT
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
@@ -69,7 +71,6 @@ import kotlinx.coroutines.launch
 fun LogInScreen(
     restartApp: () -> Unit,
     loginToRegister: () -> Unit,
-    showInterstialAd: () -> Unit,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     modifier: Modifier = Modifier,
     viewModel: LogInViewModel = hiltViewModel()
@@ -78,6 +79,7 @@ fun LogInScreen(
     val emailError = stringResource(id = AppText.email_error)
     val emptyPasswordError = stringResource(id = AppText.empty_password_error)
     val recoveryEmailSent = stringResource(id = AppText.recovery_email_sent)
+    val context = LocalContext.current
 
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
@@ -109,12 +111,12 @@ fun LogInScreen(
             PasswordField(uiState.password, viewModel::onPasswordChange, Modifier.fieldModifier())
 
             BasicButton(text = AppText.log_in, Modifier.basicButton(), uiState.button) {
-                showInterstialAd()
                 viewModel.onLogInClick(
                     restartApp = restartApp,
                     snackbarHostState = snackbarHostState,
                     emailError = emailError,
-                    emptyPasswordError = emptyPasswordError
+                    emptyPasswordError = emptyPasswordError,
+                    context = context
                 )
             }
 
@@ -122,18 +124,22 @@ fun LogInScreen(
                 viewModel.onForgotPasswordClick(
                     snackbarHostState = snackbarHostState,
                     emailError = emailError,
-                    recoveryEmailSent = recoveryEmailSent
+                    recoveryEmailSent = recoveryEmailSent,
+                    context = context
                 )
-                showInterstialAd()
             }
 
             Spacer(modifier = Modifier.smallSpacer())
 
             BasicTextButton(AppText.create_new_account, Modifier.textButton()) {
-                showInterstialAd()
                 loginToRegister()
             }
         }
+    }
+
+    LaunchedEffect(true) {
+        delay(SPLASH_TIMEOUT)
+        viewModel.initialize(context)
     }
 }
 

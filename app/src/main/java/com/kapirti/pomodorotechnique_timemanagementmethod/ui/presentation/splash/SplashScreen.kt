@@ -26,7 +26,6 @@ import kotlinx.coroutines.delay
 @Composable
 fun SplashScreen(
     navigateAndPopUpSplashToTimeline: () -> Unit,
-    showInterstialAd: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SplashViewModel = hiltViewModel()
 ) {
@@ -43,7 +42,6 @@ fun SplashScreen(
 
             BasicButton(AppText.try_again, Modifier.basicButton(), true) {
                 viewModel.onAppStart(navigateAndPopUpSplashToTimeline)
-                showInterstialAd()
             }
         } else {
             Image(painter = painterResource(id = AppIcon.icon), contentDescription = stringResource(AppText.app_name), modifier = Modifier.padding(20.dp))

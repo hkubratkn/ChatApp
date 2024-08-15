@@ -32,12 +32,10 @@ import kotlinx.coroutines.CoroutineScope
 
 @Composable
 fun PomodoroApp(
-    hasUser: Boolean,
    // shortcutParams: ShortcutParams?,
     widthSizeClass: WindowWidthSizeClass,
     networkMonitor: NetworkMonitor,
     isDarkTheme: Boolean,
-    showInterstitialAds: () -> Unit,
     appState: PomodoroAppState = rememberAppState(
         networkMonitor = networkMonitor,
     ),
@@ -78,7 +76,6 @@ fun PomodoroApp(
 
         PomodoroNavGraph(
             isExpandedScreen = isExpandedScreen,
-            showInterstitialAds = showInterstitialAds,
             navController = navController,
             openDrawer = { coroutineScope.launch { sizeAwareDrawerState.open() } },
             closeDrawer = { coroutineScope.launch { sizeAwareDrawerState.close() } },

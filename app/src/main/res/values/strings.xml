@@ -131,12 +131,9 @@
     <string name="search_no_matches">No matches for “%1s”</string>
     <string name="search_no_matches_retry">Try broadening your search</string>
     <string name="recent_searches">Recent searches</string>
-    <string name="no_users_all">You have no users!</string>
+    <string name="users_not_found">Users not found</string>
 </resources>
     <!--
-
-    <string name="timeline_title">Timeline</string>
-
 
     <string name="photos_title">Photos</string>
     <string name="no_photos_all">You have no photos!</string>

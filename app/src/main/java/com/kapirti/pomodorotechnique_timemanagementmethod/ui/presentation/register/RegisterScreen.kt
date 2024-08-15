@@ -16,6 +16,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsBannerToolbar
@@ -29,13 +30,14 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.basicButton
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.fieldModifier
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.smallSpacer
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.textButton
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.Cons.SPLASH_TIMEOUT
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_REGISTER_BANNER_ID
+import kotlinx.coroutines.delay
 
 @Composable
 fun RegisterScreen(
     navigateAndPopUpRegisterToEdit: () -> Unit,
     registerToLogin: () -> Unit,
-    showInterstitialAds: () -> Unit,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     modifier: Modifier = Modifier,
     viewModel: RegisterViewModel = hiltViewModel()
@@ -45,6 +47,7 @@ fun RegisterScreen(
     val email_error = stringResource(AppText.email_error)
     val password_error = stringResource(AppText.password_error)
     val password_match_error = stringResource(AppText.password_match_error)
+    val context = LocalContext.current
 
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
@@ -98,16 +101,20 @@ fun RegisterScreen(
                     email_error = email_error,
                     password_error = password_error,
                     password_match_error = password_match_error,
+                    context = context
                 )
-                showInterstitialAds()
             }
             Spacer(modifier = Modifier.smallSpacer())
 
 
             BasicTextButton(AppText.already_have_an_account, Modifier.textButton()) {
-                showInterstitialAds()
                 registerToLogin()
             }
         }
+    }
+
+    LaunchedEffect(true) {
+        delay(SPLASH_TIMEOUT)
+        viewModel.initialize(context)
     }
 }

@@ -22,8 +22,6 @@ class MainViewModel @Inject constructor(
     private val getThemeUpdateUseCase: GetThemeUpdateUseCase,
     logService: LogService
 ) : PomodoroViewModel(logService) {
-    val hasUser = accountService.hasUser
-
     private val _theme by lazy { mutableStateOf(Theme.Light) }
     val theme: State<Theme> by lazy { _theme.apply { updateTheme() } }
 

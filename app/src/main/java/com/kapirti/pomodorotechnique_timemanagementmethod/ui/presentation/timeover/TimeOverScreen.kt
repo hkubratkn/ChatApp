@@ -39,7 +39,6 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds
 internal fun TimeOverScreen(
     openDrawer: () -> Unit,
     navigateToProductivity: () -> Unit,
-    showInterstialAd: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: TimeOverViewModel = hiltViewModel()
 ) {
@@ -54,11 +53,9 @@ internal fun TimeOverScreen(
                 finishBtnStatus = viewModel.finishBtnStatus,
                 onStartClick = {
                     viewModel.onStartPressed(context = context, navigateToPomodoro = navigateToProductivity)
-                    showInterstialAd()
                 },
                 onFinishClick = {
                     viewModel.onFinishClicked()
-                    showInterstialAd()
                 }
             )
         },

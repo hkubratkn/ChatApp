@@ -3,10 +3,14 @@ package com.kapirti.pomodorotechnique_timemanagementmethod.core.constants
 object ConsAds {
 
     const val ADS_APP_OPEN_ID = "ca-app-pub-3006196735467220/1047253827"
-    const val ADS_INTERSTITIAL_ID = "ca-app-pub-3006196735467220/7205343651"
     const val ADS_WELCOME_BANNER_ID = ""
+
     const val ADS_LOG_IN_BANNER_ID = "ca-app-pub-3006196735467220/4170242238"
+    const val ADS_LOGIN_INTERSTITIAL_ID = "ca-app-pub-3006196735467220/5651274431"
+
     const val ADS_REGISTER_BANNER_ID = "ca-app-pub-3006196735467220/5869502565"
+    const val ADS_REGISTER_INTERSTITIAL_ID = "ca-app-pub-3006196735467220/7205343651"
+
     const val ADS_EDIT_BANNER_ID = "ca-app-pub-3006196735467220/6333371142"
     const val ADS_TIME_OVER_BANNER_ID = "ca-app-pub-3006196735467220/8797713346"
     const val ADS_USER_PROFILE_BANNER_ID = "ca-app-pub-3006196735467220/2885231054"

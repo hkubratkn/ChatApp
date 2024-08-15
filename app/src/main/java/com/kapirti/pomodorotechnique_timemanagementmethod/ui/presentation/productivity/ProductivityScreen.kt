@@ -65,7 +65,6 @@ fun rememberTabContent(
     startBtnStatus: Boolean,
     finishBtnStatus: Boolean,
     navigateToPomodoro: () -> Unit,
-    showInterstialAd: () -> Unit,
     onStartPressed: () -> Unit,
     onFinishClicked: () -> Unit,
 
@@ -75,7 +74,7 @@ fun rememberTabContent(
     onStopClick: () -> Unit,
 ): List<TabContentProductivity> {
     val pomodoroSection = TabContentProductivity(SectionsProductivity.Pomodoro) {
-        TabWithPomodoro(pomo = pomo, finishClick = finishClick, startBtnStatus = startBtnStatus, finishBtnStatus = finishBtnStatus, navigateToPomodoro = navigateToPomodoro, onFinishClicked = onFinishClicked, onStartPressed = onStartPressed, showInterstialAd = showInterstialAd, ) }
+        TabWithPomodoro(pomo = pomo, finishClick = finishClick, startBtnStatus = startBtnStatus, finishBtnStatus = finishBtnStatus, navigateToPomodoro = navigateToPomodoro, onFinishClicked = onFinishClicked, onStartPressed = onStartPressed) }
     val timerSection = TabContentProductivity(SectionsProductivity.Timer) {
         TabWithTimer(timerValue = timerValue, onStartClick = onStartClick, onPauseClick = onPauseClick,onStopClick = onStopClick) }
     val stayedSection = TabContentProductivity(SectionsProductivity.Stayed) { TabWithStayed() }
@@ -112,7 +111,6 @@ private fun TabWithPomodoro(
     startBtnStatus: Boolean,
     finishBtnStatus: Boolean,
     navigateToPomodoro: () -> Unit,
-    showInterstialAd: () -> Unit,
     onStartPressed: () -> Unit,
     onFinishClicked: () -> Unit,
     modifier: Modifier = Modifier,
@@ -134,7 +132,6 @@ private fun TabWithPomodoro(
                     text = AppText.try_again, modifier = Modifier.card(), true,
                     action = {
                         navigateToPomodoro()
-                        showInterstialAd()
                     }
                 )
                 Spacer(modifier = Modifier.smallSpacer())
