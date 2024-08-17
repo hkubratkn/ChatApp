@@ -22,6 +22,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.ChatIdR
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.CountryRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.IsReviewDataStore
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.OnBoardingRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.PomoService
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.UserIdRepository
 import dagger.Module
@@ -34,12 +35,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DataStoreModule {
-
-/**    @Provides
+    @Provides
     @Singleton
     fun provideOnBoardingRepository(
         @ApplicationContext context: Context
-    ) = OnBoardingRepository(context = context)*/
+    ) = OnBoardingRepository(context = context)
 
     @Provides
     @Singleton

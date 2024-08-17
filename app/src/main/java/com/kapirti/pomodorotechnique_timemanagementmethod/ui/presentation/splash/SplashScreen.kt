@@ -26,6 +26,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun SplashScreen(
     navigateAndPopUpSplashToTimeline: () -> Unit,
+    navigateAndPopUpSplashToWelcome: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SplashViewModel = hiltViewModel()
 ) {
@@ -41,7 +42,8 @@ fun SplashScreen(
             Text(text = stringResource(AppText.generic_error))
 
             BasicButton(AppText.try_again, Modifier.basicButton(), true) {
-                viewModel.onAppStart(navigateAndPopUpSplashToTimeline)
+                viewModel.onAppStart(navigateAndPopUpSplashToTimeline = navigateAndPopUpSplashToTimeline,
+                    navigateAndPopUpSplashToWelcome = navigateAndPopUpSplashToWelcome)
             }
         } else {
             Image(painter = painterResource(id = AppIcon.icon), contentDescription = stringResource(AppText.app_name), modifier = Modifier.padding(20.dp))
@@ -50,6 +52,7 @@ fun SplashScreen(
 
     LaunchedEffect(true) {
         delay(SPLASH_TIMEOUT)
-        viewModel.onAppStart(navigateAndPopUpSplashToTimeline)
+        viewModel.onAppStart(navigateAndPopUpSplashToTimeline = navigateAndPopUpSplashToTimeline,
+            navigateAndPopUpSplashToWelcome = navigateAndPopUpSplashToWelcome)
     }
 }

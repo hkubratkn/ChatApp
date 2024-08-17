@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 
 object PomodoroDestinations {
     const val SPLASH_ROUTE = "splash"
+    const val WELCOME_ROUTE = "welcome"
     const val LOG_IN_ROUTE = "login"
     const val REGISTER_ROUTE = "register"
     const val EDIT_ROUTE = "edit"
@@ -119,6 +120,7 @@ class PomodoroNavigationActions(navController: NavHostController) {
         }
     }
 
+
     val navigateLogin: () -> Unit = {
         navController.navigate(PomodoroDestinations.LOG_IN_ROUTE){ launchSingleTop = true }
     }
@@ -147,6 +149,18 @@ class PomodoroNavigationActions(navController: NavHostController) {
         navController.navigate(PomodoroDestinations.TIMELINE_ROUTE){
             launchSingleTop = true
             popUpTo(PomodoroDestinations.SPLASH_ROUTE){ inclusive = true }
+        }
+    }
+    val navigateAndPopUpSplashToWelcome: () -> Unit = {
+        navController.navigate(PomodoroDestinations.WELCOME_ROUTE) {
+            launchSingleTop = true
+            popUpTo(PomodoroDestinations.SPLASH_ROUTE) { inclusive = true }
+        }
+    }
+    val navigateAndPopUpWelcomeToTimeline: () -> Unit = {
+        navController.navigate(PomodoroDestinations.TIMELINE_ROUTE) {
+            launchSingleTop = true
+            popUpTo(PomodoroDestinations.WELCOME_ROUTE) { inclusive = true }
         }
     }
     val navigateAndPopUpLoginToRegister: () -> Unit = {
@@ -185,7 +199,6 @@ class PomodoroNavigationActions(navController: NavHostController) {
     const val INTEREST_ROUTE = "interest"
     const val ADD_ROUTE = "add"
 
-    const val WELCOME_SCREEN = "WelcomeScreen"
     */
 }
 

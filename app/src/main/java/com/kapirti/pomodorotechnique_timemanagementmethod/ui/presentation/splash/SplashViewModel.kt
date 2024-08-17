@@ -3,6 +3,7 @@ package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.splas
 import androidx.compose.runtime.mutableStateOf
 import javax.inject.Inject
 import com.google.firebase.auth.FirebaseAuthException
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.OnBoardingRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.ConfigurationService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
@@ -11,8 +12,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-    configurationService: ConfigurationService,
     private val accountService: AccountService,
+    private val onBoardingRepository: OnBoardingRepository,
+    configurationService: ConfigurationService,
     logService: LogService,
 ): PomodoroViewModel(logService) {
     val showError = mutableStateOf(false)
@@ -21,31 +23,46 @@ class SplashViewModel @Inject constructor(
         launchCatching { configurationService.fetchConfiguration() }
     }
 
-    fun onAppStart(navigateAndPopUpSplashToTimeline: () -> Unit) {
+    fun onAppStart(
+        navigateAndPopUpSplashToTimeline: () -> Unit,
+        navigateAndPopUpSplashToWelcome: () -> Unit,
+    ) {
 
         showError.value = false
-        if (accountService.hasUser) navigateAndPopUpSplashToTimeline()
-        else createAnonymousAccount(navigateAndPopUpSplashToTimeline)
+        if (accountService.hasUser){
+            launchCatching {
+                onBoardingRepository.readOnBoardingState().collect {
+                    if (it) {
+                        navigateAndPopUpSplashToTimeline()
+                    } else {
+                        navigateAndPopUpSplashToWelcome()
+                    }
+                }
+            }
+        } else {
+            createAnonymousAccount(navigateAndPopUpSplashToTimeline = navigateAndPopUpSplashToTimeline,
+                navigateAndPopUpSplashToWelcome = navigateAndPopUpSplashToWelcome)
+        }
     }
 
-    private fun createAnonymousAccount(navigateAndPopUpSplashToTimeline: () -> Unit) {
+    private fun createAnonymousAccount(
+        navigateAndPopUpSplashToTimeline: () -> Unit,
+        navigateAndPopUpSplashToWelcome: () -> Unit,
+    ) {
         launchCatching() {
             try {
                 accountService.createAnonymousAccount()
+                onBoardingRepository.readOnBoardingState().collect{
+                    if (it) {
+                        navigateAndPopUpSplashToTimeline()
+                    } else {
+                        navigateAndPopUpSplashToWelcome()
+                    }
+                }
             } catch (ex: FirebaseAuthException) {
                 showError.value = true
                 throw ex
             }
-            navigateAndPopUpSplashToTimeline()
         }
     }
 }
-
-// onBoardingRepository.readOnBoardingState().collect { completed ->
-//   openAndPopUp(ZepiDestinations.HOME_ROUTE, ZepiDestinations.SPLASH_ROUTE)
-
-/** if (completed) {
-openAndPopUp(QChatDestinations.HOME_ROUTE, QChatDestinations.SPLASH_ROUTE)
-} else {
-openAndPopUp(WELCOME_SCREEN, SPLASH_SCREEN)
-}*/

@@ -34,6 +34,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.splash
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.subscribe.SubscribeScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.TimelineRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeover.TimeOverScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.welcome.WelcomeRoute
 
 
 @Composable
@@ -62,6 +63,8 @@ fun PomodoroNavGraph(
     navigateBlockedUser: () -> Unit,
 
     navigateAndPopUpSplashToTimeline: () -> Unit,
+    navigateAndPopUpSplashToWelcome: () -> Unit,
+    navigateAndPopUpWelcomeToTimeline: () -> Unit,
     //openAndPopUpSplashToLogin: () -> Unit,
     navigateAndPopUpRegisterToEdit: () -> Unit,
 
@@ -195,9 +198,14 @@ fun PomodoroNavGraph(
                 composable(PomodoroDestinations.SPLASH_ROUTE) {
                     SplashScreen(
                         navigateAndPopUpSplashToTimeline = navigateAndPopUpSplashToTimeline,
+                        navigateAndPopUpSplashToWelcome = navigateAndPopUpSplashToWelcome,
+                        )
+                }
+                composable(PomodoroDestinations.WELCOME_ROUTE) {
+                    WelcomeRoute(
+                        navigateAndPopUpWelcomeToTimeline = navigateAndPopUpWelcomeToTimeline,
                     )
                 }
-
                 composable(PomodoroDestinations.LOG_IN_ROUTE) {
                     LogInScreen(
                         restartApp = restartApp,

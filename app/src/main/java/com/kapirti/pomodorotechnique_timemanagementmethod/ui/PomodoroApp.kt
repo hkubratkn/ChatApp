@@ -105,6 +105,8 @@ fun PomodoroApp(
 
 
             navigateAndPopUpSplashToTimeline = navigationActions.navigateAndPopUpSplashToTimeline,
+            navigateAndPopUpSplashToWelcome = navigationActions.navigateAndPopUpSplashToWelcome,
+            navigateAndPopUpWelcomeToTimeline = navigationActions.navigateAndPopUpWelcomeToTimeline,
             navigateAndPopUpRegisterToEdit = navigationActions.navigateAndPopUpRegisterToEdit,
 
             navigateEdit = navigationActions.navigateEdit,
