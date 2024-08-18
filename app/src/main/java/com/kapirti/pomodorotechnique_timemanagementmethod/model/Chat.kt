@@ -1,10 +1,11 @@
 package com.kapirti.pomodorotechnique_timemanagementmethod.model
 
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.ServerTimestamp
 
 data class Chat(
-    val chatId: String = "",
+    @DocumentId val chatId: String = "",
 
     val unread: Int = 0,
     val lastMessage: String = "",

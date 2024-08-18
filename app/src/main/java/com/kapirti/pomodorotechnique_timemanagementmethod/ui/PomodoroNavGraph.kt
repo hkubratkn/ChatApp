@@ -34,6 +34,7 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.splash
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.subscribe.SubscribeScreen
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.TimelineRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeover.TimeOverScreen
+import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.userprofile.UserProfileRoute
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.welcome.WelcomeRoute
 
 
@@ -193,6 +194,7 @@ fun PomodoroNavGraph(
                     SubscribeScreen()
                 }
 
+
                 composable(PomodoroDestinations.SPLASH_ROUTE) {
                     SplashScreen(
                         navigateAndPopUpSplashToTimeline = navigateAndPopUpSplashToTimeline,
@@ -226,6 +228,17 @@ fun PomodoroNavGraph(
                     TimeOverScreen(
                         openDrawer = openDrawer,
                         navigateToProductivity = navigateToProductivity,
+                    )
+                }
+                composable(PomodoroDestinations.USER_PROFILE_ROUTE) {
+                    UserProfileRoute(
+                        popUpScreen = popUpScreen,
+                        navigateLogin = navigateLogin,
+                        onChatExistClick = {}, //userProfileToChatExist,
+                        onChatNopeClick = {}, //userProfileToChatNope,
+                        navigatePhotos = {}, //navigatePhotos,
+                        navigateVideoCall = {}, //navigateVideoCall,
+                        includeUserIdViewModel = includeUserIdViewModel
                     )
                 }
                 composable(
@@ -463,18 +476,6 @@ fun PomodoroNavGraph(
                 composable(ZepiDestinations.SEARCH_ROUTE) {
                     SearchScreen(
                         navigateAndPopUpSearchToUserProfile = navigateAndPopUpSearchToUserProfile,
-                        includeUserIdViewModel = includeUserIdViewModel
-                    )
-                }
-                composable(ZepiDestinations.USER_PROFILE_ROUTE) {
-                    UserProfileRoute(
-                        popUpScreen = popUpScreen,
-                        onLoginClick = openLoginScreen,
-                        onChatExistClick = {}, //userProfileToChatExist,
-                        onChatNopeClick = userProfileToChatNope,
-                        navigatePhotos = navigatePhotos,
-                        navigateVideoCall = navigateVideoCall,
-                        showInterstitialAds = showInterstitialAds,
                         includeUserIdViewModel = includeUserIdViewModel
                     )
                 }
