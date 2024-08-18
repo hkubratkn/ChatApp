@@ -141,7 +141,7 @@ fun MenuToolbar(
             ) {
                 Icon(
                     imageVector = actionsIcon,
-                    contentDescription = stringResource(id = AppText.cd_search),
+                    contentDescription = stringResource(id = AppText.search),
                 )
             }
         },
@@ -179,7 +179,7 @@ fun BackToolbar(
             IconButton(onClick = onActionsClick) {
                 Icon(
                     imageVector = actionsIcon,
-                    contentDescription = stringResource(id = AppText.cd_search),
+                    contentDescription = stringResource(id = AppText.search),
                 )
             }
         },

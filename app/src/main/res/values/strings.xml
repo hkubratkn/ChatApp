@@ -108,7 +108,7 @@
 
     <!-- Content descripiton -->
     <string name="cd_menu">Menu</string>
-    <string name="cd_search">Search</string>
+    <string name="cd_close">Close</string>
     <string name="cd_back">Back</string>
     <string name="cd_profile_photo">Profile photo</string>
     <string name="cd_lock">Lock</string>
@@ -117,6 +117,7 @@
     <string name="cd_icon">icon</string>
     <string name="cd_menu_actions">Menu actions</string>
     <string name="cd_user_photo">User photo</string>
+
 
 
     <!-- use now importants -->

@@ -56,7 +56,8 @@ fun EditRoute(
             popUp = popUp,
             restartApp = restartApp,
             context = context
-        ) }
+        ) },
+        isDoneBtnWorking = uiState.isDoneBtnWorking
     ) { paddingValues ->
 
         val modifier = Modifier.padding(paddingValues)

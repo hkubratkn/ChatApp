@@ -186,12 +186,13 @@ class EditViewModel @Inject constructor(
         context: Context, popUp: () -> Unit,
         restartApp: () -> Unit,
     ) {
+        _isNextEnabled.value = false
+        onIsDoneBtnWorkingChange(true)
         when (_editType.value) {
             PROFILE -> { saveAll(restartApp = restartApp) }
             PROFILE_PHOTO -> { profilePhotoBitmapSave(context = context, restartApp = restartApp) }
             DISPLAY_NAME -> { saveDisplayName(restartApp = restartApp) }
             DESCRIPTION -> { saveDescription(restartApp = restartApp) }
-
 
             TIMELINE_VIDEO -> { videoBitmapSave(restartApp = restartApp) }
             JOB -> { saveJob(restartApp) }
@@ -420,7 +421,7 @@ class EditViewModel @Inject constructor(
     }
 
     private fun onIsErrorPasswordChange(newValue: Boolean) { uiState.value = uiState.value.copy(isErrorPassword = newValue) }
-
+    private fun onIsDoneBtnWorkingChange(newValue: Boolean) { uiState.value = uiState.value.copy(isDoneBtnWorking = newValue) }
 }
 
 enum class SurveyQuestion {

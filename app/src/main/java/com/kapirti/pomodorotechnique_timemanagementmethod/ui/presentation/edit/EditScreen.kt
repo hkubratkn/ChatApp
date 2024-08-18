@@ -29,6 +29,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -37,6 +38,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -66,6 +68,7 @@ fun EditScreen(
     onPreviousPressed: () -> Unit,
     onNextPressed: () -> Unit,
     onDonePressed: () -> Unit,
+    isDoneBtnWorking: Boolean,
     content: @Composable (PaddingValues) -> Unit,
 ) {
     Surface(modifier = Modifier.supportWideScreen()) {
@@ -88,7 +91,8 @@ fun EditScreen(
                     isNextButtonEnabled = isNextEnabled,
                     onPreviousPressed = onPreviousPressed,
                     onNextPressed = onNextPressed,
-                    onDonePressed = onDonePressed
+                    onDonePressed = onDonePressed,
+                    isDoneBtnWorking = isDoneBtnWorking
                 )
             }
         )
@@ -174,7 +178,7 @@ private fun TopAppBarTitle(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class) // CenterAlignedTopAppBar is experimental in m3
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SurveyTopAppBar(
     questionIndex: Int,
@@ -197,7 +201,7 @@ fun SurveyTopAppBar(
                 ) {
                     Icon(
                         Icons.Filled.Close,
-                        contentDescription = null,
+                        contentDescription = stringResource(R.string.cd_close),
                         tint = MaterialTheme.colorScheme.onSurface.copy(stronglyDeemphasizedAlpha)
                     )
                 }
@@ -225,7 +229,8 @@ fun SurveyBottomBar(
     isNextButtonEnabled: Boolean,
     onPreviousPressed: () -> Unit,
     onNextPressed: () -> Unit,
-    onDonePressed: () -> Unit
+    onDonePressed: () -> Unit,
+    isDoneBtnWorking: Boolean,
 ) {
     Surface(shadowElevation = 7.dp) {
         Row(
@@ -256,7 +261,16 @@ fun SurveyBottomBar(
                     onClick = onDonePressed,
                     enabled = isNextButtonEnabled,
                 ) {
-                    Text(text = stringResource(id = R.string.done))
+                    if (isDoneBtnWorking) {
+                        CircularProgressIndicator(
+                            color = MaterialTheme.colorScheme.secondary,
+                            modifier = Modifier
+                                .padding(horizontal = 6.dp)
+                                .size(24.dp)
+                        )
+                    } else {
+                        Text(text = stringResource(id = R.string.done))
+                    }
                 }
             } else {
                 Button(
@@ -272,3 +286,28 @@ fun SurveyBottomBar(
         }
     }
 }
+
+
+/**
+@Composable
+fun BasicButton(@StringRes text: Int, modifier: Modifier,  action: () -> Unit) {
+    Button(
+        onClick = action,
+        modifier = modifier,
+        enabled = enabled,
+        colors =
+        ButtonDefaults.buttonColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.onPrimary
+        ),
+        shape = RoundedCornerShape(8.dp),
+        elevation = ButtonDefaults.elevatedButtonElevation(
+            defaultElevation = 6.dp,
+            pressedElevation = 8.dp,
+            disabledElevation = 0.dp
+        )
+    ) {
+
+    }
+}
+*/

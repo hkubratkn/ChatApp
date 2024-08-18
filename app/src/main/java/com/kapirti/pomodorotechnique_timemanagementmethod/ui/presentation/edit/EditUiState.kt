@@ -19,4 +19,5 @@ package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.edit
 data class EditUiState(
     val password: String = "",
     val isErrorPassword: Boolean = false,
+    val isDoneBtnWorking: Boolean = false,
 )
