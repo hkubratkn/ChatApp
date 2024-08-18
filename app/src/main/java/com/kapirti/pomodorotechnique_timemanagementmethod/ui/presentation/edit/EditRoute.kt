@@ -146,7 +146,12 @@ fun EditRoute(
         AlertDialog(
             title = {
                 Column(){
-                    PasswordField(uiState.password, viewModel::onPasswordChange, Modifier.fieldModifier())
+                    PasswordField(
+                        value = uiState.password,
+                        onNewValue = viewModel::onPasswordChange,
+                        modifier = Modifier.fieldModifier(),
+                        isError = uiState.isErrorPassword
+                    )
                     Text(stringResource(AppText.delete_account_title))
                 } },
             text = { Text(stringResource(AppText.delete_account_description)) },

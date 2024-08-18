@@ -84,7 +84,7 @@ fun DescriptionField(
 }
 
 @Composable
-fun EmailField(value: String, onNewValue: (String) -> Unit, modifier: Modifier = Modifier) {
+fun EmailField(value: String, isError: Boolean, onNewValue: (String) -> Unit, modifier: Modifier = Modifier) {
     val focusManager = LocalFocusManager.current
     OutlinedTextField(
         singleLine = true,
@@ -104,17 +104,19 @@ fun EmailField(value: String, onNewValue: (String) -> Unit, modifier: Modifier =
                 )
             }
         ),
+        isError = isError
     )
 }
 
 @Composable
-fun PasswordField(value: String, onNewValue: (String) -> Unit, modifier: Modifier = Modifier) {
-    PasswordField(value, AppText.password, onNewValue, modifier)
+fun PasswordField(value: String, isError: Boolean, onNewValue: (String) -> Unit, modifier: Modifier = Modifier) {
+    PasswordField(value = value, isError = isError,
+        placeholder = AppText.password, onNewValue = onNewValue, modifier = modifier)
 }
 
 @Composable
 private fun PasswordField(
-    value: String,
+    value: String, isError: Boolean,
     @StringRes placeholder: Int,
     onNewValue: (String) -> Unit,
     modifier: Modifier = Modifier
@@ -140,7 +142,8 @@ private fun PasswordField(
             }
         },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-        visualTransformation = visualTransformation
+        visualTransformation = visualTransformation,
+        isError = isError
     )
 }
 

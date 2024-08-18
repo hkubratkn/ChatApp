@@ -65,15 +65,13 @@ fun PomodoroNavGraph(
     navigateAndPopUpSplashToTimeline: () -> Unit,
     navigateAndPopUpSplashToWelcome: () -> Unit,
     navigateAndPopUpWelcomeToTimeline: () -> Unit,
-    //openAndPopUpSplashToLogin: () -> Unit,
+    navigateAndPopUpLoginToRegister: () -> Unit,
+    navigateAndPopUpRegisterToLogin: () -> Unit,
     navigateAndPopUpRegisterToEdit: () -> Unit,
 
     navigateEdit: () -> Unit,
     navigateTimeOver: () -> Unit,
     navigateJobDetail: () -> Unit,
-
-    loginToRegister: () -> Unit,
-    registerToLogin: () -> Unit,
 
     includeUserIdViewModel: IncludeUserIdViewModel,
     includeChatViewModel: IncludeChatViewModel,
@@ -209,13 +207,13 @@ fun PomodoroNavGraph(
                 composable(PomodoroDestinations.LOG_IN_ROUTE) {
                     LogInScreen(
                         restartApp = restartApp,
-                        loginToRegister = loginToRegister,
+                        navigateAndPopUpLoginToRegister = navigateAndPopUpLoginToRegister,
                     )
                 }
                 composable(PomodoroDestinations.REGISTER_ROUTE) {
                     RegisterScreen(
                         navigateAndPopUpRegisterToEdit = navigateAndPopUpRegisterToEdit,
-                        registerToLogin = registerToLogin,
+                        navigateAndPopUpRegisterToLogin = navigateAndPopUpRegisterToLogin,
                     )
                 }
                 composable(PomodoroDestinations.EDIT_ROUTE) {

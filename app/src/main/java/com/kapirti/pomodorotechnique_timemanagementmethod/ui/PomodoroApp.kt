@@ -107,14 +107,13 @@ fun PomodoroApp(
             navigateAndPopUpSplashToTimeline = navigationActions.navigateAndPopUpSplashToTimeline,
             navigateAndPopUpSplashToWelcome = navigationActions.navigateAndPopUpSplashToWelcome,
             navigateAndPopUpWelcomeToTimeline = navigationActions.navigateAndPopUpWelcomeToTimeline,
+            navigateAndPopUpLoginToRegister = navigationActions.navigateAndPopUpLoginToRegister,
+            navigateAndPopUpRegisterToLogin = navigationActions.navigateAndPopUpRegisterToLogin,
             navigateAndPopUpRegisterToEdit = navigationActions.navigateAndPopUpRegisterToEdit,
 
             navigateEdit = navigationActions.navigateEdit,
             navigateTimeOver = navigationActions.navigateTimeOver,
             navigateJobDetail = navigationActions.navigateJobDetail,
-
-            loginToRegister = navigationActions.navigateAndPopUpLoginToRegister,
-            registerToLogin = navigationActions.navigateAndPopUpRegisterToLogin,
 
             /**
             openAndPopUpChatNopeToExist = navigationActions.openAndPopUpChatNopeToExist,

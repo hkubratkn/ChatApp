@@ -66,18 +66,16 @@ class LogInViewModel @Inject constructor(
         uiState.value = uiState.value.copy(password = newValue)
     }
 
-    fun onButtonChange() {
-        uiState.value = uiState.value.copy(button = !button)
-    }
-
     fun onLogInClick(
         restartApp: () -> Unit, snackbarHostState: SnackbarHostState,
-        emailError: String, emptyPasswordError: String,
+        emailError: String, emptyPasswordError: String, wrongPasswordError: String,
+        navigateAndPopUpLoginToRegister: () -> Unit,
         context: Context
         ) {
         onButtonChange()
         if (!email.isValidEmail()) {
             launchCatching {
+                onIsErrorEmailChange(true)
                 snackbarHostState.showSnackbar(emailError)
                 onButtonChange()
             }
@@ -86,6 +84,7 @@ class LogInViewModel @Inject constructor(
 
         if (password.isBlank()) {
             launchCatching {
+                onIsErrorPasswordChange(true)
                 snackbarHostState.showSnackbar(emptyPasswordError)
                 onButtonChange()
             }
@@ -103,11 +102,18 @@ class LogInViewModel @Inject constructor(
                 )
                 restartApp()
             } catch (ex: FirebaseAuthException) {
-                launchCatching {
-                    showInterstitialAd(context)
-                    snackbarHostState.showSnackbar(ex.localizedMessage ?: "")
-                    onButtonChange()
+                showInterstitialAd(context)
+
+                if (ex.errorCode == "ERROR_WRONG_PASSWORD"){
+                    launchCatching {
+                        onIsErrorPasswordChange(true)
+                        snackbarHostState.showSnackbar(wrongPasswordError)
+                        onButtonChange()
+                    }
+                } else if (ex.errorCode == "ERROR_USER_NOT_FOUND"){
+                    navigateAndPopUpLoginToRegister()
                 }
+
                 throw ex
             }
         }
@@ -120,6 +126,7 @@ class LogInViewModel @Inject constructor(
     ) {
         if (!email.isValidEmail()) {
             launchCatching {
+                onIsErrorEmailChange(true)
                 snackbarHostState.showSnackbar(emailError)
             }
             return
@@ -128,6 +135,7 @@ class LogInViewModel @Inject constructor(
         launchCatching {
             showInterstitialAd(context)
             accountService.sendRecoveryEmail(email)
+            onIsErrorEmailChange(false)
             snackbarHostState.showSnackbar(recoveryEmailSent)
         }
     }
@@ -159,5 +167,10 @@ class LogInViewModel @Inject constructor(
             }
         )
     }
+
+    private fun onButtonChange() { uiState.value = uiState.value.copy(button = !button) }
+    private fun onIsErrorEmailChange(newValue: Boolean) { uiState.value = uiState.value.copy(isErrorEmail = newValue) }
+    private fun onIsErrorPasswordChange(newValue: Boolean) { uiState.value = uiState.value.copy(isErrorPassword = newValue) }
+
 }
 

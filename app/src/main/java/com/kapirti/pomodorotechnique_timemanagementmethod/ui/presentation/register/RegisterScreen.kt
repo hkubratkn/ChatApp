@@ -37,7 +37,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun RegisterScreen(
     navigateAndPopUpRegisterToEdit: () -> Unit,
-    registerToLogin: () -> Unit,
+    navigateAndPopUpRegisterToLogin: () -> Unit,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     modifier: Modifier = Modifier,
     viewModel: RegisterViewModel = hiltViewModel()
@@ -46,7 +46,6 @@ fun RegisterScreen(
     val fieldModifier = Modifier.fieldModifier()
     val email_error = stringResource(AppText.email_error)
     val password_error = stringResource(AppText.password_error)
-    val password_match_error = stringResource(AppText.password_match_error)
     val context = LocalContext.current
 
     Scaffold(
@@ -80,8 +79,18 @@ fun RegisterScreen(
                 )
             }
 
-            EmailField(uiState.email, viewModel::onEmailChange, fieldModifier)
-            PasswordField(uiState.password, viewModel::onPasswordChange, fieldModifier)
+            EmailField(
+                value = uiState.email,
+                onNewValue = viewModel::onEmailChange,
+                modifier = Modifier.fieldModifier(),
+                isError = uiState.isErrorEmail
+            )
+            PasswordField(
+                value = uiState.password,
+                onNewValue = viewModel::onPasswordChange,
+                modifier = Modifier.fieldModifier(),
+                isError = uiState.isErrorPassword
+            )
             Spacer(modifier = Modifier.smallSpacer())
 
             HyperlinkText(
@@ -100,7 +109,6 @@ fun RegisterScreen(
                     navigateAndPopUpRegisterToEdit = navigateAndPopUpRegisterToEdit,
                     email_error = email_error,
                     password_error = password_error,
-                    password_match_error = password_match_error,
                     context = context
                 )
             }
@@ -108,7 +116,7 @@ fun RegisterScreen(
 
 
             BasicTextButton(AppText.already_have_an_account, Modifier.textButton()) {
-                registerToLogin()
+                navigateAndPopUpRegisterToLogin()
             }
         }
     }

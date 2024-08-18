@@ -63,7 +63,6 @@ class RegisterViewModel @Inject constructor(
         navigateAndPopUpRegisterToEdit: () -> Unit,
         email_error: String,
         password_error: String,
-        password_match_error: String,
         context: Context
     ) {
         onButtonChange()
@@ -106,8 +105,6 @@ class RegisterViewModel @Inject constructor(
         }
     }
 
-    private fun onButtonChange() { uiState.value = uiState.value.copy(button = !button) }
-
 
     private fun showInterstitialAd(context: Context){
         if (mInterstitialAd != null) {
@@ -136,5 +133,10 @@ class RegisterViewModel @Inject constructor(
             }
         )
     }
+
+    private fun onButtonChange() { uiState.value = uiState.value.copy(button = !button) }
+    private fun onIsErrorEmailChange(newValue: Boolean) { uiState.value = uiState.value.copy(isErrorEmail = newValue) }
+    private fun onIsErrorPasswordChange(newValue: Boolean) { uiState.value = uiState.value.copy(isErrorPassword = newValue) }
+
 }
 

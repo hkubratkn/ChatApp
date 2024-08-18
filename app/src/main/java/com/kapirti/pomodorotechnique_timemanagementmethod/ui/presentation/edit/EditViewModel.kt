@@ -323,6 +323,7 @@ class EditViewModel @Inject constructor(
         //empty_password_error: String
     ) {
         if (password.isBlank()) {
+            onIsErrorPasswordChange(true)
             //launchCatching { onShowSnackbar(empty_password_error, "") }
             return
         }
@@ -417,6 +418,9 @@ class EditViewModel @Inject constructor(
             surveyQuestion = questionOrder[questionIndex],
         )
     }
+
+    private fun onIsErrorPasswordChange(newValue: Boolean) { uiState.value = uiState.value.copy(isErrorPassword = newValue) }
+
 }
 
 enum class SurveyQuestion {

@@ -16,7 +16,6 @@
 
 package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.login
 
-import android.app.Activity.RESULT_OK
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,16 +26,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.composable.AdsBannerToolbar
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_LOG_IN_BANNER_ID
-import android.widget.Toast
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.IntentSenderRequest
-import androidx.activity.result.contract.ActivityResultContracts
 import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -45,7 +39,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Login
-import androidx.compose.material.icons.filled.Login
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -70,7 +63,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun LogInScreen(
     restartApp: () -> Unit,
-    loginToRegister: () -> Unit,
+    navigateAndPopUpLoginToRegister: () -> Unit,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     modifier: Modifier = Modifier,
     viewModel: LogInViewModel = hiltViewModel()
@@ -80,6 +73,7 @@ fun LogInScreen(
     val emptyPasswordError = stringResource(id = AppText.empty_password_error)
     val recoveryEmailSent = stringResource(id = AppText.recovery_email_sent)
     val context = LocalContext.current
+    val wrongPasswordError = stringResource(id = AppText.wrong_password_error)
 
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
@@ -107,8 +101,18 @@ fun LogInScreen(
                 Icon(imageVector = Icons.AutoMirrored.Filled.Login, contentDescription = stringResource(id = AppText.log_in))
             }
 
-            EmailField(uiState.email, viewModel::onEmailChange, Modifier.fieldModifier())
-            PasswordField(uiState.password, viewModel::onPasswordChange, Modifier.fieldModifier())
+            EmailField(
+                value = uiState.email,
+                onNewValue = viewModel::onEmailChange,
+                modifier = Modifier.fieldModifier(),
+                isError = uiState.isErrorEmail
+            )
+            PasswordField(
+                value = uiState.password,
+                onNewValue = viewModel::onPasswordChange,
+                modifier = Modifier.fieldModifier(),
+                isError = uiState.isErrorPassword
+            )
 
             BasicButton(text = AppText.log_in, Modifier.basicButton(), uiState.button) {
                 viewModel.onLogInClick(
@@ -116,7 +120,9 @@ fun LogInScreen(
                     snackbarHostState = snackbarHostState,
                     emailError = emailError,
                     emptyPasswordError = emptyPasswordError,
-                    context = context
+                    context = context,
+                    wrongPasswordError = wrongPasswordError,
+                    navigateAndPopUpLoginToRegister = navigateAndPopUpLoginToRegister
                 )
             }
 
@@ -132,7 +138,7 @@ fun LogInScreen(
             Spacer(modifier = Modifier.smallSpacer())
 
             BasicTextButton(AppText.create_new_account, Modifier.textButton()) {
-                loginToRegister()
+                navigateAndPopUpLoginToRegister()
             }
         }
     }
