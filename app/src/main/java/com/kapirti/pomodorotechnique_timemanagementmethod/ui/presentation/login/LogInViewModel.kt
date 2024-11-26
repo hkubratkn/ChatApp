@@ -26,7 +26,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidEmail
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_LOGIN_INTERSTITIAL_ID
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_LOGIN_REWARDED_ID
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.CountryRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
@@ -154,7 +154,7 @@ class LogInViewModel @Inject constructor(
 
         InterstitialAd.load(
             context,
-            ADS_LOGIN_INTERSTITIAL_ID,
+            ADS_LOGIN_REWARDED_ID,
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {

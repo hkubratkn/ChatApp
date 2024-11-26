@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuthException
 import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidEmail
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.ext.isValidPassword
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_REGISTER_INTERSTITIAL_ID
+import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.ConsAds.ADS_REGISTER_REWARDED_ID
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.Feedback
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
@@ -25,9 +25,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
 import java.util.Locale
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
@@ -120,7 +117,7 @@ class RegisterViewModel @Inject constructor(
 
         InterstitialAd.load(
             context,
-            ADS_REGISTER_INTERSTITIAL_ID,
+            ADS_REGISTER_REWARDED_ID,
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
