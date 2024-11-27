@@ -23,16 +23,14 @@ import com.google.firebase.firestore.ServerTimestamp
 data class Timeline(
     @DocumentId val id: String = "",
     val uri: String = "",
+    val title: String = "",
+
     val writerId: String = "",
-    val writerDisplayName: String = "",
     val writerPhoto: String = "",
-    @ServerTimestamp var date: Timestamp? = null
+
+    @ServerTimestamp var dateOfCreation: Timestamp? = null
 )
 
-data class UserTimeline(
-    @DocumentId val id: String = "",
-    @ServerTimestamp var date: Timestamp? = null
-)
 
 //import android.net.Uri
 /**

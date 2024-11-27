@@ -29,6 +29,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -40,6 +41,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kapirti.pomodorotechnique_timemanagementmethod.R.string as AppText
 
 @Composable
 fun BasicTextButton(@StringRes text: Int, modifier: Modifier, action: () -> Unit) {
@@ -106,6 +108,18 @@ fun DialogCancelButton(@StringRes text: Int, action: () -> Unit) {
     }
 }
 
+
+@Composable
+fun ReportButton(onClick: () -> Unit) {
+    IconButton(onClick) {
+        Icon(
+            imageVector = PomodoroIcons.Report,
+            contentDescription = stringResource(AppText.report),
+            tint = Color.Red,
+            modifier = Modifier.size(18.dp)
+        )
+    }
+}
 
 private enum class Visibility {
     VISIBLE,

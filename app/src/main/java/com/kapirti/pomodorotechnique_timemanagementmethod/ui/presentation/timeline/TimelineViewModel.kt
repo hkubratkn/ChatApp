@@ -18,10 +18,16 @@ package com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timel
 
 import android.content.Context
 import android.net.Uri
+import android.os.HandlerThread
+import android.os.Process
+import android.util.Log
 import androidx.annotation.OptIn
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.VideoSize
@@ -29,92 +35,162 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
 import com.kapirti.pomodorotechnique_timemanagementmethod.common.stateInUi
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.constants.EditType.TIMELINE_VIDEO
-import com.kapirti.pomodorotechnique_timemanagementmethod.core.datastore.EditTypeRepository
-import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogService
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.settings.SettingsUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
-
+@UnstableApi
 @HiltViewModel
 class TimelineViewModel @Inject constructor(
-    private val firestoreService: FirestoreService,
-    private val accountService: AccountService,
-    private val editTypeRepository: EditTypeRepository,
     @ApplicationContext private val application: Context,
-    //private val repository: ChatRepository,
+    private val firestoreService: FirestoreService,
     logService: LogService,
 ) : PomodoroViewModel(logService) {
-    val uiState = accountService.currentUser.map { SettingsUiState(it.isAnonymous) }
-
-
-    //var media by mutableStateOf<List<TimelineMediaItem>>(emptyList())
-
-
+    // List of videos and photos from chats
+//    var media by mutableStateOf<List<TimelineMediaItem>>(emptyList())
     val timelines = firestoreService.timelines
         .stateInUi(emptyList())
 
+    // Single player instance - in the future, we can implement a pool of players to improve
+    // latency and allow for concurrent playback
+    var player by mutableStateOf<ExoPlayer?>(null)
 
 
-    var videoRatio by mutableStateOf<Float?>(null)
-    var player by mutableStateOf<Player?>(null)
+    // Preload Manager for preloaded multiple videos
+    private val enablePreloadManager: Boolean = true
+    private lateinit var preloadManager: PreloadManagerWrapper
 
-    private val videoSizeListener = object : Player.Listener {
-        override fun onVideoSizeChanged(videoSize: VideoSize) {
-            videoRatio = if (videoSize.height > 0 && videoSize.width > 0) {
-                videoSize.width.toFloat() / videoSize.height.toFloat()
-            } else {
-                null
-            }
-            super.onVideoSizeChanged(videoSize)
+    // Playback thread; Internal playback / preload operations are running on the playback thread.
+    private val playerThread: HandlerThread =
+        HandlerThread("playback-thread", Process.THREAD_PRIORITY_AUDIO)
+
+    var playbackStartTimeMs = C.TIME_UNSET
+
+    private val firstFrameListener = object : Player.Listener {
+        override fun onRenderedFirstFrame() {
+            val timeToFirstFrameMs = System.currentTimeMillis() - playbackStartTimeMs
+            Log.d("PreloadManager", "\t\tTime to first Frame = $timeToFirstFrameMs ")
+            super.onRenderedFirstFrame()
         }
     }
+    /**
+    init {
+    viewModelScope.launch {
+    val allChats = repository.getChats().first()
+    val newList = mutableListOf<TimelineMediaItem>()
+    for (chatDetail in allChats) {
+    val messages = repository.findMessages(chatDetail.chatWithLastMessage.id).first()
+    for (message in messages) {
+    if (message.mediaUri != null) {
+    newList += TimelineMediaItem(
+    uri = message.mediaUri,
+    type = if (message.mediaMimeType?.contains("video") == true) {
+    TimelineMediaType.VIDEO
+    } else {
+    TimelineMediaType.PHOTO
+    },
+    timestamp = message.timestamp,
+    chatName = chatDetail.firstContact.name,
+    chatIconUri = chatDetail.firstContact.iconUri,
+    )
+    }
+    }
+    }
+    newList.sortByDescending { it.timestamp }
+    media = newList
+    }
+    }*/
 
     @OptIn(UnstableApi::class) // https://developer.android.com/guide/topics/media/media3/getting-started/migration-guide#unstableapi
     fun initializePlayer() {
         if (player != null) return
 
-// Reduced buffer durations since the primary use-case is for short-form videos
+        // Reduced buffer durations since the primary use-case is for short-form videos
         val loadControl =
-            DefaultLoadControl.Builder().setBufferDurationsMs(500, 1000, 0, 500).build()
+            DefaultLoadControl.Builder().setBufferDurationsMs(5_000, 20_000, 5_00, DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS)
+                .setPrioritizeTimeOverSizeThresholds(true).build()
+
+        playerThread.start()
+
         val newPlayer = ExoPlayer
             .Builder(application.applicationContext)
             .setLoadControl(loadControl)
+            .setPlaybackLooper(playerThread.looper)
             .build()
             .also {
                 it.repeatMode = ExoPlayer.REPEAT_MODE_ONE
                 it.playWhenReady = true
-                it.addListener(videoSizeListener)
+                it.addListener(firstFrameListener)
             }
 
-        videoRatio = null
         player = newPlayer
+
+        if (enablePreloadManager) {
+            initPreloadManager(loadControl, playerThread)
+        }
+    }
+
+    private fun initPreloadManager(
+        loadControl: DefaultLoadControl,
+        preloadAndPlaybackThread: HandlerThread,
+    ) {
+        preloadManager =
+            PreloadManagerWrapper.build(
+                preloadAndPlaybackThread.looper,
+                loadControl,
+                application.applicationContext,
+            )
+        preloadManager.setPreloadWindowSize(5)
+
+        // Add videos to preload
+        if (timelines.value.isNotEmpty()) {
+            preloadManager.init(timelines.value)
+        }
     }
 
     fun releasePlayer() {
+        if (enablePreloadManager) {
+            preloadManager.release()
+        }
         player?.apply {
-            removeListener(videoSizeListener)
+            removeListener(firstFrameListener)
             release()
         }
-
-        videoRatio = null
+        playerThread.quit()
         player = null
     }
 
-    fun changePlayerItem(uri: Uri?) {
+    fun changePlayerItem(uri: Uri?, currentPlayingIndex: Int) {
         if (player == null) return
 
         player?.apply {
             stop()
-            videoRatio = null
             if (uri != null) {
-                setMediaItem(MediaItem.fromUri(uri))
+                // Set the right source to play
+                val mediaItem = MediaItem.fromUri(uri)
+
+                if (enablePreloadManager) {
+                    val mediaSource = preloadManager.getMediaSource(mediaItem)
+                    Log.d("PreloadManager", "Mediasource $mediaSource ")
+
+                    if (mediaSource == null) {
+                        setMediaItem(mediaItem)
+                    } else {
+                        // Use the preloaded media source
+                        setMediaSource(mediaSource)
+                    }
+                    preloadManager.setCurrentPlayingIndex(currentPlayingIndex)
+                } else {
+                    setMediaItem(mediaItem)
+                }
+
+                playbackStartTimeMs = System.currentTimeMillis()
+                Log.d("PreloadManager", "Video Playing $uri ")
                 prepare()
             } else {
                 clearMediaItems()
@@ -123,743 +199,24 @@ class TimelineViewModel @Inject constructor(
     }
 
 
-    fun onAddClick(navigateEdit: () -> Unit,){
+
+    var showReportDialog = mutableStateOf(false)
+    var showReportDone = mutableStateOf(false)
+    private val timeline = mutableStateOf<Timeline?>(null)
+    fun onReportClick(newValue: Timeline) {
+        showReportDialog.value = true
+        timeline.value = newValue
+    }
+    fun onReportButtonClick() {
         launchCatching {
-            editTypeRepository.saveEditTypeState(TIMELINE_VIDEO)
-            navigateEdit()
+            firestoreService.saveReportTimeline(timeline.value ?: Timeline())
+            showReportDialog.value = false
+            showReportDone.value = true
+        }
+    }
+    fun onReportDoneDismiss() {
+        launchCatching {
+            showReportDone.value = false
         }
     }
 }
-
-
-
-/**
-
-// List of videos and photos from chats
-var media by mutableStateOf<List<TimelineMediaItem>>(emptyList())
-
-// Single player instance - in the future, we can implement a pool of players to improve
-// latency and allow for concurrent playback
-var player by mutableStateOf<Player?>(null)
-
-// Width/Height ratio of the current media item, used to properly size the Surface
-var videoRatio by mutableStateOf<Float?>(null)
-
-private val videoSizeListener = object : Player.Listener {
-override fun onVideoSizeChanged(videoSize: VideoSize) {
-videoRatio = if (videoSize.height > 0 && videoSize.width > 0) {
-videoSize.width.toFloat() / videoSize.height.toFloat()
-} else {
-null
-}
-super.onVideoSizeChanged(videoSize)
-}
-}
-
-init {
-viewModelScope.launch {
-val allChats = repository.getChats().first()
-val newList = mutableListOf<TimelineMediaItem>()
-for (chatDetail in allChats) {
-val messages = repository.findMessages(chatDetail.chatWithLastMessage.id).first()
-for (message in messages) {
-if (message.mediaUri != null) {
-newList += TimelineMediaItem(
-uri = message.mediaUri,
-type = if (message.mediaMimeType?.contains("video") == true) {
-TimelineMediaType.VIDEO
-} else {
-TimelineMediaType.PHOTO
-},
-timestamp = message.timestamp,
-chatName = chatDetail.firstContact.name,
-chatIconUri = chatDetail.firstContact.iconUri,
-)
-}
-}
-}
-newList.sortByDescending { it.timestamp }
-media = newList
-}
-}
-
-@OptIn(UnstableApi::class) // https://developer.android.com/guide/topics/media/media3/getting-started/migration-guide#unstableapi
-fun initializePlayer() {
-if (player != null) return
-
-// Reduced buffer durations since the primary use-case is for short-form videos
-val loadControl =
-DefaultLoadControl.Builder().setBufferDurationsMs(500, 1000, 0, 500).build()
-val newPlayer = ExoPlayer
-.Builder(application.applicationContext)
-.setLoadControl(loadControl)
-.build()
-.also {
-it.repeatMode = ExoPlayer.REPEAT_MODE_ONE
-it.playWhenReady = true
-it.addListener(videoSizeListener)
-}
-
-videoRatio = null
-player = newPlayer
-}
-
-fun releasePlayer() {
-player?.apply {
-removeListener(videoSizeListener)
-release()
-}
-
-videoRatio = null
-player = null
-}
-
-fun changePlayerItem(uri: Uri?) {
-if (player == null) return
-
-player?.apply {
-stop()
-videoRatio = null
-if (uri != null) {
-setMediaItem(MediaItem.fromUri(uri))
-prepare()
-} else {
-clearMediaItems()
-}
-}
-}
-}
- */
-
-
-
-/**
-import android.content.Context
-import android.net.Uri
-import androidx.annotation.OptIn
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import androidx.media3.common.MediaItem
-import androidx.media3.common.Player
-import androidx.media3.common.VideoSize
-import androidx.media3.common.util.UnstableApi
-import androidx.media3.exoplayer.DefaultLoadControl
-import androidx.media3.exoplayer.ExoPlayer
-import com.zepi.social_chat_food.model.service.LogService
-import com.zepi.social_chat_food.soci.repository.ChatRepository
-import com.zepi.social_chat_food.ui.presentation.ZepiViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
-import kotlin.math.log
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
-
-@HiltViewModel
-class TimelineViewModel @Inject constructor(
-@ApplicationContext private val application: Context,
-private val repository: ChatRepository,
-logService: LogService,
-) : ZepiViewModel(logService) {
-// List of videos and photos from chats
-var media by mutableStateOf<List<TimelineMediaItem>>(emptyList())
-
-// Single player instance - in the future, we can implement a pool of players to improve
-// latency and allow for concurrent playback
-var player by mutableStateOf<Player?>(null)
-
-// Width/Height ratio of the current media item, used to properly size the Surface
-var videoRatio by mutableStateOf<Float?>(null)
-
-private val videoSizeListener = object : Player.Listener {
-override fun onVideoSizeChanged(videoSize: VideoSize) {
-videoRatio = if (videoSize.height > 0 && videoSize.width > 0) {
-videoSize.width.toFloat() / videoSize.height.toFloat()
-} else {
-null
-}
-super.onVideoSizeChanged(videoSize)
-}
-}
-
-init {
-viewModelScope.launch {
-val allChats = repository.getChats().first()
-val newList = mutableListOf<TimelineMediaItem>()
-for (chatDetail in allChats) {
-val messages = repository.findMessages(chatDetail.chatWithLastMessage.id).first()
-for (message in messages) {
-if (message.mediaUri != null) {
-newList += TimelineMediaItem(
-uri = message.mediaUri,
-type = if (message.mediaMimeType?.contains("video") == true) {
-TimelineMediaType.VIDEO
-} else {
-TimelineMediaType.PHOTO
-},
-timestamp = message.timestamp,
-chatName = chatDetail.firstContact.name,
-chatIconUri = chatDetail.firstContact.iconUri,
-)
-}
-}
-}
-newList.sortByDescending { it.timestamp }
-media = newList
-}
-}
-
-@OptIn(UnstableApi::class) // https://developer.android.com/guide/topics/media/media3/getting-started/migration-guide#unstableapi
-fun initializePlayer() {
-if (player != null) return
-
-// Reduced buffer durations since the primary use-case is for short-form videos
-val loadControl =
-DefaultLoadControl.Builder().setBufferDurationsMs(500, 1000, 0, 500).build()
-val newPlayer = ExoPlayer
-.Builder(application.applicationContext)
-.setLoadControl(loadControl)
-.build()
-.also {
-it.repeatMode = ExoPlayer.REPEAT_MODE_ONE
-it.playWhenReady = true
-it.addListener(videoSizeListener)
-}
-
-videoRatio = null
-player = newPlayer
-}
-
-fun releasePlayer() {
-player?.apply {
-removeListener(videoSizeListener)
-release()
-}
-
-videoRatio = null
-player = null
-}
-
-fun changePlayerItem(uri: Uri?) {
-if (player == null) return
-
-player?.apply {
-stop()
-videoRatio = null
-if (uri != null) {
-setMediaItem(MediaItem.fromUri(uri))
-prepare()
-} else {
-clearMediaItems()
-}
-}
-}
-}
- */
-/**
-import android.content.Context
-import android.net.Uri
-import androidx.annotation.OptIn
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import androidx.media3.common.MediaItem
-import androidx.media3.common.Player
-import androidx.media3.common.VideoSize
-import androidx.media3.common.util.UnstableApi
-import androidx.media3.exoplayer.DefaultLoadControl
-import androidx.media3.exoplayer.ExoPlayer
-import com.zepi.social_chat_food.model.service.LogService
-import com.zepi.social_chat_food.soci.repository.ChatRepository
-import com.zepi.social_chat_food.ui.presentation.ZepiViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
-import kotlin.math.log
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
-
-@HiltViewModel
-class TimelineViewModel @Inject constructor(
-@ApplicationContext private val application: Context,
-private val repository: ChatRepository,
-logService: LogService,
-) : ZepiViewModel(logService) {
-// List of videos and photos from chats
-var media by mutableStateOf<List<TimelineMediaItem>>(emptyList())
-
-// Single player instance - in the future, we can implement a pool of players to improve
-// latency and allow for concurrent playback
-var player by mutableStateOf<Player?>(null)
-
-// Width/Height ratio of the current media item, used to properly size the Surface
-var videoRatio by mutableStateOf<Float?>(null)
-
-private val videoSizeListener = object : Player.Listener {
-override fun onVideoSizeChanged(videoSize: VideoSize) {
-videoRatio = if (videoSize.height > 0 && videoSize.width > 0) {
-videoSize.width.toFloat() / videoSize.height.toFloat()
-} else {
-null
-}
-super.onVideoSizeChanged(videoSize)
-}
-}
-
-init {
-viewModelScope.launch {
-val allChats = repository.getChats().first()
-val newList = mutableListOf<TimelineMediaItem>()
-for (chatDetail in allChats) {
-val messages = repository.findMessages(chatDetail.chatWithLastMessage.id).first()
-for (message in messages) {
-if (message.mediaUri != null) {
-newList += TimelineMediaItem(
-uri = message.mediaUri,
-type = if (message.mediaMimeType?.contains("video") == true) {
-TimelineMediaType.VIDEO
-} else {
-TimelineMediaType.PHOTO
-},
-timestamp = message.timestamp,
-chatName = chatDetail.firstContact.name,
-chatIconUri = chatDetail.firstContact.iconUri,
-)
-}
-}
-}
-newList.sortByDescending { it.timestamp }
-media = newList
-}
-}
-
-@OptIn(UnstableApi::class) // https://developer.android.com/guide/topics/media/media3/getting-started/migration-guide#unstableapi
-fun initializePlayer() {
-if (player != null) return
-
-// Reduced buffer durations since the primary use-case is for short-form videos
-val loadControl =
-DefaultLoadControl.Builder().setBufferDurationsMs(500, 1000, 0, 500).build()
-val newPlayer = ExoPlayer
-.Builder(application.applicationContext)
-.setLoadControl(loadControl)
-.build()
-.also {
-it.repeatMode = ExoPlayer.REPEAT_MODE_ONE
-it.playWhenReady = true
-it.addListener(videoSizeListener)
-}
-
-videoRatio = null
-player = newPlayer
-}
-
-fun releasePlayer() {
-player?.apply {
-removeListener(videoSizeListener)
-release()
-}
-
-videoRatio = null
-player = null
-}
-
-fun changePlayerItem(uri: Uri?) {
-if (player == null) return
-
-player?.apply {
-stop()
-videoRatio = null
-if (uri != null) {
-setMediaItem(MediaItem.fromUri(uri))
-prepare()
-} else {
-clearMediaItems()
-}
-}
-}
-}
- */
-/**
-import android.content.Context
-import android.net.Uri
-import androidx.annotation.OptIn
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import androidx.media3.common.MediaItem
-import androidx.media3.common.Player
-import androidx.media3.common.VideoSize
-import androidx.media3.common.util.UnstableApi
-import androidx.media3.exoplayer.DefaultLoadControl
-import androidx.media3.exoplayer.ExoPlayer
-import com.zepi.social_chat_food.model.service.LogService
-import com.zepi.social_chat_food.soci.repository.ChatRepository
-import com.zepi.social_chat_food.ui.presentation.ZepiViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
-import kotlin.math.log
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
-
-@HiltViewModel
-class TimelineViewModel @Inject constructor(
-@ApplicationContext private val application: Context,
-private val repository: ChatRepository,
-logService: LogService,
-) : ZepiViewModel(logService) {
-// List of videos and photos from chats
-var media by mutableStateOf<List<TimelineMediaItem>>(emptyList())
-
-// Single player instance - in the future, we can implement a pool of players to improve
-// latency and allow for concurrent playback
-var player by mutableStateOf<Player?>(null)
-
-// Width/Height ratio of the current media item, used to properly size the Surface
-var videoRatio by mutableStateOf<Float?>(null)
-
-private val videoSizeListener = object : Player.Listener {
-override fun onVideoSizeChanged(videoSize: VideoSize) {
-videoRatio = if (videoSize.height > 0 && videoSize.width > 0) {
-videoSize.width.toFloat() / videoSize.height.toFloat()
-} else {
-null
-}
-super.onVideoSizeChanged(videoSize)
-}
-}
-
-init {
-viewModelScope.launch {
-val allChats = repository.getChats().first()
-val newList = mutableListOf<TimelineMediaItem>()
-for (chatDetail in allChats) {
-val messages = repository.findMessages(chatDetail.chatWithLastMessage.id).first()
-for (message in messages) {
-if (message.mediaUri != null) {
-newList += TimelineMediaItem(
-uri = message.mediaUri,
-type = if (message.mediaMimeType?.contains("video") == true) {
-TimelineMediaType.VIDEO
-} else {
-TimelineMediaType.PHOTO
-},
-timestamp = message.timestamp,
-chatName = chatDetail.firstContact.name,
-chatIconUri = chatDetail.firstContact.iconUri,
-)
-}
-}
-}
-newList.sortByDescending { it.timestamp }
-media = newList
-}
-}
-
-@OptIn(UnstableApi::class) // https://developer.android.com/guide/topics/media/media3/getting-started/migration-guide#unstableapi
-fun initializePlayer() {
-if (player != null) return
-
-// Reduced buffer durations since the primary use-case is for short-form videos
-val loadControl =
-DefaultLoadControl.Builder().setBufferDurationsMs(500, 1000, 0, 500).build()
-val newPlayer = ExoPlayer
-.Builder(application.applicationContext)
-.setLoadControl(loadControl)
-.build()
-.also {
-it.repeatMode = ExoPlayer.REPEAT_MODE_ONE
-it.playWhenReady = true
-it.addListener(videoSizeListener)
-}
-
-videoRatio = null
-player = newPlayer
-}
-
-fun releasePlayer() {
-player?.apply {
-removeListener(videoSizeListener)
-release()
-}
-
-videoRatio = null
-player = null
-}
-
-fun changePlayerItem(uri: Uri?) {
-if (player == null) return
-
-player?.apply {
-stop()
-videoRatio = null
-if (uri != null) {
-setMediaItem(MediaItem.fromUri(uri))
-prepare()
-} else {
-clearMediaItems()
-}
-}
-}
-}
- */
-/**
-import android.content.Context
-import android.net.Uri
-import androidx.annotation.OptIn
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import androidx.media3.common.MediaItem
-import androidx.media3.common.Player
-import androidx.media3.common.VideoSize
-import androidx.media3.common.util.UnstableApi
-import androidx.media3.exoplayer.DefaultLoadControl
-import androidx.media3.exoplayer.ExoPlayer
-import com.zepi.social_chat_food.model.service.LogService
-import com.zepi.social_chat_food.soci.repository.ChatRepository
-import com.zepi.social_chat_food.ui.presentation.ZepiViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
-import kotlin.math.log
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
-
-@HiltViewModel
-class TimelineViewModel @Inject constructor(
-@ApplicationContext private val application: Context,
-private val repository: ChatRepository,
-logService: LogService,
-) : ZepiViewModel(logService) {
-// List of videos and photos from chats
-var media by mutableStateOf<List<TimelineMediaItem>>(emptyList())
-
-// Single player instance - in the future, we can implement a pool of players to improve
-// latency and allow for concurrent playback
-var player by mutableStateOf<Player?>(null)
-
-// Width/Height ratio of the current media item, used to properly size the Surface
-var videoRatio by mutableStateOf<Float?>(null)
-
-private val videoSizeListener = object : Player.Listener {
-override fun onVideoSizeChanged(videoSize: VideoSize) {
-videoRatio = if (videoSize.height > 0 && videoSize.width > 0) {
-videoSize.width.toFloat() / videoSize.height.toFloat()
-} else {
-null
-}
-super.onVideoSizeChanged(videoSize)
-}
-}
-
-init {
-viewModelScope.launch {
-val allChats = repository.getChats().first()
-val newList = mutableListOf<TimelineMediaItem>()
-for (chatDetail in allChats) {
-val messages = repository.findMessages(chatDetail.chatWithLastMessage.id).first()
-for (message in messages) {
-if (message.mediaUri != null) {
-newList += TimelineMediaItem(
-uri = message.mediaUri,
-type = if (message.mediaMimeType?.contains("video") == true) {
-TimelineMediaType.VIDEO
-} else {
-TimelineMediaType.PHOTO
-},
-timestamp = message.timestamp,
-chatName = chatDetail.firstContact.name,
-chatIconUri = chatDetail.firstContact.iconUri,
-)
-}
-}
-}
-newList.sortByDescending { it.timestamp }
-media = newList
-}
-}
-
-@OptIn(UnstableApi::class) // https://developer.android.com/guide/topics/media/media3/getting-started/migration-guide#unstableapi
-fun initializePlayer() {
-if (player != null) return
-
-// Reduced buffer durations since the primary use-case is for short-form videos
-val loadControl =
-DefaultLoadControl.Builder().setBufferDurationsMs(500, 1000, 0, 500).build()
-val newPlayer = ExoPlayer
-.Builder(application.applicationContext)
-.setLoadControl(loadControl)
-.build()
-.also {
-it.repeatMode = ExoPlayer.REPEAT_MODE_ONE
-it.playWhenReady = true
-it.addListener(videoSizeListener)
-}
-
-videoRatio = null
-player = newPlayer
-}
-
-fun releasePlayer() {
-player?.apply {
-removeListener(videoSizeListener)
-release()
-}
-
-videoRatio = null
-player = null
-}
-
-fun changePlayerItem(uri: Uri?) {
-if (player == null) return
-
-player?.apply {
-stop()
-videoRatio = null
-if (uri != null) {
-setMediaItem(MediaItem.fromUri(uri))
-prepare()
-} else {
-clearMediaItems()
-}
-}
-}
-}
- */
-/**
-import android.content.Context
-import android.net.Uri
-import androidx.annotation.OptIn
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import androidx.media3.common.MediaItem
-import androidx.media3.common.Player
-import androidx.media3.common.VideoSize
-import androidx.media3.common.util.UnstableApi
-import androidx.media3.exoplayer.DefaultLoadControl
-import androidx.media3.exoplayer.ExoPlayer
-import com.zepi.social_chat_food.model.service.LogService
-import com.zepi.social_chat_food.soci.repository.ChatRepository
-import com.zepi.social_chat_food.ui.presentation.ZepiViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
-import kotlin.math.log
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
-
-@HiltViewModel
-class TimelineViewModel @Inject constructor(
-@ApplicationContext private val application: Context,
-private val repository: ChatRepository,
-logService: LogService,
-) : ZepiViewModel(logService) {
-// List of videos and photos from chats
-var media by mutableStateOf<List<TimelineMediaItem>>(emptyList())
-
-// Single player instance - in the future, we can implement a pool of players to improve
-// latency and allow for concurrent playback
-var player by mutableStateOf<Player?>(null)
-
-// Width/Height ratio of the current media item, used to properly size the Surface
-var videoRatio by mutableStateOf<Float?>(null)
-
-private val videoSizeListener = object : Player.Listener {
-override fun onVideoSizeChanged(videoSize: VideoSize) {
-videoRatio = if (videoSize.height > 0 && videoSize.width > 0) {
-videoSize.width.toFloat() / videoSize.height.toFloat()
-} else {
-null
-}
-super.onVideoSizeChanged(videoSize)
-}
-}
-
-init {
-viewModelScope.launch {
-val allChats = repository.getChats().first()
-val newList = mutableListOf<TimelineMediaItem>()
-for (chatDetail in allChats) {
-val messages = repository.findMessages(chatDetail.chatWithLastMessage.id).first()
-for (message in messages) {
-if (message.mediaUri != null) {
-newList += TimelineMediaItem(
-uri = message.mediaUri,
-type = if (message.mediaMimeType?.contains("video") == true) {
-TimelineMediaType.VIDEO
-} else {
-TimelineMediaType.PHOTO
-},
-timestamp = message.timestamp,
-chatName = chatDetail.firstContact.name,
-chatIconUri = chatDetail.firstContact.iconUri,
-)
-}
-}
-}
-newList.sortByDescending { it.timestamp }
-media = newList
-}
-}
-
-@OptIn(UnstableApi::class) // https://developer.android.com/guide/topics/media/media3/getting-started/migration-guide#unstableapi
-fun initializePlayer() {
-if (player != null) return
-
-// Reduced buffer durations since the primary use-case is for short-form videos
-val loadControl =
-DefaultLoadControl.Builder().setBufferDurationsMs(500, 1000, 0, 500).build()
-val newPlayer = ExoPlayer
-.Builder(application.applicationContext)
-.setLoadControl(loadControl)
-.build()
-.also {
-it.repeatMode = ExoPlayer.REPEAT_MODE_ONE
-it.playWhenReady = true
-it.addListener(videoSizeListener)
-}
-
-videoRatio = null
-player = newPlayer
-}
-
-fun releasePlayer() {
-player?.apply {
-removeListener(videoSizeListener)
-release()
-}
-
-videoRatio = null
-player = null
-}
-
-fun changePlayerItem(uri: Uri?) {
-if (player == null) return
-
-player?.apply {
-stop()
-videoRatio = null
-if (uri != null) {
-setMediaItem(MediaItem.fromUri(uri))
-prepare()
-} else {
-clearMediaItems()
-}
-}
-}
-}
- */

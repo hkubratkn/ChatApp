@@ -118,7 +118,10 @@
     <string name="cd_menu_actions">Menu actions</string>
     <string name="cd_user_photo">User photo</string>
 
+    <string name="thank_you">Thank you</string>
+    <string name="report_done_text">Thank you for protecting our community. We will take action on your report within 48 hours!</string>
 
+    <string name="ok" translatable="false">OK</string>
 
     <!-- use now importants -->
     <string name="home_title">Home</string>

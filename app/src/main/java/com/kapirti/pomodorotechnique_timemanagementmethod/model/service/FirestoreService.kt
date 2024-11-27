@@ -23,12 +23,12 @@ interface FirestoreService {
     suspend fun saveUser(user: User)
     suspend fun saveUserChat(uid: String, chatId: String, chat: Chat)
     suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat)
-    suspend fun saveUserTimeline(docId: String, userTimeline: UserTimeline)
     suspend fun saveUserJob(userJob: UserJob, id: String)
     suspend fun saveJob(job: Job, country: String): String
     suspend fun saveTimeline(timeline: Timeline): String
     suspend fun saveCountry(feedback: Feedback)
     suspend fun saveFeedback(feedback: Feedback)
+    suspend fun saveReportTimeline(timeline: Timeline)
 
     suspend fun updateUserOnline(value: Boolean)
     suspend fun updateUserLastSeen()
