@@ -131,11 +131,11 @@ fun PomodoroNavGraph(
                 composable(route = PomodoroDestinations.TIMELINE_ROUTE,) {
                     TimelineRoute(
                         openDrawer = openDrawer,
-                        includeUserIdViewModel = includeUserIdViewModel,
+                        //includeUserIdViewModel = includeUserIdViewModel,
                         isExpandedScreen = isExpandedScreen,
                         navigateLogin = navigateLogin,
                         navigateEdit = navigateEdit,
-                        navigateUserProfile = navigateUserProfile,
+                        //navigateUserProfile = navigateUserProfile,
                     )
                 }
                 composable(route = PomodoroDestinations.HOME_ROUTE,) {

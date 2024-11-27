@@ -8,7 +8,6 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.Job
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.User
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.UserJob
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.Timeline
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.UserTimeline
 import kotlinx.coroutines.flow.Flow
 
 
@@ -28,7 +27,7 @@ interface FirestoreService {
     suspend fun saveTimeline(timeline: Timeline): String
     suspend fun saveCountry(feedback: Feedback)
     suspend fun saveFeedback(feedback: Feedback)
-    suspend fun saveReportTimeline(timeline: Timeline)
+    //suspend fun saveReportTimeline(timeline: Timeline)
 
     suspend fun updateUserOnline(value: Boolean)
     suspend fun updateUserLastSeen()

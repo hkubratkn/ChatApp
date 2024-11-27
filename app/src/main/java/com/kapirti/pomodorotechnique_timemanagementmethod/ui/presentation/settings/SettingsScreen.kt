@@ -82,13 +82,6 @@ fun SettingsScreen(
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
-        RegularCardEditor(
-            stringResource(AppText.share),
-            Icons.Default.Share,
-            "",
-            Modifier.card()
-        ) { viewModel.share() }
         RegularCardEditor(
             stringResource(AppText.rate),
             Icons.Default.StarRate,

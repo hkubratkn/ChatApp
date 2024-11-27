@@ -26,7 +26,6 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.AccountS
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.FirestoreService
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.trace
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.Timeline
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.UserTimeline
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.asDeferred
@@ -80,8 +79,8 @@ class FirestoreServiceImpl @Inject constructor(
     override suspend fun saveUser(user: User): Unit = trace(SAVE_USER_TRACE) { userDocument(auth.currentUserId).set(user).await() }
     override suspend fun saveUserChat(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_CHAT_TRACE) { userChatCollection(uid).document(chatId).set(chat).await() }
     override suspend fun saveUserArchive(uid: String, chatId: String, chat: Chat): Unit = trace(SAVE_USER_ARCHIVE_TRACE) { userArchiveCollection(uid).document(chatId).set(chat).await() }
-    override suspend fun saveUserTimeline(id: String, userTimeline: UserTimeline): Unit =
-        trace(SAVE_USER_TIMELINE_TRACE) { userTimelineCollection(auth.currentUserId).document(id).set(userTimeline).await() }
+/**    override suspend fun saveUserTimeline(id: String, userTimeline: UserTimeline): Unit =
+        trace(SAVE_USER_TIMELINE_TRACE) { userTimelineCollection(auth.currentUserId).document(id).set(userTimeline).await() }*/
     override suspend fun saveUserJob(userJob: UserJob, id: String): Unit = trace(SAVE_USER_JOB_TRACE){ userJobCollection(auth.currentUserId).document(id).set(userJob).await() }
 
     override suspend fun saveTimeline(timeline: Timeline): String =

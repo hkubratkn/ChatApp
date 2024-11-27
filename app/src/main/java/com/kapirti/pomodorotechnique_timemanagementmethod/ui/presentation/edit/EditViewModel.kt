@@ -34,7 +34,6 @@ import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.LogServi
 import com.kapirti.pomodorotechnique_timemanagementmethod.model.service.StorageService
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.PomodoroViewModel
 import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.Timeline
-import com.kapirti.pomodorotechnique_timemanagementmethod.ui.presentation.timeline.UserTimeline
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.io.ByteArrayOutputStream
 import java.util.UUID
@@ -273,19 +272,19 @@ class EditViewModel @Inject constructor(
                 val link = storageService.getVideo(randomUid)
                 val doclink = firestoreService.saveTimeline(
                     Timeline(
-                        date = Timestamp.now(),
+                        dateOfCreation = Timestamp.now(),
                         uri = link,
                         writerId = accountService.currentUserId,
-                        writerDisplayName = me?.displayName ?: "",
+                        //writerDisplayName = me?.displayName ?: "",
                         writerPhoto = me?.photo ?: ""
                     )
                 )
-                firestoreService.saveUserTimeline(
+                /**firestoreService.saveUserTimeline(
                     docId = doclink,
                     UserTimeline(
                         date = Timestamp.now()
                     )
-                )
+                )*/
                 restartApp()
             }
         }

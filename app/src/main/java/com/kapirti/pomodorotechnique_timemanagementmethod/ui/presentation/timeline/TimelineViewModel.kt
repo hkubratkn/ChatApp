@@ -209,7 +209,7 @@ class TimelineViewModel @Inject constructor(
     }
     fun onReportButtonClick() {
         launchCatching {
-            firestoreService.saveReportTimeline(timeline.value ?: Timeline())
+            //firestoreService.saveReportTimeline(timeline.value ?: Timeline())
             showReportDialog.value = false
             showReportDone.value = true
         }
