@@ -49,7 +49,7 @@ fun SurfaceImage(
                 .crossfade(true)
                 .build(),
             contentDescription = contentDescription,
-            placeholder = painterResource(AppIcon.ic_send),
+            placeholder = painterResource(AppIcon.ic_launcher_foreground),
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
         )
@@ -69,7 +69,7 @@ fun NoSurfaceImage(
             .crossfade(true)
             .build(),
         contentDescription = contentDescription,
-        placeholder = painterResource(AppIcon.ic_send),
+        placeholder = painterResource(AppIcon.ic_launcher_background),
         error = painterResource(id = AppIcon.ic_launcher_foreground),
         modifier = modifier,
         contentScale = ContentScale.Crop,
