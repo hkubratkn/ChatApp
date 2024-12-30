@@ -136,8 +136,6 @@ dependencies {
     implementation(libs.coil.compose)
 
 
-
-
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
     implementation("com.google.firebase:firebase-crashlytics-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
