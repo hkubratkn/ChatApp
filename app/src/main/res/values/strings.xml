@@ -1,33 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Pomodoro</string>
+    <string name="app_name">Test</string>
 
     <!-- App -->
     <string name="not_connected">⚠️You aren’t connected to the internet</string>
     <string name="generic_error">Something wrong happened. Please try again.</string>
     <string name="try_again">Try again</string>
-
-    <!-- Productivity Screen -->
-    <string name="productivity_title">Productivity</string>
-    <string name="timer">Timer</string>
-    <string name="stayed">Stayed</string>
-
-    <!-- Timeline Screen -->
-    <string name="timeline_title">Timeline</string>
-    <string name="timeline_empty_title">No photos or video.</string>
-    <string name="timeline_empty_message">Videos and photos from messages will display here. Add a message or refine your search.</string>
-
-    <!-- Home Screen -->
-    <string name="review_title">Review us</string>
-    <string name="review_description">Want to welcome new friends? Leave us a comment and help us invite new friends to the app</string>
-    <string name="review_now">Review now</string>
-
-    <!-- Job Screen -->
-    <string name="job_title">Job</string>
-    <string name="job_vacancies_not_found">job vacancies not found</string>
-
-    <!-- Employee Screen -->
-    <string name="employee_title">Employee</string>
 
     <!-- Chats Screen -->
     <string name="chats_title">Chats</string>
@@ -38,25 +16,12 @@
     <string name="permission_rationale">Please grant the notification permission so that the app can demonstrate usage of the Notification APIs.</string>
     <string name="permission_grant">GRANT</string>
 
-    <!-- Profile Screen -->
-    <string name="profile_title">Profile</string>
-    <string name="online">Online</string>
-    <string name="join">Join</string>
-
     <!-- Settings Screen -->
     <string name="settings_title">Settings</string>
-    <string name="share">Share</string>
-    <string name="rate">Rate</string>
-    <string name="feedback">Feedback</string>
-    <string name="privacy_policy">Privacy Policy</string>
-    <string name="dark_mode">Dark mode</string>
     <string name="sign_out">Sign out</string>
     <string name="sign_out_title">Sign out?</string>
     <string name="sign_out_description">You will have to sign in again to see your tasks.</string>
     <string name="cancel">Cancel</string>
-
-    <!-- Subscriptions Screen -->
-    <string name="subscriptions_title">Subscriptions</string>
 
     <!-- login register screen -->
     <string name="email">E-mail</string>
@@ -73,159 +38,4 @@
     <string name="register">Register</string>
     <string name="already_have_an_account">Already have an account</string>
 
-
-    <!-- Edit Screen -->
-    <string name="done">Done</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="question_count">\u00A0of %d</string>
-    <string name="delete_my_account">Delete my account</string>
-    <string name="delete_account_title">Delete account?</string>
-    <string name="delete_account_description">You will lose all your data and your account will be deleted. This action is irreversible.</string>
-    <string name="title">Title</string>
-    <string name="select_all">Select all that apply.</string>
-    <string name="tell_us_about_you">Tell us something about yourself</string>
-    <string name="description">Description</string>
-    <string name="why_delete_account">why are you deleting your account</string>
-    <string name="selfie_skills">Show off your selfie skills!</string>
-    <string name="add_photo">ADD PHOTO</string>
-    <string name="retake_photo">RETAKE PHOTO</string>
-    <string name="feedback_description">We are constantly improving our product by listening to your feedback.</string>
-    <string name="display_name">Display name</string>
-    <string name="pomo">Pomo</string>
-
-    <!-- Timeover screen -->
-    <string name="start">Start</string>
-
-    <!-- filter screen -->
-    <!-- Search Screen -->
-    <!-- User Profile Screen -->
-    <!-- Photos Screen -->
-    <!-- Chat Screen -->
-    <!-- Blocked Users Screen -->
-    <string name="blocked_users_title">Blocked users</string>
-    <string name="no_blocked_users_all">You have no blocked users!</string>
-
-    <!-- Content descripiton -->
-    <string name="cd_menu">Menu</string>
-    <string name="cd_close">Close</string>
-    <string name="cd_back">Back</string>
-    <string name="cd_profile_photo">Profile photo</string>
-    <string name="cd_lock">Lock</string>
-    <string name="cd_visibility">Visibility</string>
-    <string name="cd_logo">Logo</string>
-    <string name="cd_icon">icon</string>
-    <string name="cd_menu_actions">Menu actions</string>
-    <string name="cd_user_photo">User photo</string>
-
-    <string name="thank_you">Thank you</string>
-    <string name="report_done_text">Thank you for protecting our community. We will take action on your report within 48 hours!</string>
-
-    <string name="ok" translatable="false">OK</string>
-
-    <!-- use now importants -->
-    <string name="home_title">Home</string>
-    <string name="block">Block</string>
-    <string name="block_user">Do you want to block a user?</string>
-    <string name="report">Report</string>
-    <string name="report_user">Do you want to report and block a user?</string>
-    <string name="search">Search</string>
-    <string name="search_count">%1d users</string>
-    <string name="search_no_matches">No matches for “%1s”</string>
-    <string name="search_no_matches_retry">Try broadening your search</string>
-    <string name="recent_searches">Recent searches</string>
-    <string name="users_not_found">Users not found</string>
 </resources>
-    <!--
-
-    <string name="photos_title">Photos</string>
-    <string name="no_photos_all">You have no photos!</string>
-
-    <string name="back">Back</string>
-    <string name="message">Message</string>
-
-
-  <string name="loading_chats_error">Error while loading chats</string>
-    <string name="archive">Archive</string>
-
-    <string name="select_date">Select date.</string>
-    <string name="add_photo">ADD PHOTO</string>
-    <string name="retake_photo">RETAKE PHOTO</string>
-
-
-    <eat-comment/>
-    <string name="timeline_empty_title">No photos or video.</string>
-    <string name="timeline_empty_message">Videos and photos from messages will display here. Add a message or refine your search.</string>
-
-    <string name="show_as_bubble">Show as Bubble</string>
-    <string name="description_icon">Profile icon</string>
-    <string name="description_voice_call">Make a voice call (dummy)</string>
-    <string name="description_send">Send</string>
-    <string name="sender_you">You</string>
-    <string name="label_reply">Reply</string>
-    <string name="description_photo">Photo</string>
-    <string name="hint_input">Type a message…</string>
-    <string name="channel_new_messages">New messages</string>
-    <string name="channel_new_messages_description">All new incoming messages.</string>
-    <string name="chat_with_contact">Chat with %s</string>
-    <string name="voice_call_explanation">This is a dummy voice call screen.</string>
-  <string name="camera_permission_rationale">Taking photos and videos requires access to the camera and microphone.</string>
-    <string name="camera_permission_settings">Please go to your device\'s Settings and grant these permissions.</string>
-    <string name="camera_not_available">Camera not available.</string>
-    <string name="camera_not_ready">Camera not ready. Please wait.</string>
-    <string name="grant_permission">Grant permissions</string>
-
-
-    <eat-comment />
-    <string name="clear_message_history">Clear message history</string>
-
-     Video Edit Screen
-    <string name="remove_audio">Remove audio</string>
-    <string name="send">Send</string>
-    <string name="add_text_overlay_placeholder">Add text overlay</string>
-    <string name="red_text_option">Red</string>
-    <string name="large_text_option">Large</string>
-
-    Control Button strings
-    <string name="play_title">Play</string>
-    <string name="pause_title">Pause</string>
-    <string name="ff_title">Fast forward</string>
-    <string name="rw_title">Rewind</string>
-    <string name="favorite_contact_widget_name">Favorite Contact</string>
-
-    Chat Screen
-    <string name="hello_hint">Hello</string>
-    <string name="block">Block</string>
-    <string name="block_user">Do you want to block a user?</string>
-    <string name="report">Report</string>
-    <string name="report_user">Do you want to report and block a user?</string>
-    <string name="jump_bottom">Jump to bottom</string>
-    <string name="no_messages_all">You have no messages!</string>
-
-
-    <string name="loading_users_error">Error while loading users</string>
-    <string name="jump_top">Jump to top</string>
-    <string name="filters_title">Filters</string>
-
-
-    Archive Screen
-    <string name="no_archives_all">You have no archives!</string>
-    <string name="loading_archives_error">Error while loading archives</string>
-    <string name="unarchive">Unarchive</string>
-
-
-    <string name="profile_not_found">Profile not found</string>
-    <string name="loading_profile_error">Error while loading profile</string>
-
-    <string name="birthday">Birthday</string>
-    <string name="user_photos_not_found">Photos not found</string>
-    <string name="loading_user_photos_error">Error while loading photos</string>
-
-
-     Interests Screen
-    <string name="interests_title">Interests</string>
-    <string name="interests_section_favorites">Favorites</string>
-    <string name="interests_section_assets">Assets</string>
-
-
--->
