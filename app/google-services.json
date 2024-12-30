@@ -1,41 +1,62 @@
 {
   "project_info": {
-    "project_number": "411230460844",
-    "project_id": "pomodoro-255ad",
-    "storage_bucket": "pomodoro-255ad.appspot.com"
+    "project_number": "610577106069",
+    "project_id": "example-eeaa5",
+    "storage_bucket": "example-eeaa5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:411230460844:android:427386e1c7fa6a9061b809",
+        "mobilesdk_app_id": "1:610577106069:android:e75e517637d7e5382cc79c",
         "android_client_info": {
-          "package_name": "com.kapirti.pomodorotechnique_timemanagementmethod"
+          "package_name": "com.test.test"
         }
       },
       "oauth_client": [
         {
-          "client_id": "411230460844-tfo5jkc5a76foq3vpf568lnv57hkos5a.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.kapirti.pomodorotechnique_timemanagementmethod",
-            "certificate_hash": "241534960b4fca22196ec8420610cb56f9265211"
-          }
-        },
-        {
-          "client_id": "411230460844-78i6e1s467k4huq3gkj7vtat9ncn6onk.apps.googleusercontent.com",
+          "client_id": "610577106069-plumb6g9vnh0c3l0tj4ggibb1r71u9i2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDtkCHZ20oMRuomkX1S4vDTbv780r6ygu0"
+          "current_key": "AIzaSyB4dygaJe7juRLouy-nQVq5nQjT_YkZinw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "411230460844-78i6e1s467k4huq3gkj7vtat9ncn6onk.apps.googleusercontent.com",
+              "client_id": "610577106069-plumb6g9vnh0c3l0tj4ggibb1r71u9i2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610577106069:android:31b2a843b1bdefed2cc79c",
+        "android_client_info": {
+          "package_name": "com.ttt.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610577106069-plumb6g9vnh0c3l0tj4ggibb1r71u9i2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4dygaJe7juRLouy-nQVq5nQjT_YkZinw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610577106069-plumb6g9vnh0c3l0tj4ggibb1r71u9i2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

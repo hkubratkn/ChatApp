@@ -19,45 +19,25 @@
 
 
     <application
-        android:name=".PomodoroApplication"
+        android:name=".TestApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/ic_launcher_background"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/icon"
+        android:roundIcon="@drawable/ic_launcher_background"
         android:supportsRtl="true"
         android:enableOnBackInvokedCallback="true"
         android:theme="@style/Theme.Social"
         tools:targetApi="34">
 
 
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3006196735467220~1176844821" />
         <meta-data
             android:name="firebase_performance_logcat_enabled"
             android:value="true" />
 
-<!--        <receiver
-            android:name="com.zepi.social_chat_food.soci.widget.SociaLiteAppWidgetReceiver"
-            android:exported="true"
-            android:label="@string/favorite_contact_widget_name">
-
-
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/socialite_widget_info" />
-        </receiver> -->
-
         <activity
-            android:name="com.kapirti.pomodorotechnique_timemanagementmethod.MainActivity"
+            android:name="com.test.test.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Social"
             android:windowSoftInputMode="adjustResize"
@@ -71,98 +51,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!--
-                This is used as the content URI of notifications. It navigates directly to the
-                specified chat screen.
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="socialite.google.com"
-                    android:pathPattern="/chat/*"
-                    android:scheme="https" />
-            </intent-filter>
-
-                This opens the chat screen with the message field filled with the passed text.
-                This is necessary for making our dynamic shortcuts appear in Direct Share.
-            --><!--
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data android:mimeType="text/plain" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.app.shortcuts"
-                android:resource="@xml/sharing_shortcuts" />-->
         </activity>
-        <!--
-            This Activity is the expanded Bubble. For that, this Activity has to have several
-            attributes.
-            - allowEmbedded="true": The expanded Bubble is embedded in the System UI.
-            - resizeableActivity="true": The expanded Bubble is resized by the System UI.
-            - documentLaunchMode="always": We show multiple bubbles in this sample. There will be
-                                           multiple instances of this Activity.
-        --><!--
-        <activity
-            android:name="com.kapirti.pomodorotechnique_timemanagementmethod.soci.BubbleActivity"
-            android:allowEmbedded="true"
-            android:documentLaunchMode="always"
-            android:exported="true"
-            android:resizeableActivity="true"
-            android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="socialite.google.com"
-                    android:pathPattern="/chat/*"
-                    android:scheme="https" />
-            </intent-filter>
-        </activity>
--->
-<!--
-        <activity android:name="com.zepi.social_chat_food.soci.widget.SociaLiteAppWidgetConfigActivity"
-            android:taskAffinity=""
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
-            </intent-filter>
-        </activity>
-
-
-        <provider
-            android:name="com.zepi.social_chat_food.soci.AssetFileProvider"
-            android:authorities="com.google.android.samples.socialite"
-            android:exported="true"
-            tools:ignore="ExportedContentProvider" />
-
-        <receiver android:name="com.zepi.social_chat_food.chatext.ReplyReceiver" />
--->
-        <!-- Trigger Google Play services to install the backported photo picker module.
-         Refer https://developer.android.com/training/data-storage/shared/photopicker#device-availability -->
-    <!--    <service
-            android:name="com.google.android.gms.metadata.ModuleDependencies"
-            android:enabled="false"
-            android:exported="false"
-            tools:ignore="MissingClass">
-            <intent-filter>
-                <action
-                    android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
-            </intent-filter>
-            <meta-data
-                android:name="photopicker_activity:0:required" android:value="" />
-        </service>-->
-
     </application>
-
 </manifest>
 
 

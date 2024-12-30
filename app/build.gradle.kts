@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
@@ -15,15 +16,15 @@ kotlin {
 }
 
 android {
-    namespace = "com.kapirti.pomodorotechnique_timemanagementmethod"
+    namespace = "com.test.test"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.kapirti.pomodorotechnique_timemanagementmethod"
+        applicationId = "com.test.test"
         minSdk = 21
         targetSdk = 34
-        versionCode = 98
-        versionName = "1.0.81"
+        versionCode = 1
+        versionName = "1.0.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -106,6 +107,7 @@ dependencies {
 
    // implementation(libs.splashscreen)
     implementation(libs.concurrent.kts)
+    implementation(libs.kotlinx.serialization.json)
 
     implementation(libs.camera.core)
     implementation(libs.camera2)
@@ -146,7 +148,6 @@ dependencies {
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.google.firebase:firebase-messaging-ktx")
     implementation("com.google.android.ump:user-messaging-platform:2.1.0")
-    implementation("com.google.android.gms:play-services-ads:23.5.0")
     implementation("androidx.compose.material3:material3-window-size-class:1.2.1")
 
 

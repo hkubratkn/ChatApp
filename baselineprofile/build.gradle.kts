@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kapirti.pomodorotechnique_timemanagementmethod"
+    namespace = "com.test.test"
     compileSdk = 34
 
     compileOptions {

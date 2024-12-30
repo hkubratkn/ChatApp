@@ -18,7 +18,7 @@
     android:resizeMode="horizontal|vertical"
     android:minHeight="92dp"
     android:minWidth="128dp"
-    android:configure="com.kapirti.social_chat_food.soci.widget.SociaLiteAppWidgetConfigActivity"
+    android:configure="com.test.social_chat_food.soci.widget.SociaLiteAppWidgetConfigActivity"
     android:widgetFeatures="configuration_optional|reconfigurable"
     android:updatePeriodMillis="3600000"
     android:previewImage="@drawable/widget_preview"
