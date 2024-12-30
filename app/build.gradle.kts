@@ -29,7 +29,6 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
-
     buildTypes {
         release {
             isMinifyEnabled = false
