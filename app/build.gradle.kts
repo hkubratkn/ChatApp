@@ -19,6 +19,7 @@ android {
     namespace = "com.test.test"
     compileSdk = 34
 
+
     defaultConfig {
         applicationId = "com.test.test"
         minSdk = 21
