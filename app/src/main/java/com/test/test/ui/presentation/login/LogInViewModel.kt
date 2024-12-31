@@ -18,6 +18,7 @@ package com.test.test.ui.presentation.login
 
 import android.app.Activity
 import android.content.Context
+import android.util.Log
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.auth.FirebaseAuthException
@@ -58,9 +59,8 @@ class LogInViewModel @Inject constructor(
     fun onLogInClick(
         restartApp: () -> Unit, snackbarHostState: SnackbarHostState,
         emailError: String, emptyPasswordError: String, wrongPasswordError: String,
-        navigateAndPopUpLoginToRegister: () -> Unit,
-        context: Context
-        ) {
+        navigateAndPopUpLoginToRegister: () -> Unit
+    ) {
         onButtonChange()
         if (!email.isValidEmail()) {
             launchCatching {

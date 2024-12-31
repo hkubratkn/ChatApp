@@ -53,6 +53,7 @@ import com.test.test.common.ext.basicButton
 import com.test.test.common.ext.fieldModifier
 import com.test.test.common.ext.smallSpacer
 import com.test.test.common.ext.textButton
+import com.test.test.ui.Route
 import kotlinx.coroutines.delay
 
 
@@ -60,6 +61,7 @@ import kotlinx.coroutines.delay
 fun LogInScreen(
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     modifier: Modifier = Modifier,
+    navigateAndPopUpLoginToRegister: () -> Unit,
     viewModel: LogInViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState
@@ -105,7 +107,16 @@ fun LogInScreen(
             isError = uiState.isErrorPassword
         )
 
-        BasicButton(text = AppText.log_in, Modifier.basicButton(), uiState.button) {}
+        BasicButton(text = AppText.log_in, Modifier.basicButton(), uiState.button) {
+            viewModel.onLogInClick(
+                restartApp = {},
+                snackbarHostState = snackbarHostState,
+                emailError = emailError,
+                emptyPasswordError = emptyPasswordError,
+                wrongPasswordError = wrongPasswordError,
+                navigateAndPopUpLoginToRegister = navigateAndPopUpLoginToRegister
+            )
+        }
 
         BasicTextButton(AppText.forgotten_password, Modifier.textButton()) {
             viewModel.onForgotPasswordClick(

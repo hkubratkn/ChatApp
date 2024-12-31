@@ -107,6 +107,12 @@ private fun MainNavigation(
             }
             composable<Route.Login> {
                 LogInScreen(
+                    navigateAndPopUpLoginToRegister = {
+                        navController.navigate(Route.Register) {
+                            launchSingleTop = true
+                            popUpTo(Route.Login) { inclusive = true }
+                        }
+                    },
                     modifier = Modifier.fillMaxSize(),
                 )
             }
