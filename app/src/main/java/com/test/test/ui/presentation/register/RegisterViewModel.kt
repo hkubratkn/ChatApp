@@ -43,8 +43,7 @@ class RegisterViewModel @Inject constructor(
         snackbarHostState: SnackbarHostState,
         navigateAndPopUpRegisterToEdit: () -> Unit,
         email_error: String,
-        password_error: String,
-        context: Context
+        password_error: String
     ) {
         onButtonChange()
         if (!email.isValidEmail()) {

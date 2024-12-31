@@ -41,7 +41,7 @@ class SettingsViewModel @Inject constructor(
     }
     fun onSignOutClick() {
         launchCatching {
-
+            accountService.signOut()
         }
     }
 

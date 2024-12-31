@@ -93,6 +93,8 @@ class LogInViewModel @Inject constructor(
                     }
                 } else if (ex.errorCode == "ERROR_USER_NOT_FOUND"){
                     navigateAndPopUpLoginToRegister()
+                } else if (ex.errorCode == "ERROR_INVALID_CREDENTIAL") {
+                    navigateAndPopUpLoginToRegister()
                 }
 
                 throw ex

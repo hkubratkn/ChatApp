@@ -82,7 +82,14 @@ fun RegisterScreen(
         )
         Spacer(modifier = Modifier.smallSpacer())
 
-        BasicButton(text = AppText.register, Modifier.basicButton(), uiState.button) {}
+        BasicButton(text = AppText.register, Modifier.basicButton(), uiState.button) {
+            viewModel.onRegisterClick(
+                snackbarHostState = snackbarHostState,
+                navigateAndPopUpRegisterToEdit = {},
+                email_error = email_error,
+                password_error = password_error
+            )
+        }
         Spacer(modifier = Modifier.smallSpacer())
 
 
