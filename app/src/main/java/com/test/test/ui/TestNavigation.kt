@@ -47,6 +47,9 @@ sealed interface Route {
 
     @Serializable
     data object Camera : Route
+
+    @Serializable
+    class UserProfile(val userId: String) : Route
 }
 
 enum class TopLevelDestination(

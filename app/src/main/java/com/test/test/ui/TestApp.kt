@@ -32,6 +32,7 @@ import com.test.test.ui.presentation.register.RegisterScreen
 import com.test.test.ui.presentation.settings.SettingsRoute
 import com.test.test.ui.presentation.settings.SettingsScreen
 import com.test.test.ui.presentation.splash.SplashScreen
+import com.test.test.ui.presentation.userprofile.UserProfileRoute
 import com.test.test.ui.theme.TestTheme
 
 @Composable
@@ -87,7 +88,11 @@ private fun MainNavigation(
                 )
             }
 
-            composable<Route.Home> { HomeRoute() }
+            composable<Route.Home> { HomeRoute(
+                onItemClicked = {
+                    navController.navigate(Route.UserProfile(it.id))
+                },
+            ) }
             composable<Route.Calls> { CallsRoute() }
 
             composable<Route.Settings> {
@@ -134,6 +139,10 @@ private fun MainNavigation(
                 RegisterScreen(
                     modifier = Modifier.fillMaxSize(),
                 )
+            }
+            composable<Route.UserProfile> {
+                val userId = it.toRoute<Route.UserProfile>().userId
+                UserProfileRoute(userId)
             }
         }
     }
