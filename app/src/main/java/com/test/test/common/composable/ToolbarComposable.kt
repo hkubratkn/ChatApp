@@ -20,15 +20,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidView
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
 import com.test.test.R.string as AppText
 import com.test.test.R.drawable as AppIcon
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Icon
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,7 +39,7 @@ fun HomeTopAppBar(
     CenterAlignedTopAppBar(
         title = {
             Image(
-                painter = painterResource(id = AppIcon.icon),
+                painter = painterResource(id = AppIcon.ic_ff_24dp),
                 contentDescription = stringResource(AppText.app_name),
                 modifier = Modifier.size(40.dp)
             )
@@ -178,6 +175,7 @@ fun BackToolbar(
     )
 }
 
+/*
 @Composable
 fun AdsBannerToolbar(ads: String){
     AndroidView(
@@ -191,6 +189,8 @@ fun AdsBannerToolbar(ads: String){
         }
     )
 }
+
+ */
 
 /**
 

@@ -19,7 +19,6 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.test.test.common.composable.AdsBannerToolbar
 import com.test.test.common.composable.BasicButton
 import com.test.test.common.composable.BasicTextButton
 import com.test.test.common.composable.EmailField

@@ -41,6 +41,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.test.test.R.string as AppText
+import androidx.compose.material3.Icon
+import androidx.compose.ui.res.vectorResource
 
 @Composable
 fun BasicTextButton(@StringRes text: Int, modifier: Modifier, action: () -> Unit) {
@@ -112,10 +114,10 @@ fun DialogCancelButton(@StringRes text: Int, action: () -> Unit) {
 fun ReportButton(onClick: () -> Unit) {
     IconButton(onClick) {
         Icon(
-            imageVector = PomodoroIcons.Report,
+            imageVector = ImageVector.vectorResource(id = android.R.drawable.ic_menu_report_image),
             contentDescription = stringResource(AppText.report),
             tint = Color.Red,
-            modifier = Modifier.size(18.dp)
+            modifier = Modifier.size(18.dp),
         )
     }
 }
@@ -162,7 +164,7 @@ fun JumpToButton(
             contentColor = MaterialTheme.colorScheme.primary,
             modifier = modifier
                 .offset(x = 0.dp, y = -bottomOffset)
-                .height(36.dp)
+                .height(36.dp),
         )
     }
 }

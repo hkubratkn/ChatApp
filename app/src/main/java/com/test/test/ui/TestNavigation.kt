@@ -18,10 +18,6 @@ import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.kapirti.social_chat_food_video.R
-import com.kapirti.social_chat_food_video.common.composable.LuccaIcons
-import com.kapirti.social_chat_food_video.model.UserFlirt
-import com.kapirti.social_chat_food_video.ui.TopLevelDestination.Companion.isTopLevel
 import com.test.test.common.composable.AppIcons
 import com.test.test.ui.TopLevelDestination.Companion.isTopLevel
 import kotlinx.serialization.Serializable
@@ -150,11 +146,11 @@ fun SocialiteNavSuite(
                     icon = {
                         Icon(
                             imageVector = it.imageVector,
-                            contentDescription = stringResource(it.label),
+                            contentDescription = it.label,
                         )
                     },
                     label = {
-                        Text(text = stringResource(it.label))
+                        Text(text = it.label)
                     },
                     alwaysShowLabel = false,
                 )

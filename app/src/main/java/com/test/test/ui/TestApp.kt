@@ -54,11 +54,11 @@ private fun MainNavigation(
         // Lock the layout of the Camera screen to portrait so that the UI layout remains
         // constant, even on orientation changes. Note that the camera is still aware of
         // orientation, and will assign the correct edge as the bottom of the photo or video.
-        if (destination.hasRoute<Route.Camera>()) {
-            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_NOSENSOR
-        } else {
-            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-        }
+//        if (destination.hasRoute<Route.Camera>()) {
+//            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_NOSENSOR
+//        } else {
+//            activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+//        }
     }
 
     SocialiteNavSuite(

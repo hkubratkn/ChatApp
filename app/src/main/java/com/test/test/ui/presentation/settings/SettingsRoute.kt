@@ -27,7 +27,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.test.test.R.string as AppText
 import androidx.compose.ui.res.stringResource
-import com.test.test.common.composable.AdsBannerToolbar
 import com.test.test.common.composable.MenuToolbar
 
 @Composable

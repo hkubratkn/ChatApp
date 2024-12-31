@@ -43,6 +43,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.test.test.R.string as AppText
+import androidx.compose.material3.Icon
 
 @Composable
 fun BasicField(

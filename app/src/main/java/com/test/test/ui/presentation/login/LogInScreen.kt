@@ -29,7 +29,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.test.test.common.composable.AdsBannerToolbar
 import com.test.test.R.string as AppText
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

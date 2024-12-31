@@ -3,6 +3,7 @@ package com.test.test.model.service.impl
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
+import com.test.test.model.UserIsAnonymous
 import com.test.test.model.service.AccountService
 import com.test.test.model.service.trace
 import javax.inject.Inject

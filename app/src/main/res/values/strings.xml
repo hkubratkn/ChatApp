@@ -38,4 +38,15 @@
     <string name="register">Register</string>
     <string name="already_have_an_account">Already have an account</string>
 
+    <string name="cd_lock">Lock</string>
+    <string name="cd_visibility">Visibility</string>
+    <string name="cd_back">Back</string>
+    <string name="cd_menu">Menu</string>
+    <string name="cd_menu_actions">Menu Actions</string>
+    <string name="report">Report</string>
+    <string name="search">Search</string>
+    <string name="timeline_title">Timeline</string>
+    <string name="blocked_users_title">Blocked Users</string>
+    <string name="delete_my_account">Delete My Account</string>
+
 </resources>
