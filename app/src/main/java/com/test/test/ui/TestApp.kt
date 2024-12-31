@@ -29,6 +29,8 @@ import com.test.test.ui.presentation.chats.ChatsRoute
 import com.test.test.ui.presentation.home.HomeRoute
 import com.test.test.ui.presentation.login.LogInScreen
 import com.test.test.ui.presentation.register.RegisterScreen
+import com.test.test.ui.presentation.settings.SettingsRoute
+import com.test.test.ui.presentation.settings.SettingsScreen
 import com.test.test.ui.presentation.splash.SplashScreen
 import com.test.test.ui.theme.TestTheme
 
@@ -87,6 +89,18 @@ private fun MainNavigation(
 
             composable<Route.Home> { HomeRoute() }
             composable<Route.Calls> { CallsRoute() }
+
+            composable<Route.Settings> {
+                SettingsRoute(
+                    navigateLogin = { /*TODO*/ },
+                    navigateRegister = { /*TODO*/ },
+                    navigateEdit = { /*TODO*/ },
+                    restartApp = { /*TODO*/ },
+                    navigateBlockedUser = { /*TODO*/ },
+                    isExpandedScreen = false,
+                    openDrawer = { /*TODO*/ },
+                )
+            }
 
             composable<Route.Splash> {
                 SplashScreen(
