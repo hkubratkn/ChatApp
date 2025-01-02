@@ -1,6 +1,7 @@
 package com.test.test.ui.presentation.userprofile
 
 
+import android.text.format.DateUtils
 import androidx.compose.foundation.layout.Box
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.Column
@@ -34,13 +35,16 @@ internal fun UserProfileRoute(
 
     ) {
         Column {
-            Text("user id : $userId")
-            Text("name : ${uiState.user?.name}")
-            Text("surname : ${uiState.user?.surname}")
-            Text("lastseen")
-            Button(onClick = {}) { Text("chat") }
-            Button(onClick = {}) { Text("video call") }
-            Button(onClick = {}) { Text("voice call") }
+            uiState.user?.let { usr ->
+                Text("user id : $userId")
+                Text("name : ${usr.name}")
+                Text("surname : ${usr.surname}")
+                Text("Last seen : ${DateUtils.getRelativeTimeSpanString(usr.lastSeen!!.seconds * 1000) }")
+                Button(onClick = {}) { Text("chat") }
+                Button(onClick = {}) { Text("video call") }
+                Button(onClick = {}) { Text("voice call") }
+            }
+
         }
     }
 }
