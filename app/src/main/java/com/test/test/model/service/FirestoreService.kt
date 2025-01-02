@@ -5,5 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 
 interface FirestoreService {
+
+    suspend fun getUser(userId: String): User?
     val users: Flow<List<User>>
 }

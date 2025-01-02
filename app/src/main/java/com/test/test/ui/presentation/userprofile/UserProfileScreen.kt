@@ -9,15 +9,25 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 
 
 @Composable
 internal fun UserProfileRoute(
     userId: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: UserProfileViewModel = hiltViewModel()
 ) {
+    val uiState by viewModel.uiState
+
+    LaunchedEffect(userId) {
+        viewModel.getUser(userId)
+    }
+
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -25,6 +35,8 @@ internal fun UserProfileRoute(
     ) {
         Column {
             Text("user id : $userId")
+            Text("name : ${uiState.user?.name}")
+            Text("surname : ${uiState.user?.surname}")
             Text("lastseen")
             Button(onClick = {}) { Text("chat") }
             Button(onClick = {}) { Text("video call") }
