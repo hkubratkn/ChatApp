@@ -21,7 +21,7 @@ class MainViewModel @Inject constructor(
     private val firestoreService: FirestoreService,
     logService: LogService
 ) : AppViewModel(logService) {
-    val uiState = accountService.currentUser.map { SettingsUiState(it.isAnonymous) }
+    val uiState = accountService.currentUser.map { SettingsUiState(it.isAnonymous, it.email) }
 
     private var job: Job? = null
 

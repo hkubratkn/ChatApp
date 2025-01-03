@@ -129,7 +129,9 @@ fun LogInScreen(
 
         Spacer(modifier = Modifier.smallSpacer())
 
-        BasicTextButton(AppText.create_new_account, Modifier.textButton()) {}
+        BasicTextButton(AppText.create_new_account, Modifier.textButton()) {
+            navigateAndPopUpLoginToRegister.invoke()
+        }
     }
 }
 

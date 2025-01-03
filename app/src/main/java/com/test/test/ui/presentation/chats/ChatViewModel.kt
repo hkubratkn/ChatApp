@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.Timestamp
+import com.google.firebase.auth.FirebaseAuth
 import com.test.test.common.stateInUi
 import com.test.test.model.ChatMessage
 import com.test.test.model.ChatRoom
@@ -20,6 +21,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class ChatViewModel @Inject constructor(
     private val firestoreService: FirestoreService,
+    private val firebaseAuth: FirebaseAuth
 ) : ViewModel() {
 
     var uiState = mutableStateOf(ChatUiState())
@@ -76,7 +78,7 @@ class ChatViewModel @Inject constructor(
         if (!isInputValid(input)) return
         viewModelScope.launch {
             //sendMessage(chatId, input, null, null)
-            val myId = "auB1JJ5RUHyZVfD5G9AP" // Hardcoded document id, say I'm name1
+            val myId = firebaseAuth.currentUser!!.uid
 
             val room = uiState.value.chatRoom
             room?.lastMessageTime = Timestamp.now()

@@ -49,7 +49,7 @@ sealed interface Route {
     data object Camera : Route
 
     @Serializable
-    class UserProfile(val userId: String) : Route
+    class UserProfile(val userId: String, val myId: String) : Route
 
     @Serializable
     class SingleChat(val firstId: String, val secondId: String) : Route

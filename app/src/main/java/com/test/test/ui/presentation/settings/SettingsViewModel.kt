@@ -31,7 +31,7 @@ class SettingsViewModel @Inject constructor(
     logService: LogService,
     private val accountService: AccountService,
 ): AppViewModel(logService) {
-    val uiState = accountService.currentUser.map { SettingsUiState(it.isAnonymous) }
+    val uiState = accountService.currentUser.map { SettingsUiState(it.isAnonymous, it.email) }
 
 
     fun onDeleteClick(){

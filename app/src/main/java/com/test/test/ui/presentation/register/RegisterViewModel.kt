@@ -60,7 +60,13 @@ class RegisterViewModel @Inject constructor(
 
         launchCatching {
             try {
-                accountService.linkAccount(email, password)
+                val user = accountService.linkAccount(email, password)
+                firestoreService.saveUser(
+                    User(
+                        id = user.uid,
+                        name = user.displayName ?: user.email ?: ""
+                    )
+                )
                 navigateAndPopUpRegisterToEdit()
             } catch (ex: FirebaseAuthException) {
                 launchCatching { snackbarHostState.showSnackbar(ex.localizedMessage ?: "") }

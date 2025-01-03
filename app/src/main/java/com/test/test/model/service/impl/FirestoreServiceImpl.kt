@@ -30,6 +30,10 @@ class FirestoreServiceImpl @Inject constructor(
     private val auth: AccountService,
 ): FirestoreService {
 
+    override suspend fun saveUser(user: User) {
+        userCollection().document(user.id).set(user)
+    }
+
     override suspend fun getUser(userId: String): User? = suspendCoroutine { cont ->
 
         userCollection().document(userId).get().addOnSuccessListener {

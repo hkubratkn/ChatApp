@@ -26,13 +26,14 @@ import kotlinx.coroutines.launch
 @Composable
 internal fun HomeRoute(
     modifier: Modifier = Modifier,
-    onItemClicked: (User) -> Unit,
+    onItemClicked: (User, String) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-
     val users by viewModel.users.collectAsStateWithLifecycle()
 
+    val myId = viewModel.currentUserId
+
     HomeScreen(users, onItemClicked = {
-        onItemClicked.invoke(it)
+        onItemClicked.invoke(it, myId!!)
     })
 }

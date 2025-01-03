@@ -86,7 +86,7 @@ fun SettingsScreen(
         } else {
             RegularCardEditor(stringResource(id = AppText.blocked_users_title),
                 Icons.Default.Block, "", Modifier.card()) { navigateBlockedUser() }
-            RegularCardEditor(stringResource(AppText.sign_out),
+            RegularCardEditor(stringResource(AppText.sign_out) + " (${uiState.email})",
                 Icons.AutoMirrored.Default.Logout, "", Modifier.card()) { showSignOutDialog = true }
             DangerousCardEditor(stringResource(AppText.delete_my_account),
                 Icons.Default.Delete, "", Modifier.card()) { viewModel.onDeleteClick()}
@@ -104,7 +104,7 @@ fun SettingsScreen(
                     showSignOutDialog = false
                 }
             },
-            onDismissRequest = { showSignOutDialog = false }
+            onDismissRequest = { showSignOutDialog = false },
         )
     }
 }

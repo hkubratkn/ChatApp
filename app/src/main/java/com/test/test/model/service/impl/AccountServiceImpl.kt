@@ -2,11 +2,14 @@ package com.test.test.model.service.impl
 
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.test.test.model.UserIsAnonymous
 import com.test.test.model.service.AccountService
 import com.test.test.model.service.trace
 import javax.inject.Inject
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -30,7 +33,7 @@ class AccountServiceImpl @Inject constructor(private val auth: FirebaseAuth) : A
         get() = callbackFlow {
             val listener =
                 FirebaseAuth.AuthStateListener { auth ->
-                    this.trySend(auth.currentUser?.let { UserIsAnonymous(it.uid, it.isAnonymous) } ?: UserIsAnonymous())
+                    this.trySend(auth.currentUser?.let { UserIsAnonymous(it.uid, it.isAnonymous, it.email.orEmpty()) } ?: UserIsAnonymous())
                 }
             auth.addAuthStateListener(listener)
             awaitClose { auth.removeAuthStateListener(listener) }
@@ -49,12 +52,16 @@ class AccountServiceImpl @Inject constructor(private val auth: FirebaseAuth) : A
         auth.signInAnonymously().await()
     }
 
-    override suspend fun linkAccount(email: String, password: String): Unit =
-        trace(LINK_ACCOUNT_TRACE) {
-            auth.createUserWithEmailAndPassword(email, password)
-            //val credential = EmailAuthProvider.getCredential(email, password)
-            //auth.currentUser!!.linkWithCredential(credential).await()
+    override suspend fun linkAccount(email: String, password: String): FirebaseUser = suspendCoroutine { cont ->
+        //trace(LINK_ACCOUNT_TRACE) {
+        val x = auth.createUserWithEmailAndPassword(email, password)
+        x.addOnSuccessListener { result ->
+            cont.resume(result.user!!)
         }
+        //val credential = EmailAuthProvider.getCredential(email, password)
+        //auth.currentUser!!.linkWithCredential(credential).await()
+        //}
+    }
 
 
     override suspend fun displayName(newValue: String){

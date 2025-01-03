@@ -90,8 +90,8 @@ private fun MainNavigation(
             }
 
             composable<Route.Home> { HomeRoute(
-                onItemClicked = {
-                    navController.navigate(Route.UserProfile(it.id))
+                onItemClicked = { user, myId ->
+                    navController.navigate(Route.UserProfile(user.id, myId))
                 },
             ) }
             composable<Route.Calls> { CallsRoute() }
@@ -143,7 +143,7 @@ private fun MainNavigation(
             }
             composable<Route.UserProfile> {
                 val userId = it.toRoute<Route.UserProfile>().userId
-                val myId = "auB1JJ5RUHyZVfD5G9AP" // Hardcoded document id, say I'm name1
+                val myId = it.toRoute<Route.UserProfile>().myId
 
                 UserProfileRoute(
                     userId,

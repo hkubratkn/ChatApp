@@ -18,5 +18,6 @@ package com.test.test.model
 
 data class UserIsAnonymous(
     val id: String = "",
-    val isAnonymous: Boolean = true
+    val isAnonymous: Boolean = true,
+    val email: String = ""
 )

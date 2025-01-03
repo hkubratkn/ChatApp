@@ -16,4 +16,4 @@
 
 package com.test.test.ui.presentation.settings
 
-data class SettingsUiState(val isAnonymousAccount: Boolean = true)
+data class SettingsUiState(val isAnonymousAccount: Boolean = true, val email: String = "")

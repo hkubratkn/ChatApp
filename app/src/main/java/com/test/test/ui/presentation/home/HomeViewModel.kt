@@ -16,6 +16,7 @@
 
 package com.test.test.ui.presentation.home
 
+import com.google.firebase.auth.FirebaseAuth
 import com.test.test.common.stateInUi
 import com.test.test.model.service.FirestoreService
 import com.test.test.model.service.LogService
@@ -26,8 +27,11 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val firestoreService: FirestoreService,
+    private val firebaseAuth: FirebaseAuth,
     logService: LogService,
 ): AppViewModel(logService) {
 
     val users = firestoreService.users.stateInUi(emptyList())
+
+    val currentUserId = firebaseAuth.currentUser?.uid
 }
