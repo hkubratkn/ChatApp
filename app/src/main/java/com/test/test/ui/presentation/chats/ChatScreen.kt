@@ -107,7 +107,7 @@ fun ChatScreen(
     val uiState by viewModel.uiState
 
 //    val chat by viewModel.chat.collectAsStateWithLifecycle()
-    val messages = emptyList<ChatMessage>()
+    //val messages = emptyList<ChatMessage>()
     //val messages by viewModel.messages.collectAsStateWithLifecycle()
     val input by viewModel.input.collectAsStateWithLifecycle()
 //    val sendEnabled by viewModel.sendEnabled.collectAsStateWithLifecycle()
@@ -115,7 +115,7 @@ fun ChatScreen(
     uiState.chatRoom?.let { chatRoom ->
         ChatContent(
             //chat = c,
-            messages = messages,
+            messages = uiState.messages,
             input = input,
             sendEnabled = true,
             onBackPressed = onBackPressed,

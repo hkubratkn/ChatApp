@@ -15,6 +15,7 @@ import kotlinx.coroutines.tasks.await
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.snapshots
 import com.google.firebase.firestore.toObjects
+import com.test.test.model.ChatMessage
 import com.test.test.model.ChatRoom
 import com.test.test.model.User
 import com.test.test.model.service.AccountService
@@ -48,11 +49,18 @@ class FirestoreServiceImpl @Inject constructor(
         chatRoomsCollection().document(chatRoomId).set(chatRoom)
     }
 
+    override suspend fun getChatRoomMessageReference(chatRoomId: String): CollectionReference {
+        return chatRoomsCollection().document(chatRoomId).collection("chats")
+    }
+
     @OptIn(ExperimentalCoroutinesApi::class)
     override val users: Flow<List<User>>
         get() = auth.currentUser.flatMapLatest { user ->
             userCollection().orderBy(DATE_OF_CREATION_FIELD, Query.Direction.DESCENDING).snapshots().map { snapshot -> snapshot.toObjects() } }
 
+    override suspend fun getChats(chatRoomId: String): Flow<List<ChatMessage>> {
+        return getChatRoomMessageReference(chatRoomId).orderBy("timestamp", Query.Direction.DESCENDING).snapshots().map { snapshot -> snapshot.toObjects(ChatMessage::class.java) }
+    }
 
     private fun userCollection(): CollectionReference = firestore.collection(USER_COLLECTION)
 

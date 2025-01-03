@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.Timestamp
 import com.test.test.common.stateInUi
+import com.test.test.model.ChatMessage
 import com.test.test.model.ChatRoom
 import com.test.test.model.service.FirestoreService
 import com.test.test.model.service.impl.FirestoreServiceImpl
@@ -12,6 +13,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
@@ -40,6 +42,14 @@ class ChatViewModel @Inject constructor(
             uiState.value = uiState.value.copy(chatRoom = chatRoom)
         }
 
+        observeChatMessages(chatId)
+
+    }
+
+    fun observeChatMessages(chatId: String) = viewModelScope.launch {
+        firestoreService.getChats(chatId).collectLatest {
+            uiState.value = uiState.value.copy(messages = it.map { com.test.test.ui.presentation.chats.ChatMessage(text = it.message) })
+        }
     }
 
 
@@ -66,7 +76,19 @@ class ChatViewModel @Inject constructor(
         if (!isInputValid(input)) return
         viewModelScope.launch {
             //sendMessage(chatId, input, null, null)
-            _input.value = ""
+            val myId = "auB1JJ5RUHyZVfD5G9AP" // Hardcoded document id, say I'm name1
+
+            val room = uiState.value.chatRoom
+            room?.lastMessageTime = Timestamp.now()
+            room?.lastMessageSenderId = myId
+            room?.let {
+                firestoreService.setChatRoom(room.id, room)
+
+                val chatMessage = ChatMessage(input, myId, Timestamp.now())
+                firestoreService.getChatRoomMessageReference(room.id).add(chatMessage).addOnSuccessListener {
+                    _input.value = ""
+                }
+            }
         }
     }
 
