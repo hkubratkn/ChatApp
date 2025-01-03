@@ -32,5 +32,7 @@ internal fun HomeRoute(
 
     val users by viewModel.users.collectAsStateWithLifecycle()
 
-    HomeScreen(users, onItemClicked = onItemClicked)
+    HomeScreen(users, onItemClicked = {
+        onItemClicked.invoke(it)
+    })
 }

@@ -21,6 +21,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 internal fun UserProfileRoute(
     userId: String,
     modifier: Modifier = Modifier,
+    onChatClicked: (String) -> Unit,
     viewModel: UserProfileViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState
@@ -40,7 +41,7 @@ internal fun UserProfileRoute(
                 Text("name : ${usr.name}")
                 Text("surname : ${usr.surname}")
                 Text("Last seen : ${DateUtils.getRelativeTimeSpanString(usr.lastSeen!!.seconds * 1000) }")
-                Button(onClick = {}) { Text("chat") }
+                Button(onClick = {onChatClicked(userId) }) { Text("chat") }
                 Button(onClick = {}) { Text("video call") }
                 Button(onClick = {}) { Text("voice call") }
             }
@@ -53,6 +54,7 @@ internal fun UserProfileRoute(
 @Composable
 fun UserProfilePreview() {
     UserProfileRoute(
-        userId = "abc"
+        userId = "abc",
+        onChatClicked = {}
     )
 }

@@ -15,6 +15,7 @@ import kotlinx.coroutines.tasks.await
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.snapshots
 import com.google.firebase.firestore.toObjects
+import com.test.test.model.ChatRoom
 import com.test.test.model.User
 import com.test.test.model.service.AccountService
 import com.test.test.model.service.FirestoreService
@@ -36,6 +37,17 @@ class FirestoreServiceImpl @Inject constructor(
         }
     }
 
+    override suspend fun getChatRoom(chatRoomId: String): ChatRoom? = suspendCoroutine { cont ->
+        chatRoomsCollection().document(chatRoomId).get().addOnSuccessListener {
+            val x = it.toObject(ChatRoom::class.java)
+            cont.resume(x)
+        }
+    }
+
+    override suspend fun setChatRoom(chatRoomId: String, chatRoom: ChatRoom) {
+        chatRoomsCollection().document(chatRoomId).set(chatRoom)
+    }
+
     @OptIn(ExperimentalCoroutinesApi::class)
     override val users: Flow<List<User>>
         get() = auth.currentUser.flatMapLatest { user ->
@@ -44,9 +56,19 @@ class FirestoreServiceImpl @Inject constructor(
 
     private fun userCollection(): CollectionReference = firestore.collection(USER_COLLECTION)
 
+    private fun chatRoomsCollection(): CollectionReference = firestore.collection(CHATROOM_COLLECTION)
 
     companion object {
+        private const val CHATROOM_COLLECTION = "ChatRooms"
         private const val USER_COLLECTION = "User"
         private const val DATE_OF_CREATION_FIELD = "dateOfCreation"
+
+        fun getChatRoomId(firstUserId: String, secondUserId: String) : String {
+            return if(firstUserId.hashCode() < secondUserId.hashCode()) {
+                firstUserId + "_" + secondUserId
+            } else {
+                secondUserId + "_" + firstUserId
+            }
+        }
     }
 }

@@ -25,6 +25,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navDeepLink
 import androidx.navigation.toRoute
 import com.test.test.ui.presentation.calls.CallsRoute
+import com.test.test.ui.presentation.chats.ChatScreen
 import com.test.test.ui.presentation.chats.ChatsRoute
 import com.test.test.ui.presentation.home.HomeRoute
 import com.test.test.ui.presentation.login.LogInScreen
@@ -142,7 +143,19 @@ private fun MainNavigation(
             }
             composable<Route.UserProfile> {
                 val userId = it.toRoute<Route.UserProfile>().userId
-                UserProfileRoute(userId)
+                val myId = "auB1JJ5RUHyZVfD5G9AP" // Hardcoded document id, say I'm name1
+
+                UserProfileRoute(
+                    userId,
+                    onChatClicked = {
+                        navController.navigate(Route.SingleChat(myId, userId))
+                    }
+                )
+            }
+            composable<Route.SingleChat> {
+                val firstId = it.toRoute<Route.SingleChat>().firstId
+                val secondId = it.toRoute<Route.SingleChat>().secondId
+                ChatScreen(firstId, secondId)
             }
         }
     }

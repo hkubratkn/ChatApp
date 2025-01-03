@@ -50,6 +50,9 @@ sealed interface Route {
 
     @Serializable
     class UserProfile(val userId: String) : Route
+
+    @Serializable
+    class SingleChat(val firstId: String, val secondId: String) : Route
 }
 
 enum class TopLevelDestination(
