@@ -10,5 +10,6 @@ data class ChatRoom(
     val userIds: List<String> = listOf(),
     @ServerTimestamp
     var lastMessageTime: Timestamp? = null,
-    var lastMessageSenderId: String = ""
+    var lastMessageSenderId: String = "",
+    var lastMessage: String = ""
 )

@@ -156,7 +156,9 @@ private fun MainNavigation(
                 val firstId = it.toRoute<Route.SingleChat>().firstId
                 val secondId = it.toRoute<Route.SingleChat>().secondId
                 val name = it.toRoute<Route.SingleChat>().name
-                ChatScreen(firstId, secondId, name)
+                ChatScreen(firstId, secondId, name,
+                    onBackPressed = {navController.navigateUp()}
+                )
             }
         }
     }

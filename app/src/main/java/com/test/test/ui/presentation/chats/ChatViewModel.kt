@@ -84,6 +84,7 @@ class ChatViewModel @Inject constructor(
             val room = uiState.value.chatRoom
             room?.lastMessageTime = Timestamp.now()
             room?.lastMessageSenderId = myId
+            room?.lastMessage = input
             room?.let {
                 firestoreService.setChatRoom(room.id, room)
 

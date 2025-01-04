@@ -56,11 +56,11 @@ class ChatListViewModel @Inject constructor(
         val myId = firebaseAuth.currentUser?.uid.orEmpty()
         firestoreService.getConversations(myId).collectLatest { rooms ->
             val rows = rooms.map { room ->
-                val otherId = room.userIds.filterNot { it != myId }.first()
+                val otherId = room.userIds.filterNot { it == myId }.first()
                 val otherUser = firestoreService.getUser(otherId)!!
                 ChatRow(
                     name = otherUser.name,
-                    lastMessage = "deneme",
+                    lastMessage = room.lastMessage,
                     profileImage = "",
                     lastTime = (room.lastMessageTime?.seconds?: 0L) * 1000L,
                     userIds = room.userIds
