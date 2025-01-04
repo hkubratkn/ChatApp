@@ -39,14 +39,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.test.test.common.ext.toReadableString
 import com.test.test.model.ChatRoom
+import com.test.test.model.ChatRow
 
 @Composable
 fun ChatRow(
-    chat: ChatRoom,
+    chat: ChatRow,
     onClick: ((String) -> Unit)?,
     modifier: Modifier = Modifier,
 ) {
-    val contact = "contact name here" //chat.attendees.first()
+    val contact = chat.name //"contact name here" //chat.attendees.first()
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -78,7 +79,7 @@ fun ChatRow(
                 fontSize = 16.sp,
             )
             Text(
-                text = "last message here", //chat.lastMessageTime= chatWithLastMessage.text,
+                text = chat.lastMessage, ///"last message here", //chat.lastMessageTime= chatWithLastMessage.text,
                 style = MaterialTheme.typography.bodySmall,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -92,7 +93,7 @@ fun ChatRow(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
-                text = chat.lastMessageTime?.seconds?.toReadableString().orEmpty(),
+                text = chat.lastTime.toReadableString(),
                 fontSize = 14.sp,
             )
         }

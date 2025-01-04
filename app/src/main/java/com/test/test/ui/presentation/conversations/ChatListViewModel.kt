@@ -20,10 +20,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
+import com.test.test.model.ChatRow
 import com.test.test.model.service.FirestoreService
 import com.test.test.ui.presentation.chats.ChatUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlin.coroutines.suspendCoroutine
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -52,8 +54,20 @@ class ChatListViewModel @Inject constructor(
 
     fun observeChatRooms() = viewModelScope.launch {
         val myId = firebaseAuth.currentUser?.uid.orEmpty()
-        firestoreService.getConversations(myId).collectLatest {
-            uiState.value = uiState.value.copy(conversationList = it)
+        firestoreService.getConversations(myId).collectLatest { rooms ->
+            val rows = rooms.map { room ->
+                val otherId = room.userIds.filterNot { it != myId }.first()
+                val otherUser = firestoreService.getUser(otherId)!!
+                ChatRow(
+                    name = otherUser.name,
+                    lastMessage = "deneme",
+                    profileImage = "",
+                    lastTime = (room.lastMessageTime?.seconds?: 0L) * 1000L,
+                    userIds = room.userIds
+                )
+            }
+            uiState.value = uiState.value.copy(conversationList = rows)
+
             //uiState.value = uiState.value.copy(messages = it.map { com.test.test.ui.presentation.chats.ChatMessage(text = it.message, isIncoming = it.senderId != myId) })
         }
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 The Android Open Source Project
+ * Copyright (C) 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,13 @@
  * limitations under the License.
  */
 
-package com.test.test.ui.presentation.conversations
+package com.test.test.model
 
-import com.test.test.model.ChatRoom
-import com.test.test.model.ChatRow
-import com.test.test.ui.presentation.chats.ChatMessage
+data class ChatRow(
+    val name: String = "",
+    val lastMessage: String = "",
+    val profileImage: String = "",
+    val lastTime: Long = 0L,
+    val userIds: List<String> = listOf()
 
-data class ConversationsUiState(
-    //val chatRoom: ChatRoom? = null,
-    //val conversationList: List<ChatRoom> = listOf()
-    val conversationList: List<ChatRow> = listOf()
 )
-

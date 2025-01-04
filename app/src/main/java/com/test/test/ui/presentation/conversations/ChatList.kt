@@ -39,6 +39,7 @@ import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
 import com.test.test.model.ChatRoom
+import com.test.test.model.ChatRow
 
 @Composable
 fun ChatList(
@@ -55,7 +56,7 @@ fun ChatList(
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun ChatList(
-    chats: List<ChatRoom>,
+    chats: List<ChatRow>,
     //onChatClicked: (chatId: String) -> Unit,
     onChatClicked: (firstId: String, secondId: String, name:String) -> Unit,
     modifier: Modifier = Modifier,
