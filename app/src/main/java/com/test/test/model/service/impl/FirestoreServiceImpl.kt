@@ -57,6 +57,12 @@ class FirestoreServiceImpl @Inject constructor(
         return chatRoomsCollection().document(chatRoomId).collection("chats")
     }
 
+    override suspend fun getConversations(userId: String): Flow<List<ChatRoom>> {
+        return chatRoomsCollection().whereArrayContains("userIds", userId)
+            .orderBy("lastMessageTime", Query.Direction.DESCENDING)
+            .snapshots().map { snapshot -> snapshot.toObjects() }
+    }
+
     @OptIn(ExperimentalCoroutinesApi::class)
     override val users: Flow<List<User>>
         get() = auth.currentUser.flatMapLatest { user ->
@@ -69,6 +75,8 @@ class FirestoreServiceImpl @Inject constructor(
     private fun userCollection(): CollectionReference = firestore.collection(USER_COLLECTION)
 
     private fun chatRoomsCollection(): CollectionReference = firestore.collection(CHATROOM_COLLECTION)
+
+
 
     companion object {
         private const val CHATROOM_COLLECTION = "ChatRooms"

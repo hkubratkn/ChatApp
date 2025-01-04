@@ -50,7 +50,8 @@ class ChatViewModel @Inject constructor(
 
     fun observeChatMessages(chatId: String) = viewModelScope.launch {
         firestoreService.getChats(chatId).collectLatest {
-            uiState.value = uiState.value.copy(messages = it.map { com.test.test.ui.presentation.chats.ChatMessage(text = it.message) })
+            val myId = firebaseAuth.currentUser?.uid.orEmpty()
+            uiState.value = uiState.value.copy(messages = it.map { com.test.test.ui.presentation.chats.ChatMessage(text = it.message, isIncoming = it.senderId != myId) })
         }
     }
 

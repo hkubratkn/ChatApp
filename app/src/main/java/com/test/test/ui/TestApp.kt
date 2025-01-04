@@ -84,8 +84,8 @@ private fun MainNavigation(
         ) {
             composable<Route.Chats> {
                 ChatsRoute(
-//                    onChatClicked = { chatId -> navController.navigate(Route.ChatThread(chatId)) },
-//                    modifier = Modifier.fillMaxSize(),
+                    onChatClicked = { firstId, secondId, name ->
+                        navController.navigate(Route.SingleChat(firstId, secondId, name)) },
                 )
             }
 
@@ -147,15 +147,16 @@ private fun MainNavigation(
 
                 UserProfileRoute(
                     userId,
-                    onChatClicked = {
-                        navController.navigate(Route.SingleChat(myId, userId))
+                    onChatClicked = { id, name ->
+                        navController.navigate(Route.SingleChat(myId, userId, name))
                     }
                 )
             }
             composable<Route.SingleChat> {
                 val firstId = it.toRoute<Route.SingleChat>().firstId
                 val secondId = it.toRoute<Route.SingleChat>().secondId
-                ChatScreen(firstId, secondId)
+                val name = it.toRoute<Route.SingleChat>().name
+                ChatScreen(firstId, secondId, name)
             }
         }
     }

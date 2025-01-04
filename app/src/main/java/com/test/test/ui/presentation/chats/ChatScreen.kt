@@ -88,6 +88,7 @@ fun ChatScreen(
     //chatId: Long,
     firstUserId: String,
     secondUserId: String,
+    name: String,
     foreground: Boolean = false,
     modifier: Modifier = Modifier,
     onBackPressed: (() -> Unit)? = {},
@@ -115,6 +116,7 @@ fun ChatScreen(
     uiState.chatRoom?.let { chatRoom ->
         ChatContent(
             //chat = c,
+            name = name,
             messages = uiState.messages,
             input = input,
             sendEnabled = true,
@@ -161,6 +163,7 @@ private fun LifecycleEffect(
 @Composable
 private fun ChatContent(
     //chat: ChatDetail,
+    name: String,
     messages: List<ChatMessage>,
     input: String,
     sendEnabled: Boolean,
@@ -180,6 +183,7 @@ private fun ChatContent(
         topBar = {
             ChatAppBar(
                 //chat = chat,
+                name = name,
                 scrollBehavior = scrollBehavior,
                 onBackPressed = onBackPressed,
             )
@@ -228,6 +232,7 @@ private fun PaddingValues.copy(
 @Composable
 private fun ChatAppBar(
     //chat: ChatDetail,
+    name: String,
     scrollBehavior: TopAppBarScrollBehavior,
     onBackPressed: (() -> Unit)?,
     modifier: Modifier = Modifier,
@@ -242,7 +247,7 @@ private fun ChatAppBar(
                 val contact = "deneme"//chat.attendees.first()
                 //SmallContactIcon(iconUri = contact.iconUri, size = 32.dp)
                 //Text(text = contact.name)
-                Text(text = "berkayy")
+                Text(text = name)
             }
         },
         modifier = modifier,
@@ -495,6 +500,7 @@ private fun PreviewInputBar() {
 private fun PreviewChatContent() {
 
         ChatContent(
+            name = "berkay",
             messages = listOf(
                 ChatMessage("Hi!", null, null, 0L, false, null),
                 ChatMessage("Hello", null, null, 0L, true, null),

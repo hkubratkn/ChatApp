@@ -33,7 +33,7 @@ internal fun HomeRoute(
 
     val myId = viewModel.currentUserId
 
-    HomeScreen(users, onItemClicked = {
+    HomeScreen(users.filterNot { it.id == myId }, onItemClicked = {
         onItemClicked.invoke(it, myId!!)
     })
 }

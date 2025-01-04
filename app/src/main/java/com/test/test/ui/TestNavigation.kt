@@ -52,7 +52,7 @@ sealed interface Route {
     class UserProfile(val userId: String, val myId: String) : Route
 
     @Serializable
-    class SingleChat(val firstId: String, val secondId: String) : Route
+    class SingleChat(val firstId: String, val secondId: String, val name: String) : Route
 }
 
 enum class TopLevelDestination(
