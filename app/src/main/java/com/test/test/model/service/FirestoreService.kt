@@ -14,6 +14,8 @@ interface FirestoreService {
     suspend fun getUser(userId: String): User?
     val users: Flow<List<User>>
 
+    val currentUserConversations: Flow<List<ChatRoom>>
+
     suspend fun getChats(chatRoomId: String) : Flow<List<ChatMessage>>
 
     suspend fun getChatRoom(chatRoomId: String): ChatRoom?

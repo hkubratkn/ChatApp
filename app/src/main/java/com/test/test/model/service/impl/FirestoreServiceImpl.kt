@@ -5,6 +5,7 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.MetadataChanges
 import com.google.firebase.firestore.dataObjects
 import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.tasks.await
 import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.snapshots
 import com.google.firebase.firestore.toObjects
 import com.test.test.model.ChatMessage
@@ -22,8 +24,11 @@ import com.test.test.model.service.AccountService
 import com.test.test.model.service.FirestoreService
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapLatest
 
 class FirestoreServiceImpl @Inject constructor(
     private val firestore: FirebaseFirestore,
@@ -57,16 +62,29 @@ class FirestoreServiceImpl @Inject constructor(
         return chatRoomsCollection().document(chatRoomId).collection("chats")
     }
 
+    //@OptIn(ExperimentalCoroutinesApi::class)
     override suspend fun getConversations(userId: String): Flow<List<ChatRoom>> {
         return chatRoomsCollection().whereArrayContains("userIds", userId)
             .orderBy("lastMessageTime", Query.Direction.DESCENDING)
-            .snapshots().map { snapshot -> snapshot.toObjects() }
+            //.addSnapshotListener { value, error -> value.toObjects(ChatRoom::class.java) }
+            .snapshotFlow().map { snapshot ->
+                android.util.Log.d("myTag","snapshot update triggered..")
+                snapshot.toObjects(ChatRoom::class.java)
+            }
     }
+
+
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override val users: Flow<List<User>>
         get() = auth.currentUser.flatMapLatest { user ->
             userCollection().orderBy(DATE_OF_CREATION_FIELD, Query.Direction.DESCENDING).snapshots().map { snapshot -> snapshot.toObjects() } }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override val currentUserConversations: Flow<List<ChatRoom>>
+        get() = auth.currentUser.flatMapLatest { user ->
+            chatRoomsCollection().whereArrayContains("userIds", user.id).orderBy("lastMessageTime", Query.Direction.DESCENDING).snapshots().map { snapshot -> snapshot.toObjects() } }
+
 
     override suspend fun getChats(chatRoomId: String): Flow<List<ChatMessage>> {
         return getChatRoomMessageReference(chatRoomId).orderBy("timestamp", Query.Direction.DESCENDING).snapshots().map { snapshot -> snapshot.toObjects(ChatMessage::class.java) }
@@ -76,6 +94,25 @@ class FirestoreServiceImpl @Inject constructor(
 
     private fun chatRoomsCollection(): CollectionReference = firestore.collection(CHATROOM_COLLECTION)
 
+
+
+    fun Query.snapshotFlow(): Flow<QuerySnapshot> = callbackFlow {
+        val listenerRegistration = addSnapshotListener { value, error ->
+            if (error != null) {
+                android.util.Log.d("myTag2","close it!")
+                close()
+                return@addSnapshotListener
+            }
+            if (value != null) {
+                android.util.Log.d("myTag2","send it!")
+                trySend(value)
+            }
+        }
+        awaitClose {
+            android.util.Log.d("myTag2","remove it!")
+            listenerRegistration.remove()
+        }
+    }
 
 
     companion object {

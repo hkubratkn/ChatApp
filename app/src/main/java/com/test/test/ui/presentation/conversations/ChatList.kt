@@ -28,12 +28,15 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
@@ -48,9 +51,22 @@ fun ChatList(
     modifier: Modifier = Modifier,
     viewModel: ChatListViewModel = hiltViewModel(),
 ) {
+
+//    LaunchedEffect(Unit) {
+//        viewModel.ready()
+//    }
+
+    //val conv by viewModel.conversations.collectAsStateWithLifecycle()
+    //val conv by viewModel.conversations.collectAsState(initial = listOf())
+
+    //val latestConv = conv.map { viewModel.mapChatItem(it) }
+
+
     //val chatList by viewModel.chats.collectAsStateWithLifecycle()
     val uiState by viewModel.uiState
     ChatList(uiState.conversationList, onChatClicked, modifier)
+    //ChatList(conv, onChatClicked, modifier)
+
 }
 
 @OptIn(ExperimentalPermissionsApi::class)

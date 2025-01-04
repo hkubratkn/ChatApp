@@ -20,13 +20,19 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
+import com.test.test.common.stateInUi
+import com.test.test.model.ChatRoom
 import com.test.test.model.ChatRow
 import com.test.test.model.service.FirestoreService
 import com.test.test.ui.presentation.chats.ChatUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.coroutines.suspendCoroutine
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -35,6 +41,12 @@ class ChatListViewModel @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val firestoreService: FirestoreService,
 ) : ViewModel() {
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+//    val conversations = firestoreService.currentUserConversations.stateInUi(emptyList()).map {
+//        it.map { mapChatItem(it) } //mapChatItem(it)
+//    }
+
 
     var uiState = mutableStateOf(ConversationsUiState())
         private set
@@ -45,7 +57,19 @@ class ChatListViewModel @Inject constructor(
 
     //val chats = listOf<ChatDetail>()
 
-
+    suspend fun mapChatItem(room: ChatRoom) : ChatRow {
+        val myId = firebaseAuth.currentUser?.uid.orEmpty()
+        val otherId = room.userIds.filterNot { it == myId }.first()
+        val otherUser = firestoreService.getUser(otherId)!!
+        val lastMessageSentByMe: Boolean = room.lastMessageSenderId == myId
+        return ChatRow(
+            name = otherUser.name,
+            lastMessage = (if (lastMessageSentByMe) "You : " else "") + room.lastMessage,
+            profileImage = "",
+            lastTime = (room.lastMessageTime?.seconds?: 0L) * 1000L,
+            userIds = room.userIds
+        )
+    }
 
 //    val chats = repository
 //        .getChats()
@@ -54,13 +78,15 @@ class ChatListViewModel @Inject constructor(
 
     fun observeChatRooms() = viewModelScope.launch {
         val myId = firebaseAuth.currentUser?.uid.orEmpty()
+        android.util.Log.d("myTag","start observing with my id : $myId ")
         firestoreService.getConversations(myId).collectLatest { rooms ->
             val rows = rooms.map { room ->
                 val otherId = room.userIds.filterNot { it == myId }.first()
                 val otherUser = firestoreService.getUser(otherId)!!
+                val lastMessageSentByMe: Boolean = room.lastMessageSenderId == myId
                 ChatRow(
                     name = otherUser.name,
-                    lastMessage = room.lastMessage,
+                    lastMessage = (if (lastMessageSentByMe) "You : " else "") + room.lastMessage,
                     profileImage = "",
                     lastTime = (room.lastMessageTime?.seconds?: 0L) * 1000L,
                     userIds = room.userIds
