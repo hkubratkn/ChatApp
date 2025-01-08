@@ -73,6 +73,10 @@ class FirestoreServiceImpl @Inject constructor(
             }
     }
 
+    override fun updateUserFcmToken(token: String) {
+        userCollection().document(auth.currentUserId).update("fcmToken", token)
+    }
+
 
 
     @OptIn(ExperimentalCoroutinesApi::class)

@@ -30,5 +30,6 @@ data class User(
     @ServerTimestamp
     var lastSeen: Timestamp? = null,
     @ServerTimestamp
-    var dateOfCreation: Timestamp? = null
+    var dateOfCreation: Timestamp? = null,
+    var fcmToken: String = ""
 )

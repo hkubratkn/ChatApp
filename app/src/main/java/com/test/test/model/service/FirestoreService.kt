@@ -25,4 +25,6 @@ interface FirestoreService {
     suspend fun getChatRoomMessageReference(chatRoomId: String) : CollectionReference
 
     suspend fun getConversations(userId: String) : Flow<List<ChatRoom>>
+
+    fun updateUserFcmToken(token: String)
 }
