@@ -35,6 +35,7 @@ import com.test.test.ui.presentation.settings.SettingsScreen
 import com.test.test.ui.presentation.splash.SplashScreen
 import com.test.test.ui.presentation.userprofile.UserProfileRoute
 import com.test.test.ui.theme.TestTheme
+import com.test.test.webrtc.ui.WebRtcActivity
 
 @Composable
 fun TestApp(
@@ -149,6 +150,9 @@ private fun MainNavigation(
                     userId,
                     onChatClicked = { id, name ->
                         navController.navigate(Route.SingleChat(myId, userId, name))
+                    },
+                    onVideoCallClicked = {
+                        activity.startActivity(Intent(activity, WebRtcActivity::class.java))
                     }
                 )
             }

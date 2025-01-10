@@ -28,6 +28,7 @@
         android:supportsRtl="true"
         android:enableOnBackInvokedCallback="true"
         android:theme="@style/Theme.Social"
+        android:usesCleartextTraffic="true"
         tools:targetApi="34">
 
 
@@ -49,6 +50,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".webrtc.ui.WebRtcActivity"
+            android:exported="false"/>
 
         <service android:name=".FCMNotificationService" android:exported="false">
             <intent-filter>

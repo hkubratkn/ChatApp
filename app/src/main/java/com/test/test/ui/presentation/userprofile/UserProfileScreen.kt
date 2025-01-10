@@ -22,6 +22,7 @@ internal fun UserProfileRoute(
     userId: String,
     modifier: Modifier = Modifier,
     onChatClicked: (String, String) -> Unit,
+    onVideoCallClicked: () -> Unit,
     viewModel: UserProfileViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState
@@ -42,7 +43,7 @@ internal fun UserProfileRoute(
                 Text("surname : ${usr.surname}")
                 Text("Last seen : ${DateUtils.getRelativeTimeSpanString(usr.lastSeen!!.seconds * 1000) }")
                 Button(onClick = {onChatClicked(userId, usr.name) }) { Text("chat") }
-                Button(onClick = {}) { Text("video call") }
+                Button(onClick = onVideoCallClicked) { Text("video call") }
                 Button(onClick = {}) { Text("voice call") }
             }
 
@@ -55,6 +56,7 @@ internal fun UserProfileRoute(
 fun UserProfilePreview() {
     UserProfileRoute(
         userId = "abc",
-        onChatClicked = {_, _ -> }
+        onChatClicked = {_, _ -> },
+        onVideoCallClicked = {}
     )
 }
