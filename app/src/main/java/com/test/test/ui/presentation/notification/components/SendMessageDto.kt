@@ -17,6 +17,7 @@
 package com.test.test.ui.presentation.notification.components
 
 data class SendMessageDto(
+    val from: String?,
     val to: String?,
     val notification: NotificationBody
 )

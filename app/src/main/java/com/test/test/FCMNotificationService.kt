@@ -43,6 +43,7 @@ class FCMNotificationService : FirebaseMessagingService() {
         // Check if message contains a data payload.
         if (message.data.isNotEmpty()) {
             android.util.Log.d("myTag", "Message data payload: ${message.data}")
+            android.util.Log.d("myTag", "Message data payload: ${message.data.get("theSender")}")
 
             // Check if data needs to be processed by long running job
 //            if (needsToBeScheduled()) {
@@ -59,7 +60,10 @@ class FCMNotificationService : FirebaseMessagingService() {
             android.util.Log.d("myTag", "Message Notification Body: ${it.body}")
 
             notificationHelper.showNotification(
-                        User(name = "notif name"), listOf(ChatMessage(message = it.body!!)), true
+                        User(
+                            id = message.data.get("theSender").orEmpty(),
+
+                            name = "notif name"), listOf(ChatMessage(message = it.body!!)), true
                     )
         }
 

@@ -213,8 +213,12 @@ private fun MainNavigation(
     }
 
     if (shortcutParams != null) {
+
         val chatId = extractChatId(shortcutParams.shortcutId)
         val text = shortcutParams.text
+        android.util.Log.d("myTag", "shortcutId : ${shortcutParams.shortcutId}")
+        android.util.Log.d("myTag", "nav controller, chat id : $chatId")
+        android.util.Log.d("myTag", "nav controller, text : $text")
         navController.navigate(Route.SingleChat(chatId, text))
     }
 }
