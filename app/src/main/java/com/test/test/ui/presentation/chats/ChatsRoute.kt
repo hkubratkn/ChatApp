@@ -5,7 +5,7 @@ import com.test.test.ui.presentation.conversations.ChatList
 
 @Composable
 fun ChatsRoute(
-    onChatClicked: (String, String, String) -> Unit
+    onChatClicked: (String) -> Unit
 ) {
     ChatList(
         onChatClicked = onChatClicked

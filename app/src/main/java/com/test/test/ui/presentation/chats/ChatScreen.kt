@@ -85,10 +85,10 @@ import kotlinx.coroutines.withContext
 
 @Composable
 fun ChatScreen(
-    //chatId: Long,
-    firstUserId: String,
-    secondUserId: String,
-    name: String,
+    chatId: String,
+    //firstUserId: String,
+    //secondUserId: String,
+    //name: String,
     foreground: Boolean = false,
     modifier: Modifier = Modifier,
     onBackPressed: (() -> Unit)? = {},
@@ -98,12 +98,17 @@ fun ChatScreen(
     prefilledText: String? = null,
     viewModel: ChatViewModel = hiltViewModel(),
 ) {
-    LaunchedEffect(firstUserId, secondUserId) {
-        viewModel.fetchConversation(firstUserId, secondUserId)
-//        if (prefilledText != null) {
-//            viewModel.prefillInput(prefilledText)
-//        }
+
+    LaunchedEffect(chatId) {
+        viewModel.setChatId(chatId)
+        if (prefilledText != null) {
+            viewModel.prefillInput(prefilledText)
+        }
     }
+
+    //LaunchedEffect(firstUserId, secondUserId) {
+    //    viewModel.fetchConversation(firstUserId, secondUserId)
+    //}
 
     val uiState by viewModel.uiState
 
@@ -116,7 +121,7 @@ fun ChatScreen(
     uiState.chatRoom?.let { chatRoom ->
         ChatContent(
             //chat = c,
-            name = name,
+            name = "DENEME",
             messages = uiState.messages,
             input = input,
             sendEnabled = true,

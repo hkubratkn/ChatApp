@@ -46,8 +46,8 @@ import com.test.test.model.ChatRow
 
 @Composable
 fun ChatList(
-    //onChatClicked: (chatId: String) -> Unit,
-    onChatClicked: (firstId: String, secondId: String, name: String) -> Unit,
+    onChatClicked: (chatId: String) -> Unit,
+    //onChatClicked: (firstId: String, secondId: String, name: String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: ChatListViewModel = hiltViewModel(),
 ) {
@@ -73,8 +73,8 @@ fun ChatList(
 @Composable
 fun ChatList(
     chats: List<ChatRow>,
-    //onChatClicked: (chatId: String) -> Unit,
-    onChatClicked: (firstId: String, secondId: String, name:String) -> Unit,
+    onChatClicked: (chatId: String) -> Unit,
+    //onChatClicked: (firstId: String, secondId: String, name:String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     @SuppressLint("InlinedApi") // Granted at install time on API <33.
@@ -108,7 +108,7 @@ fun ChatList(
                 ChatRow(
                     chat = chat,
                     //onClick = { onChatClicked(chat.chatWithLastMessage.id) },
-                    onClick = { name ->  onChatClicked(chat.userIds.first(), chat.userIds.last(), name) },
+                    onClick = { name -> onChatClicked(chat.roomId) },
                 )
             }
         }

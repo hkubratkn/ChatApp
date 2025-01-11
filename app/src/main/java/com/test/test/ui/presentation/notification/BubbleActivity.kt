@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,20 @@
  * limitations under the License.
  */
 
-package com.test.test.model
+package com.test.test.ui.presentation.notification
 
-data class ChatRow(
-    val roomId: String = "",
-    val name: String = "",
-    val lastMessage: String = "",
-    val profileImage: String = "",
-    val lastTime: Long = 0L,
-    val userIds: List<String> = listOf()
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import com.google.android.samples.socialite.ui.Bubble
 
-)
+class BubbleActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val chatId = intent.data?.lastPathSegment?.toLongOrNull()
+        setContent {
+            Bubble(chatId = chatId!!)
+        }
+    }
+}

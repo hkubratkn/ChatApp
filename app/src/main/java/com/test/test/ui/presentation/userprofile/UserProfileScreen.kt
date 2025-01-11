@@ -21,7 +21,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 internal fun UserProfileRoute(
     userId: String,
     modifier: Modifier = Modifier,
-    onChatClicked: (String, String) -> Unit,
+    onChatClicked: (String) -> Unit,
     onVideoCallClicked: () -> Unit,
     viewModel: UserProfileViewModel = hiltViewModel()
 ) {
@@ -29,6 +29,13 @@ internal fun UserProfileRoute(
 
     LaunchedEffect(userId) {
         viewModel.getUser(userId)
+    }
+
+    LaunchedEffect(uiState.navigateRoomId) {
+        uiState.navigateRoomId?.let {
+            onChatClicked(it)
+            viewModel.clearRoomId()
+        }
     }
 
     Box(
@@ -42,7 +49,14 @@ internal fun UserProfileRoute(
                 Text("name : ${usr.name}")
                 Text("surname : ${usr.surname}")
                 Text("Last seen : ${DateUtils.getRelativeTimeSpanString(usr.lastSeen!!.seconds * 1000) }")
-                Button(onClick = {onChatClicked(userId, usr.name) }) { Text("chat") }
+                Button(
+                    onClick = {
+                        viewModel.generatedRoomId()
+                        //viewModel.generatedRoomId()?.let { onChatClicked(it) }
+                    }
+                ) {
+                    Text("chat")
+                }
                 Button(onClick = onVideoCallClicked) { Text("video call") }
                 Button(onClick = {}) { Text("voice call") }
             }
@@ -56,7 +70,7 @@ internal fun UserProfileRoute(
 fun UserProfilePreview() {
     UserProfileRoute(
         userId = "abc",
-        onChatClicked = {_, _ -> },
+        onChatClicked = {},
         onVideoCallClicked = {}
     )
 }

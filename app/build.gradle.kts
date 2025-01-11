@@ -10,7 +10,8 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
-    id("com.google.gms.google-services")
+    alias(libs.plugins.google.gms.google.services)
+    //id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
     id("com.google.firebase.firebase-perf")
 }
@@ -149,6 +150,7 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation(libs.webrtc)
+    implementation(libs.retrofit)
 
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
@@ -165,6 +167,9 @@ dependencies {
     implementation("com.google.android.ump:user-messaging-platform:2.1.0")
     implementation("androidx.compose.material3:material3-window-size-class:1.2.1")
 
+
+    //implementation("com.squareup.moshi:moshi:1.12.0")
+    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
 
 
     implementation("com.google.android.play:review:2.0.1")

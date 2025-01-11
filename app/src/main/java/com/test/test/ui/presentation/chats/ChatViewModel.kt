@@ -1,15 +1,24 @@
 package com.test.test.ui.presentation.chats
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.messaging.FirebaseMessaging
 import com.test.test.common.stateInUi
 import com.test.test.model.ChatMessage
 import com.test.test.model.ChatRoom
+import com.test.test.model.User
 import com.test.test.model.service.FirestoreService
 import com.test.test.model.service.impl.FirestoreServiceImpl
+import com.test.test.ui.presentation.notification.NotificationHelper
+import com.test.test.ui.presentation.notification.components.ChatState
+import com.test.test.ui.presentation.notification.components.FcmApi
+import com.test.test.ui.presentation.notification.components.NotificationBody
+import com.test.test.ui.presentation.notification.components.SendMessageDto
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,12 +26,74 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 
 @HiltViewModel
 class ChatViewModel @Inject constructor(
     private val firestoreService: FirestoreService,
-    private val firebaseAuth: FirebaseAuth
+    private val firebaseAuth: FirebaseAuth,
+    private val notificationHelper: NotificationHelper
 ) : ViewModel() {
+
+    //var state by mutableStateOf(ChatState())
+    //    private set
+
+    init {
+        notificationHelper.setUpNotificationChannels()
+    }
+
+    private val api: FcmApi = Retrofit.Builder()
+        //.baseUrl("http://localhost:8085/")
+        .baseUrl("http://10.0.2.2:8085/")
+        .addConverterFactory(MoshiConverterFactory.create())
+        .build().create()
+
+//    fun onRemoteTokenChange(newToken: String) {
+//        state = state.copy(
+//            remoteToken = newToken
+//        )
+//    }
+//
+//    fun onSubmitRemoteToken() {
+//        state = state.copy(
+//            isEnteringToken = false
+//        )
+//    }
+//
+//    fun onMessageChange(message: String) {
+//        state = state.copy(
+//            messageText = message
+//        )
+//    }
+
+    fun sendMessageToFCMserver(receiverToken: String, message: ChatMessage) {
+        viewModelScope.launch {
+            val messageDto = SendMessageDto(
+                to = receiverToken,
+                notification = NotificationBody(
+                    title = "New message from berkay..",
+                    body = message.message
+                )
+            )
+            try {
+                android.util.Log.d("myTag","sending api request now")
+
+                api.sendMessage(messageDto)
+
+                //state = state.copy(messageText = "")
+            } catch (e: Exception) {
+                android.util.Log.d("myTag","exception here : ${e.message}")
+                e.printStackTrace()
+            }
+
+
+        }
+    }
+
+
+    private val chatId = MutableStateFlow("")
 
     var uiState = mutableStateOf(ChatUiState())
         private set
@@ -45,6 +116,32 @@ class ChatViewModel @Inject constructor(
         }
 
         observeChatMessages(chatId)
+
+    }
+
+    fun setChatId(chatId: String) {
+        this.chatId.value = chatId
+        fetchConversation(chatId)
+    }
+
+    fun fetchConversation(roomId: String) = viewModelScope.launch {
+        val chatRoom = firestoreService.getChatRoom(roomId)
+        uiState.value = uiState.value.copy(chatRoom = chatRoom)
+//        if (chatRoom == null) {
+//            val newChatRoom = ChatRoom(
+//                roomId,
+//                arrayListOf(firstUserId, secondUserId),
+//                Timestamp.now(),
+//                ""
+//            )
+//            firestoreService.setChatRoom(chatId, newChatRoom)
+//            uiState.value = uiState.value.copy(chatRoom = newChatRoom)
+//
+//        } else {
+//            uiState.value = uiState.value.copy(chatRoom = chatRoom)
+//        }
+
+        observeChatMessages(roomId)
 
     }
 
@@ -73,8 +170,8 @@ class ChatViewModel @Inject constructor(
     }
 
     fun send() {
-        //val chatId = chatId.value
-        //if (chatId <= 0) return
+        val chatId = chatId.value
+        if (chatId.isEmpty()) return
         val input = _input.value
         if (!isInputValid(input)) return
         viewModelScope.launch {
@@ -82,15 +179,28 @@ class ChatViewModel @Inject constructor(
             val myId = firebaseAuth.currentUser!!.uid
 
             val room = uiState.value.chatRoom
-            room?.lastMessageTime = Timestamp.now()
-            room?.lastMessageSenderId = myId
-            room?.lastMessage = input
-            room?.let {
-                firestoreService.setChatRoom(room.id, room)
 
-                val chatMessage = ChatMessage(input, myId, Timestamp.now())
-                firestoreService.getChatRoomMessageReference(room.id).add(chatMessage).addOnSuccessListener {
+            val otherUserId = room!!.userIds.filterNot { it == myId }.first()
+            val otherUser = firestoreService.getUser(otherUserId)
+
+            room.lastMessageTime = Timestamp.now()
+            room.lastMessageSenderId = myId
+            room.lastMessage = input
+            room.let { r ->
+                firestoreService.setChatRoom(r.id, r)
+
+                val chatMessage = ChatMessage(chatId, input, myId, Timestamp.now())
+                firestoreService.getChatRoomMessageReference(r.id).add(chatMessage).addOnSuccessListener {
                     _input.value = ""
+//                    notificationHelper.showNotification(
+//                        User(name = "notif name"), listOf(ChatMessage(message = input)), true
+//                    )
+
+                    //FirebaseMessaging.getInstance().
+
+                    android.util.Log.d("myTag","about to send message to fcm server, the user who has this token should receive the messsage : ${otherUser!!.fcmToken}")
+                    sendMessageToFCMserver(otherUser!!.fcmToken, chatMessage)
+
                 }
             }
         }

@@ -49,10 +49,71 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!--
+                This is used as the content URI of notifications. It navigates directly to the
+                specified chat screen.
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="socialite.google.com"
+                    android:pathPattern="/chat/*"
+                    android:scheme="https" />
+            </intent-filter>
+            <!--
+                This opens the chat screen with the message field filled with the passed text.
+                This is necessary for making our dynamic shortcuts appear in Direct Share.
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/sharing_shortcuts" />
+
+        </activity>
+
+        <!--
+            This Activity is the expanded Bubble. For that, this Activity has to have several
+            attributes.
+            - allowEmbedded="true": The expanded Bubble is embedded in the System UI.
+            - resizeableActivity="true": The expanded Bubble is resized by the System UI.
+            - documentLaunchMode="always": We show multiple bubbles in this sample. There will be
+                                           multiple instances of this Activity.
+        -->
+        <activity
+            android:name=".ui.presentation.notification.BubbleActivity"
+            android:allowEmbedded="true"
+            android:documentLaunchMode="always"
+            android:exported="true"
+            android:resizeableActivity="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="socialite.google.com"
+                    android:pathPattern="/chat/*"
+                    android:scheme="https" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".webrtc.ui.WebRtcActivity"
             android:exported="false"/>
+
+        <receiver android:name=".ui.presentation.notification.ReplyReceiver" />
+
 
         <service android:name=".FCMNotificationService" android:exported="false">
             <intent-filter>

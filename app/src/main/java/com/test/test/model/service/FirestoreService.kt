@@ -20,7 +20,7 @@ interface FirestoreService {
 
     suspend fun getChatRoom(chatRoomId: String): ChatRoom?
 
-    suspend fun setChatRoom(chatRoomId: String, chatRoom: ChatRoom)
+    suspend fun setChatRoom(chatRoomId: String, chatRoom: ChatRoom) : Boolean
 
     suspend fun getChatRoomMessageReference(chatRoomId: String) : CollectionReference
 

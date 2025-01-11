@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 The Android Open Source Project
+ * Copyright (C) 2025 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,20 @@
  * limitations under the License.
  */
 
-package com.test.test.model
+package com.test.test.ui.presentation.notification.components
 
-data class ChatRow(
-    val roomId: String = "",
-    val name: String = "",
-    val lastMessage: String = "",
-    val profileImage: String = "",
-    val lastTime: Long = 0L,
-    val userIds: List<String> = listOf()
+import retrofit2.http.Body
+import retrofit2.http.POST
 
-)
+interface FcmApi {
+
+    @POST("/send")
+    suspend fun sendMessage(
+        @Body body: SendMessageDto
+    )
+
+    @POST("/broadcast")
+    suspend fun broadcast(
+        @Body body: SendMessageDto
+    )
+}

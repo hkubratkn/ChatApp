@@ -16,9 +16,13 @@
 
 package com.test.test.model
 
+import android.net.Uri
+import androidx.core.net.toUri
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.ServerTimestamp
+
+private const val SHORTCUT_PREFIX = "contact_"
 
 data class User(
     @DocumentId val id: String = "id",
@@ -32,4 +36,23 @@ data class User(
     @ServerTimestamp
     var dateOfCreation: Timestamp? = null,
     var fcmToken: String = ""
-)
+) {
+    val shortcutId: String
+        get() = "$SHORTCUT_PREFIX$id"
+
+    val contentUri: Uri
+        get() = "https://socialite.google.com/chat/$id".toUri()
+
+    val iconUri: Uri
+        get() = "".toUri()
+}
+
+fun extractChatId(shortcutId: String): String {
+    if (!shortcutId.startsWith(SHORTCUT_PREFIX)) return ""
+    return try {
+        shortcutId.substring(SHORTCUT_PREFIX.length)
+    } catch (e: NumberFormatException) {
+        ""
+    }
+}
+

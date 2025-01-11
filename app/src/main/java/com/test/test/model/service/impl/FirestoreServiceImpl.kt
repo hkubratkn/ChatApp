@@ -48,14 +48,20 @@ class FirestoreServiceImpl @Inject constructor(
     }
 
     override suspend fun getChatRoom(chatRoomId: String): ChatRoom? = suspendCoroutine { cont ->
-        chatRoomsCollection().document(chatRoomId).get().addOnSuccessListener {
-            val x = it.toObject(ChatRoom::class.java)
-            cont.resume(x)
+        chatRoomsCollection().document(chatRoomId).get().addOnCompleteListener {
+            if (it.isSuccessful) {
+                val x = it.result.toObject(ChatRoom::class.java)
+                cont.resume(x)
+            } else {
+                cont.resume(null)
+            }
         }
     }
 
-    override suspend fun setChatRoom(chatRoomId: String, chatRoom: ChatRoom) {
-        chatRoomsCollection().document(chatRoomId).set(chatRoom)
+    override suspend fun setChatRoom(chatRoomId: String, chatRoom: ChatRoom) = suspendCoroutine { cont ->
+        chatRoomsCollection().document(chatRoomId).set(chatRoom).addOnCompleteListener {
+            cont.resume(it.isSuccessful)
+        }
     }
 
     override suspend fun getChatRoomMessageReference(chatRoomId: String): CollectionReference {

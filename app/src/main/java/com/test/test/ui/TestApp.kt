@@ -24,6 +24,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navDeepLink
 import androidx.navigation.toRoute
+import com.test.test.model.extractChatId
 import com.test.test.ui.presentation.calls.CallsRoute
 import com.test.test.ui.presentation.chats.ChatScreen
 import com.test.test.ui.presentation.chats.ChatsRoute
@@ -83,10 +84,19 @@ private fun MainNavigation(
                 EnterTransition.None
             },
         ) {
+
+//            composable<Route.ChatsList> {
+//                ChatList(
+//                    onChatClicked = { chatId -> navController.navigate(Route.ChatThread(chatId)) },
+//                    modifier = Modifier.fillMaxSize(),
+//                )
+//            }
             composable<Route.Chats> {
                 ChatsRoute(
-                    onChatClicked = { firstId, secondId, name ->
-                        navController.navigate(Route.SingleChat(firstId, secondId, name)) },
+                    onChatClicked = { chatId ->
+                        //navController.navigate(Route.SingleChat(firstId, secondId, name))
+                        navController.navigate(Route.SingleChat(chatId))
+                    },
                 )
             }
 
@@ -148,23 +158,64 @@ private fun MainNavigation(
 
                 UserProfileRoute(
                     userId,
-                    onChatClicked = { id, name ->
-                        navController.navigate(Route.SingleChat(myId, userId, name))
+                    onChatClicked = { roomId ->
+                        //val chatId = extractChatId(shortcutParams.shortcutId)
+                        navController.navigate(Route.SingleChat(roomId))
                     },
                     onVideoCallClicked = {
                         activity.startActivity(Intent(activity, WebRtcActivity::class.java))
                     }
                 )
             }
-            composable<Route.SingleChat> {
-                val firstId = it.toRoute<Route.SingleChat>().firstId
-                val secondId = it.toRoute<Route.SingleChat>().secondId
-                val name = it.toRoute<Route.SingleChat>().name
-                ChatScreen(firstId, secondId, name,
+            composable<Route.SingleChat>(
+                deepLinks = listOf(
+                    navDeepLink {
+                        action = Intent.ACTION_VIEW
+                        uriPattern = "https://socialite.google.com/chat/{roomId}"
+                    },
+                )
+            ) { backStackEntry ->
+                val route: Route.SingleChat = backStackEntry.toRoute()
+                val roomId = route.roomId
+                val prefilledText = route.text
+                //val firstId = route.firstId
+                //val secondId = route.secondId
+                //val name = route.name
+                ChatScreen(
+                    chatId = roomId,
+                    prefilledText = prefilledText,
                     onBackPressed = {navController.navigateUp()}
                 )
             }
+
+            //            composable<Route.ChatThread>(
+//                deepLinks = listOf(
+//                    navDeepLink {
+//                        action = Intent.ACTION_VIEW
+//                        uriPattern = "https://socialite.google.com/chat/{chatId}"
+//                    },
+//                ),
+//            ) { backStackEntry ->
+//                val route: Route.ChatThread = backStackEntry.toRoute()
+//                val chatId = route.chatId
+//                ChatScreen(
+//                    chatId = chatId,
+//                    foreground = true,
+//                    onBackPressed = { navController.popBackStack() },
+//                    onCameraClick = { navController.navigate(Route.Camera(chatId)) },
+//                    onPhotoPickerClick = { navController.navigateToPhotoPicker(chatId) },
+//                    onVideoClick = { uri -> navController.navigate(Route.VideoPlayer(uri)) },
+//                    prefilledText = route.text,
+//                    modifier = Modifier.fillMaxSize(),
+//                )
+//            }
         }
+    }
+
+    if (shortcutParams != null) {
+        val chatId = extractChatId(shortcutParams.shortcutId)
+        val text = shortcutParams.text
+        navController.navigate(Route.SingleChat(chatId, text))
     }
 }
 
