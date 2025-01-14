@@ -60,11 +60,12 @@ class FCMNotificationService : FirebaseMessagingService() {
             android.util.Log.d("myTag", "Message Notification Body: ${it.body}")
 
             notificationHelper.showNotification(
-                        User(
-                            id = message.data.get("theSender").orEmpty(),
-
-                            name = "notif name"), listOf(ChatMessage(message = it.body!!)), true
-                    )
+                User(
+                    id = message.data.get("theSender").orEmpty(),
+                    name = it.title.orEmpty(),
+                ),
+                listOf(ChatMessage(message = it.body!!)), true,
+            )
         }
 
         //val userId = getIntent().getExtras().getString("userId")

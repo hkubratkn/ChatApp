@@ -68,13 +68,13 @@ class ChatViewModel @Inject constructor(
 //        )
 //    }
 
-    fun sendMessageToFCMserver(roomId: String, receiverToken: String, message: ChatMessage) {
+    fun sendMessageToFCMserver(roomId: String, receiverToken: String, message: ChatMessage, senderName: String) {
         viewModelScope.launch {
             val messageDto = SendMessageDto(
                 from = roomId,
                 to = receiverToken,
                 notification = NotificationBody(
-                    title = "New message from berkay..",
+                    title = senderName,
                     body = message.message
                 )
             )
@@ -182,7 +182,8 @@ class ChatViewModel @Inject constructor(
         if (!isInputValid(input)) return
         viewModelScope.launch {
             //sendMessage(chatId, input, null, null)
-            val myId = firebaseAuth.currentUser!!.uid
+            val me = firebaseAuth.currentUser
+            val myId = me!!.uid
 
             val room = uiState.value.chatRoom
 
@@ -206,7 +207,7 @@ class ChatViewModel @Inject constructor(
 
                     android.util.Log.d("myTag","about to send message to fcm server, my id is : ${myId}")
                     android.util.Log.d("myTag","about to send message to fcm server, the user who has this token should receive the messsage : ${otherUser!!.fcmToken}")
-                    sendMessageToFCMserver(r.id, otherUser!!.fcmToken, chatMessage)
+                    sendMessageToFCMserver(r.id, otherUser!!.fcmToken, chatMessage,  me.email.orEmpty())
 
                 }
             }
