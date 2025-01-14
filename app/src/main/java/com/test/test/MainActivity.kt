@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.runtime.getValue
 import androidx.core.content.pm.ShortcutManagerCompat
+import androidx.core.net.toUri
 import com.test.test.ui.ShortcutParams
 import com.test.test.ui.TestApp
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,6 +28,21 @@ class MainActivity : ComponentActivity() {
             window.isNavigationBarContrastEnforced = false
         }
         super.onCreate(savedInstanceState)
+
+        val bundle = intent!!.extras
+        if (bundle != null) {
+            for (key in bundle.keySet()) {
+                val value = bundle[key]
+                android.util.Log.d("myTag", "Main activity Key: $key Value: $value")
+                if (key == "theSender") {
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.setAction(Intent.ACTION_VIEW)
+                    intent.setData(("https://socialite.google.com/chat/" + value.toString()).toUri())
+                    startActivity(intent)
+                }
+            }
+        }
+
         setContent {
 
             TestApp(
