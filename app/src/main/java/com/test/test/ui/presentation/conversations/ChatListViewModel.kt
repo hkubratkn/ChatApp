@@ -85,6 +85,7 @@ class ChatListViewModel @Inject constructor(
                 val otherUser = firestoreService.getUser(otherId)!!
                 val lastMessageSentByMe: Boolean = room.lastMessageSenderId == myId
                 ChatRow(
+                    roomId = room.id,
                     name = otherUser.name,
                     lastMessage = (if (lastMessageSentByMe) "You : " else "") + room.lastMessage,
                     profileImage = "",
