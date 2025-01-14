@@ -46,7 +46,7 @@ class ChatViewModel @Inject constructor(
 
     private val api: FcmApi = Retrofit.Builder()
         //.baseUrl("http://localhost:8085/")
-        .baseUrl("http://10.0.2.2:8085/")
+        .baseUrl("http://10.0.2.2:8087/")
         .addConverterFactory(MoshiConverterFactory.create())
         .build().create()
 
@@ -127,7 +127,12 @@ class ChatViewModel @Inject constructor(
 
     fun fetchConversation(roomId: String) = viewModelScope.launch {
         val chatRoom = firestoreService.getChatRoom(roomId)
-        uiState.value = uiState.value.copy(chatRoom = chatRoom)
+
+        val myId = firebaseAuth.currentUser!!.uid
+        val otherUserId = chatRoom!!.userIds.filterNot { it == myId }.first()
+        val otherUser = firestoreService.getUser(otherUserId)
+
+        uiState.value = uiState.value.copy(chatRoom = chatRoom, otherUserName = otherUser?.name.orEmpty())
 //        if (chatRoom == null) {
 //            val newChatRoom = ChatRoom(
 //                roomId,

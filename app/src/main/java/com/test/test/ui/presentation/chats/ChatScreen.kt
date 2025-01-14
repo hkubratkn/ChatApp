@@ -121,7 +121,7 @@ fun ChatScreen(
     uiState.chatRoom?.let { chatRoom ->
         ChatContent(
             //chat = c,
-            name = "DENEME",
+            name = uiState.otherUserName,
             messages = uiState.messages,
             input = input,
             sendEnabled = true,
@@ -249,7 +249,7 @@ private fun ChatAppBar(
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 // This only supports DM for now.
-                val contact = "deneme"//chat.attendees.first()
+                //val contact = "deneme"//chat.attendees.first()
                 //SmallContactIcon(iconUri = contact.iconUri, size = 32.dp)
                 //Text(text = contact.name)
                 Text(text = name)
