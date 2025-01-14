@@ -1,5 +1,7 @@
 package com.test.test.ui.presentation.chats
 
+import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -21,9 +23,11 @@ import com.test.test.ui.presentation.notification.components.NotificationBody
 import com.test.test.ui.presentation.notification.components.SendMessageDto
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
@@ -169,10 +173,45 @@ class ChatViewModel @Inject constructor(
         _input.value = input
     }
 
+    fun sendUriMessage(uriText: String) {
+        val chatId = chatId.value
+        android.util.Log.d("myTag","try sending uri message : $uriText, chat id : $chatId")
+    }
+
     fun prefillInput(input: String) {
         if (inputPrefilled) return
         inputPrefilled = true
         updateInput(input)
+    }
+
+    suspend fun sendMessage(
+        chatId: Long,
+        text: String,
+        mediaUri: String?,
+        mediaMimeType: String?,
+    ) = viewModelScope.launch {
+        //val detail = chatDao.loadDetailById(chatId) ?: return
+        // Save the message to the database
+        //saveMessageAndNotify(chatId, text, 0L, mediaUri, mediaMimeType, detail, PushReason.OutgoingMessage)
+
+        //val message = detail.firstContact.reply(text).apply { this.chatId = chatId }.build()
+        //saveMessageAndNotify(message.chatId, message.text, detail.firstContact.id, message.mediaUri, message.mediaMimeType, detail, PushReason.IncomingMessage)
+
+        // Show notification if the chat is not on the foreground.
+//        if (chatId != currentChat) {
+//            notificationHelper.showNotification(
+//                detail.firstContact,
+//                messageDao.loadAll(chatId),
+//                false,)
+//        }
+
+        //widgetModelRepository.updateUnreadMessagesForContact(contactId = detail.firstContact.id, unread = true)
+
+    }
+
+    fun sendPhoto(chatId: Long, photoUri: String) {
+        android.util.Log.d("myTag","should send, chat id : $chatId, uri : $photoUri")
+
     }
 
     fun send() {

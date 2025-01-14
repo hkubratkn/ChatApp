@@ -95,14 +95,15 @@ fun ChatScreen(
     onCameraClick: () -> Unit = {},
     onPhotoPickerClick: () -> Unit = {},
     onVideoClick: (uri: String) -> Unit = {},
-    prefilledText: String? = null,
+    uriText: String? = null,
     viewModel: ChatViewModel = hiltViewModel(),
 ) {
 
     LaunchedEffect(chatId) {
         viewModel.setChatId(chatId)
-        if (prefilledText != null) {
-            viewModel.prefillInput(prefilledText)
+        if (uriText != null) {
+            //viewModel.prefillInput(prefilledText)
+            viewModel.sendUriMessage(uriText)
         }
     }
 

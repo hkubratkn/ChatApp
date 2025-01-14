@@ -46,7 +46,7 @@ sealed interface Route {
     data object Settings : Route
 
     @Serializable
-    data object Camera : Route
+    data class Camera(val chatId: String) : Route
 
     @Serializable
     class UserProfile(val userId: String, val myId: String) : Route
