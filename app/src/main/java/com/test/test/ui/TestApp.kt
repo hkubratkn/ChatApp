@@ -187,6 +187,11 @@ private fun MainNavigation(
                     uriText = uriText,
                     onBackPressed = {navController.navigateUp()},
                     onCameraClick = { navController.navigate(Route.Camera(roomId)) },
+                    onVoiceCallClicked = {
+                        val intent = Intent(activity, WebRtcActivity::class.java)
+                        intent.putExtra("roomId",roomId)
+                        activity.startActivity(intent)
+                    }
                 )
             }
 

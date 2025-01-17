@@ -20,6 +20,7 @@ import android.Manifest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -30,35 +31,52 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewModelScope
+import com.test.test.MainViewModel
 import com.test.test.webrtc.ui.screens.stage.StageScreen
 import com.test.test.webrtc.ui.screens.video.VideoCallScreen
 import com.test.test.webrtc.SignalingClient
+import com.test.test.webrtc.WebRtcViewModel
 import com.test.test.webrtc.peer.StreamPeerConnectionFactory
 import com.test.test.webrtc.sessions.LocalWebRtcSessionManager
 import com.test.test.webrtc.sessions.WebRtcSessionManager
 import com.test.test.webrtc.sessions.WebRtcSessionManagerImpl
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class WebRtcActivity : ComponentActivity() {
+
+    private val viewModel: WebRtcViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         requestPermissions(arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO), 0)
 
-        val sessionManager: WebRtcSessionManager = WebRtcSessionManagerImpl(
-            context = this,
-            signalingClient = SignalingClient(),
-            peerConnectionFactory = StreamPeerConnectionFactory(this),
-        )
+        val roomId = intent.getStringExtra("roomId")
+        android.util.Log.d("myTag","room id from webrtc activity : $roomId")
+
+//        val sessionManager: WebRtcSessionManager = WebRtcSessionManagerImpl(
+//            context = this,
+//            signalingClient = SignalingClient(),
+//            peerConnectionFactory = StreamPeerConnectionFactory(this),
+//        )
+
+        if (roomId.isNullOrEmpty().not()){
+            viewModel.setRoomId(roomId!!)
+        }
 
         setContent {
-            CompositionLocalProvider(LocalWebRtcSessionManager provides sessionManager) {
+            //CompositionLocalProvider(LocalWebRtcSessionManager provides  sessionManager) {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background,
                 ) {
                     var onCallScreen by remember { mutableStateOf(false) }
-                    val state by sessionManager.signalingClient.sessionStateFlow.collectAsState()
+                    val state by viewModel.sessionStateFlow.collectAsState()
 
                     if (!onCallScreen) {
                         StageScreen(state = state) { onCallScreen = true }
@@ -66,7 +84,7 @@ class WebRtcActivity : ComponentActivity() {
                         VideoCallScreen()
                     }
                 }
-            }
+            //}
         }
     }
 }

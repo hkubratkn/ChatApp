@@ -32,6 +32,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.filled.PhotoCamera
 import androidx.compose.material.icons.filled.PhotoLibrary
 import androidx.compose.material.icons.filled.PlayArrow
@@ -95,6 +96,7 @@ fun ChatScreen(
     onCameraClick: () -> Unit = {},
     onPhotoPickerClick: () -> Unit = {},
     onVideoClick: (uri: String) -> Unit = {},
+    onVoiceCallClicked: () -> Unit = {},
     uriText: String? = null,
     viewModel: ChatViewModel = hiltViewModel(),
 ) {
@@ -131,6 +133,10 @@ fun ChatScreen(
             onSendClick = { viewModel.send() },
             onCameraClick = onCameraClick,
             onPhotoPickerClick = onPhotoPickerClick,
+            onVoiceCallClicked = {
+                android.util.Log.d("myTag","voice call should be triggered")
+                onVoiceCallClicked.invoke()
+            },
             onVideoClick = onVideoClick,
             modifier = modifier
                 .clip(RoundedCornerShape(5)),
@@ -179,6 +185,7 @@ private fun ChatContent(
     onCameraClick: () -> Unit,
     onPhotoPickerClick: () -> Unit,
     onVideoClick: (uri: String) -> Unit,
+    onVoiceCallClicked: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val topAppBarState = rememberTopAppBarState()
@@ -192,6 +199,7 @@ private fun ChatContent(
                 name = name,
                 scrollBehavior = scrollBehavior,
                 onBackPressed = onBackPressed,
+                onVoiceCallClicked = onVoiceCallClicked
             )
         },
     ) { innerPadding ->
@@ -241,6 +249,7 @@ private fun ChatAppBar(
     name: String,
     scrollBehavior: TopAppBarScrollBehavior,
     onBackPressed: (() -> Unit)?,
+    onVoiceCallClicked: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     TopAppBar(
@@ -257,6 +266,14 @@ private fun ChatAppBar(
             }
         },
         modifier = modifier,
+        actions = {
+            IconButton(onClick = onVoiceCallClicked) {
+                Icon(
+                    imageVector = Icons.Default.Phone,
+                    contentDescription = "voice call",
+                )
+            }
+        },
         scrollBehavior = scrollBehavior,
         navigationIcon = {
             if (onBackPressed != null) {
@@ -522,6 +539,7 @@ private fun PreviewChatContent() {
             onCameraClick = {},
             onPhotoPickerClick = {},
             onVideoClick = {},
+            onVoiceCallClicked = {}
         )
 
 }
