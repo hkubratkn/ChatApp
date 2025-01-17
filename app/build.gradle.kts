@@ -41,6 +41,27 @@ android {
             "SIGNALING_SERVER_IP_ADDRESS",
             localProperties["SIGNALING_SERVER_IP_ADDRESS"].toString()
         )
+
+        val notificationEmulatorServer: String = localProperties["NOTIFICATION_SERVER_EMULATOR"].toString()
+        val notificationRealDeviceServer: String = localProperties["NOTIFICATION_SERVER_REAL_DEVICE"].toString()
+        val notificationServerPort: String = localProperties["NOTIFICATION_SERVER_PORT"].toString()
+
+        val notificationEmulatorServerUrl = """"${notificationEmulatorServer.removeSurrounding("\"")}:${notificationServerPort.removeSurrounding("\"")}""""
+        val notificationRealDeviceServerUrl = """"${notificationRealDeviceServer.removeSurrounding("\"")}:${notificationServerPort.removeSurrounding("\"")}""""
+
+        buildConfigField(
+            "String",
+            "NOTIFICATION_SERVER_EMULATOR",
+            notificationEmulatorServerUrl,
+        )
+
+        buildConfigField(
+            "String",
+            "NOTIFICATION_SERVER_REAL_DEVICE",
+            notificationRealDeviceServerUrl,
+        )
+
+
     }
 
     buildTypes {

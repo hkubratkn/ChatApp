@@ -2,6 +2,7 @@ package com.test.test.ui.presentation.chats
 
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -10,6 +11,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.messaging.FirebaseMessaging
+import com.test.test.BuildConfig
 import com.test.test.common.stateInUi
 import com.test.test.model.ChatMessage
 import com.test.test.model.ChatRoom
@@ -48,9 +50,10 @@ class ChatViewModel @Inject constructor(
         notificationHelper.setUpNotificationChannels()
     }
 
+    private val isEmulator = Build.HARDWARE.equals("ranchu")
+
     private val api: FcmApi = Retrofit.Builder()
-        //.baseUrl("http://localhost:8085/")
-        .baseUrl("http://10.0.2.2:8087/")
+        .baseUrl(if (isEmulator) BuildConfig.NOTIFICATION_SERVER_EMULATOR else BuildConfig.NOTIFICATION_SERVER_REAL_DEVICE)
         .addConverterFactory(MoshiConverterFactory.create())
         .build().create()
 
@@ -83,7 +86,7 @@ class ChatViewModel @Inject constructor(
                 )
             )
             try {
-                android.util.Log.d("myTag","sending api request now")
+                android.util.Log.d("myTag","sending api request now, is emulator : $isEmulator, build hardware : ${Build.HARDWARE}")
 
                 api.sendMessage(messageDto)
 
