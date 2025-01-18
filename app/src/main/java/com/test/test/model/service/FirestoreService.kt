@@ -30,4 +30,7 @@ interface FirestoreService {
     fun updateUserFcmToken(token: String)
 
     suspend fun saveCallRecord(callRecord: CallRecord)
+
+    suspend fun getCallRecords(userId: String) : Flow<List<CallRecord>>
+
 }

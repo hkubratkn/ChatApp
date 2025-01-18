@@ -35,6 +35,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.seconds
 import kotlin.time.DurationUnit
 
 @Composable
@@ -56,7 +57,7 @@ fun CallItem(
                 .background(color = MaterialTheme.colorScheme.background),
             contentAlignment = Alignment.Center,
         ) {
-            registeredCall.callType.Icon()
+            registeredCall.callType?.Icon()
         }
         Column(modifier = Modifier.padding(8.dp)) {
             Text(
@@ -75,6 +76,10 @@ fun CallItem(
 @Composable
 fun CallItemPreview() {
     CallItem(
-        registeredCall = callFromId(0)
+        registeredCall = RegisteredCall(
+            source = "Berkay",
+            callType = CallType.INCOMING,
+            duration = 90.seconds
+        )
     )
 }

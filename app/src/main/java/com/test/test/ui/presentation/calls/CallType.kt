@@ -36,9 +36,9 @@ import kotlin.time.Duration.Companion.seconds
 
 
 data class RegisteredCall(
-    val id: Int,
+    //val id: Int,
     val source: String,
-    val callType: CallType,
+    val callType: CallType?,
     val duration: Duration
 )
 
@@ -68,15 +68,14 @@ fun CallType.Icon() {
 //fun humanReadableDuration(s: String): String = Duration.parse(s).toString()
 //    .substring(2).toLowerCase().replace(Regex("[hms](?!\$)")) { "${it.value} " }
 
-fun callFromId(id: Int): RegisteredCall {
-    return RegisteredCall(
-        id,
-        "the caller",
-        CallType.entries[abs(id) % CallType.entries.size],
-        Random(id).nextInt(0..1000).seconds
-    )
-}
-
-fun dummyCalls(size: Int): List<RegisteredCall> {
-    return (0 until size).map { callFromId(it) }
-}
+//fun mockCall(): RegisteredCall {
+//    return RegisteredCall(
+//        "the caller",
+//        CallType.entries[abs(id) % CallType.entries.size],
+//        Random(5000).nextInt(0..1000).seconds
+//    )
+//}
+//
+//fun dummyCalls(size: Int): List<RegisteredCall> {
+//    return (0 until size).map { mockCall() }
+//}

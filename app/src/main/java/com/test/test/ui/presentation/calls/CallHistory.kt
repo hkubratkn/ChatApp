@@ -20,22 +20,26 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.test.test.ui.presentation.conversations.ChatListViewModel
 
 @Composable
-fun CallHistory() {
+fun CallHistory(
+    viewModel: CallHistoryViewModel = hiltViewModel()
+) {
 
-    //val scaffoldState = rememberScaffoldState()
-    //val snackbarCoroutineScope = rememberCoroutineScope()
+    val uiState by viewModel.uiState
 
     Surface(
         //modifier = Modifier.padding(innerPadding),
         color = MaterialTheme.colorScheme.background
     ) {
         CallList(
-            recordings = dummyCalls(100)
+            recordings = uiState.callRecords
         ) { _, recording ->
-            android.util.Log.d("myTag","Call recording ${recording.id} clicked")
+            //android.util.Log.d("myTag","Call recording ${recording.id} clicked")
         }
     }
 }

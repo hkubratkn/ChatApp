@@ -88,6 +88,15 @@ class FirestoreServiceImpl @Inject constructor(
         callRecordsCollection().add(callRecord)
     }
 
+    override suspend fun getCallRecords(userId: String): Flow<List<CallRecord>> {
+        return callRecordsCollection().whereEqualTo("userId", userId)
+            .orderBy("callEnd", Query.Direction.DESCENDING)
+            //.addSnapshotListener { value, error -> value.toObjects(ChatRoom::class.java) }
+            .snapshotFlow().map { snapshot ->
+                snapshot.toObjects(CallRecord::class.java)
+            }
+    }
+
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override val users: Flow<List<User>>
