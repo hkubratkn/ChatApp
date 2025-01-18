@@ -1,5 +1,6 @@
 package com.test.test.model.service.impl
 
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldPath
@@ -27,6 +28,7 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
@@ -38,6 +40,29 @@ class FirestoreServiceImpl @Inject constructor(
 
     override suspend fun saveUser(user: User) {
         userCollection().document(user.id).set(user)
+    }
+
+    override suspend fun setUserOnline() {
+        userCollection().document(auth.currentUserId).update("status", "online")
+    }
+
+    override suspend fun setUserOffline() {
+        userCollection().document(auth.currentUserId).update("status", Timestamp.now().toString())
+    }
+
+    override suspend fun setUserTyping(typingRoomId: String) {
+        userCollection().document(auth.currentUserId).update("typingTo", typingRoomId)
+    }
+
+    override suspend fun clearUserTyping(typingRoomId: String) {
+        userCollection().document(auth.currentUserId).update("typingTo", "")
+    }
+
+    override suspend fun observeOtherChatState(userId: String): Flow<Pair<String, String>> {
+        return userCollection().document(userId).snapshots().map { snapshot ->
+            snapshot.getString("status").orEmpty() to snapshot.getString("typingTo").orEmpty()
+        }
+
     }
 
     override suspend fun getUser(userId: String): User? = suspendCoroutine { cont ->

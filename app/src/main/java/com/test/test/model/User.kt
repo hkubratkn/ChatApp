@@ -35,7 +35,9 @@ data class User(
     var lastSeen: Timestamp? = null,
     @ServerTimestamp
     var dateOfCreation: Timestamp? = null,
-    var fcmToken: String = ""
+    var fcmToken: String = "",
+    var status: String = "",
+    var typingTo: String = ""
 ) {
     val shortcutId: String
         get() = "$SHORTCUT_PREFIX$id"

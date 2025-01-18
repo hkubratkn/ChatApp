@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.exclude
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.ime
@@ -68,18 +69,23 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import java.time.format.TextStyle
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -125,11 +131,12 @@ fun ChatScreen(
         ChatContent(
             //chat = c,
             name = uiState.otherUserName,
+            chatState = uiState.otherUserChatState,
             messages = uiState.messages,
             input = input,
             sendEnabled = true,
             onBackPressed = onBackPressed,
-            onInputChanged = { viewModel.updateInput(it) },
+            onInputChanged = { viewModel.updateInput(it, chatId) },
             onSendClick = { viewModel.send() },
             onCameraClick = onCameraClick,
             onPhotoPickerClick = onPhotoPickerClick,
@@ -177,6 +184,7 @@ private fun LifecycleEffect(
 private fun ChatContent(
     //chat: ChatDetail,
     name: String,
+    chatState: String,
     messages: List<ChatMessage>,
     input: String,
     sendEnabled: Boolean,
@@ -198,6 +206,7 @@ private fun ChatContent(
             ChatAppBar(
                 //chat = chat,
                 name = name,
+                chatState = chatState,
                 scrollBehavior = scrollBehavior,
                 onBackPressed = onBackPressed,
                 onVoiceCallClicked = onVoiceCallClicked
@@ -248,6 +257,7 @@ private fun PaddingValues.copy(
 private fun ChatAppBar(
     //chat: ChatDetail,
     name: String,
+    chatState: String,
     scrollBehavior: TopAppBarScrollBehavior,
     onBackPressed: (() -> Unit)?,
     onVoiceCallClicked: () -> Unit,
@@ -255,15 +265,24 @@ private fun ChatAppBar(
 ) {
     TopAppBar(
         title = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
+            Column(
+                //horizontalAlignment = Alignment.CenterHorizontally,
+                //verticalArrangement = Arrangement.spacedBy(2.dp),
             ) {
                 // This only supports DM for now.
                 //val contact = "deneme"//chat.attendees.first()
                 //SmallContactIcon(iconUri = contact.iconUri, size = 32.dp)
                 //Text(text = contact.name)
-                Text(text = name)
+                Text(text = name, fontSize = 18.sp)
+                Text(
+                    //modifier = Modifier.fillMaxSize(),
+                    text = chatState, fontSize = 12.sp)
+
+                /*
+                fontSize = 18.dp,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    fontWeight = FontWeight.Bold
+                 */
             }
         },
         modifier = modifier,
@@ -525,6 +544,7 @@ private fun PreviewChatContent() {
 
         ChatContent(
             name = "berkay",
+            chatState = "online",
             messages = listOf(
                 ChatMessage("Hi!", null, null, 0L, false, null),
                 ChatMessage("Hello", null, null, 0L, true, null),

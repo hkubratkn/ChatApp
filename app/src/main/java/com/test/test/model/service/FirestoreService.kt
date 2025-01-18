@@ -12,6 +12,16 @@ interface FirestoreService {
 
     suspend fun saveUser(user: User)
 
+    suspend fun setUserOnline()
+
+    suspend fun setUserOffline()
+
+    suspend fun setUserTyping(typingRoomId: String)
+
+    suspend fun clearUserTyping(typingRoomId: String)
+
+    suspend fun observeOtherChatState(userId: String) : Flow<Pair<String, String>>
+
     suspend fun getUser(userId: String): User?
     val users: Flow<List<User>>
 

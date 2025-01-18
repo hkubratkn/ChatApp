@@ -26,11 +26,14 @@ class MainViewModel @Inject constructor(
     private var job: Job? = null
 
     fun saveIsOnline() {
-        launchCatching {}
+        launchCatching {
+            firestoreService.setUserOnline()
+        }
     }
 
     fun saveLastSeen() {
         launchCatching {
+            firestoreService.setUserOffline()
         }
     }
 }

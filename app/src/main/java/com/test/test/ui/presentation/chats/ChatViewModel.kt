@@ -173,6 +173,7 @@ class ChatViewModel @Inject constructor(
 //        }
 
         observeChatMessages(roomId)
+        obserUserStateChanges(roomId, otherUserId)
 
     }
 
@@ -183,6 +184,19 @@ class ChatViewModel @Inject constructor(
         }
     }
 
+    fun obserUserStateChanges(roomId: String, otherUserId: String) = viewModelScope.launch {
+        firestoreService.observeOtherChatState(otherUserId)
+            .collectLatest { (onlineState, typingTo) ->
+                if (typingTo == roomId) {
+                    uiState.value = uiState.value.copy(otherUserChatState = "Typing..")
+                } else if (onlineState == "online") {
+                    uiState.value = uiState.value.copy(otherUserChatState = "Online")
+                } else
+                    uiState.value =
+                        uiState.value.copy(otherUserChatState = "Last seen : $onlineState")
+            }
+    }
+
 
     private val _input = MutableStateFlow("")
     val input: StateFlow<String> = _input
@@ -190,8 +204,16 @@ class ChatViewModel @Inject constructor(
 
     val sendEnabled = _input.map(::isInputValid).stateInUi(false)
 
-    fun updateInput(input: String) {
+    fun updateInput(input: String, chatId: String) {
         _input.value = input
+        viewModelScope.launch {
+            if (input.isNotBlank()) {
+                firestoreService.setUserTyping(chatId)
+            } else {
+                firestoreService.clearUserTyping(chatId)
+            }
+        }
+
     }
 
     fun sendMediaMessage(uriText: String, uriMimeType: String) {
@@ -215,7 +237,7 @@ class ChatViewModel @Inject constructor(
     fun prefillInput(input: String) {
         if (inputPrefilled) return
         inputPrefilled = true
-        updateInput(input)
+        //updateInput(input)
     }
 
     fun sendMessage(
