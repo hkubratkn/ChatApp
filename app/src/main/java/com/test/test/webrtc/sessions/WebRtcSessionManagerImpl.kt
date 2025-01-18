@@ -197,9 +197,11 @@ class WebRtcSessionManagerImpl(
             _localVideoTrackFlow.emit(localVideoTrack)
 
             if (offer != null) {
+                android.util.Log.d("myTag","sending answer")
                 sendAnswer()
             } else {
                 sendOffer()
+                android.util.Log.d("myTag","sending offer")
             }
         }
     }

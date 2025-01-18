@@ -36,6 +36,7 @@ import com.test.test.MainViewModel
 import com.test.test.webrtc.ui.screens.stage.StageScreen
 import com.test.test.webrtc.ui.screens.video.VideoCallScreen
 import com.test.test.webrtc.SignalingClient
+import com.test.test.webrtc.WebRTCSessionState
 import com.test.test.webrtc.WebRtcViewModel
 import com.test.test.webrtc.peer.StreamPeerConnectionFactory
 import com.test.test.webrtc.sessions.LocalWebRtcSessionManager
@@ -55,18 +56,18 @@ class WebRtcActivity : ComponentActivity() {
 
         requestPermissions(arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO), 0)
 
-        val roomId = intent.getStringExtra("roomId")
-        android.util.Log.d("myTag","room id from webrtc activity : $roomId")
+        //val roomId = intent.getStringExtra("roomId")
+        //android.util.Log.d("myTag","room id from webrtc activity : $roomId")
 
 //        val sessionManager: WebRtcSessionManager = WebRtcSessionManagerImpl(
 //            context = this,
 //            signalingClient = SignalingClient(),
 //            peerConnectionFactory = StreamPeerConnectionFactory(this),
 //        )
-
-        if (roomId.isNullOrEmpty().not()){
-            viewModel.setRoomId(roomId!!)
-        }
+//
+//        if (roomId.isNullOrEmpty().not()){
+//            viewModel.setRoomId(roomId!!)
+//        }
 
         //uiState.chatRoom?.let {
             setContent {
@@ -95,5 +96,10 @@ class WebRtcActivity : ComponentActivity() {
             }
         //}
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.onDestory()
     }
 }

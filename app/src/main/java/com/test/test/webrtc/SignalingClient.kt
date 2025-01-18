@@ -35,7 +35,8 @@ import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 
 class SignalingClient(
-    val uId: String
+    val uId: String,
+    val roomId: String
 ) {
     private val signalingScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private val client = OkHttpClient()
@@ -43,6 +44,7 @@ class SignalingClient(
         .Builder()
         .url(BuildConfig.SIGNALING_SERVER_IP_ADDRESS)
         .addHeader("uid", uId)
+        .addHeader("roomId", roomId)
         .build()
 
     // opening web socket with signaling server

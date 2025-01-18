@@ -20,6 +20,7 @@ import android.content.Context
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
@@ -39,27 +40,41 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class WebRtcViewModel @Inject constructor(
     @ApplicationContext val context: Context,
+    private val savedStateHandle: SavedStateHandle,
     private val firestoreService: FirestoreService,
     private val firebaseAuth: FirebaseAuth,
 ) : ViewModel() {
+
+    private val savedStateRoomId: String? = savedStateHandle.get<String>("roomId")
+
 
     var uiState = mutableStateOf(WebRtcUiState())
         private set
 
     var sessionManager: WebRtcSessionManager = WebRtcSessionManagerImpl(
         context = context,
-        signalingClient = SignalingClient(firebaseAuth.currentUser?.uid.orEmpty()),
+        signalingClient = SignalingClient(
+            uId = firebaseAuth.currentUser?.uid.orEmpty(),
+            roomId = savedStateRoomId.orEmpty()
+        ),
         peerConnectionFactory = StreamPeerConnectionFactory(context)
     )
 
     val sessionStateFlow = sessionManager.signalingClient.sessionStateFlow
 
-    fun setRoomId(roomId: String) = viewModelScope.launch {
+    init {
+        savedStateRoomId?.let { setRoomId(roomId = it) }
+    }
+
+    private fun setRoomId(roomId: String) = viewModelScope.launch {
+        android.util.Log.d("myTag","saved state room id : $savedStateRoomId")
         val chatRoom = firestoreService.getChatRoom(roomId)
         val myId = firebaseAuth.currentUser!!.uid
         val otherUserId = chatRoom!!.userIds.filterNot { it == myId }.first()
         android.util.Log.d("myTag", "other user id in webRtcSession : $otherUserId")
         val otherUser = firestoreService.getUser(otherUserId)
+
+
 
 //        sessionManager = WebRtcSessionManagerImpl(
 //            context = context,
@@ -86,5 +101,8 @@ class WebRtcViewModel @Inject constructor(
 
     }
 
+    fun onDestory() {
+        sessionManager.disconnect()
+    }
 
 }
