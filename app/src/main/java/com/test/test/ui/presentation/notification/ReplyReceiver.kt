@@ -68,7 +68,7 @@ class ReplyReceiver : BroadcastReceiver() {
 //                    room?.let {
 //                        firestoreService.setChatRoom(room.id, room)
 
-                    val chatMessage = ChatMessage(chatId, input, myId, Timestamp.now())
+                    val chatMessage = ChatMessage(chatId, input, "", "", myId, Timestamp.now())
                     firestoreService.getChatRoomMessageReference(chatId).add(chatMessage)
                         .addOnSuccessListener {
 

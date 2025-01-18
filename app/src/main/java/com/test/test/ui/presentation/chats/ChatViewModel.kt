@@ -1,35 +1,26 @@
 package com.test.test.ui.presentation.chats
 
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Build
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.messaging.FirebaseMessaging
 import com.test.test.BuildConfig
 import com.test.test.common.stateInUi
 import com.test.test.model.ChatMessage
 import com.test.test.model.ChatRoom
-import com.test.test.model.User
 import com.test.test.model.service.FirestoreService
 import com.test.test.model.service.impl.FirestoreServiceImpl
 import com.test.test.ui.presentation.notification.NotificationHelper
-import com.test.test.ui.presentation.notification.components.ChatState
 import com.test.test.ui.presentation.notification.components.FcmApi
 import com.test.test.ui.presentation.notification.components.NotificationBody
 import com.test.test.ui.presentation.notification.components.SendMessageDto
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
@@ -75,14 +66,16 @@ class ChatViewModel @Inject constructor(
 //        )
 //    }
 
-    fun sendMessageToFCMserver(roomId: String, receiverToken: String, message: ChatMessage, senderName: String) {
+    fun sendMessageToFCMserver(roomId: String, receiverToken: String, message: ChatMessage, senderName: String, mediaUri: String?, mediaMimeType: String?) {
         viewModelScope.launch {
             val messageDto = SendMessageDto(
                 from = roomId,
                 to = receiverToken,
                 notification = NotificationBody(
                     title = senderName,
-                    body = message.message
+                    body = message.message,
+                    mediaUri = mediaUri,
+                    mediaMimeType = mediaMimeType
                 )
             )
             try {
@@ -201,9 +194,22 @@ class ChatViewModel @Inject constructor(
         _input.value = input
     }
 
-    fun sendUriMessage(uriText: String) {
-        val chatId = chatId.value
-        android.util.Log.d("myTag","try sending uri message : $uriText, chat id : $chatId")
+    fun sendMediaMessage(uriText: String, uriMimeType: String) {
+        android.util.Log.d("myTag","try sending uri message : $uriText, mime type : $uriMimeType")
+        //sendMessage(mediaUri = uriText, mediaMimeType = uriMimeType)
+        val videoSampleLink = "https://firebasestorage.googleapis.com/v0/b/baret-ca108.appspot.com/o/Photos%2FOvESQrtsIBZdc93sgo5xELPpvnv2%2Fc8d7cb08-f6b4-4210-9669-a8f6a80fdec3.mp4?alt=media&token=b321a0f8-378a-4a65-95be-f71672d69241"
+        val photoSampleLink = "https://firebasestorage.googleapis.com/v0/b/baret-ca108.appspot.com/o/Photos%2FOvESQrtsIBZdc93sgo5xELPpvnv2%2F4615ac85-d05b-449e-beff-72f7d32b7efc.jpg?alt=media&token=a338e94a-5e9a-4c77-bec7-76e7d5aa45a1"
+
+        android.util.Log.d("myTag","uri mime type is : $uriMimeType")
+
+        if (uriMimeType.contains("PHOTO")) {
+            android.util.Log.d("myTag","this is image, send sample link")
+            sendMessage(mediaUri = photoSampleLink, mediaMimeType = uriMimeType)
+
+        } else if (uriMimeType.contains("VIDEO")) {
+            android.util.Log.d("myTag","this is video, send sample link")
+            sendMessage(mediaUri = videoSampleLink, mediaMimeType = uriMimeType)
+        }
     }
 
     fun prefillInput(input: String) {
@@ -212,28 +218,72 @@ class ChatViewModel @Inject constructor(
         updateInput(input)
     }
 
-    suspend fun sendMessage(
-        chatId: Long,
-        text: String,
-        mediaUri: String?,
-        mediaMimeType: String?,
-    ) = viewModelScope.launch {
-        //val detail = chatDao.loadDetailById(chatId) ?: return
-        // Save the message to the database
-        //saveMessageAndNotify(chatId, text, 0L, mediaUri, mediaMimeType, detail, PushReason.OutgoingMessage)
+    fun sendMessage(
+        text: String? = null,
+        mediaUri: String? = null,
+        mediaMimeType: String? = null,
+    ) {
+        val chatId = chatId.value
+        if (chatId.isEmpty()) return
 
-        //val message = detail.firstContact.reply(text).apply { this.chatId = chatId }.build()
-        //saveMessageAndNotify(message.chatId, message.text, detail.firstContact.id, message.mediaUri, message.mediaMimeType, detail, PushReason.IncomingMessage)
+        viewModelScope.launch {
 
-        // Show notification if the chat is not on the foreground.
-//        if (chatId != currentChat) {
-//            notificationHelper.showNotification(
-//                detail.firstContact,
-//                messageDao.loadAll(chatId),
-//                false,)
-//        }
 
-        //widgetModelRepository.updateUnreadMessagesForContact(contactId = detail.firstContact.id, unread = true)
+            //sendMessage(chatId, input, null, null)
+            val me = firebaseAuth.currentUser
+            val myId = me!!.uid
+
+            val room = firestoreService.getChatRoom(chatId)
+            //val room = uiState.value.chatRoom
+
+            val otherUserId = room!!.userIds.filterNot { it == myId }.first()
+            val otherUser = firestoreService.getUser(otherUserId)
+
+            room.lastMessageTime = Timestamp.now()
+            room.lastMessageSenderId = myId
+            room.lastMessage = text.orEmpty()
+            room.mediaUri = mediaUri
+            room.mediaMimeType = mediaMimeType
+            room.let { r ->
+                firestoreService.setChatRoom(r.id, r)
+
+                val chatMessage = ChatMessage(
+                    chatId,
+                    text.orEmpty(),
+                    mediaUri.orEmpty(),
+                    mediaMimeType.orEmpty(),
+                    myId,
+                    Timestamp.now()
+                )
+                firestoreService.getChatRoomMessageReference(r.id).add(chatMessage)
+                    .addOnSuccessListener {
+                        _input.value = ""
+//                    notificationHelper.showNotification(
+//                        User(name = "notif name"), listOf(ChatMessage(message = input)), true
+//                    )
+
+                        //FirebaseMessaging.getInstance().
+
+                        android.util.Log.d(
+                            "myTag",
+                            "about to send message to fcm server, my id is : ${myId}"
+                        )
+                        android.util.Log.d(
+                            "myTag",
+                            "about to send message to fcm server, the user who has this token should receive the messsage : ${otherUser!!.fcmToken}"
+                        )
+                        sendMessageToFCMserver(
+                            r.id,
+                            otherUser!!.fcmToken,
+                            chatMessage,
+                            me.email.orEmpty(),
+                            mediaUri,
+                            mediaMimeType
+                        )
+
+                    }
+            }
+        }
 
     }
 
@@ -257,48 +307,10 @@ class ChatViewModel @Inject constructor(
         //notificationHelper.showCallNotification(otherUser)
     }
 
-    fun sendPhoto(chatId: Long, photoUri: String) {
-        android.util.Log.d("myTag","should send, chat id : $chatId, uri : $photoUri")
-
-    }
-
     fun send() {
-        val chatId = chatId.value
-        if (chatId.isEmpty()) return
         val input = _input.value
         if (!isInputValid(input)) return
-        viewModelScope.launch {
-            //sendMessage(chatId, input, null, null)
-            val me = firebaseAuth.currentUser
-            val myId = me!!.uid
-
-            val room = uiState.value.chatRoom
-
-            val otherUserId = room!!.userIds.filterNot { it == myId }.first()
-            val otherUser = firestoreService.getUser(otherUserId)
-
-            room.lastMessageTime = Timestamp.now()
-            room.lastMessageSenderId = myId
-            room.lastMessage = input
-            room.let { r ->
-                firestoreService.setChatRoom(r.id, r)
-
-                val chatMessage = ChatMessage(chatId, input, myId, Timestamp.now())
-                firestoreService.getChatRoomMessageReference(r.id).add(chatMessage).addOnSuccessListener {
-                    _input.value = ""
-//                    notificationHelper.showNotification(
-//                        User(name = "notif name"), listOf(ChatMessage(message = input)), true
-//                    )
-
-                    //FirebaseMessaging.getInstance().
-
-                    android.util.Log.d("myTag","about to send message to fcm server, my id is : ${myId}")
-                    android.util.Log.d("myTag","about to send message to fcm server, the user who has this token should receive the messsage : ${otherUser!!.fcmToken}")
-                    sendMessageToFCMserver(r.id, otherUser!!.fcmToken, chatMessage,  me.email.orEmpty())
-
-                }
-            }
-        }
+        sendMessage(text = input)
     }
 
 }

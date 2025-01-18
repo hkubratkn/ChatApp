@@ -1,6 +1,5 @@
 package com.test.test.ui
 
-import androidx.annotation.StringRes
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
@@ -11,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
@@ -53,7 +51,7 @@ sealed interface Route {
 
     @Serializable
     //class SingleChat(val firstId: String, val secondId: String, val name: String) : Route
-    class SingleChat(val roomId: String , val text: String? = null) : Route
+    class SingleChat(val roomId: String , val uriText: String? = null, val uriMimeType: String? = null) : Route
 }
 
 enum class TopLevelDestination(

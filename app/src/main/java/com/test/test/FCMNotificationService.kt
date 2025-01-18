@@ -42,8 +42,15 @@ class FCMNotificationService : FirebaseMessagingService() {
 
         // Check if message contains a data payload.
         if (message.data.isNotEmpty()) {
+
+            val mediaUri : String? = message.data.get("mediaUri")
+            val mediaMimeType : String? = message.data.get("mediaMimeType")
+            val mediaTempText = "$mediaMimeType : $mediaUri"
+
             android.util.Log.d("myTag", "Message data payload: ${message.data}")
-            android.util.Log.d("myTag", "Message data payload: ${message.data.get("theSender")}")
+            android.util.Log.d("myTag", "Message data payload sender: ${message.data.get("theSender")}")
+            android.util.Log.d("myTag", "Message data payload media uri: $mediaUri")
+            android.util.Log.d("myTag", "Message data payload media mime type: $mediaMimeType")
             android.util.Log.d("myTag", "Message data payload,, is call?? : ${message.data.get("isCall")}")
 
             // Check if data needs to be processed by long running job
@@ -58,6 +65,10 @@ class FCMNotificationService : FirebaseMessagingService() {
 
         // Check if message contains a notification payload.
         message.notification?.let {
+
+            val mediaUri : String? = message.data.get("mediaUri")
+            val mediaMimeType : String? = message.data.get("mediaMimeType")
+            val mediaTempText = "$mediaMimeType : $mediaUri"
 
             android.util.Log.d("myTag", "NOTIFICATION CHANNEL ID is: ${it.channelId}")
 
@@ -74,13 +85,28 @@ class FCMNotificationService : FirebaseMessagingService() {
                     //listOf(ChatMessage(message = it.body!!)), true,
                 )
             } else {
-                notificationHelper.showNotification(
-                    User(
-                        id = message.data.get("theSender").orEmpty(),
-                        name = it.title.orEmpty(),
-                    ),
-                    listOf(ChatMessage(message = it.body!!)), true,
-                )
+                android.util.Log.d("myTag3","image url from itself : ${it.imageUrl}")
+                android.util.Log.d("myTag3","image url passed/read directly : ${mediaUri}")
+                //if (mediaUri.isNullOrEmpty()) {
+                    notificationHelper.showNotification(
+                        User(
+                            id = message.data.get("theSender").orEmpty(),
+                            name = it.title.orEmpty(),
+                        ),
+                        listOf(
+                            ChatMessage(
+                                //message = it.body ?: mediaTempText)
+                                message = it.body.orEmpty(),
+                                mediaUri = mediaUri.orEmpty(),
+                                //mediaUri = it.imageUrl.toString(),
+                                mediaMimeType = mediaMimeType.orEmpty()
+                            )
+                        ),
+                        true,
+                    )
+                //} else {
+                //
+                //}
             }
 
 

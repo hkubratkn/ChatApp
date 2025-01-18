@@ -80,7 +80,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.test.test.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -98,14 +97,15 @@ fun ChatScreen(
     onVideoClick: (uri: String) -> Unit = {},
     onVoiceCallClicked: () -> Unit = {},
     uriText: String? = null,
+    uriMimeType: String? = null,
     viewModel: ChatViewModel = hiltViewModel(),
 ) {
 
     LaunchedEffect(chatId) {
         viewModel.setChatId(chatId)
-        if (uriText != null) {
+        if (uriText != null && uriMimeType != null) {
             //viewModel.prefillInput(prefilledText)
-            viewModel.sendUriMessage(uriText)
+            viewModel.sendMediaMessage(uriText, uriMimeType)
         }
     }
 

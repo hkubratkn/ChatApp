@@ -11,5 +11,8 @@ data class ChatRoom(
     @ServerTimestamp
     var lastMessageTime: Timestamp? = null,
     var lastMessageSenderId: String = "",
-    var lastMessage: String = ""
+    var lastMessage: String = "",
+    var mediaUri: String? = null,
+    var mediaMimeType: String? = null,
+
 )

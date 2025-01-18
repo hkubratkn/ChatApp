@@ -176,7 +176,8 @@ private fun MainNavigation(
                 val roomId = route.roomId
 
                 //val prefilledText = route.text
-                val uriText = route.text
+                val uriText = route.uriText
+                val uriMimeType = route.uriMimeType
 
 
                 //val firstId = route.firstId
@@ -185,6 +186,7 @@ private fun MainNavigation(
                 ChatScreen(
                     chatId = roomId,
                     uriText = uriText,
+                    uriMimeType = uriMimeType,
                     onBackPressed = {navController.navigateUp()},
                     onCameraClick = { navController.navigate(Route.Camera(roomId)) },
                     onVoiceCallClicked = {
@@ -207,7 +209,8 @@ private fun MainNavigation(
                                 navController.navigate(
                                     Route.SingleChat(
                                         roomId = chatId,
-                                        text = capturedMedia.uri.toString()
+                                        uriText = capturedMedia.uri.toString(),
+                                        uriMimeType = capturedMedia.mediaType.name
                                     )
                                 )
                             }

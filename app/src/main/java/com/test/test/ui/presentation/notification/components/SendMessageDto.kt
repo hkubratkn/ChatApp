@@ -24,5 +24,7 @@ data class SendMessageDto(
 
 data class NotificationBody(
     val title: String,
-    val body: String
+    val body: String,
+    val mediaUri: String? = null,
+    val mediaMimeType: String? = null,
 )

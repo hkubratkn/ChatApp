@@ -23,7 +23,10 @@ import android.app.PendingIntent
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Build
+import android.provider.MediaStore
 import androidx.annotation.RequiresApi
 import androidx.annotation.WorkerThread
 import androidx.core.app.NotificationCompat
@@ -42,8 +45,12 @@ import com.test.test.model.ChatMessage
 import com.test.test.model.User
 import com.test.test.webrtc.ui.WebRtcActivity
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.net.URL
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * Represents a reason why a shortcut should be pushed.
@@ -191,6 +198,13 @@ class NotificationHelper @Inject constructor(@ApplicationContext context: Contex
                 .setData(contact.contentUri),
             flagUpdateCurrent(mutable = true),
         )
+
+//            .setStyle(NotificationCompat.BigPictureStyle()
+//                .bigPicture(bitmap) // Add the image here
+//                .bigLargeIcon(null))
+        val pictureStyle = NotificationCompat.BigPictureStyle()
+            .bigPicture(getBitmapFromURL(messages.first().mediaUri))
+
         // Let's add some more content to the notification in case it falls back to a normal
         // notification.
         val messagingStyle = NotificationCompat.MessagingStyle(user)
@@ -204,9 +218,22 @@ class NotificationHelper @Inject constructor(@ApplicationContext context: Contex
                 //if (message.isIncoming) person else null,
                 person,
             ).apply {
-                //if (message.mediaUri != null) {
-                //    setData(message.mediaMimeType, message.mediaUri.toUri())
-                //}
+                if (message.mediaUri.isNotEmpty()) {
+                    //setData(message.mediaMimeType, message.mediaUri.toUri())
+                    android.util.Log.d("myTag","notification builder, media uri not null : ${message.mediaUri} and mime type : ${message.mediaMimeType}")
+                    //setData("image/png", message.mediaUri.toUri())
+                    //setData("image/jpeg", message.mediaUri.toUri())
+
+                    setData("image/png", message.mediaUri.toUri())
+
+                    //messagingStyle.(new NotificationCompat.BigPictureStyle().bigPicture(largeImage));
+
+//                    val bitmap = getBitmapFromURL(message.mediaUri)
+//                    bitmap?.let {
+//                        setData("image/jpeg", it)
+//                    }
+                    //setData()
+                }
             }
             if (message.id == firstId) {
                 messagingStyle.addMessage(m)
@@ -214,6 +241,9 @@ class NotificationHelper @Inject constructor(@ApplicationContext context: Contex
                 messagingStyle.addHistoricMessage(m)
             }
         }
+
+        val notificationStyle = if(messages.firstOrNull()?.mediaUri.isNullOrEmpty()) messagingStyle else pictureStyle
+        android.util.Log.d("myTag5","notification style now is : $notificationStyle")
 
         val lastMessageDate = messages.last().timestamp?.toDate() ?: Timestamp.now().toDate()
         val builder = NotificationCompat.Builder(appContext, CHANNEL_NEW_MESSAGES)
@@ -287,7 +317,7 @@ class NotificationHelper @Inject constructor(@ApplicationContext context: Contex
             )
             // Let's add some more content to the notification in case it falls back to a normal
             // notification.
-            .setStyle(messagingStyle)
+            .setStyle(notificationStyle)
             //.setWhen(messages.last().timestamp)
             .setWhen(lastMessageDate.time)
         // Don't sound/vibrate if an update to an existing notification.
@@ -295,6 +325,20 @@ class NotificationHelper @Inject constructor(@ApplicationContext context: Contex
             builder.setOnlyAlertOnce(true)
         }
         notificationManager.notify(contact.id.hashCode(), builder.build())
+    }
+
+    fun getBitmapFromURL(strUrl: String) : Bitmap? {
+        try {
+            val url = URL(strUrl)
+            val connection = url.openConnection()
+            connection.doInput = true
+            connection.connect()
+            val input = connection.getInputStream()
+            val myBitmap = BitmapFactory.decodeStream(input)
+            return myBitmap
+        } catch (e: Exception) {
+            return null
+        }
     }
 
     @WorkerThread
