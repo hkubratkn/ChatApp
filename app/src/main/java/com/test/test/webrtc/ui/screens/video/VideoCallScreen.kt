@@ -46,7 +46,8 @@ import com.test.test.webrtc.ui.WebRtcUiState
 @Composable
 fun VideoCallScreen(
     //isReceiver: Boolean?
-    state: WebRtcUiState
+    state: WebRtcUiState,
+    onLeaveCall: () -> Unit
 ) {
     val sessionManager = LocalWebRtcSessionManager.current
 
@@ -120,6 +121,7 @@ fun VideoCallScreen(
 
                     CallAction.FlipCamera -> sessionManager.flipCamera()
                     CallAction.LeaveCall -> {
+                        onLeaveCall.invoke()
                         sessionManager.disconnect()
                         activity?.finish()
                     }

@@ -1,6 +1,7 @@
 package com.test.test.model.service
 
 import com.google.firebase.firestore.CollectionReference
+import com.test.test.model.CallRecord
 import com.test.test.model.ChatMessage
 import com.test.test.model.ChatRoom
 import com.test.test.model.User
@@ -27,4 +28,6 @@ interface FirestoreService {
     suspend fun getConversations(userId: String) : Flow<List<ChatRoom>>
 
     fun updateUserFcmToken(token: String)
+
+    suspend fun saveCallRecord(callRecord: CallRecord)
 }

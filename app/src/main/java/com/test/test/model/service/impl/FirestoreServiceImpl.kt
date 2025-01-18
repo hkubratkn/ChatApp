@@ -17,6 +17,7 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.snapshots
 import com.google.firebase.firestore.toObjects
+import com.test.test.model.CallRecord
 import com.test.test.model.ChatMessage
 import com.test.test.model.ChatRoom
 import com.test.test.model.User
@@ -83,6 +84,9 @@ class FirestoreServiceImpl @Inject constructor(
         userCollection().document(auth.currentUserId).update("fcmToken", token)
     }
 
+    override suspend fun saveCallRecord(callRecord: CallRecord) {
+        callRecordsCollection().add(callRecord)
+    }
 
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -104,6 +108,7 @@ class FirestoreServiceImpl @Inject constructor(
 
     private fun chatRoomsCollection(): CollectionReference = firestore.collection(CHATROOM_COLLECTION)
 
+    private fun callRecordsCollection(): CollectionReference = firestore.collection(CALL_RECORDS_COLLECTION)
 
 
     fun Query.snapshotFlow(): Flow<QuerySnapshot> = callbackFlow {
@@ -126,6 +131,7 @@ class FirestoreServiceImpl @Inject constructor(
 
 
     companion object {
+        private const val CALL_RECORDS_COLLECTION = "CallRecords"
         private const val CHATROOM_COLLECTION = "ChatRooms"
         private const val USER_COLLECTION = "User"
         private const val DATE_OF_CREATION_FIELD = "dateOfCreation"

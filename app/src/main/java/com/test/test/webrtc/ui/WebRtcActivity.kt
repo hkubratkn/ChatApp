@@ -98,7 +98,12 @@ class WebRtcActivity : ComponentActivity() {
 
                             //if (state == WebRTCSessionState.Active) {
                                 //VideoCallScreen(/*uiState.isReceiver*/)
-                                VideoCallScreen(uiState)
+                                VideoCallScreen(
+                                    state = uiState,
+                                    onLeaveCall = {
+                                        viewModel.callEnded()
+                                    }
+                                )
 //                            } else {
 //                                Box(modifier = Modifier.fillMaxSize(),
 //                                    contentAlignment = Alignment.Center) {

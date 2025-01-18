@@ -23,9 +23,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.test.test.model.CallRecord
 import com.test.test.model.service.AccountService
 import com.test.test.model.service.FirestoreService
+import com.test.test.ui.presentation.calls.CallType
 import com.test.test.ui.presentation.chats.ChatUiState
 import com.test.test.webrtc.peer.StreamPeerConnectionFactory
 import com.test.test.webrtc.sessions.WebRtcSessionManager
@@ -114,10 +117,34 @@ class WebRtcViewModel @Inject constructor(
 
             if (state == WebRTCSessionState.Ready && isReceiver != true) {
                 sessionManager.onSessionScreenReady(true)
+                callStartTimestamp = Timestamp.now()
             } else if (state == WebRTCSessionState.Creating && isReceiver == true) {
                 sessionManager.onSessionScreenReady(false)
+                callStartTimestamp = Timestamp.now()
             }
         }
+    }
+
+    var callStartTimestamp = Timestamp.now()
+
+    fun callEnded() = viewModelScope.launch {
+        android.util.Log.d("myTag","on call ended, save call record to firestore..")
+
+        val myId = firebaseAuth.currentUser!!.uid
+        val otherUserId = uiState.value.chatRoom!!.userIds.filterNot { it == myId }.first()
+        android.util.Log.d("myTag", "other user id in webRtcSession : $otherUserId")
+        val otherUser = firestoreService.getUser(otherUserId)
+
+        firestoreService.saveCallRecord(
+            CallRecord(
+                callType = if (isReceiver == true) CallType.INCOMING else CallType.OUTGOING,
+                //roomId = uiState.value.chatRoom?.id.orEmpty(),
+                userId = myId,
+                peerName = otherUser?.name.orEmpty(),
+                callStart = callStartTimestamp,
+                callEnd = Timestamp.now()
+            )
+        )
     }
 
     fun onDestory() {
