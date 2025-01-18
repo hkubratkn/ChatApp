@@ -26,6 +26,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
@@ -50,8 +53,25 @@ class SignalingClient {
     private val _signalingCommandFlow = MutableSharedFlow<Pair<SignalingCommand, String>>()
     val signalingCommandFlow: SharedFlow<Pair<SignalingCommand, String>> = _signalingCommandFlow
 
+    private var myId: String? = null
+    private var otherUserId: String? = null
+
+    fun setPeers(myOwnId: String, otherId: String) {
+        myId = myOwnId
+        otherUserId = otherId
+    }
+
     fun sendCommand(signalingCommand: SignalingCommand, message: String) {
-        ws.send("$signalingCommand $message")
+        if (myId.isNullOrEmpty().not() && otherUserId.isNullOrEmpty().not()) {
+            val model = WebRtcMessageModel(
+                myId = myId.orEmpty(),
+                otherUserId = otherUserId.orEmpty(),
+                command = signalingCommand.name,
+                message = message
+            )
+            //ws.send("$signalingCommand $message")
+            ws.send(Json.encodeToString(model))
+        }
     }
 
     private inner class SignalingWebSocketListener : WebSocketListener() {
@@ -73,6 +93,7 @@ class SignalingClient {
     }
 
     private fun handleStateMessage(message: String) {
+        android.util.Log.d("myTag","the handled message is : $message")
         val state = getSeparatedMessage(message)
         _sessionStateFlow.value = WebRTCSessionState.valueOf(state)
     }
@@ -107,3 +128,11 @@ enum class SignalingCommand {
     ANSWER, // to send or receive answer
     ICE // to send and receive ice candidates
 }
+
+@Serializable
+data class WebRtcMessageModel(
+    val myId: String,
+    val otherUserId: String,
+    val command: String,
+    val message: String
+)

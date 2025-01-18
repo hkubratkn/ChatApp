@@ -69,7 +69,7 @@ class WebRtcActivity : ComponentActivity() {
         }
 
         setContent {
-            //CompositionLocalProvider(LocalWebRtcSessionManager provides  sessionManager) {
+            CompositionLocalProvider(LocalWebRtcSessionManager provides viewModel.sessionManager) {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -84,7 +84,7 @@ class WebRtcActivity : ComponentActivity() {
                         VideoCallScreen()
                     }
                 }
-            //}
+            }
         }
     }
 }

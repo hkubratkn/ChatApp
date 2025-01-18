@@ -44,7 +44,7 @@ class WebRtcViewModel @Inject constructor(
     var uiState = mutableStateOf(ChatUiState())
         private set
 
-    private var sessionManager: WebRtcSessionManager = WebRtcSessionManagerImpl(
+    var sessionManager: WebRtcSessionManager = WebRtcSessionManagerImpl(
         context = context,
         signalingClient = SignalingClient(),
         peerConnectionFactory = StreamPeerConnectionFactory(context)
@@ -59,6 +59,7 @@ class WebRtcViewModel @Inject constructor(
         android.util.Log.d("myTag", "other user id in webRtcSession : $otherUserId")
         val otherUser = firestoreService.getUser(otherUserId)
         uiState.value = uiState.value.copy(chatRoom = chatRoom, otherUserName = otherUser?.name.orEmpty())
+        sessionManager.signalingClient.setPeers(myId, otherUserId)
 
     }
 
