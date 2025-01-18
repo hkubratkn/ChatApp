@@ -135,6 +135,7 @@ fun ChatScreen(
             onPhotoPickerClick = onPhotoPickerClick,
             onVoiceCallClicked = {
                 android.util.Log.d("myTag","voice call should be triggered")
+                viewModel.callFriend()
                 onVoiceCallClicked.invoke()
             },
             onVideoClick = onVideoClick,

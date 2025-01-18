@@ -44,6 +44,7 @@ class FCMNotificationService : FirebaseMessagingService() {
         if (message.data.isNotEmpty()) {
             android.util.Log.d("myTag", "Message data payload: ${message.data}")
             android.util.Log.d("myTag", "Message data payload: ${message.data.get("theSender")}")
+            android.util.Log.d("myTag", "Message data payload,, is call?? : ${message.data.get("isCall")}")
 
             // Check if data needs to be processed by long running job
 //            if (needsToBeScheduled()) {
@@ -57,15 +58,32 @@ class FCMNotificationService : FirebaseMessagingService() {
 
         // Check if message contains a notification payload.
         message.notification?.let {
+
+            android.util.Log.d("myTag", "NOTIFICATION CHANNEL ID is: ${it.channelId}")
+
+
             android.util.Log.d("myTag", "Message Notification Body: ${it.body}")
 
-            notificationHelper.showNotification(
-                User(
-                    id = message.data.get("theSender").orEmpty(),
-                    name = it.title.orEmpty(),
-                ),
-                listOf(ChatMessage(message = it.body!!)), true,
-            )
+            val isItCall = message.data.get("isCall").toBoolean()
+            if (isItCall) {
+                notificationHelper.showCallNotification(
+                    User(
+                        id = message.data.get("theSender").orEmpty(),
+                        name = it.title.orEmpty(),
+                    ),
+                    //listOf(ChatMessage(message = it.body!!)), true,
+                )
+            } else {
+                notificationHelper.showNotification(
+                    User(
+                        id = message.data.get("theSender").orEmpty(),
+                        name = it.title.orEmpty(),
+                    ),
+                    listOf(ChatMessage(message = it.body!!)), true,
+                )
+            }
+
+
         }
 
         //val userId = getIntent().getExtras().getString("userId")

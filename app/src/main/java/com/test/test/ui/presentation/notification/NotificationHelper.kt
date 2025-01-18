@@ -40,6 +40,7 @@ import com.test.test.MainActivity
 import com.test.test.R
 import com.test.test.model.ChatMessage
 import com.test.test.model.User
+import com.test.test.webrtc.ui.WebRtcActivity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -63,9 +64,11 @@ class NotificationHelper @Inject constructor(@ApplicationContext context: Contex
          * The notification channel for messages. This is used for showing Bubbles.
          */
         private const val CHANNEL_NEW_MESSAGES = "new_messages"
+        private const val CHANNEL_CALL = "calls"
 
         private const val REQUEST_CONTENT = 1
         private const val REQUEST_BUBBLE = 2
+        private const val REQUEST_CALL = 3
     }
 
     private val appContext = context.applicationContext
@@ -87,6 +90,20 @@ class NotificationHelper @Inject constructor(@ApplicationContext context: Contex
                 ).apply {
                     //description = appContext.getString(R.string.channel_new_messages_description)
                     description = "All new incoming messages."
+                },
+            )
+        }
+
+        if (notificationManager.getNotificationChannel(CHANNEL_CALL) == null) {
+            notificationManager.createNotificationChannel(
+                NotificationChannel(
+                    CHANNEL_CALL,
+                    "Call records", //appContext.getString(R.string.channel_new_messages),
+                    // The importance must be IMPORTANCE_HIGH to show Bubbles.
+                    NotificationManager.IMPORTANCE_HIGH,
+                ).apply {
+                    //description = appContext.getString(R.string.channel_new_messages_description)
+                    description = "All new incoming calls."
                 },
             )
         }
@@ -277,6 +294,60 @@ class NotificationHelper @Inject constructor(@ApplicationContext context: Contex
         if (update) {
             builder.setOnlyAlertOnce(true)
         }
+        notificationManager.notify(contact.id.hashCode(), builder.build())
+    }
+
+    @WorkerThread
+    fun showCallNotification(
+        contact: User,
+//        messages: List<ChatMessage>,
+//        fromUser: Boolean,
+//        update: Boolean = false,
+    ) {
+        val icon = IconCompat.createWithAdaptiveBitmapContentUri(contact.iconUri)
+        val user = Person.Builder().setName("You").build()
+        val person = Person.Builder().setName(contact.name).setIcon(icon).build()
+
+        val pendingIntent = PendingIntent.getActivity(
+            appContext,
+            REQUEST_CALL,
+            // Launch BubbleActivity as the expanded bubble.
+            Intent(appContext, WebRtcActivity::class.java)
+                .setAction(Intent.ACTION_VIEW)
+                .setData(contact.contentUri),
+            flagUpdateCurrent(mutable = true),
+        )
+
+        val builder = NotificationCompat.Builder(appContext, CHANNEL_CALL)
+
+            // The user can turn off the bubble in system settings. In that case, this notification
+            // is shown as a normal notification instead of a bubble. Make sure that this
+            // notification works as a normal notification as well.
+            .setContentTitle(contact.name)
+            .setSmallIcon(R.drawable.ic_message)
+            .setCategory(NotificationCompat.CATEGORY_CALL)
+            .setShortcutId(contact.shortcutId)
+            // This ID helps the intelligence services of the device to correlate this notification
+            // with the corresponding dynamic shortcut.
+            .setLocusId(LocusIdCompat(contact.shortcutId))
+            .addPerson(person)
+            .setShowWhen(true)
+            // The content Intent is used when the user clicks on the "Open Content" icon button on
+            // the expanded bubble, as well as when the fall-back notification is clicked.
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+            .setUsesChronometer(false)
+            .setColorized(true)
+            .setStyle(
+                NotificationCompat.CallStyle.forIncomingCall(
+                    Person.Builder()
+                        .setName("denemee")
+                        .build(),
+                    pendingIntent,
+                    pendingIntent,
+                )
+            )
+            .setFullScreenIntent(pendingIntent, true)
+
         notificationManager.notify(contact.id.hashCode(), builder.build())
     }
 

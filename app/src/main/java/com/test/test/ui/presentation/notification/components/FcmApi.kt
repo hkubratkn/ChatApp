@@ -26,6 +26,11 @@ interface FcmApi {
         @Body body: SendMessageDto
     )
 
+    @POST("/call")
+    suspend fun sendCallRequest(
+        @Body body: SendMessageDto
+    )
+
     @POST("/broadcast")
     suspend fun broadcast(
         @Body body: SendMessageDto

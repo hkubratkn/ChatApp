@@ -100,6 +100,31 @@ class ChatViewModel @Inject constructor(
         }
     }
 
+    fun sendCallRequestToFCMserver(roomId: String, receiverToken: String, senderName: String) {
+        viewModelScope.launch {
+            val messageDto = SendMessageDto(
+                from = roomId,
+                to = receiverToken,
+                notification = NotificationBody(
+                    title = senderName,
+                    body = "Someone is calling..."
+                )
+            )
+            try {
+                android.util.Log.d("myTag","sending api request now, is emulator : $isEmulator, build hardware : ${Build.HARDWARE}")
+
+                api.sendCallRequest(messageDto)
+
+                //state = state.copy(messageText = "")
+            } catch (e: Exception) {
+                android.util.Log.d("myTag","exception here : ${e.message}")
+                e.printStackTrace()
+            }
+
+
+        }
+    }
+
 
     private val chatId = MutableStateFlow("")
 
@@ -210,6 +235,26 @@ class ChatViewModel @Inject constructor(
 
         //widgetModelRepository.updateUnreadMessagesForContact(contactId = detail.firstContact.id, unread = true)
 
+    }
+
+    fun callFriend() = viewModelScope.launch {
+        //sendMessage(chatId, input, null, null)
+        val me = firebaseAuth.currentUser
+        val myId = me!!.uid
+
+        val room = uiState.value.chatRoom
+
+        val otherUserId = room!!.userIds.filterNot { it == myId }.first()
+        val otherUser = firestoreService.getUser(otherUserId)
+        otherUser?.let {
+            sendCallRequestToFCMserver(room.id, otherUser.fcmToken,  me.email.orEmpty())
+
+        }
+
+
+
+
+        //notificationHelper.showCallNotification(otherUser)
     }
 
     fun sendPhoto(chatId: Long, photoUri: String) {
