@@ -68,23 +68,32 @@ class WebRtcActivity : ComponentActivity() {
             viewModel.setRoomId(roomId!!)
         }
 
-        setContent {
-            CompositionLocalProvider(LocalWebRtcSessionManager provides viewModel.sessionManager) {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background,
-                ) {
-                    var onCallScreen by remember { mutableStateOf(false) }
-                    val state by viewModel.sessionStateFlow.collectAsState()
+        //uiState.chatRoom?.let {
+            setContent {
+                //uiState.uiSessionManager?.let {
+                    CompositionLocalProvider(LocalWebRtcSessionManager provides viewModel.sessionManager) {
+                    //CompositionLocalProvider(LocalWebRtcSessionManager provides uiState.uiSessionManager) {
+                        // A surface container using the 'background' color from the theme
+                        Surface(
+                            modifier = Modifier.fillMaxSize(),
+                            color = MaterialTheme.colorScheme.background,
+                        ) {
+                            var onCallScreen by remember { mutableStateOf(false) }
+                            val state by viewModel.sessionStateFlow.collectAsState()
 
-                    if (!onCallScreen) {
-                        StageScreen(state = state, waitingName = uiState.otherUserName) { onCallScreen = true }
-                    } else {
-                        VideoCallScreen()
+                            if (!onCallScreen) {
+                                StageScreen(
+                                    state = state, //uiState.webRTCSessionState,
+                                    waitingName = uiState.otherUserName
+                                ) { onCallScreen = true }
+                            } else {
+                                VideoCallScreen()
+                            }
+                        }
                     }
-                }
+                //}
             }
-        }
+        //}
+
     }
 }

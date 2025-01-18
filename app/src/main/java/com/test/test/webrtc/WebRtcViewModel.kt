@@ -29,24 +29,26 @@ import com.test.test.ui.presentation.chats.ChatUiState
 import com.test.test.webrtc.peer.StreamPeerConnectionFactory
 import com.test.test.webrtc.sessions.WebRtcSessionManager
 import com.test.test.webrtc.sessions.WebRtcSessionManagerImpl
+import com.test.test.webrtc.ui.WebRtcUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @HiltViewModel
 class WebRtcViewModel @Inject constructor(
-    @ApplicationContext context: Context,
+    @ApplicationContext val context: Context,
     private val firestoreService: FirestoreService,
     private val firebaseAuth: FirebaseAuth,
 ) : ViewModel() {
 
-    var uiState = mutableStateOf(ChatUiState())
+    var uiState = mutableStateOf(WebRtcUiState())
         private set
 
     var sessionManager: WebRtcSessionManager = WebRtcSessionManagerImpl(
         context = context,
-        signalingClient = SignalingClient(),
+        signalingClient = SignalingClient(firebaseAuth.currentUser?.uid.orEmpty()),
         peerConnectionFactory = StreamPeerConnectionFactory(context)
     )
 
@@ -58,8 +60,29 @@ class WebRtcViewModel @Inject constructor(
         val otherUserId = chatRoom!!.userIds.filterNot { it == myId }.first()
         android.util.Log.d("myTag", "other user id in webRtcSession : $otherUserId")
         val otherUser = firestoreService.getUser(otherUserId)
-        uiState.value = uiState.value.copy(chatRoom = chatRoom, otherUserName = otherUser?.name.orEmpty())
+
+//        sessionManager = WebRtcSessionManagerImpl(
+//            context = context,
+//            signalingClient = SignalingClient(),
+//            peerConnectionFactory = StreamPeerConnectionFactory(context)
+//        )
+
+//        sessionManager.signalingClient.sessionStateFlow.collectLatest {
+//            android.util.Log.d("myTag","rtc session state : $it")
+//            uiState.value = uiState.value.copy(
+//                webRTCSessionState = it
+//            )
+//        }
+
         sessionManager.signalingClient.setPeers(myId, otherUserId)
+
+        uiState.value = uiState.value.copy(
+            chatRoom = chatRoom,
+            otherUserName = otherUser?.name.orEmpty(),
+            //uiSessionManager = sessionManager
+        )
+
+
 
     }
 

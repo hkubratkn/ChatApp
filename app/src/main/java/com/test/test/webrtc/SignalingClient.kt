@@ -34,12 +34,15 @@ import okhttp3.Request
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 
-class SignalingClient {
+class SignalingClient(
+    val uId: String
+) {
     private val signalingScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private val client = OkHttpClient()
     private val request = Request
         .Builder()
         .url(BuildConfig.SIGNALING_SERVER_IP_ADDRESS)
+        .addHeader("uid", uId)
         .build()
 
     // opening web socket with signaling server

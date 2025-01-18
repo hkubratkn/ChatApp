@@ -17,9 +17,15 @@
 package com.test.test.webrtc.ui
 
 import com.test.test.model.ChatRoom
+import com.test.test.webrtc.WebRTCSessionState
+import com.test.test.webrtc.sessions.WebRtcSessionManager
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flowOf
 
 data class WebRtcUiState(
     val chatRoom: ChatRoom? = null,
-    val otherUserName: String = ""
+    val otherUserName: String = "",
+    val webRTCSessionState: WebRTCSessionState = WebRTCSessionState.Offline,
+    //val uiSessionManager: WebRtcSessionManager? = null
 )
 
