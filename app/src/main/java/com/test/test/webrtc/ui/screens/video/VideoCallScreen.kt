@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -37,16 +38,21 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import com.test.test.webrtc.WebRTCSessionState
 import com.test.test.webrtc.ui.components.VideoRenderer
 import com.test.test.webrtc.sessions.LocalWebRtcSessionManager
+import com.test.test.webrtc.ui.WebRtcUiState
 
 @Composable
-fun VideoCallScreen() {
+fun VideoCallScreen(
+    //isReceiver: Boolean?
+    state: WebRtcUiState
+) {
     val sessionManager = LocalWebRtcSessionManager.current
 
-    LaunchedEffect(key1 = Unit) {
-        sessionManager.onSessionScreenReady()
-    }
+//    LaunchedEffect(key1 = Unit) {
+//        sessionManager.onSessionScreenReady(/*isReceiver == true*/)
+//    }
 
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -60,6 +66,15 @@ fun VideoCallScreen() {
         val localVideoTrack = localVideoTrackState
 
         var callMediaState by remember { mutableStateOf(CallMediaState()) }
+
+        if (state.webRTCSessionState != WebRTCSessionState.Active) {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(text = "Waiting for ${state.otherUserName} to join")
+            }
+        }
 
         if (remoteVideoTrack != null) {
             VideoRenderer(

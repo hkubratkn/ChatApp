@@ -25,6 +25,7 @@ import kotlinx.coroutines.flow.flowOf
 data class WebRtcUiState(
     val chatRoom: ChatRoom? = null,
     val otherUserName: String = "",
+    val isReceiver: Boolean? = null,
     val webRTCSessionState: WebRTCSessionState = WebRTCSessionState.Offline,
     //val uiSessionManager: WebRtcSessionManager? = null
 )

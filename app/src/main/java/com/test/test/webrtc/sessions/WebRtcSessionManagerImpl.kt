@@ -188,7 +188,9 @@ class WebRtcSessionManagerImpl(
         }
     }
 
-    override fun onSessionScreenReady() {
+    override fun onSessionScreenReady(shouldSendOffer: Boolean) {
+        android.util.Log.d("myTag","should send offer? : $shouldSendOffer")
+        android.util.Log.d("myTag2","should send offer? : $shouldSendOffer")
         setupAudio()
         peerConnection.connection.addTrack(localVideoTrack)
         peerConnection.connection.addTrack(localAudioTrack)
@@ -196,13 +198,19 @@ class WebRtcSessionManagerImpl(
             // sending local video track to show local video from start
             _localVideoTrackFlow.emit(localVideoTrack)
 
-            if (offer != null) {
-                android.util.Log.d("myTag","sending answer")
-                sendAnswer()
-            } else {
+            if (shouldSendOffer) {
                 sendOffer()
-                android.util.Log.d("myTag","sending offer")
+            } else {
+                sendAnswer()
             }
+
+//            if (offer != null) {
+//                android.util.Log.d("myTag","sending answer")
+//                sendAnswer()
+//            } else {
+//                sendOffer()
+//                android.util.Log.d("myTag","sending offer")
+//            }
         }
     }
 

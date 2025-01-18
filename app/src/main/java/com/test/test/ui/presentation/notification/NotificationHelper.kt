@@ -300,6 +300,7 @@ class NotificationHelper @Inject constructor(@ApplicationContext context: Contex
     @WorkerThread
     fun showCallNotification(
         contact: User,
+        //roomId: String
 //        messages: List<ChatMessage>,
 //        fromUser: Boolean,
 //        update: Boolean = false,
@@ -314,6 +315,8 @@ class NotificationHelper @Inject constructor(@ApplicationContext context: Contex
             // Launch BubbleActivity as the expanded bubble.
             Intent(appContext, WebRtcActivity::class.java)
                 .setAction(Intent.ACTION_VIEW)
+                .putExtra("roomId", contact.id)
+                .putExtra("receiver", true)
                 .setData(contact.contentUri),
             flagUpdateCurrent(mutable = true),
         )

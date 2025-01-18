@@ -31,7 +31,7 @@ interface WebRtcSessionManager {
 
     val remoteVideoTrackFlow: SharedFlow<VideoTrack>
 
-    fun onSessionScreenReady()
+    fun onSessionScreenReady(shouldSendOffer: Boolean)
 
     fun flipCamera()
 

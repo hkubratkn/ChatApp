@@ -46,6 +46,7 @@ class WebRtcViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val savedStateRoomId: String? = savedStateHandle.get<String>("roomId")
+    private val isReceiver: Boolean? = savedStateHandle.get<Boolean>("receiver")
 
 
     var uiState = mutableStateOf(WebRtcUiState())
@@ -64,10 +65,12 @@ class WebRtcViewModel @Inject constructor(
 
     init {
         savedStateRoomId?.let { setRoomId(roomId = it) }
+        observerState()
     }
 
     private fun setRoomId(roomId: String) = viewModelScope.launch {
         android.util.Log.d("myTag","saved state room id : $savedStateRoomId")
+        android.util.Log.d("myTag","is receiver : $isReceiver")
         val chatRoom = firestoreService.getChatRoom(roomId)
         val myId = firebaseAuth.currentUser!!.uid
         val otherUserId = chatRoom!!.userIds.filterNot { it == myId }.first()
@@ -94,11 +97,27 @@ class WebRtcViewModel @Inject constructor(
         uiState.value = uiState.value.copy(
             chatRoom = chatRoom,
             otherUserName = otherUser?.name.orEmpty(),
+            isReceiver = isReceiver
             //uiSessionManager = sessionManager
         )
 
 
 
+    }
+
+    private fun observerState() = viewModelScope.launch {
+        sessionStateFlow.collectLatest { state ->
+
+            uiState.value = uiState.value.copy(
+                webRTCSessionState = state
+            )
+
+            if (state == WebRTCSessionState.Ready && isReceiver != true) {
+                sessionManager.onSessionScreenReady(true)
+            } else if (state == WebRTCSessionState.Creating && isReceiver == true) {
+                sessionManager.onSessionScreenReady(false)
+            }
+        }
     }
 
     fun onDestory() {
