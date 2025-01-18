@@ -17,6 +17,7 @@
 package com.test.test.webrtc.ui.screens.stage
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -34,6 +35,7 @@ import com.test.test.webrtc.WebRTCSessionState
 @Composable
 fun StageScreen(
     state: WebRTCSessionState,
+    waitingName: String,
     onJoinCall: () -> Unit,
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
@@ -65,17 +67,25 @@ fun StageScreen(
                 "Session Active"
             }
         }
-
-        Button(
+        Column(
             modifier = Modifier.align(Alignment.Center),
-            enabled = enabledCall,
-            onClick = { onJoinCall.invoke() },
         ) {
             Text(
-                text = text,
+                text = "Call with : $waitingName",
                 fontSize = 26.sp,
                 fontWeight = FontWeight.Bold,
             )
+            Button(
+                enabled = enabledCall,
+                onClick = { onJoinCall.invoke() },
+            ) {
+                Text(
+                    text = text,
+                    fontSize = 26.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
         }
+
     }
 }

@@ -51,7 +51,7 @@ class WebRtcActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val uiState by viewModel.uiState
 
         requestPermissions(arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO), 0)
 
@@ -79,7 +79,7 @@ class WebRtcActivity : ComponentActivity() {
                     val state by viewModel.sessionStateFlow.collectAsState()
 
                     if (!onCallScreen) {
-                        StageScreen(state = state) { onCallScreen = true }
+                        StageScreen(state = state, waitingName = uiState.otherUserName) { onCallScreen = true }
                     } else {
                         VideoCallScreen()
                     }

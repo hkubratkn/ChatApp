@@ -19,11 +19,13 @@ package com.test.test.webrtc
 import android.content.Context
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.test.test.model.service.AccountService
 import com.test.test.model.service.FirestoreService
+import com.test.test.ui.presentation.chats.ChatUiState
 import com.test.test.webrtc.peer.StreamPeerConnectionFactory
 import com.test.test.webrtc.sessions.WebRtcSessionManager
 import com.test.test.webrtc.sessions.WebRtcSessionManagerImpl
@@ -39,6 +41,9 @@ class WebRtcViewModel @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
 ) : ViewModel() {
 
+    var uiState = mutableStateOf(ChatUiState())
+        private set
+
     private var sessionManager: WebRtcSessionManager = WebRtcSessionManagerImpl(
         context = context,
         signalingClient = SignalingClient(),
@@ -52,6 +57,9 @@ class WebRtcViewModel @Inject constructor(
         val myId = firebaseAuth.currentUser!!.uid
         val otherUserId = chatRoom!!.userIds.filterNot { it == myId }.first()
         android.util.Log.d("myTag", "other user id in webRtcSession : $otherUserId")
+        val otherUser = firestoreService.getUser(otherUserId)
+        uiState.value = uiState.value.copy(chatRoom = chatRoom, otherUserName = otherUser?.name.orEmpty())
+
     }
 
 
