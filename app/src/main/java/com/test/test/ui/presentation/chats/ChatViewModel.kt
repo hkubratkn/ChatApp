@@ -1,6 +1,9 @@
 package com.test.test.ui.presentation.chats
 
 import android.os.Build
+import android.text.format.DateUtils
+import android.text.format.DateUtils.MINUTE_IN_MILLIS
+import android.text.format.DateUtils.SECOND_IN_MILLIS
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,6 +21,8 @@ import com.test.test.ui.presentation.notification.components.NotificationBody
 import com.test.test.ui.presentation.notification.components.SendMessageDto
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlin.time.DurationUnit
+import kotlin.time.toDuration
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -27,11 +32,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 
+
 @HiltViewModel
 class ChatViewModel @Inject constructor(
     private val firestoreService: FirestoreService,
     private val firebaseAuth: FirebaseAuth,
-    private val notificationHelper: NotificationHelper
+    private val notificationHelper: NotificationHelper,
 ) : ViewModel() {
 
     //var state by mutableStateOf(ChatState())
@@ -75,8 +81,8 @@ class ChatViewModel @Inject constructor(
                     title = senderName,
                     body = message.message,
                     mediaUri = mediaUri,
-                    mediaMimeType = mediaMimeType
-                )
+                    mediaMimeType = mediaMimeType,
+                ),
             )
             try {
                 android.util.Log.d("myTag","sending api request now, is emulator : $isEmulator, build hardware : ${Build.HARDWARE}")
@@ -100,8 +106,8 @@ class ChatViewModel @Inject constructor(
                 to = receiverToken,
                 notification = NotificationBody(
                     title = senderName,
-                    body = "Someone is calling..."
-                )
+                    body = "Someone is calling...",
+                ),
             )
             try {
                 android.util.Log.d("myTag","sending api request now, is emulator : $isEmulator, build hardware : ${Build.HARDWARE}")
@@ -132,7 +138,7 @@ class ChatViewModel @Inject constructor(
                 chatId,
                 arrayListOf(firstUserId, secondUserId),
                 Timestamp.now(),
-                ""
+                "",
             )
             firestoreService.setChatRoom(chatId, newChatRoom)
             uiState.value = uiState.value.copy(chatRoom = newChatRoom)
@@ -191,10 +197,55 @@ class ChatViewModel @Inject constructor(
                     uiState.value = uiState.value.copy(otherUserChatState = "Typing..")
                 } else if (onlineState == "online") {
                     uiState.value = uiState.value.copy(otherUserChatState = "Online")
-                } else
+                } else if (isNumeric(onlineState)) {
+
+//                    val now = Instant.now() // Capture the current moment as seen in UTC.
+//                    val then = now.minus(8L, ChronoUnit.HOURS).minus(8L, ChronoUnit.MINUTES)
+//                        .minus(8L, ChronoUnit.SECONDS)
+//                    val d: Duration = Duration.between(then, now)
+
+                    //val x = Duration.parse(onlineState).toString()
+                    //Date(onlineState).
+                    //Date(onlineState)
+
+                    val lastTime : Long = onlineState.toLong()
+                    android.util.Log.d("myTag7","last time : $lastTime, current time : ${System.currentTimeMillis()}")
+                    android.util.Log.d("myTag7","last time : $lastTime, current time : ${Timestamp.now().toDate().time}")
+//                    //Duration.
+                    //val diff = lastTime - Date().time
+
+                    //val duration = diff.toDuration(DurationUnit.MILLISECONDS)
+
+//
+//                    val diffDuration = diff.toDuration(DurationUnit.MILLISECONDS)
                     uiState.value =
-                        uiState.value.copy(otherUserChatState = "Last seen : $onlineState")
+                        uiState.value.copy(
+                            otherUserChatState = "Last seen : ${
+                                getTimeAgoFormat3(
+                                    //System.currentTimeMillis() - 70000, // works this way
+                                    System.currentTimeMillis() - lastTime,
+                                    System.currentTimeMillis(),
+                                )
+                            }",
+                        )
+                }
             }
+    }
+
+    fun isNumeric(str: String) = str.isNotBlank() && str.all { it in '0'..'9' }
+
+
+    fun getTimeAgoFormat(timestamp: Long): String {
+        return DateUtils.getRelativeTimeSpanString(timestamp).toString()
+    }
+
+    fun getTimeAgoFormat2(timestamp: Long, now: Long, minResolution: Long): String {
+        return DateUtils.getRelativeTimeSpanString(timestamp,now,minResolution).toString()
+    }
+
+    fun getTimeAgoFormat3(oldDate: Long, currentDateLong: Long) : String {
+        return DateUtils.getRelativeTimeSpanString(oldDate, currentDateLong,
+            0L, DateUtils.FORMAT_ABBREV_ALL).toString()
     }
 
 
@@ -275,7 +326,7 @@ class ChatViewModel @Inject constructor(
                     mediaUri.orEmpty(),
                     mediaMimeType.orEmpty(),
                     myId,
-                    Timestamp.now()
+                    Timestamp.now(),
                 )
                 firestoreService.getChatRoomMessageReference(r.id).add(chatMessage)
                     .addOnSuccessListener {
@@ -288,11 +339,11 @@ class ChatViewModel @Inject constructor(
 
                         android.util.Log.d(
                             "myTag",
-                            "about to send message to fcm server, my id is : ${myId}"
+                            "about to send message to fcm server, my id is : ${myId}",
                         )
                         android.util.Log.d(
                             "myTag",
-                            "about to send message to fcm server, the user who has this token should receive the messsage : ${otherUser!!.fcmToken}"
+                            "about to send message to fcm server, the user who has this token should receive the messsage : ${otherUser!!.fcmToken}",
                         )
                         sendMessageToFCMserver(
                             r.id,
@@ -300,7 +351,7 @@ class ChatViewModel @Inject constructor(
                             chatMessage,
                             me.email.orEmpty(),
                             mediaUri,
-                            mediaMimeType
+                            mediaMimeType,
                         )
 
                     }

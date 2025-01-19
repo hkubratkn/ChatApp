@@ -47,7 +47,9 @@ class FirestoreServiceImpl @Inject constructor(
     }
 
     override suspend fun setUserOffline() {
-        userCollection().document(auth.currentUserId).update("status", Timestamp.now().toString())
+        //userCollection().document(auth.currentUserId).update("status", Timestamp.now().toDate().time.toString())
+        userCollection().document(auth.currentUserId).update("status", System.currentTimeMillis().toString())
+        //userCollection().document(auth.currentUserId).update("status", Timestamp.now().seconds)
     }
 
     override suspend fun setUserTyping(typingRoomId: String) {
@@ -148,7 +150,7 @@ class FirestoreServiceImpl @Inject constructor(
     fun Query.snapshotFlow(): Flow<QuerySnapshot> = callbackFlow {
         val listenerRegistration = addSnapshotListener { value, error ->
             if (error != null) {
-                android.util.Log.d("myTag2","close it!")
+                android.util.Log.d("myTag2","close it!, error is $error")
                 close()
                 return@addSnapshotListener
             }
